@@ -6,6 +6,7 @@ import { ButtondownClient } from './api/client.js';
 import { DatabaseQueries } from './db/queries.js';
 import { logger } from './utils/logger.js';
 import { downloadAllImages } from './utils/image-processor.js';
+import { normalizeToMarkdown } from './utils/markdown-normalizer.js';
 import type { Email } from './api/types.js';
 import type Database from 'better-sqlite3';
 
@@ -136,10 +137,13 @@ export class SyncEngine {
     email: Email,
     downloadImages = false
   ): Promise<void> {
+    // Normalize the email body to clean markdown
+    const normalizedMarkdown = normalizeToMarkdown(email.body);
+
     // Use transaction for atomicity
     this.queries.transaction(() => {
-      // Upsert the email
-      this.queries.upsertEmail(email);
+      // Upsert the email with normalized markdown
+      this.queries.upsertEmail(email, normalizedMarkdown);
 
       // Handle attachments if present
       if (email.attachments && email.attachments.length > 0) {

@@ -49,6 +49,7 @@ function createSchema(db: Database.Database) {
       id TEXT PRIMARY KEY,
       subject TEXT NOT NULL,
       body TEXT NOT NULL,
+      normalized_markdown TEXT,
       status TEXT NOT NULL,
       publish_date TEXT,
       creation_date TEXT NOT NULL,
@@ -145,7 +146,7 @@ function createSchema(db: Database.Database) {
     INSERT INTO sync_metadata (key, value, updated_at) 
     VALUES (?, ?, ?)
   `
-  ).run('schema_version', '2', now);
+  ).run('schema_version', '3', now);
 
   db.prepare(
     `

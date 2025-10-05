@@ -14,17 +14,17 @@ export class DatabaseQueries {
   /**
    * Upsert an email (insert or update if exists)
    */
-  upsertEmail(email: Email): void {
+  upsertEmail(email: Email, normalizedMarkdown?: string): void {
     const now = new Date().toISOString();
 
     const stmt = this.db.prepare(`
       INSERT INTO emails (
-        id, subject, body, status, publish_date,
+        id, subject, body, normalized_markdown, status, publish_date,
         creation_date, modification_date, slug, description,
         image_url, canonical_url, email_type, secondary_id,
         absolute_url, metadata, featured, synced_at
       ) VALUES (
-        @id, @subject, @body, @status, @publish_date,
+        @id, @subject, @body, @normalized_markdown, @status, @publish_date,
         @creation_date, @modification_date, @slug, @description,
         @image_url, @canonical_url, @email_type, @secondary_id,
         @absolute_url, @metadata, @featured, @synced_at
@@ -32,6 +32,7 @@ export class DatabaseQueries {
       ON CONFLICT(id) DO UPDATE SET
         subject = excluded.subject,
         body = excluded.body,
+        normalized_markdown = excluded.normalized_markdown,
         status = excluded.status,
         publish_date = excluded.publish_date,
         modification_date = excluded.modification_date,
@@ -52,6 +53,7 @@ export class DatabaseQueries {
       id: email.id,
       subject: email.subject,
       body: email.body,
+      normalized_markdown: normalizedMarkdown || null,
       status: email.status,
       publish_date: email.publish_date || null,
       creation_date: email.creation_date,
@@ -315,6 +317,46 @@ export class DatabaseQueries {
 
     const result = stmt.get(emailId) as { total: number | null };
     return result.total || 0;
+  }
+
+  /**
+   * Update normalized markdown for an email
+   */
+  updateNormalizedMarkdown(emailId: string, normalizedMarkdown: string): void {
+    const stmt = this.db.prepare(`
+      UPDATE emails
+      SET normalized_markdown = ?
+      WHERE id = ?
+    `);
+
+    stmt.run(normalizedMarkdown, emailId);
+  }
+
+  /**
+   * Get emails without normalized markdown
+   */
+  getEmailsWithoutNormalizedMarkdown(limit?: number): any[] {
+    const query = limit
+      ? 'SELECT * FROM emails WHERE normalized_markdown IS NULL LIMIT ?'
+      : 'SELECT * FROM emails WHERE normalized_markdown IS NULL';
+
+    return limit
+      ? this.db.prepare(query).all(limit)
+      : this.db.prepare(query).all();
+  }
+
+  /**
+   * Count emails without normalized markdown
+   */
+  countEmailsWithoutNormalizedMarkdown(): number {
+    const stmt = this.db.prepare(`
+      SELECT COUNT(*) as count
+      FROM emails
+      WHERE normalized_markdown IS NULL
+    `);
+
+    const result = stmt.get() as { count: number };
+    return result.count;
   }
 
   /**

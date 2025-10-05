@@ -1,0 +1,178 @@
+/**
+ * Markdown normalization utilities
+ * Converts HTML and markdown content to normalized markdown format
+ */
+
+import TurndownService from 'turndown';
+import { logger } from './logger.js';
+
+/**
+ * Create a configured Turndown service that only preserves basic formatting
+ */
+function createTurndownService(): TurndownService {
+  const turndownService = new TurndownService({
+    headingStyle: 'atx', // Use # style headings
+    hr: '---',
+    bulletListMarker: '-',
+    codeBlockStyle: 'fenced',
+    fence: '```',
+    emDelimiter: '_',
+    strongDelimiter: '**',
+    linkStyle: 'inlined',
+    linkReferenceStyle: 'full',
+  });
+
+  // Remove rules for elements we don't want to preserve
+  // Keep only: links, images, headings, lists, strong, em, code, pre
+  turndownService.remove([
+    'style',
+    'script',
+    'noscript',
+    'iframe',
+    'object',
+    'embed',
+    'video',
+    'audio',
+    'canvas',
+    'svg',
+    'math',
+    'form',
+    'input',
+    'textarea',
+    'button',
+    'select',
+    'option',
+  ]);
+
+  // Add custom rule to strip out divs, spans, and other container elements
+  // but keep their content
+  turndownService.addRule('stripContainers', {
+    filter: [
+      'div',
+      'span',
+      'section',
+      'article',
+      'header',
+      'footer',
+      'nav',
+      'aside',
+      'main',
+      'figure',
+      'figcaption',
+    ],
+    replacement: (content) => content,
+  });
+
+  // Add custom rule for tables - convert to simple text representation
+  turndownService.addRule('simpleTables', {
+    filter: 'table',
+    replacement: (content) => {
+      // Just extract the text content, don't try to preserve table structure
+      return '\n' + content + '\n';
+    },
+  });
+
+  // Strip out data attributes, style attributes, etc
+  turndownService.addRule('cleanAttributes', {
+    filter: (node) => {
+      if (node.nodeType === 1) {
+        // Element node
+        const element = node as Element;
+        // Remove all attributes except href, src, alt, title
+        const allowedAttrs = ['href', 'src', 'alt', 'title'];
+        const attrs = Array.from(element.attributes);
+        for (const attr of attrs) {
+          if (!allowedAttrs.includes(attr.name)) {
+            element.removeAttribute(attr.name);
+          }
+        }
+      }
+      return false; // Don't replace the node, just clean it
+    },
+    replacement: () => '',
+  });
+
+  return turndownService;
+}
+
+/**
+ * Normalize HTML or markdown content to clean markdown
+ * Strips out all HTML except basic formatting that renders well in markdown
+ */
+export function normalizeToMarkdown(content: string): string {
+  try {
+    // If the content is already mostly markdown (very few HTML tags),
+    // we still want to clean it up
+    const turndownService = createTurndownService();
+
+    // Convert to markdown
+    let markdown = turndownService.turndown(content);
+
+    // Clean up excessive whitespace
+    markdown = cleanupWhitespace(markdown);
+
+    // Remove any remaining HTML comments
+    markdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
+
+    // Clean up multiple consecutive blank lines (keep max 2)
+    markdown = markdown.replace(/\n{3,}/g, '\n\n');
+
+    // Trim leading/trailing whitespace
+    markdown = markdown.trim();
+
+    return markdown;
+  } catch (error) {
+    logger.warn('Failed to normalize markdown:', error);
+    // Fallback: return the original content
+    return content;
+  }
+}
+
+/**
+ * Clean up excessive whitespace in markdown
+ */
+function cleanupWhitespace(markdown: string): string {
+  // Remove trailing whitespace from each line
+  markdown = markdown.replace(/[ \t]+$/gm, '');
+
+  // Normalize line endings
+  markdown = markdown.replace(/\r\n/g, '\n');
+
+  // Remove spaces before punctuation
+  markdown = markdown.replace(/\s+([.,!?;:])/g, '$1');
+
+  return markdown;
+}
+
+/**
+ * Check if content is likely HTML or markdown
+ */
+export function isLikelyHtml(content: string): boolean {
+  // Count HTML tags
+  const htmlTagCount = (content.match(/<[^>]+>/g) || []).length;
+  // If there are more than 5 HTML tags, consider it HTML
+  return htmlTagCount > 5;
+}
+
+/**
+ * Preview the normalization (for testing)
+ */
+export function previewNormalization(content: string): {
+  original: string;
+  normalized: string;
+  isHtml: boolean;
+  lengthBefore: number;
+  lengthAfter: number;
+} {
+  const isHtml = isLikelyHtml(content);
+  const normalized = normalizeToMarkdown(content);
+
+  return {
+    original: content.substring(0, 500) + (content.length > 500 ? '...' : ''),
+    normalized:
+      normalized.substring(0, 500) + (normalized.length > 500 ? '...' : ''),
+    isHtml,
+    lengthBefore: content.length,
+    lengthAfter: normalized.length,
+  };
+}
