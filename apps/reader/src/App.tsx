@@ -11,6 +11,7 @@ interface Email {
   image_url?: string;
   slug?: string;
   secondary_id?: number;
+  searchSnippet?: string;
 }
 
 interface NavigationLinks {
@@ -18,31 +19,105 @@ interface NavigationLinks {
   next: { id: string; subject: string; publish_date: string } | null;
 }
 
+type SortOption = 'date-desc' | 'date-asc' | 'subject-asc' | 'subject-desc';
+
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
 
 function App() {
+  const [allEmails, setAllEmails] = useState<Email[]>([]);
   const [emails, setEmails] = useState<Email[]>([]);
   const [currentEmail, setCurrentEmail] = useState<Email | null>(null);
   const [navigation, setNavigation] = useState<NavigationLinks | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<'list' | 'reader'>('list');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<SortOption>('date-desc');
+  const [isSearching, setIsSearching] = useState(false);
 
   // Fetch all emails on mount
   useEffect(() => {
     fetchEmails();
   }, []);
 
+  // Sort and filter emails whenever search query, sort option, or allEmails change
+  useEffect(() => {
+    if (searchQuery.trim()) {
+      performSearch(searchQuery);
+    } else {
+      const sorted = sortEmails([...allEmails], sortBy);
+      setEmails(sorted);
+    }
+  }, [searchQuery, sortBy, allEmails]);
+
   const fetchEmails = async () => {
     try {
       const response = await fetch(`${API_BASE}/api/emails`);
       if (!response.ok) throw new Error('Failed to fetch emails');
       const data = await response.json();
-      setEmails(data);
+      setAllEmails(data);
+      setEmails(sortEmails(data, sortBy));
       setLoading(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setLoading(false);
+    }
+  };
+
+  const performSearch = async (query: string) => {
+    if (!query.trim()) {
+      setEmails(sortEmails([...allEmails], sortBy));
+      setIsSearching(false);
+      return;
+    }
+
+    try {
+      setIsSearching(true);
+      const response = await fetch(
+        `${API_BASE}/api/emails/search?q=${encodeURIComponent(query)}`
+      );
+      if (!response.ok) throw new Error('Failed to search emails');
+      const data = await response.json();
+      setEmails(sortEmails(data, sortBy));
+      setIsSearching(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
+      setIsSearching(false);
+    }
+  };
+
+  const sortEmails = (emailList: Email[], sort: SortOption): Email[] => {
+    const sorted = [...emailList];
+    switch (sort) {
+      case 'date-desc':
+        return sorted.sort(
+          (a, b) =>
+            new Date(b.publish_date).getTime() -
+            new Date(a.publish_date).getTime()
+        );
+      case 'date-asc':
+        return sorted.sort(
+          (a, b) =>
+            new Date(a.publish_date).getTime() -
+            new Date(b.publish_date).getTime()
+        );
+      case 'subject-asc':
+        return sorted.sort((a, b) => a.subject.localeCompare(b.subject));
+      case 'subject-desc':
+        return sorted.sort((a, b) => b.subject.localeCompare(a.subject));
+      default:
+        return sorted;
+    }
+  };
+
+  const fetchRandomEmail = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/api/emails/random`);
+      if (!response.ok) throw new Error('Failed to fetch random email');
+      const data = await response.json();
+      navigateToEmail(data.id);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
     }
   };
 
@@ -90,6 +165,28 @@ function App() {
     });
   };
 
+  const renderSearchSnippet = (snippet: string) => {
+    // Parse the snippet and render with bold matches
+    const parts = snippet.split(/<<MATCH>>|<<?\/MATCH>>/);
+    const elements: React.ReactNode[] = [];
+
+    for (let i = 0; i < parts.length; i++) {
+      if (i % 2 === 0) {
+        // Regular text
+        elements.push(parts[i]);
+      } else {
+        // Matched text - make it bold
+        elements.push(
+          <strong key={i} className="search-highlight">
+            {parts[i]}
+          </strong>
+        );
+      }
+    }
+
+    return <>{elements}</>;
+  };
+
   if (loading && !currentEmail) {
     return (
       <div className="container">
@@ -112,33 +209,101 @@ function App() {
         <div className="email-list">
           <header className="header">
             <h1>Newsletter Archive</h1>
-            <p className="subtitle">{emails.length} published issues</p>
+            <p className="subtitle">
+              {searchQuery
+                ? `${emails.length} result${emails.length !== 1 ? 's' : ''}`
+                : `${emails.length} published issue${
+                    emails.length !== 1 ? 's' : ''
+                  }`}
+            </p>
           </header>
 
-          <div className="list">
-            {emails.map((email) => (
-              <article
-                key={email.id}
-                className="email-card"
-                onClick={() => navigateToEmail(email.id)}
+          <div className="controls">
+            <div className="search-container">
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search newsletters..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <button
+                  className="clear-search"
+                  onClick={() => setSearchQuery('')}
+                  title="Clear search"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+            <div className="control-row">
+              <div className="sort-container">
+                <label htmlFor="sort-select">Sort by:</label>
+                <select
+                  id="sort-select"
+                  className="sort-select"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as SortOption)}
+                >
+                  <option value="date-desc">Newest First</option>
+                  <option value="date-asc">Oldest First</option>
+                  <option value="subject-asc">Subject (A-Z)</option>
+                  <option value="subject-desc">Subject (Z-A)</option>
+                </select>
+              </div>
+
+              <button
+                className="btn btn-random"
+                onClick={fetchRandomEmail}
+                title="Go to random letter"
               >
-                {email.image_url && (
-                  <div className="email-card-image">
-                    <img src={email.image_url} alt={email.subject} />
-                  </div>
-                )}
-                <div className="email-card-content">
-                  <h2>{email.subject}</h2>
-                  {email.description && (
-                    <p className="email-description">{email.description}</p>
-                  )}
-                  <time className="email-date">
-                    {formatDate(email.publish_date)}
-                  </time>
-                </div>
-              </article>
-            ))}
+                🎲 Random Letter
+              </button>
+            </div>
           </div>
+
+          {isSearching ? (
+            <div className="searching">Searching...</div>
+          ) : emails.length === 0 ? (
+            <div className="no-results">
+              {searchQuery
+                ? 'No newsletters found matching your search.'
+                : 'No newsletters available.'}
+            </div>
+          ) : (
+            <div className="list">
+              {emails.map((email) => (
+                <article
+                  key={email.id}
+                  className="email-card"
+                  onClick={() => navigateToEmail(email.id)}
+                >
+                  {email.image_url && (
+                    <div className="email-card-image">
+                      <img src={email.image_url} alt={email.subject} />
+                    </div>
+                  )}
+                  <div className="email-card-content">
+                    <h2>{email.subject}</h2>
+                    {email.searchSnippet ? (
+                      <p className="email-search-snippet">
+                        {renderSearchSnippet(email.searchSnippet)}
+                      </p>
+                    ) : (
+                      email.description && (
+                        <p className="email-description">{email.description}</p>
+                      )
+                    )}
+                    <time className="email-date">
+                      {formatDate(email.publish_date)}
+                    </time>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <div className="email-reader">

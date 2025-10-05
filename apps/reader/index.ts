@@ -92,6 +92,162 @@ async function main() {
   });
 
   /**
+   * GET /api/emails/search?q=query
+   * Search emails by subject, description, and body content
+   */
+  app.get('/api/emails/search', (req, res) => {
+    try {
+      const query = req.query.q as string;
+
+      if (!query || query.trim().length === 0) {
+        res.json([]);
+        return;
+      }
+
+      const searchTerm = `%${query.trim()}%`;
+      const emails = db
+        .prepare(
+          `
+          SELECT 
+            id, subject, description, publish_date, 
+            creation_date, slug, image_url, status,
+            secondary_id, body, normalized_markdown
+          FROM emails 
+          WHERE status IN ('sent', 'imported') 
+            AND publish_date IS NOT NULL
+            AND (
+              subject LIKE ? 
+              OR description LIKE ? 
+              OR body LIKE ?
+              OR normalized_markdown LIKE ?
+            )
+          ORDER BY publish_date DESC
+         `
+        )
+        .all(searchTerm, searchTerm, searchTerm, searchTerm);
+
+      // Generate snippets for each result
+      const emailsWithSnippets = emails.map((email: any) => {
+        const snippet = generateSearchSnippet(email, query.trim());
+        return {
+          id: email.id,
+          subject: email.subject,
+          description: email.description,
+          publish_date: email.publish_date,
+          creation_date: email.creation_date,
+          slug: email.slug,
+          image_url: email.image_url,
+          status: email.status,
+          secondary_id: email.secondary_id,
+          searchSnippet: snippet,
+        };
+      });
+
+      res.json(emailsWithSnippets);
+    } catch (error) {
+      logger.error('Error searching emails:', error);
+      res.status(500).json({ error: 'Failed to search emails' });
+    }
+  });
+
+  /**
+   * Generate a search snippet showing context around the matched text
+   */
+  function generateSearchSnippet(email: any, query: string): string {
+    const queryLower = query.toLowerCase();
+    const snippetLength = 150; // characters of context around the match
+
+    // Check where the match occurs (in order of preference)
+    const fields = [
+      { name: 'subject', text: email.subject, prefix: '' },
+      { name: 'description', text: email.description, prefix: '' },
+      {
+        name: 'body',
+        text: email.normalized_markdown || email.body,
+        prefix: '',
+      },
+    ];
+
+    for (const field of fields) {
+      if (!field.text) continue;
+
+      const textLower = field.text.toLowerCase();
+      const matchIndex = textLower.indexOf(queryLower);
+
+      if (matchIndex !== -1) {
+        // Found a match - extract context around it
+        const start = Math.max(0, matchIndex - snippetLength / 2);
+        const end = Math.min(
+          field.text.length,
+          matchIndex + query.length + snippetLength / 2
+        );
+
+        let snippet = field.text.substring(start, end);
+
+        // Add ellipsis if we're not at the start/end
+        if (start > 0) snippet = '...' + snippet;
+        if (end < field.text.length) snippet = snippet + '...';
+
+        // Clean up the snippet (remove excessive whitespace, newlines)
+        snippet = snippet.replace(/\s+/g, ' ').trim();
+
+        // Highlight the matching text with markers
+        const snippetLower = snippet.toLowerCase();
+        const matchInSnippet = snippetLower.indexOf(queryLower);
+
+        if (matchInSnippet !== -1) {
+          snippet =
+            snippet.substring(0, matchInSnippet) +
+            '<<MATCH>>' +
+            snippet.substring(matchInSnippet, matchInSnippet + query.length) +
+            '<</MATCH>>' +
+            snippet.substring(matchInSnippet + query.length);
+        }
+
+        return snippet;
+      }
+    }
+
+    // No match found (shouldn't happen, but fallback to description or start of body)
+    return (
+      email.description || email.body?.substring(0, snippetLength) + '...' || ''
+    );
+  }
+
+  /**
+   * GET /api/emails/random
+   * Returns a random published email
+   */
+  app.get('/api/emails/random', (req, res) => {
+    try {
+      const email = db
+        .prepare(
+          `
+          SELECT 
+            id, subject, description, publish_date, 
+            creation_date, slug, image_url, status,
+            secondary_id
+          FROM emails 
+          WHERE status IN ('sent', 'imported') AND publish_date IS NOT NULL
+          ORDER BY RANDOM()
+          LIMIT 1
+         `
+        )
+        .get();
+
+      if (!email) {
+        res.status(404).json({ error: 'No emails found' });
+        return;
+      }
+
+      res.json(email);
+    } catch (error) {
+      logger.error('Error fetching random email:', error);
+      res.status(500).json({ error: 'Failed to fetch random email' });
+    }
+  });
+
+  /**
    * GET /api/emails/:id
    * Returns a single email with full body content (with local image references)
    */
