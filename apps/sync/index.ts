@@ -4,14 +4,14 @@
  */
 
 import { config } from 'dotenv';
-import { ButtondownClient } from './api/client.js';
+import { ButtondownClient } from '../../lib/api/client.js';
 import {
   initializeDatabase,
   getDatabaseStats,
   getDbPath,
-} from './db/schema.js';
-import { SyncEngine } from './sync.js';
-import { logger, LogLevel } from './utils/logger.js';
+} from '../../lib/db/schema.js';
+import { SyncEngine } from './engine.js';
+import { logger, LogLevel } from '../../lib/utils/logger.js';
 
 // Load environment variables
 config();
@@ -129,7 +129,7 @@ async function main() {
       }
 
       case 'image-stats': {
-        const { DatabaseQueries } = await import('./db/queries.js');
+        const { DatabaseQueries } = await import('../../lib/db/queries.js');
         const queries = new DatabaseQueries(db);
         const stats = queries.getEmailsWithImageStats();
 

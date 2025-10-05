@@ -4,8 +4,8 @@
  */
 
 import { config } from 'dotenv';
-import { initializeDatabase } from '../src/db/schema.js';
-import { extractImageUrls } from '../src/utils/image-processor.js';
+import { initializeDatabase } from '../lib/db/schema.js';
+import { extractImageUrls } from '../lib/utils/image-processor.js';
 
 config();
 

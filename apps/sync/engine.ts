@@ -2,12 +2,12 @@
  * Sync orchestration - fetches emails and attachments from Buttondown
  */
 
-import { ButtondownClient } from './api/client.js';
-import { DatabaseQueries } from './db/queries.js';
-import { logger } from './utils/logger.js';
-import { downloadAllImages } from './utils/image-processor.js';
-import { normalizeToMarkdown } from './utils/markdown-normalizer.js';
-import type { Email } from './api/types.js';
+import { ButtondownClient } from '../../lib/api/client.js';
+import { DatabaseQueries } from '../../lib/db/queries.js';
+import { logger } from '../../lib/utils/logger.js';
+import { downloadAllImages } from '../../lib/utils/image-processor.js';
+import { normalizeToMarkdown } from '../../lib/utils/markdown-normalizer.js';
+import type { Email } from '../../lib/api/types.js';
 import type Database from 'better-sqlite3';
 
 export interface SyncOptions {

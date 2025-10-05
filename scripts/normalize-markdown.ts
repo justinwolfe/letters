@@ -5,10 +5,10 @@
  * This script adds normalized markdown to all emails that don't have it yet
  */
 
-import { initializeDatabase } from '../src/db/schema.js';
-import { DatabaseQueries } from '../src/db/queries.js';
-import { normalizeToMarkdown } from '../src/utils/markdown-normalizer.js';
-import { logger } from '../src/utils/logger.js';
+import { initializeDatabase } from '../lib/db/schema.js';
+import { DatabaseQueries } from '../lib/db/queries.js';
+import { normalizeToMarkdown } from '../lib/utils/markdown-normalizer.js';
+import { logger } from '../lib/utils/logger.js';
 
 // Add migration for the normalized_markdown column
 function migrateSchema(db: any): void {

@@ -110,25 +110,29 @@ npm run db:reset
 
 ```
 letters/
+├── lib/                    # Shared core libraries (reusable)
+│   ├── db/                 # Database layer
+│   │   ├── schema.ts       # Database initialization & schema
+│   │   └── queries.ts      # Database query methods
+│   ├── api/                # Buttondown API client
+│   │   ├── client.ts       # HTTP client with retry logic
+│   │   └── types.ts        # TypeScript types for API
+│   └── utils/              # Shared utilities
+│       ├── logger.ts       # Logging utility
+│       ├── image-processor.ts  # Image download & processing
+│       └── markdown-normalizer.ts  # HTML to Markdown conversion
+├── apps/                   # Independent applications
+│   ├── sync/               # Main newsletter sync CLI
+│   │   ├── index.ts        # CLI entry point
+│   │   └── engine.ts       # Sync orchestration logic
+│   └── _template/          # Template for new apps
+├── scripts/                # One-off utility scripts
+│   ├── export-email.ts     # Export email as standalone HTML
+│   ├── check-attachments.ts
+│   └── debug-attachments.ts
 ├── data/
 │   └── newsletters.db      # SQLite database (checked into git)
-├── src/
-│   ├── index.ts            # CLI entry point
-│   ├── sync.ts             # Sync orchestration
-│   ├── api/
-│   │   ├── client.ts       # Buttondown API client
-│   │   └── types.ts        # TypeScript types
-│   ├── db/
-│   │   ├── schema.ts       # Database schema
-│   │   └── queries.ts      # Database queries
-│   └── utils/
-│       ├── logger.ts       # Logging utilities
-│       └── image-processor.ts  # Image extraction and download
-└── scripts/
-    ├── reset-db.ts         # Database reset script
-    ├── export-email.ts     # Export email as standalone HTML
-    ├── check-attachments.ts
-    └── debug-attachments.ts
+└── ARCHITECTURE.md         # Detailed architecture docs
 ```
 
 ## Database Schema
@@ -180,16 +184,29 @@ When exporting emails, images are converted to data URIs (`data:image/...;base64
 - Processes emails in batches for memory efficiency
 - Respects API rate limits with delays between requests
 
-## Future Projects
+## Building New Apps
 
-This database serves as the foundation for:
+The codebase is organized to make it easy to spin up new independent applications that share the core database and libraries.
 
-- 📊 Word clouds and content indexes
+**Quick Start:**
+
+1. Copy the template: `cp -r apps/_template apps/my-app`
+2. Implement your logic in `apps/my-app/index.ts`
+3. Add to `package.json`: `"my-app": "tsx apps/my-app/index.ts"`
+4. Run: `npm run my-app`
+
+**See `apps/_template/README.md` for detailed instructions.**
+
+**Future App Ideas:**
+
+- 📊 Word cloud generator
 - 📚 Offline PWA reader
 - 📖 Automatic EPUB generation
-- 🖼️ Image optimization
-- 🤖 LLM-assisted content editing
-- 💾 Versioned backups
+- 🖼️ Image optimizer
+- 🤖 LLM-assisted content editor
+- 💾 Backup tool
+- 🔍 Full-text search indexer
+- 📈 Analytics dashboard
 
 ## Development
 
@@ -271,7 +288,9 @@ If you get a "database is locked" error:
 
 ISC
 
-## See Also
+## Documentation
 
-- [Implementation Plan](./IMPLEMENTATION_PLAN.md) - Detailed technical specification
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Comprehensive architecture guide for developers and AI agents
+- **[apps/\_template/README.md](./apps/_template/README.md)** - Guide to creating new apps
+- [Implementation Plan](./IMPLEMENTATION_PLAN.md) - Original technical specification
 - [Buttondown API Documentation](https://api.buttondown.email/v1/schema)

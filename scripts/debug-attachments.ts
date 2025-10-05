@@ -4,7 +4,7 @@
  */
 
 import { config } from 'dotenv';
-import { ButtondownClient } from '../src/api/client.js';
+import { ButtondownClient } from '../lib/api/client.js';
 
 config();
 

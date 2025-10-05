@@ -77,11 +77,11 @@ function createTurndownService(): TurndownService {
     filter: (node) => {
       if (node.nodeType === 1) {
         // Element node
-        const element = node as Element;
+        const element = node as any;
         // Remove all attributes except href, src, alt, title
         const allowedAttrs = ['href', 'src', 'alt', 'title'];
         const attrs = Array.from(element.attributes);
-        for (const attr of attrs) {
+        for (const attr of attrs as any[]) {
           if (!allowedAttrs.includes(attr.name)) {
             element.removeAttribute(attr.name);
           }

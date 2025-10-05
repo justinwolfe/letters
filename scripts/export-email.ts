@@ -4,10 +4,10 @@
  */
 
 import { config } from 'dotenv';
-import { initializeDatabase } from '../src/db/schema.js';
-import { DatabaseQueries } from '../src/db/queries.js';
+import { initializeDatabase } from '../lib/db/schema.js';
+import { DatabaseQueries } from '../lib/db/queries.js';
 import { writeFileSync } from 'fs';
-import { logger } from '../src/utils/logger.js';
+import { logger } from '../lib/utils/logger.js';
 
 config();
 

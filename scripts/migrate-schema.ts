@@ -4,8 +4,8 @@
  */
 
 import Database from 'better-sqlite3';
-import { getDbPath } from '../src/db/schema.js';
-import { logger } from '../src/utils/logger.js';
+import { getDbPath } from '../lib/db/schema.js';
+import { logger } from '../lib/utils/logger.js';
 
 function getCurrentSchemaVersion(db: Database.Database): string {
   try {

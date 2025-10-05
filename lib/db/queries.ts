@@ -262,7 +262,7 @@ export class DatabaseQueries {
   } | null {
     // Get the email
     const emailStmt = this.db.prepare('SELECT * FROM emails WHERE id = ?');
-    const email = emailStmt.get(emailId);
+    const email = emailStmt.get(emailId) as any;
 
     if (!email) {
       return null;
@@ -279,7 +279,7 @@ export class DatabaseQueries {
     }
 
     // Replace URLs in the body
-    let body = email.body;
+    let body = email.body as string;
     for (const [originalUrl, dataUri] of imageMap.entries()) {
       const escapedUrl = originalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       body = body.replace(new RegExp(escapedUrl, 'g'), dataUri);
