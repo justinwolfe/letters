@@ -199,8 +199,8 @@ function cleanupWhitespace(markdown: string): string {
 export function isLikelyHtml(content: string): boolean {
   // Count HTML tags
   const htmlTagCount = (content.match(/<[^>]+>/g) || []).length;
-  // If there are more than 5 HTML tags, consider it HTML
-  return htmlTagCount > 5;
+  // If there are any HTML tags (even just 1), consider it HTML that needs normalization
+  return htmlTagCount > 0;
 }
 
 /**
