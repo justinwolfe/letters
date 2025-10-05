@@ -6,7 +6,6 @@ import Database from 'better-sqlite3';
 import type { Email, Attachment } from '../api/types.js';
 import { logger } from '../utils/logger.js';
 import type { EmbeddedImage } from '../utils/image-processor.js';
-import { imageToDataUri } from '../utils/image-processor.js';
 
 export class DatabaseQueries {
   constructor(private db: Database.Database) {}
@@ -195,9 +194,9 @@ export class DatabaseQueries {
   }
 
   /**
-   * Store an embedded image
+   * Store an embedded image and return its ID
    */
-  storeEmbeddedImage(emailId: string, image: EmbeddedImage): void {
+  storeEmbeddedImage(emailId: string, image: EmbeddedImage): number {
     const now = new Date().toISOString();
 
     const stmt = this.db.prepare(`
@@ -214,9 +213,10 @@ export class DatabaseQueries {
         width = excluded.width,
         height = excluded.height,
         downloaded_at = excluded.downloaded_at
+      RETURNING id
     `);
 
-    stmt.run(
+    const result = stmt.get(
       emailId,
       image.url,
       image.data,
@@ -225,11 +225,13 @@ export class DatabaseQueries {
       image.width || null,
       image.height || null,
       now
-    );
+    ) as { id: number };
 
     logger.debug(
-      `Stored embedded image: ${image.url} (${image.fileSize} bytes)`
+      `Stored embedded image: ${image.url} (${image.fileSize} bytes) - ID: ${result.id}`
     );
+
+    return result.id;
   }
 
   /**
@@ -254,7 +256,7 @@ export class DatabaseQueries {
   }
 
   /**
-   * Get an email with embedded images replaced by data URIs
+   * Get an email (images are already referenced by local URLs)
    */
   getEmailWithLocalImages(emailId: string): {
     email: any;
@@ -268,27 +270,35 @@ export class DatabaseQueries {
       return null;
     }
 
-    // Get embedded images
-    const images = this.getEmbeddedImages(emailId);
-
-    // Create a map of URL -> data URI
-    const imageMap = new Map<string, string>();
-    for (const img of images) {
-      const dataUri = imageToDataUri(img.image_data, img.mime_type);
-      imageMap.set(img.original_url, dataUri);
-    }
-
-    // Replace URLs in the normalized markdown body
-    let body = email.normalized_markdown as string;
-    for (const [originalUrl, dataUri] of imageMap.entries()) {
-      const escapedUrl = originalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      body = body.replace(new RegExp(escapedUrl, 'g'), dataUri);
-    }
-
+    // Return the email with its normalized markdown (already has local references)
     return {
       email,
-      body,
+      body: email.normalized_markdown || email.body,
     };
+  }
+
+  /**
+   * Get a single embedded image by ID
+   */
+  getEmbeddedImageById(id: number):
+    | {
+        id: number;
+        email_id: string;
+        original_url: string;
+        image_data: Buffer;
+        mime_type: string;
+        file_size: number;
+        width?: number;
+        height?: number;
+      }
+    | undefined {
+    const stmt = this.db.prepare(`
+      SELECT id, email_id, original_url, image_data, mime_type, file_size, width, height
+      FROM embedded_images
+      WHERE id = ?
+    `);
+
+    return stmt.get(id) as any;
   }
 
   /**
@@ -382,5 +392,112 @@ export class DatabaseQueries {
     `);
 
     return stmt.all() as any[];
+  }
+
+  /**
+   * Get all embedded images (for bulk operations)
+   */
+  getAllEmbeddedImages(): Array<{
+    id: number;
+    email_id: string;
+    original_url: string;
+    mime_type: string;
+    file_size: number;
+    width?: number;
+    height?: number;
+    downloaded_at: string;
+  }> {
+    const stmt = this.db.prepare(`
+      SELECT id, email_id, original_url, mime_type, file_size, width, height, downloaded_at
+      FROM embedded_images
+      ORDER BY file_size DESC
+    `);
+
+    return stmt.all() as any[];
+  }
+
+  /**
+   * Get large images (over a certain size threshold)
+   */
+  getLargeImages(minSizeBytes: number = 1000000): Array<{
+    id: number;
+    email_id: string;
+    email_subject: string;
+    original_url: string;
+    mime_type: string;
+    file_size: number;
+  }> {
+    const stmt = this.db.prepare(`
+      SELECT 
+        ei.id,
+        ei.email_id,
+        e.subject as email_subject,
+        ei.original_url,
+        ei.mime_type,
+        ei.file_size
+      FROM embedded_images ei
+      JOIN emails e ON ei.email_id = e.id
+      WHERE ei.file_size > ?
+      ORDER BY ei.file_size DESC
+    `);
+
+    return stmt.all(minSizeBytes) as any[];
+  }
+
+  /**
+   * Get images by mime type
+   */
+  getImagesByType(mimeType: string): Array<{
+    id: number;
+    email_id: string;
+    email_subject: string;
+    file_size: number;
+  }> {
+    const stmt = this.db.prepare(`
+      SELECT 
+        ei.id,
+        ei.email_id,
+        e.subject as email_subject,
+        ei.file_size
+      FROM embedded_images ei
+      JOIN emails e ON ei.email_id = e.id
+      WHERE ei.mime_type = ?
+      ORDER BY ei.file_size DESC
+    `);
+
+    return stmt.all(mimeType) as any[];
+  }
+
+  /**
+   * Delete an embedded image by ID
+   */
+  deleteEmbeddedImage(id: number): void {
+    const stmt = this.db.prepare('DELETE FROM embedded_images WHERE id = ?');
+    stmt.run(id);
+    logger.info(`Deleted embedded image: ${id}`);
+  }
+
+  /**
+   * Get total storage used by embedded images
+   */
+  getTotalImageStorage(): {
+    total_images: number;
+    total_bytes: number;
+    total_mb: number;
+  } {
+    const stmt = this.db.prepare(`
+      SELECT 
+        COUNT(*) as total_images,
+        SUM(file_size) as total_bytes
+      FROM embedded_images
+    `);
+
+    const result = stmt.get() as { total_images: number; total_bytes: number };
+
+    return {
+      total_images: result.total_images,
+      total_bytes: result.total_bytes || 0,
+      total_mb: (result.total_bytes || 0) / 1024 / 1024,
+    };
   }
 }

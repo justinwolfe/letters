@@ -32,6 +32,7 @@ Commands:
   sync                  Sync emails (default)
   sync-attachments      Sync attachment metadata from Buttondown
   download-images       Download embedded images for existing emails
+  localize-images       Replace external image URLs with local data URIs
   image-stats           Show embedded image statistics
   status                Show sync status
   info                  Show database info
@@ -125,6 +126,118 @@ async function main() {
         const client = new ButtondownClient(apiKey);
         const engine = new SyncEngine(client, db);
         await engine.downloadImagesForExistingEmails(flags.dryRun);
+        break;
+      }
+
+      case 'localize-images': {
+        const { DatabaseQueries } = await import('../../lib/db/queries.js');
+
+        const queries = new DatabaseQueries(db);
+        const emails = queries.getAllEmails();
+
+        logger.info(`Processing ${emails.length} emails...`);
+
+        let updatedCount = 0;
+        let skippedCount = 0;
+
+        for (const email of emails) {
+          if (!email.normalized_markdown) {
+            skippedCount++;
+            continue;
+          }
+
+          const images = queries.getEmbeddedImages(email.id);
+          if (images.length === 0) {
+            skippedCount++;
+            continue;
+          }
+
+          let updatedMarkdown = email.normalized_markdown;
+          let hasChanges = false;
+
+          // Replace both external URLs and data URIs with local references
+          for (const img of images) {
+            const localRef = `/api/images/${img.id}`;
+
+            // Replace original external URL (try both with HTML entities and decoded)
+            const originalUrl = img.original_url;
+            const decodedUrl = originalUrl
+              .replace(/&amp;/g, '&')
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&quot;/g, '"')
+              .replace(/&#39;/g, "'");
+
+            // Try to replace the original URL as-is
+            const originalUrlEscaped = originalUrl.replace(
+              /[.*+?^${}()|[\]\\]/g,
+              '\\$&'
+            );
+            const urlRegex = new RegExp(originalUrlEscaped, 'g');
+            const beforeUrl = updatedMarkdown;
+            updatedMarkdown = updatedMarkdown.replace(urlRegex, localRef);
+            if (updatedMarkdown !== beforeUrl) hasChanges = true;
+
+            // Also try the decoded version if different
+            if (decodedUrl !== originalUrl) {
+              const decodedUrlEscaped = decodedUrl.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                '\\$&'
+              );
+              const decodedUrlRegex = new RegExp(decodedUrlEscaped, 'g');
+              const beforeDecoded = updatedMarkdown;
+              updatedMarkdown = updatedMarkdown.replace(
+                decodedUrlRegex,
+                localRef
+              );
+              if (updatedMarkdown !== beforeDecoded) hasChanges = true;
+            }
+          }
+
+          // Also replace any remaining data URIs with local references
+          // This handles cases where data URIs were previously embedded
+          const dataUriRegex = /data:image\/[^;)]+;base64,[A-Za-z0-9+/=]+/g;
+          if (dataUriRegex.test(updatedMarkdown)) {
+            // Replace each data URI with the corresponding local reference
+            let imageIndex = 0;
+            updatedMarkdown = updatedMarkdown.replace(dataUriRegex, () => {
+              if (imageIndex < images.length) {
+                const localRef = `/api/images/${images[imageIndex].id}`;
+                imageIndex++;
+                hasChanges = true;
+                return localRef;
+              }
+              return ''; // Shouldn't happen, but handle gracefully
+            });
+          }
+
+          if (hasChanges) {
+            if (!flags.dryRun) {
+              queries.updateNormalizedMarkdown(email.id, updatedMarkdown);
+            }
+            updatedCount++;
+            logger.success(
+              `✓ Updated "${email.subject}" (${images.length} images)`
+            );
+          } else {
+            skippedCount++;
+          }
+        }
+
+        logger.info('\n=== Image Localization Summary ===');
+        logger.info(`Total emails: ${emails.length}`);
+        logger.success(`Updated: ${updatedCount}`);
+        logger.info(`Skipped: ${skippedCount}`);
+
+        if (updatedCount > 0 && !flags.dryRun) {
+          logger.success(
+            '\n✓ All images have been localized with references! Your database is now fully self-contained.'
+          );
+        } else if (flags.dryRun) {
+          logger.info('\nDry run completed - no changes made.');
+        } else {
+          logger.info('\nNo updates needed - images are already localized.');
+        }
         break;
       }
 

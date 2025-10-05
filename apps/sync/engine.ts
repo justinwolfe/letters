@@ -137,12 +137,55 @@ export class SyncEngine {
     email: Email,
     downloadImages = false
   ): Promise<void> {
+    // Download embedded images first if requested (so we can replace URLs)
+    if (downloadImages) {
+      await this.downloadEmailImages(email.id, email.body);
+    }
+
     // Normalize the email body to clean markdown
-    const normalizedMarkdown = normalizeToMarkdown(email.body);
+    let normalizedMarkdown = normalizeToMarkdown(email.body);
+
+    // Replace external image URLs with local references if images were downloaded
+    if (downloadImages) {
+      const images = this.queries.getEmbeddedImages(email.id);
+      if (images.length > 0) {
+        const { replaceImageUrls } = await import(
+          '../../lib/utils/image-processor.js'
+        );
+
+        // Create a map of original URL -> local reference
+        // Include both HTML entity encoded and decoded versions
+        const imageMap = new Map<string, string>();
+        for (const img of images) {
+          const localRef = `/api/images/${img.id}`;
+
+          // Add the original URL as-is
+          imageMap.set(img.original_url, localRef);
+
+          // Also add decoded version (handles &amp; -> & etc)
+          const decodedUrl = img.original_url
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'");
+
+          if (decodedUrl !== img.original_url) {
+            imageMap.set(decodedUrl, localRef);
+          }
+        }
+
+        // Replace URLs in normalized markdown
+        normalizedMarkdown = replaceImageUrls(normalizedMarkdown, imageMap);
+        logger.debug(
+          `Replaced ${images.length} image URLs with local references in "${email.subject}"`
+        );
+      }
+    }
 
     // Use transaction for atomicity
     this.queries.transaction(() => {
-      // Upsert the email with normalized markdown
+      // Upsert the email with normalized markdown (with local image references)
       this.queries.upsertEmail(email, normalizedMarkdown);
 
       // Handle attachments if present
@@ -150,11 +193,6 @@ export class SyncEngine {
         this.syncEmailAttachments(email.id, email.attachments);
       }
     });
-
-    // Download embedded images if requested (outside transaction for async)
-    if (downloadImages) {
-      await this.downloadEmailImages(email.id, email.body);
-    }
   }
 
   /**
@@ -278,16 +316,62 @@ export class SyncEngine {
           const images = await downloadAllImages(email.body);
 
           if (images.size > 0) {
+            // Store images and get their IDs
+            const imageIds = new Map<string, number>();
             this.queries.transaction(() => {
               for (const image of images.values()) {
-                this.queries.storeEmbeddedImage(email.id, image);
+                const id = this.queries.storeEmbeddedImage(email.id, image);
+                imageIds.set(image.url, id);
               }
             });
 
             totalImagesDownloaded += images.size;
-            logger.success(
-              `  ✓ Downloaded ${images.size} images for "${email.subject}"`
-            );
+
+            // Replace external image URLs with local references in normalized_markdown
+            if (email.normalized_markdown) {
+              const { replaceImageUrls } = await import(
+                '../../lib/utils/image-processor.js'
+              );
+
+              // Create a map of original URL -> local reference
+              // Include both HTML entity encoded and decoded versions
+              const imageMap = new Map<string, string>();
+              for (const [url, id] of imageIds.entries()) {
+                const localRef = `/api/images/${id}`;
+
+                // Add the original URL as-is
+                imageMap.set(url, localRef);
+
+                // Also add decoded version (handles &amp; -> & etc)
+                const decodedUrl = url
+                  .replace(/&amp;/g, '&')
+                  .replace(/&lt;/g, '<')
+                  .replace(/&gt;/g, '>')
+                  .replace(/&quot;/g, '"')
+                  .replace(/&#39;/g, "'");
+
+                if (decodedUrl !== url) {
+                  imageMap.set(decodedUrl, localRef);
+                }
+              }
+
+              // Replace URLs in normalized markdown
+              const updatedMarkdown = replaceImageUrls(
+                email.normalized_markdown,
+                imageMap
+              );
+
+              // Update the database
+              this.queries.updateNormalizedMarkdown(email.id, updatedMarkdown);
+
+              logger.success(
+                `  ✓ Downloaded ${images.size} images and localized URLs for "${email.subject}"`
+              );
+            } else {
+              logger.success(
+                `  ✓ Downloaded ${images.size} images for "${email.subject}"`
+              );
+            }
           } else {
             logger.debug(`  No images found in "${email.subject}"`);
           }

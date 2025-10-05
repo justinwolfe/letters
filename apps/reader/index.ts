@@ -93,7 +93,7 @@ async function main() {
 
   /**
    * GET /api/emails/:id
-   * Returns a single email with full body content and embedded images
+   * Returns a single email with full body content (with local image references)
    */
   app.get('/api/emails/:id', (req, res) => {
     try {
@@ -113,11 +113,11 @@ async function main() {
       console.log(result.email.body);
       console.log('\n--- Normalized Markdown (normalized_markdown column) ---');
       console.log(result.email.normalized_markdown);
-      console.log('\n--- Processed Body (with embedded images) ---');
+      console.log('\n--- Processed Body (with local references) ---');
       console.log(result.body);
       console.log('====================\n');
 
-      // Return the email with images converted to data URIs (markdown will be parsed in frontend)
+      // Return the email with local image references (markdown will be parsed in frontend)
       res.json({
         ...result.email,
         body: result.body,
@@ -125,6 +125,39 @@ async function main() {
     } catch (error) {
       logger.error('Error fetching email:', error);
       res.status(500).json({ error: 'Failed to fetch email' });
+    }
+  });
+
+  /**
+   * GET /api/images/:id
+   * Returns an embedded image by its ID
+   */
+  app.get('/api/images/:id', (req, res) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+
+      if (isNaN(id)) {
+        res.status(400).json({ error: 'Invalid image ID' });
+        return;
+      }
+
+      const image = queries.getEmbeddedImageById(id);
+
+      if (!image) {
+        res.status(404).json({ error: 'Image not found' });
+        return;
+      }
+
+      // Set appropriate headers
+      res.setHeader('Content-Type', image.mime_type);
+      res.setHeader('Content-Length', image.file_size);
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable'); // Cache for 1 year
+
+      // Send the raw image data
+      res.send(image.image_data);
+    } catch (error) {
+      logger.error('Error fetching image:', error);
+      res.status(500).json({ error: 'Failed to fetch image' });
     }
   });
 
