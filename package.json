@@ -16,6 +16,10 @@
     "db:reset": "tsx scripts/reset-db.ts",
     "db:migrate": "tsx scripts/migrate-schema.ts",
     "normalize:markdown": "tsx scripts/normalize-markdown.ts",
+    "reader": "npm run reader:build && tsx apps/reader/index.ts",
+    "reader:dev": "cd apps/reader && vite",
+    "reader:build": "cd apps/reader && vite build",
+    "reader:server": "tsx apps/reader/index.ts",
     "dev": "tsx --watch apps/sync/index.ts",
     "build": "tsc",
     "type-check": "tsc --noEmit"
@@ -31,13 +35,26 @@
   "dependencies": {
     "@types/turndown": "^5.0.5",
     "better-sqlite3": "^11.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.0",
+    "express": "^4.18.2",
+    "marked": "^15.0.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
     "turndown": "^7.2.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/marked": "^5.0.2",
     "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "tsx": "^4.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
   }
 }

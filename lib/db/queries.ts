@@ -278,8 +278,8 @@ export class DatabaseQueries {
       imageMap.set(img.original_url, dataUri);
     }
 
-    // Replace URLs in the body
-    let body = email.body as string;
+    // Replace URLs in the normalized markdown body
+    let body = email.normalized_markdown as string;
     for (const [originalUrl, dataUri] of imageMap.entries()) {
       const escapedUrl = originalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       body = body.replace(new RegExp(escapedUrl, 'g'), dataUri);

@@ -101,24 +101,56 @@ function createTurndownService(): TurndownService {
  */
 export function normalizeToMarkdown(content: string): string {
   try {
-    // If the content is already mostly markdown (very few HTML tags),
-    // we still want to clean it up
-    const turndownService = createTurndownService();
+    // Check if this is plaintext content (marked by buttondown-editor-mode comment)
+    const isPlaintext = content.includes('buttondown-editor-mode: plaintext');
 
-    // Convert to markdown
-    let markdown = turndownService.turndown(content);
+    let markdown: string;
 
-    // Clean up excessive whitespace
-    markdown = cleanupWhitespace(markdown);
+    if (isPlaintext) {
+      // For plaintext content, just remove HTML comments and normalize line breaks
+      // Don't use Turndown as it will collapse whitespace
+      markdown = content;
 
-    // Remove any remaining HTML comments
-    markdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
+      // Remove HTML comments
+      markdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
 
-    // Clean up multiple consecutive blank lines (keep max 2)
-    markdown = markdown.replace(/\n{3,}/g, '\n\n');
+      // Normalize line endings (CRLF -> LF)
+      markdown = markdown.replace(/\r\n/g, '\n');
 
-    // Trim leading/trailing whitespace
-    markdown = markdown.trim();
+      // Clean up multiple consecutive blank lines (keep max 2)
+      markdown = markdown.replace(/\n{3,}/g, '\n\n');
+
+      // Trim leading/trailing whitespace
+      markdown = markdown.trim();
+    } else {
+      // For HTML content, use Turndown to convert to markdown
+      const turndownService = createTurndownService();
+
+      // Before converting, replace double line breaks with a placeholder
+      // to preserve paragraph spacing in plaintext-like content
+      const contentWithPlaceholders = content.replace(
+        /\r?\n\r?\n/g,
+        '___PARAGRAPH_BREAK___'
+      );
+
+      // Convert to markdown
+      markdown = turndownService.turndown(contentWithPlaceholders);
+
+      // Restore paragraph breaks
+      markdown = markdown.replace(/___PARAGRAPH_BREAK___/g, '\n\n');
+
+      // Clean up excessive whitespace
+      markdown = cleanupWhitespace(markdown);
+
+      // Remove any remaining HTML comments
+      markdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
+
+      // Clean up multiple consecutive blank lines (keep max 2)
+      markdown = markdown.replace(/\n{3,}/g, '\n\n');
+
+      // Trim leading/trailing whitespace
+      markdown = markdown.trim();
+    }
 
     return markdown;
   } catch (error) {

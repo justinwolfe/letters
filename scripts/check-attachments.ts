@@ -30,3 +30,4 @@ console.log('Sample emails that might have attachments:');
 console.log(JSON.stringify(emails, null, 2));
 
 db.close();
+
