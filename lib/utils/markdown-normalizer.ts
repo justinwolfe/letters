@@ -44,11 +44,24 @@ function createTurndownService(): TurndownService {
     'option',
   ]);
 
-  // Add custom rule to strip out divs, spans, and other container elements
-  // but keep their content
+  // Add custom rule to handle divs as block-level elements (paragraph breaks)
+  // while stripping other container elements
+  turndownService.addRule('handleDivs', {
+    filter: 'div',
+    replacement: (content, node) => {
+      // If the div only contains a <br/> (or is empty/whitespace), treat it as a paragraph break
+      const textContent = (node as any).textContent?.trim() || '';
+      if (!textContent || textContent === '') {
+        return '\n\n';
+      }
+      // Otherwise, treat the div as a paragraph with line breaks before and after
+      return '\n\n' + content + '\n\n';
+    },
+  });
+
+  // Strip out other container elements but keep their content
   turndownService.addRule('stripContainers', {
     filter: [
-      'div',
       'span',
       'section',
       'article',
@@ -102,17 +115,21 @@ function createTurndownService(): TurndownService {
 export function normalizeToMarkdown(content: string): string {
   try {
     // Check if this is plaintext content (marked by buttondown-editor-mode comment)
-    const isPlaintext = content.includes('buttondown-editor-mode: plaintext');
+    const hasPlaintextMarker = content.includes(
+      'buttondown-editor-mode: plaintext'
+    );
+
+    // Also check if the content actually contains HTML tags (beyond just comments)
+    const contentWithoutComments = content.replace(/<!--[\s\S]*?-->/g, '');
+    const actuallyIsPlaintext =
+      hasPlaintextMarker && !isLikelyHtml(contentWithoutComments);
 
     let markdown: string;
 
-    if (isPlaintext) {
-      // For plaintext content, just remove HTML comments and normalize line breaks
+    if (actuallyIsPlaintext) {
+      // For true plaintext content (no HTML tags), just remove HTML comments and normalize line breaks
       // Don't use Turndown as it will collapse whitespace
-      markdown = content;
-
-      // Remove HTML comments
-      markdown = markdown.replace(/<!--[\s\S]*?-->/g, '');
+      markdown = contentWithoutComments;
 
       // Normalize line endings (CRLF -> LF)
       markdown = markdown.replace(/\r\n/g, '\n');
