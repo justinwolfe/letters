@@ -10,6 +10,7 @@ A TypeScript system for syncing newsletters from Buttondown into a version-contr
 - 📦 **Version Controlled**: Database checked into git for full history
 - 🔌 **Offline-First**: All newsletter content available locally
 - 🛡️ **Idempotent**: Safe to run multiple times
+- 🖼️ **Image Archiving**: Downloads and embeds all remote images locally
 
 ## Setup
 
@@ -50,6 +51,9 @@ npm run sync
 # Force full sync (re-fetch everything)
 npm run sync -- --full
 
+# Sync emails and download embedded images
+npm run sync -- --download-images
+
 # Preview changes without writing to database
 npm run sync -- --dry-run
 
@@ -61,7 +65,39 @@ npm run sync:status
 
 # View database info
 npm run sync:info
+
+# Sync attachment metadata
+npm run sync:attachments
 ```
+
+### Image Archiving
+
+```bash
+# Download embedded images for all existing emails
+npm run images:download
+
+# View statistics about embedded images
+npm run images:stats
+
+# Export a single email as standalone HTML with embedded images
+npm run export:email <email-id> [output.html]
+```
+
+#### How Image Archiving Works
+
+When you run image archiving:
+
+1. Extracts all image URLs from email HTML (`<img>` tags and CSS backgrounds)
+2. Downloads each image from remote servers
+3. Stores images as BLOBs directly in the SQLite database
+4. Replaces remote URLs with data URIs when exporting
+
+This means:
+
+- ✅ **Fully self-contained**: All images stored in one SQLite file
+- ✅ **No broken links**: Images preserved even if originals are removed
+- ✅ **Offline access**: View complete emails without internet
+- ✅ **Version controlled**: Image history preserved in git
 
 ### Database Operations
 
@@ -86,9 +122,13 @@ letters/
 │   │   ├── schema.ts       # Database schema
 │   │   └── queries.ts      # Database queries
 │   └── utils/
-│       └── logger.ts       # Logging utilities
+│       ├── logger.ts       # Logging utilities
+│       └── image-processor.ts  # Image extraction and download
 └── scripts/
-    └── reset-db.ts         # Database reset script
+    ├── reset-db.ts         # Database reset script
+    ├── export-email.ts     # Export email as standalone HTML
+    ├── check-attachments.ts
+    └── debug-attachments.ts
 ```
 
 ## Database Schema
@@ -98,7 +138,21 @@ letters/
 - **emails**: Newsletter content and metadata
 - **attachments**: File attachments and their URLs
 - **email_attachments**: Links emails to their attachments
+- **embedded_images**: Downloaded images stored as BLOBs
 - **sync_metadata**: Tracks sync status and timestamps
+
+### Image Storage
+
+Images are stored as BLOBs in the `embedded_images` table with:
+
+- Original URL (for reference)
+- Binary image data (PNG, JPEG, GIF, etc.)
+- MIME type
+- File size
+- Dimensions (width/height when available)
+- Download timestamp
+
+When exporting emails, images are converted to data URIs (`data:image/...;base64,...`) for complete portability.
 
 ## How It Works
 
@@ -119,6 +173,9 @@ letters/
 ### API Integration
 
 - Uses Buttondown's REST API with pagination
+- Fetches emails with statuses: `sent`, `imported`, and `draft`
+  - **Important**: By default, Buttondown's API only returns `sent` emails
+  - We explicitly include `imported` (from bulk imports) and `draft` emails
 - Implements retry logic for rate limits and network errors
 - Processes emails in batches for memory efficiency
 - Respects API rate limits with delays between requests

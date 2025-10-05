@@ -106,6 +106,29 @@ function createSchema(db: Database.Database) {
     );
   `);
 
+  // Create embedded_images table (for images in email HTML)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS embedded_images (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email_id TEXT NOT NULL,
+      original_url TEXT NOT NULL,
+      image_data BLOB NOT NULL,
+      mime_type TEXT NOT NULL,
+      file_size INTEGER NOT NULL,
+      width INTEGER,
+      height INTEGER,
+      downloaded_at TEXT NOT NULL,
+      FOREIGN KEY (email_id) REFERENCES emails(id) ON DELETE CASCADE,
+      UNIQUE(email_id, original_url)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_embedded_images_email_id 
+      ON embedded_images(email_id);
+    
+    CREATE INDEX IF NOT EXISTS idx_embedded_images_url 
+      ON embedded_images(original_url);
+  `);
+
   // Create sync_metadata table
   db.exec(`
     CREATE TABLE IF NOT EXISTS sync_metadata (
@@ -122,7 +145,7 @@ function createSchema(db: Database.Database) {
     INSERT INTO sync_metadata (key, value, updated_at) 
     VALUES (?, ?, ?)
   `
-  ).run('schema_version', '1', now);
+  ).run('schema_version', '2', now);
 
   db.prepare(
     `

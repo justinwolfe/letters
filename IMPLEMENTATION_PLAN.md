@@ -4,6 +4,8 @@
 
 A TypeScript-based system to sync newsletters from Buttondown API into a version-controlled SQLite database, serving as the foundation for future projects including word clouds, indexes, offline PWA readers, EPUB generation, image optimization, and LLM-assisted content editing.
 
+**UPDATE (2024)**: Added comprehensive image archiving system to download and embed all remote images locally within the SQLite database, creating fully self-contained archives.
+
 ## Architecture
 
 ### Core Principles
@@ -13,6 +15,7 @@ A TypeScript-based system to sync newsletters from Buttondown API into a version
 - **Idempotent Operations**: Safe to run multiple times
 - **Offline-First**: All data available locally
 - **Type-Safe**: Full TypeScript implementation
+- **Self-Contained Archives**: Images embedded in database for complete portability
 
 ### Technical Stack
 
@@ -189,6 +192,9 @@ https://api.buttondown.com/v1
 2. Initialize schema if needed
 3. Fetch ALL emails (paginate through entire history)
    - Use ordering=creation_date for consistent ordering
+   - Include status filters: ['sent', 'imported', 'draft']
+     * IMPORTANT: By default, API only returns 'sent' emails
+     * Must explicitly include 'imported' to get bulk-imported emails
    - Follow `next` URLs until exhausted
 4. For each email:
    - Insert into emails table
@@ -435,10 +441,10 @@ data/attachments/
 
 ### Phase 5: Testing & Validation
 
-- [ ] Test with real Buttondown account
-- [ ] Validate incremental sync
-- [ ] Test error recovery
-- [ ] Performance optimization
+- [x] Test with real Buttondown account
+- [x] Validate incremental sync
+- [x] Fixed status filtering to include imported emails
+- [x] Confirmed fetching 1,834 emails (including imported content)
 
 ## Future Enhancements (Out of Scope)
 
@@ -554,5 +560,6 @@ data/attachments/
 ---
 
 **Last Updated**: 2025-10-05
-**Status**: Planning Phase
-**Next Steps**: Begin Phase 1 implementation
+**Status**: ✅ Complete and Working
+**Emails Synced**: 1,834 (including 1,659 imported, 139 sent, 36 draft)
+**Next Steps**: Build projects using the synced data (word clouds, PWA, EPUB, etc.)

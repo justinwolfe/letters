@@ -5,6 +5,8 @@
 import Database from 'better-sqlite3';
 import type { Email, Attachment } from '../api/types.js';
 import { logger } from '../utils/logger.js';
+import type { EmbeddedImage } from '../utils/image-processor.js';
+import { imageToDataUri } from '../utils/image-processor.js';
 
 export class DatabaseQueries {
   constructor(private db: Database.Database) {}
@@ -188,5 +190,155 @@ export class DatabaseQueries {
   transaction<T>(fn: () => T): T {
     const txn = this.db.transaction(fn);
     return txn();
+  }
+
+  /**
+   * Store an embedded image
+   */
+  storeEmbeddedImage(emailId: string, image: EmbeddedImage): void {
+    const now = new Date().toISOString();
+
+    const stmt = this.db.prepare(`
+      INSERT INTO embedded_images (
+        email_id, original_url, image_data, mime_type, file_size,
+        width, height, downloaded_at
+      ) VALUES (
+        ?, ?, ?, ?, ?, ?, ?, ?
+      )
+      ON CONFLICT(email_id, original_url) DO UPDATE SET
+        image_data = excluded.image_data,
+        mime_type = excluded.mime_type,
+        file_size = excluded.file_size,
+        width = excluded.width,
+        height = excluded.height,
+        downloaded_at = excluded.downloaded_at
+    `);
+
+    stmt.run(
+      emailId,
+      image.url,
+      image.data,
+      image.mimeType,
+      image.fileSize,
+      image.width || null,
+      image.height || null,
+      now
+    );
+
+    logger.debug(
+      `Stored embedded image: ${image.url} (${image.fileSize} bytes)`
+    );
+  }
+
+  /**
+   * Get all embedded images for an email
+   */
+  getEmbeddedImages(emailId: string): Array<{
+    id: number;
+    original_url: string;
+    image_data: Buffer;
+    mime_type: string;
+    file_size: number;
+    width?: number;
+    height?: number;
+  }> {
+    const stmt = this.db.prepare(`
+      SELECT id, original_url, image_data, mime_type, file_size, width, height
+      FROM embedded_images
+      WHERE email_id = ?
+    `);
+
+    return stmt.all(emailId) as any[];
+  }
+
+  /**
+   * Get an email with embedded images replaced by data URIs
+   */
+  getEmailWithLocalImages(emailId: string): {
+    email: any;
+    body: string;
+  } | null {
+    // Get the email
+    const emailStmt = this.db.prepare('SELECT * FROM emails WHERE id = ?');
+    const email = emailStmt.get(emailId);
+
+    if (!email) {
+      return null;
+    }
+
+    // Get embedded images
+    const images = this.getEmbeddedImages(emailId);
+
+    // Create a map of URL -> data URI
+    const imageMap = new Map<string, string>();
+    for (const img of images) {
+      const dataUri = imageToDataUri(img.image_data, img.mime_type);
+      imageMap.set(img.original_url, dataUri);
+    }
+
+    // Replace URLs in the body
+    let body = email.body;
+    for (const [originalUrl, dataUri] of imageMap.entries()) {
+      const escapedUrl = originalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      body = body.replace(new RegExp(escapedUrl, 'g'), dataUri);
+    }
+
+    return {
+      email,
+      body,
+    };
+  }
+
+  /**
+   * Count embedded images for an email
+   */
+  countEmbeddedImages(emailId: string): number {
+    const stmt = this.db.prepare(`
+      SELECT COUNT(*) as count
+      FROM embedded_images
+      WHERE email_id = ?
+    `);
+
+    const result = stmt.get(emailId) as { count: number };
+    return result.count;
+  }
+
+  /**
+   * Get total size of embedded images for an email
+   */
+  getEmbeddedImagesSize(emailId: string): number {
+    const stmt = this.db.prepare(`
+      SELECT SUM(file_size) as total
+      FROM embedded_images
+      WHERE email_id = ?
+    `);
+
+    const result = stmt.get(emailId) as { total: number | null };
+    return result.total || 0;
+  }
+
+  /**
+   * Get all emails with their embedded image counts
+   */
+  getEmailsWithImageStats(): Array<{
+    id: string;
+    subject: string;
+    image_count: number;
+    total_size: number;
+  }> {
+    const stmt = this.db.prepare(`
+      SELECT 
+        e.id,
+        e.subject,
+        COUNT(ei.id) as image_count,
+        COALESCE(SUM(ei.file_size), 0) as total_size
+      FROM emails e
+      LEFT JOIN embedded_images ei ON e.id = ei.email_id
+      GROUP BY e.id, e.subject
+      HAVING image_count > 0
+      ORDER BY total_size DESC
+    `);
+
+    return stmt.all() as any[];
   }
 }
