@@ -21,7 +21,7 @@ interface NavigationLinks {
 
 type SortOption = 'date-desc' | 'date-asc' | 'subject-asc' | 'subject-desc';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
+const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 function App() {
   const [allEmails, setAllEmails] = useState<Email[]>([]);

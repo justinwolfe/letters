@@ -17,11 +17,12 @@
     "db:reset": "tsx scripts/reset-db.ts",
     "db:migrate": "tsx scripts/migrate-schema.ts",
     "normalize:markdown": "tsx scripts/normalize-markdown.ts",
+    "kill-ports": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true; lsof -ti:5173 | xargs kill -9 2>/dev/null || true",
     "reader": "npm run reader:build && tsx apps/reader/index.ts",
     "reader:dev": "cd apps/reader && vite",
     "reader:build": "cd apps/reader && vite build",
     "reader:server": "tsx apps/reader/index.ts",
-    "dev": "concurrently \"npm run reader:server\" \"npm run reader:dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\"",
+    "dev": "npm run kill-ports && concurrently \"npm run reader:server\" \"npm run reader:dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\"",
     "dev:sync": "tsx --watch apps/sync/index.ts",
     "build": "tsc",
     "type-check": "tsc --noEmit"

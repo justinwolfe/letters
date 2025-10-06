@@ -17,6 +17,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    host: true, // Expose to local network
     // Enable HMR
     hmr: {
       overlay: true, // Show errors as overlay
@@ -28,7 +29,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://127.0.0.1:3000',
         changeOrigin: true,
       },
     },

@@ -33,7 +33,9 @@ async function main() {
   const flags = {
     verbose: args.includes('--verbose'),
     help: args.includes('--help'),
-    port: args.find((arg) => arg.startsWith('--port='))?.split('=')[1] || PORT,
+    port: Number(
+      args.find((arg) => arg.startsWith('--port='))?.split('=')[1] || PORT
+    ),
   };
 
   if (flags.verbose) {
@@ -385,9 +387,12 @@ async function main() {
   });
 
   // Start server
-  const server = app.listen(flags.port, () => {
+  const server = app.listen(flags.port, '0.0.0.0', () => {
     logger.success(
       `Newsletter Reader running at http://localhost:${flags.port}`
+    );
+    logger.info(
+      'Available on your network - check Vite output for network URL'
     );
     logger.info('Press Ctrl+C to stop');
   });
