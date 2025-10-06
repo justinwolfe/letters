@@ -21,7 +21,8 @@
     "reader:dev": "cd apps/reader && vite",
     "reader:build": "cd apps/reader && vite build",
     "reader:server": "tsx apps/reader/index.ts",
-    "dev": "tsx --watch apps/sync/index.ts",
+    "dev": "concurrently \"npm run reader:server\" \"npm run reader:dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\"",
+    "dev:sync": "tsx --watch apps/sync/index.ts",
     "build": "tsc",
     "type-check": "tsc --noEmit"
   },
@@ -54,6 +55,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.2.0",
+    "concurrently": "^9.2.1",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vite": "^5.0.0"

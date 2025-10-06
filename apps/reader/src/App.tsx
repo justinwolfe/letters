@@ -34,6 +34,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('date-desc');
   const [isSearching, setIsSearching] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Fetch all emails on mount
   useEffect(() => {
@@ -187,6 +189,34 @@ function App() {
     return <>{elements}</>;
   };
 
+  // Swipe gesture handlers for mobile navigation
+  const minSwipeDistance = 50; // Minimum distance in pixels to trigger a swipe
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && navigation?.next) {
+      // Swipe left -> go to next
+      navigateToEmail(navigation.next.id);
+    } else if (isRightSwipe && navigation?.prev) {
+      // Swipe right -> go to previous
+      navigateToEmail(navigation.prev.id);
+    }
+  };
+
   if (loading && !currentEmail) {
     return (
       <div className="container">
@@ -208,7 +238,7 @@ function App() {
       {view === 'list' ? (
         <div className="email-list">
           <header className="header">
-            <h1>Newsletter Archive</h1>
+            <h1>thank you notes</h1>
             <p className="subtitle">
               {searchQuery
                 ? `${emails.length} result${emails.length !== 1 ? 's' : ''}`
@@ -254,6 +284,12 @@ function App() {
                 </select>
               </div>
 
+              {searchQuery && (
+                <div className="result-count">
+                  {emails.length} result{emails.length !== 1 ? 's' : ''}
+                </div>
+              )}
+
               <button
                 className="btn btn-random"
                 onClick={fetchRandomEmail}
@@ -280,11 +316,6 @@ function App() {
                   className="email-card"
                   onClick={() => navigateToEmail(email.id)}
                 >
-                  {email.image_url && (
-                    <div className="email-card-image">
-                      <img src={email.image_url} alt={email.subject} />
-                    </div>
-                  )}
                   <div className="email-card-content">
                     <h2>{email.subject}</h2>
                     {email.searchSnippet ? (
@@ -306,33 +337,12 @@ function App() {
           )}
         </div>
       ) : (
-        <div className="email-reader">
-          <nav className="reader-nav">
-            <button onClick={goBack} className="btn btn-secondary">
-              ← Back to List
-            </button>
-            <div className="nav-buttons">
-              {navigation?.prev && (
-                <button
-                  onClick={() => navigateToEmail(navigation.prev!.id)}
-                  className="btn btn-nav"
-                  title={navigation.prev.subject}
-                >
-                  ← Previous
-                </button>
-              )}
-              {navigation?.next && (
-                <button
-                  onClick={() => navigateToEmail(navigation.next!.id)}
-                  className="btn btn-nav"
-                  title={navigation.next.subject}
-                >
-                  Next →
-                </button>
-              )}
-            </div>
-          </nav>
-
+        <div
+          className="email-reader"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {currentEmail && (
             <article className="email-content">
               <header className="email-header">
@@ -349,8 +359,12 @@ function App() {
           )}
 
           <nav className="reader-nav reader-nav-bottom">
-            <button onClick={goBack} className="btn btn-secondary">
-              ← Back to List
+            <button
+              onClick={goBack}
+              className="btn-back-arrow"
+              title="Back to List"
+            >
+              home
             </button>
             <div className="nav-buttons">
               {navigation?.prev && (
