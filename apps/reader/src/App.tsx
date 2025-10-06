@@ -390,7 +390,7 @@ function App() {
                   onClick={() => navigateToEmail(navigation.prev!.id)}
                   className="btn btn-nav"
                 >
-                  ← Previous: {navigation.prev.subject}
+                  ← {navigation.prev.subject}
                 </button>
               )}
               {navigation?.next && (
@@ -398,7 +398,7 @@ function App() {
                   onClick={() => navigateToEmail(navigation.next!.id)}
                   className="btn btn-nav"
                 >
-                  Next: {navigation.next.subject} →
+                  {navigation.next.subject} →
                 </button>
               )}
             </div>
