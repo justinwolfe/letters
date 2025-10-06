@@ -24,23 +24,38 @@ type SortOption = 'date-desc' | 'date-asc' | 'subject-asc' | 'subject-desc';
 const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 function App() {
+  // Check for saved letter before initial render to avoid flash
+  const hasLastViewed = localStorage.getItem('lastViewedLetter');
+
   const [allEmails, setAllEmails] = useState<Email[]>([]);
   const [emails, setEmails] = useState<Email[]>([]);
   const [currentEmail, setCurrentEmail] = useState<Email | null>(null);
   const [navigation, setNavigation] = useState<NavigationLinks | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [view, setView] = useState<'list' | 'reader'>('list');
+  const [view, setView] = useState<'list' | 'reader'>(
+    hasLastViewed ? 'reader' : 'list'
+  );
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('date-desc');
   const [isSearching, setIsSearching] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [hasLoadedLastViewed, setHasLoadedLastViewed] = useState(false);
 
   // Fetch all emails on mount
   useEffect(() => {
     fetchEmails();
   }, []);
+
+  // Load last viewed letter from localStorage on mount (only once)
+  useEffect(() => {
+    const lastViewedId = localStorage.getItem('lastViewedLetter');
+    if (lastViewedId && !loading && !hasLoadedLastViewed) {
+      setHasLoadedLastViewed(true);
+      navigateToEmail(lastViewedId);
+    }
+  }, [loading, hasLoadedLastViewed]);
 
   // Sort and filter emails whenever search query, sort option, or allEmails change
   useEffect(() => {
@@ -141,6 +156,9 @@ function App() {
       setNavigation(nav);
       setView('reader');
       setLoading(false);
+
+      // Save to localStorage as the most recently viewed letter
+      localStorage.setItem('lastViewedLetter', id);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setLoading(false);
