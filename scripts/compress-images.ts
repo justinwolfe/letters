@@ -4,7 +4,7 @@
  */
 
 import { initializeDatabase } from '../lib/db/schema.js';
-import { DatabaseQueries } from '../lib/db/queries.js';
+import { DatabaseQueries } from '../lib/db/queries/index.js';
 import { logger } from '../lib/utils/logger.js';
 import sharp from 'sharp';
 
@@ -127,7 +127,7 @@ async function compressImagesInDatabase(
   const queries = new DatabaseQueries(db);
 
   // Get all embedded images
-  const images = queries.getAllEmbeddedImages();
+  const images = queries.images.getAllEmbeddedImages();
   const minSizeBytes = (options.minSizeKB || 100) * 1024;
 
   // Filter images that meet the size threshold
@@ -149,7 +149,7 @@ async function compressImagesInDatabase(
 
     try {
       // Get the full image data
-      const fullImage = queries.getEmbeddedImageById(img.id);
+      const fullImage = queries.images.getEmbeddedImageById(img.id);
       if (!fullImage) {
         logger.warn(`${progress} Image ${img.id} not found, skipping`);
         continue;

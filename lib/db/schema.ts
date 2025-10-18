@@ -1,5 +1,18 @@
 /**
  * Database schema and initialization
+ *
+ * This module handles SQLite database initialization, schema creation,
+ * and database statistics. The database stores newsletters, attachments,
+ * embedded images, and sync metadata.
+ *
+ * @example
+ * ```typescript
+ * import { initializeDatabase, getDatabaseStats } from './lib/db/schema.js';
+ *
+ * const db = initializeDatabase();
+ * const stats = getDatabaseStats(db);
+ * console.log(`Total emails: ${stats.totalEmails}`);
+ * ```
  */
 
 import Database from 'better-sqlite3';
@@ -14,10 +27,37 @@ const PROJECT_ROOT = join(__dirname, '../..');
 const DATA_DIR = join(PROJECT_ROOT, 'data');
 const DB_PATH = join(DATA_DIR, 'newsletters.db');
 
+/**
+ * Get the path to the database file
+ *
+ * @returns Absolute path to the newsletters.db file
+ *
+ * @example
+ * ```typescript
+ * const dbPath = getDbPath();
+ * console.log(`Database at: ${dbPath}`);
+ * ```
+ */
 export function getDbPath(): string {
   return DB_PATH;
 }
 
+/**
+ * Initialize and return a database connection
+ *
+ * Creates the data directory if it doesn't exist, and initializes
+ * the database schema for new databases. For existing databases,
+ * returns a connection with foreign keys enabled.
+ *
+ * @returns A better-sqlite3 database instance
+ *
+ * @example
+ * ```typescript
+ * const db = initializeDatabase();
+ * // Use the database...
+ * db.close();
+ * ```
+ */
 export function initializeDatabase(): Database.Database {
   // Ensure data directory exists
   if (!existsSync(DATA_DIR)) {
@@ -42,6 +82,19 @@ export function initializeDatabase(): Database.Database {
   return db;
 }
 
+/**
+ * Create the database schema
+ *
+ * Creates all tables, indexes, and initial metadata for a new database.
+ * This includes:
+ * - emails: Newsletter content and metadata
+ * - attachments: File attachments
+ * - email_attachments: Many-to-many relationship
+ * - embedded_images: Downloaded images stored as BLOBs
+ * - sync_metadata: System state and sync tracking
+ *
+ * @param db - The database instance to initialize
+ */
 function createSchema(db: Database.Database) {
   // Create emails table
   db.exec(`
@@ -156,6 +209,25 @@ function createSchema(db: Database.Database) {
   ).run('last_sync_status', 'never', now);
 }
 
+/**
+ * Get database statistics
+ *
+ * Returns summary information about the database including counts
+ * of emails and attachments, and sync status.
+ *
+ * @param db - The database instance to query
+ * @returns Object containing database statistics
+ *
+ * @example
+ * ```typescript
+ * const db = initializeDatabase();
+ * const stats = getDatabaseStats(db);
+ * console.log(`Total emails: ${stats.totalEmails}`);
+ * console.log(`Last sync: ${stats.lastSyncDate}`);
+ * console.log(`Sync status: ${stats.lastSyncStatus}`);
+ * db.close();
+ * ```
+ */
 export function getDatabaseStats(db: Database.Database): {
   totalEmails: number;
   totalAttachments: number;

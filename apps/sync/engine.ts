@@ -3,7 +3,7 @@
  */
 
 import { ButtondownClient } from '../../lib/api/client.js';
-import { DatabaseQueries } from '../../lib/db/queries.js';
+import { DatabaseQueries } from '../../lib/db/queries/index.js';
 import { logger } from '../../lib/utils/logger.js';
 import { downloadAllImages } from '../../lib/utils/image-processor.js';
 import { normalizeToMarkdown } from '../../lib/utils/markdown-normalizer.js';
@@ -44,11 +44,16 @@ export class SyncEngine {
     try {
       // Update status to in_progress
       if (!dryRun) {
-        this.queries.updateSyncMetadata('last_sync_status', 'in_progress');
+        this.queries.metadata.updateSyncMetadata(
+          'last_sync_status',
+          'in_progress'
+        );
       }
 
       // Determine sync strategy
-      const lastSyncDate = full ? undefined : this.queries.getLastSyncDate();
+      const lastSyncDate = full
+        ? undefined
+        : this.queries.metadata.getLastSyncDate();
 
       if (lastSyncDate) {
         logger.info(`Starting incremental sync (since ${lastSyncDate})...`);
@@ -68,9 +73,9 @@ export class SyncEngine {
       // Update sync metadata
       if (!dryRun) {
         const now = new Date().toISOString();
-        this.queries.updateSyncMetadata('last_sync_date', now);
-        this.queries.updateSyncMetadata('last_sync_status', 'success');
-        this.queries.updateSyncMetadata(
+        this.queries.metadata.updateSyncMetadata('last_sync_date', now);
+        this.queries.metadata.updateSyncMetadata('last_sync_status', 'success');
+        this.queries.metadata.updateSyncMetadata(
           'total_emails_synced',
           String(emailCount)
         );
@@ -81,7 +86,7 @@ export class SyncEngine {
       logger.error('Sync failed:', error);
 
       if (!dryRun) {
-        this.queries.updateSyncMetadata('last_sync_status', 'error');
+        this.queries.metadata.updateSyncMetadata('last_sync_status', 'error');
       }
 
       throw error;
@@ -147,7 +152,7 @@ export class SyncEngine {
 
     // Replace external image URLs with local references if images were downloaded
     if (downloadImages) {
-      const images = this.queries.getEmbeddedImages(email.id);
+      const images = this.queries.images.getEmbeddedImages(email.id);
       if (images.length > 0) {
         const { replaceImageUrls } = await import(
           '../../lib/utils/image-processor.js'
@@ -186,7 +191,7 @@ export class SyncEngine {
     // Use transaction for atomicity
     this.queries.transaction(() => {
       // Upsert the email with normalized markdown (with local image references)
-      this.queries.upsertEmail(email, normalizedMarkdown);
+      this.queries.emails.upsertEmail(email, normalizedMarkdown);
 
       // Handle attachments if present
       if (email.attachments && email.attachments.length > 0) {
@@ -204,7 +209,7 @@ export class SyncEngine {
   ): Promise<void> {
     try {
       // Check if we already have images for this email
-      const existingCount = this.queries.countEmbeddedImages(emailId);
+      const existingCount = this.queries.images.countEmbeddedImages(emailId);
       if (existingCount > 0) {
         logger.debug(
           `Email ${emailId} already has ${existingCount} images, skipping`
@@ -222,7 +227,7 @@ export class SyncEngine {
       // Store images in database
       this.queries.transaction(() => {
         for (const image of images.values()) {
-          this.queries.storeEmbeddedImage(emailId, image);
+          this.queries.images.storeEmbeddedImage(emailId, image);
         }
       });
 
@@ -239,7 +244,7 @@ export class SyncEngine {
     for (const attachmentId of attachmentIds) {
       try {
         // Check if we already have this attachment
-        const existing = this.queries.getAttachment(attachmentId);
+        const existing = this.queries.attachments.getAttachment(attachmentId);
 
         if (!existing) {
           logger.debug(
@@ -250,7 +255,7 @@ export class SyncEngine {
         }
 
         // Link email to attachment
-        this.queries.linkEmailAttachment(emailId, attachmentId);
+        this.queries.attachments.linkEmailAttachment(emailId, attachmentId);
       } catch (error) {
         logger.warn(`Failed to process attachment ${attachmentId}:`, error);
       }
@@ -274,7 +279,7 @@ export class SyncEngine {
       }
 
       if (!dryRun) {
-        this.queries.upsertAttachment(attachment);
+        this.queries.attachments.upsertAttachment(attachment);
       }
     }
 
@@ -290,7 +295,7 @@ export class SyncEngine {
     logger.info('Downloading embedded images for existing emails...');
 
     // Get all emails
-    const emails = this.queries.getAllEmails();
+    const emails = this.queries.emails.getAllEmails();
     logger.info(`Found ${emails.length} emails to process`);
 
     let processedCount = 0;
@@ -298,7 +303,7 @@ export class SyncEngine {
 
     for (const email of emails) {
       // Check if this email already has images
-      const existingCount = this.queries.countEmbeddedImages(email.id);
+      const existingCount = this.queries.images.countEmbeddedImages(email.id);
       if (existingCount > 0) {
         logger.debug(
           `Email ${email.id} already has ${existingCount} images, skipping`
@@ -320,7 +325,10 @@ export class SyncEngine {
             const imageIds = new Map<string, number>();
             this.queries.transaction(() => {
               for (const image of images.values()) {
-                const id = this.queries.storeEmbeddedImage(email.id, image);
+                const id = this.queries.images.storeEmbeddedImage(
+                  email.id,
+                  image
+                );
                 imageIds.set(image.url, id);
               }
             });
@@ -362,7 +370,10 @@ export class SyncEngine {
               );
 
               // Update the database
-              this.queries.updateNormalizedMarkdown(email.id, updatedMarkdown);
+              this.queries.emails.updateNormalizedMarkdown(
+                email.id,
+                updatedMarkdown
+              );
 
               logger.success(
                 `  ✓ Downloaded ${images.size} images and localized URLs for "${email.subject}"`

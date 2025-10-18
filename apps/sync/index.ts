@@ -130,10 +130,12 @@ async function main() {
       }
 
       case 'localize-images': {
-        const { DatabaseQueries } = await import('../../lib/db/queries.js');
+        const { DatabaseQueries } = await import(
+          '../../lib/db/queries/index.js'
+        );
 
         const queries = new DatabaseQueries(db);
-        const emails = queries.getAllEmails();
+        const emails = queries.emails.getAllEmails();
 
         logger.info(`Processing ${emails.length} emails...`);
 
@@ -146,7 +148,7 @@ async function main() {
             continue;
           }
 
-          const images = queries.getEmbeddedImages(email.id);
+          const images = queries.images.getEmbeddedImages(email.id);
           if (images.length === 0) {
             skippedCount++;
             continue;
@@ -213,7 +215,10 @@ async function main() {
 
           if (hasChanges) {
             if (!flags.dryRun) {
-              queries.updateNormalizedMarkdown(email.id, updatedMarkdown);
+              queries.emails.updateNormalizedMarkdown(
+                email.id,
+                updatedMarkdown
+              );
             }
             updatedCount++;
             logger.success(
@@ -242,9 +247,11 @@ async function main() {
       }
 
       case 'image-stats': {
-        const { DatabaseQueries } = await import('../../lib/db/queries.js');
+        const { DatabaseQueries } = await import(
+          '../../lib/db/queries/index.js'
+        );
         const queries = new DatabaseQueries(db);
-        const stats = queries.getEmailsWithImageStats();
+        const stats = queries.images.getEmailsWithImageStats();
 
         console.log('\n🖼️  Embedded Image Statistics\n');
 

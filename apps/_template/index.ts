@@ -16,7 +16,7 @@
 
 import { config } from 'dotenv';
 import { initializeDatabase } from '../../lib/db/schema.js';
-import { DatabaseQueries } from '../../lib/db/queries.js';
+import { DatabaseQueries } from '../../lib/db/queries/index.js';
 import { logger, LogLevel } from '../../lib/utils/logger.js';
 // import { ButtondownClient } from '../../lib/api/client.js';
 
@@ -52,7 +52,7 @@ async function main() {
 
   try {
     // Example: Get all emails from the database
-    const emails = queries.getAllEmails();
+    const emails = queries.emails.getAllEmails();
     logger.info(`Found ${emails.length} emails in database`);
 
     // Example: Access Buttondown API (if needed)

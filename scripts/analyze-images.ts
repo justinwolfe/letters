@@ -4,7 +4,7 @@
  */
 
 import { initializeDatabase } from '../lib/db/schema.js';
-import { DatabaseQueries } from '../lib/db/queries.js';
+import { DatabaseQueries } from '../lib/db/queries/index.js';
 import { logger } from '../lib/utils/logger.js';
 
 interface ImageStats {
@@ -345,7 +345,7 @@ async function main() {
     const queries = new DatabaseQueries(db);
 
     // Get all embedded images (without loading the actual BLOB data)
-    const images = queries.getAllEmbeddedImages();
+    const images = queries.images.getAllEmbeddedImages();
 
     if (images.length === 0) {
       logger.warn('No embedded images found in database');

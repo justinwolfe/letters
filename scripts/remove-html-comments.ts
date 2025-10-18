@@ -6,7 +6,7 @@
  */
 
 import { initializeDatabase } from '../lib/db/schema.js';
-import { DatabaseQueries } from '../lib/db/queries.js';
+import { DatabaseQueries } from '../lib/db/queries/index.js';
 import { normalizeToMarkdown } from '../lib/utils/markdown-normalizer.js';
 import { logger } from '../lib/utils/logger.js';
 
@@ -17,7 +17,7 @@ async function removeHtmlComments(): Promise<void> {
   const queries = new DatabaseQueries(db);
 
   // Get ALL emails (not just those without normalized markdown)
-  const allEmails = queries.getAllEmails();
+  const allEmails = queries.emails.getAllEmails();
 
   if (allEmails.length === 0) {
     logger.success('No emails found in database');
@@ -36,7 +36,7 @@ async function removeHtmlComments(): Promise<void> {
       const normalizedMarkdown = normalizeToMarkdown(email.body);
 
       // Update the database
-      queries.updateNormalizedMarkdown(email.id, normalizedMarkdown);
+      queries.emails.updateNormalizedMarkdown(email.id, normalizedMarkdown);
 
       processedCount++;
       updatedCount++;

@@ -6,7 +6,7 @@
  */
 
 import { initializeDatabase } from '../lib/db/schema.js';
-import { DatabaseQueries } from '../lib/db/queries.js';
+import { DatabaseQueries } from '../lib/db/queries/index.js';
 import { normalizeToMarkdown } from '../lib/utils/markdown-normalizer.js';
 import { logger } from '../lib/utils/logger.js';
 
@@ -53,7 +53,7 @@ async function normalizeExistingEmails(): Promise<void> {
   migrateSchema(db);
 
   // Get count of emails without normalized markdown
-  const totalCount = queries.countEmailsWithoutNormalizedMarkdown();
+  const totalCount = queries.emails.countEmailsWithoutNormalizedMarkdown();
 
   if (totalCount === 0) {
     logger.success('All emails already have normalized markdown!');
@@ -68,7 +68,7 @@ async function normalizeExistingEmails(): Promise<void> {
   let errorCount = 0;
 
   while (true) {
-    const emails = queries.getEmailsWithoutNormalizedMarkdown(batchSize);
+    const emails = queries.emails.getEmailsWithoutNormalizedMarkdown(batchSize);
 
     if (emails.length === 0) {
       break;
@@ -80,7 +80,7 @@ async function normalizeExistingEmails(): Promise<void> {
         const normalizedMarkdown = normalizeToMarkdown(email.body);
 
         // Update the database
-        queries.updateNormalizedMarkdown(email.id, normalizedMarkdown);
+        queries.emails.updateNormalizedMarkdown(email.id, normalizedMarkdown);
 
         processedCount++;
 

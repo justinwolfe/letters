@@ -8,7 +8,7 @@
 
 import { config } from 'dotenv';
 import { initializeDatabase } from '../../lib/db/schema.js';
-import { DatabaseQueries } from '../../lib/db/queries.js';
+import { DatabaseQueries } from '../../lib/db/queries/index.js';
 import { logger, LogLevel } from '../../lib/utils/logger.js';
 import express from 'express';
 import { fileURLToPath } from 'url';
@@ -256,7 +256,7 @@ async function main() {
   app.get('/api/emails/:id', (req, res) => {
     try {
       const { id } = req.params;
-      const result = queries.getEmailWithLocalImages(id);
+      const result = queries.emails.getEmailWithLocalImages(id);
 
       if (!result) {
         res.status(404).json({ error: 'Email not found' });
@@ -299,7 +299,7 @@ async function main() {
         return;
       }
 
-      const image = queries.getEmbeddedImageById(id);
+      const image = queries.images.getEmbeddedImageById(id);
 
       if (!image) {
         res.status(404).json({ error: 'Image not found' });

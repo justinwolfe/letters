@@ -5,7 +5,7 @@
 
 import { config } from 'dotenv';
 import { initializeDatabase } from '../lib/db/schema.js';
-import { DatabaseQueries } from '../lib/db/queries.js';
+import { DatabaseQueries } from '../lib/db/queries/index.js';
 import { writeFileSync } from 'fs';
 import { logger } from '../lib/utils/logger.js';
 
@@ -35,7 +35,7 @@ Example:
     logger.info(`Exporting email ${emailId}...`);
 
     // Get email with local images
-    const result = queries.getEmailWithLocalImages(emailId);
+    const result = queries.emails.getEmailWithLocalImages(emailId);
 
     if (!result) {
       logger.error(`Email ${emailId} not found`);
@@ -94,9 +94,11 @@ Example:
 
     logger.success(`Exported to ${outputPath}`);
     logger.info(`Subject: ${email.subject}`);
-    logger.info(`Images: ${queries.countEmbeddedImages(emailId)}`);
+    logger.info(`Images: ${queries.images.countEmbeddedImages(emailId)}`);
     logger.info(
-      `Size: ${(queries.getEmbeddedImagesSize(emailId) / 1024).toFixed(2)} KB`
+      `Size: ${(queries.images.getEmbeddedImagesSize(emailId) / 1024).toFixed(
+        2
+      )} KB`
     );
   } finally {
     db.close();

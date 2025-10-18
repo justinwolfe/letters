@@ -1,6 +1,18 @@
 /**
  * Markdown normalization utilities
- * Converts HTML and markdown content to normalized markdown format
+ *
+ * Converts HTML and markdown content to clean, normalized markdown format.
+ * Removes HTML comments, excessive whitespace, and normalizes line breaks
+ * while preserving essential formatting (links, images, headings, lists, etc).
+ *
+ * @example
+ * ```typescript
+ * import { normalizeToMarkdown } from './lib/utils/markdown-normalizer.js';
+ *
+ * const html = '<h1>Title</h1><p>Content with <strong>bold</strong> text</p>';
+ * const markdown = normalizeToMarkdown(html);
+ * console.log(markdown); // # Title\n\nContent with **bold** text
+ * ```
  */
 
 import TurndownService from 'turndown';
@@ -8,6 +20,14 @@ import { logger } from './logger.js';
 
 /**
  * Create a configured Turndown service that only preserves basic formatting
+ *
+ * Configures the Turndown service to:
+ * - Use ATX-style headings (#)
+ * - Remove script tags, styles, and other non-content elements
+ * - Preserve essential formatting (links, images, bold, italic, code)
+ * - Handle block-level elements properly
+ *
+ * @returns Configured Turndown service instance
  */
 function createTurndownService(): TurndownService {
   const turndownService = new TurndownService({
@@ -109,8 +129,32 @@ function createTurndownService(): TurndownService {
 }
 
 /**
- * Normalize HTML or markdown content to clean markdown
- * Strips out all HTML except basic formatting that renders well in markdown
+ * Normalize HTML/Markdown content to clean markdown
+ *
+ * Converts HTML or markdown to normalized markdown format by:
+ * - Converting HTML to markdown using Turndown
+ * - Removing HTML comments
+ * - Normalizing line breaks and whitespace
+ * - Cleaning up formatting inconsistencies
+ * - Preserving essential formatting (headings, links, images, lists, etc)
+ *
+ * @param content - HTML or markdown content to normalize
+ * @returns Normalized markdown string
+ *
+ * @example
+ * ```typescript
+ * const html = '<h1>Title</h1><p>Paragraph with <strong>bold</strong>.</p>';
+ * const markdown = normalizeToMarkdown(html);
+ * // Result: "# Title\n\nParagraph with **bold**."
+ * ```
+ *
+ * @example
+ * ```typescript
+ * // Also works with markdown input
+ * const messyMarkdown = '#Title\n\n\n\nText   with   spaces';
+ * const clean = normalizeToMarkdown(messyMarkdown);
+ * // Result: "# Title\n\nText with spaces"
+ * ```
  */
 export function normalizeToMarkdown(content: string): string {
   try {
@@ -195,6 +239,18 @@ function cleanupWhitespace(markdown: string): string {
 
 /**
  * Check if content is likely HTML or markdown
+ *
+ * Detects HTML by counting HTML tags in the content. Any presence
+ * of HTML tags indicates the content needs normalization.
+ *
+ * @param content - The content to check
+ * @returns True if content appears to be HTML, false otherwise
+ *
+ * @example
+ * ```typescript
+ * isLikelyHtml('<p>Hello</p>'); // true
+ * isLikelyHtml('# Hello'); // false
+ * ```
  */
 export function isLikelyHtml(content: string): boolean {
   // Count HTML tags
@@ -204,7 +260,21 @@ export function isLikelyHtml(content: string): boolean {
 }
 
 /**
- * Preview the normalization (for testing)
+ * Preview the normalization result (useful for testing)
+ *
+ * Returns both the original and normalized content along with metadata
+ * about the transformation.
+ *
+ * @param content - The content to normalize
+ * @returns Object containing original, normalized content, and statistics
+ *
+ * @example
+ * ```typescript
+ * const preview = previewNormalization('<h1>Title</h1><p>Content</p>');
+ * console.log(`Before: ${preview.lengthBefore} chars`);
+ * console.log(`After: ${preview.lengthAfter} chars`);
+ * console.log(`Normalized: ${preview.normalized}`);
+ * ```
  */
 export function previewNormalization(content: string): {
   original: string;
