@@ -50,7 +50,7 @@ console.log(client.extractContent(response));
 
 ```typescript
 const response = await client.createChatCompletion({
-  model: 'gpt-4o-mini',
+  model: 'gpt-5-mini',
   messages: [
     { role: 'system', content: 'You are a helpful assistant.' },
     { role: 'user', content: 'Your question here' },
@@ -69,7 +69,7 @@ const result = await client.processBatch(
   items,
   async (item) => {
     const response = await client.createChatCompletion({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages: [{ role: 'user', content: `Process: ${item}` }],
     });
     return client.extractContent(response);
@@ -98,7 +98,7 @@ const result = await client.processBatch(
   emails,
   async (email: any) => {
     const response = await client.createChatCompletion({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages: [
         {
           role: 'user',

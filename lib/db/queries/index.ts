@@ -40,6 +40,7 @@ import { EmailQueries } from './emails.js';
 import { ImageQueries } from './images.js';
 import { AttachmentQueries } from './attachments.js';
 import { MetadataQueries } from './metadata.js';
+import { TagQueries } from './tags.js';
 
 /**
  * Main database queries facade with domain-specific query classes
@@ -49,12 +50,14 @@ export class DatabaseQueries {
   public images: ImageQueries;
   public attachments: AttachmentQueries;
   public metadata: MetadataQueries;
+  public tags: TagQueries;
 
   constructor(private db: Database.Database) {
     this.emails = new EmailQueries(db);
     this.images = new ImageQueries(db);
     this.attachments = new AttachmentQueries(db);
     this.metadata = new MetadataQueries(db);
+    this.tags = new TagQueries(db);
   }
 
   /**
@@ -85,3 +88,4 @@ export { EmailQueries } from './emails.js';
 export { ImageQueries } from './images.js';
 export { AttachmentQueries } from './attachments.js';
 export { MetadataQueries } from './metadata.js';
+export { TagQueries } from './tags.js';

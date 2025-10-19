@@ -14,8 +14,10 @@ async function migrateAddAuthor() {
     logger.info('Starting migration: Add author field to emails table');
 
     // Check if column already exists
-    const tableInfo = db.pragma('table_info(emails)');
-    const hasAuthor = tableInfo.some((col: any) => col.name === 'author');
+    const tableInfo = db.pragma('table_info(emails)') as Array<{
+      name: string;
+    }>;
+    const hasAuthor = tableInfo.some((col) => col.name === 'author');
 
     if (hasAuthor) {
       logger.info('Author column already exists, skipping migration');

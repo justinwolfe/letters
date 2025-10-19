@@ -16,6 +16,7 @@ import { dirname, join } from 'path';
 import cors from 'cors';
 import { createEmailRouter } from './routes/emails.js';
 import { createImageRouter } from './routes/images.js';
+import { createTagRouter } from './routes/tags.js';
 import { requestLogger } from './middleware/logging.js';
 import { errorHandler, notFoundHandler } from './middleware/error.js';
 
@@ -111,6 +112,7 @@ async function main() {
   // API Routes
   app.use('/api/emails', createEmailRouter(db, queries));
   app.use('/api/images', createImageRouter(queries));
+  app.use('/api/tags', createTagRouter(db, queries));
 
   // Serve static files from the client dist directory in production
   const clientDistPath = join(__dirname, '../client/dist');

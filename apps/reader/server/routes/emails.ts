@@ -220,6 +220,9 @@ export function createEmailRouter(
         return;
       }
 
+      // Get tags for this email
+      const tags = queries.tags.getEmailTags(id);
+
       // Console log the body and normalized_markdown columns
       console.log('\n=== Letter Opened ===');
       console.log('ID:', id);
@@ -232,10 +235,15 @@ export function createEmailRouter(
       console.log(result.body);
       console.log('====================\n');
 
-      // Return the email with local image references (markdown will be parsed in frontend)
+      // Return the email with local image references and tags
       res.json({
         ...result.email,
         body: result.body,
+        tags: tags.map((t) => ({
+          id: t.id,
+          name: t.name,
+          normalized_name: t.normalized_name,
+        })),
       });
     } catch (error) {
       logger.error('Error fetching email:', error);

@@ -3,6 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import './App.css';
 import { offlineStorage, formatBytes } from './offlineStorage';
 
+interface Tag {
+  id: number;
+  name: string;
+  normalized_name: string;
+}
+
 interface Email {
   id: string;
   subject: string;
@@ -13,6 +19,7 @@ interface Email {
   slug?: string;
   secondary_id?: number;
   searchSnippet?: string;
+  tags?: Tag[];
 }
 
 interface NavigationLinks {
@@ -21,6 +28,7 @@ interface NavigationLinks {
 }
 
 type SortOption = 'date-desc' | 'date-asc' | 'subject-asc' | 'subject-desc';
+type ViewMode = 'list' | 'reader' | 'tag';
 
 const API_BASE = import.meta.env.VITE_API_BASE || '';
 const IS_STATIC_MODE = API_BASE.startsWith('/letters');
@@ -35,9 +43,8 @@ function App() {
   const [navigation, setNavigation] = useState<NavigationLinks | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [view, setView] = useState<'list' | 'reader'>(
-    hasLastViewed ? 'reader' : 'list'
-  );
+  const [view, setView] = useState<ViewMode>(hasLastViewed ? 'reader' : 'list');
+  const [currentTag, setCurrentTag] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('date-desc');
   const [isSearching, setIsSearching] = useState(false);
@@ -297,6 +304,29 @@ function App() {
     setView('list');
     setCurrentEmail(null);
     setNavigation(null);
+    setCurrentTag(null);
+  };
+
+  const navigateToTag = async (tagName: string) => {
+    try {
+      setLoading(true);
+      setCurrentTag(tagName);
+
+      // Fetch emails with this tag
+      const response = await fetch(
+        `${API_BASE}/api/tags/${encodeURIComponent(tagName)}/emails`
+      );
+      if (!response.ok) throw new Error('Failed to fetch emails by tag');
+
+      const tagEmails = await response.json();
+      setEmails(tagEmails);
+      setView('tag');
+      setLoading(false);
+      window.scrollTo(0, 0);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
+      setLoading(false);
+    }
   };
 
   const formatDate = (dateString: string) => {
@@ -595,6 +625,41 @@ function App() {
             </div>
           )}
         </div>
+      ) : view === 'tag' ? (
+        <div className="email-list">
+          <header className="header">
+            <h1>
+              <button onClick={goBack} className="back-link">
+                ← back
+              </button>
+            </h1>
+            <h2 className="tag-title">#{currentTag}</h2>
+            <p className="subtitle">
+              {emails.length} letter{emails.length !== 1 ? 's' : ''} with this
+              tag
+            </p>
+          </header>
+
+          <div className="list">
+            {emails.map((email) => (
+              <article
+                key={email.id}
+                className="email-card"
+                onClick={() => navigateToEmail(email.id)}
+              >
+                <div className="email-card-content">
+                  <h2>{email.subject}</h2>
+                  {email.description && (
+                    <p className="email-description">{email.description}</p>
+                  )}
+                  <time className="email-date">
+                    {formatDate(email.publish_date)}
+                  </time>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       ) : (
         <div
           className="email-reader"
@@ -614,6 +679,24 @@ function App() {
               <div className="email-body">
                 <ReactMarkdown>{currentEmail.body || ''}</ReactMarkdown>
               </div>
+
+              {currentEmail.tags && currentEmail.tags.length > 0 && (
+                <footer className="email-tags">
+                  <div className="tags-label">Tags:</div>
+                  <div className="tags-list">
+                    {currentEmail.tags.map((tag) => (
+                      <button
+                        key={tag.id}
+                        className="tag-badge"
+                        onClick={() => navigateToTag(tag.normalized_name)}
+                        title={`View all letters tagged with "${tag.name}"`}
+                      >
+                        #{tag.name}
+                      </button>
+                    ))}
+                  </div>
+                </footer>
+              )}
             </article>
           )}
 

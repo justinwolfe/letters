@@ -192,6 +192,33 @@ function createSchema(db: Database.Database) {
     );
   `);
 
+  // Create tags table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS tags (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL UNIQUE,
+      normalized_name TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_tags_normalized_name
+      ON tags(normalized_name);
+  `);
+
+  // Create email_tags junction table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS email_tags (
+      email_id TEXT NOT NULL,
+      tag_id INTEGER NOT NULL,
+      PRIMARY KEY (email_id, tag_id),
+      FOREIGN KEY (email_id) REFERENCES emails(id) ON DELETE CASCADE,
+      FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_email_tags_tag_id
+      ON email_tags(tag_id);
+  `);
+
   // Initialize sync metadata
   const now = new Date().toISOString();
   db.prepare(
@@ -199,7 +226,7 @@ function createSchema(db: Database.Database) {
     INSERT INTO sync_metadata (key, value, updated_at) 
     VALUES (?, ?, ?)
   `
-  ).run('schema_version', '3', now);
+  ).run('schema_version', '4', now);
 
   db.prepare(
     `
