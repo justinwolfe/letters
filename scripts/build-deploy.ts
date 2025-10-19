@@ -252,12 +252,12 @@ Examples:
     // Create placeholder icons if they don't exist
     await createPlaceholderIcons();
 
-    // Generate static site
+    // Generate static site (includes JSON API for PWA)
     if (options.generateStatic) {
       await generateStaticSite();
     }
 
-    // Build PWA
+    // Build PWA - now works with static JSON
     if (options.buildPWA) {
       await buildPWA();
     }

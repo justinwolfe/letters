@@ -5,6 +5,10 @@ export default defineConfig({
   plugins: [react()],
   root: '.',
   base: '/letters/app/',
+  define: {
+    // Set API base for GitHub Pages static JSON
+    'import.meta.env.VITE_API_BASE': JSON.stringify('/letters'),
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true,

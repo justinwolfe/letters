@@ -22,6 +22,7 @@ const __dirname = dirname(__filename);
 const STATIC_SITE_DIR = join(__dirname, '../static-site');
 const LETTERS_DIR = join(STATIC_SITE_DIR, 'letters');
 const IMAGES_DIR = join(STATIC_SITE_DIR, 'images');
+const API_DIR = join(STATIC_SITE_DIR, 'api');
 const BASE_PATH = '/letters'; // GitHub Pages base path
 
 interface Email {
@@ -595,6 +596,80 @@ async function exportImages(db: any): Promise<Map<number, string>> {
 }
 
 /**
+ * Export email data as static JSON API
+ */
+async function exportEmailsAsJSON(
+  queries: DatabaseQueries,
+  imageExtMap: Map<number, string>
+) {
+  logger.info('Exporting emails as JSON API...');
+
+  // Create API directories
+  const emailsDir = join(API_DIR, 'emails');
+  const imagesApiDir = join(API_DIR, 'images');
+
+  if (!existsSync(API_DIR)) {
+    await mkdir(API_DIR, { recursive: true });
+  }
+  if (!existsSync(emailsDir)) {
+    await mkdir(emailsDir, { recursive: true });
+  }
+  if (!existsSync(imagesApiDir)) {
+    await mkdir(imagesApiDir, { recursive: true });
+  }
+
+  // Get all emails
+  const emails = queries.emails.getAllEmails() as Email[];
+
+  // Create index of all emails (summary data only)
+  const emailsIndex = emails.map((email) => ({
+    id: email.id,
+    subject: email.subject,
+    description: email.description,
+    publish_date: email.publish_date,
+    slug: email.slug,
+    secondary_id: email.secondary_id,
+  }));
+
+  await writeFile(
+    join(API_DIR, 'emails.json'),
+    JSON.stringify(emailsIndex, null, 2)
+  );
+
+  // Create individual email JSON files with full content
+  for (const email of emails) {
+    let markdown = email.normalized_markdown || email.body;
+
+    // Replace image paths for JSON API (PWA will use these paths)
+    markdown = markdown.replace(
+      /!\[([^\]]*)\]\(\/api\/images\/(\d+)\)/g,
+      (_match, alt, id) => {
+        const ext = imageExtMap.get(Number(id)) || 'png';
+        return `![${alt}](${BASE_PATH}/images/${id}.${ext})`;
+      }
+    );
+
+    const emailData = {
+      id: email.id,
+      subject: email.subject,
+      body: markdown, // Use the processed markdown as body for rendering
+      normalized_markdown: markdown,
+      publish_date: email.publish_date,
+      description: email.description,
+      slug: email.slug,
+      secondary_id: email.secondary_id,
+    };
+
+    await writeFile(
+      join(emailsDir, `${email.id}.json`),
+      JSON.stringify(emailData, null, 2)
+    );
+  }
+
+  logger.success(`Exported ${emails.length} emails as JSON`);
+}
+
+/**
  * Main generation logic
  */
 async function main() {
@@ -618,6 +693,9 @@ async function main() {
 
   // Export images from database
   const imageExtMap = await exportImages(db);
+
+  // Export emails as JSON API for PWA
+  await exportEmailsAsJSON(queries, imageExtMap);
 
   // Generate index page
   logger.info('Generating index page...');

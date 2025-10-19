@@ -23,6 +23,7 @@ interface NavigationLinks {
 type SortOption = 'date-desc' | 'date-asc' | 'subject-asc' | 'subject-desc';
 
 const API_BASE = import.meta.env.VITE_API_BASE || '';
+const IS_STATIC_MODE = API_BASE.startsWith('/letters');
 
 function App() {
   // Check for saved letter before initial render to avoid flash
@@ -107,7 +108,10 @@ function App() {
 
   const fetchEmails = async () => {
     try {
-      const response = await fetch(`${API_BASE}/api/emails`);
+      const url = IS_STATIC_MODE
+        ? `${API_BASE}/api/emails.json`
+        : `${API_BASE}/api/emails`;
+      const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch emails');
       const data = await response.json();
       setAllEmails(data);
@@ -142,12 +146,25 @@ function App() {
 
     try {
       setIsSearching(true);
-      const response = await fetch(
-        `${API_BASE}/api/emails/search?q=${encodeURIComponent(query)}`
-      );
-      if (!response.ok) throw new Error('Failed to search emails');
-      const data = await response.json();
-      setEmails(sortEmails(data, sortBy));
+
+      if (IS_STATIC_MODE) {
+        // Client-side search for static mode
+        const lowerQuery = query.toLowerCase();
+        const results = allEmails.filter(
+          (email) =>
+            email.subject.toLowerCase().includes(lowerQuery) ||
+            email.description?.toLowerCase().includes(lowerQuery)
+        );
+        setEmails(sortEmails(results, sortBy));
+      } else {
+        // Server-side search for API mode
+        const response = await fetch(
+          `${API_BASE}/api/emails/search?q=${encodeURIComponent(query)}`
+        );
+        if (!response.ok) throw new Error('Failed to search emails');
+        const data = await response.json();
+        setEmails(sortEmails(data, sortBy));
+      }
       setIsSearching(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -181,10 +198,17 @@ function App() {
 
   const fetchRandomEmail = async () => {
     try {
-      const response = await fetch(`${API_BASE}/api/emails/random`);
-      if (!response.ok) throw new Error('Failed to fetch random email');
-      const data = await response.json();
-      navigateToEmail(data.id);
+      if (IS_STATIC_MODE) {
+        // Pick a random email from allEmails
+        if (allEmails.length === 0) return;
+        const randomIndex = Math.floor(Math.random() * allEmails.length);
+        navigateToEmail(allEmails[randomIndex].id);
+      } else {
+        const response = await fetch(`${API_BASE}/api/emails/random`);
+        if (!response.ok) throw new Error('Failed to fetch random email');
+        const data = await response.json();
+        navigateToEmail(data.id);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     }
@@ -193,19 +217,41 @@ function App() {
   const fetchEmail = async (id: string) => {
     try {
       setLoading(true);
-      const [emailResponse, navResponse] = await Promise.all([
-        fetch(`${API_BASE}/api/emails/${id}`),
-        fetch(`${API_BASE}/api/emails/${id}/navigation`),
-      ]);
 
-      if (!emailResponse.ok) throw new Error('Failed to fetch email');
-      if (!navResponse.ok) throw new Error('Failed to fetch navigation');
+      if (IS_STATIC_MODE) {
+        // Fetch email JSON and calculate navigation from allEmails
+        const emailResponse = await fetch(`${API_BASE}/api/emails/${id}.json`);
+        if (!emailResponse.ok) throw new Error('Failed to fetch email');
+        const email = await emailResponse.json();
 
-      const email = await emailResponse.json();
-      const nav = await navResponse.json();
+        // Calculate navigation from allEmails
+        const sorted = sortEmails([...allEmails], 'date-desc');
+        const currentIndex = sorted.findIndex((e) => e.id === id);
+        const nav = {
+          prev: currentIndex > 0 ? sorted[currentIndex - 1] : null,
+          next:
+            currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null,
+        };
 
-      setCurrentEmail(email);
-      setNavigation(nav);
+        setCurrentEmail(email);
+        setNavigation(nav);
+      } else {
+        // API mode - fetch from server
+        const [emailResponse, navResponse] = await Promise.all([
+          fetch(`${API_BASE}/api/emails/${id}`),
+          fetch(`${API_BASE}/api/emails/${id}/navigation`),
+        ]);
+
+        if (!emailResponse.ok) throw new Error('Failed to fetch email');
+        if (!navResponse.ok) throw new Error('Failed to fetch navigation');
+
+        const email = await emailResponse.json();
+        const nav = await navResponse.json();
+
+        setCurrentEmail(email);
+        setNavigation(nav);
+      }
+
       setView('reader');
       setLoading(false);
 

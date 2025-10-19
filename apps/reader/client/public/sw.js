@@ -4,7 +4,7 @@
  * Provides offline functionality and caching strategies for the newsletter reader.
  */
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = `images-${CACHE_VERSION}`;
@@ -17,8 +17,8 @@ const STATIC_ASSETS = [
   `${BASE_PATH}/app/`,
   `${BASE_PATH}/app/index.html`,
   `${BASE_PATH}/manifest.json`,
-  `${BASE_PATH}/icon-192.png`,
-  `${BASE_PATH}/icon-512.png`,
+  // Don't cache icons that don't exist yet
+  // They will be cached on first request
 ];
 
 /**
@@ -90,11 +90,59 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // API requests - Network First, fallback to cache
+  // API requests - Cache First for static JSON, Network First for dynamic API
   if (
     url.pathname.startsWith(`${BASE_PATH}/api/`) ||
     url.pathname.startsWith('/api/')
   ) {
+    // For static JSON files (GitHub Pages), use Cache First
+    if (url.pathname.endsWith('.json')) {
+      event.respondWith(
+        caches.match(request).then((cachedResponse) => {
+          if (cachedResponse) {
+            // Return cached version and update in background
+            fetch(request)
+              .then((response) => {
+                if (response.ok) {
+                  caches.open(DATA_CACHE).then((cache) => {
+                    cache.put(request, response.clone());
+                  });
+                }
+              })
+              .catch(() => {
+                // Ignore fetch errors when offline
+              });
+            return cachedResponse;
+          }
+
+          // No cache, fetch from network
+          return fetch(request)
+            .then((response) => {
+              if (response.ok) {
+                const responseClone = response.clone();
+                caches.open(DATA_CACHE).then((cache) => {
+                  cache.put(request, responseClone);
+                });
+              }
+              return response;
+            })
+            .catch(() => {
+              return new Response(
+                JSON.stringify({
+                  error: 'Offline and no cached data available',
+                }),
+                {
+                  status: 503,
+                  headers: { 'Content-Type': 'application/json' },
+                }
+              );
+            });
+        })
+      );
+      return;
+    }
+
+    // For dynamic API endpoints (local dev), use Network First
     event.respondWith(
       fetch(request)
         .then((response) => {
