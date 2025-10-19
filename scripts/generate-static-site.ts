@@ -21,6 +21,7 @@ const __dirname = dirname(__filename);
 
 const STATIC_SITE_DIR = join(__dirname, '../static-site');
 const LETTERS_DIR = join(STATIC_SITE_DIR, 'letters');
+const IMAGES_DIR = join(STATIC_SITE_DIR, 'images');
 const BASE_PATH = '/letters'; // GitHub Pages base path
 
 interface Email {
@@ -463,9 +464,21 @@ function generateIndexPage(emails: Email[]): string {
 async function generateLetterPage(
   email: Email,
   prevEmail: Email | null,
-  nextEmail: Email | null
+  nextEmail: Email | null,
+  imageExtMap: Map<number, string>
 ): Promise<string> {
-  const markdown = email.normalized_markdown || email.body;
+  let markdown = email.normalized_markdown || email.body;
+
+  // Replace /api/images/{id} references with /letters/images/{id}.{ext}
+  // Use the imageExtMap to get the correct file extension for each image
+  markdown = markdown.replace(
+    /!\[([^\]]*)\]\(\/api\/images\/(\d+)\)/g,
+    (match, alt, id) => {
+      const ext = imageExtMap.get(Number(id)) || 'png';
+      return `![${alt}](${BASE_PATH}/images/${id}.${ext})`;
+    }
+  );
+
   const html = await marked(markdown);
 
   const prevSlug = prevEmail
@@ -527,6 +540,61 @@ async function generateLetterPage(
 }
 
 /**
+ * Export images from database to static files
+ * Returns a map of image ID to file extension
+ */
+async function exportImages(db: any): Promise<Map<number, string>> {
+  logger.info('Exporting images from database...');
+
+  // Create images directory
+  if (!existsSync(IMAGES_DIR)) {
+    await mkdir(IMAGES_DIR, { recursive: true });
+  }
+
+  // Get all embedded images from database with image_data
+  const stmt = db.prepare(`
+    SELECT id, image_data, mime_type
+    FROM embedded_images
+  `);
+  const images = stmt.all();
+  logger.info(`Found ${images.length} images to export`);
+
+  const imageExtMap = new Map<number, string>();
+  let exportedCount = 0;
+
+  for (const image of images) {
+    try {
+      // Determine file extension from mime type
+      let ext = 'png';
+      if (image.mime_type.includes('jpeg') || image.mime_type.includes('jpg')) {
+        ext = 'jpg';
+      } else if (image.mime_type.includes('gif')) {
+        ext = 'gif';
+      } else if (image.mime_type.includes('webp')) {
+        ext = 'webp';
+      }
+
+      imageExtMap.set(image.id, ext);
+
+      // Write image file as {id}.{ext}
+      const filename = `${image.id}.${ext}`;
+      const filepath = join(IMAGES_DIR, filename);
+      await writeFile(filepath, image.image_data);
+      exportedCount++;
+
+      if (exportedCount % 100 === 0) {
+        logger.debug(`Exported ${exportedCount}/${images.length} images...`);
+      }
+    } catch (error) {
+      logger.error(`Failed to export image ${image.id}:`, error);
+    }
+  }
+
+  logger.success(`Exported ${exportedCount} images`);
+  return imageExtMap;
+}
+
+/**
  * Main generation logic
  */
 async function main() {
@@ -548,6 +616,9 @@ async function main() {
     await mkdir(LETTERS_DIR, { recursive: true });
   }
 
+  // Export images from database
+  const imageExtMap = await exportImages(db);
+
   // Generate index page
   logger.info('Generating index page...');
   const indexHtml = generateIndexPage(emails);
@@ -561,7 +632,12 @@ async function main() {
     const nextEmail = i < emails.length - 1 ? emails[i + 1] : null;
 
     const slug = email.slug || createSlug(email.subject, email.id);
-    const letterHtml = await generateLetterPage(email, prevEmail, nextEmail);
+    const letterHtml = await generateLetterPage(
+      email,
+      prevEmail,
+      nextEmail,
+      imageExtMap
+    );
 
     await writeFile(join(LETTERS_DIR, `${slug}.html`), letterHtml);
     logger.debug(`Generated: ${slug}.html`);
