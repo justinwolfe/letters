@@ -10,7 +10,7 @@
     <title>Thank You Notes</title>
 
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/letters/app/manifest.json" />
 
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/icon-192.png" />
@@ -23,10 +23,10 @@
     />
     <meta name="apple-mobile-web-app-title" content="Thank You Notes" />
     <meta name="theme-color" content="#007bff" />
-    <script type="module" crossorigin src="/assets/index-CaW7xkVm.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/react-vendor-DJ1oPbzn.js">
-    <link rel="modulepreload" crossorigin href="/assets/markdown-vendor-FvuNcIv3.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-nQt8tBq5.css">
+    <script type="module" crossorigin src="/letters/app/assets/index-Cpo7IkaS.js"></script>
+    <link rel="modulepreload" crossorigin href="/letters/app/assets/react-vendor-DJ1oPbzn.js">
+    <link rel="modulepreload" crossorigin href="/letters/app/assets/markdown-vendor-FvuNcIv3.js">
+    <link rel="stylesheet" crossorigin href="/letters/app/assets/index-nQt8tBq5.css">
   </head>
   <body>
     <div id="root"></div>
@@ -35,8 +35,9 @@
       // Register service worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
+          // Service worker is at root /letters/, not in /letters/app/
           navigator.serviceWorker
-            .register('/sw.js')
+            .register('/letters/sw.js', { scope: '/letters/' })
             .then((registration) => {
               console.log('SW registered:', registration);
 

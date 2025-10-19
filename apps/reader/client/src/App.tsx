@@ -228,9 +228,9 @@ function App() {
         const sorted = sortEmails([...allEmails], 'date-desc');
         const currentIndex = sorted.findIndex((e) => e.id === id);
         const nav = {
-          prev: currentIndex > 0 ? sorted[currentIndex - 1] : null,
-          next:
+          prev:
             currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null,
+          next: currentIndex > 0 ? sorted[currentIndex - 1] : null,
         };
 
         setCurrentEmail(email);
@@ -269,11 +269,11 @@ function App() {
             const sortedEmails = sortEmails(cachedEmails, 'date-desc');
             const currentIndex = sortedEmails.findIndex((e) => e.id === id);
             setNavigation({
-              prev: currentIndex > 0 ? sortedEmails[currentIndex - 1] : null,
-              next:
+              prev:
                 currentIndex < sortedEmails.length - 1
                   ? sortedEmails[currentIndex + 1]
                   : null,
+              next: currentIndex > 0 ? sortedEmails[currentIndex - 1] : null,
             });
             setView('reader');
             setLoading(false);
