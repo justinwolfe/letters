@@ -16,7 +16,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const ROOT_DIR = join(__dirname, '..');
-const STATIC_SITE_DIR = join(ROOT_DIR, 'static-site');
 const READER_CLIENT_DIR = join(ROOT_DIR, 'apps/reader/client');
 const DIST_DIR = join(READER_CLIENT_DIR, 'dist');
 const PUBLIC_DIR = join(ROOT_DIR, 'public');
@@ -34,7 +33,14 @@ interface BuildOptions {
 async function clean() {
   logger.info('Cleaning build directories...');
 
-  const dirsToClean = [STATIC_SITE_DIR, PUBLIC_DIR, DIST_DIR];
+  // Clean PWA dist and specific public subdirectories, but not the entire public directory
+  const dirsToClean = [
+    DIST_DIR,
+    join(PUBLIC_DIR, 'app'),
+    join(PUBLIC_DIR, 'letters'),
+    join(PUBLIC_DIR, 'images'),
+    join(PUBLIC_DIR, 'api'),
+  ];
 
   for (const dir of dirsToClean) {
     if (existsSync(dir)) {
@@ -118,18 +124,13 @@ async function createPlaceholderIcons() {
 async function combineForDeployment(cname?: string) {
   logger.info('Combining static site and PWA for deployment...');
 
-  // Create public directory
+  // Create public directory if it doesn't exist
   if (!existsSync(PUBLIC_DIR)) {
     await mkdir(PUBLIC_DIR, { recursive: true });
   }
 
-  // Copy static site to root
-  if (existsSync(STATIC_SITE_DIR)) {
-    logger.info('Copying static HTML pages...');
-    execSync(`cp -R ${STATIC_SITE_DIR}/* ${PUBLIC_DIR}/`, {
-      shell: '/bin/bash',
-    });
-  }
+  // Static site is already in public/ (generated directly there)
+  // Just need to copy PWA app to /app subdirectory
 
   // Copy PWA app to /app subdirectory
   if (existsSync(DIST_DIR)) {
@@ -143,27 +144,37 @@ async function combineForDeployment(cname?: string) {
     });
   }
 
-  // Copy manifest and service worker to root
-  const manifestSrc = join(READER_CLIENT_DIR, 'public/manifest.json');
-  const swSrc = join(READER_CLIENT_DIR, 'public/sw.js');
+  // Ensure manifest and service worker are in root (should already be there from static site generation)
+  // But copy from reader client public if needed
+  const manifestDest = join(PUBLIC_DIR, 'manifest.json');
+  const swDest = join(PUBLIC_DIR, 'sw.js');
 
-  if (existsSync(manifestSrc)) {
-    await copyFile(manifestSrc, join(PUBLIC_DIR, 'manifest.json'));
-    logger.debug('Copied manifest.json to root');
+  if (!existsSync(manifestDest)) {
+    const manifestSrc = join(READER_CLIENT_DIR, 'public/manifest.json');
+    if (existsSync(manifestSrc)) {
+      await copyFile(manifestSrc, manifestDest);
+      logger.debug('Copied manifest.json to root');
+    }
   }
 
-  if (existsSync(swSrc)) {
-    await copyFile(swSrc, join(PUBLIC_DIR, 'sw.js'));
-    logger.debug('Copied sw.js to root');
+  if (!existsSync(swDest)) {
+    const swSrc = join(READER_CLIENT_DIR, 'public/sw.js');
+    if (existsSync(swSrc)) {
+      await copyFile(swSrc, swDest);
+      logger.debug('Copied sw.js to root');
+    }
   }
 
-  // Copy icons to root
+  // Copy icons to root if they don't exist
   const publicSrc = join(READER_CLIENT_DIR, 'public');
   if (existsSync(publicSrc)) {
     const files = await readdir(publicSrc);
     for (const file of files) {
       if (file.endsWith('.png') || file.endsWith('.svg')) {
-        await copyFile(join(publicSrc, file), join(PUBLIC_DIR, file));
+        const dest = join(PUBLIC_DIR, file);
+        if (!existsSync(dest)) {
+          await copyFile(join(publicSrc, file), dest);
+        }
       }
     }
     logger.debug('Copied icon files to root');

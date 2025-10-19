@@ -4,20 +4,22 @@ A comprehensive TypeScript system for syncing newsletters from Buttondown and de
 
 ## ✨ Features
 
-### 🌐 Dual Deployment Architecture
+### 🌐 Unified Progressive Architecture
 
-- **Static Site (MPA)**: Pre-rendered HTML pages for each newsletter - perfect for browsing, SEO, and fast loading
-- **PWA Reader**: Single-page React app with offline capabilities - installable as a native app
+- **Static HTML Pages**: Pre-rendered pages for each newsletter - perfect for SEO, browsing, and instant loading
+- **PWA Enhancement**: Installable React app provides rich features when desired - works as native app
+- **Progressive Enhancement**: Static pages work for everyone; PWA enhances for those who want more
+- **Single Service Worker**: Handles both static pages and PWA with intelligent caching
 - **GitHub Pages Ready**: One-command deployment with automatic builds via GitHub Actions
 
-### 📱 Progressive Web App
+### 📱 Progressive Web App Experience
 
-- **Offline Reading**: Download all newsletters and read without internet
-- **Installable**: Works like a native app on desktop and mobile
-- **Service Worker**: Intelligent caching strategies for optimal performance
-- **IndexedDB Storage**: Efficient client-side data storage
-- **Full-Text Search**: Find any newsletter quickly
-- **Swipe Navigation**: Mobile-friendly gesture controls
+- **Offline Reading**: Static pages and PWA both work offline after first visit
+- **Installable**: PWA can be installed as native app on desktop and mobile
+- **Service Worker**: Caches both static HTML and PWA assets for optimal performance
+- **Seamless Switching**: Move between static pages and PWA effortlessly
+- **Full-Text Search**: Advanced search in PWA experience
+- **Swipe Navigation**: Mobile-friendly gesture controls in PWA
 
 ### 🔄 Sync System
 

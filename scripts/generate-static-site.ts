@@ -19,7 +19,7 @@ import { existsSync } from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const STATIC_SITE_DIR = join(__dirname, '../static-site');
+const STATIC_SITE_DIR = join(__dirname, '../public');
 const LETTERS_DIR = join(STATIC_SITE_DIR, 'letters');
 const IMAGES_DIR = join(STATIC_SITE_DIR, 'images');
 const API_DIR = join(STATIC_SITE_DIR, 'api');
@@ -393,6 +393,45 @@ function generateBaseTemplate(
 
     function openPWA() {
       window.location.href = '${BASE_PATH}/app/';
+    }
+
+    // Progressive Enhancement: Check if user has PWA installed
+    // If they do, redirect them to the app version for a richer experience
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // User is in standalone mode (PWA is installed and running)
+      // Keep them on static page - they're already in PWA mode
+      console.log('Running in PWA mode');
+    } else {
+      // Check if user has previously used the PWA (has cached data)
+      if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+          const hasPWACache = cacheNames.some(name => 
+            name.includes('static-') || name.includes('data-')
+          );
+          
+          // Only show PWA banner if they have cached content
+          if (hasPWACache) {
+            const banner = document.querySelector('.pwa-banner');
+            if (banner && banner.style.display === 'none') {
+              banner.style.display = 'flex';
+            }
+          }
+        });
+      }
+    }
+
+    // Register service worker for all pages
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('${BASE_PATH}/sw.js', { scope: '${BASE_PATH}/' })
+          .then((registration) => {
+            console.log('SW registered:', registration);
+          })
+          .catch((error) => {
+            console.log('SW registration failed:', error);
+          });
+      });
     }
   </script>
 </body>

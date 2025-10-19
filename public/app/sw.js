@@ -1,10 +1,12 @@
 /**
  * Service Worker for Thank You Notes PWA
  *
- * Provides offline functionality and caching strategies for the newsletter reader.
+ * Provides offline functionality and caching strategies for both:
+ * - Static site (SSG HTML pages at /letters/*.html)
+ * - PWA app (SPA at /letters/app/)
  */
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = `images-${CACHE_VERSION}`;
@@ -17,6 +19,7 @@ const STATIC_ASSETS = [
   `${BASE_PATH}/app/`,
   `${BASE_PATH}/app/index.html`,
   `${BASE_PATH}/manifest.json`,
+  // Static HTML pages will be cached on-demand
   // Don't cache icons that don't exist yet
   // They will be cached on first request
 ];
@@ -87,6 +90,45 @@ self.addEventListener('fetch', (event) => {
 
   // Skip cross-origin requests
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Static HTML letter pages - Cache First (these don't change often)
+  if (url.pathname.match(/\/letters\/[^/]+\.html$/)) {
+    event.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        if (cachedResponse) {
+          // Return cached version and update in background
+          fetch(request)
+            .then((response) => {
+              if (response.ok) {
+                caches.open(STATIC_CACHE).then((cache) => {
+                  cache.put(request, response.clone());
+                });
+              }
+            })
+            .catch(() => {
+              // Ignore fetch errors when offline
+            });
+          return cachedResponse;
+        }
+
+        // No cache, fetch from network
+        return fetch(request)
+          .then((response) => {
+            if (response.ok) {
+              const responseClone = response.clone();
+              caches.open(STATIC_CACHE).then((cache) => {
+                cache.put(request, responseClone);
+              });
+            }
+            return response;
+          })
+          .catch(() => {
+            return new Response('Offline and page not cached', { status: 503 });
+          });
+      })
+    );
     return;
   }
 
