@@ -274,9 +274,18 @@ class OfflineStorage {
     onProgress?: (current: number, total: number, message: string) => void
   ): Promise<void> {
     try {
+      // Detect API base
+      const apiBase = (import.meta.env.VITE_API_BASE || '').startsWith(
+        '/letters'
+      )
+        ? '/letters'
+        : '';
+      const isStatic = apiBase === '/letters';
+
       // Fetch all emails
       onProgress?.(0, 100, 'Fetching email list...');
-      const response = await fetch('/api/emails');
+      const emailsUrl = isStatic ? `${apiBase}/api/emails.json` : '/api/emails';
+      const response = await fetch(emailsUrl);
       if (!response.ok) throw new Error('Failed to fetch emails');
 
       const emails: Email[] = await response.json();
@@ -293,7 +302,10 @@ class OfflineStorage {
         const progress = 20 + Math.floor((i / totalEmails) * 60);
         onProgress?.(progress, 100, `Downloading ${email.subject}...`);
 
-        const emailResponse = await fetch(`/api/emails/${email.id}`);
+        const emailUrl = isStatic
+          ? `${apiBase}/api/emails/${email.id}.json`
+          : `/api/emails/${email.id}`;
+        const emailResponse = await fetch(emailUrl);
         if (emailResponse.ok) {
           const fullEmail = await emailResponse.json();
           await this.saveEmail(fullEmail);
