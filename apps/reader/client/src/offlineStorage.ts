@@ -282,50 +282,140 @@ class OfflineStorage {
         : '';
       const isStatic = apiBase === '/letters';
 
-      // Fetch all emails
-      onProgress?.(0, 100, 'Fetching email list...');
-      const emailsUrl = isStatic ? `${apiBase}/api/emails.json` : '/api/emails';
-      const response = await fetch(emailsUrl);
-      if (!response.ok) throw new Error('Failed to fetch emails');
+      // Get last sync metadata to determine if we need a full sync or incremental
+      const lastSyncTime = await this.getMetadata('lastSync');
+      const lastEmailCount = await this.getMetadata('emailCount');
 
-      const emails: Email[] = await response.json();
-      onProgress?.(10, 100, `Found ${emails.length} emails`);
+      onProgress?.(0, 100, 'Checking for updates...');
 
-      // Save email list
-      await this.saveEmails(emails);
-      onProgress?.(20, 100, 'Saved email list');
+      if (isStatic && !lastSyncTime) {
+        // First time sync - use bulk download for efficiency
+        await this.bulkDownload(apiBase, onProgress);
+      } else {
+        // Check if there are updates
+        const emailsUrl = isStatic
+          ? `${apiBase}/api/emails.json`
+          : '/api/emails';
+        const response = await fetch(emailsUrl);
+        if (!response.ok) throw new Error('Failed to fetch email list');
 
-      // Fetch full content for each email
-      const totalEmails = emails.length;
-      for (let i = 0; i < totalEmails; i++) {
-        const email = emails[i];
-        const progress = 20 + Math.floor((i / totalEmails) * 60);
-        onProgress?.(progress, 100, `Downloading ${email.subject}...`);
+        const emailsList: Email[] = await response.json();
+        const currentEmailCount = emailsList.length;
 
-        const emailUrl = isStatic
-          ? `${apiBase}/api/emails/${email.id}.json`
-          : `/api/emails/${email.id}`;
-        const emailResponse = await fetch(emailUrl);
-        if (emailResponse.ok) {
-          const fullEmail = await emailResponse.json();
-          await this.saveEmail(fullEmail);
+        if (currentEmailCount > lastEmailCount) {
+          // New emails available - do incremental update
+          onProgress?.(
+            5,
+            100,
+            `Found ${currentEmailCount - lastEmailCount} new emails`
+          );
+          await this.incrementalUpdate(
+            emailsList,
+            lastEmailCount,
+            apiBase,
+            isStatic,
+            onProgress
+          );
+        } else if (!lastSyncTime) {
+          // No previous sync but emails exist in cache - do bulk download to ensure consistency
+          await this.bulkDownload(apiBase, onProgress);
+        } else {
+          // No new emails, just update images if needed
+          onProgress?.(10, 100, 'Already up to date, checking images...');
+          const cachedEmails = await this.getAllEmails();
+          await this.downloadImages(cachedEmails);
+          onProgress?.(100, 100, 'Already up to date!');
         }
       }
 
-      onProgress?.(80, 100, 'Content downloaded');
-
-      // Download images
-      onProgress?.(85, 100, 'Downloading images...');
-      await this.downloadImages(emails);
-
-      // Update last sync time
+      // Update metadata
       await this.setMetadata('lastSync', new Date().toISOString());
+      const finalCount = (await this.getAllEmails()).length;
+      await this.setMetadata('emailCount', finalCount);
 
       onProgress?.(100, 100, 'Download complete!');
     } catch (error) {
       console.error('Download failed:', error);
       throw error;
     }
+  }
+
+  /**
+   * Bulk download using the emails-full.json file (much faster for initial sync)
+   */
+  private async bulkDownload(
+    apiBase: string,
+    onProgress?: (current: number, total: number, message: string) => void
+  ): Promise<void> {
+    onProgress?.(10, 100, 'Downloading all content...');
+
+    const bulkUrl = `${apiBase}/api/emails-full.json`;
+    const response = await fetch(bulkUrl);
+    if (!response.ok) throw new Error('Failed to fetch bulk email data');
+
+    const bulkData = await response.json();
+    const emails = bulkData.emails || [];
+
+    onProgress?.(30, 100, `Processing ${emails.length} emails...`);
+
+    // Save all emails in one transaction
+    await this.saveEmails(emails);
+
+    onProgress?.(70, 100, 'Content saved, downloading images...');
+
+    // Download images
+    await this.downloadImages(emails);
+
+    onProgress?.(95, 100, 'Images downloaded');
+  }
+
+  /**
+   * Incremental update - only download new emails
+   */
+  private async incrementalUpdate(
+    emailsList: Email[],
+    lastEmailCount: number,
+    apiBase: string,
+    isStatic: boolean,
+    onProgress?: (current: number, total: number, message: string) => void
+  ): Promise<void> {
+    // Get cached email IDs
+    const cachedEmails = await this.getAllEmails();
+    const cachedIds = new Set(cachedEmails.map((e) => e.id));
+
+    // Find new emails
+    const newEmails = emailsList.filter((e) => !cachedIds.has(e.id));
+
+    if (newEmails.length === 0) {
+      onProgress?.(100, 100, 'Already up to date!');
+      return;
+    }
+
+    onProgress?.(10, 100, `Downloading ${newEmails.length} new emails...`);
+
+    // Fetch full content for new emails only
+    const totalNew = newEmails.length;
+    for (let i = 0; i < totalNew; i++) {
+      const email = newEmails[i];
+      const progress = 10 + Math.floor((i / totalNew) * 70);
+      onProgress?.(progress, 100, `Downloading ${email.subject}...`);
+
+      const emailUrl = isStatic
+        ? `${apiBase}/api/emails/${email.id}.json`
+        : `/api/emails/${email.id}`;
+      const emailResponse = await fetch(emailUrl);
+      if (emailResponse.ok) {
+        const fullEmail = await emailResponse.json();
+        await this.saveEmail(fullEmail);
+      }
+    }
+
+    onProgress?.(85, 100, 'Downloading new images...');
+
+    // Download images from new emails
+    await this.downloadImages(newEmails);
+
+    onProgress?.(95, 100, 'Update complete');
   }
 
   /**

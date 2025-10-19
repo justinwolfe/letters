@@ -433,7 +433,10 @@ async function exportEmailsAsJSON(
     JSON.stringify(emailsIndex, null, 2)
   );
 
-  // Create individual email JSON files with full content
+  // Create bulk file with all emails (full content) for efficient offline downloads
+  logger.info('Creating bulk emails file...');
+  const fullEmails = [];
+
   for (const email of emails) {
     let markdown = email.normalized_markdown || email.body;
 
@@ -446,24 +449,41 @@ async function exportEmailsAsJSON(
       }
     );
 
-    const emailData = {
+    fullEmails.push({
       id: email.id,
       subject: email.subject,
-      body: markdown, // Use the processed markdown as body for rendering
+      body: markdown,
       normalized_markdown: markdown,
       publish_date: email.publish_date,
       description: email.description,
       slug: email.slug,
       secondary_id: email.secondary_id,
-    };
+    });
+  }
 
+  // Write bulk file with metadata
+  const bulkData = {
+    version: 1,
+    generated_at: new Date().toISOString(),
+    count: fullEmails.length,
+    emails: fullEmails,
+  };
+
+  await writeFile(
+    join(API_DIR, 'emails-full.json'),
+    JSON.stringify(bulkData, null, 2)
+  );
+  logger.success(`Exported bulk file with ${fullEmails.length} emails`);
+
+  // Create individual email JSON files with full content (for backward compatibility and incremental updates)
+  for (const emailData of fullEmails) {
     await writeFile(
-      join(emailsDir, `${email.id}.json`),
+      join(emailsDir, `${emailData.id}.json`),
       JSON.stringify(emailData, null, 2)
     );
   }
 
-  logger.success(`Exported ${emails.length} emails as JSON`);
+  logger.success(`Exported ${emails.length} individual email files as JSON`);
 }
 
 /**
