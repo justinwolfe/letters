@@ -20,19 +20,23 @@ export class EmailQueries {
    * queries.emails.upsertEmail(emailData, markdownContent);
    * ```
    */
-  upsertEmail(email: Email, normalizedMarkdown?: string): void {
+  upsertEmail(
+    email: Email,
+    normalizedMarkdown?: string,
+    author?: string | null
+  ): void {
     const now = new Date().toISOString();
     const stmt = this.db.prepare(`
       INSERT INTO emails (
         id, subject, body, normalized_markdown, status, publish_date,
         creation_date, modification_date, slug, description,
         image_url, canonical_url, email_type, secondary_id,
-        absolute_url, metadata, featured, synced_at
+        absolute_url, metadata, featured, author, synced_at
       ) VALUES (
         @id, @subject, @body, @normalized_markdown, @status, @publish_date,
         @creation_date, @modification_date, @slug, @description,
         @image_url, @canonical_url, @email_type, @secondary_id,
-        @absolute_url, @metadata, @featured, @synced_at
+        @absolute_url, @metadata, @featured, @author, @synced_at
       )
       ON CONFLICT(id) DO UPDATE SET
         subject = excluded.subject,
@@ -50,6 +54,7 @@ export class EmailQueries {
         absolute_url = excluded.absolute_url,
         metadata = excluded.metadata,
         featured = excluded.featured,
+        author = COALESCE(excluded.author, emails.author),
         synced_at = excluded.synced_at
       WHERE emails.modification_date <= excluded.modification_date
     `);
@@ -72,6 +77,7 @@ export class EmailQueries {
       absolute_url: email.absolute_url,
       metadata: email.metadata ? JSON.stringify(email.metadata) : null,
       featured: email.featured ? 1 : 0,
+      author: author !== undefined ? author : null,
       synced_at: now,
     });
 
@@ -237,6 +243,75 @@ export class EmailQueries {
       GROUP BY e.id, e.subject
       HAVING image_count > 0
       ORDER BY total_size DESC
+    `);
+
+    return stmt.all() as any[];
+  }
+
+  /**
+   * Update the author field for an email
+   *
+   * @param emailId - The email ID to update
+   * @param author - The author name or identifier (null for primary author)
+   *
+   * @example
+   * ```typescript
+   * queries.emails.updateAuthor('email-123', 'L');
+   * queries.emails.updateAuthor('email-456', null); // Primary author
+   * ```
+   */
+  updateAuthor(emailId: string, author: string | null): void {
+    const stmt = this.db.prepare(`
+      UPDATE emails
+      SET author = ?
+      WHERE id = ?
+    `);
+
+    stmt.run(author, emailId);
+    logger.debug(`Updated author for email ${emailId}: ${author || 'primary'}`);
+  }
+
+  /**
+   * Get emails by author
+   *
+   * @param author - The author name/identifier (null for primary author)
+   * @returns Array of emails by the specified author
+   *
+   * @example
+   * ```typescript
+   * const lEmails = queries.emails.getEmailsByAuthor('L');
+   * const primaryEmails = queries.emails.getEmailsByAuthor(null);
+   * ```
+   */
+  getEmailsByAuthor(author: string | null): any[] {
+    const stmt = this.db.prepare(`
+      SELECT * FROM emails
+      WHERE author IS ? 
+      ORDER BY publish_date DESC
+    `);
+
+    return stmt.all(author);
+  }
+
+  /**
+   * Get all unique authors
+   *
+   * @returns Array of author names with counts
+   *
+   * @example
+   * ```typescript
+   * const authors = queries.emails.getAllAuthors();
+   * authors.forEach(a => {
+   *   console.log(`${a.author || 'Primary'}: ${a.count} letters`);
+   * });
+   * ```
+   */
+  getAllAuthors(): Array<{ author: string | null; count: number }> {
+    const stmt = this.db.prepare(`
+      SELECT author, COUNT(*) as count
+      FROM emails
+      GROUP BY author
+      ORDER BY count DESC
     `);
 
     return stmt.all() as any[];

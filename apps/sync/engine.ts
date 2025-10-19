@@ -7,6 +7,7 @@ import { DatabaseQueries } from '../../lib/db/queries/index.js';
 import { logger } from '../../lib/utils/logger.js';
 import { downloadAllImages } from '../../lib/utils/image-processor.js';
 import { normalizeToMarkdown } from '../../lib/utils/markdown-normalizer.js';
+import { extractAuthor } from '../../lib/utils/author-extractor.js';
 import type { Email } from '../../lib/api/types.js';
 import type Database from 'better-sqlite3';
 
@@ -188,10 +189,13 @@ export class SyncEngine {
       }
     }
 
+    // Extract author from subject line
+    const author = extractAuthor(email.subject);
+
     // Use transaction for atomicity
     this.queries.transaction(() => {
-      // Upsert the email with normalized markdown (with local image references)
-      this.queries.emails.upsertEmail(email, normalizedMarkdown);
+      // Upsert the email with normalized markdown and author info
+      this.queries.emails.upsertEmail(email, normalizedMarkdown, author);
 
       // Handle attachments if present
       if (email.attachments && email.attachments.length > 0) {
