@@ -185,12 +185,12 @@ async function combineForDeployment(cname?: string) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=/" />
+  <meta http-equiv="refresh" content="0; url=/letters/" />
   <title>Redirecting...</title>
 </head>
 <body>
   <script>
-    window.location.href = '/';
+    window.location.href = '/letters/';
   </script>
 </body>
 </html>`;

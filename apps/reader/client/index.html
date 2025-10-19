@@ -32,8 +32,9 @@
       // Register service worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
+          // Service worker path - Vite will rewrite this with the base path
           navigator.serviceWorker
-            .register('/sw.js')
+            .register('/letters/sw.js', { scope: '/letters/' })
             .then((registration) => {
               console.log('SW registered:', registration);
 

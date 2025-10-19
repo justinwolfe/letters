@@ -9,13 +9,16 @@ const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = `images-${CACHE_VERSION}`;
 
+// Base path for GitHub Pages deployment
+const BASE_PATH = '/letters';
+
 // Assets to cache on install
 const STATIC_ASSETS = [
-  '/app/',
-  '/app/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
+  `${BASE_PATH}/app/`,
+  `${BASE_PATH}/app/index.html`,
+  `${BASE_PATH}/manifest.json`,
+  `${BASE_PATH}/icon-192.png`,
+  `${BASE_PATH}/icon-512.png`,
 ];
 
 /**
@@ -88,7 +91,10 @@ self.addEventListener('fetch', (event) => {
   }
 
   // API requests - Network First, fallback to cache
-  if (url.pathname.startsWith('/api/')) {
+  if (
+    url.pathname.startsWith(`${BASE_PATH}/api/`) ||
+    url.pathname.startsWith('/api/')
+  ) {
     event.respondWith(
       fetch(request)
         .then((response) => {

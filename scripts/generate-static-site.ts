@@ -21,6 +21,7 @@ const __dirname = dirname(__filename);
 
 const STATIC_SITE_DIR = join(__dirname, '../static-site');
 const LETTERS_DIR = join(STATIC_SITE_DIR, 'letters');
+const BASE_PATH = '/letters'; // GitHub Pages base path
 
 interface Email {
   id: string;
@@ -71,9 +72,9 @@ function generateBaseTemplate(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="${escapeHtml(description)}">
   <title>${escapeHtml(title)}</title>
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="${BASE_PATH}/manifest.json">
   <meta name="theme-color" content="#1a1a1a">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="${BASE_PATH}/icon-192.png">
   <style>
     :root {
       --primary-bg: #1a1a1a;
@@ -370,7 +371,7 @@ function generateBaseTemplate(
     async function installPWA() {
       if (!deferredPrompt) {
         // If not installable, redirect to PWA
-        window.location.href = '/app/';
+        window.location.href = '${BASE_PATH}/app/';
         return;
       }
 
@@ -389,7 +390,7 @@ function generateBaseTemplate(
     }
 
     function openPWA() {
-      window.location.href = '/app/';
+      window.location.href = '${BASE_PATH}/app/';
     }
   </script>
 </body>
@@ -418,7 +419,7 @@ function generateIndexPage(emails: Email[]): string {
     .map((email) => {
       const slug = email.slug || createSlug(email.subject, email.id);
       return `
-        <a href="/letters/${slug}.html" class="letter-card">
+        <a href="${BASE_PATH}/letters/${slug}.html" class="letter-card">
           <h2>${escapeHtml(email.subject)}</h2>
           ${email.description ? `<p>${escapeHtml(email.description)}</p>` : ''}
           <time datetime="${email.publish_date}">${formatDate(
@@ -475,12 +476,12 @@ async function generateLetterPage(
     : null;
 
   const prevLink = prevEmail
-    ? `<a href="/letters/${prevSlug}.html" class="btn btn-secondary">← ${escapeHtml(
+    ? `<a href="${BASE_PATH}/letters/${prevSlug}.html" class="btn btn-secondary">← ${escapeHtml(
         prevEmail.subject
       )}</a>`
     : '';
   const nextLink = nextEmail
-    ? `<a href="/letters/${nextSlug}.html" class="btn btn-secondary">${escapeHtml(
+    ? `<a href="${BASE_PATH}/letters/${nextSlug}.html" class="btn btn-secondary">${escapeHtml(
         nextEmail.subject
       )} →</a>`
     : '';
@@ -510,7 +511,7 @@ async function generateLetterPage(
     </article>
 
     <nav class="navigation">
-      <a href="/" class="btn btn-secondary">home</a>
+      <a href="${BASE_PATH}/" class="btn btn-secondary">home</a>
       <div class="nav-links">
         ${prevLink}
         ${nextLink}
