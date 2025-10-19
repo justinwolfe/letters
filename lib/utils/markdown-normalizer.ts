@@ -107,7 +107,7 @@ function createTurndownService(): TurndownService {
 
   // Strip out data attributes, style attributes, etc
   turndownService.addRule('cleanAttributes', {
-    filter: (node) => {
+    filter: (node: any) => {
       if (node.nodeType === 1) {
         // Element node
         const element = node as any;

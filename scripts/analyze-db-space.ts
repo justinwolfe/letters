@@ -3,7 +3,6 @@
  */
 
 import { initializeDatabase } from '../lib/db/schema.js';
-import { logger } from '../lib/utils/logger.js';
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
