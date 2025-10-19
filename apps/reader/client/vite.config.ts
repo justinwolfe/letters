@@ -2,14 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [
-    react({
-      // Enable Fast Refresh for HMR
-      fastRefresh: true,
-      // Exclude node_modules from transformation
-      exclude: /node_modules/,
-    }),
-  ],
+  plugins: [react()],
   root: '.',
   build: {
     outDir: 'dist',
