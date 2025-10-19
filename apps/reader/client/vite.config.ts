@@ -1,13 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   root: '.',
-  base: '/letters/app/',
+  base: mode === 'production' ? '/letters/app/' : '/',
   define: {
-    // Set API base for GitHub Pages static JSON
-    'import.meta.env.VITE_API_BASE': JSON.stringify('/letters'),
+    // Set API base for GitHub Pages static JSON in production, empty for local dev
+    'import.meta.env.VITE_API_BASE': JSON.stringify(
+      mode === 'production' ? '/letters' : ''
+    ),
   },
   build: {
     outDir: 'dist',
@@ -42,4 +44,4 @@ export default defineConfig({
   },
   // Make sure public directory assets are copied
   publicDir: 'public',
-});
+}));
