@@ -5,280 +5,793 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="all over each other in the stretch hummer">
   <title>all over each other in the stretch hummer - Thank You Notes</title>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#1a1a1a">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/letters/manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <link rel="apple-touch-icon" href="/letters/icon-192.png">
   <style>
-    :root {
-      --primary-bg: #1a1a1a;
-      --secondary-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --text-muted: #b0b0b0;
-      --accent: #61dafb;
-      --border: #404040;
-      --hover-bg: #3d3d3d;
-      --max-width: 800px;
-    }
+    /**
+ * Shared Styles for Thank You Notes
+ * Used by both the static site and PWA version
+ */
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Base Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #dc3545;
+}
+
+/* Header */
+.header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Controls */
+.controls {
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-search:hover {
+  color: #333;
+}
+
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-container label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.sort-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #007bff;
+}
+
+.result-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  padding: 0.5rem 0.75rem;
+  background: #e9ecef;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.btn-random {
+  background: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-random:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-random:active {
+  transform: translateY(0);
+}
+
+.searching,
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Email/Letter List */
+.list,
+.letter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.email-card,
+.letter-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.email-card:hover,
+.letter-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.email-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.email-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-card-content,
+.letter-card {
+  padding: 1.5rem;
+}
+
+.email-card h2,
+.letter-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.email-description,
+.letter-card p {
+  color: #666;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.email-search-snippet {
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.search-highlight {
+  background: #fff3cd;
+  color: #856404;
+  font-weight: 700;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-style: normal;
+}
+
+.email-date,
+.letter-card time {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+/* Email/Letter Reader */
+.email-reader,
+.letter-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.email-reader {
+  touch-action: pan-y pinch-zoom;
+}
+
+.reader-nav,
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reader-nav-bottom {
+  border-top: 1px solid #dee2e6;
+  border-bottom: none;
+}
+
+.nav-buttons,
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn-nav {
+  background: #007bff;
+  color: white;
+}
+
+.btn-nav:hover {
+  background: #0056b3;
+}
+
+.btn-back-arrow {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s, transform 0.1s;
+  line-height: 1;
+}
+
+.btn-back-arrow:hover {
+  color: #007bff;
+  transform: translateX(-2px);
+}
+
+.btn-back-arrow:active {
+  transform: translateX(0);
+}
+
+/* Email/Letter Content */
+.email-content,
+.letter-content {
+  padding: 2rem 1.5rem;
+}
+
+.email-header,
+.letter-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.email-header h1,
+.letter-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-header .email-date,
+.letter-header time {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Email/Letter Body Styles */
+.email-body,
+.letter-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.email-body h1,
+.email-body h2,
+.email-body h3,
+.email-body h4,
+.email-body h5,
+.email-body h6,
+.letter-body h1,
+.letter-body h2,
+.letter-body h3,
+.letter-body h4,
+.letter-body h5,
+.letter-body h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-body h1,
+.letter-body h1 {
+  font-size: 1.875rem;
+}
+
+.email-body h2,
+.letter-body h2 {
+  font-size: 1.5rem;
+}
+
+.email-body h3,
+.letter-body h3 {
+  font-size: 1.25rem;
+}
+
+.email-body p,
+.letter-body p {
+  margin-bottom: 1rem;
+}
+
+.email-body a,
+.letter-body a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-body a:hover,
+.letter-body a:hover {
+  text-decoration: underline;
+}
+
+.email-body img,
+.letter-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.email-body ul,
+.email-body ol,
+.letter-body ul,
+.letter-body ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.email-body li,
+.letter-body li {
+  margin-bottom: 0.5rem;
+}
+
+.email-body blockquote,
+.letter-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #e9ecef;
+  color: #666;
+  font-style: italic;
+}
+
+.email-body code,
+.letter-body code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.email-body pre,
+.letter-body pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.email-body pre code,
+.letter-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.email-body hr,
+.letter-body hr {
+  border: none;
+  border-top: 2px solid #e9ecef;
+  margin: 2rem 0;
+}
+
+/* PWA Banner */
+.pwa-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pwa-banner-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pwa-banner-text h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.pwa-banner-text p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+/* Offline & PWA UI */
+.offline-banner {
+  background: #ff9800;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.download-progress {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download-progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.download-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  transition: width 0.3s ease;
+}
+
+.download-progress p {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-offline {
+  background: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-offline:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-offline:active {
+  transform: translateY(0);
+}
+
+.offline-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.offline-panel h3 {
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+}
+
+.offline-stats {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.offline-stats p {
+  margin: 0.5rem 0;
+  color: #495057;
+  font-size: 0.9375rem;
+}
+
+.offline-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.offline-note {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .control-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+
+  .result-count {
+    text-align: center;
+  }
+
+  .btn-random {
+    width: 100%;
+  }
+
+  .email-card-content {
+    padding: 1rem;
+  }
+
+  .email-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .email-content,
+  .letter-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .email-header h1,
+  .letter-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .reader-nav,
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-buttons,
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-nav {
+    font-size: 0.8125rem;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .pwa-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-card-image {
+    height: 150px;
+  }
+
+  .email-body,
+  .letter-body {
+    font-size: 1rem;
+  }
+}
+
+
+    
+    /* Static site specific adjustments */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      background: var(--primary-bg);
-      color: var(--text-color);
-      line-height: 1.6;
       padding: 20px;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 0;
-      border-bottom: 2px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .pwa-banner {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .pwa-banner-text {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .pwa-banner-text h3 {
-      margin-bottom: 0.25rem;
-      font-size: 1.1rem;
-    }
-
-    .pwa-banner-text p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: white;
-      color: #667eea;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .btn-secondary {
-      background: var(--secondary-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--hover-bg);
-    }
-
-    .letter-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .letter-card {
-      background: var(--secondary-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: all 0.2s;
-    }
-
-    .letter-card:hover {
-      background: var(--hover-bg);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .letter-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-color);
-    }
-
-    .letter-card p {
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-card time {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .letter-content {
-      background: var(--secondary-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    .letter-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .letter-header h1 {
-      color: var(--text-color);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-header time {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .letter-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .letter-body h1,
-    .letter-body h2,
-    .letter-body h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-
-    .letter-body p {
-      margin-bottom: 1rem;
-    }
-
-    .letter-body a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .letter-body a:hover {
-      text-decoration: underline;
-    }
-
-    .letter-body img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .letter-body blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .letter-body pre {
-      background: var(--primary-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-
-    .letter-body code {
-      background: var(--primary-bg);
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-    .letter-body pre code {
-      background: none;
-      padding: 0;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .letter-content {
-        padding: 1rem;
-      }
-
-      .letter-body {
-        font-size: 1rem;
-      }
-
-      .pwa-banner {
-        flex-direction: column;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -303,19 +816,19 @@
 
       <div class="letter-body">
         <p>in terms of great single episodes of reality tv, i recommend <em>the real world</em> season 31 episode 10 (<a href="https://www.mtv.com/episodes/825k03/the-real-world-the-hits-keep-coming-season-31-ep-10">mtv</a>, <a href="https://www.paramountplus.com/shows/video/dZ46Jn6VwgnUVz2J3mXpAFMBENvpnic9/">paramount+</a>), which we watched last night and i am going to summarize if you won&#39;t watch it but if you think you&#39;ll watch it just stop reading and watch it. the whole season has been a captivating train wreck, but this particular episode is centered around jenna, the season&#39;s villain, a proudly Southern White Christian (semi-LDS, but she drinks and stuff) who has (shock!) offensive things to say about gay and Black people (which was the trigger for an earlier plot line, where another housemate, chris, a pansexual ex-LDS atheist (!), tells his friends to make an anonymous online post about offensive things she has said on the show which then leads to white tears on her part and a hunt for &quot;the leaker&quot;) and who is seemingly incapable of ever apologizing or acknowledging any level of wrongdoing on her part at any time and so at this point in the season has functionally been ostracized from the rest of the house because after giving her more and more chances people are just so deeply tired of her offensive bullshit that they&#39;ve given up and she is considering just going home early. </p>
-<p> <img src="/api/images/225" alt="image.png"> </p>
+<p> <img src="/letters/images/225.jpg" alt="image.png"> </p>
 <p>to shake up the house (since, almost all the way through the season, no one has failed to &quot;go big&quot; and instead &quot;gone home&quot; and thus fulfilled the show&#39;s central premise), the producers add another housemate anyway, a tall bro-y guy named dylan. dylan is immediately deeply into jenna (maybe to an industry plant degree but he/it seems genuine) and she reciprocates the attention he&#39;s giving her, is invigorated by it, in fact, but also has a shitty boyfriend back home named austin (whose voice she has not heard in weeks because he refuses to be on the show). throughout the season, the roommates have been telling her to break up with austin, who truly does sound like a shitty boyfriend, which she has resisted, but everyone goes out to celebrate dylan&#39;s first night/birthday and gets very drunk (so much of reality TV is fake but also at the levels of drunkenness that are most common on <em>the real world</em> i have to imagine &quot;performance&quot; becomes more challenging) and dylan and jenna keep drifting closer together and touching and whispering and dancing and stuff and then, eventually, in the dark bar, making out, and while up for air she&#39;s telling the other girls in the house that things are over with austin and she&#39;s moving on and they&#39;re so happy for her and then dylan excuses himself to the bathroom to projectile vomit mixed drinks and while he&#39;s gone jenna goes to the other bathroom and does the same thing but then they get out of the bathroom and they&#39;re making out again with vomit mouths, all over each other in the stretch hummer back to the apartment, and seem like they might hook up but instead pass out. the next morning, everyone wants to talk about the new relationship but jenna is suddenly denying that they made out at all (despite the fact that it was all on television! and all the roommates saw it!! she admits to having made out with her female roommate, i think because in her weird moral <del>calculus</del> (arithmetic, she&#39;s too dumb for calculus (i am also too dumb for calculus)) that&#39;s less of a betrayal because she&#39;s not a lesbian), which makes dylan feel gaslit and hurt. </p>
-<p> <img src="/api/images/226" alt="image.png"> </p>
+<p> <img src="/letters/images/226.jpg" alt="image.png"> </p>
 <p>this storyline gets deferred briefly for the b-story, which is jenna and another roommate sabrina in the studio recording an original song (one of their &quot;go big&quot; challenges) and the song is terrible but its existence and it being played once during the 7:00 drive time radio hour for a vacation in las vegas is apparently for both of them the culmination of their entire life&#39;s work. afterward, jenna, though clearly destabilized by seeing the possibility of a good relationship with dylan, makes up with austin over email, which she tells sabrina, disappointing her. another b-story which follows is the episode&#39;s obligatory extreme sport segment where they do offroad driving in the desert and where dylan and jenna share a car and seem to regroup a bit (unclear, but it doesn&#39;t seem as though jenna has told him anything definitive about whether she&#39;s staying with her boyfriend).</p>
-<p> <img src="/api/images/227" alt="image.png"> </p>
+<p> <img src="/letters/images/227.jpg" alt="image.png"> </p>
 <p>afterward everyone is hanging out in the house on a high after the off-roading and jenna is doing some playful wrestling with dylan and then, making a &quot;joke&quot;, reveals that she was physically abused in a past relationship and has not really processed it and everyone is troubled by this and supportive of jenna even though even in this conversation where they feel love and support she is also being frustrating enough in how she talks about things that they have to raise their voices with her. we listen to the roommates listening to jenna and sabrina&#39;s song, which is a churchy piano ballad, and especially in light of the abuse relevation, they seem moved—ceejai, a Black law student whose father shot her mother and was then killed by police and who has previously had blow-ups with jenna about offensive things she&#39;s said, is particularly touched.</p>
-<p> <img src="/api/images/228" alt="image.png"> </p>
+<p> <img src="/letters/images/228.jpg" alt="image.png"> </p>
 <p>dylan and jenna seem to have made up, in that she&#39;s not rebuffing his affection, and his take at this point is, while hurt by her lying about having made up with him and knowing that she hasn&#39;t broken up with her boyfriend, that she still seems to really like him and maybe he just needs to continue to be affectionate to her but then they go into the confessional together and she pushes him away when he tries to kiss her which he takes as a pretty clear signal she doesn&#39;t want him and so leaves the confessional, telling the other roommates he&#39;s giving up because it&#39;s so frustrating. everyone goes out to drink heavily again and once drinking dylan and jenna seem to attract each other again but then on the dance floor she blocks another kiss and he is embarrassed and basically tells her he genuinely likes her and wants to be with her gives her an ultimatum, which she rejects. </p>
-<p> <img src="/api/images/224" alt="image.png"> </p>
+<p> <img src="/letters/images/224.jpg" alt="image.png"> </p>
 <p>the roommates go back to their hotel to drink more and dylan goes downstairs to the lobby area with a couple of other roommates to vent and tells them that he is officially done, that it&#39;s not worth it (the roommate attitude toward this budding romance has been encouragement, but also they already clearly like dylan, a person who has been on the show for two days at this point, much better than jenna and are annoyed by the possibility of her stringing him along fucking up his experience). upstairs, jenna is talking about this with other roommates and they convince her that dylan is what she wants and she can&#39;t let fear hold her back, so she sends an email to austin breaking up with him and then goes downstairs and pulls dylan aside and tells him that she wants to be with him.</p>
-<p> <img src="/api/images/230" alt="image.png"> </p>
+<p> <img src="/letters/images/230.jpg" alt="image.png"> </p>
 <p>but he says no, that he can&#39;t trust whatever she says because already she&#39;s lied to him and even if she says she wants him now she&#39;ll just want to be with austin tomorrow, so why should he let himself get hurt. it&#39;s clear that this is <em>not</em> the reaction she was expecting (or, tbh, that i as the viewer was expecting) and she tries to disagree and make herself more vulnerable but he coldly shuts things down and she walks away by herself and despite disliking her so deeply for the entire season i almost kind of a tiny bit feel something for her (it is a very powerful human moment! this is what i watch reality TV for!). the next day, jenna reveals to another roommate while doing her hair that she told dylan she wanted to be with him and that he denied her but she still thinks there&#39;s some ambiguity and she has a chance. </p>
-<p> <img src="/api/images/229" alt="image.png"> </p>
+<p> <img src="/letters/images/229.jpg" alt="image.png"> </p>
 <p>that night some of the roommates go to a country bar (jenna on country music: &quot;it makes me wanna have sex&quot;) and jenna pouts and complains to dylan that he&#39;s not paying enough attention to her, which he is annoyed by because he thought it was clear that they were done. he starts to chat up another girl and she gets all in his space and is territorial. eventually, they come back to the house, where the other roommates have built a large blanket fort in the living room. dylan sits at the kitchen counter eating a wrap from subway and jenna once again drunkenly tries to get him to be affectionate with her, but he says the door is closed. On the other side of the living room there is playful fighting among the other roommates about who gets to be inside the blanket fort. dylan goes over to hang out and jenna from a distance keeps calling his name which is increasingly annoying to the other roommates, who start to yell at her, which spawns a screaming match between jenna and ceejai that culminates in jenna coming over and pushing ceejai and the two of them wrestling before they are separated by producers. after a cooling off period, jenna is allowed back into the apartment and ceejai vents to the other roommates about how hard her life has been, how much she has lost, wondering if she is going to lose this opportunity and be sent home for fighting someone she doesn&#39;t even care about and that&#39;s where the episode ends (there are two more left in the season).</p>
 <h2>Previously on this day:</h2>
 <ul>
@@ -330,10 +843,10 @@
     </article>
 
     <nav class="navigation">
-      <a href="/" class="btn btn-secondary">home</a>
+      <a href="/letters/" class="btn btn-secondary">home</a>
       <div class="nav-links">
-        <a href="/letters/havering-is-synonymous-with-yapping.html" class="btn btn-secondary">← &quot;havering&quot; is synonymous with &quot;yapping&quot;</a>
-        <a href="/letters/addicted-to-reality.html" class="btn btn-secondary">addicted to reality →</a>
+        <a href="/letters/letters/havering-is-synonymous-with-yapping.html" class="btn btn-secondary">← &quot;havering&quot; is synonymous with &quot;yapping&quot;</a>
+        <a href="/letters/letters/addicted-to-reality.html" class="btn btn-secondary">addicted to reality →</a>
       </div>
     </nav>
   
@@ -356,7 +869,7 @@
     async function installPWA() {
       if (!deferredPrompt) {
         // If not installable, redirect to PWA
-        window.location.href = '/app/';
+        window.location.href = '/letters/app/';
         return;
       }
 
@@ -375,7 +888,46 @@
     }
 
     function openPWA() {
-      window.location.href = '/app/';
+      window.location.href = '/letters/app/';
+    }
+
+    // Progressive Enhancement: Check if user has PWA installed
+    // If they do, redirect them to the app version for a richer experience
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // User is in standalone mode (PWA is installed and running)
+      // Keep them on static page - they're already in PWA mode
+      console.log('Running in PWA mode');
+    } else {
+      // Check if user has previously used the PWA (has cached data)
+      if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+          const hasPWACache = cacheNames.some(name => 
+            name.includes('static-') || name.includes('data-')
+          );
+          
+          // Only show PWA banner if they have cached content
+          if (hasPWACache) {
+            const banner = document.querySelector('.pwa-banner');
+            if (banner && banner.style.display === 'none') {
+              banner.style.display = 'flex';
+            }
+          }
+        });
+      }
+    }
+
+    // Register service worker for all pages
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/letters/sw.js', { scope: '/letters/' })
+          .then((registration) => {
+            console.log('SW registered:', registration);
+          })
+          .catch((error) => {
+            console.log('SW registration failed:', error);
+          });
+      });
     }
   </script>
 </body>

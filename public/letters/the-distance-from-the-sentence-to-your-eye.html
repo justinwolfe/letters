@@ -5,280 +5,793 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="the distance from the sentence to your eye">
   <title>the distance from the sentence to your eye - Thank You Notes</title>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#1a1a1a">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/letters/manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <link rel="apple-touch-icon" href="/letters/icon-192.png">
   <style>
-    :root {
-      --primary-bg: #1a1a1a;
-      --secondary-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --text-muted: #b0b0b0;
-      --accent: #61dafb;
-      --border: #404040;
-      --hover-bg: #3d3d3d;
-      --max-width: 800px;
-    }
+    /**
+ * Shared Styles for Thank You Notes
+ * Used by both the static site and PWA version
+ */
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Base Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #dc3545;
+}
+
+/* Header */
+.header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Controls */
+.controls {
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-search:hover {
+  color: #333;
+}
+
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-container label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.sort-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #007bff;
+}
+
+.result-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  padding: 0.5rem 0.75rem;
+  background: #e9ecef;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.btn-random {
+  background: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-random:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-random:active {
+  transform: translateY(0);
+}
+
+.searching,
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Email/Letter List */
+.list,
+.letter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.email-card,
+.letter-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.email-card:hover,
+.letter-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.email-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.email-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-card-content,
+.letter-card {
+  padding: 1.5rem;
+}
+
+.email-card h2,
+.letter-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.email-description,
+.letter-card p {
+  color: #666;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.email-search-snippet {
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.search-highlight {
+  background: #fff3cd;
+  color: #856404;
+  font-weight: 700;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-style: normal;
+}
+
+.email-date,
+.letter-card time {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+/* Email/Letter Reader */
+.email-reader,
+.letter-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.email-reader {
+  touch-action: pan-y pinch-zoom;
+}
+
+.reader-nav,
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reader-nav-bottom {
+  border-top: 1px solid #dee2e6;
+  border-bottom: none;
+}
+
+.nav-buttons,
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn-nav {
+  background: #007bff;
+  color: white;
+}
+
+.btn-nav:hover {
+  background: #0056b3;
+}
+
+.btn-back-arrow {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s, transform 0.1s;
+  line-height: 1;
+}
+
+.btn-back-arrow:hover {
+  color: #007bff;
+  transform: translateX(-2px);
+}
+
+.btn-back-arrow:active {
+  transform: translateX(0);
+}
+
+/* Email/Letter Content */
+.email-content,
+.letter-content {
+  padding: 2rem 1.5rem;
+}
+
+.email-header,
+.letter-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.email-header h1,
+.letter-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-header .email-date,
+.letter-header time {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Email/Letter Body Styles */
+.email-body,
+.letter-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.email-body h1,
+.email-body h2,
+.email-body h3,
+.email-body h4,
+.email-body h5,
+.email-body h6,
+.letter-body h1,
+.letter-body h2,
+.letter-body h3,
+.letter-body h4,
+.letter-body h5,
+.letter-body h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-body h1,
+.letter-body h1 {
+  font-size: 1.875rem;
+}
+
+.email-body h2,
+.letter-body h2 {
+  font-size: 1.5rem;
+}
+
+.email-body h3,
+.letter-body h3 {
+  font-size: 1.25rem;
+}
+
+.email-body p,
+.letter-body p {
+  margin-bottom: 1rem;
+}
+
+.email-body a,
+.letter-body a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-body a:hover,
+.letter-body a:hover {
+  text-decoration: underline;
+}
+
+.email-body img,
+.letter-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.email-body ul,
+.email-body ol,
+.letter-body ul,
+.letter-body ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.email-body li,
+.letter-body li {
+  margin-bottom: 0.5rem;
+}
+
+.email-body blockquote,
+.letter-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #e9ecef;
+  color: #666;
+  font-style: italic;
+}
+
+.email-body code,
+.letter-body code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.email-body pre,
+.letter-body pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.email-body pre code,
+.letter-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.email-body hr,
+.letter-body hr {
+  border: none;
+  border-top: 2px solid #e9ecef;
+  margin: 2rem 0;
+}
+
+/* PWA Banner */
+.pwa-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pwa-banner-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pwa-banner-text h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.pwa-banner-text p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+/* Offline & PWA UI */
+.offline-banner {
+  background: #ff9800;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.download-progress {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download-progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.download-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  transition: width 0.3s ease;
+}
+
+.download-progress p {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-offline {
+  background: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-offline:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-offline:active {
+  transform: translateY(0);
+}
+
+.offline-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.offline-panel h3 {
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+}
+
+.offline-stats {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.offline-stats p {
+  margin: 0.5rem 0;
+  color: #495057;
+  font-size: 0.9375rem;
+}
+
+.offline-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.offline-note {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .control-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+
+  .result-count {
+    text-align: center;
+  }
+
+  .btn-random {
+    width: 100%;
+  }
+
+  .email-card-content {
+    padding: 1rem;
+  }
+
+  .email-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .email-content,
+  .letter-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .email-header h1,
+  .letter-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .reader-nav,
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-buttons,
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-nav {
+    font-size: 0.8125rem;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .pwa-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-card-image {
+    height: 150px;
+  }
+
+  .email-body,
+  .letter-body {
+    font-size: 1rem;
+  }
+}
+
+
+    
+    /* Static site specific adjustments */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      background: var(--primary-bg);
-      color: var(--text-color);
-      line-height: 1.6;
       padding: 20px;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 0;
-      border-bottom: 2px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .pwa-banner {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .pwa-banner-text {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .pwa-banner-text h3 {
-      margin-bottom: 0.25rem;
-      font-size: 1.1rem;
-    }
-
-    .pwa-banner-text p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: white;
-      color: #667eea;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .btn-secondary {
-      background: var(--secondary-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--hover-bg);
-    }
-
-    .letter-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .letter-card {
-      background: var(--secondary-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: all 0.2s;
-    }
-
-    .letter-card:hover {
-      background: var(--hover-bg);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .letter-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-color);
-    }
-
-    .letter-card p {
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-card time {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .letter-content {
-      background: var(--secondary-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    .letter-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .letter-header h1 {
-      color: var(--text-color);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-header time {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .letter-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .letter-body h1,
-    .letter-body h2,
-    .letter-body h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-
-    .letter-body p {
-      margin-bottom: 1rem;
-    }
-
-    .letter-body a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .letter-body a:hover {
-      text-decoration: underline;
-    }
-
-    .letter-body img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .letter-body blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .letter-body pre {
-      background: var(--primary-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-
-    .letter-body code {
-      background: var(--primary-bg);
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-    .letter-body pre code {
-      background: none;
-      padding: 0;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .letter-content {
-        padding: 1rem;
-      }
-
-      .letter-body {
-        font-size: 1rem;
-      }
-
-      .pwa-banner {
-        flex-direction: column;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -303,18 +816,18 @@
 
       <div class="letter-body">
         <p>i mentioned it once already but two more episodes dropped yesterday and seriously do not sleep on <em>the boyfriend</em> (netflix), it has an all time great main character (shun, who we call &quot;dark prince&quot; like literally an anime character of a human being but also he has a backstory full of pathos) and the general vibe is SO tender and vulnerable and sweet (which normally when other people say that about shows i&#39;m like &quot;no thanks, gonna hurl&quot; but!!!), like in the most recent episode there was a long and beautiful segment of the cast sitting in their pajamas and discussing their coming out stories and later a kissing scene that one of the panelists called &quot;<em>a kissing scene that will go down in human history</em>&quot; which is hyperbolic but also in its hyperbole gives you an idea of how it feels. in related media consumption news, i tried reading <em>the bee sting</em> because deborah loved it so much and wanted me to and it&#39;s really well written but also hits my personal high school trauma cringe spots so hard that i couldn&#39;t make myself keep reading (so back to hilary mantel&#39;s french revolution fanfic).</p>
-<p> <img src="/api/images/192" alt="image.png"> </p>
+<p> <img src="/letters/images/192.webp" alt="image.png"> </p>
 <p>things at work are kind of messy rn but i&#39;m still being helpful to others and making progress on the stuff i&#39;m working on and i only have two more sprints before my month-long sabbatical. beloved PM is back from parental leave and we met to catch up. first sub- nine minute long run in a while and i got rained on very hard but luckily it was near the end. i finally cleaned up our overgrown yard and the grass out back hasn&#39;t been completely killed by the heat wave. assembled the patio furniture that was deborah&#39;s anniversary gift and got into the bad mood i always get into when i have to build things in the physical world which she very generously gave me grace for. talking to her therapist deborah was describing our respective speeds of being able to exit a state of emotional distress with metaphor and said that she was a train and i was an electric car.</p>
-<p> <img src="/api/images/191" alt="image.png"> </p>
+<p> <img src="/letters/images/191.jpg" alt="image.png"> </p>
 <p>in the car on the way to pick up ec to go to longlegs, because in an interview clairo had named the song as a reference point for &quot;<a href="https://open.spotify.com/track/4JLBaHFkjxnbf9X0D8G3zQ?si=4bd3c13031754eb1&nd=1&dlsi=301da9a36dbc4fe4">glory of the snow</a>&quot;, playing deborah the original of &quot;<a href="https://open.spotify.com/track/7qw4F9ebIh2z1dSBpJMfdt">seabird</a>&quot; by the alessi brothers, <a href="https://open.spotify.com/album/2MJ8KLPbYflIkanDDhlq8Z">a cover version</a> by the innovations (not as good as the original), and then the beautiful old home recording e made for her partner and generously shared with me and deborah loving the song. in another conversation e and i having millenial physical media consumption memory hour and telling me about the summer when she kept recording &quot;bohemian rhapsody&quot; off the radio &quot;<em>every time it came on. just over and over on the same tape so i wouldn&#39;t have to rewind it as much and in an unending quest to get a nearly perfect recording of it</em>&quot;</p>
-<p> <img src="/api/images/195" alt="image.png"> </p>
+<p> <img src="/letters/images/195.webp" alt="image.png"> </p>
 <p>the trailers before an R rated horror movie on a friday night in the summer, an attraction of their own. surprisingly plump movie theater hotdog, popcorn ec shared in a paper boat, chocolate covered cookie dough bites which i just have to draw a line and never buy again because they&#39;ll always be a disappointment (too artificial, eternally stuck in the uncanny valley) and deborah doesn&#39;t like them at all. <em>longlegs</em>, which was a stylish fucked up romp and imo a great weekend-starter! it feels very of a piece with the previous movie by this director i&#39;d seen, <em>the blackcoat&#39;s daughter</em>, but funnier and more meta and weird. i&#39;m thankful that though you come for the nicolas cage performance which is as weird as you&#39;ve heard but also there are other great ones including a great scene from kiernan shipka. i also like when movie directors say things like this about how they think of their craft:</p>
 <blockquote>
 <p>&quot;I figured the way to connect with a bigger audience would be to trick them into thinking that they were watching Silence of the Lambs, and then do a thing where it was obviously not that at all.&quot;</p>
 </blockquote>
-<p> <img src="/api/images/194" alt="image.png"> </p>
+<p> <img src="/letters/images/194.webp" alt="image.png"> </p>
 <p>typing in my long secure password using the apple tv remote correctly the first time. we watched <em>se7en</em>, a movie that is deborah canon but somehow i don&#39;t know if i&#39;d ever actually seen (maybe it didn&#39;t get played as much on cable because of how fucked up it is)? gwyneth paltrow being in that movie and me having a soft sport for her remembering how when i was a teenager and i did not have reliable access to porn on the family computer but did have a DVD of the royal tenenbaums and literally masturbated to the scene where she is getting off the bus in slow motion while &quot;these days&quot; by nico plays which truly can you imagine something more embarrassingly twee!!!! (related: that orna from couple&#39;s therapy&#39;s dog nico is named after the singer).</p>
-<p><img src="/api/images/193" alt="image.png"> </p>
+<p><img src="/letters/images/193.webp" alt="image.png"> </p>
 <p>walked past a goth-looking bar where there was a sandwich board outside that said &quot;eat, drink, repent&quot;. learning from shoshana&#39;s stories about <a href="http://www.beer-pong.co.uk/drinking-game-ideas/post/roxanne-drinking-game">the &quot;roxanne&quot; drinking game</a> which involves two teams drinking when in the song &quot;roxanne&quot; the lyric &quot;roxanne&quot; (team 1) or &quot;put on the red light&quot; (team 2) is sung, which happens a lot and everyone gets drunk quickly. cold beer in the summer. the gold foil on modelo, always brings me a little extra joy. actually having fun playing <em>elden ring</em> this time (at least so far), which i will write about more later but for now i am thankful for the fun. the concept in video games of &quot;draw distance&quot; which means within the virtual world of the game how far you can see from where you are to where the game stops rendering the finer details of the world. <a href="https://www.instagram.com/fluxusgram/p/C9sJzYDRaCB/">this fluxus work</a> by ken friedman from 1971 called &quot;Distance&quot; which has the text &quot;<em>The distance from the sentence to your eye is my sculpture</em>&quot;</p>
 <h2>Previously on this day</h2>
 <ul>
@@ -330,10 +843,10 @@
     </article>
 
     <nav class="navigation">
-      <a href="/" class="btn btn-secondary">home</a>
+      <a href="/letters/" class="btn btn-secondary">home</a>
       <div class="nav-links">
-        <a href="/letters/celebrating-leo-season.html" class="btn btn-secondary">← celebrating leo season</a>
-        <a href="/letters/sweet-and-soft-and-warm-all-the-way-through.html" class="btn btn-secondary">sweet and soft and warm all the way through →</a>
+        <a href="/letters/letters/celebrating-leo-season.html" class="btn btn-secondary">← celebrating leo season</a>
+        <a href="/letters/letters/sweet-and-soft-and-warm-all-the-way-through.html" class="btn btn-secondary">sweet and soft and warm all the way through →</a>
       </div>
     </nav>
   
@@ -356,7 +869,7 @@
     async function installPWA() {
       if (!deferredPrompt) {
         // If not installable, redirect to PWA
-        window.location.href = '/app/';
+        window.location.href = '/letters/app/';
         return;
       }
 
@@ -375,7 +888,46 @@
     }
 
     function openPWA() {
-      window.location.href = '/app/';
+      window.location.href = '/letters/app/';
+    }
+
+    // Progressive Enhancement: Check if user has PWA installed
+    // If they do, redirect them to the app version for a richer experience
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // User is in standalone mode (PWA is installed and running)
+      // Keep them on static page - they're already in PWA mode
+      console.log('Running in PWA mode');
+    } else {
+      // Check if user has previously used the PWA (has cached data)
+      if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+          const hasPWACache = cacheNames.some(name => 
+            name.includes('static-') || name.includes('data-')
+          );
+          
+          // Only show PWA banner if they have cached content
+          if (hasPWACache) {
+            const banner = document.querySelector('.pwa-banner');
+            if (banner && banner.style.display === 'none') {
+              banner.style.display = 'flex';
+            }
+          }
+        });
+      }
+    }
+
+    // Register service worker for all pages
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/letters/sw.js', { scope: '/letters/' })
+          .then((registration) => {
+            console.log('SW registered:', registration);
+          })
+          .catch((error) => {
+            console.log('SW registration failed:', error);
+          });
+      });
     }
   </script>
 </body>

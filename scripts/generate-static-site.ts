@@ -11,7 +11,7 @@ import { initializeDatabase } from '../lib/db/schema.js';
 import { DatabaseQueries } from '../lib/db/queries/index.js';
 import { logger } from '../lib/utils/logger.js';
 import { marked } from 'marked';
-import { mkdir, writeFile } from 'fs/promises';
+import { mkdir, writeFile, readFile } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { existsSync } from 'fs';
@@ -23,7 +23,11 @@ const STATIC_SITE_DIR = join(__dirname, '../public');
 const LETTERS_DIR = join(STATIC_SITE_DIR, 'letters');
 const IMAGES_DIR = join(STATIC_SITE_DIR, 'images');
 const API_DIR = join(STATIC_SITE_DIR, 'api');
+const SHARED_STYLES_PATH = join(__dirname, '../lib/utils/shared-styles.css');
 const BASE_PATH = '/letters'; // GitHub Pages base path
+
+// Cache for shared styles
+let sharedStylesCache: string | null = null;
 
 interface Email {
   id: string;
@@ -60,13 +64,32 @@ function createSlug(text: string, id: string): string {
 }
 
 /**
+ * Load shared styles (cached)
+ */
+async function loadSharedStyles(): Promise<string> {
+  if (sharedStylesCache) {
+    return sharedStylesCache;
+  }
+
+  try {
+    sharedStylesCache = await readFile(SHARED_STYLES_PATH, 'utf-8');
+    return sharedStylesCache;
+  } catch (error) {
+    logger.error('Failed to load shared styles:', error);
+    throw new Error('Could not load shared styles file');
+  }
+}
+
+/**
  * Generate the base HTML template
  */
-function generateBaseTemplate(
+async function generateBaseTemplate(
   title: string,
   content: string,
   description: string = 'Thank You Notes - A newsletter collection'
-): string {
+): Promise<string> {
+  const sharedStyles = await loadSharedStyles();
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,279 +98,14 @@ function generateBaseTemplate(
   <meta name="description" content="${escapeHtml(description)}">
   <title>${escapeHtml(title)}</title>
   <link rel="manifest" href="${BASE_PATH}/manifest.json">
-  <meta name="theme-color" content="#1a1a1a">
+  <meta name="theme-color" content="#007bff">
   <link rel="apple-touch-icon" href="${BASE_PATH}/icon-192.png">
   <style>
-    :root {
-      --primary-bg: #1a1a1a;
-      --secondary-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --text-muted: #b0b0b0;
-      --accent: #61dafb;
-      --border: #404040;
-      --hover-bg: #3d3d3d;
-      --max-width: 800px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    ${sharedStyles}
+    
+    /* Static site specific adjustments */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      background: var(--primary-bg);
-      color: var(--text-color);
-      line-height: 1.6;
       padding: 20px;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 0;
-      border-bottom: 2px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .pwa-banner {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .pwa-banner-text {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .pwa-banner-text h3 {
-      margin-bottom: 0.25rem;
-      font-size: 1.1rem;
-    }
-
-    .pwa-banner-text p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: white;
-      color: #667eea;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .btn-secondary {
-      background: var(--secondary-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--hover-bg);
-    }
-
-    .letter-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .letter-card {
-      background: var(--secondary-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: all 0.2s;
-    }
-
-    .letter-card:hover {
-      background: var(--hover-bg);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .letter-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-color);
-    }
-
-    .letter-card p {
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-card time {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .letter-content {
-      background: var(--secondary-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    .letter-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .letter-header h1 {
-      color: var(--text-color);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-header time {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .letter-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .letter-body h1,
-    .letter-body h2,
-    .letter-body h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-
-    .letter-body p {
-      margin-bottom: 1rem;
-    }
-
-    .letter-body a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .letter-body a:hover {
-      text-decoration: underline;
-    }
-
-    .letter-body img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .letter-body blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .letter-body pre {
-      background: var(--primary-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-
-    .letter-body code {
-      background: var(--primary-bg);
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-    .letter-body pre code {
-      background: none;
-      padding: 0;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .letter-content {
-        padding: 1rem;
-      }
-
-      .letter-body {
-        font-size: 1rem;
-      }
-
-      .pwa-banner {
-        flex-direction: column;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -455,7 +213,7 @@ function escapeHtml(text: string): string {
 /**
  * Generate the index page with all letters
  */
-function generateIndexPage(emails: Email[]): string {
+async function generateIndexPage(emails: Email[]): Promise<string> {
   const lettersList = emails
     .map((email) => {
       const slug = email.slug || createSlug(email.subject, email.id);
@@ -472,7 +230,7 @@ function generateIndexPage(emails: Email[]): string {
     .join('');
 
   const content = `
-    <header>
+    <header class="header">
       <h1>thank you notes</h1>
       <p class="subtitle">${emails.length} published issue${
     emails.length !== 1 ? 's' : ''
@@ -572,7 +330,7 @@ async function generateLetterPage(
     </nav>
   `;
 
-  return generateBaseTemplate(
+  return await generateBaseTemplate(
     `${email.subject} - Thank You Notes`,
     content,
     email.description || email.subject
@@ -738,7 +496,7 @@ async function main() {
 
   // Generate index page
   logger.info('Generating index page...');
-  const indexHtml = generateIndexPage(emails);
+  const indexHtml = await generateIndexPage(emails);
   await writeFile(join(STATIC_SITE_DIR, 'index.html'), indexHtml);
 
   // Generate individual letter pages

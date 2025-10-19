@@ -5,280 +5,793 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="addicted to reality">
   <title>addicted to reality - Thank You Notes</title>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#1a1a1a">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/letters/manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <link rel="apple-touch-icon" href="/letters/icon-192.png">
   <style>
-    :root {
-      --primary-bg: #1a1a1a;
-      --secondary-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --text-muted: #b0b0b0;
-      --accent: #61dafb;
-      --border: #404040;
-      --hover-bg: #3d3d3d;
-      --max-width: 800px;
-    }
+    /**
+ * Shared Styles for Thank You Notes
+ * Used by both the static site and PWA version
+ */
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Base Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #dc3545;
+}
+
+/* Header */
+.header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Controls */
+.controls {
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-search:hover {
+  color: #333;
+}
+
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-container label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.sort-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #007bff;
+}
+
+.result-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  padding: 0.5rem 0.75rem;
+  background: #e9ecef;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.btn-random {
+  background: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-random:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-random:active {
+  transform: translateY(0);
+}
+
+.searching,
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Email/Letter List */
+.list,
+.letter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.email-card,
+.letter-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.email-card:hover,
+.letter-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.email-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.email-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-card-content,
+.letter-card {
+  padding: 1.5rem;
+}
+
+.email-card h2,
+.letter-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.email-description,
+.letter-card p {
+  color: #666;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.email-search-snippet {
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.search-highlight {
+  background: #fff3cd;
+  color: #856404;
+  font-weight: 700;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-style: normal;
+}
+
+.email-date,
+.letter-card time {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+/* Email/Letter Reader */
+.email-reader,
+.letter-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.email-reader {
+  touch-action: pan-y pinch-zoom;
+}
+
+.reader-nav,
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reader-nav-bottom {
+  border-top: 1px solid #dee2e6;
+  border-bottom: none;
+}
+
+.nav-buttons,
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn-nav {
+  background: #007bff;
+  color: white;
+}
+
+.btn-nav:hover {
+  background: #0056b3;
+}
+
+.btn-back-arrow {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s, transform 0.1s;
+  line-height: 1;
+}
+
+.btn-back-arrow:hover {
+  color: #007bff;
+  transform: translateX(-2px);
+}
+
+.btn-back-arrow:active {
+  transform: translateX(0);
+}
+
+/* Email/Letter Content */
+.email-content,
+.letter-content {
+  padding: 2rem 1.5rem;
+}
+
+.email-header,
+.letter-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.email-header h1,
+.letter-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-header .email-date,
+.letter-header time {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Email/Letter Body Styles */
+.email-body,
+.letter-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.email-body h1,
+.email-body h2,
+.email-body h3,
+.email-body h4,
+.email-body h5,
+.email-body h6,
+.letter-body h1,
+.letter-body h2,
+.letter-body h3,
+.letter-body h4,
+.letter-body h5,
+.letter-body h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-body h1,
+.letter-body h1 {
+  font-size: 1.875rem;
+}
+
+.email-body h2,
+.letter-body h2 {
+  font-size: 1.5rem;
+}
+
+.email-body h3,
+.letter-body h3 {
+  font-size: 1.25rem;
+}
+
+.email-body p,
+.letter-body p {
+  margin-bottom: 1rem;
+}
+
+.email-body a,
+.letter-body a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-body a:hover,
+.letter-body a:hover {
+  text-decoration: underline;
+}
+
+.email-body img,
+.letter-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.email-body ul,
+.email-body ol,
+.letter-body ul,
+.letter-body ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.email-body li,
+.letter-body li {
+  margin-bottom: 0.5rem;
+}
+
+.email-body blockquote,
+.letter-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #e9ecef;
+  color: #666;
+  font-style: italic;
+}
+
+.email-body code,
+.letter-body code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.email-body pre,
+.letter-body pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.email-body pre code,
+.letter-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.email-body hr,
+.letter-body hr {
+  border: none;
+  border-top: 2px solid #e9ecef;
+  margin: 2rem 0;
+}
+
+/* PWA Banner */
+.pwa-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pwa-banner-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pwa-banner-text h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.pwa-banner-text p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+/* Offline & PWA UI */
+.offline-banner {
+  background: #ff9800;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.download-progress {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download-progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.download-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  transition: width 0.3s ease;
+}
+
+.download-progress p {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-offline {
+  background: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-offline:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-offline:active {
+  transform: translateY(0);
+}
+
+.offline-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.offline-panel h3 {
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+}
+
+.offline-stats {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.offline-stats p {
+  margin: 0.5rem 0;
+  color: #495057;
+  font-size: 0.9375rem;
+}
+
+.offline-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.offline-note {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .control-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+
+  .result-count {
+    text-align: center;
+  }
+
+  .btn-random {
+    width: 100%;
+  }
+
+  .email-card-content {
+    padding: 1rem;
+  }
+
+  .email-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .email-content,
+  .letter-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .email-header h1,
+  .letter-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .reader-nav,
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-buttons,
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-nav {
+    font-size: 0.8125rem;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .pwa-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-card-image {
+    height: 150px;
+  }
+
+  .email-body,
+  .letter-body {
+    font-size: 1rem;
+  }
+}
+
+
+    
+    /* Static site specific adjustments */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      background: var(--primary-bg);
-      color: var(--text-color);
-      line-height: 1.6;
       padding: 20px;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 0;
-      border-bottom: 2px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .pwa-banner {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .pwa-banner-text {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .pwa-banner-text h3 {
-      margin-bottom: 0.25rem;
-      font-size: 1.1rem;
-    }
-
-    .pwa-banner-text p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: white;
-      color: #667eea;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .btn-secondary {
-      background: var(--secondary-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--hover-bg);
-    }
-
-    .letter-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .letter-card {
-      background: var(--secondary-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: all 0.2s;
-    }
-
-    .letter-card:hover {
-      background: var(--hover-bg);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .letter-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-color);
-    }
-
-    .letter-card p {
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-card time {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .letter-content {
-      background: var(--secondary-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    .letter-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .letter-header h1 {
-      color: var(--text-color);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-header time {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .letter-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .letter-body h1,
-    .letter-body h2,
-    .letter-body h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-
-    .letter-body p {
-      margin-bottom: 1rem;
-    }
-
-    .letter-body a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .letter-body a:hover {
-      text-decoration: underline;
-    }
-
-    .letter-body img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .letter-body blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .letter-body pre {
-      background: var(--primary-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-
-    .letter-body code {
-      background: var(--primary-bg);
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-    .letter-body pre code {
-      background: none;
-      padding: 0;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .letter-content {
-        padding: 1rem;
-      }
-
-      .letter-body {
-        font-size: 1rem;
-      }
-
-      .pwa-banner {
-        flex-direction: column;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -305,9 +818,9 @@
         <p><em>all fours</em> by miranda july which i am constitutionally a person who when a bunch of other people experience something supposedly great before me and hype it up i tend to reflexively become contrarian and assume, even if people whose taste i respect love it, that the thing can&#39;t really be <em>that</em> great and usually avoid it until it is no longer in the discourse or perhaps forever but i gotta say this book is <a href="https://www.thecut.com/article/miranda-july-all-fours-novel-review.html">that great</a>! great enough that when i was reading in the dark before bed and thought i was near the end of it (kindle probs) and read what seemed like a great final paragraph and turned the page and it was not only not the end but there were two additional <em>sections</em> of multiple chapters each and still hours left of reading to go such that i didn&#39;t finish till 1 am and there is the mythic (but maybe just a myth!)  notion of the &quot;new yorker ending&quot; (from annette grant in john cheever&#39;s <em>paris review</em> interview: <em>&quot;It’s the
 classic story about what The New Yorker is rumored to do—&#39;remove the last paragraph
 and you’ve got a typical New Yorker ending&#39;&quot;)</em> which is a tactic i would often apply if i had my way as an editor and think many if not all artworks would benefit from (he writes in another endless run-on sentence) and i kept having this experience where it felt like the book was ending on the last paragraph of a chapter and in my brain i would go &quot;damn, that really nailed it, what a great book&quot; and then &quot;turned the page&quot; and there was another chapter and i would have the thought &quot;smh should have done a new yorker ending&quot; and then the chapter would go on and i would eventually be like &quot;oh actually you know that&#39;s important, she had to get there&quot; and repeated this experience several times over the last two sections until the book finally ended and then i couldn&#39;t go to sleep because i was too worked up and in the vein of the book probably should have tried to masturbate about it but instead just had a midnight snack (a &quot;<a href="https://eatbobos.com/">bobo</a>)&quot;! if you&#39;re not sold yet my pitches to you (which like the book is sui generis but that&#39;s not a pitch) are a) it&#39;s the new <em>lolita</em> (imo there are so many resonances! looking forward to some academic writing about <em>two paths for the horny motel novel</em>) b) it sits in conversation with two books canonical to this newsletter <em>remainder</em> by tom mccarthy (the reenactments and recreations, the ideas about work and relationships) and <em>the red zone</em> by chloe caldwell (the deep honesty about the body and the mind and the complicated connection between the two, the chorus of sampled voices).</p>
-<p> <img src="/api/images/231" alt="image.png"> </p>
+<p> <img src="/letters/images/231.jpg" alt="image.png"> </p>
 <p>we inhaled the new season of <em>couples therapy</em> almost immediately even though we knew that meant it would be forever until there is more <em>couples therapy</em> (i&#39;m thankful that a while ago we had a fight and it wasn&#39;t pleasant but it felt more productive than our usual fights which seemed to be driven by watching and thinking about the show together and i made this meta-comment about how if we had to fight it was at least a more &quot;interesting&quot; fight which deborah found meta-ridiculous). we finished watching <em>the real world: key west</em> (some interesting characters but kind of a flat bummer season) and started watching <em>the real world: go big or go home</em> a late period season (deborah pointed out that we were suddenly living in HD landscape aspect ratio) which has a weird add-on premise to the usual real world SOP wherein contestants have to do &quot;scary&quot; challenges (so far bungee jumping from a balloon and (men) dressing up in drag) and if they do not do them (i.e. &quot;go big&quot;) they get sent home and replaced. idk how i feel about this component (if i wanted to watch a &quot;challenge&quot; show...that show exists, see also <a href="https://www.vulture.com/article/survivor-guide-best-eras-seasons-players-moments.html">this great package about survivor eras</a> (spoiler-heavy but planning to squint around it to find old good seasons i haven&#39;t seen)) but so far the cast is pretty wild and aggressive even by <em>real world</em> standards and the season takes place in las vegas and for some reason the producers decided to give the cast hoverboards and so large sections of the show have this additional ridiculous physical comedy of people constantly bobbing and gliding on hoverboards as they drunkenly bond and break with each other. i&#39;m thankful for something deborah and i share, which is when you&#39;re watching a TV show and someone has written a document (either by hand or on the computer (love how in the pre-smart phone era a fixture of <em>the real world</em> is people sitting around a shared desktop computer to read and write emails)) and the camera briefly lingers on it such that there isn&#39;t time to really read what it says one of us will always immediately rewind and freeze frame and consume as much of the raw text as we possibly can, addicted to reality.</p>
-<p> <img src="/api/images/232" alt="image.png"> </p>
+<p> <img src="/letters/images/232.jpg" alt="image.png"> </p>
 <h2>Previously on this day:</h2>
 <ul>
 <li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-67/">2016</a> (<em>left my resignation letter in my boss&#39;s desk chair, the petit trianon, triple double oreos</em>)</li>
@@ -321,10 +834,10 @@ and you’ve got a typical New Yorker ending&#39;&quot;)</em> which is a tactic 
     </article>
 
     <nav class="navigation">
-      <a href="/" class="btn btn-secondary">home</a>
+      <a href="/letters/" class="btn btn-secondary">home</a>
       <div class="nav-links">
-        <a href="/letters/all-over-each-other-in-the-stretch-hummer.html" class="btn btn-secondary">← all over each other in the stretch hummer</a>
-        <a href="/letters/fiona-apple-voice-drain-the-chickpeas.html" class="btn btn-secondary">[fiona apple voice] drain the chickpeas →</a>
+        <a href="/letters/letters/all-over-each-other-in-the-stretch-hummer.html" class="btn btn-secondary">← all over each other in the stretch hummer</a>
+        <a href="/letters/letters/fiona-apple-voice-drain-the-chickpeas.html" class="btn btn-secondary">[fiona apple voice] drain the chickpeas →</a>
       </div>
     </nav>
   
@@ -347,7 +860,7 @@ and you’ve got a typical New Yorker ending&#39;&quot;)</em> which is a tactic 
     async function installPWA() {
       if (!deferredPrompt) {
         // If not installable, redirect to PWA
-        window.location.href = '/app/';
+        window.location.href = '/letters/app/';
         return;
       }
 
@@ -366,7 +879,46 @@ and you’ve got a typical New Yorker ending&#39;&quot;)</em> which is a tactic 
     }
 
     function openPWA() {
-      window.location.href = '/app/';
+      window.location.href = '/letters/app/';
+    }
+
+    // Progressive Enhancement: Check if user has PWA installed
+    // If they do, redirect them to the app version for a richer experience
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // User is in standalone mode (PWA is installed and running)
+      // Keep them on static page - they're already in PWA mode
+      console.log('Running in PWA mode');
+    } else {
+      // Check if user has previously used the PWA (has cached data)
+      if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+          const hasPWACache = cacheNames.some(name => 
+            name.includes('static-') || name.includes('data-')
+          );
+          
+          // Only show PWA banner if they have cached content
+          if (hasPWACache) {
+            const banner = document.querySelector('.pwa-banner');
+            if (banner && banner.style.display === 'none') {
+              banner.style.display = 'flex';
+            }
+          }
+        });
+      }
+    }
+
+    // Register service worker for all pages
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/letters/sw.js', { scope: '/letters/' })
+          .then((registration) => {
+            console.log('SW registered:', registration);
+          })
+          .catch((error) => {
+            console.log('SW registration failed:', error);
+          });
+      });
     }
   </script>
 </body>

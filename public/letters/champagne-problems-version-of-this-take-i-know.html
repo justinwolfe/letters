@@ -5,280 +5,793 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="champagne problems version of this take i know">
   <title>champagne problems version of this take i know - Thank You Notes</title>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#1a1a1a">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/letters/manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <link rel="apple-touch-icon" href="/letters/icon-192.png">
   <style>
-    :root {
-      --primary-bg: #1a1a1a;
-      --secondary-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --text-muted: #b0b0b0;
-      --accent: #61dafb;
-      --border: #404040;
-      --hover-bg: #3d3d3d;
-      --max-width: 800px;
-    }
+    /**
+ * Shared Styles for Thank You Notes
+ * Used by both the static site and PWA version
+ */
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Base Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #dc3545;
+}
+
+/* Header */
+.header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Controls */
+.controls {
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-search:hover {
+  color: #333;
+}
+
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-container label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.sort-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #007bff;
+}
+
+.result-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  padding: 0.5rem 0.75rem;
+  background: #e9ecef;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.btn-random {
+  background: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-random:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-random:active {
+  transform: translateY(0);
+}
+
+.searching,
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Email/Letter List */
+.list,
+.letter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.email-card,
+.letter-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.email-card:hover,
+.letter-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.email-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.email-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-card-content,
+.letter-card {
+  padding: 1.5rem;
+}
+
+.email-card h2,
+.letter-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.email-description,
+.letter-card p {
+  color: #666;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.email-search-snippet {
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.search-highlight {
+  background: #fff3cd;
+  color: #856404;
+  font-weight: 700;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-style: normal;
+}
+
+.email-date,
+.letter-card time {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+/* Email/Letter Reader */
+.email-reader,
+.letter-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.email-reader {
+  touch-action: pan-y pinch-zoom;
+}
+
+.reader-nav,
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reader-nav-bottom {
+  border-top: 1px solid #dee2e6;
+  border-bottom: none;
+}
+
+.nav-buttons,
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn-nav {
+  background: #007bff;
+  color: white;
+}
+
+.btn-nav:hover {
+  background: #0056b3;
+}
+
+.btn-back-arrow {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s, transform 0.1s;
+  line-height: 1;
+}
+
+.btn-back-arrow:hover {
+  color: #007bff;
+  transform: translateX(-2px);
+}
+
+.btn-back-arrow:active {
+  transform: translateX(0);
+}
+
+/* Email/Letter Content */
+.email-content,
+.letter-content {
+  padding: 2rem 1.5rem;
+}
+
+.email-header,
+.letter-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.email-header h1,
+.letter-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-header .email-date,
+.letter-header time {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Email/Letter Body Styles */
+.email-body,
+.letter-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.email-body h1,
+.email-body h2,
+.email-body h3,
+.email-body h4,
+.email-body h5,
+.email-body h6,
+.letter-body h1,
+.letter-body h2,
+.letter-body h3,
+.letter-body h4,
+.letter-body h5,
+.letter-body h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.email-body h1,
+.letter-body h1 {
+  font-size: 1.875rem;
+}
+
+.email-body h2,
+.letter-body h2 {
+  font-size: 1.5rem;
+}
+
+.email-body h3,
+.letter-body h3 {
+  font-size: 1.25rem;
+}
+
+.email-body p,
+.letter-body p {
+  margin-bottom: 1rem;
+}
+
+.email-body a,
+.letter-body a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-body a:hover,
+.letter-body a:hover {
+  text-decoration: underline;
+}
+
+.email-body img,
+.letter-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.email-body ul,
+.email-body ol,
+.letter-body ul,
+.letter-body ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.email-body li,
+.letter-body li {
+  margin-bottom: 0.5rem;
+}
+
+.email-body blockquote,
+.letter-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #e9ecef;
+  color: #666;
+  font-style: italic;
+}
+
+.email-body code,
+.letter-body code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.email-body pre,
+.letter-body pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.email-body pre code,
+.letter-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.email-body hr,
+.letter-body hr {
+  border: none;
+  border-top: 2px solid #e9ecef;
+  margin: 2rem 0;
+}
+
+/* PWA Banner */
+.pwa-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pwa-banner-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pwa-banner-text h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.pwa-banner-text p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+/* Offline & PWA UI */
+.offline-banner {
+  background: #ff9800;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.download-progress {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download-progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.download-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  transition: width 0.3s ease;
+}
+
+.download-progress p {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-offline {
+  background: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-offline:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-offline:active {
+  transform: translateY(0);
+}
+
+.offline-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.offline-panel h3 {
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+}
+
+.offline-stats {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.offline-stats p {
+  margin: 0.5rem 0;
+  color: #495057;
+  font-size: 0.9375rem;
+}
+
+.offline-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.offline-note {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .control-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+
+  .result-count {
+    text-align: center;
+  }
+
+  .btn-random {
+    width: 100%;
+  }
+
+  .email-card-content {
+    padding: 1rem;
+  }
+
+  .email-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .email-content,
+  .letter-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .email-header h1,
+  .letter-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .reader-nav,
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-buttons,
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-nav {
+    font-size: 0.8125rem;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .pwa-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-card-image {
+    height: 150px;
+  }
+
+  .email-body,
+  .letter-body {
+    font-size: 1rem;
+  }
+}
+
+
+    
+    /* Static site specific adjustments */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      background: var(--primary-bg);
-      color: var(--text-color);
-      line-height: 1.6;
       padding: 20px;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 0;
-      border-bottom: 2px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .pwa-banner {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .pwa-banner-text {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .pwa-banner-text h3 {
-      margin-bottom: 0.25rem;
-      font-size: 1.1rem;
-    }
-
-    .pwa-banner-text p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: white;
-      color: #667eea;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .btn-secondary {
-      background: var(--secondary-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--hover-bg);
-    }
-
-    .letter-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .letter-card {
-      background: var(--secondary-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: all 0.2s;
-    }
-
-    .letter-card:hover {
-      background: var(--hover-bg);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .letter-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-color);
-    }
-
-    .letter-card p {
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-card time {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .letter-content {
-      background: var(--secondary-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    .letter-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .letter-header h1 {
-      color: var(--text-color);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .letter-header time {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .letter-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .letter-body h1,
-    .letter-body h2,
-    .letter-body h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-
-    .letter-body p {
-      margin-bottom: 1rem;
-    }
-
-    .letter-body a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .letter-body a:hover {
-      text-decoration: underline;
-    }
-
-    .letter-body img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .letter-body blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .letter-body pre {
-      background: var(--primary-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-
-    .letter-body code {
-      background: var(--primary-bg);
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-    .letter-body pre code {
-      background: none;
-      padding: 0;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .letter-content {
-        padding: 1rem;
-      }
-
-      .letter-body {
-        font-size: 1rem;
-      }
-
-      .pwa-banner {
-        flex-direction: column;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -302,13 +815,13 @@
       </header>
 
       <div class="letter-body">
-        <p><img src="/api/images/248" alt="image.png"> </p>
+        <p><img src="/letters/images/248.webp" alt="image.png"> </p>
 <p>feel like i haven&#39;t written in here in a million years and have a million things to write about which will take a million hours to complete to do any sort of justice to my life but i can&#39;t stop time for that and as is always the case the best thing i can do is to just start writing something/anything (shoutout todd rundgren) and eventually hit the send button, closing the circuit. i&#39;ve been doing more programming in my spare time (on my erasure poetry app, which long lived in a state of &quot;done enough that i can use it for myself&quot; but &quot;not done enough to actually release for others to use or to fully enjoy using myself&quot; and so i&#39;m trying to finish it (closing the circuit)), which has been fun and rewarding (picking back up this project has been a revelation of a) how much better of an engineer i am now than i was four years ago and b) how much AI helps me write code now in a way that it didn&#39;t four years ago) but trading this focus state for that one also i&#39;m recognizing how programming (or making music, or any number of other creative hobbies), while it is creatively and intellectually fulfilling, simply does not defrag my mental hard drive in the at this point medically necessary way that writing these notes does and so here i am [eminem voice] back again.</p>
-<p> <img src="/api/images/249" alt="image.png"> </p>
+<p> <img src="/letters/images/249.webp" alt="image.png"> </p>
 <p>met hannah and tristan in montreal and it was like we were old friends, which in a way of course we were &lt;3. went to company retreat at ski town in quebec. wore my free palestine from the river to the sea shirt to the opening reception (i had bought a keffiyeh to wear but i put it in the drier without reading the care instructions). was pleasantly reminded how many friends i&#39;ve made across the company, as a person who went various periods of my life without any friends. successfully smoked 25+ joints with friends (zero waste). winged a presentation i did with cc instead of doing homework and we had fun and everyone liked it (also she and i avoided a team building game we didn&#39;t want to do and had tall beers and talked about our lives for like two hours). didn&#39;t get into any neediness or passive-aggression with [redacted] and remained warm and friendly throughout and even had some nice one-on-one airport conversations (the first time we really have talked in a year) while also maintaining an internal distance to prevent myself from slipping back into a bad pattern with her. ate really good octopus carpaccio and steak tartare with overfilled glasses of vin rouge at a small bistro. at company karaoke did &quot;vampire&quot; and &quot;like a prayer&quot; (which ended with me jumping off the stage onto the dance floor to trade vocals with an accountant) and also assisted with duets of &quot;you&#39;re my best friend&quot; and &quot;basket case&quot; with two beloveds who needed a buddy to feel confident enough to go on stage (i do not feel one should ever pressure others to do karaoke but i also feel that we should support people who want to but are scared). over the course of the trip i took 3mg of xanax from my tiny stash (which is hard to re-up legally because i have never found a doctor who would prescribe me even a tiny amount for emergencies despite me being a very reliable consumer of mental health medication for a decade at this point and extra-legally because fentanyl has ruined everything (champagne problems version of this take i know)) but it was 1000% worth it in terms of helping me feel better in some intense situations. among other things, learned about the &quot;philly taco&quot; which is half a philly cheesesteak wrapped in a new york style pizza slice.</p>
-<p> <img src="/api/images/247" alt="image.png"> </p>
+<p> <img src="/letters/images/247.jpg" alt="image.png"> </p>
 <p>after avoiding it for four years thanks to a lot of luck, working from home, not having children, a very limited social life, and continuing to mask where convenient and appropriate (partly for my health and partly we live in a society and partly because i just love the anonymity and separation from the world!), i finally got covid (and then, because we cannot avoid long frequent kisses, d finally got covid), which was quite unpleasant for a weekend (especially because re: the previously stated conditions of my life i have not had a cold or the flu or any kind of transmissible illness in like years like i literally could not remember the last time (CHAMPAGNE PROBLEMS VERSION OF THIS TAKE I KNOW i am prepared for your unfollows and wish you well)) but i feel like 95% okay now, which i am thankful for!!! </p>
-<p> <img src="/api/images/246" alt="image.png"> </p>
+<p> <img src="/letters/images/246.png" alt="image.png"> </p>
 <h2>Previously on this day</h2>
 <ul>
 <li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-514/">2016</a> (<em>passage from sarah bakewell&#39;s <strong>at the existentialist cafe</strong></em>)</li>
@@ -320,10 +833,10 @@
     </article>
 
     <nav class="navigation">
-      <a href="/" class="btn btn-secondary">home</a>
+      <a href="/letters/" class="btn btn-secondary">home</a>
       <div class="nav-links">
-        <a href="/letters/just-him-telling-various-zionists-fuck-you.html" class="btn btn-secondary">← just him telling various zionists &quot;fuck you&quot;</a>
-        <a href="/letters/spring-asparagus.html" class="btn btn-secondary">spring asparagus →</a>
+        <a href="/letters/letters/just-him-telling-various-zionists-fuck-you.html" class="btn btn-secondary">← just him telling various zionists &quot;fuck you&quot;</a>
+        <a href="/letters/letters/spring-asparagus.html" class="btn btn-secondary">spring asparagus →</a>
       </div>
     </nav>
   
@@ -346,7 +859,7 @@
     async function installPWA() {
       if (!deferredPrompt) {
         // If not installable, redirect to PWA
-        window.location.href = '/app/';
+        window.location.href = '/letters/app/';
         return;
       }
 
@@ -365,7 +878,46 @@
     }
 
     function openPWA() {
-      window.location.href = '/app/';
+      window.location.href = '/letters/app/';
+    }
+
+    // Progressive Enhancement: Check if user has PWA installed
+    // If they do, redirect them to the app version for a richer experience
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // User is in standalone mode (PWA is installed and running)
+      // Keep them on static page - they're already in PWA mode
+      console.log('Running in PWA mode');
+    } else {
+      // Check if user has previously used the PWA (has cached data)
+      if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+          const hasPWACache = cacheNames.some(name => 
+            name.includes('static-') || name.includes('data-')
+          );
+          
+          // Only show PWA banner if they have cached content
+          if (hasPWACache) {
+            const banner = document.querySelector('.pwa-banner');
+            if (banner && banner.style.display === 'none') {
+              banner.style.display = 'flex';
+            }
+          }
+        });
+      }
+    }
+
+    // Register service worker for all pages
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/letters/sw.js', { scope: '/letters/' })
+          .then((registration) => {
+            console.log('SW registered:', registration);
+          })
+          .catch((error) => {
+            console.log('SW registration failed:', error);
+          });
+      });
     }
   </script>
 </body>
