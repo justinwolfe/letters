@@ -473,7 +473,7 @@ async function generateLetterPage(
   // Use the imageExtMap to get the correct file extension for each image
   markdown = markdown.replace(
     /!\[([^\]]*)\]\(\/api\/images\/(\d+)\)/g,
-    (match, alt, id) => {
+    (_match, alt, id) => {
       const ext = imageExtMap.get(Number(id)) || 'png';
       return `![${alt}](${BASE_PATH}/images/${id}.${ext})`;
     }
