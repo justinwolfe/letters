@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/19">
+  <title>12/19 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/19</h1>
+        <time datetime="2016-12-19T00:00:00Z">December 18, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that though it is monday and though i&#39;m not taking off much time for the holidays, the next two weekends are three day weekends. i&#39;m thankful to be hopeful that things will be less crazy at work because of other people taking off time for the holidays. i&#39;m thankful that though it is very cold outside today, i don&#39;t have to leave the house. </p>
+<p>i&#39;m thankful that even though the last time i did this i told myself i&#39;m not going to do work for work outside of working hours, since my manager doesn&#39;t appreciate it, i spent a few hours this weekend writing a little script so my team can have emojis in our new chat platform. i&#39;m thankful that it doesn&#39;t matter if it&#39;s appreciated, because i&#39;m glad that i did it and i enjoyed the challenge of doing it. i&#39;m thankful for <a href="https://github.com/github/gemoji/blob/master/db/emoji.json">this json</a> of all the emojis up through ios10, which is awesome. i&#39;m thankful to have learned of <a href="https://xn--qeiaa.ws/">emoji domains</a>.</p>
+<p>i&#39;m thankful that i didn&#39;t eat anything with much added/refined sugar yesterday and didn&#39;t crave it too badly. i&#39;m thankful for blackberries. i&#39;m thankful for the $40 amazon i tablet i bought for the sole purpose of watching <em>the amazing race</em> while on the treadmill. i&#39;m thankful that i stayed in the bath for like 2 and a half hours yesterday while finishing <em>anathem</em>. i&#39;m thankful for this lovely passage about friendship and media consumption from the book i started reading last night, <em><a href="https://www.amazon.com/Fair-Play-Review-Books-Classics-ebook/dp/B0092FL1D4/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1482152305&sr=8-1">fair play</a></em> by tove jansson:</p>
+<p>&quot;<em>About eight they remembered Alma&#39;s dinner. Jonna phoned her. &#39;I&#39;m sorry to call so late,&#39; she said, &#39;but you know, Fassbinder&#39;s on this evening and it&#39;s the last time...What? No, that won&#39;t work; we have to be here to cut out the commercials. Yes, it&#39;s really too bad. But you know how I loathe those commercials; they can ruin the whole film. Say hello to everyone. We&#39;ll see you...Yes, I will. Have fun. So long.&#39;</em></p>
+<p><em>&#39;Was she mad?&#39; Mari asked&#39;</em></p>
+<p><em>&#39;Oh, you know. Apparently the woman hasn&#39;t a clue about Fassbinder.&#39;</em></p>
+<p><em>&#39;Should we unplug the phone?&#39;</em></p>
+<p><em>&#39;If you want. Nobody&#39;s going to call. They know better. Anyway, we don&#39;t have to answer.&#39;</em></p>
+<p><em>The spring evenings had grown long, and it was hard to darken the room. They sat in their separate chairs and waited for Fassbinder, their silence a respectful preparation. They had waited this way for their meetings with Truffaut, Bergman, Visconti, Renoir, Wilder, and all the other honoured guests that Jonna had chosen and enthroned—the finest present she could give her friend.</em></p>
+<p><em>Over time, these video evenings had become very important in Jonna and Mari&#39;s lives. When the films were over, they talked about them, earnestly and in detail. Jonna put the cassette into a slipcover decorated in advance with text and pictures, copies from the film library she&#39;d been collecting all her life, and the cassette was given its dedicated place on the shelves reserved for videos—an attractive, continuous surface of gold and soft colours with little flags on the backs showing the country where each film was made. Only very rarely did Jonna and Mari have time to see their films a second time. There was an uninterrupted flood of new ones to accommodate</em>.&quot;</p>
+<p>i&#39;m thankful for plenty and thankful for good (though not thankful for <a href="https://en.wikipedia.org/wiki/Good_%26_Plenty">good &amp; plenty</a>). i&#39;m thankful if you&#39;re looking for a gift there are still two days left of discounted gift certificates at <a href="https://twitter.com/emilybooks/status/809028944267722752">emily books</a>. i&#39;m thankful for a <a href="https://t.co/h6ikCWHoyV">new tipsy baker</a> post, which also linked to a surprising post by molly wizenberg. i&#39;m thankful for <a href="http://www.cbr.com/review-passengers-soils-its-escapism-with-repulsive-reveal/">this spoilery review</a> of the movie <em>passengers</em>, which is almost certainly more entertaining than the movie passengers. i&#39;m thankful for <a href="https://theawl.com/brand-new-is-the-best-band-in-the-world-fdedbef85cf6#.rgeazba0w">this lengthy essay about brand new</a>, d&#39;s all-time-favorite band. i&#39;m thankful for julia jacklin, who was on my spotify discover and who has <a href="https://play.spotify.com/album/1BAQysvP0rnwlOqcFeijh3">a lovely woozy hazy album</a> that i&#39;d recommend if you like angel olsen but want a slightly sweeter version (i&#39;m thankful that i do, but thankful if you don&#39;t).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1220-3674.html" class="btn btn-secondary">← 12/20</a>
+        <a href="/letters/1218-2236.html" class="btn btn-secondary">12/18 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

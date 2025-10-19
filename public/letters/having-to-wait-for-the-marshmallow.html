@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="having to wait for the marshmallow">
+  <title>having to wait for the marshmallow - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>having to wait for the marshmallow</h1>
+        <time datetime="2023-06-27T00:00:00Z">June 26, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p>1. on saturday while deborah went to the farmer&#39;s market (i&#39;m thankful that i didn&#39;t have to go to the farmer&#39;s market and she got to go with ec and v and brought back some really good strawberries), i moved and distributed the six cubic yards of mulch sitting on the apron of our driveway around the back yard and the front yard, one wheelbarrow load after another. i&#39;m thankful for how satisfying the task was, how as i worked i could see the pile get smaller and smaller until (three hours later) it wasn&#39;t a pile anymore and i was done. i&#39;m thankful that it looks much nicer than it did before and also that i don&#39;t have to worry about miso escaping under a bad part of the fence. i&#39;m thankful that though there are problems with my body, when i need it to do something, it has the capacity (i have the capacity) to keep going as long as i need to get the job done. i&#39;m thankful that though i was very sore the next day, i was less sore yesterday and am less sore today.</p>
+<p>2. for dinner the last two nights we had <a href="https://cooking.nytimes.com/recipes/1020381-crispy-spiced-chickpeas-with-peppers-and-tomatoes">crispy spiced chickpeas with peppers and tomatoes</a>, which i&#39;ve made a number of times and is probably my favorite vegetarian dish to cook. tips: always couscous underneath, add some honey or agave to the dressing, don&#39;t skimp on the herbs (i&#39;m thankful that though i somehow left behind the cilantro and parsley i picked up in the produce section, in a pinch, deborah took some basil from her plant in the yard and i cut up some perilla leaves left over from korean barbecue last week). i didn&#39;t want to turn on the oven and make the kitchen any hotter so i made this in the air fryer in batches (first the chickpeas, then the veg) and despite what they say about not crowding the air fryer i still got perfectly good browning/cooking (let&#39;s be real when i cook it in the oven i&#39;m also crowding the sheet pan).</p>
+<p>3. making us s&#39;mores over a gas burner on the stove using a korean metal chopstick as a skewer. the way that a s&#39;more is a true gestalt experience—graham crackers or marshmallows or hershey bars all low to mid (i like hershey bars more than the average person but i also am not blind to their deficits) on their own but together they melt with you. watching the marshmallow slowly toast golden as you turn it (but also the experience of accidentally letting it ride a little too close to the flame and it flashing up and blowing it up, the skin of the marshmallow blistered by the heat). the way that having to wait for the marshmallow slows down my inherent tendency to speed binge on sweets (i still had two s&#39;mores but could have had more).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/such-a-good-song-to-karaoke.html" class="btn btn-secondary">← such a good song to karaoke</a>
+        <a href="/letters/i-could-just-piggyback.html" class="btn btn-secondary">i could just piggyback →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

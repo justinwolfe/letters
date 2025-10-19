@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="4/23">
+  <title>4/23 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>4/23</h1>
+        <time datetime="2019-04-24T00:00:00Z">April 23, 2019</time>
+      </header>
+
+      <div class="letter-body">
+        <p>that d saw that i was busy at lunch and made me soft boiled eggs, and that the meeting that had interrupted me coming to the kitchen got canceled at the last minute, so i could still eat them when they were hot.</p>
+<p>for the sensation of peeling a hot soft boiled egg, which i discovered pretty recently (as someone who has always disliked cold hard boiled eggs and wrote off the whole genre for years because of that) and which is so satisfying, especially when it&#39;s going well.</p>
+<p>that my day of work went well, that i did my first thorough code review for someone else, which, even though i wish i had had all the insights early on instead of having to come back and add comments later, was still an accomplishment, and that i&#39;m getting a review from a teammate tomorrow (even if that&#39;s kind of scary too), and had several moments of connection with coworkers, and had a good meeting with my boss, from whom i learned the names of the parts of a tree and who i taught the word &quot;abscission,&quot; which i would have not learned if i had not written you yesterday.</p>
+<p>i&#39;m thankful for the names of the parts of a tree, which are, from the ground up, stump - trunk - leaders (where the trunk splits) - branches (where the leaders split) - twigs (where the branches split) - leaves/flowers</p>
+<p>for the show <em>barry</em>, which didn&#39;t win me over at first but which d stuck with and that i then got pulled into and now really like, and which has so many great meta-acting moments that feel like they have a spiritual kinship with <em>the americans</em>. that there was a new <em>coffee and tv</em> (<a href="https://tinyletter.com/coffeeandtv/letters/coffee-tv-automatic-drip-and-the-departed">https://tinyletter.com/coffeeandtv/letters/coffee-tv-automatic-drip-and-the-departed</a>). for the second episode of this season of <em>game of thrones</em>, which made me feel genuinely sentimental, as did the season finale of <em>the magicians</em>, which is a show that imperfect as it is is one i feel very <em>fond</em> of, and i&#39;m thankful for feeling fondness, which is a feeling i love.</p>
+<p>that though they did not email me to tell me so, the insurance plan change i made to get d on my insurance was successfully processed and not only that, but i was able to navigate the labyrinth successfully log into the sub-portal of our HR website and then, by clicking a hidden link, get into the insurance company&#39;s website and get d a copy of her new insurance card.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/425.html" class="btn btn-secondary">← 4/25</a>
+        <a href="/letters/422.html" class="btn btn-secondary">4/22 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

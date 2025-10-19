@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 9/24">
+  <title>thank you notes 9/24 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 9/24</h1>
+        <time datetime="2016-09-24T00:00:00Z">September 23, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that after several long days of disrupted routines, of late nights and early mornings and labor physical, intellectual, and emotional, d and i are lying in bed this morning. i&#39;m thankful, after having had somewhere to be all the time for several days, to have to be nowhere except the place i am. i&#39;m thankful for the relief of this, but i&#39;m thankful also for all of the experiences that exhausted me.</p>
+<p>i&#39;m thankful to understand that it really is important to get face time (body time, voice time, walking down the street time, sharing french fries time, tasting each others&#39; cocktails time, walking through the twilight time, rolling around with laughter on the floor of a hotel time) with people who you usually just share digital spaces with. i&#39;m thankful that it can feel scary and hard to have to choose that, but i&#39;m thankful having lived in it for several days to know that it&#39;s worth it, even if it&#39;s also very tiring.</p>
+<p>i&#39;m thankful that my basic understanding or opinion of the people i work with didn&#39;t really change (i&#39;m thankful that&#39;s good, since i basically like all of the people i work with and really like a lot of them), but thankful that my understanding of them became, through the accretion of moments spent in the same space, richer, higher definition. i&#39;m thankful to have been reminded that the little cartoons we carry around in our minds of other people based on chat messages are projections that say as much about us as they do about them.</p>
+<p>i&#39;m thankful for something that d was talking about with one of our coworkers, which is how great it is to have an owner who is an introvert, which means that there&#39;s none of the mandatory fun of the archetypal retreat. i&#39;m thankful that people were free to do or not do whatever they wanted together, to step away when they needed to, and thankful that this made the choice we all made to keep spending time with each other more meaningful, because it was a choice, not something forced.</p>
+<p>i&#39;m thankful that yesterday after a morning of presentations and trainings, we went out to the lake south of town where i ride my bike, but which i had never been inside, i&#39;m thankful that we rented a double decker pontoon boat, which everyone piled onto. i&#39;m thankful to have been able to scratch the itch that i&#39;ve always felt in childhood to climb to the top of things, even though the metal roof of the boat was radiant with heat from the sun. i&#39;m thankful that as soon as we stopped out in the lake, i took off my shirt, clambered over the guardrail, and leapt into the water. i&#39;m thankful that this seemed to open things up and suddenly other people were jumping and diving in with me.</p>
+<p>i&#39;m thankful, having not really swum in a lake except once when i was a child, for how lovely it was, calm and cool. i&#39;m thankful to not have the submerged fears of sharks and jellyfish and stingrays and rip currents that play through my brain when i&#39;m in the ocean. i&#39;m thankful for the feeling of mud and smooth rocks under my feet in the shallows. i&#39;m thankful that the boat had a water slide from the second level into the water and thankful that i tried using it both feet first and face first (i&#39;m thankful for going face first, which was much more comfortable.</p>
+<p>i&#39;m thankful that though i wasn&#39;t legally supposed to drive a jet ski, i still drove a jet ski. i&#39;m thankful, as someone who doesn&#39;t drive cars, for the strange superpower feeling of suddenly being able to control that much energy and force with a little trigger on the steering bar. i&#39;m thankful that the lake was mostly empty, so i didn&#39;t have to worry about careful maneuvering or crashing into people. i&#39;m thankful for the fear of trying to turn, which always made me feel like i was almost on the edge of tipping over and falling in but which i would pull out of at the last moment, lurching forward with a gentle squeeze of the accelerator.</p>
+<p>i&#39;m thankful that halfway through the day on the lake, the boat made a stop at the dock so people who wanted to get off could do so. i&#39;m thankful that i followed d and some of our coworkers off and up to a covered picnic area, where we ate ice cream cones and talked about the places where we live. i&#39;m thankful that they decided to go on a hike and am thankful that i left my shoes on the boat and so instead decided i was going to swim from the beach out to the boat. i&#39;m thankful to have had the opportunity to do this, which i have always wanted to since living in miami and seeing rich peoples&#39; boats parked out past the sand bar.</p>
+<p>i&#39;m thankful, having not swum for a while and not swum long distance for longer, that my body was still able to make the motions that pushed me across the water. i&#39;m thankful, since it&#39;s not really safe to swim alone, that for part of the journey, i stayed relatively close to the shore so that i could bail out if i needed to. i&#39;m thankful, though, to have eventually veered into the darker cooler waters away from the shore. i&#39;m thankful to have alternated between a lazy freestyle/dog paddle and, when i got tired, a backstroke. i&#39;m thankful that i was able to use what features of the boat i could see as a guide to how much closer i was getting—when i could resolve the second level of the boat, when i could see the plumes of water on the back of the jet skis, when the people looked like ants and then slowly, gradually, each time i turned over from my backstroke rest position, more like the people i knew.</p>
+<p>i&#39;m thankful for how i felt exhausted but accomplished when i got close enough to see people on the boat. i&#39;m thankful for the owner, who yelled out &quot;are you okay?&quot; to me and thankful that, thinking i had been recognized, i threw up a thumbs up, which i took to mean &quot;yes, i&#39;m not drowning, but i&#39;m looking forward to getting onto the boat.&quot; i&#39;m thankful, however, that to them, i was just an anonymous head in the water and so, once they confirmed i wasn&#39;t drowning, they started to pull away. i&#39;m thankful that i realized this and then started to haul ass as fast as I could toward the boat, i&#39;m thankful they realized perhaps there was an issue in communication and slowed down so that i could get close enough for them to recognize me. i&#39;m thankful, as i approached the boat, to have made a joke about dual channel identity verification, one of the subjects of our training that morning, to let them know that i was okay. </p>
+<p>i&#39;m thankful to be able to push my body in order to do things. i&#39;m thankful for the quiet of the lake, which was a nice reprieve from the intensity of constant communication. i&#39;m thankful that people were impressed with my swimming ability, since i think for people who aren&#39;t on my direct team, all they know of me is that i&#39;m d&#39;s husband. i&#39;m thankful to have become more real to them as they became more real to me. </p>
+<p>i&#39;m thankful, even though it wasn&#39;t the primary focus of the retreat, for the actual work that we did. i&#39;m thankful that as of last week, i felt incredibly stressed out and overwhelmed and didn&#39;t know how we could possibly keep going at the pace that we&#39;re going. i&#39;m thankful to have been in several meetings where this was discussed and where my managers listened to and empathized with the concerns of the group and thankful that i feel like we walked away from those discussions with actionable takeaways that will hopefully make our work lives better. i&#39;m thankful for my team member who lives in peru and brought be a little carved wooden donkey to use as a totem or charm in my workspace.</p>
+<p>i&#39;m thankful, on our tour of a local distillery, to have let myself try the fancy craft cocktails (i&#39;m thankful for one infused with peach puree and another with watermelon, lemon juice, and cayenne—thankful for the way that the burn of cayenne floated over the burn of vodka in the back of my throat) and free samples of the product at various stages of completion (i&#39;m thankful that d and i had fresh whiskey right out of the still, which made me feel like i had a campfire in my mouth). i&#39;m thankful for my coworker who kept drunkenly pretending a decorative gourd was some kind of seasoning container. i&#39;m thankful </p>
+<p>i&#39;m thankful that everything ended with a big barbecue at a shelter outside of town. i&#39;m thankful for the undercurrent of sadness that all these people i had come to love in new ways were leaving, which became surprisingly strong over the course of the evening, but i&#39;m thankful for that sadness, which is meaningful, which represents connection, and which i think will help me in the future moments when i feel like we&#39;re just boxes of words knocking against each other inside a blank page. </p>
+<p>i&#39;m thankful that as the sun set in the distance past a stand of trees and the power lines over the highway, i walked away from the party and onto an empty lawn for a few minutes to watch it. i&#39;m thankful for the way the bright colors blurred into each other, as if smudged by a wet brush. i&#39;m thankful for the lamp on the highway, which kept coming on for a moment, triggered by some light sensor, and then, after i had been focusing on it with all my energy, going out again. i&#39;m thankful to have stood there watching it as it glowed and then as it faded and thankful to have known that if i waited long enough, it would come back and glow again. i&#39;m thankful that even though it was far away, i could feel its warmth.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-925.html" class="btn btn-secondary">← thank you notes 9/25</a>
+        <a href="/letters/thank-you-notes-scarlett2.html" class="btn btn-secondary">thank you notes (Scarlett)(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

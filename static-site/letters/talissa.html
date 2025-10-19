@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(talissa)">
+  <title>(talissa) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(talissa)</h1>
+        <time datetime="2018-02-15T00:00:00Z">February 14, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>thankful for writing. thankful for Our Home in the Dark that allows me to write what and how i want with a healthy pressure from my co-writers to push me to always produce my best. thankful that even though i&#39;m not always satisfied with what i write, i know that my best work is always ahead of me. thankful for our latest piece on <a href="https://ourhomeinthedark.wordpress.com/2018/02/12/the-house-sarah-polley-built/">Sarah Polley&#39;s holy trinity</a>. thankful that we look up to the same people and make fun or are suspicious of the same people; thankful for that feeling of understanding only people from the same part of the internet share. </p>
+<p>thankful for the Bandung Women&#39;s March team. thankful that it&#39;s being led by someone as kind and caring and committed and often-unintentionally-hilarious as B. thankful for a productive sunday where we met the volunteers. thankful to have hope, to see that people care. thankful that i am comfortable in leading my department, only because i am fairly good at planning and organizing and communicating, although not very much skilled in everything else. thankful that B, E, J and i ended up at yumaju where B and i finally finished Cloverfield Paradox, which was like Coherence and Life and every other space-horror film you could think of, without the fervor or the focus or the ambition. thankful that we ended the day with all seven of us securing our tickets to Black Panther on the 14th. thankful for the music video of <a href="https://www.youtube.com/watch?v=GfCqMv--ncA">All the Stars</a> that made me cry. </p>
+<p>thankful for RuPaul&#39;s Drag Race All Stars, and at this point in my life if someone offered me to write a book, this show would be a chapter on its own. thankful that it exists despite its contradictory nature that would make another show collapse on itself. thankful that it&#39;s both genuine and artificial, both inauthentic and sentimental. thankful that it displays countless forms of talents while giving us a coherent narrative with great drama and clear character developments. thankful that it uses the machinations of a reality show as a challenge in itself--to win the competition is to defeat everything the show is built upon. thankful that we&#39;re only three episodes in but they&#39;re all so dense and gave us so much of everything: Aja <a href="https://twitter.com/tasilsa/status/957269141563457536">deathdropping</a> off of a giant box, <a href="https://img.buzzfeed.com/buzzfeed-static/static/2018-01/26/12/asset/buzzfeed-prod-fastlane-01/anigif_sub-buzz-644-1516988419-6.gif">Aja&#39;s face journey</a>, BenDeLaCreme lipsyncing to Call Me Mother as <a href="https://www.youtube.com/watch?v=79K8UIokD1g">Julie Andrews</a> (i love that Trixie danced with her mouth open the whole time), the whole Bitchelor challenge especially Trixie who finally had the chance to be <a href="https://twitter.com/Twerkingonpanem/status/961942662151581696">Trixie</a>, i could go on but i know you would not. thankful for this All Stars <a href="https://twitter.com/tasilsa/status/959821306685353986">bingo</a> we did on B&#39;s birthday. thankful that she is as invested in it as i am, although not as obsessed as i am, and there isn&#39;t a day where we don&#39;t send each other Drag Race memes or news. still so thankful that Courtney Act, who got the bitch edit on her season, won the latest season of Celebrity Big Brother UK. thankful that she got the chance to show the world what an intelligent, eloquent, kind, understanding, unbelievably patient, and beautiful person she is. thankful that Drag Race Thailand is coming real soon. thankful that The Trixie and Katya Show is on air. thankful that Peppermint is coming to Broadway. thankful that drag queens are everywhere.</p>
+<p>thankful that it&#39;s my favorite month. thankful to have been alive for 23 years. thankful that MBJ is my birthday twin. thankful for this amazing sheer black <a href="https://twitter.com/tasilsa/status/960917404363583489">dress</a> that i wore on my birthday. thankful for the free iced latte yumaju&#39;s owner gave me and for the birthday instastory <a href="https://twitter.com/tasilsa/status/961997735283978240">shoutout</a>. thankful for internet friends who sent me their birthday wishes. thankful for my haram ass bitches: B, T, E, and A. thankful that we all agreed to have (multiple) dinners at Sudirman Street. thankful for the cheesy pork ribs i ordered, and thankful that the fries were perfect even though i was too full to finish it. thankful for the conversations we had. thankful for the moment A was giving me advice on being 23--to not isolate yourself, that it&#39;s okay to be alone but remember not to pull away from people who really care about you--and B and E were the ones nodding and sighing in regret and remembrance because that&#39;s what happened in their 23-s, but that was a lesson i already learned that i know i can practice. thankful that he also told me that his mentor once advised him to have a job that&#39;s not related to what he studied and suggested i, who studied psychology, do the same. thankful that i already did: writing about culture for <a href="https://www.vice.com/en_id/contributor/talisa-febra">vice</a>. thankful that in that moment i realized i am happy and healthy, and for once i feel like there&#39;s nothing inside or about me that needs fixing, only improving. thankful for being the closest i have ever been to the person i want to be. </p>
+<p>- <a href="https://twitter.com/tasilsa">talissa</a> (2/12/18).</p>
+<p>republished with permission from <a href="https://tinyletter.com/tasilsa/letters/february-thank-you-notes"><em>memory tags</em></a>: subscribe <a href="https://tinyletter.com/tasilsa/">here</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/216-7764.html" class="btn btn-secondary">← 2/16</a>
+        <a href="/letters/214.html" class="btn btn-secondary">2/14 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 9/13">
+  <title>thank you notes 9/13 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 9/13</h1>
+        <time datetime="2016-09-13T00:00:00Z">September 12, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i realized quickly that i had included an API key for our knowledge base in a publicly accessible website where, i realized quickly, i couldn&#39;t delete it. i&#39;m thankful for the intense panic which struck me and thankful that i did the right thing by immediately posting about it to the information security channel in our company&#39;s chat app, even though that was embarrassing. i&#39;m thankful, though this happened after working hours, for my coworker, who quickly responded to my frantic apologetic post that he had the ability to disable the key. i&#39;m thankful that though he couldn&#39;t immediately disable the key, because it was <em>the</em> key rather than <em>a</em> key (which he said was not my fault), he reassured me that the key only had read permissions and so i had not given anyone the ability to destroy our knowledge base and it would be okay. i&#39;m thankful to have thanked him profusely in a DM and to have secretly ordered him a personalized novelty coffee mug based on an inside joke.</p>
+<p>i&#39;m thankful that having a panic attack about the API key during the part of the day where my body was supposed to be coming down from the intensity of work and relaxing was not a good thing, but i&#39;m thankful to have done my best to ride it out. i&#39;m thankful that i had the syntax correct in the get request i was using the API key for and that when i get a new API key, i should be able to do the thing i was trying to do. i&#39;m thankful for sun salutations and i&#39;m thankful for my eucalyptus essential oil inhaler. i&#39;m thankful for old podcasts i have listened to a million times but still like listening to and find comforting. i&#39;m thankful to have a comfortable bed and a working window unit air conditioner. </p>
+<p>i&#39;m thankful for the snapchat discover story about muslim pilgrimages to mecca. i&#39;m thankful for the concept of the hajj, which i think is lovely, even if the reality of it seems like it would be so overwhelming. i&#39;m thankful for the kaaba, which is such a mysterious structure. i&#39;m thankful for the strangeness of its black granite exterior and the contrast with the world around it, which makes it possible to understand how people can (and could in the past) make it a focus of their faith and belief. i&#39;m thankful for the way people can invest meaning in rituals and objects. i&#39;m thankful for diaa hadid&#39;s <a href="http://www.nytimes.com/2016/09/11/world/middleeast/hajj-mecca-saudi-arabia.html?_r=0">postcards from the hajj</a> series from the new york times.</p>
+<p>i&#39;m thankful for the bit i swear is in <em>to the finland station</em> but which i can&#39;t find in the bootleg copy i have now, where edmund wilson writes about how marx was awkward and had trouble relating to people in the real world even as he believed in the essential power of community and cooperation. i&#39;m thankful that when i tried to search my email to see if i&#39;d written about this, google suggested the query &quot;edmund brian wilson.&quot; i&#39;m thankful for <em><a href="https://www.amazon.com/dp/B0074HCLPE/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1#nav-subnav">red plenty</a></em>, the book i am reading now by the author of <em>golden hill</em>, which is a polyphonic historical novel about the soviet union. i&#39;m thankful for the section, in which a young soviet woman watches &quot;<a href="https://www.youtube.com/results?search_query=eams+glimpses+of+the+USA">glimpses of the u.s.a,</a>&quot; a film made by the eames brothers that was projected onto <a href="https://s-media-cache-ak0.pinimg.com/564x/35/2a/21/352a219b8f8e866b91454d15880c5c4f.jpg">seven screens embedded in a huge geodesic dome</a> in the american national exhibition in moscow in 1959. i&#39;m thankful also for this part, which imagines kruschev discoursing on fast food in new york:</p>
+<p>&quot;<em>Among the onlookers, on the way to the Waldorf Astoria, [Kruschev] spotted a small white cart and a man in a white apron working at it.</em></p>
+<p><em>&#39;What is that?&#39; he asked Troyanovsky.</em></p>
+<p><em>&#39;He is selling lunch to the people, sire. He is cooking an American dish —&#39;</em></p>
+<p><em>&#39;I know this! This is a kiosk for hemburgers, isn&#39;t it? You are too young to remember probably, but we had this in Moscow and Leningrad before the war. Mikoyan went on a fact-finding mission about food technology, mainly to France to pick their brains about champagne, but also here, and he brought us back ketchup, ice cream and hemburgers. Look at this! Gromyko, look at this! It is such a good idea. He takes a flat cake of minced beef—it is already cut to the right size—and he fries it quickly on the hotplate in front of him. In a few seconds it is done. He slips it in between two round pieces of bread, also cut to the right size, then he adds ketchup or mustard, from those bottles, which are just to his right, where he can easily reach them. And the meal is cooked. With no waiting around. It&#39;s like a production line. It&#39;s an efficient, modern, healthy way of feeding people. That&#39;s why we liked it, that&#39;s why we set it up in some of the parks. Perhaps we should do it again. I wonder how much they are charging for a a hemberger?&#39;</em></p>
+<p><em>&#39;I can ask [US Ambassador] Lodge.&#39;</em></p>
+<p><em>&#39;Oh, he won&#39;t know! This is worker&#39;s food!&#39;</em></p>
+<p><em>&#39;I believe, sir, about fifteen cents,&#39; said Lodge, when the question had been relayed to him.</em></p>
+<p><em>&#39;At that price, it must be subsidised quite heavily,&#39; offered Gromyko.</em></p>
+<p><em>&#39;No!&#39; said the Chairman in triumph. &#39;No subsidy! This is America! Don&#39;t you see that the very fact that the hemburger kiosk is there means that somebody has worked out how to make a profit by selling the meal at fifteen cents. If the capitalist who owns the kiosk couldn&#39;t make a profit at that price, he wouldn&#39;t be doing it. That is the secret of everything we see here.</em>&#39;&quot;</p>
+<p>i&#39;m thankful for hamburgers, which are an expression of some of the best and worst things about capitalism.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-moe7.html" class="btn btn-secondary">← thank you notes (moe)(7)</a>
+        <a href="/letters/thank-you-notes-912.html" class="btn btn-secondary">thank you notes 9/12 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

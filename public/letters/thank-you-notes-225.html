@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/25">
+  <title>thank you notes 2/25 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/25</h1>
+        <time datetime="2016-02-25T00:00:00Z">February 24, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that yesterday afternoon, i defused a tense exchange about a grant budget between a faculty member and the office accountant by 1) noting that they were &quot;<em>kind of matching</em>&quot; by both wearing black cardigans over white shirts with horizontal stripes and then, when a few moments later, the conversation again became fraught and there was a difficult silence during which the office accountant seemed to be imagining murdering the faculty member for a mistake she had made in managing the budget, 2) breaking the silence by saying that i would love to watch a _odd couple-_style sitcom in which the faculty member and the office accountant were roommates. i&#39;m thankful for the way that laughing at my joke changed the tone of their voices, loosened something, and thankful that they left their dispute to participate more fully in the folly of imagining this sitcom, how every episode would involve the faculty member doing something to make the office accountant decide to murder her but how at the climax of each episode, the office accountant&#39;s heart would be touched by some gesture by the faculty member and she would decide not to go through with her plot and they would embrace and the studio audience would cheer. i&#39;m thankful for the office accountant&#39;s command of classic sitcom tropes as she discussed how her character&#39;s signature bit would be &quot;the look,&quot; a steely glare that in real life everyone in the office (faculty and staff alike) fears being the target of, and how the three of us laughed again as i held my hands up in the shape of an invisible frame and zoomed in on her face as she did &quot;the look.&quot; </p>
+<p>i&#39;m thankful that one of the school&#39;s IT staff came by the other morning to introduce their new employee. i&#39;m thankful for this gesture towards connection that people in offices make on the first days of new employees, even though i know it can also be overwhelming for the new employee, as in addition to getting used to a new place and new responsibilities, they are also having to interact with all of these new people and try to learn their names and who they are. i&#39;m thankful for the new employee, who looks a lot like my cousin a, who also works in IT, and whose voice sounds similar to a, which i thought of as a way to try to remember who he was. i&#39;m thankful that after a kind of shitty adolescence my cousin a is really happy with his work and his life. i&#39;m thankful to have greeted the new employee with a nice handshake and thankful for how the it staff member introducing him said &quot;<em>this is justin. he&#39;s a</em>....&quot; and i thought she was grasping for my job title and so i said &quot;<em>student services assistan_t&quot; and she said &quot;<em>well, i was going to say &#39;all around great guy&#39;.</em>&quot; i&#39;m thankful that, blushing from this compliment, i rambled through a thing about how i feel like the school&#39;s IT people are awesome and they unfortunately don&#39;t always get the respect they deserve from all the school&#39;s employees and how because of that i always try to make sure to treat them as respectfully as possible and i&#39;m thankful that after i trailed off indefinitely, the it staff member said &quot;</em>...and that&#39;s why we do his support tickets first_!&quot; and we all laughed. i&#39;m thankful that i forgot the new employees name after he left the office but then ran into the IT staff member later in the day and asked her to remind me of it and she told me and actually took a moment to think of the name, which made me feel better about forgetting it.</p>
+<p>i&#39;m thankful for the new doctoral student who i emailed yesterday that his insurance card had been delivered to the office, just in case he didn&#39;t know to check his mailbox here. i&#39;m thankful for how his response, with its traces of colonial british english, used the phrases &quot;<em>hall of residence</em>&quot; and &quot;<em>shall</em>,&quot; which i found delightful. i&#39;m thankful for the faculty member who returned from a conference which she said wasn&#39;t very fulfilling but how she was very excited to describe having gone shell collecting on the beach and getting several conch shells and a perfect sand dollar, all of which she packed in her suitcase to bring home. i&#39;m thankful, even though i don&#39;t really like girl scout cookies (ama), that a faculty member who bought a lot of girl scout cookies but doesn&#39;t want to eat them himself keeps putting boxes of do-si-dos and trefoils on the cart where we keep communal food and thankful for how people are so happy to be able to walk by and grab a cookie or two as they go from one meeting to another.</p>
+<p>i&#39;m thankful that when the visiting lecturer came in to the office this morning in a sharp blue calvin klein suit, he greeted me with my chinese nickname and said &quot;ni hao ma&quot; and i surprised him by saying &quot;pretty good, how about you?&quot; (i&#39;m thankful to remember when he tore the inseam of the the pants of the suit his first time wearing them and the office accountant stitched them back up (i&#39;m thankful for how she always says her repairs turn out better than the stitches were originally) and wouldn&#39;t take any money for doing it, so he bought her the kind of gas station coffee she likes best and she mentioned this warmly to me). i&#39;m thankful that this morning, i taught the visiting lecturer how to say &quot;two beers, please&quot; in korean, which is the majority of the korean i remember (i&#39;m thankful how the korean word for &quot;grandmother&quot; sounds like &quot;harmony&quot;), and thankful how, when i asked him how they say goodbye in taiwan and he laughed and said people his age usually just said &quot;bye&quot; or &quot;bibye,&quot; we mused about the words and phrases that get adopted from english in other languages and how it always makes me laugh when korean people say &quot;oh. my. god.&quot; which they say, young and old alike, in a funny simulation of how silly an american accent sounds, in a way which seems ironic and like a meme-y reference to something but i don&#39;t know exactly what. i&#39;m thankful to remember when i lived in korea how when i got nervous sometimes in interactions with people who didn&#39;t speak english, i would start speaking italian, i guess because my brain was thinking &quot;FOREIGN LANGUAGE, NOW,&quot; and that was all i had on deck. i&#39;m thankful how my go-to solution for not being able to say things in korean was just smiling and repeatedly saying one of the korean words for thank you.</p>
+<p>i&#39;m thankful that this morning in response to reading about someone crying when i searched for the dana ward poem &quot;<a href="https://www.mixcloud.com/beyondthebreakwater/crying-by-dana-ward-103014/">crying</a>,&quot; which is soothing and which i came to love through a mashup that the poet <a href="http://www.thehomeschool.org/ekphrasis/2015/6/29/cassandra-gillig">cassandra gillig</a> made with the backing track from a katy perry song, i couldn&#39;t find the full text, but i found the mashup itself, which i thought had disappeared and which was even better than the poem itself. i&#39;m thankful that her poetry/pop mashups, which are one of <a href="http://www.metafilter.com/132077/I-think-the-musicality-of-these-poets-is-often-ignored">my favorite things</a> of all time and which i thought had disappeared from the internet after they stopped being on her tumblr, are all available for us in <a href="https://cassandragillig.bandcamp.com/">an album on bandcamp</a> called <em>put me in charge of poetry magazine.</em> </p>
+<p>i&#39;m thankful for the artist&#39;s statement she gave with one of them back when they were first released, about how she wasn&#39;t trying to be &quot;<em>even remotely irreverent</em>,&quot; but rather she put the poems and songs together because she believes &quot;<em>pop music has a way of capturing our emotions in their most palatable form &amp; placing pop songs behind poems can guide us incorrectly or correctly but I’m hoping I’m going in a correct direction</em>.&quot; i&#39;m thankful for all of the mashups, but especially &quot;do not can&#39;t stop into the good night&quot; which mashes up dylan thomas and miley cyrus and is the best gateway drug to the collection, &quot;crying&quot; which is my second favorite, especially for when he says &quot;<em>even after the &quot;end of the lyric,&quot; i&#39;d hunt the house seeking dry eyes and / what...is all over this tissue? / i used to have a little opera and then it closed / and wow, i would lose my faux composure in its balconies..</em>.&quot; i&#39;mt thankful to imagine trying to listen to this song while crying, of the triumphant warm string pads and chiming keys of the katy perry song as aural tissues.</p>
+<p>i&#39;m thankful most of all for my favorite poem song, &quot;at night the mirrors,&quot; which puts alice notley reading her long poem &quot;at night the states&quot; over the backing track of justin timberlake&#39;s &quot;mirrors&quot; and which i have listened to roughly one million times and find something new i love in every time. i&#39;m thankful for how the dynamic shifts of the song and the grain of the voice of the poet make it possible for a poem that might not connect with you on the page, if you, like me, are not always the best reader of poetry, to connect with you through your ears.  i&#39;m thankful to open a window to the song for you by pointing out the first little thing i found and loved in it, which is at the one minute mark how notley ends a stanza by saying &quot;my love&quot; to address the object of the poem just as the music drops out to nothing behind her. i&#39;m thankful for that and thankful to imagine all the things you&#39;ll hear in it that i haven&#39;t heard yet. i&#39;m thankful that we all have different ears and brains but that we can point them toward the same things sometimes and be in the same but different places because of this.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-226.html" class="btn btn-secondary">← thank you notes 2/26</a>
+        <a href="/letters/thank-you-notes-224.html" class="btn btn-secondary">thank you notes 2/24 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

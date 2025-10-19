@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="11/15">
+  <title>11/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>11/15</h1>
+        <time datetime="2016-11-15T00:00:00Z">November 14, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that my doctor&#39;s office called in a renewal of the prescription for one of my antidepressants, even though i clearly indicated in my voicemail that i needed both antidepressant prescriptions renewed. i&#39;m thankful that i have enough of the one they didn&#39;t renew to hold me over until they do renew it, even though that leftover supply is at a slightly higher dosage than the one i&#39;m currently on. i&#39;m thankful for the opportunity to call again after i finish writing this letter and to hopefully pick up the prescription today on my lunch break.</p>
+<p>i&#39;m thankful for this week&#39;s episode of <em>the walking dead</em>, even though it was depressing. i&#39;m thankful that the world is depressing enough that <em>the walking dead</em> doesn&#39;t seem as depressing as it did a few weeks ago when the new season started. i&#39;m thankful for the interesting way that this week&#39;s episode seemed to contain the apocalyptic fantasies of both the right (&quot;<em>they&#39;re going to take our guns! they&#39;re going to redistribute our wealth</em>&quot;) and the left (&quot;<em>an autocratic thug will put our community in a stranglehold. his vain stupid nihilism will charm rather than repel. his fascism will trickle down and empower his supporters to be the worst versions of themselves. violence and hatred will reign supreme</em>.&quot;). </p>
+<p>i&#39;m thankful to worry that it that conceptual muddle, as in the muddle of the reigning YA dystopias of a few years ago, mainlined by a generation just beginning to vote in this election, the simplistic takeaway, the emotional exhaust hovering in the air around a viewer finishing the episode and lying in bed at night staring up at the ceiling, will be a rejection of the power of public institutions to do good as being inseparable from the evil and violence of the state, as things that must be dismantled and privatized by a handful of randian ubermensch (the heroes and heroines of oru narratives) in order for all people to be &quot;free,&quot; rather than being what i see those institutions as, which are imperfect and inadequate but necessary bulwarks and sandbags that we must constantly defend and rebuild to protect ourselves from being drowned by the rising floodwaters of ideological climate change.</p>
+<p>i&#39;m thankful for <em><a href="https://www.amazon.com/dp/B005GSYXM2/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">thinking the twentieth century</a></em>, a dialogue between tony judt and timothy snyder which i was started reading last night. i&#39;m thankful for this passage:</p>
+<p>&quot;<em>[Judt:] Psychology, after all, and in this respect it bore distinct similarities to both Marxism and the Judeo-Christian tradition, proposes a narrative of self-delusion, necessary suffering, decline and fall, followed by the onset of self-awareness, self-knowledge, self-overcoming and ultimate recovery. I am struck, in the memoires of central Europeans born around the turn of the century, by the number of people (Jews above all) who comment on the contemporary vogue for analysis, for &#39;explaining,&#39; for the categories of the new discipline (neurosis, repression etc.). This fascination with digging beneath the surface explanation, with unpicking mystifications, with finding a story which is all the truer for being denied by those it describes—surely this is uncannily reminiscent of the procedures of Marxism as well.</em></p>
+<p><em>[Snyder:] There&#39;s another similarity. One can also extract a three-part, optimistic story from Freudianism, just as one can from Marxism. Rather than being born into a world where property has destroyed our nature, we&#39;re born into a world where some original sin was (or was not) committed, a father was (or was not) killed, a mother was (or was not) slept with—but we&#39;re born into a world where we feel guilty about that, and we don&#39;t have the nature that we would have had, perhaps purely theoretical. We can return to something like that &#39;natural&#39; condition if we understand the family structure and undergo therapy. But as with Marx, so with Freud: it&#39;s a bit unclear just what that utopia would actually be like if one were to get there.</em></p>
+<p><em>[Judt:] In the Freudian story, as in the Marxian narrative, the crucial consideration is unstinting faith in the inevitable success of the outcome if the process itself is correct: in other words, if you have correctly understood and overcome the earlier damage or conflict, you will necessarily reach the promised land. And this guarantee of success is itself sufficient to justify the effort needed to get there. In Marx&#39;s own words, he was not in the business of writing recipes for the cookbooks of the future; he merely promised that future cookbooks there will be, if only we correctly deploy today&#39;s ingredients</em>.&quot;</p>
+<p>and this one:</p>
+<p>&quot;_[Judt:] And yet, she [Arendt] gets one thing absolutely right. Think, for example, about that controversial phrase: &#39;the banality of evil.&#39; Arendt is writing in terms that reflect a Weberian grasp of the modern world: a universe of states governed by administrative bureaucracies themselves subdivided into very small units where decisions and choices are exercised by, so to speak, individual non-initiative. Inaction, in such an institutional environment, becomes action: the absence of active choice substitutes for choice itself, and so forth.</p>
+<p>Recall that Arendt published Eichmann in Jerusalem at the beginning of the 1960s. What she was arguing had yet to become conventional opinion but would do so within a couple of decades. By the 1980s, it was a commonly held view among specialists in the field that the history of Nazism, and indeed of totalitarianism in all of its forms, could not be fully grasped if it was reduced to a tale of malevolent persons consciously and deliberately engaging in criminal acts with harm in mind.</p>
+<p>From an ethical or a legal perspective of course, the latter makes more sense: not only are we uncomfortable with notions of collective responsibility or guilt, but we require some evidence of intention and action in order to arrange to our satisfaction issues of guilt and innocence. But legal and even ethical criteria do not exhaust the terms available to us for historical explanation. And they certainly provide insufficient purchase for an account of how and why otherwise nondescript persons, undertaking decidedly nondescript actions (like the management of train schedules) with untroubled consciences, can yet produce very great evil_.&quot;</p>
+<p>i&#39;m thankful, when i am at a loss for words, to be able to type the words of others.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1116-1014.html" class="btn btn-secondary">← 11/16</a>
+        <a href="/letters/1114-2153.html" class="btn btn-secondary">11/14 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

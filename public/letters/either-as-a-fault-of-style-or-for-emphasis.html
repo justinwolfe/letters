@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="either as a fault of style or for emphasis">
+  <title>either as a fault of style or for emphasis - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>either as a fault of style or for emphasis</h1>
+        <time datetime="2021-03-22T00:00:00Z">March 21, 2021</time>
+      </header>
+
+      <div class="letter-body">
+        <p>realizing i was in the midst of feeling like my own parody of &quot;<a href="https://snpsnpsnp.tumblr.com/post/46135412590/veryher-all-the-single-ladies-by-ariana">all the single ladies</a>&quot; by ariana reines, taking a bong hit and climbing into a dark hot shower and neti-potting to maximize flow and dissolving a chamomile &quot;shower soak&quot; tablet at my feet and huffing the steam</p>
+<p>the word of the day in my word of the day email the other day, pleonasm: <em>The use of more words than are necessary to convey meaning (e.g. see with one&#39;s eyes), either as a fault of style or for emphasis.</em></p>
+<p>had a dream the other night where i had to write a short story and feeling like &quot;fuckkkkk&quot; and then waking up and realize i never have to write (or, tbh, read) another short story for the rest of my fucking life ✌️</p>
+<p>but also, working with two coworkers during our company retreat last week to do a slack trivia game that i think went really well and was satisfying even if it was a lot of work</p>
+<p>feeling happy about the code i&#39;m writing lately and about the code i will write in the future</p>
+<p>learning that my daily sixty milligrams of <a href="https://www.inverse.com/mind-body/best-covid-treatment-discovery">prozac is somehow effective against covid variants</a> (i only skimmed this, for the contact high of knowledge) (via <a href="https://emchap.substack.com/p/emchaps-shit-from-the-internet-031721">em</a>)</p>
+<p><a href="https://ask.metafilter.com/353109/Is-it-cheating-or-L33t-sk1llz">this ask.metafilter question</a> from a person who had this feeling of being really good at difficult video games while coming up on an SSRI at an earlier point in their life and was going into it again and wanted to try to savor the experience </p>
+<p>the reminder of the feeling that first week i was taking prozac for the first time, swimming giddily laps in the pool in the basement of the school building on my lunch break and it was like i was superman</p>
+<p>that it was always darker in the pool rooms than in the rest of the building which was really pleasing after a morning of fluorescence</p>
+<p>rewatching <em>the leftovers</em> starting with season 2 (because i did not have the energy necessary for season 1) and it&#39;s as good and weird and fun as i remember it, especially when it does its sopranos dream trip <a href="https://en.wikipedia.org/wiki/International_Assassin">&quot;international assassin&quot;</a>  and (as i remember it) that kind of gets infused into the rest of the show, which:inject it into my veins:</p>
+<p>also d watching &quot;curb your enthusiasm&quot; with me (the first time for her). laughing together is the best, which is why a sitcom feels like such a daily bread kinda thing to me</p>
+<p>the word of the day in my word of the day email today, vernal: <em>of, in, or appropriate to spring</em></p>
+<p>agree with h&#39;s assessment that the melodies on the new lana album collectively just aren&#39;t <em>nfr</em> quality (though i do love the tay tay cadence of the chorus of the breathy &quot;<a href="https://www.youtube.com/watch?v=yJuV8PDwvC8">white dress</a>,&quot; which i think is probably the prettiest, so interesting to hear her copy someone who copied her and yet also make it her own)</p>
+<p>also the audacity of how she sings the incredibly unmusical phrase &quot;the men in music business conference&quot; (d, not realizing i&#39;m transcribing what she&#39;s saying right now: &quot;so long and so graceless, i really like this song but it&#39;s just stupid&quot;)</p>
+<p>the high harmonies in the last verse of haim&#39;s &quot;<a href="https://www.youtube.com/watch?v=BSFsMIqCijo">los angeles</a>&quot;</p>
+<p>the justin bieber song &quot;peaches&quot;, especially <a href="https://www.youtube.com/watch?v=NP8Y3KBJSxI">the live version</a>, which i can&#39;t get out of my head (he is the only other justin whose success i will countenance)</p>
+<p>dipping a shrimp in butter and then dipping it in shrimp furikake, shrimp on shrimp (it didn&#39;t actually taste that good, but i liked it conceptually)</p>
+<p>d and i playing music together often and lately improvising on jingles for &quot;miso&#39;s meatzerria&quot; which is an all meat restaurant (like a brazillian steakhouse but also it has raw meat) owned and operated by miso</p>
+<p>chocolate chip cookie dough</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/sign-of-the-times.html" class="btn btn-secondary">← sign of the times</a>
+        <a href="/letters/of-light-or-lightning.html" class="btn btn-secondary">of light or lightning →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/29">
+  <title>thank you notes 4/29 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/29</h1>
+        <time datetime="2016-04-29T00:00:00Z">April 28, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that the faculty member&#39;s daughters were more rambunctious than he had hoped they would be. i&#39;m thankful that he had hoped that they would sit quietly in the corner of his office drawing crayon pictures of giraffes to welcome their new baby brother home from the hospital while he conducted emergency last minute meetings with students trying to apply for and secure internships for the fall, and thankful that this was not an unrealistic hope on his part, even though they are 3 and 5 years old, since they are generally very polite and well behaved, but also thankful that they were feeling rambunctious today, because that meant that they could play with me and i wouldn&#39;t have to sit at my computer anymore.</p>
+<p>i&#39;m thankful that i first asked the faculty member if they could come with me to check the mail and he gratefully agreed. i&#39;m thankful that i had them follow me to the back of the office to check if we had any outgoing mail in the bin and that i then pulled out the flatbed dolly we use to move boxes and told them to get on for a ride. i&#39;m thankful that because they were so tiny, they fit perfectly on the dolly and thankful that i told them to keep their hands and arms inside the vehicle as i opened the office door and pushed them out into the corridor. i&#39;m thankful for their squeals of joy and how they shrieked as i pushed the cart in slightly wavy lines. i&#39;m thankful that when we got to the mail room, i gave them the key and had them unlock the door for me themselves--i&#39;m thankful they had trouble at first, both with key positioning and insertion, but thankful that they eventually figured it out. i&#39;m thankful that there were exactly two pieces of mail in the department mailbox, which meant they each got to carry one. i&#39;m thankful that they got back on the cart and we careened back to the office, where they hand-delivered the mail.</p>
+<p>i&#39;m thankful that they went back to drawing for a bit, but thankful that after i finished compiling and sending out the department&#39;s weekly email newsletter (i&#39;m thankful for mailchimp, which has such a better editor than tinyletter), their dad was busy again and i asked them if they wanted to go on another ride. i&#39;m thankful that this time, i wheeled them to the exit on the west side of the building and had one of them press the button for automated door to open, then wheeled them out onto the sidewalk toward the arboretum. i&#39;m thankful for the way they bounced over the cracks in the sidewalk. i&#39;m thankful that i paused at a place where the sidewalk split into three different paths and asked them to pick our route (i&#39;m thankful i first typed this as &quot;root&quot;). i&#39;m thankful for moments when i can give children choices and agency, which they crave (i&#39;m thankful for the contrast between this and adulthood, how so many of us desire a narrowing of the panoply of available options).</p>
+<p>i&#39;m thankful that they, of course, chose the fork which sloped steeply downhill and thankful that i went a little faster as they asked me to without going too fast. i&#39;m thankful that the path went along the chain link fence enclosing the soccer fields and thankful for the way they stuck out their arms so their hands bounced from link to link and the way that after that i noticed them lowering their fingertips to the ground to feel the difference between moving concrete and asphalt and gravel and grass. i&#39;m thankful that the ground was especially scarred and rough on the slope leading up to the tennis courts, which made the wheels rumble and the cart shake so loudly that the girls put their hands over their ears. <a href="https://www.youtube.com/watch?v=bhfkvT8_fHU">i&#39;m thankful for the sensation of the transition from the roughness of the concrete to the soft, smooth surface of the tennis courts</a>.</p>
+<p>i&#39;m thankful that the girls got off ran around, their feet flying over the green court and thankful that i chased them with the cart, cutting wide arcs around the court. i&#39;m thankful that i told them i was tired and sat on the cart myself and asked them to push me. i&#39;m thankful they pushed me, slowly at first but then with more speed building up, until i hit the fence at the edge of the court and collapsed off the cart dramatically. i&#39;m thankful they got back on the cart and i wheeled them back toward the building, through the loading dock, and up the elevator back to the office. i&#39;m thankful that she had to hit the button three times before it sunk in and the tiny light at its center turned on. i&#39;m thankful the elevator was one of those elevators with doors on both sides and thankful that i had them guess which door would open when we got upstairs. i&#39;m thankful that i tricked them into guessing wrong</p>
+<p>i&#39;m thankful that one of them kept poking me in the &quot;i voted&quot; sticker on my shirt and every time she did, i jumped back as if she had super strength. i&#39;m thankful that their dad gave them some cinnamon graham crackers on a white paper plate, which they shared with me. i&#39;m thankful i asked them if they were thirsty after the crackers because i was and they said yes and so we went back to the supply closet and i got them &quot;special&quot; styrofoam coffee cups. i&#39;m thankful that in the hallway by our office, there is a water bottle water dispenser. i&#39;m thankful that the older of the two girls tried responsibly to hold her cup right over the nozzle of the dispenser so it wouldn&#39;t spill and how i told her it was okay to drop it down so she could watch the water fall. i&#39;m thankful that the three of us stood there watching the stream of clear water fall into the styrofoam cup.</p>
+<p>i&#39;m thankful that i asked them if they wanted to see the swimming pool and they said yes and so we walked to the foyer of the building, where you can see into the pool. i&#39;m thankful that one of them burped from drinking her water too fast and we all laughed. i&#39;m thankful that i pulled chairs up to the windows overlooking the pool so they could climb up and see down. i&#39;m thankful we talked about how fast the swimmers are and thankful that i told them what bathing caps were, how they keep your hair from getting wet when you swim, and i&#39;m thankful that the older girl said &quot;<em>i like for my hair to get wet</em>!&quot; i&#39;m thankful that a staff member from another office came by and that even as i sounded out the first and second sounds of his name, they couldn&#39;t remember what it was.</p>
+<p>i&#39;m thankful that we went to the basketball court and then climbed up the two story staircase overlooking it and leading to the gym. i&#39;m thankful that the older girl slowed down when i called to her to not get too for ahead and thankful for the careful, deliberate way that the younger one used the rungs of the railing to climb up. i&#39;m thankful, when we got to the top, that i directed them to look out over the basketball courts, which were full of lunchtime pickup games. i&#39;m thankful for the wonder in their eyes as they took in the bigness of the space, which is beautifully lit at that time of day by noon sunlight through the rows of windows opposite of us. </p>
+<p>i&#39;m thankful that as we turned to go down the stairs and head back, the younger girl&#39;s face suddenly flashed with fear at the prospect of descending and she grabbed her sister&#39;s arm and said &quot;<em>help</em>.&quot; i&#39;m thankful that i walked along behind her with my hand on her shoulder and told her what a good job she was doing. i&#39;m thankful that she paused at the landing in the middle of the stairs and suddenly wasn&#39;t afraid anymore. i&#39;m thankful for the lightness with which she descended the last few steps.</p>
+<p>i&#39;m thankful that on our way back, the older sister ran ahead and into the building&#39;s largest lecture hall. i&#39;m thankful that at first i was afraid there was a class in there that we were disrupting, but thankful that it was empty (i&#39;m thankful it&#39;s the last day of classes). i&#39;m thankful that i told the girls that their dad taught a class in this lecture hall and they were impressed. i&#39;m thankful to have chased them through several circuits up the stairstepped landings of the aisle on one side, along the back balcony, and then down the other side. i&#39;m thankful that they ran to opposite sides of the room and hid behind the conference tables so i couldn&#39;t see them.</p>
+<p>i&#39;m thankful that i said, in a scared voice, &quot;<em>oh no, where did you go</em>?&quot; and called their names. i&#39;m thankful that one, then the other, started growling and roaring and thankful that i said &quot;<em>oh no, did they turn into monsters?</em>&quot; which elicited more growls and roars and hisses. i&#39;m thankful to have stalked around the room looking for them, before eventually &quot;discovering them.&quot; i&#39;m thankful that the older girl listened when i said it was time to go back to the office, but the younger girl didn&#39;t, so i picked her up and slung her over my shoulder (i&#39;m thankful she was small and light enough that i could hold her there with one arm) and carried her back. i&#39;m thankful that on the way back, the older one said, &quot;<em>we weren&#39;t really monsters, we were just pretending</em>&quot; and the younger one nodded into my shoulder.</p>
+<p>i&#39;m thankful that when we got back to the office, their dad said their mommy was on the phone and asked if they wanted to talk to her. i&#39;m thankful to have heard on the speakerphone earlier how the mother, who had been forced to stay at the hospital because of complications from her epidural and high blood pressure, felt exhausted and in pain was clearly weeping. i&#39;m not thankful for that, at all, i&#39;m the opposite fo thankful, but i&#39;m thankful for how she pulled her voice together and almost sounded happy as the girls told her about the fun we were having and i&#39;m thankful to hope that she was happy, in the moment at least. i&#39;m thankful that before the girls left, i let them pick fun-size chocolates from the jar in the department chair&#39;s office on the condition that they wouldn&#39;t turn back into monsters. i&#39;m thankful for their solemn agreement and for the way they handed me the wrappers of the chocolates to throw away.</p>
+<p>i&#39;m thankful that this morning before work, d and i rode our bikes to city hall and voted early in the primary for our state. i&#39;m thankful for the nice old people who said they weren&#39;t technically supposed to open the polls until 8am, but bustled into action anyway so we could vote. i&#39;m thankful to have bantered with them about my job. i&#39;m thankful for the bright room where we went to our cubicles and filled in our ballots. i&#39;m thankful that d gave me her &quot;i voted&quot; sticker so that i could wear two stickers at work today and say that i got two votes because my opinion is very important. i&#39;m thankful to have a small but real amount of hope that there will be a good future for us all to live in.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-katelyn.html" class="btn btn-secondary">← thank you notes (katelyn)</a>
+        <a href="/letters/thank-you-notes-428.html" class="btn btn-secondary">thank you notes 4/28 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

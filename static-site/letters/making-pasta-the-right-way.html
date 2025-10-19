@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="making pasta the right way">
+  <title>making pasta the right way - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>making pasta the right way</h1>
+        <time datetime="2024-03-08T16:29:00.569666Z">March 8, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>my previous job is having their company retreat and because of watching on instagram i had a dream about it and as someone who has worked fully remotely for many years at this point, whenever i have work dreams they&#39;re about company retreats (since, despite how much of every waking hour i spend on a computer, my dreams rarely if ever involve directly using computers? my dream director is like &quot;not cinematic enough&quot;), dreams usually based around the idea that i have somehow despite great care forgotten the weed that i was bringing to the retreat to (among other things, including spreading cheer and deepening bonds) help me deal with the social overwhelm of being around ten million people after sitting alone in my office for the past year (and also just because i love weed), and this dream was kind of similar except i didn&#39;t forget the weed (or rather i did forget it but the dream retreat was taking place in a location where i could easily buy more) but i did break my phone (thankful that in the dream i still had my old android phone and could easily swap it out) and miss a flight and then the eventual hotel was, as is often the case in these dreams, bizarre and labyrinthian and endless and made it impossible to find my friends (i was thankful to wake up, and i&#39;m thankful that i&#39;ve been waking up earlier as the sun rises earlier and coincidentally having more time to write notes before work, even if i&#39;m not thankful we&#39;ll lose an hour of this weekend we need all the hours we can get).</p>
+<p> <img src="/api/images/342" alt="image.png"> </p>
+<p>in the real world yesterday, being briefly baffled (and by baffled i mean panicked and desperate) by why the app i was building (was supposed to be done building and was just getting adding a small finishing refactoring touch suggested by a reviewer) was suddenly mysteriously distressingly not working despite no changes to the code since when it had been working and finally through a process of deduction getting to the realization that when testing someone else&#39;s PR the day before i had added overrides in the Network tab of Chrome blocking access to an API endpoint and (because it is very easy to forget about them based on how they structure their devtools UI, which is flawed in so many ways despite being such a useful suite of tools) had forgotten about them and that was what was breaking everything.</p>
+<p> <img src="/api/images/345" alt="image.png"> </p>
+<p>the ridiculous news of biden&#39;s floating pier off gaza, which as an engineer is like such a pitch-fucking-perfect example of when you are coding an awkward and inefficient workaround around the problem out of an &quot;inability&quot; to solve the core problem (which i acknowledge is sometimes in engineering just what you have to do because of external constraints and dependencies but sometimes and fucking definitely in this case (okay already realizing this analogy is strained but i&#39;m so mad about this) represents a lack of fortitude and resolve, a conscious choice to &quot;solve&quot; a problem not by you know solving the problem but by putting glue and tape around the problem)(i have done both things as i&#39;d assume many engineers have, but again limits of the analogy, when i do it the bad way people don&#39;t die they just might in some cases have slightly more difficulty sending a customer support email response, which imo i can live with!)</p>
+<p> <img src="/api/images/341" alt="image.png"> </p>
+<p>the eternal back-and-forth i find myself having both internally with myself and with my colleagues about doing things &quot;the right way&quot; with code, which as someone who started in an engineering background where i was mostly working alone and shipping tangible value as fast and as frequently as possible (which gets referred to as &quot;cowboy coding&quot; yeehaw) means i am often in tension with what i might term &quot;institutionalist&quot; engineers who (to paint with a very broad brush) are more focused on the code itself (finding the exact perfect abstractions, covering every possible case) than what the code will make it possible for the users (who will never ever see the code) to do and feel and think. i&#39;m thankful to acknowledge that there is a spectrum and everyone regardless of where they are on it (and people often move along it depending on their constraints for a particular project or who they&#39;re working with) is always making compromises toward the other end in an endless and often (if not always) productive negotiation, even if i sometimes uncharitably (but, imo, not always unfairly) think the pursuit of perfection underlying such an approach can be more about ego and obsessive compulsion and irrational fear of the worst possible hypothetical future than it is about true safety and protection and care (but that&#39;s just my perspective).</p>
+<p> <img src="/api/images/344" alt="image.png"> </p>
+<p>deborah and i made a nice pasta (anchovies, bacon, garlic, broccoli, shitake mushrooms) last night and thinking about the right way made me think about how though i have been making pasta since i learned how to cook, up until a nudge from hp this year, i never really made it the right way, which is to say finishing the slightly al dente pasta in the same pan tossed with the sauce and some pasta water to bring everything together. i always avoided this step because that was not how i was taught and i thought doing it was not worth the hit to my cooking efficiency (as someone who was often bulk cooking both pasta and sauce for many meals and didn&#39;t want to combine them all at the initial point of cooking because sogginess but also didn&#39;t want to dirty additional pans to wash) but like it&#39;s absolutely worth it in terms of how it makes the pasta stick to the sauce and thus be more delicious (what i do now to reduce dishes is still cook my big cauldron of sauce but cook just enough pasta for a particular night&#39;s portions and then add the sauce and water to that pot after i&#39;ve drained it) and i can&#39;t imagine doing it otherwise now—i&#39;m thankful, as someone who doesn&#39;t always choose the right way, when i concretely feel the benefit of the right way, which is the best way to get me to do things the right way (again, to be clear, please avoid drawing a direct comparison between this personal low-stakes kind of rightness and the moral rightness of stopping a genocide which are extremely different things but thoughts of one thing inspired me to consider the other and what are these notes except traces of the footsteps of my thoughts).</p>
+<p><img src="/api/images/343" alt="image.png"> </p>
+<p>had several difficult conversations at work yesterday and the general vibes are grim but hopefully there will be no difficult conversations at work today (i&#39;m thankful it is no meeting friday). i&#39;m thankful for <a href="https://capitulatenow.substack.com/p/capitulate-now-issue-67">this incredibly sad and beautiful letter from katie</a> about difficult conversations and parenting dread and, somehow, amid all the problems, (blessedly, thankfully) gratitude (sorry) and grace. i&#39;m thankful for the &quot;close tabs to the right&quot; option in chrome and all self-respecting modern browsers, an essential feature. i&#39;m thankful, once again, that it is friday and it&#39;s cold and gray now but i looked at the ten day forecast and next saturday, it&#39;s supposed to be sunny and 67 F/19.4 C, the warmest day of the year so far.</p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-38/">2016</a> (<em>targeted ads, kylie jenner&#39;s snapchat, three essays by emily witt</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/3817/">2017</a> (<em>too many amazing women to ever fit in a letter</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/3818/">2018</a> (<em>great conversations with smart people on my team, my favorite pharmacist, essay about sweatpants</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/37/">2019</a> (<em>&quot;to have taken d a polaroid of miso&quot;</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/3820/">2020</a> (<em>kumquats, figuring out the reason torrents stopped working on my old computer, parallel lives</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/how-thankful-i-was-to-be-rained-on-while-out/">2021</a> (<em>to be rained on while out running yesterday afternoon</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/a-book-i-could-not-tear-myself-away-from.html" class="btn btn-secondary">← a book i could not tear myself away from</a>
+        <a href="/letters/my-plot-memory-fades-very-quickly.html" class="btn btn-secondary">my plot memory fades very quickly →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

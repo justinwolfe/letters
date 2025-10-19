@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="6/4/18">
+  <title>6/4/18 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>6/4/18</h1>
+        <time datetime="2018-06-05T00:00:00Z">June 4, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for that feeling when you finish eating dinner while in the middle of watching a tv show and put the bowls in the sink and start to leave the kitchen to go back to the tv and then see that there is still rice in the rice cooker, because you made two cups so you wouldn&#39;t have to make rice tomorrow, since you might forget because of work, and you want to go back to the couch and continue watching tv and you think &#39;i&#39;ll put the rice away after the show&#39; but then you think back to all the times in the past when you didn&#39;t do that and awoke on the other side of the evening in the kitchen where the leftover food from dinner, food you spent real time in the past making so that there would be enough for tomorrow and the day after or the rest of the week, and the food has been sitting out long enough to be questionable and worry you but not long enough that it&#39;s a certainty you need to throw it away and that eats at you and you touch the container and feel this dull warmth that i have to imagine is like what it is to touch someone who you know has been hurt badly but you don&#39;t realize is dead and you feel the dead in their skin and with the leftover food you have to do this complicated calculus in your head about what to do, whether you throw away the fruits of your labor and so in a sense throw away that labor or whether that&#39;s too sentimental and that you can&#39;t do anything about the past, but what you can control, in this limited sense, is how you might feel bad in the near future, and while thinking about how unpleasant that is you come back into the moment in the kitchen after dinner and decide to put away the rice, even though making the decision feels like lifting a moderately heavy weight, and you go to the cabinet above the dishwasher and you&#39;re trying to decide what glass storage container to put the rice in, you remember times in the past where you got a container that was too small and had to get a different, second container after filling it and felt defeated but also times when the container was so big that there was as much air as rice under the thick plastic lid which seemed like not a good thing or the time when you picked a container but couldn&#39;t find the matching lid and so had to use saran wrap on it, which is its own can of worms, the gross bubbles of condensation that forms under the tarp of it and then you also can&#39;t use it as a base for stacking in the fridge which messes with the tetris, and you, in the kitchen after dinner holding your breath, pick a container and carry it over to the rice cooker and set it down on the counter and pick up the flat plastic paddle you&#39;re supposed to use to get the rice out of the rice cooker without scratching the nonstick interior, which a prior version of you would not be so fussy about but in graduate school when there was less money you had nonstick pans that you scratched because you wanted to plate the food and in the moment you reached for the lazy nearby utensil, you were young and your body felt a different way, and then the scratch from the aluminum slotted serving spoon was not bad enough that you could convince yourself you had to get a new pan but it was there and even if you forgot about it for a while, as we are able to forget about almost everything that frightens us sometimes, it would reassert itself to you as you snapped into the moment of standing over the stove and flipping a piece of white fish or turning the curds of scrambled eggs and was not a nice feeling and so you have been really good about using the dumb little paddle and in the kitchen after dinner you pick it up and start scooping out the rice, which is brown rice, and the rice is interesting because when you get the paddle under it, it seems to have a kind of structural integrity but then as you lift it and gravity pushes down it softens into the individual grains and they spill off the paddle, and this is so different than white rice, which holds its form together in a way that makes you think of the bundles of lotus leaf that you unwrap in the dim sum restaurant and inside is this brick of sticky rice, a single entity ablaze with steam, but then in the kitchen after dinner you take your next scoop and use your hand like a net around the top of the chunk to keep it in one piece as you lift it over into the storage container but then in the storage container let it fall with a tiny splash of recklessness and break it up with the end of the paddle because, lotus leaves aside, you hate when rice gets formed into a wad the shape of the bowl as it sits in the refrigerator waiting for the next time you eat it, you want the individual grains to be separate, their own things, and as you get closer to filling the storage container with these big shovels covered by your hand, the worry reasserts itself that there will not be enough room in the storage container and though your hands continue to move the rice, as far as you can tell, mentally you slip into fast forward and imagine a ghost version of yourself walking over to the cabinet above the dishwasher to get a second storage container, a smaller one (even though the lack of symmetry bothers you), and bring it back, resigned to the fact that you have, but then you come back into the moment in the kitchen after dinner and you are almost done getting the rice into the bowl, you&#39;re just gathering the last loose grains in the rice cooker, and you realize in that moment that you picked the exact right container for the amount of rice you had and you feel happy for a minute</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/kflo9.html" class="btn btn-secondary">← (kflo)(9)</a>
+        <a href="/letters/65-8646.html" class="btn btn-secondary">6/5 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

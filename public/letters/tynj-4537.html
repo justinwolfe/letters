@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="tyn(j)">
+  <title>tyn(j) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>tyn(j)</h1>
+        <time datetime="2016-12-31T00:00:00Z">December 30, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>tw: suicide discussion</p>
+<p>i&#39;m thankful for my grandparents. i&#39;m thankful that while they would not accept my girlfriend or my gender identity, i have a support system outside of them that means i can respond to this with anger and not hopelessness, as i would have even a year ago. i&#39;m thankful for my girlfriend. i&#39;m thankful for the internet, which connects me with this support system even when i am trapped in a small space with people who do not accept me.</p>
+<p>i&#39;m thankful that this year i finally cut people out of my life that were not bringing me joy, to use a phrase from marie kondo. i&#39;m thankful that i read marie kondo&#39;s book this year, even though i have not applied her techniques to my physical space, because her chapter on clearing out one&#39;s mental life has helped me immensely. i&#39;m thankful to recognize that my big &#39;purge&#39; of objects this year was not brought on by a desire to feel joy but by my depression. i&#39;m thankful that everything i got rid of is sitting in my brother&#39;s old room, rather than out of my life, because i might want some of it back.</p>
+<p>i&#39;m thankful that this year when i wanted to kill myself, i called the crisis center instead, and while i do not remember that conversation i know that i was crying and that the woman on the phone with me was kind and helpful and only hung up when i was with the police officers, who were similarly kind. i&#39;m thankful that they talked to me the entire time and did not do anything without telling me that they would in a calm voice, which helped with the anxiety.</p>
+<p>i&#39;m thankful for that emergency room visit and for all that paperwork, because without it i would not have been able to focus. i&#39;m thankful for a friend of mine, who found my mom&#39;s cell phone number and called her to tell her what was happening even though i asked her not to. i&#39;m thankful that the next day i told her i was sorry for being upset, and she told me i was being silly, and that she knew. i&#39;m thankful that my parents drove an hour to get me in the middle of the night. i&#39;m thankful that my stepdad did not chastise me, but told me that i was brave for calling in the first place. i&#39;m thankful to recognize that the antidepressants i was taking were too strong for me, and to have switched to another. i&#39;m thankful to feel stable, and to feel happy that i did not kill myself, and that i have not wanted to since that day.</p>
+<p>i&#39;m thankful that 2016 is almost over. i&#39;m thankful that this wasn&#39;t the worst year to date for me, personally, but that i always look forward to fresh starts. i&#39;m thankful for new year&#39;s resolutions, and specifically when people talk about them. i&#39;m thankful for every person that resolves to go to the gym more or get healthy, because even if they do not follow through the desire is there, and i think that&#39;s wonderful. i&#39;m thankful for hope, both in myself and in others. i&#39;m thankful to know that my resolutions have to be self-care-focused, because otherwise i will worry immensely about &quot;failing&quot;.</p>
+<p>i&#39;m thankful for this headache, which is making it hard to focus but which was brought on by fourteen hours of sleep, which i needed. i&#39;m thankful that i&#39;m with my parents right now, which means i can go to bed and wake up when i like and they will not be upset. i am thankful, however, that i&#39;m going back to grad school in a week and will have to adhere to a schedule again, which is better for me in the long run. i am thankful to look for a job, because i spent my first semester without one and i am confident that i can handle working and going to school at the same time. i am thankful that i could focus on school for the last few months, and to recognize that is not a luxury that is available to everyone.</p>
+<p>i&#39;m thankful that i want to write again. i&#39;m thankful that i do not want to drink again, and that i have not for the past three months and am not planning on starting. i&#39;m thankful that in the last few months i have taken to telling people what they mean to me, and that this has overwhelmingly been met with returned kindness. i am thankful that people agree that i am a kind person now, because for a long time i was known to be very mean and i have worked hard to change that about myself. i am thankful that i could change. i am thankful to be happier now.</p>
+<p>- j (12/29/2016).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/tynk3.html" class="btn btn-secondary">← tyn(k)(3)</a>
+        <a href="/letters/1230-7497.html" class="btn btn-secondary">12/30 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

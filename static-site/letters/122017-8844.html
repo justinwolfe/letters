@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1/2/2017">
+  <title>1/2/2017 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>1/2/2017</h1>
+        <time datetime="2017-01-02T00:00:00Z">January 1, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <em>the oa</em>, a show that i didn&#39;t really like at first, then kind of liked despite myself, then really really liked. i&#39;m thankful that i won&#39;t spoil it for you, but i&#39;m thankful for something i think it captures beautifully, which is how, if you are open to them, it&#39;s possible every day to have experiences—sensations in your body, perceptions of the world around you, experiences of ritual and repetition—which feel otherworldly, revelatory. i&#39;m thankful for the way taking a breath can feel after meditating on your breath for 20 minutes or for the experience of seeing the melty colors of the sunset when i pause on the sidewalk where walking somewhere i&#39;m supposed to go or the tiny subconscious movements balancing my body as i do a headstand.</p>
+<p>i&#39;m thankful that these things can feel magical or spiritual, an instance of slippage into a parallel dimension, and i&#39;m thankful that it&#39;s entirely possible that they could be, since we don&#39;t understand so many things about the universe and how it works, but i&#39;m thankful to also know that maybe they&#39;re all just the fruits of making yourself receptive to the world and looking past the mental models and code fragments and caricatures of other people that we use to autopilot through our days. i&#39;m thankful that this is what i really want from mindfulness and meditation and qi gong and tinctures and all the other things i do as &quot;self care&quot;—not to just calm myself down and prevent my body from going into red alert so that i can get on with the productive business of living and working (though they do provide that, an essential release mechanism for existing in a shitty world), but more than that, to have these glimpses of transcendence, these moments where i am able to experience a world that feels fuller and richer than it normally feels. i&#39;m thankful that i don&#39;t care whether that&#39;s just a placebo effect of attention and perception or something that&#39;s actually magical—i&#39;m thankful for the way it feels and to try to live to keep feeling it as much as i can.</p>
+<p>i&#39;m thankful for <a href="https://thinkingblueguitars.wordpress.com/2010/11/01/lukacss-theory-of-the-novel/">the concept of immanence</a>, which i learned from the PDF copy of lukács&#39; &quot;theory of the novel&quot; i read for a seminar in my last year of grad school, the idea of a pre-modern world where everything is suffused with meaning to form a totality that can be understood, held in the mind. i&#39;m thankful for the complication of how, in modernity, &quot;<em>there is no longer a pre-given meaning inherent to all that I come into contact with. I confront objects and people – and myself – which/ who are void of immanent sense and it is down to me with the powers of my own reason to project out of my own being the meaning which they are to have. There is no longer a ‘totality’ in the sense in which Lukács uses that word: an overriding organic unity between all that is</em>.&quot; i&#39;m thankful for the novel, which he calls ‘<em>the epic of an age in which the extensive totality of life is no longer directly given, in which the immanence of meaning in life has become a problem, yet which still thinks in terms of totality</em>,’ a form that stretches and strains to make the puzzle pieces fit together. i&#39;m thankful for jia tolentino on poetry (and everything):</p>
+<p>&quot;<em>Poetry taught me how to write everything but poetry. Poetry teaches me that I basically know nothing, and that acknowledging this position is a beginning and never an end. The great thing is not having a mind. From a point of nothingness, the world starts to sparkle. It becomes declarable. It brings you those fleeting sensations that are worth sitting on, punching around, forming into ideas that may not be correct, necessarily, but will have some gravity, maybe even feel new</em>.&quot;</p>
+<p>i&#39;m thankful that on friday night, d and i went over to a friend&#39;s house and i jammed with a keyboardist and a drummer and another guitar player. i&#39;m thankful that it was the first time i&#39;d played music with other people in years and i&#39;m thankful that though it was sometimes stressful, i&#39;m glad i did it. i&#39;m thankful, after for years playing with and over myself, to have been truly challenged, since when playing with myself, i never am challenged to play something i&#39;m not capable of playing or that i have to strain to play, whereas when playing with others, i&#39;m forced to listen and to predict and to meet them as best as i can, which feels productively difficult. i&#39;m thankful even if all the music wasn&#39;t quite the music i would choose to play if i was in charge, that it was still fun and interesting to try to play music that wasn&#39;t &quot;my music.&quot; </p>
+<p>i&#39;m thankful for the crazy volume of the drums and our amps echoing around the room, for feeling the music as much as i could hear it. i&#39;m thankful that we looked up at one point and somehow four hours had passed without us realizing it (i&#39;m thankful for d, who very much did realize it was 4 hours but still hung out patiently). i&#39;m thankful to have walked home through the night with her, arm in arm—i&#39;m thankful that it was cold, but not too cold. i&#39;m thankful that when we got home, past our normal bedtime, she took a shower to wash off the hair and smell of the dog she&#39;d been playing with to pass the time. i&#39;m thankful that afterward i went into the bathroom and, while cleaning up for bed, noticed a rhythm in the last drops of water slipping out of the showerhead and crashing into the ground, headed for the drain.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/13.html" class="btn btn-secondary">← 1/3</a>
+        <a href="/letters/tynk3.html" class="btn btn-secondary">tyn(k)(3) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

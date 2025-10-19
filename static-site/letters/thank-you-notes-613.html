@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 6/13">
+  <title>thank you notes 6/13 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 6/13</h1>
+        <time datetime="2016-06-13T00:00:00Z">June 12, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for my plastic day of the week pill box, which helps me to keep track of my medication (i&#39;m thankful that i freudian typo-ed this as &quot;meditation&quot;). i&#39;m thankful that in the vitamin aisle today at the hippie supermarket, i put down the calcium citrate i was intending to buy to look at something and that i didn&#39;t read the label when i picked it back up and so, when i got home, realized i accidently bought something called &quot;testo-jack,&quot; which is a natural male enhancement formula. i&#39;m thankful that the funny smile the cashier was giving me now makes more sense. i&#39;m thankful for the blunt euphemism of &quot;male enhancement,&quot; for the way it illustrates the culturally-constructed myth that the aspect of maleness most requiring enhancement is the hardness of your dick, rather than your ability to make other people happy or empathize or have interesting conversations. </p>
+<p>i&#39;m thankful that we re-signed our lease, even though the gap in having to pay rent from our deposit carrying over and us pre-paying has led to me spending more money lately the last few months i should. i&#39;m thankful to have enjoyed the privilege of this period of excess, but thankful also to know that i need to slow down and cut back and be more responsible. i&#39;m thankful that in doing the hr for my new job i set my retirement contribution at a higher level than the company match and that i&#39;ll probably put some of my savings into an IRA this year too. i&#39;m thankful to have the luxury of trying to be responsible.</p>
+<p>i&#39;m thankful to vividly remember a trip to the mall when i was probably 11 or 12 and we were visiting my cousins, who had much more money than us. i&#39;m thankful to remember the revelation that my cousins each got a present (a game or toy or whatever) when they went to the mall and to remember the look of discomfort on my mom&#39;s face as she processed committing to spending money that she probably didn&#39;t have so that my brother and i wouldn&#39;t feel neglected. i&#39;m thankful that as a kid, i picked up on moments of submerged tension like this and as time went on internalized that anxiety of undermining my family&#39;s security with my desires for plastic things.  </p>
+<p>i&#39;m thankful to remember years before that, in the first house my family lived in, which was beside an abandoned meat packing plant in a semi-sketchy neighborhood, how one morning a strange man came knocking at our screen door. i&#39;m thankful that he wasn&#39;t here to rob us or murder my mom, as i feared, but was someone who lived further back down the alley and had seen us playing with our mom in our backyard and asked if there was any way she could pick up his daughter (i think) from the boys and girls club that afternoon, because of some issue with his job. i&#39;m thankful my mom said yes to him, even though it made me uncomfortable (fear of others) at the time. i&#39;m thankful to remember how alien it felt to me when we were picking up the daughter at the boys and girls club, which was just a few blocks from our house, how i felt like we were in &quot;poor&quot; world and that there was some risk of contamination or something. i&#39;m thankful to be ashamed of this feeling now.</p>
+<p>i&#39;m thankful that so much of pop culture of my youth was about people who are freed from the problems of not having enough money, even though i think that&#39;s damaging and not healthy or right or good for solidarity. i&#39;m thankful because when i was younger (and to a lesser extent now), seeing characters become poor terrified me, breaking (or maybe supercharging) my immersion in the fictional world and replacing it with this gut-wrenching sense of fear that i could and would and might be poor too. i&#39;m thankful that this was also true of shows touching on my other primary anxiety, which was sickness (which was related to money, since i wasn&#39;t afraid of pain dying so much as having a health condition that my family would bankrupt themselves to try to save me from). i&#39;m thankful for the tv drama <em>boston public</em>, which combined these two threads so powerfully (a poor kid gets cancer) that i felt physically sick and had to suddenly stop watching the show, which had been my favorite show, and, when my mom asked about this at the show&#39;s airtime the next few weeks, said i just wasn&#39;t interested in it anymore, since that felt less awful than to say it scared me.</p>
+<p>i&#39;m thankful for the productive aspects of my anxiety about money, even if it wasn&#39;t always productive and even if today, with a good emergency fund and a steady job and in a low cost of living, i still feel really scared about future precarity in a way that&#39;s not good for me. i&#39;m thankful that my parents scared me away from getting a credit card when i was in college and that i didn&#39;t get one until a couple of years ago, since having one the past couple of years has shown me how easy it would be to let yourself get into large amounts of debt quickly. i&#39;m thankful that i got good early on at budgeting and buying groceries and cooking, because the use of my time and attention made money stretch further, though i&#39;m not thankful to imagine the dates i didn&#39;t go on because i didn&#39;t have enough money or the other important experiences i missed (i wish i had studied abroad, even if it wasn&#39;t responsible and i would have had to take out more loans). </p>
+<p>i&#39;m thankful that i lived within my means, but i&#39;m not thankful about how the anxiety over the disparity between what i had and what my friends had kept me separate from them. i&#39;m thankful for the scene in <em>the secret history</em> where the first term ends and richard doesn&#39;t have anywhere to stay while the dorms are closed and can&#39;t go home and knows that if he asks one of his friends, they would have him, but just can&#39;t bear to expose himself to (what he feels would be) the shame of asking them and so instead goes to live, in a brutal new england winter, in an unheated warehouse loft and nearly dies. i&#39;m thankful for how deeply that book (and similar moments in curtis sittenfeld&#39;s <em>prep</em>) made me feel unalone. i&#39;m thankful for the way that to avoid feeling like a leech on my friends with cars and to avoid the embarrassment of having to ask for a ride, i started walking long distances and how claiming it was my choice to walk (even though i didn&#39;t have an alternative) then became part of my identity. i&#39;m thankful that this started as armor but sank into my skin and became how i truly felt.</p>
+<p>i&#39;m thankful to remember a month before my 21st birthday when i got arrested for underage drinking and so had to do a day of community service to get the charge expunged from my record. i&#39;m thankful that you had to get there (and it was really far away, on the other side of town) early in the morning. i&#39;m thankful that i knew that any of my three roommates would have, after a groan or two, gotten up and taken me without a second thought, but that i just couldn&#39;t imagine having to ask them, which made me feel so anxious, like admitting i was powerless in this way that they weren&#39;t. i&#39;m thankful that instead i ordered the first taxi i&#39;d ever ridden in and went to the other side of town. i&#39;m thankful that i didn&#39;t bring my cell phone because they stressed that you couldn&#39;t bring your cell phone and would have your service disqualified if you were caught with a cell phone, even though (a thought i ran back and forth through my brain) this was unfair because if you didn&#39;t have a car there was no way for you to call someone to pick you up at the end of the day. i&#39;m thankful that, given this anxiety about how i was going to get home, the prospect of picking up trash from the side of the highway on a nice early spring florida day was actually a welcome distraction. i&#39;m thankful that i kind of made friends with one of the other guys and that when we were leaving at the end of the day, he asked me, &quot;hey, so do you need a ride?&quot; i&#39;m thankful that he was nice enough to ask me that and that it would have been so easy to say yes and today i would say yes but that i couldn&#39;t say yes then, so i said that my friends were going to pick me up and then, after everyone had left the parking lot and so i could give up this ruse, spent an hour walking around in the foreign darkness trying to find a pay phone to call another taxi to take me home, where my roommates were watching tv and said that i should have asked them for a ride.</p>
+<p>i&#39;m thankful to remember my junior year of college when my friend s bought a digital camera, one of those ones where the lens was embedded in the body but would telescope out when you turned the camera on. i&#39;m thankful that he was showing off the new camera and had me take a picture and then i passed it to my roommate z so he could try it and somehow, by one of our faults, the camera fell and fell lens first onto the ground, not breaking the glass but twisting the telescoping mechanism so it didn&#39;t work anymore. i&#39;m thankful that i was sure in the moment that it had been z who dropped it (though i&#39;m not sure now whether that sureness was just an automatic defense mechanism) and he was sure in the moment that it had been my fault and there was this very tense moment when s was like &quot;well, someone is responsible for this!&quot; and thankful for a small change i saw in z&#39;s eyes, a decision being made, and how he said &quot;<em>well, i guess it was me then</em>.&quot; i&#39;m thankful that he probably didn&#39;t think it was actually his fault but, i think, knew that the money would be less of a big deal for him than it was for me and so accepted my version of the story.</p>
+<p>i&#39;m thankful for an anecdote d told me once, about how she got her freshman year financial aid at UCLA, the first time she&#39;d ever had a large sum of money, and, her eyes widened by dollar signs, bought a new computer and various other things she wanted, not thinking about the fact that she needed to use the money to, well, live, and how she then, ashamed, had to borrow money from her dad. i&#39;m thankful that sometimes that moment appears in my subconscious, an image of her holding a macbook pro and feeling afraid and like she&#39;d made a huge mistake, and its sadness reminds me of other sadness i&#39;ve felt and makes me feel tenderness towards her. i&#39;m thankful for the leveling out of approaches to spending and saving money that has come from my relationship with d, with me encouraged by her to be freer and happier spending the money that i do have and her encouraged by me to be better at saving and setting money aside from the future. </p>
+<p>i&#39;m thankful when i realize that i&#39;ve spent money on things that i don&#39;t really want or need, thankful to have those hangover kind of moments where it&#39;s like &quot;<em>why did i spend $30 on this? i did not need to do that</em>.&quot; i&#39;m thankful, though, sometimes to be thankful that i spent money, that i traded the security it represents for pleasure. i&#39;m thankful for the first watermelon of the summer, which i cut into cubes to go with our burritos last night. i&#39;m thankful that at the supermarket yesterday, where i knew we had to buy plastic wrap, and where i always buy the cheap store brand plastic wrap even though then when i get it home i find it shitty and difficult to use, i let myself buy the more expensive press and seal wrap, which is much easier. i&#39;m thankful that today in the vitamin aisle before i accidentally bought the male enhancement supplement, i recognized the song &quot;<a href="https://www.youtube.com/watch?v=tMG6W-kPk6g">drop</a>&quot; by hope sandoval was playing over the PA, its lush reverb echoing through the store. i&#39;m thankful to remember buying the album that song is on from the record store in the same plaza as the movie theater that was my first job with one of my first paychecks. i&#39;m thankful that my teenage record buying decisions up until that point were, because i never had much money, always based on scrupulous reading of reviews and criticism and pop history, but thankful that because i for the first time had enough money, disposable income, i took a chance on this album by this artist i knew nothing about because it seemed interesting. i&#39;m thankful i took a chance on <a href="https://www.youtube.com/watch?v=BBKrFsdMDUc">the album</a>, which is one of my favorite of all time.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-614.html" class="btn btn-secondary">← thank you notes 6/14</a>
+        <a href="/letters/thank-you-notes-612.html" class="btn btn-secondary">thank you notes 6/12 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

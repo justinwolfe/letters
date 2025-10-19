@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import './App.css';
+import { offlineStorage, formatBytes } from './offlineStorage';
 
 interface Email {
   id: string;
@@ -42,6 +43,43 @@ function App() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [hasLoadedLastViewed, setHasLoadedLastViewed] = useState(false);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [showOfflinePanel, setShowOfflinePanel] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState<{
+    current: number;
+    total: number;
+    message: string;
+  } | null>(null);
+  const [offlineStats, setOfflineStats] = useState<{
+    emailCount: number;
+    imageCount: number;
+    totalSize: number;
+    lastSync: string | null;
+  } | null>(null);
+
+  // Initialize offline storage and online/offline listeners
+  useEffect(() => {
+    // Initialize IndexedDB
+    offlineStorage.init().then(() => {
+      console.log('Offline storage initialized');
+      updateOfflineStats();
+    });
+
+    // Listen for online/offline events
+    const handleOnline = () => {
+      setIsOnline(true);
+      fetchEmails(); // Refresh when coming back online
+    };
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
 
   // Fetch all emails on mount
   useEffect(() => {
@@ -76,6 +114,20 @@ function App() {
       setEmails(sortEmails(data, sortBy));
       setLoading(false);
     } catch (err) {
+      // If offline, try to load from IndexedDB
+      if (!isOnline) {
+        try {
+          const cachedEmails = await offlineStorage.getAllEmails();
+          if (cachedEmails.length > 0) {
+            setAllEmails(cachedEmails);
+            setEmails(sortEmails(cachedEmails, sortBy));
+            setLoading(false);
+            return;
+          }
+        } catch (cacheErr) {
+          console.error('Failed to load cached emails:', cacheErr);
+        }
+      }
       setError(err instanceof Error ? err.message : 'An error occurred');
       setLoading(false);
     }
@@ -160,6 +212,31 @@ function App() {
       // Save to localStorage as the most recently viewed letter
       localStorage.setItem('lastViewedLetter', id);
     } catch (err) {
+      // If offline, try to load from IndexedDB
+      if (!isOnline) {
+        try {
+          const cachedEmail = await offlineStorage.getEmail(id);
+          if (cachedEmail) {
+            setCurrentEmail(cachedEmail);
+            // Calculate navigation from cached emails
+            const cachedEmails = await offlineStorage.getAllEmails();
+            const sortedEmails = sortEmails(cachedEmails, 'date-desc');
+            const currentIndex = sortedEmails.findIndex((e) => e.id === id);
+            setNavigation({
+              prev: currentIndex > 0 ? sortedEmails[currentIndex - 1] : null,
+              next:
+                currentIndex < sortedEmails.length - 1
+                  ? sortedEmails[currentIndex + 1]
+                  : null,
+            });
+            setView('reader');
+            setLoading(false);
+            return;
+          }
+        } catch (cacheErr) {
+          console.error('Failed to load cached email:', cacheErr);
+        }
+      }
       setError(err instanceof Error ? err.message : 'An error occurred');
       setLoading(false);
     }
@@ -235,6 +312,48 @@ function App() {
     }
   };
 
+  // Offline functionality
+  const updateOfflineStats = async () => {
+    try {
+      const stats = await offlineStorage.getStats();
+      setOfflineStats(stats);
+    } catch (err) {
+      console.error('Failed to get offline stats:', err);
+    }
+  };
+
+  const downloadForOffline = async () => {
+    try {
+      setDownloadProgress({
+        current: 0,
+        total: 100,
+        message: 'Starting download...',
+      });
+
+      await offlineStorage.downloadAllContent((current, total, message) => {
+        setDownloadProgress({ current, total, message });
+      });
+
+      await updateOfflineStats();
+      setTimeout(() => setDownloadProgress(null), 2000);
+    } catch (err) {
+      setError('Failed to download content for offline use');
+      setDownloadProgress(null);
+    }
+  };
+
+  const clearOfflineData = async () => {
+    if (!confirm('Are you sure you want to clear all offline data?')) return;
+
+    try {
+      await offlineStorage.clearAll();
+      await updateOfflineStats();
+      alert('Offline data cleared successfully');
+    } catch (err) {
+      setError('Failed to clear offline data');
+    }
+  };
+
   if (loading && !currentEmail) {
     return (
       <div className="container">
@@ -253,6 +372,29 @@ function App() {
 
   return (
     <div className="container">
+      {!isOnline && (
+        <div className="offline-banner">
+          📡 You're offline -{' '}
+          {offlineStats && offlineStats.emailCount > 0
+            ? `${offlineStats.emailCount} letters available`
+            : 'No offline content available'}
+        </div>
+      )}
+
+      {downloadProgress && (
+        <div className="download-progress">
+          <div className="download-progress-bar">
+            <div
+              className="download-progress-fill"
+              style={{ width: `${downloadProgress.current}%` }}
+            />
+          </div>
+          <p>
+            {downloadProgress.message} ({downloadProgress.current}%)
+          </p>
+        </div>
+      )}
+
       {view === 'list' ? (
         <div className="email-list">
           <header className="header">
@@ -315,8 +457,61 @@ function App() {
               >
                 🎲 Random Letter
               </button>
+
+              <button
+                className="btn btn-offline"
+                onClick={() => setShowOfflinePanel(!showOfflinePanel)}
+                title="Offline settings"
+              >
+                📥 Offline
+              </button>
             </div>
           </div>
+
+          {showOfflinePanel && (
+            <div className="offline-panel">
+              <h3>Offline Mode</h3>
+              {offlineStats ? (
+                <div className="offline-stats">
+                  <p>📧 {offlineStats.emailCount} letters saved</p>
+                  <p>🖼️ {offlineStats.imageCount} images cached</p>
+                  <p>💾 {formatBytes(offlineStats.totalSize)} total</p>
+                  {offlineStats.lastSync && (
+                    <p>
+                      🔄 Last sync:{' '}
+                      {new Date(offlineStats.lastSync).toLocaleString()}
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <p>No offline data available</p>
+              )}
+
+              <div className="offline-actions">
+                <button
+                  className="btn btn-primary"
+                  onClick={downloadForOffline}
+                  disabled={!!downloadProgress}
+                >
+                  {downloadProgress
+                    ? 'Downloading...'
+                    : '⬇️ Download All Content'}
+                </button>
+
+                {offlineStats && offlineStats.emailCount > 0 && (
+                  <button className="btn btn-danger" onClick={clearOfflineData}>
+                    🗑️ Clear Offline Data
+                  </button>
+                )}
+              </div>
+
+              <p className="offline-note">
+                Download all letters and images for offline reading. This app
+                works as a Progressive Web App (PWA) - you can install it on
+                your device for a native app experience.
+              </p>
+            </div>
+          )}
 
           {isSearching ? (
             <div className="searching">Searching...</div>

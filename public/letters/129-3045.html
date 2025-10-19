@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/9">
+  <title>12/9 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/9</h1>
+        <time datetime="2016-12-10T00:00:00Z">December 9, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <em>moonlight</em>. i&#39;m thankful for how certain works of art have the capacity to change your vision, to make it briefly possible for you to see what&#39;s really important underneath the skin of life and work and the various loops we let ourselves be pulled through. </p>
+<p>i&#39;m thankful while watching it to have thought about the various ways that i am unkind every day, to d and to other people that i care about and to people i don&#39;t even know, cruel, in my words and in my thoughts, and how wrong that is and how i have to stay vigilant and fight against the parts of myself that slip into those rhythms, because every cruel thing that you do has an impact, even if it&#39;s small, a gesture or a look or a tone of voice or word choice. </p>
+<p>i&#39;m thankful to think if you want to believe that small good things you do are meaningful, and i believe they are, then i think you have to believe that small bad things are meaningful too—you can&#39;t just have one or the other.</p>
+<p>i&#39;m thankful to remember a kind of room d and i would get locked in during arguments early in our relationship, which were almost always caused by me saying something unkind or inconsiderate or rude to her and expecting her to just take it as a joke and move along and then, when she didn&#39;t and was upset, more upset than i had realized, how when i apologized, she couldn&#39;t accept it, she would still be mad even though i said that i was wrong and i understood that i was wrong and i was sorry. </p>
+<p>i&#39;m thankful to be embarrassed now that often in that situation, i would make the argument that yes, i had said something rude and that was wrong, but you know, i was a great boyfriend most of the time to her and i just didn&#39;t understand how this one small comment i had made could suddenly outweigh all the rest of that, make it meaningless or at least mean less than this stupid thing that i had said without even really thinking about it, because i was hungry or in a bad mood or just being a shit for no good reason.</p>
+<p>i&#39;m thankful to know now that i was wrong on two fronts there, one of which is that i now understand we can try our best, but there are limits to how much we can control how things make us feel, what it&#39;s like to be inside of our bodies and our minds when everything suddenly lurches into wrongness—those things are shaped by our brain chemistry and our parents and our teachers and a million other factors, you can&#39;t just decide what to feel and then instantly feel it. </p>
+<p>i&#39;m thankful also to know that those isolated incidents don&#39;t stop being hurtful just because they&#39;re isolated and even if we&#39;re happy most of the time—they&#39;re still cruel and i still have to watch myself, to make sure i&#39;m not slipping into a state where i emanate cruelty. i&#39;m thankful to know that the argument i used to make is kind of like saying that because you&#39;re pretty healthy most of the time, it doesn&#39;t really matter that you got food poisoning or broke your arm or busted open your lip. i&#39;m thankful to know that&#39;s bullshit, that those things all still fucking hurt.</p>
+<p>i&#39;m thankful for how <em>moonlight</em> makes you feel how crushing small moments of cruelty can be, both in and of themselves, the stab and gasp, and also when they accumulate over the course of a life, how as enough of them accrete, they can hold down a person, suffocating with their weight. i&#39;m thankful for the vividness of its demonstration of how the worst cruelty is that which is inflicted by the people who are supposed to love us; i&#39;m thankful that whether those people are doing them consciously or (more often) subconsciously or, in the throes of addiction or mental illness, seemingly outside of our control or agency, thankful that it makes vividly clear how such acts of cruelty can push a person into despair, to call into question whether something like love or happiness can even really exist. </p>
+<p>i&#39;m thankful that the film, even though it is very very sad for most of the time you are watching it, still ultimately feels hopeful. i&#39;m thankful that, as attuned as it is to the presence of cruelty in the life of its characters, it is also open to the wonder of kindness and care, how people can choose to be kind in small ways and do and what that can mean to a person. </p>
+<p>i&#39;m thankful that the movie doesn&#39;t pretend kindness can erase the weight of the cruelty of the world and especially how disproportionately that cruelty is inflicted on its lead character, a young black boy becoming a young black man, but i&#39;m thankful that the movie also finds, in small moments of care and kindness, a way to be hopeful and to believe that a life worth living is possible, attainable, worth staying alive to try to find. i&#39;m thankful for how bad the movie made me feel about the ways i can be cruel and how much it made me want to be good and kind and open and free.</p>
+<p>i&#39;m thankful that this all sounds so abstract and conceptual, but i&#39;m thankful for the physical intimacy of <em>moonlight</em>, for the delicacy of the focus on contact and gesture and texture and breath. i&#39;m thankful for the restraint of the movie, for its slowness and sense of space, which makes all of those things into. i&#39;m thankful for affectionate wrestling in an athletic field. i&#39;m thankful for shoulders brushing against each other in a school hallway. i&#39;m thankful for a boy&#39;s hand gripping another boy&#39;s and pulling him in for a hug. i&#39;m thankful for fingertips passing a blunt. i&#39;m thankful for a hand gripping sand on a beach in twilight, the grains squishing through the gaps between the fingers. i&#39;m thankful for a hand stuck out the window of a car, riding the waves of the breeze at sunset. i&#39;m thankful for a hand in a dark bedroom touching a face for the first time in a long time and i&#39;m thankful for the way the face softens.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/c8.html" class="btn btn-secondary">← (c)(8)</a>
+        <a href="/letters/1210-3355.html" class="btn btn-secondary">12/10 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

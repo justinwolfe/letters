@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="it&#039;s like croutons as chips">
+  <title>it&#039;s like croutons as chips - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>it&#039;s like croutons as chips</h1>
+        <time datetime="2024-07-10T15:49:42.916793Z">July 10, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/204" alt="image.png"> </p>
+<p>it has been too hot to make art (a convenient excuse), but the worst of it has broken and the heat advisory has been lifted. another summer of keeping the grass in the backyard alive and letting the grass in the front die (mullet lawn care). the sensation of moving from extreme heat into air conditioning. i was on dinner duty the last two nights and in both cases because of the heat i started the process of cooking just in [charli xcx voice] &quot;my un-der-wear&quot; but then as bacon fat popped in the cast iron skillet my mind went &quot;really really put on an apron it&#39;s not too late to avert a disaster if you do it right this minute&quot; and i did and i do not have any grease burns on my nips god bless.</p>
+<p> <img src="/api/images/207" alt="image.png"> </p>
+<p>the smell of freshly ground weed which i sometimes just huff from the container as kind of aromatherapy. snacks always but most recently limited edition golden pineapple ice breakers (i made everyone wait in the car so i could go back through the line at the grocery store to buy a pac after t noticed them on the way out; the sours are still the GOAT but these are a welcome addition); caramel bugles (joe scoffed, but jon was right—really more-ish sweat/savory blend that like the best and most diabolical snacks builds in effect as you eat more of the bag); harvest snacks sour cream and onion lentil crisps (surprisingly strongly seasoned); ritz bitz sandwiches with cheese (i hadn&#39;t had/thought of these in years but deborah bought a box and we share a single server bag of them every afternoon); pita chips, which as a person who (maybe my most controversial Things Reasonable People Love That I Hate yet?!) doesn&#39;t really like hummus (it gets into the mushy savory problem deborah previously identified!), i have previously discarded as the solution to a problem that i don&#39;t have, but then we discovered they go so well as the side to a big salad (deborah: &quot;it&#39;s like croutons as chips&quot;)</p>
+<p> <img src="/api/images/205" alt="image.png"> </p>
+<p>there is suddenly a daiso across the border in vancouver now, fulfilling a dream deborah never expected to be fulfilled and my favorite thing i have bought there is something stupid i&#39;ve always wanted which is one of those little machines for resealing snack bags with heat (here is <a href="https://www.amazon.com/Rechargeable-Portable-Resealer-Plastic-Storage/dp/B0CZ7ZVXYB/ref=sr_1_1_sspa?crid=7IYC6UOS8PHJ&dib=eyJ2IjoiMSJ9.9RDAv5om53PuKXkIF8fNp17yJSEGsGHOlbbGfR3wCObl2fVEjneAyxP46IQjnpq3iO8OYS8rRejZPmszcakqIF7fwuqWQGAxS678Raz94g7JztRDICm-Pt4nMKenPCynkKJQxOVQq_VX5MEdNuikbib1AkuHsW9lMX3Wte7VliCY8WMllVMIZpXt32IGOel9vEeJmA1emt2b-AX3_dP6XkbCNdHx3gIWC6j9bct1QHXn2AOCeeEDGqQ3vjwdoyJNNZo0ed-3x3N5Lq1l5z5m6QddSv6kONhBBFr5cImCvFg.MRhkf4tXbisek5PHflVdTaWL23BMjUxfov4YcivQrqE&dib_tag=se&keywords=bag+heat+sealer+handheld&qid=1720621856&sprefix=bag+heat+sealer+handheld%2Caps%2C234&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1">a similar one from amazon</a>), which on balance does not really save time or energy but is so much more <em>fun</em> than applying a chip clip or twist tie (also would be great for stealth edibles, which makes me think of a tiktok i saw of someone at an outdoor festival unwrapping a foil wrapped sandwich to reveal that inside the bread is just a bunch of joints snuck into the venue). deborah let me borrow her neck fan, which i had made fun of on vacation but which allowed me to finish the day&#39;s work in my non-air conditioned office without dissolving into a puddle). homemade frozen cocktails she made with the immersion blender and fresh peaches.</p>
+<p> <img src="/api/images/206" alt="image.png"> </p>
+<p><em>challengers</em> finally came to VOD for $4.99 so we finally watched it and i love zendaya and it was a way to pass the time in the heat but gotta say pretty underwhelming (i tend to discount movie/tv reviews from my parents after being burned before but have to admit they were right on this one being boring). from the discourse on release, i thought it was going to be some kind of fucked-up erotic thriller/dark comedy thing in the vein of my favorite 2023 movie Saltburn, but that&#39;s idk 7% of it and most of it is like just about...tennis?! which for me doesn&#39;t even rise to the level of Things Reasonable People Love That I Hate because [eternal don draper voice] &quot;i don&#39;t think of it at all&quot; (and in fact at various times in the movie i was confused about what was happening or how i was supposed to be reacting because of a basic lack of understanding of how tennis works).</p>
+<p> <img src="/api/images/203" alt="image.png"> </p>
+<p>elsewhere in Sports, we&#39;ve also been watching <em>america&#39;s sweethearts</em>, the netflix documentary on the dallas cowboys cheerleaders which has been really interesting because on the surface it&#39;s like high gloss access journalism, which i would normally not have any interest in watching bc i do not like corporate hagiography, but actually there&#39;s no tension between depicting the team leadership in a way that meets their approval and at the same showing the truth of how horrible they are because, horribly <em>they don&#39;t think they&#39;re doing anything wrong</em> (and their ideology has been so downloaded and engrained that the cheerleaders that they don&#39;t either). the show is honestly a pretty great representations of capitalist exploitation, of trying to squeeze and squeeze more and better output from workers at the cost of their physical and mental health while paying them as little as they can possibly get away with (in the first episode someone compared her salary, as the star of this multi-million dollar enterprise, to &quot;someone who works at chic-fil-a&quot;) and also constantly reminding them how they should be <em>so grateful</em> (🖕) for this opportunity to be abused and how this is a calling not a job blah blah blah fucking burn in hell (let&#39;s not even get started on driving them to have eating disorders and then concern trolling over their low weight!). this tendency of the gross excesses of abuse, which permeates every part of the job/show, is typified in microcosm by &quot;the splits&quot; where at the end of a routine the dancers link arms, leap into the air, and land in splits, and which like everyone admits reliably cause the dancers to blow out their hips (a weird and unremarked upon echo of CTEs in the football players, but also they get big checks at least!) but well &quot;the fans love it&quot; and it is apparently impossible for decades to iterate on this choreography and find something else! the cornerstone dance routine which is also the anchor for the show is set to &quot;thunderstruck&quot; by ac/dc and they are a band that has always seemed so silly and ridiculous but the more you listen to this song while watching the women almost pass out dancing in 95 degree heat while the executives on the sidelines yell out ridiculously nitpicky comments about arbitrary things that no real person will ever notice like &quot;kelcey, your foot was too flexed&quot; or &quot;bigger eyes!&quot; and have them run the drill again and again and again, the more the opening riff sounds so sinister like truly some paganini devil shit!!</p>
+<p> <img src="/api/images/208" alt="image.png"> </p>
+<h2>Previously on this day</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-krs/">2016</a> (from <strong>krs</strong>) (<em>yoga class was cancelled, the slow jazz that was blasting from speakers in a nearby part of the park, the familiarity of the landscape here in Chicago</em>) </li>
+<li><a href="https://buttondown.email/justinwolfe/archive/710-7123/">2017</a> (<em>what cool breezes do, homemade milk snow, solo jazz piano</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/710-1594/">2018</a> (<em>watching deborah play assassin&#39;s creed, spending most evenings in vegged-out recovery mode rather than &quot;accomplishing&quot; things personality test i took for professional development at work</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/710/">2019</a> (<em>when you get out of work and you&#39;re in that pre-dinner &quot;what are we going to watch tonight&quot; phase and then remember that your favorite show is on that night, got to spend several hours writing code without distractions, that picture of lenny kravitz with big scarf energy, which will never not be entertaining</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/clairo-is-your-brandi-carlile.html" class="btn btn-secondary">← clairo is your brandi carlile</a>
+        <a href="/letters/head-vampire-of-scorpios-drake.html" class="btn btn-secondary">head vampire of scorpios drake →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

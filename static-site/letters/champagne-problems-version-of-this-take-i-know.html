@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="champagne problems version of this take i know">
+  <title>champagne problems version of this take i know - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>champagne problems version of this take i know</h1>
+        <time datetime="2024-05-14T15:20:45.908165Z">May 14, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/248" alt="image.png"> </p>
+<p>feel like i haven&#39;t written in here in a million years and have a million things to write about which will take a million hours to complete to do any sort of justice to my life but i can&#39;t stop time for that and as is always the case the best thing i can do is to just start writing something/anything (shoutout todd rundgren) and eventually hit the send button, closing the circuit. i&#39;ve been doing more programming in my spare time (on my erasure poetry app, which long lived in a state of &quot;done enough that i can use it for myself&quot; but &quot;not done enough to actually release for others to use or to fully enjoy using myself&quot; and so i&#39;m trying to finish it (closing the circuit)), which has been fun and rewarding (picking back up this project has been a revelation of a) how much better of an engineer i am now than i was four years ago and b) how much AI helps me write code now in a way that it didn&#39;t four years ago) but trading this focus state for that one also i&#39;m recognizing how programming (or making music, or any number of other creative hobbies), while it is creatively and intellectually fulfilling, simply does not defrag my mental hard drive in the at this point medically necessary way that writing these notes does and so here i am [eminem voice] back again.</p>
+<p> <img src="/api/images/249" alt="image.png"> </p>
+<p>met hannah and tristan in montreal and it was like we were old friends, which in a way of course we were &lt;3. went to company retreat at ski town in quebec. wore my free palestine from the river to the sea shirt to the opening reception (i had bought a keffiyeh to wear but i put it in the drier without reading the care instructions). was pleasantly reminded how many friends i&#39;ve made across the company, as a person who went various periods of my life without any friends. successfully smoked 25+ joints with friends (zero waste). winged a presentation i did with cc instead of doing homework and we had fun and everyone liked it (also she and i avoided a team building game we didn&#39;t want to do and had tall beers and talked about our lives for like two hours). didn&#39;t get into any neediness or passive-aggression with [redacted] and remained warm and friendly throughout and even had some nice one-on-one airport conversations (the first time we really have talked in a year) while also maintaining an internal distance to prevent myself from slipping back into a bad pattern with her. ate really good octopus carpaccio and steak tartare with overfilled glasses of vin rouge at a small bistro. at company karaoke did &quot;vampire&quot; and &quot;like a prayer&quot; (which ended with me jumping off the stage onto the dance floor to trade vocals with an accountant) and also assisted with duets of &quot;you&#39;re my best friend&quot; and &quot;basket case&quot; with two beloveds who needed a buddy to feel confident enough to go on stage (i do not feel one should ever pressure others to do karaoke but i also feel that we should support people who want to but are scared). over the course of the trip i took 3mg of xanax from my tiny stash (which is hard to re-up legally because i have never found a doctor who would prescribe me even a tiny amount for emergencies despite me being a very reliable consumer of mental health medication for a decade at this point and extra-legally because fentanyl has ruined everything (champagne problems version of this take i know)) but it was 1000% worth it in terms of helping me feel better in some intense situations. among other things, learned about the &quot;philly taco&quot; which is half a philly cheesesteak wrapped in a new york style pizza slice.</p>
+<p> <img src="/api/images/247" alt="image.png"> </p>
+<p>after avoiding it for four years thanks to a lot of luck, working from home, not having children, a very limited social life, and continuing to mask where convenient and appropriate (partly for my health and partly we live in a society and partly because i just love the anonymity and separation from the world!), i finally got covid (and then, because we cannot avoid long frequent kisses, d finally got covid), which was quite unpleasant for a weekend (especially because re: the previously stated conditions of my life i have not had a cold or the flu or any kind of transmissible illness in like years like i literally could not remember the last time (CHAMPAGNE PROBLEMS VERSION OF THIS TAKE I KNOW i am prepared for your unfollows and wish you well)) but i feel like 95% okay now, which i am thankful for!!! </p>
+<p> <img src="/api/images/246" alt="image.png"> </p>
+<h2>Previously on this day</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-514/">2016</a> (<em>passage from sarah bakewell&#39;s <strong>at the existentialist cafe</strong></em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/51417/">2017</a> (<em>had a really bad day on friday, probably the worst one i&#39;ve had at my job so far; blooper reels; being lost in <strong>breath of the wild</strong></em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/514/">2018</a> (<em>the water fountain halfway through on of my favorite running routes has been turned on, my favorite sign that winter is truly and finally over; d made strawberry shortcake; i think there should be a critical rule against calling a book &#39;dickensian&#39; when there is no plot for the first third of the book</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/just-him-telling-various-zionists-fuck-you.html" class="btn btn-secondary">← just him telling various zionists &quot;fuck you&quot;</a>
+        <a href="/letters/spring-asparagus.html" class="btn btn-secondary">spring asparagus →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

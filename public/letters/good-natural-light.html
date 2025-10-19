@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="good natural light">
+  <title>good natural light - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>good natural light</h1>
+        <time datetime="2024-08-20T16:02:05.061815Z">August 20, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that on friday t tested negative for covid and on saturday we celebrated by going out for tortas for lunch. i&#39;m thankful that deborah wore a very cute outfit for the official debut of her tattoo and as i do whenever we are outside and there is good natural light and she is wearing a cute outfit, i started taking pictures of her. i&#39;m thankful that the light got really good as we were crossing a crosswalk so i got ahead of her and turned around started walking backwards while rapid fire taking pictures. i&#39;m thankful that i got the shots i wanted and did not fall on my ass but that as I was exiting the crosswalk, a car honked at us. i&#39;m thankful, seeing that the walk sign was still very firmly on and that there was no reason to honk at me, i did something i used to do all the time (because I was more of a pedestrian and Indiana drivers were often assholes) but generally haven&#39;t done in a while (because I barely leave my house and Portland drivers are generally so deferential to pedestrians) which was twist back and stick up my middle finger in the general direction of the car before turning and going on except then as i was turning back i heard deborah say &quot;wait, is that k and t?&quot; and i turned fully this time and actually looked and the car that had honked at me turned out to be the car of the dear friends we were on our way to meeting for lunch, which made us all laugh so hard. i&#39;m thankful for their description of seeing deborah and i side by side,  deborah smiling and waving at them and me flipping them off. </p>
+<p> <img src="/api/images/185" alt="image.png"> </p>
+<p>i&#39;m thankful that at the company i work at you get a one month paid sabbatical after working there four years (one of those tech company perks that when i tell my parents about it they look at me like i have won the lottery, which in some sense i have, even if it doesn&#39;t always feel like it from within the bubble) and that yesterday was the first day of my sabbatical. i&#39;m thankful thus to have begun the longest period i have not had to go to work in 15 years (!!!) by going on a long slow run and having some edibles and opening the windows in the attic to let in the breeze and lying on the couch reading all afternoon. i&#39;m thankful for <em>the bright sword</em> by lev grossman, which was overly long and messy and sometimes confusing (traits he ascribes in the afterword to king arthur stories generally, which seems both true and kind of a cop out) but ultimately quite enjoyable (the use of a more contemporary narrative voice, the queering of the narrative). i&#39;m thankful for the slate of days and books ahead of me (i&#39;m thankful before falling asleep last night to have started reading <a href="https://www.simonandschuster.com/books/An-Honest-Woman/Charlotte-Shane/9781982126865"><em>an honest woman</em></a>). </p>
+<p> <img src="/api/images/183" alt="image.png"> </p>
+<p>i&#39;m thankful for recent additions to my list of Things Reasonable People Love That I Hate: calling a partner &quot;my person&quot; (deborah: &quot;<em>if you&#39;re in a poly relationship do you say &#39;my people</em>&#39;?&quot;), practice (i like &quot;having a practice&quot; in the sense of having a yoga practice, i.e. a regular habit of doing something enriching (hi), but i do not like practice in the sense of &quot;practicing&quot; i.e. woodshedding/drilling/homework/writing a novel to keep in a drawer), peanut sauce (for one of our dinner options this week we&#39;re making thai spring rolls and deborah got peanut sauce for dipping, a condiment that always gives me the ick for some reason (see also pad thai)), and the films of the coen brothers (the only one i have ever actually enjoyed is <em>no country for old men</em>).</p>
+<p> <img src="/api/images/184" alt="image.png"> </p>
+<p>i&#39;m thankful to have finally successfully taken my parents recommendation to watch the TV adaptation of <em>fargo</em>, which since &quot;schitt&#39;s creek&quot; is probably the content recommendation they have made most strongly and repeatedly that i have rejected. i&#39;m thankful that i thought i was going to bounce off it again, since the humor feels dangerously corny at times and that is always the disqualifier for me, but i&#39;m thankful that we stuck with the second season and it clicked (i&#39;m thankful always for kirsten dunst, my millenial queen, and also that she and jesse plemons play a husband and wife which is not quite as reality effect frisson as matthew rhys and keri russell in <em>the americans</em> but what is). i&#39;m thankful that this past weekend we finally watched <em>furiosa</em> (now on max), which could not possibly compare directly to fury road, a sui generis wagnerian adrenaline injection, but wasn&#39;t trying to be that kind of movie but instead a big messy epic with named chapters and multiple narrative strands and an excess of deep lore (and chris hemsworth chewing a little too much scenery but not so much as to ruin things). i&#39;m thankful for <em>love lies bleeding</em> (also on max), which was a delightful dark body horror concoction. i&#39;m thankful that though <em>love is blind uk</em> has been slow so far, we&#39;ve gotten to the part where everyone is in the resort together and hopefully something fucked up will happen (and/or we will see beautiful and moving manifestations of true love (hopefully <code>and</code> not <code>or</code> i am no saint)). i&#39;m thankful that when i asked deborah if she was a prosecutor working on a murder case would she let me look at the photos and other confidential exhibits and reader she said yes. </p>
+<p>Previously on this day:</p>
+<ul>
+<li><a href="https://buttondown.com/justinwolfe/archive/thank-you-notes-820/">2016</a> (<em>to promise myself to not spend this weekend doing work things like i did last weekend, chili cheese dogs, &quot;tower of babylon&quot; by ted chiang</em>)</li>
+<li><a href="https://buttondown.com/justinwolfe/archive/82017/">2017</a> (<em>that though the side effects from my new antidepressant have worsened, they could be worse still; letter from molly about death and our town; the sex scenes in insecure</em>)</li>
+<li><a href="https://buttondown.com/justinwolfe/archive/820-6276/">2018</a> (<em>to have slept ten hours last night; that though i wish i had those notes, since there were so many wonderful moments that i had with people i care about and i don&#39;t want to forget them, if i had taken the time to step away and write them down, i might not have experienced them in the first place, so i&#39;m thankful not to have written them down; pizza from our favorite local pizza place, which is always slow for delivery but is also always worth it for the taste</em>)</li>
+<li><a href="https://buttondown.com/justinwolfe/archive/819/">2019</a> (<em>a wet dog, how transformed they are by the simplest of elements; a really good gift idea if you want to get something for a person and you know they like bread; this newsletter, which is the healthiest relationship i have ever had with writing anything, the aimless endlessness of it</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/psycho-of-love.html" class="btn btn-secondary">← psycho of love</a>
+        <a href="/letters/celebrating-leo-season.html" class="btn btn-secondary">celebrating leo season →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

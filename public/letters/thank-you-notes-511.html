@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/11">
+  <title>thank you notes 5/11 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/11</h1>
+        <time datetime="2016-05-11T00:00:00Z">May 10, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the sketch on the most recent episode of <em>inside amy schumer</em> which shifts from a group of middle aged guys at a sports bar watching a football game and talking shit about the players on their fantasy teams to another sports bar where a group of football players are watching the group of middle aged guys go through their daily lives and perform mundane tasks, the players debating the regular guys&#39; merits and whether they should keep them on their fantasy teams. i&#39;m thankful for the fun of this reversal and how it echoes the way that sometimes i think of particular actions or statements or gestures i make in the course of my daily live as moves or plays or strategies for success (which i define not in a zero sum way (&quot;winning&quot;), but in terms of generating good feelings for myself and the world around me). </p>
+<p>i&#39;m thankful that yesterday afternoon, my coworker and i hadn&#39;t talked for like an hour or maybe two (i&#39;m thankful for the silence of summer on a college campus), and it was time to go and i thought to myself selfishly as i got up and started locking the office doors, &quot;<em>maybe i can just hold on to this silence until i leave</em>,&quot; but then thought that it was too cold to not say anything and she would want me to talk to her before we went home. i&#39;m thankful that i said, &quot;<em>so how was your personal training yesterday?</em>&quot; referencing a conversation she initiated at the end of the previous day about how she was worried about it, and i&#39;m thankful she seemed very happy to be able to relate the story of her training session and how she and her trainer learned that she needs to drink less water before she does cardio because she threw up at the end of the workout. i&#39;m thankful that usually i am rushing out of the office and so mentally ready to leave that there&#39;s little warmth to my goodbyes (and sometimes they even reflect a bit of annoyance) but i&#39;m thankful that i tried hard to exude warmth and good vibes as i said &quot;<em>see you tomorrow</em>&quot; and i think it worked for her and it made me feel good too. i&#39;m thankful to think of a well-phrased compliment or a statement inflected with genuine warmth or a specific show of interest as (to mix sport metaphors) like sinking a perfect three point shot. i&#39;m thankful for the days when these successful gestures accumulate over a morning or an afternoon and i feel briefly like i&#39;m on a streak, in the zone.</p>
+<p>i&#39;m thankful for <a href="https://medium.com/@AlexCartaz/apple-and-the-future-of-podcasts-5d9a653394b2#.wg8g3othd">this medium post</a> by alex carter about a recent controversy regarding the future of podcasts. i&#39;m thankful that he makes a fairly persuasive case for how more detailed analytics from apple would be useful for podcasters and wouldn&#39;t necessarily close off &quot;one of the web&#39;s last open media ecosystems.&quot; i&#39;m thankful, as someone whose reflex is to hate data-driven anything, for the way he uses spotify&#39;s discover weekly as an example of how anonymous data can be used to create really great and fun and useful internet things (i&#39;m thankful for discover weekly, which i&#39;m excited to receive every week), even though when i reflected on it further, it&#39;s sort of a misleading example to me because discover weekly uses data to drive, well, <em>discovery</em>, whereas he&#39;s talking about using listener data to inform the creative decisions podcast producers make. </p>
+<p>i&#39;m thankful for any chance to improve discovery and sharing of podcasts, which i agree as someone who loves podcasts is terrible and broken (i&#39;m thankful to imagine that someday soon there will be a better way to share a particular episode of a beloved podcast with a friend), but i find the idea of podcasters using granular data about listening habits to shape their stories and style kind of icky. i&#39;m thankful in general for more loose and free podcasts which are about expression and conversation and digression, which are driven by the hosts rather than by the desires of the audience, which allow me to feel like i&#39;m listening in rather than being (forcibly) moved (which is how <em>TAL</em> used to sometimes makes me feel). and i have this (probably irrational) fear of podcast analytics being used to drive further bland npr-ification of the medium. i&#39;m thankful for the skip forward and skip back fifteen seconds buttons in the ios podcasts app, which are so useful and which i wish existed in spotify for use with music (i&#39;m thankful to imagine either that, as well as bookmarks being used to let me isolate my favorite parts of songs and easily build intense workout mixes). i&#39;m thankful for my favorite podcasts, which i look forward to every week as much or maybe more than my favorite tv shows. i&#39;m thankful for the <a href="http://www.mtv.com/news/2879004/the-game-of-crones-podcast-episode-3-happy-mothers-day-from-a-bunch-of-dicks/">game of crones</a> discussion this week of jon snow&#39;s dick size.</p>
+<p>i&#39;m thankful for the distinction kylee draws between personal brand and aura in her introduction to this fascinating <a href="http://tinyletter.com/tinytalks/letters/lauren-s-regular-luxury">tiny talk</a> with lauren cook and for cook&#39;s thoughts on contemporary food culture: &quot;<em>Everyone is really afraid of dying right now because everyone knows we fucked up how we think about food and treat food and source food so food trends and like...wanting to cook and be domestic are us trying to sort of grapple with our failures. Like this planet is clearly doomed so let&#39;s all eat organic. Or just like we have been so deprived of pleasure and being able to live in the moment that food is the easiest access point to luxury for regular people. That&#39;s where pseudo-decadence comes in...poison designed as sustenance. Like when people eat sandwiches where woven bacon is the bread with a fried egg on top. We just have so little to live for</em>.&quot; i&#39;m thankful that i learned the term &quot;half eternity&quot; from d, which in ring design means a ring for which the stones go halfway around the ring instead of all the way around (which is &quot;eternity&quot;). i&#39;m thankful for really good long meditation sessions the past few evenings, for the way that just taking a breath can feel so incredible when you&#39;re really centered and focused and focused on your body.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-512.html" class="btn btn-secondary">← thank you notes 5/12</a>
+        <a href="/letters/thank-you-notes-510.html" class="btn btn-secondary">thank you notes 5/10 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

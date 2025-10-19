@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/15">
+  <title>thank you notes 5/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/15</h1>
+        <time datetime="2016-05-15T00:00:00Z">May 14, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for l<a href="https://www.youtube.com/user/WhatIHeartToday">ilypebbles</a> and <a href="https://www.youtube.com/user/ViviannaDoesMakeup">viviannadoesmakeup</a>, two uk makeup bloggers/vloggers that d and i follow, for the things their recent videos have made me think about. i&#39;m thankful that my interest in watching these kind of vlogs, even though i have no interest in makeup, came with d&#39;s interest in an another makeup vlogger, <a href="https://www.youtube.com/results?search_query=essie+buttons">essiebuttons</a>—i&#39;m thankful for the travelogue vlogs that she used to make with her partner, aslan, and how they enabled d and i to virtually travel with them to morocco and canada and scandinavia and elsewhere. i&#39;m thankful, as well, for vlune and vlogcember, events where she made and posted a vlog about their lives every day for a month—i&#39;m thankful to remember excitedly watching those every evening with d, for the intimacy that we felt with these two people our age living across the atlantic from us, to watch them cook and eat and go to museums and walk their dog and do DIY projects, to live the way we live now together. </p>
+<p>i&#39;m thankful that i eventually stopped being able to watch essie&#39;s vlogs because of what i&#39;ve dubbed the &quot;oprah chai&quot; effect, thankful to leave them behind since there is so much good stuff out there to experience that it&#39;s good to be able to leave behind things that don&#39;t make you happy (i&#39;m thankful that i don&#39;t really hateread or hatewatch things much anymore, unless the joy of the schadenfreude feels like a net positive for my happiness, which it usually doesn&#39;t, though i am not perfect or virtuous)(i&#39;m thankful that it&#39;s possible to have ambiguous or contradictory feelings about things that i love, though). </p>
+<p>i&#39;m thankful for the oprah chai effect, which i named after essie&#39;s desire, a few years ago, for a particular mixture of teavana chai tea that was associated with oprah&#39;s brand identity and sold at starbucks. i&#39;m thankful that essie, a lover of fast and processed food like me (i&#39;m thankful for her love of tim hortons&#39; &quot;timbit&quot; donut holes) as well as daytime tv (i&#39;m thankful for her love of dr. phil), really wanted the tea when it was released, but wasn&#39;t able to procure any because it wasn&#39;t available in the uk. i&#39;m thankful on her next trip either to her home in canada or to the states (i&#39;ve watched so many of these videos for so long that the chronology has become as fuzzy), she held one of her first meetups with her fans in a public square in toronto. i&#39;m thankful, even though it made me feel kind of uncomfortable, for how happily shocked she was to be surrounded by an unexpectedly large circle of smiling girls and women who had watched her videos and liked her instagram and cared enough about them to come to this place to meet <em>her</em>. i&#39;m thankful that some of the girls loved her so much they brought her gifts, including the oprah chai tea, which essie was surprised and excited to receive. </p>
+<p>i&#39;m thankful, even though it made me cringe a bit, for the talking head she filmed after that meetup, when she cried talking about how meaningful the experience of meeting her fans was. i&#39;m thankful that as her star continued to rise in the beauty vlogging world, and as she held more meetups and filmed videos celebrating milestones in her career (100,000 subscribers, 1 million subscribers, etc.) and began to create more sponsored content (for which she would express thanks to the brands who sent her free stuff or on junkets), she had more of these &quot;oprah chai&quot; moments, these often tearful or choked-up confessions when she would talk to us through the camera about how grateful she was for our love and support. i&#39;m thankful, even though these moments felt on one level genuine and i&#39;m sure in her mind were genuine, they also felt kind of gross to me, these expressions of gratitude for bigger doses of the drug of fame, the way that her scrappy underdog identity gave way to something cleaner and more focused and more thirsty. i&#39;m thankful for the way that loving her vlogs did genuinely seem to bring together girls and women online and in real life who might not have other friends that shared their interests, to have given them a community they might not have had otherwise, even though i felt that sometimes essie was just leaning in and using female empowerment as mortar to build an ever-higher tower of <a href="https://www.youtube.com/watch?v=KqFNAEEFVL4">money, power, and glory</a>. </p>
+<p>i&#39;m thankful that during the period we were first watching these videos, d was getting more and more into the fancy makeup and expensive skincare products that the stars were using and buying and endorsing. i&#39;m thankful that at first made me uncomfortable, because it seemed wasteful and pointless and dumb (i&#39;m thankful for the &quot;<a href="https://www.youtube.com/results?search_query=drugstore+haul">haul</a>&quot; videos, the makeup version of tech&#39;s &quot;unboxing&quot; videos, that makeup vloggers create, which seemed like such irresponsible celebrations of consumption), and thankful that i was sometimes rude or critical of this interest to d, even though this was unfair and not right, because it caused her to react and defend her interests and for me to over time understand the ways in which i was wrong. i&#39;m thankful for the videos we watched (or i half-watched) which helped me conceptualize makeup in ways that made more sense to me—as a complex artform (the layering and brushwork, the intricacy of color blending, the way different media require different techniques) with the face as canvas, as well as a way to reinvent yourself in small ways, to step away from the bathroom mirror into the outside world as a new person(a). i&#39;m thankful to have recently thought about how d and i both like spending money on parallel categories of things—me with my interest in vitamins and supplements and tinctures and ways to change the way i feel inside, her with her interest in how snail cream or sunscreen or serum might change the way her skin looks and feels. (i&#39;m thankful for the &quot;hopwater&quot; i bought at the fancy grocery store yesterday, which d said, grimacing, was &quot;floral&quot; and which i thought tasted like what windex would taste like if it were a beverage.)</p>
+<p>i&#39;m thankful that on friday night after dinner, we watched <em>the revenant</em> and enjoyed its gore and glory very much (i&#39;m thankful that d didn&#39;t want to watch it at first, since she had heard it was just &quot;leo suffering for 2 hours&quot; but was quickly sucked in by the opening scene, which i compared it to a live action version of the battle scenes in <em>princess mononoke</em>, a movie she introduced to me and convinced me to watch in part because of the promise of exquisitely rendered violence). i&#39;m thankful for the incredible landscapes of the movie, as alien and beautiful as anything computer generated in a lab in southern california. i&#39;m thankful for how a line in the movie from leo&#39;s character about not being afraid of death anymore caused me to reflect on how much time i used to spend being afraid that i was about to die (and burdening d with these fears, frightening her) and what a blessing it is now to have my mind filled with smaller, banal problems and frustrations. </p>
+<p>i&#39;m thankful that for something to do yesterday evening, d and i tried vaping hops flowers, which i had bought in a small clear plastic package from the fancy grocery store. i&#39;m thankful that the vapor tasted much better than the hopwater and that we did get a nice small feeling of looseness and lightness, even though that might have been a placebo effect. i&#39;m thankful that last night after dinner, looking for something to watch while d read a book on the couch next to me, i decided on <em>the world unseen</em>, the 45 minute documentary about the making of <em>the revenant</em> on youtube. i&#39;m thankful for the documentary&#39;s desire to be more than an EPK, to say substantive things (and to provide a platform for native people to speak) about european colonial theft of native land and subjugation of native peoples, for the interview with leo talking about how that&#39;s the beginning of a process of harvesting resources and ravaging landscapes that in the present has created global warming and deforestation and oil spills and all the other apocalyptic problems of today. i&#39;m thankful that the documentary wanted to touch all of those important things, even though i ended up stopping watching it about halfway through because i got bored and what the dumb obvious saturday evening version of me had wanted to watch was leo and tom hardy rehearsing fight scenes in t-shirts and sweatpants, of which there was some footage but not much.</p>
+<p>i&#39;m thankful, looking for something else, to have clicked on the &quot;recommended for you&quot; list in our tv&#39;s youtube app. i&#39;m thankful that last week, lily and vivianna went to the south of france on a sponsored trip to the fields where the flowers for chanel&#39;s perfume are grown, harvested, and processed. i&#39;m thankful that i know this because i watched both their snapchats from grasse in bed with d on her phone in the evenings and then on our big TV after dinner watched the vlogs that they made as a record of the trip. i&#39;m thankful that lily and vivianna, who from what i gather come from very different places in the UK and very different class backgrounds, have become best friends and thankful to see them spend time together being happy. i&#39;m thankful for their glee at the fact that <a href="https://www.youtube.com/watch?v=E-mG12fpBLY">blake lively, en route way to cannes, was on their flight from london</a> and thankful for the stealth snaps they took of her as she was blasted by the flashes of the paparazzi at the airport&#39;s exit, giddy, as they filmed themselves and each other in videos to be watched by thousands of viewers, to have seen a real celebrity.</p>
+<p>i&#39;m thankful that in vivianna&#39;s snapchat one night last week, she revealed big news, &quot;crazy&quot; news, which was that she had been overtaken by the beauty of their time in france, which felt like such a once-in-a-lifetime experience, that at the chanel boutique they visited she had bought a small chanel bag, which she said was called a &quot;woc&quot; (wallet on chain). i&#39;m thankful that while we watched the vid on d&#39;s phone, i googled the bag on my phone and found out that it probably cost around $2500. i&#39;m thankful, even though i don&#39;t feel as precarious as i once did, that this number still made me feel slightly sick to my stomach with anxiety. i&#39;m thankful for the moment a few days later, when (the much more posh) lily filmed a surprisingly similarly phrased confession about the &quot;once-in-a-lifetime&quot; expensive chanel bag she had bought for herself (i&#39;m thankful, if you want a deep dive into the dirt on vloggers, to recommend the brutal guru gossip forums). </p>
+<p>i&#39;m thankful to have thought about the hourly wage service job my mom has at a luxury hotel in miami beach and how her old boss at the hotel&#39;s boutique (where she used to work), had worked at chanel in the rich person mall near our house and once gave her a pair of chanel earrings as a gift. i&#39;m thankful to remember her bringing them home and opening the little chanel box to show me and us gazing at them in wonder, like the sense that it was only by some kind of cheat code that the chanel box was in our little apartment. i remember asking her if i could have the box and gluing it to the back cover of my writing notebook i was taking to grad school (i&#39;m thankful for the magazine picture of lil wayne i cut out to glue to the front cover). i&#39;m thankful that my mom&#39;s boss eventually tired of the miami lifestyle and retired to a small town in north carolina, where he is apparently very happy.</p>
+<p>i&#39;m thankful how in her snaps, vivianna mentioned lily making a special video of their time at the chanel fields and how it had made her cry. i&#39;m thankful that last night, the video (&quot;<a href="https://www.youtube.com/watch?v=Seq_qRIEGjE">Chanel Fields 2016</a>&quot;) was listed near the front of the &quot;recommended for you&quot; section in our tv&#39;s youtube app and i clicked on it. i&#39;m thankful that the video was set to the loungey nouvelle vague covers of &quot;<a href="https://www.youtube.com/watch?v=xkZPyJ5gKVk">teenage kicks</a>&quot; and &quot;<a href="https://www.youtube.com/watch?v=8oWO7Om17v0">love will tear us apart</a>,&quot; a choice of jagged punk rendered basic chic that was thematically echoed by the moment in the airport in nice when, coming down an elevator, lily and vivianna and another vlogger realized they were all wearing black leather jackets. </p>
+<p>i&#39;m thankful, i guess, that vivianna&#39;s comment about crying had gotten my hopes up about the art of the video, which turned out to just be a slightly impressionistic commercial for chanel. i&#39;m thankful for my discomfort at how the brief shots of laborers picking roses by hand and hefting burlap sacks of them over the shoulders in the hot sun are rushed through to get to slow motion shots of skirts blowing in the breeze as beautiful girls run down the aisles of the fields or sitting in a vat as pink petals are rained down onto them. i&#39;m thankful that even though the beauty is problematic (i&#39;m thankful to wonder if beauty is always problematic), that there are of course beautiful moments of light and nature and people and food (tarts covered in macerated strawberries) before the video ends with a first person perspective shot of entering the darkened backseat of a luxury car for the trip home. i&#39;m thankful to have been briefly reminded of eric rohmer&#39;s films that take place in the lush luxury of the south of france and which are like small vacations in the form of films.</p>
+<p>i&#39;m thankful for the interesting postscript to the chanel fields video in lily&#39;s snapchat last night, when she talked about her music choices for the video. i&#39;m thankful that most vloggers usually use the generic royalty-free library music that youtube provides, but how lily said she had wanted to use the nouvelle vague songs for the video because it was special. i&#39;m thankful for how she framed this as an artistic sacrifice, because using commercial music meant that she couldn&#39;t show preroll ads as she normally does and so wouldn&#39;t make any money off of the video. i&#39;m thankful, even if it was, again, basically a commercial about a sponsored trip to the south of france paid for by a luxury brand, that it <em>was</em> still in some sense an artistic sacrifice, that she cared enough about the video as an art object and a transcendent experience for the audience to forgo profit. i&#39;m thankful for people who make decisions like that, which is hard to do in the kind of world we live in.</p>
+<p>i&#39;m thankful for this passage about simone de beauvoir&#39;s <em><a href="https://www.marxists.org/reference/subject/ethics/de-beauvoir/2nd-sex/">the second sex</a></em> from <em>at the existentialist cafe</em> that i read yesterday—</p>
+<p>&quot;<em>Whatever fed it, Beauvoir&#39;s book outdid Sartre&#39;s in its subtle sense of the balance between freedom and constraint in a person&#39;s life. She showed how choices, influences and habits can accumulate over a lifetime to create a structure that becomes hard to break out of. Sartre also thought that our actions formed a shape over the long term, creating what he called the &#39;fundamental project&#39; of a person&#39;s existence. But Beauvoir emphasized the connection between this and our wider situation as gendered, historical beings. She gave full weight to the difficulty of breaking out of such situations—although she never doubted that we remain existentially free despite it all</em>.&quot;</p>
+<p>—and i&#39;m thankful for the <em><a href="http://www.amazon.com/Stoned-Jewelry-Obsession-Desire-Shapes/dp/0062334697/ref=sr_1_1?ie=UTF8&qid=1463324424&sr=8-1&keywords=stoned+book">stoned</a></em>, a book about the history and culture of jewelry, which d read and liked and which i read the first chapter of last night before bed and enjoyed. i&#39;m thankful for the blunt defamiliarization of gemstones, how they are &quot;<em>in fact, just colorful gravel...rocks that we&#39;ve given special names</em>.&quot; i&#39;m thankful for the details about the dutch tulip bubble, about how &quot;<em>in the final several years leading up to 1637, the mania for tulips had spread to the middle classes, even though within a few years a single bulb</em> cost more than a modest house.&quot; i&#39;m thankful how the book uses the famous story of manhattan being &quot;bought&quot; from the by the dutch for some glass beads to explore the concept of scarcity and its effect on the commodity fetish to reexamine the &quot;postindustrial perception&quot; of &quot;the cheapness of beads&quot; and whether this particular &quot;trade,&quot; which is seen as a cornerstone example of the one-sided nature of colonial exploitation of naive native people, might not be that simple. </p>
+<p>i&#39;m thankful that at the mall to buy new tennis shoes and t-shirts, we passed claire&#39;s, where in the window a little girl was sitting on a high chair, her parents looking on nearby, as an employee prepared to pierce her ears. i&#39;m thankful that walking home along the bike path, we passed a place where a full bush of pink roses sat next to a large pile of yellow plastic tubing, both of them surrounded by a chain link fence topped with strands of barbed wire. i&#39;m thankful that two of the peonies that d bought at the farmer&#39;s market last week are still alive and bring her happiness every time she looks at them. i&#39;m thankful for the earlier moment when we came home to the other flowers shedding their petals and how we sat there for a moment watching them fall in real time, which felt in some way sacred. i&#39;m thankful to have learned the importance of changing the water to keep cut flowers alive</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-516.html" class="btn btn-secondary">← thank you notes 5/16</a>
+        <a href="/letters/thank-you-notes-514.html" class="btn btn-secondary">thank you notes 5/14 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

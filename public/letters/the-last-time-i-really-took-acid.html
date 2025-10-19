@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="the last time i really took acid">
+  <title>the last time i really took acid - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>the last time i really took acid</h1>
+        <time datetime="null">December 31, 1969</time>
+      </header>
+
+      <div class="letter-body">
+        <p>yesterday afternoon, saturday, no obligations after a week of many obligations. we went on a long walk in the sunshine and the weather was so perfect if given the option to just lock that exact state of nature in permanently for the rest of my life, i probably would have. the beauty of a day when the breeze is neither a necessity for comfort or an annoyance disrupting it but purely aesthetic, a grace note, a highlight, dappling. this morning for the first time since summer, it&#39;s cold enough that when i get out of bed i rush back into the warmth as fast as possible. i fell asleep reading a novel on the couch last night (crazy saturday night!), the narcotic power of a warm blanket when it is cold.</p>
+<p>the last time i really took acid was a few summers ago. i&#39;ve mostly given it up despite it being the most effective psychedelic for my current neurochemical stack (see: my DMT experience) because while i love the duration and intensity (versus my other go to, mushrooms, which are nice and i&#39;m grateful for (lol) but tend to be even more muted by SSRI) there is inevitably a point where i just want to get off the fucking ride and go to sleep but i&#39;m stuck on it, muscles tense, nerves sizzling. (for a while, i also applied a kind of moral distinction to how acid completely inhibits my appetite while i still feel desire to eat and pleasure eating on mushrooms, which, as i consider in the back of my mind the bloodwork i need to do soon to determine whether i have gotten my sugar down enough through mild to moderate self-denial or whether either i need to make stricter &quot;lifestyle changes&quot; or try one of these new injectable magic weight-loss drugs, drugs i find fascinating since to me the whole purpose of drugs has always been to heighten pleasure but these drugs in some ways sound like the opposite of that, like a way to deny the power of pleasure, or to make your desire for pleasure disappear, which for many people and situations may well be the right call (some pleasures cause us outsize pain and/or death! including probably my sweet tooth) but as a (responsible, moderate, if such adjectives can be applied (i&#39;m so bourgeois)) hedonist somewhat puts me off trying them, in the same way that other people are put off by the idea of taking an antidepressant because they think it will change/remove some essential part of their personality, a stance i have historically rejected for antidepressants as a symptom of a larger cultural fetishization of suffering but am at a point now where also i do kind of get it, even if i still think a lot of people would be better off a bit more medicated) </p>
+<p>the last time i really took acid was another no obligations saturday and it was very hot and cloudlessly bright and i laid in our back yard on a water-repellent chaise idly smoking a bowl and reading that week&#39;s issue of <em>the new yorker</em> as my brain started to come alive with new connections. the main plan for the day other than sunning in the back yard was that we had gotten an inflatable kiddie pool to try putting miso, who had never been in anything wetter than a bathtub, and see what would happen. what happened is that we set it up and blew it up and filled it and she hated it and did not want to spend any time in it and could not even. at some point we gave up and decided to go in and i went to the bathroom and did the thing they say you shouldn&#39;t do when you&#39;re on acid which is look in the mirror and i looked in the mirror and my skin was like lobster red and we had just recently watched the <em>chernobyl</em> miniseries and i think i was. </p>
+<p>tv shows coming down from drugs. great british bakeoff. the movie adore.</p>
+<p>netflix i remember and i was thinking about how this banal action that we do multiple times a day every day was doing a kind of deep psychic violence to me.</p>
+<p>inadvertently got into a k-hole on thursday evening. it is such a strange drug</p>
+<p>to have been surpassed by deborah&#39;s cooking skills. for a decade of our relationship i was the good cook but i was good at it in the way i prefer to be good at things, which is idiosyncratically and improvisationaly and by feel. deborah is good in that she studies and learns and </p>
+<ul>
+<li>in the course of a few minutes, i downgraded from &quot;never taking it again&quot; to &quot;never taking that much again&quot;</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/042ab8d6-f7b1-48f6-b8a5-9ccf2c9cd1c3.html" class="btn btn-secondary">← </a>
+        <a href="/letters/i-fucking-love-raisin-bran.html" class="btn btn-secondary">i fucking love raisin bran →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

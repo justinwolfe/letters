@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="freeze-dried sour skittles">
+  <title>freeze-dried sour skittles - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>freeze-dried sour skittles</h1>
+        <time datetime="2024-02-25T23:38:04.328060Z">February 25, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/375" alt="image.png"> </p>
+<p>hanging out at k and t&#39;s on friday night, smoking a bloint outside their house (and it not being dark yet because the days are getting longer), margaritas with pellet ice, crudités, detroit pizza with the best cheese crust, crumbl &quot;cookies&quot; (one of them was just a tres leches cake, but &quot;just&quot; is not the right word there since tres leches cake is fucking awesome), freeze-dried sour skittles. </p>
+<p> <img src="/api/images/374" alt="image.png"> </p>
+<p>using mexican hot sauce on dim sum, which is an extension of my bit that siu mai is the taco of dim sum (it&#39;s small but bursting with flavor, it&#39;s messy and visceral)(also i know that the momofuku variant of pork buns is the taco of dim sum but imo that&#39;s too literal) and if somebody has not done a food truck siu mai taco at this point i&#39;m so disappointed in the world (i mean of course i&#39;m already so disappointed in the world but this seems like such an easy win) </p>
+<p> <img src="/api/images/373" alt="image.png"> </p>
+<p>ec used the word &quot;clotheshorses&quot; to describe the things you hang your laundry on to dry and we laughed that it was cute but that actually is the term. i pushed past my commitment to never create in physical media again to work on a friendship bracelet for frankie that i think looked quite good but 3/4 of the way got distracted by conversation and spilled all the tiny beads on the carpet, an experience which felt like the closest i may ever get to doing one of those <em>survivor</em> challenges where you build a jenga tower.</p>
+<p> <img src="/api/images/371" alt="image.png"> </p>
+<p>pullover hoodies, as a person who exclusively owned and wore zip-up hoodies for years. they&#39;re just more cozy and also they obviate really having to think about what you&#39;re wearing underneath them. doritos sticks (not to be confused with the doritos dinamitas, which suck) which are like the gen-z version of andy capp hot fries (this is a compliment). pre-rolled joints that have the form factor of cigarettes (they burn so much more evenly). yesterday my word of the day email&#39;s word was &quot;opuscule&quot; which sounds like it should gross but means &quot;a small or minor literary or musical work.&quot; latest string of entries in my list of Things Reasonable People Love That I Hate: sobriety, blues music, jigsaw puzzles, tamales, Christianity, voice notes.</p>
+<p> <img src="/api/images/372" alt="image.png"> </p>
+<p>the concept of &quot;stolen valor&quot; which is people falsely claiming military service/honor but i think of it when deborah has left the house without me and she comes back and miso, as is always the case when someone enters the house after being away from an hour, is briefly joyful and loving and i quickly come out of my office to take advantage of this.</p>
+<p> <img src="/api/images/377" alt="image.png"> </p>
+<p>not watching the live action adaptation of &quot;avatar: the last airbender&quot; a show which is stolen valor. spending all saturday afternoon with d watching the remaining episodes of this season of <em>love is blind</em>.  <a href="https://www.instagram.com/reel/C3MB9Uks8K8/?igsh=MTc4MmM1YmI2Ng%3D%3D">this perfect video</a> of a guy doing bits from dune as characters from the sopranos. <a href="https://kottke.org/24/02/welcome-back-to-the-site-edith">edith zimmerman is back</a> to blogging at kottke. i caught myself trying to do work to get ahead of monday but stopped myself because i don&#39;t want to go back to that lifestyle and whether i finish it at the end of this sprint or the beginning of the next one is arbitrary and meaningless.</p>
+<p> <img src="/api/images/376" alt="image.png"> </p>
+<p>sarah m. telling me that she has a note on her phone called &quot;Justin Wolfe is so smart,&quot; truly one of the greatest compliments i have ever received. <a href="https://open.spotify.com/playlist/21GI8bZqCh9LuBgSjqb3wk">this week&#39;s playlist</a> is called &quot;love on&quot; and was inspired by my affection for the selena gomez song of the same name and a desire to dabble in polyglot girlie pop.</p>
+<h2>Previously on this day</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-225/">2016</a> (<em>defused a tense exchange, do-si-dos, cassandra gillig&#39;s mashups</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-fsa13-14/">2017</a> (from <strong>fsa</strong>) (<em>central heating, maggie smith, families</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/224/">2018</a> (<em>pseudo-meditation, helium, keepy-uppie</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/225-7628/">2019</a> (<em>inbox, playing fetch, taking off my socks</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/22519/">2020</a> (<em>chocolate-covered espresso beans, riding a bike, having just enough milk for breakfast</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/everything-lana-condor-eats-in-a-day/">2021</a> (<em>everything lana condor eats in a day</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/my-san-junipero.html" class="btn btn-secondary">← my san junipero</a>
+        <a href="/letters/finishing-the-curse.html" class="btn btn-secondary">finishing the curse →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

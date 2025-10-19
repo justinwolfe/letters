@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/29">
+  <title>5/29 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/29</h1>
+        <time datetime="2018-05-29T00:00:00Z">May 28, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for sheila heti&#39;s <em><a href="https://www.amazon.com/Motherhood-Novel-Sheila-Heti-ebook/dp/B0769X2QSS/ref=sr_1_1?ie=UTF8&qid=1527594509&sr=8-1&keywords=motherhood+sheila">motherhood</a></em>, which i finished last night and which is one of my favorite books i&#39;ve read in a long time. i&#39;m thankful that like most things i really love and want to share with other people, i would rather you just stop here and read the book instead of reading what i write about it, but i&#39;m thankful to write about it anyway because i write about things i am grateful for every morning and this is the thing i am most grateful for today and maybe by me writing about it, since you trust me (or trust yourself, reading the passages i&#39;ve pulled out), you will read it too.</p>
+<p>i&#39;m thankful that though early on i found the the formal device of the book, which includes frequent sections in which the narrator asks a question of life/the universe/everything and then, in a technique borrowed from the i ching, flips three coins to come to a yes or no answer, somewhat trying, </p>
+<p><em>Is it wrong to have an audience in mind when setting out on a work of art?</em></p>
+<p><em>yes</em></p>
+<p><em>Should you simply be trying to have an experience?</em></p>
+<p><em>no</em></p>
+<p><em>Does one do it for the non-audience that is God?</em></p>
+<p><em>yes</em></p>
+<p><em>To bring glory to the world?</em></p>
+<p><em>no</em></p>
+<p><em>Out of gratitude for being made alive?</em></p>
+<p><em>yes</em></p>
+<p>i continued to try to read, since if these notes have taught me nothing else it&#39;s that an aggressive and sometimes annoying formal structure can be a bridge into another part of yourself, and that if i believe that about my writing here, why shouldn&#39;t i give someone else the benefit of that doubt, and as the book went on and the heti pushed the device to its limits, i grew to not just not find it trying, but to increasingly feel it to be the essential thread binding the book rather than something superficial that could be cut away, the only way the book was possible:</p>
+<p><em>Oh well. That&#39;s too bad. It&#39;s too bad I projected that onto him, just as I&#39;m projecting onto you, coins, the wisdom of the universe. But it&#39;s useful, this, as a way of interrupting my habit of thoughts with a yes or a no. I feel like my brain is becoming more flexible as I use these coins. When I get an answer I didn&#39;t expect, I have to push myself to find another answer—hopefully a better one. It&#39;s an interruption of my complacency—or at least that&#39;s what it feels like, to have to dig a little deeper, to be thrown off. My thoughts don&#39;t just end where they normally would.</em></p>
+<p>i&#39;m thankful for <em>motherhood</em> for a lot of reasons. i&#39;m thankful, as someone who probably doesn&#39;t want to have children who is married to someone who probably doesn&#39;t want to have children, to have had ideas that we have had and thought about and talked about articulated so precisely and comprehensively, with such authority. </p>
+<p><em>There&#39;s a kind of sadness in not wanting the things that give so many other people their life&#39;s meaning. There can be sadness at not living out a more universal story—the supposed life cycle, how out of one life cycle another cycle is supposed to come. But when out of your life, no new cycle comes, what does that feel like. it feels like nothing. Yet there is a bit of a let-down feeling when the great things that happen in the lives of others—you don&#39;t actually want those things for yourself.</em></p>
+<p><em>I don&#39;t have to live every possible life, or to experience that particular love. I know I cannot hide form life; that life will give me experiences no matter what I choose. Not having a child is no escape from life, for life will always put me in situations, and show me new things, and take me to darknesses I wouldn&#39;t choose to see, and all sorts of treasures of knowledge I cannot comprehend.</em></p>
+<p>i&#39;m also thankful, though, for how much of the book isn&#39;t really about motherhood at all, in the strictest sense that you might assume from the coverage and discussion, but is about life, about (sorry) how a person should (can) be, about how we love other people,
+_
+The next morning, before I flew home, I had breakfast with a young editor from an intellectual magazine. The restaurant was down a short flight of stairs. It was dark inside with round marble tables, cloth napkins, and a handwritten menu with only six items, all of them perfect._</p>
+<p>_
+What do we need to know about a person in order to like them? Before she wrapped her leftover buttered toast inside a paper napkin, I didn&#39;t know whether I liked her or not. Then, when she wrapped up her toast in the napkin, I suddenly loved here. Before she wrapped up her toast, she had been making an effort to show herself to be a sophisticated and impressive young editor from a respected magazine. Then, when she did that, the performance dropped; not only was she underpaid, the gesture said, but she really liked toast. She liked toast even more than she liked being admired._</p>
+<p>and hate ourselves,</p>
+<p><em>It&#39;s going to be a long day of bad feelings. I feel so worn out and wretched, like I do whenever we fight. Just remember: you will never remember the sadness you are feeling right now. You will never remember it. It will be like all the other moments of your life—gone. And the evening, too, is already almost gone.</em></p>
+<p>and about the limits of gratitude and other frameworks as escapes from pain:</p>
+<p><em>The simplest thing to do with pain is to deceive yourself into thinking it offers you an opportunity: by making it into a game, it becomes something less by which you suffer. By playing with it, you can turn it into the category of things you pick up, and can therefore put down. Thinking about your pain puts it in the category of the imaginary. But pain is not imaginary. It is wrong to think that the thoughtful escape it, or the very tricky, or the very wise. Those who skip town do not escape it, and those who skip between lovers do not. Drinking is no escape; gratitude lists are not. When you stop making a project of trying to escape your pain, it will still be there, but also a realization: that the pain is only as much as you can handle—like a glass of water filled to the brim, the water hovering at the meniscus, not running over.</em></p>
+<p>i&#39;m thankful that the book is about time and is also of time, how the i ching device is a kind of mindfulness meditation, a device that grounds moments of the book in the present action of flipping the coin, </p>
+<p><em>Are my insecurities going to ruin my relationship?</em></p>
+<p><em>yes</em></p>
+<p><em>Is there anything I can do about it?</em></p>
+<p><em>yes</em></p>
+<p><em>Will it take a long time?</em></p>
+<p><em>yes</em></p>
+<p><em>Will our relationship be over by the time I have overcome them?</em></p>
+<p><em>yes</em></p>
+<p><em>Is there any good in that?</em></p>
+<p><em>yes</em></p>
+<p><em>Good in it for both of us?</em></p>
+<p><em>yes</em></p>
+<p><em>Miles is making us dinner right now. Is the more important thing than writing this to go into the kitchen and be with him there?</em></p>
+<p><em>yes</em></p>
+<p><em>All right. I&#39;m going.</em></p>
+<p>for how heti so frequently breaks from a strand she has been developing in the book into the mundane (and yet so pressing) concerns of the present moment outside her cocoon of words. i&#39;m thankful for the ideas about how writing can fix time:</p>
+<p><em>I know that writing this down is a ridiculous act, the act of someone who has forgotten what she learned last night. yet by writing it, I am bringing myself back to the same feeling of peace, happiness, lightness and joy. I can feel it returning now, even on this miserable day, when Miles and I are in the worst fight ever.</em></p>
+<p>_
+Yet that our lives are touched by, or made possible by, this absolutely incredible force—brighter than every human life put together—feels to me like the greatest gift. Life is persistent, and it doesn&#39;t flag its loveliness, and it was a joy to have known it for just a moment—even if I can no longer feel it, because right now I&#39;m too upset about other things—Miles and what we&#39;re going to do._</p>
+<p>i&#39;m thankful to have learned about butterflies and mush:</p>
+<p><em>I recently learned that what happens in a coon is not that a caterpillar grows wings and turns into a butterfly. Rather, the caterpillar turns to mush. It disintegrates, and out of this mush, a new creature grows. Why does no one talk about the mush? Or how, for any change at all to happen, we must, for some time, be nothing—be mush. That is where you are right now—in a state of mush. Right now your entire life is mush. But only if you didn&#39;t try and escape it might you emerge one day as a butterfly. On the other hand, maybe you will not be a butterfly at all. Maybe you will become a caterpillar again. Or maybe you will always be mush.</em></p>
+<p>i&#39;m thankful to be frustrated that my time is up and i have to stop writing these notes for the day now, even though i have mostly just quoted a bunch of passages rather than actually saying anything of my own about the book, but i&#39;m thankful, i think, that the true testament to my love of this book, which, like any book, is not perfect (what would that even mean), is that i think it speaks better for itself than i can speak for it. i&#39;m thankful that i had the chance for it to speak to me the past few days and that i will carry what is left of it inside of me, a little bubble of feelings and experiences and ideas, into the future.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/63018.html" class="btn btn-secondary">← 6/30/18</a>
+        <a href="/letters/kssndr2.html" class="btn btn-secondary">(kssndr)(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

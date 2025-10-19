@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="still, at the base level, pizza">
+  <title>still, at the base level, pizza - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>still, at the base level, pizza</h1>
+        <time datetime="2020-08-23T00:00:00Z">August 22, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for running outside on a summer morning, which is just the very best that running gets; warm enough that you&#39;re not having to psych yourself up for dealing with feeling uncomfortable until you&#39;re warmed up, but cool enough that you&#39;re never getting hot and you don&#39;t sweat too much. i&#39;m thankful, as a person who loves quiet, for how quiet it is early in the morning (probably amplified by quarantine, a silver lining) and for the soft gentle quality of light in the early morning, which, when i had a commute or when i had to walk miso first thing, was something i saw all the time but hadn&#39;t experienced on the regular in a while. i&#39;m thankful that i ran forty miles last week, which is the most miles i&#39;ve run in a while. i&#39;m thankful that when i wake up early and can&#39;t go back to sleep or when miso wakes up early and won&#39;t go back to sleep, there&#39;s an upside, which is that i can get in a longer run. i&#39;m thankful that i&#39;ve decided that (barring weather) to always take off saturday from running, which makes it feel more like a true day of rest. i&#39;m thankful for running first thing in the morning, because when i plan to run in the afternoon, work so often seems to intrude and i shrink the time and space i have available until either i feel stressed and rushed or i just skip it. i&#39;m thankful for the weird toeless compression socks i got for a flare-up of my plantar fasciitis, despite being an as seen on TV product, do seem to help. i&#39;m thankful for &quot;purely trident&quot; gum, since i always chew gum while running but most gums break down into this gross grainy slurry after the hour or so mark of chewing while whatever chemicals they kept out of this one from doing it. i&#39;m thankful that though on some of my 10+ mile runs i have been struck, in the last miles, with gastrointestinal distress and no bathroom available, i have always made it home without an accident (i&#39;m thankful that whenever i have diarrhea, i always think of davos on <em>game of thrones</em> saying that he goes on a walk before a battle so that he can get far away from camp that no one hears him &quot;shitting [his] guts out,&quot; which whenever i am doing same i hear in his very distinctive accent in my head, followed by the call and response of tormund saying &quot;happy shitting&quot;)</p>
+<p>i&#39;m thankful for the books i have read or started reading recently, including <em>luster</em> by raven leilani (deserves all the buzz it&#39;s gotten, so angry and funny and smart and dark), <em>adults</em> by emma jane unsworth (so delightful, like a post-<em>fleabag</em> <em>bridget jones&#39;s diary</em>), <em>intimations,</em> the new short book of covid essays from zadie smith (they&#39;re small and occasional, but i had developed some kind of essay collection allergy for a while and they pulled me out of it)<em>,</em> also her previous essay collection <em>feel free,</em> <em>both flesh and not</em> by david foster wallace (which i read while high on the &quot;i like essays again&quot; energy and found underwhelming, which probably is as much of a reflection of a table scraps odds and sods posthumous collection than the fact that i haven&#39;t thought of him as writing daddy in years), <em>square haunting</em> by francesca wade (only read one section so far, but there&#39;s a moment where london is being bombed and h.d. decides that she would rather die alone in her room than have to go to the basement bomb shelter of her apartment building for safety, definitely recommend to fans of previous favorite sarah bakewell&#39;s <em>at the existentialist cafe)</em>, <em>the warmth of other suns</em> by isabel wilkerson (i knew the great migration story from when i was a research assistant but this book is so intensely embodied and concrete), <em>weather</em> by jenny offil (i honestly could not tell you a single thing about this right now other than that it&#39;s in the same fragmentary style as <em>department of speculation</em> and i really enjoyed reading it), <em>the living dead</em> by george romero (capable and engaging, but also for me a flawed understanding of what makes zombie narratives most interesting, which is not the immediate &quot;everything is falling apart&quot; period (which is what this book focuses on at least in the first half before i gave up) but the world that&#39;s built in the aftermath, i should have just read <em>the stand</em> again), <em>rings of saturn</em> by w.g. sebald (which i tried reading in grad school and couldn&#39;t get into but which really spoke to jk when she read it recently so i want to try again), <em>breath</em> by james nestor (not deep but nicely skimmable pop science memoirish thing about breathing), <em>providence</em> by max barry (superb character-driven sci fi with light horror elements, they will make a good movie of this but you should read the book now because it will be better)</p>
+<p>i&#39;m thankful that on vacation a couple weeks ago (i&#39;m thankful that i was able to take a week off work and d was able to take a week at the same time), i took three (3) tabs of acid instead of my usual one or two and found that the experience was much more dramatic and intense than i had expected (since all of my acid taking has been in the years since i&#39;ve been on SSRIs, which apparently have a tendency to mute its effect). i&#39;m thankful for psychedelic experiences, even when they are not the exact thing that i want them to be or had planned them to be going in (which they rarely are), because i haven&#39;t found any other way to effectively throw my brain into some kind of remove through which i can defamiliarize what i think of as normal and get some kind of perspective on my standard operating procedure (one such moment this trip was when d was scrolling quickly through netflix, moving up and down between queues and across them as the app struggled to keep contextual information in place and lights and colors moved and i was so overwhelmed i felt almost sick and literally turned away from the screen because i couldn&#39;t bear it anymore). that said i&#39;m thankful that (knock on wood, i literally got up from my chair to go knock on some wood) that i haven&#39;t had a true &quot;bad trip&quot; in years. i&#39;m thankful that august tends to be the worst month for my mental health, for reasons i have never been able to get to (theories include some kind of allergy, sweating too much from running in the heat, repressed trauma around school / the transition between different states of the year) but that i&#39;ve been doing pretty well this august and (getting up to knock on wood again) i think i will notch another year in my belt of &quot;didn&#39;t go to urgent care r the emergency room on or around labor day after doing that literally two years in a row afraid i was dying!&quot; and that&#39;s comforting, especially because summer is the favorite season of my conscious, controlled mind and i want to enjoy it while it lasts.</p>
+<p>i&#39;m thankful, despite being a person who wanted to get on to being an adult from a very young age and has a resultant pretentious reflexive distaste for both animation and children&#39;s stories, for having fallen in love with <em>avatar: the last airbender</em>, which i probably never would have tried to watch but while my brain was scrambled by the acid d (who had been watching it on the treadmill) suggested it and i was in a receptive state and watched a few episodes and was hooked. i&#39;m thankful for how many different things the show does well, including: interesting worldbuilding and mythology, visual richness and inventiveness, really good fight staging/choreography/direction, maintaining a balance between episodic and serialized storytelling, and an interest in taking on issues i would not normally associate with a children&#39;s show, like whether revolutionary violence is a necessary part of the struggle for progress or whether it morally compromises you. it&#39;s cute, interesting, moving, and i can&#39;t recommend it highly enough, even if you don&#39;t think it&#39;s the kind of thing you&#39;d usually like. i&#39;m thankful we are now watching the sister series <em>the legend of</em> <em>korra</em>, which is interesting (it jumps forward in time and takes place in a kind of new york in the 20s setting) and entertaining in many of the ways <em>avatar</em> was, even though it&#39;s lacking (so far) the deep bench ensemble where i cared about every character (iroh:sob:) and the dialogue is not as well-written as its predecessor. i&#39;m thankful for the netflix doc series <em>high score</em> and the padma lakshmi food show, neither of which is incredible but both of which are pretty good and very watchable and sometimes you just want a pretty good and very watchable thing while you&#39;re for example eating dinner. i&#39;m thankful for <em>lovecraft country</em>, since i bounced off the book but the first episode of the tv show is everything i wanted and more.</p>
+<p>i&#39;m thankful for the thing that has made me happiest in the last month or so, which is that d has started playing my favorite modern video game <em>slay the spire</em> (available, if you also want to try, on ios and all major game consoles and computer platforms), after months of me bugging her to get her to play it (i&#39;m thankful that we sat down during the expanse of vacation and played her first game together) and that she is now addicted and plays it every day and we talk about it and play together. i&#39;m thankful, as someone who is not generally interested in card games (digression i&#39;m thankful from our work team meeting round the rooms to have recently recognized a trope in my speech lately, which is saying &quot;i don&#39;t like [arms spread wide] this thing but i like [finger pointing to one place] this particular iteration of it, see also avatar several paragraphs ago), that it&#39;s a card game, but doesn&#39;t require much math or memorization (and i&#39;m thankful for the app&#39;s UX, which, some touch screen fuckedness aside, is a model of clarity and tutorialization) and there&#39;s this great balance in terms of the flexibility you need in order to be able to play it, since it changes every time, and the way that makes mastery feel and also how it removes the sting of failure, since each failure is (truly) an education, i&#39;m really just rambling but i think this review gets at it well (<a href="https://www.rockpapershotgun.com/2019/01/23/slay-the-spire-review/">https://www.rockpapershotgun.com/2019/01/23/slay-the-spire-review/</a>).</p>
+<p>i&#39;m thankful for nectarines and not peaches, since a peach is always such a gamble whereas a nectarine is consistently good at nearly all states of ripeness (i&#39;m thankful to prefer consistency over excellence, though of course i&#39;d prefer to get me a fruit that can do both). i&#39;m thankful for the cinnamon oat crunch (or something like that) cheerios, which i cube a nectarine into for breakfast. i&#39;m thankful that for her birthday my mom gave d popsicle molds and the cookbook <em>paletas: authentic recipes for mexican ice pops, shaved ice, and aguas frescas</em> by fany gerson and ed anderson and that all of the popsicles she has made so far (strawberry, blackberry, grapefruit, coconut, yogurt) have been good. i&#39;m thankful that sometimes when i get back from a long run where i&#39;m really thirsty i have one and am refreshed by the vivid bright coldness. i&#39;m thankful for the hershey&#39;s cookies and cream candy bar, imo a pinnacle of chemical engineering which i used to love and then ate too many of and then have recovered from so i&#39;m eating them again. i&#39;m thankful at the grocery store today i got cookie dough to eat as cookie dough, which i haven&#39;t done in forever. i&#39;m thankful, as someone who spent most of my life eating pre-packaged plastic bacon (and loved it) for the revelation of buying thick cut bacon from the butcher section at the grocery store, which has raised the worth of the BLT, a sandwich i always liked fine but never loved, which is great because it&#39;s such an easy summer dinner. i&#39;m thankful that last night we ordered pizza and though it was not as good as my favorite portland pizza place (which also has a great website even if you don&#39;t live here: </p>
+<p><a href="https://www.pizzajerkpdx.com">https://www.pizzajerkpdx.com</a>) was still, at the base level, pizza, which is always something to be grateful for.</p>
+<p>i&#39;m thankful for the phrase &quot;what i&#39;ve learned&quot; which i will always prefer to the use of &quot;learnings&quot; as a plural noun, which is so popular at the tech companies i have worked at and which just sounds wrong to me, i don&#39;t care if it&#39;s technically fine (lol the idea that you the reader of this newsletter could think i care about precise and prescriptive grammar). i&#39;m thankful that multiple times in the last couple weeks i have felt relatively competent and less anxious lately at my new job (which is no longer &quot;new&quot;, since i have been there for six months now). i&#39;m thankful for the satisfaction of thinking through a complex hypothetical system and writing a document imagining how to build it. i&#39;m thankful to have gotten to teach my coworker about chrome extensions and javascript and to have seen in her the kind of aha moment of &quot;oh, you can just <em>do stuff</em> with code, like <em>that</em>&quot; (i&#39;m thankful, as generally a loner, for pair programming, which has given me so much and which i want to give back) i&#39;m thankful that i had this weird personality test coaching session that they have everyone do with an outside consultant, which felt like a:hahabusiness: version of getting my fortune told or something, but also was interesting in the sense that i am always interested in my self.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/a-really-important-thought-i-had-sorry.html" class="btn btn-secondary">← a really important thought i had (sorry)</a>
+        <a href="/letters/its-going-to-be-a-hundred-degrees.html" class="btn btn-secondary">it&#039;s going to be a hundred degrees →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

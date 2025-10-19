@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="periods of sunshine in the winter">
+  <title>periods of sunshine in the winter - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>periods of sunshine in the winter</h1>
+        <time datetime="2020-12-06T00:00:00Z">December 5, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>a week and a half away from work and from life</p>
+<p>an ocean too cold to swim in</p>
+<p>private fire pit, space heater, a large bathtub</p>
+<p>periods of sunshine in the winter</p>
+<p>k and t watched miso for a week and miso didn&#39;t kill their new kitten and i basked, 24/7, in the feeling of not having a dog, which i hadn&#39;t realized how much i missed, even though eventually i also (kind of, a little, eventually) missed miso </p>
+<p>realizing how much of d and i&#39;s conversation is based in one or both of us pretending to speak in miso&#39;s voice and us having long silly conversations this way</p>
+<p>my parents sent us a box of frozen steaks, which if you know people who cook and eat meat and can&#39;t think of a gift for them is a great gift imo</p>
+<p>meat thermometers and the confidence they engender</p>
+<p>i got d this <a href="https://shop.bonnemaman.us/products/bonne-maman%C2%AE-limited-edition-2020-advent-calendar">jam advent calendar</a> and the first six little jars built up and so we&#39;re having biscuits tonight to sample them.</p>
+<p>that my daily lunch peanut butter and jelly sandwiches (thankful for how this food item has sustained me through work lunches for so many years without me getting tired of it) will be more exotic the next few weeks</p>
+<p>tacos of all varieties</p>
+<p>nice notes from tyler and claire</p>
+<p><a href="https://www.epicurious.com/expert-advice/easy-crispy-lentils-topping-how-to-article">crispy roasted lentils</a>, as a snack or an alternate furikake/crouton</p>
+<p>it&#39;s year end list season again, harvesting content recommendations to get through the rest of winter</p>
+<p>taylor swift&#39;s &quot;<em><a href="https://open.spotify.com/album/0PZ7lAru5FDFHuirTkWe9Z">folklore: long pond studio sessions</a></em>&quot; movie and album, which is sublime and fulfills the promise of what ryan adams&#39;s <em>1989</em> aspired to but fell so far short of; her production (and most modern production) is so dependent on an infinity of layers, so it feels like a magic trick that three people (basically, and bon iver wearing a silly mask on one song) can make the songs feel the way the feel on it that they feel on the record. i also like how she pulls a kanye fixing wolves and instates &quot;the woods&quot; as the canonical ending of the album</p>
+<p>ariana&#39;s album <em><a href="https://open.spotify.com/album/3BSzygCIET0gzTTIs7iB3y">positions</a></em>, which despite strong competition from the taylor album, was the thing we listened to on repeat on vacation. the string arrangements are so buttery and the sparrows darting of her vocals and it&#39;s all so joyful and sexy: favorite song is &quot;<a href="http://" title="We heard the strings that sounded so Disney and orchestral, and full and pure. And I was just like, &#39;Yo, what’s the dirtiest-possible, most opposing lyric that we could write to this?&#39;">34+35</a>&quot; but i also really love &quot;<a href="https://www.youtube.com/watch?v=u7GAXfrajHc">6:30</a>&quot; and and also it never fails to make me laugh the way she sings &quot;<em>read a fucking book</em>&quot; on &quot;<a href="https://www.youtube.com/watch?v=zMEzD2G2IKA">just like magic</a>&quot; and i think about it when i read books</p>
+<p>ariana on 34/35+: &quot;<em>We heard the strings that sounded so Disney and orchestral, and full and pure. And I was just like, &#39;Yo, what’s the dirtiest-possible, most opposing lyric that we could write to this?&#39;</em>&quot; which makes me thing of reading the <a href="http://www.writing.upenn.edu/~afilreis/103/didion-per-harrison.html">barbara grizutti harrison thing where she cuts down didion&#39;s tics and tropes</a> (which, as she describes them, has also always made me think of the nirvana/radiohead dystopian lyrics vs. pretty music thing) as being simple and obvious but me reading them and being like, yeah, i still like that effect, i don&#39;t care if it&#39;s cheap) </p>
+<p>fucking books i read on vacation:</p>
+<p><em><a href="https://www.goodreads.com/book/show/33877608-eat-the-buddha">eat the buddha</a></em> by barbara demick (loved <a href="https://www.theguardian.com/books/2010/apr/03/nothing-envy-korea-barbara-demick">her earlier book</a> on life in north korea and this one is as revealing (and sad) and helped me fill in a period of history that was blurry in my mind)</p>
+<p><em><a href="https://www.penguinrandomhouse.com/books/544565/red-pill-by-hari-kunzru/">red pill</a></em> by hari kunzru (opposite: i&#39;d tried to read several of his books in the past since he seemed like someone i should like based on the premises and style of his books, but i bounced off of them and did the opposite (soaking in?) with this one, i think in part because of the focus of the plot and the humor of the details and a certain paranoid strain)</p>
+<p><em><a href="https://www.hachettebookgroup.com/titles/kim-stanley-robinson/the-ministry-for-the-future/9780316300162/">the ministry for the future</a></em> by kim stanley robinson (incredible achievement, his best novel, i think, after lots of previous books of his i read and enjoyed to varying degrees touched similar issues and characters, it feels like he finally found a form to bring his various deep dives and digressions into a larger gestalt (his previous novel <em><a href="https://www.amazon.com/dp/B00SHL3U9W/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">aurora</a></em> is also great if you want something big and smart but less urgent and topical)___PARAGRAPH_BREAK___</p>
+<p><a href="https://www.simonandschuster.com/books/Women-in-the-Kitchen/Anne-Willan/9781501173318"><em>women in the kitchen</em> by anna willan</a> (great historical tidbits to snack on even if i wish it was longer and deeper in the mode of &quot;<a href="https://lucyworsley.com/book/if-walls-could-talk-an-intimate-history-of-your-home/">if walls could talk</a>&quot; by lucy woorsley)</p>
+<p>this ask.metafilter thread with recommendations for  &quot;<a href="https://ask.metafilter.com/350425/Simple-physical-music">simple physical music</a>&quot;</p>
+<p>kaitlin tiffany&#39;s jake gyllenhaal newsletter, a gift, <a href="https://tinyletter.com/kait_tiffany/letters/jake-gyllenhaal-used-to-disappoint-me-but-now-i-don-t-care">is back</a></p>
+<p>thinking of a good christmas present for someone you love</p>
+<p>deborah&#39;s laughter</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/dasein-within-reach.html" class="btn btn-secondary">← dasein within reach</a>
+        <a href="/letters/internet-doctor.html" class="btn btn-secondary">internet doctor →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

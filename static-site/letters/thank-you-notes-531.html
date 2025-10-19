@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/31">
+  <title>thank you notes 5/31 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/31</h1>
+        <time datetime="2016-05-31T00:00:00Z">May 30, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for three day weekends that include monday. i&#39;m thankful for all three day weekends, but especially for three day weekends that include monday, which feel more freeing, i think because fridays are almost always easier workdays than mondays (what with the excitement for the start of the weekend) and so to have monday off feels like more of a gift, especially because of the way that it speeds up the following week, so it feels like the vacation is touching two weeks rather than one.</p>
+<p>i&#39;m thankful we have two air conditioners. i&#39;m thankful for the single air conditioner in our last apartment, which we would have to leave cranked and droning through prime evening tv watching time in order to pump cold air around the corner and into our bedroom. i&#39;m thankful that now i can now ensure a comfortable sleeping temperature and enjoy the intricacies of the sound design on my favorite prestige television at the same time.</p>
+<p>i&#39;m thankful for <em>the girlfriend experience</em>, which we started watching this weekend and which is very good so far. i&#39;m thankful for the lead actress, who is cold in a very interesting and complex way. i&#39;m thankful that like <a href="http://www.slate.com/articles/arts/television/2016/04/the_girlfriend_experience_based_on_steven_soderbergh_s_movie_reviewed.html">willa paskin</a>, the show that it most reminds me of is <em>mr. robot</em>, though i&#39;m thankful to extend that beyond the themes to the visual aesthetic used to explore them: thankful for the sharp edged shadows and blankly luxurious surfaces. i&#39;m thankful to also be reminded of julia leigh&#39;s film <a href="https://en.wikipedia.org/wiki/Sleeping_Beauty_(2011_film)">sleeping beauty</a>, which is powerful and unsettling.</p>
+<p>i&#39;m thankful that i finished <em>at the existentialist cafe</em>, which was very good. i&#39;m thankful for the concept of &#39;<em>inhabited philosophy</em>&#39; that the author offers to describe what she wants her book to do:</p>
+<p><em>&quot;In short, the existentialists inhabited their historical and personal world, as they inhabited their ideas. This notion of &#39;inhabited philosophy&#39; is one I&#39;ve borrowed from the English philosopher and novelist Iris Murdoch, who wrote the first full-length book on Sartre and was an early adopter of existentialism (though she later moved away from it). She observed that we need not expect moral philosophers to &#39;live by&#39; their ideas in a simplistic way, as if they were following a set of rules. But we can expect them to show how their ideas are lived</em> in_. We should be able to look in through the windows of a philosophy, as it were, and see how people occupy it, how they move about and how they conduct themselves.&quot;_ </p>
+<p>i&#39;m thankful that i have never really liked much self help writing or agony aunt columns, but thankful to posit that maybe what i&#39;m writing in these notes is &#39;inhabited self help.&#39; i&#39;m thankful that since finishing that book, i&#39;ve been dipping into an edition of simone de beauvoir&#39;s letters to sartre, which are lovely, and her novel (from life) <em>the mandarins</em>, which is interesting so far. i&#39;m thankful to learn from the letters that she always refers to sartre in affectionate diminuitives (&quot;<em>my little man</em>&quot;) and that his pet name for her is &quot;beaver&quot; (i&#39;m thankful that she often signs her letters &quot;<em>your charming beaver</em>&quot;).</p>
+<p>i&#39;m thankful, after having always used and seen the word &quot;frisson&quot; used in the context of the aesthetic (i&#39;m thankful for my youthful overuse of the phrase &quot;<em>the frisson of the real</em>&#39; to rhapsodize about reality television) to learn that the actual definition has to do with [bodily sensation](<a href="http://a">http://a</a> sensation somewhat like shivering, usually caused by stimuli). i&#39;m thankful to have noticed the phrase &quot;<em>that violate some level of musical expectation</em>&quot; in the wiki sentence: &quot;t_ypical stimuli include loud passages of music and passages that violate some level of musical expectation._&quot; i&#39;m thankful that &quot;violate&quot; seems like the wrong word and i would suggest &quot;<em>push beyond,</em>&quot; &quot;<em>rub up against,</em>&quot; or &quot;<em>scratch the itch of</em>.&quot; i&#39;m thankful for the discovery algorithm that led me to the song &quot;<a href="https://www.youtube.com/watch?v=MyjTrwOMSO4">semi-charmed life</a>,&quot; which i have rediscovered as an adult at the gym, and which always is good for a touch of frisson during a hard workout, especially during the frenzied frat rap of the third verse breakdown/build up/breakdown that goes:</p>
+<p>&quot;<em>And when the plane came in</em></p>
+<p><em>She said she was crashing</em></p>
+<p><em>The velvet it rips in the city</em></p>
+<p><em>We tripped on the urge to feel alive</em></p>
+<p><em>But now I&#39;m struggling to survive</em></p>
+<p><em>Those days you were wearing that velvet dress</em></p>
+<p><em>You&#39;re the priestess I must confess</em></p>
+<p><em>Those little red panties, they pass the test</em></p>
+<p><em>Slide up around the belly face</em></p>
+<p><em>Down on the mattress one</em>&quot;</p>
+<p>i&#39;m thankful to live a mostly-charmed life.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-61.html" class="btn btn-secondary">← thank you notes 6/1</a>
+        <a href="/letters/thank-you-notes-529.html" class="btn btn-secondary">thank you notes 5/29 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

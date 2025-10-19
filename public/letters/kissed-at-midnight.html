@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="kissed at midnight">
+  <title>kissed at midnight - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>kissed at midnight</h1>
+        <time datetime="2024-01-02T21:46:49.002600Z">January 2, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/499" alt="image.png"> </p>
+<p>on new years eve did karaoke in the attic with deborah (songs included: &quot;feather&quot; by sabrina carpenter; &quot;all american bitch&quot;, &quot;get him back&quot;, and &quot;making the bed&quot; by olivia rodrigo; &quot;you wish&quot; by flyana boss; &quot;five years&quot; by david bowie; &quot;i&#39;ll be your mirror&quot; by the velvet underground; &quot;be sweet&quot; and &quot;paprika&quot; by japanese breakfast; &quot;green light&quot; and &quot;supercut&quot; by lorde; &quot;getaway car&quot; by taylor swift) and kissed at midnight</p>
+<p><img src="/api/images/501" alt="image.png"> </p>
+<p>sm-57 and sm-58 microphones, which i switched out for the usual condenser mics and which in their narrowness of capture and lack of sensitivity have enabled me to monitor on speakers instead of headphones when i&#39;m playing in the studio which in terms of protecting my hearing feels like a big win and is also just a nice change because i focus less on the precision of the sonic details and more on jamming, which is the vibe i want</p>
+<p><img src="/api/images/500" alt="image.png"> </p>
+<p>yesterday we christened the new din tai fung downtown with k and t and as always had lovely chat (among other things, about recent travel and baldur&#39;s gate 3 this time)(also in personal growth i didn&#39;t have an instance of completely losing my train of thought during a long digressive monologue about something and have to either bail out or have the other person remind me what i was talking about). after lunch we went to muji, where after saying goodbye to them and &quot;leaving&quot; the store, i impulse bought a beanbag chair because i want comfort in any possible form.</p>
+<p><img src="/api/images/498" alt="image.png"> </p>
+<p>the zipper on the beanbag chair cover didn&#39;t have a pull and my mind immediately went to using a paper clip as improvised pull (which i visualized in my brain like those illustrations with little blurbs at the beginning of <em>cook&#39;s illustrated</em> but deborah (the owner of all paper clips in the house) was resistant, partially because most of her paper clips are already in other shapes, but eventually she relented and gave me one and i hooked it through the zipper&#39;s eye and immediately zipped it and i love when she sweetly and begrudgingly lets me have a moment of victory of this sort</p>
+<p><img src="/api/images/497" alt="image.png"> </p>
+<p>past me really really did present me a solid by also taking today off (AND, checking my calendar to prepare myself for what is to come, accidentally canceling all my meetings tomorrow :chef-kiss:) and i&#39;ve been trying both to take advantage of it by folding laundry and cleaning and organizing my office and bedroom and making lunch for tomorrow (looking out for future me) while also still enjoying the day off-ness of it by getting high and playing video games and not working</p>
+<p><img src="/api/images/503" alt="image.png"> </p>
+<p>banza chickpea &quot;pasta&quot; which i have been eating as a lunch pasta substitute lately to try to improve my blood sugar and which nothing will ever be as good as real pasta which is sacred and beautiful but imo banza is totally acceptable and better than other alternatives i&#39;ve tried. what i tend to do for lunch is boil a box of banza (i usually have the rotini) in one small-medium pot with heavily salted water and then roughly chop a head of kale (i&#39;m thankful that i love kale so much) and sautée it in a large skillet until it wilts about 1/3 and then pour in a big splash of fish sauce and a smaller splash of vinegar (i use balsamic or black) and if you are me breathe the wonderful salty steam as it sizzles in the pan but let that infuse and wilt the kale a bit further and then add the pasta to the skillet with a bit of the &quot;water&quot; and get everything nicely mixed together and then add lots of parmesan cheese and pepper and a pinch of sea salt. this makes two good lunch portions and i eat one and then i have the next day&#39;s lunch done as well.</p>
+<p><img src="/api/images/502" alt="image.png"></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/the-most-positive-development-in-my-life-as-a.html" class="btn btn-secondary">← the most positive development in my life as a hater</a>
+        <a href="/letters/let-gaza-be-part-of-it.html" class="btn btn-secondary">&quot;let Gaza be part of it&quot; →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

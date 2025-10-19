@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="10/29/19">
+  <title>10/29/19 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>10/29/19</h1>
+        <time datetime="2019-10-29T00:00:00Z">October 28, 2019</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that the endlessness of my gmail archive means that i have the email where someone we went to grad school with shared a recipe for this excellent apple cake, which we had at a friendsgiving at her house</p>
+<ul>
+<li>1 3/4 cups sugar, divided (I used white and brown, a mix b/c I was running out)</li>
+<li>1 stick butter, softened (I used about 7 tablespoons--already had used some of the end)</li>
+<li>1 teaspoon vanilla extract</li>
+<li>6 ounces block-style fat-free cream cheese, softened (about 3/4 cup)</li>
+<li>2 large eggs </li>
+<li>1 1/2 cups all-purpose flour  (I used whole wheat and like it better)</li>
+<li>1 1/2 teaspoons baking powder</li>
+<li>1/4 teaspoon salt</li>
+<li>2 teaspoons ground cinnamon</li>
+<li>3 cups chopped peeled Rome apple (about 2 large) I used jonagold. all are good, really</li>
+<li> Cooking spray</li>
+</ul>
+<ol>
+<li><p>Put the oven at 350</p>
+</li>
+<li><p>Beat 1 1/2 cups sugar, butter, vanilla, and cream cheese  Add eggs, 1 at a time, beating well after each addition. Combine flour, baking powder, and salt. Add flour mixture to creamed mixture. I just add flour on top, and powder and salt on top of that. Mix the dry a tad while its on top and keep mixing.</p>
+</li>
+<li><p>Combine 1/4 cup sugar and cinnamon. Combine cinnamon mixture and apple in a bowl, and stir apple mixture into batter. Pour batter into an 8-inch springform pan (or a 9x9 square) coated with cooking spray</p>
+</li>
+<li><p>Bake 55 minutes. The recipe says an hour and 10 but I only do 55. It should be done then.</p>
+</li>
+</ol>
+<p>i&#39;m thankful that yesterday afternoon d made this cake and i&#39;m thankful, as i worked on a feature i had spent all day on because it ended up being more complex to code than i had thought but was increasingly questioning the utility and worth of as i went, in an environment in which my engineering time is a limited resource and is needed to solve big problems (and yet at the same time feeling that i had, because of the time i&#39;d spent on it so far, to finish it, since otherwise all that time would be totally wasted, and maybe the feature <em>would</em> be useful), the warm smell of it wafted in from the kitchen, a balm</p>
+<p>i&#39;m thankful, from my desk, to have DMed d about how good it smelled and i&#39;m thankful that my phone pinged a little while later with a message from d, telling me she had accidentally forgotten to put flour in the cake, fml.</p>
+<p>i&#39;m thankful to have come to the kitchen to comfort her and i&#39;m thankful that the heavenly smell was stronger there and i&#39;m thankful that she told me that she also forgot the baking powder (i&#39;m thankful that i said that was a virtuous mistake, since without flour, there was no need for baking powder). i&#39;m thankful to have comforted her and laughed with her and told her that this combination of butter, sugar, cream cheese, apples, and cinnamon would be delicious even if it wasn&#39;t technically a cake and that i was excited to eat it regardless. i&#39;m thankful she decided to go get vanilla ice cream so we could use the &quot;cake&quot; as a topping, which was indeed delicious.</p>
+<p>i&#39;m thankful that when d was putting herself down because she&#39;d forgotten the flour and baking soda, like saying how could she do anything if she couldn&#39;t remember simple things like this, and i&#39;m thankful to have told her, so she didn&#39;t feel alone, that i had put down my expensive bluetooth exercise headphones somewhere in the house several days before and could not find them no matter where i looked, even though i knew they were in the house. i&#39;m thankful that though i meant this as a gesture of empathy and solidarity, d started looking for the headphones, and within just a few minutes found them in the place i had left them, under the big billowing curtains of our front window beside a low chair where we sometimes sit together.</p>
+<p>i&#39;m thankful she found them and that i have them now for my workout, since it was hard hearing my podcasts on my phone speaker over the treadmill. i&#39;m thankful that though in retrospect some of the things i&#39;ve spent my time on the past couple weeks aren&#39;t the most important things, that&#39;s helpful (if unpleasant) for me to realize, and i&#39;m thankful to know that, in the absence of someone else telling me what the most important things are for me to work on, i tried my best. i&#39;m thankful to know that despite my negative feelings, i <em>have</em> done some useful things too, and have learned valuable things, and have impressed myself with my ability to write cleaner code. i&#39;m thankful to have hope that sometime soon i will have more help and guidance with this prioritization and management work and i will be able to focus more on just writing code and not getting distracted by a meta-evaluation of its larger value (though also i think it is helpful to not always think of it as code qua code, since that and my ego have led me down a few rabbit holes lately).</p>
+<p>i&#39;m thankful for d&#39;s laugh, which is such a beautiful sound, and i&#39;m thankful that she is generous with it when i try to make her laugh, and appreciates my perennial efforts in that direction, which are a form of love. i&#39;m thankful for miso, who is such a funny little dog, even if she&#39;s sometimes a butthead and is gross. i&#39;m thankful that though every day of live is, in some ways, a struggle, in others, it is a celebration, and i&#39;m thankful not to forget that.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/103019.html" class="btn btn-secondary">← 10/30/19</a>
+        <a href="/letters/102819.html" class="btn btn-secondary">10/28/19 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

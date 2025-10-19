@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/19">
+  <title>thank you notes 1/19 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/19</h1>
+        <time datetime="2016-01-19T00:00:00Z">January 18, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i chose not to meditate before dinner yesterday evening. i&#39;m thankful because that meant that i was in the kitchen washing dishes and roasting okra while leftover fried chicken and cornbread reheated in the oven and, therefore, very quickly became aware that a pipe attached to the back of our washing machine had frozen and burst and that, because of this, the washing machine was spraying icy water up into the air as it finished a rinse cycle. i&#39;m thankful that i very quickly became aware of this fact and was, therefore, very quickly able to shut off the machine and stop it from spraying. i&#39;m thankful that it was just the floor and the washing machine and me that got wet rather than anything important. i&#39;m thankful that i climbed on top of the washing machine and looked into the dark nook behind it with the flashlight on my phone and tried to ascertain what the problem was. i&#39;m thankful i wasn&#39;t electrocuted. i&#39;m thankful that i very quickly realized i was out of my depth and accepted that and i&#39;m thankful that our landlady responded quickly to our message and called her repair guys, who will hopefully come today while i&#39;m at work. i&#39;m thankful that though the load of wash i was doing was a medium-sized load of whites, even if our sheets were in it, because it left us with enough clean clothes to wear until the washer gets fixed. i&#39;m thankful that we did not have any sheets on our bed when we went to sleep last night, because it was an indicator that it might be a good idea to buy a spare set of sheets. </p>
+<p>i&#39;m thankful for <em>from caligari to hitler</em>, the documentary about weimar cinema and the rise of fascism i watched part of on netflix while running on the treadmill this weekend. i&#39;m thankful for the amazing archival footage, which is reason enough to watch it, but i&#39;m thankful also for the dark poetry with which the filmmaker leads you through his interpretation of the context and meanings of the images. i&#39;m thankful for the term &quot;alogical&quot; (as distinct from &quot;illogical&quot;). i&#39;m thankful for siegried kracauer, the frankfurt school feuilletonist (i&#39;m thankful that gmail wants to autocorrect that to &quot;illusionist&quot;) who wrote the study that the film is based upon and who his friend walter benjamin described as &quot;a ragpicker on the eve of the revolution.&quot; i&#39;m thankful to have been introduced, among other amazing things, to a beautiful movie from 1930 called <em>people on sunday</em>, which the narrator accurately describes as &quot;<em>a feast of the casual</em>&quot; and &quot;<em>nouvelle vague avant la lettre, 30 years before godard and truffaut</em>.&quot; i&#39;m thankful for the sunny images of young people in bathing suits having an impromptu picnic on the beach; i&#39;m thankful that the violent hand in the black leather glove, an image from <em>m</em> that the filmmaker uses as foreshadowing at the beginning of the film, has not yet descended on the scene. i&#39;m thankful that <em>people on sunday</em> is <a href="https://www.youtube.com/watch?v=7ooNxs68vk4">available</a> in its entirety (and in 720p) on youtube. i&#39;m thankful for this wiki <a href="https://en.wikipedia.org/wiki/People_on_Sunday">entry</a>, which explains the title as well as the startling reality effect of the film: &quot;<em>the film is subtitled &quot;a film without actors&quot; and was filmed over a succession of sundays in the summer of 1929. the actors were amateurs whose day jobs were those that they portrayed in the film—the opening titles inform the audience that these actors have all returned to their normal jobs by the time of the film&#39;s release in february 1930. they were part of a collective of young berliners who wrote and produced the film themselves, on a shoestring budget. this lightly scripted, loosely observational work of new objectivity became a surprise hit</em>.&quot;</p>
+<p>i&#39;m thankful for the game <em><a href="http://ninasays.so/cibele/">cibele</a></em>, which explores a digitally mediated version of the interior life of a teenage girl obsessed with an online roleplaying game. i&#39;m thankful that d and i played it together, because i&#39;m always thankful when d and i can find a game we both enjoy playing together (i&#39;m thankful for the last game for which this was the case, <a href="https://en.wikipedia.org/wiki/Catherine_(video_game)">catherine</a>, which had a similar bifurcated structure). i&#39;m thankful for how successfully i felt that <em>cibele</em> used a fictional desktop stocked with a character&#39;s digital possessions as a gameplay device for getting to know a character through her stuff. i&#39;m thankful for how much fun d and i had navigating through nina&#39;s blog post drafts and selfies and bad/good poetry. i&#39;m thankful that the directness of this model of game interface, which felt so much more honest and true (and, because of it, effective) than the haunted house false drama that drives <em>gone home</em>&#39;s exploration of interior life. i&#39;m thankful for the perfunctory nature of the meta-game <em>cibele</em>, the fictional online roleplaying game nina plays where she meets the guy who she&#39;s in love with. i&#39;m thankful for the perfunctory nature of the game because of the way its simplicity both reminds me of how all games (even games i love) are so simplistic in the way that they model reality, and also how it makes me even more invested in the voice chat between nina and her paramour ichi which is happening in the background of the game (i&#39;m thankful for the way that the background is actually the foreground). i&#39;m thankful that in the game, nina is not a mary sue character but is a complex agent to whom you can have a variety of reactions. i&#39;m thankful that the game is short (and sweet, in its way, though also not sweet) and to the point.</p>
+<p>i&#39;m thankful my brother was born on this day in 1988. i&#39;m thankful that typing the date in the subject field of this email this morning reminded me of that, which in the past I&#39;ve let pass without ceremony and might have otherwise forgotten. i&#39;m thankful, because my brother doesn&#39;t earn much money and the money he does earn doesn&#39;t often get to go to fun stuff, that i had the idea to send him digital credit for the nintendo e-store so he can buy whatever game he wants for his 3ds. i&#39;m thankful, always, for his warmth and sweetness, for the total lack of guile or premeditation in his actions (i&#39;m thankful that even if that sometimes hurts him in terms in terms of surviving in the world, those are some of the most noble flaws that a person can have). i&#39;m thankful for how much easier it is for us to get along now that we&#39;re adults, but i&#39;m also thankful to remember what it was like to be children together. i&#39;m thankful, especially, to remember our times playing video games together growing up. i&#39;m thankful to remember when one year on mother&#39;s day, we got a playstation (i&#39;m thankful that often, mother&#39;s day gifts meant gifts for us kids) and played <em>final fantasy vii</em> together. i&#39;m thankful that my brother was much more invested in grinding and battles, which bored me, and that this made it possible for me to see areas of the game and meet characters who i never would have reached on my own (i&#39;m thankful to remember when we first met sephiroth and when we first went chocobo racing in the gleaming pleasure dome and when we got an airship). i&#39;m thankful to remember creating and recreating our own custom wrestlers together in various wrestling video games and staging matches. i&#39;m thankful for the most recent memory i have like this, of sitting beside him on the carpeted floor of his bedroom one summer when i was home from college and taking turns on a difficult dungeon in <em>the legend of zelda: the wind waker</em>.</p>
+<p>i&#39;m thankful that it flurried unexpectedly on sunday morning—i&#39;m thankful that the flakes were big and fat and well-structured. i&#39;m thankful for d&#39;s leeriness walking in inclement weather, for the way she grabbed me to steady herself in slippery sections. i&#39;m thankful to make myself stable for her. i&#39;m thankful for how, on our walk to the grocery store to get supplies, d raised her arm to examine the flakes that had fallen onto the arm of her black down coat. i&#39;m thankful for when she stopped me to point to a perfect one, the platonic ideal of a snowflake. i&#39;m thankful that when we were walking back from the store, loaded up with groceries, we could retrace,the tracks we&#39;d left walking in the other direction because there weren&#39;t many other people out walking. i&#39;m thankful for the strangeness of the difference between the tracks, how one set of tracks was much longer than the other even though d and i have feet that are similar in size. i&#39;m thankful for how we laughed all of the rest of the way home when we realized that the set of lengthened footprints were the result of d dragging her feet for traction</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-120.html" class="btn btn-secondary">← thank you notes 1/20</a>
+        <a href="/letters/thank-you-notes-11816.html" class="btn btn-secondary">thank you notes 1/18/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

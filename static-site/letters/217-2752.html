@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2/17">
+  <title>2/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>2/17</h1>
+        <time datetime="2017-02-17T00:00:00Z">February 16, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <a href="http://kotaku.com/a-17-hour-video-of-a-guy-clicking-his-mouse-one-million-1792454584">this 17 hour video of someone clicking a mouse one million times</a>. i&#39;m thankful that i would assume that would take much longer than 17 hours and to have found it inspiring that it &quot;only&quot; takes that long. i&#39;m thankful to wonder how many million times i&#39;ve clicked a mouse. i&#39;m thankful for a new and innovative approach to <a href="https://www.washingtonpost.com/news/morning-mix/wp/2017/02/16/nasas-space-poop-challenge-is-over-and-it-went-boldly-beyond-the-diaper/?utm_term=.b2b9ee21cd31">going to the bathroom in space</a> (i&#39;m thankful to have learned that the medical technical term for butt crack is &quot;gluteal fold&quot;). i&#39;m thankful for <a href="http://www.metafilter.com/165162/Counting-your-Kegels-Theres-an-app-for-that">gamified kegels</a>. i&#39;m thankful to have mostly gotten my new work computer set up and to have logged into all my various accounts. i&#39;m thankful for lastpass and i&#39;m thankful for the touch bar and i&#39;m thankful for the low action of the keyboard, which makes typing feel interesting. i&#39;m thankful for the nice welcome i got when i opened slack for the first time. i&#39;m thankful to have gone out to dinner last night with someone from the new company who lives here part time. i&#39;m thankful to be nervous but excited about getting started next week. i&#39;m thankful to have a few more days to relax before that.</p>
+<p>i&#39;m thankful for <a href="https://twitter.com/fakeirl/status/832253267807764484">fun convos with friends</a> about literature and being a hater. i&#39;m thankful for <a href="https://twitter.com/imogen_cassels/status/832555455889207296">a drop of seawater magnified 25 times</a>. i&#39;m thankful to have come up behind d while she was sitting at her computer last night and noticed that she was looking at a blog header image with the text &quot;<a href="http://www.designlovefest.com/2014/09/the-ultimate-crostini-station/">the ultimate crostini station</a>,&quot; which is a phrase that made me laugh very hard. i&#39;m thankful that we are thinking about buying a new couch because we work from home and our current couch is not very comfortable and i&#39;m thankful for <a href="https://theawl.com/why-does-this-one-couch-from-west-elm-suck-so-much-2fd9e4c7ce77#.um3da0lqe">this cautionary tale</a> about buying a new couch. i&#39;m thankful that later in the evening d was scrolling endlessly through a selection of throw pillows on some website and i was struck by the thought that there are so so many ugly things in the world that i don&#39;t want and don&#39;t see how another person would want but how there is such insane infrastructure built up to deliver first images of ugly throw pillows and then create and deliver the actual ugly throw pillows themselves. i&#39;m thankful for <a href="https://versions.killscreen.com/twitter-bot-next-bob-ross/?utm_content=bufferc4669&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer">this twitter bot inspired by bob ross</a>.</p>
+<p>i&#39;m thankful for &quot;<a href="https://twitter.com/mathowie/status/831658162092584960">an image of baklava wearing a balaclava while playing a balalaika on black lava.</a>&quot; i&#39;m thankful that i found <a href="http://www.dailymail.co.uk/news/article-2218991/Couple-sex-restaurant-table-horrified-families-dining-children.html">this news story</a> while trying to figure out what movie <a href="https://twitter.com/rubybrunton/status/589999463567089665">this screenshot</a> is from. i&#39;m thankful for <a href="http://kotaku.com/its-2017-lets-laugh-at-this-grand-theft-auto-news-stor-1792453598">this comical australian local TV news story</a> about a grand theft auto mod created by &quot;underground computer geeks.&quot; i&#39;m thankful for <a href="https://twitter.com/KevinWonkaHart/status/825910935243993090">this amazing surreal whatever</a> which i will not spoil except to tell you to watch the whole thing. i&#39;m thankful <a href="https://twitter.com/lionpudding/status/832046737896247296">to pass notes</a>. i&#39;m thankful for <a href="https://twitter.com/katienotopoulos/status/832282468564795392">katie notopoulos&#39;s oldest email</a>. i&#39;m thankful for <a href="https://twitter.com/LByock/status/832437632516775936">toothpaste reviews</a>. i&#39;m thankful for <a href="https://twitter.com/yungtenpiece/status/832125353854369792">infinite loops</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/218-6242.html" class="btn btn-secondary">← 2/18</a>
+        <a href="/letters/216-6983.html" class="btn btn-secondary">2/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

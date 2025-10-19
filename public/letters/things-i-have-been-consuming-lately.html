@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="things i have been consuming lately">
+  <title>things i have been consuming lately - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>things i have been consuming lately</h1>
+        <time datetime="2022-08-25T00:00:00Z">August 24, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for things i have been consuming lately, including:</p>
+<p>- perfect late summer cherries, peaches, nectarines, watermelon, and mangoes; ghirardeli box brownies d made that have ribbons of melty frosting through them with whipped cream on top; grapefruit popsicles also made by d; ham and cheese sandwiches on white bread with salty/spicy chips on the side; brussels sprout and peach salad (i&#39;m thankful for the versatility of the brussels sprout, especially considering how well they hold in the fridge); blackberry pear chips; chips deluxe cookies, anchovies right from the tin</p>
+<p>- the fantasy series <em>a court of thorns and roses</em>, which i am not reading but d is, because it always makes me so happy to see her get deeply into a book and also we have this thing when we go on long walks where if the other person is not going to read the book the other other person is reading then they tell them the plot which i enjoy as a way to access stories that i wouldn&#39;t otherwise experience (i&#39;m thankful on the walk where she told me the plot of this book, we also counted how many times miso peed/marked her territory and the grand total for a sub 1 hour walk was 24.</p>
+<p>- the last and best book of the <em>three body problem</em> trilogy <em>death&#39;s end</em>, which is one of those books i go back to when i can&#39;t get into any novels but want to perform the act of reading fiction for its mental benefits* and to try to get my brain &quot;into shape&quot; to be more receptive to creating mimesis with an unfamiliar work afterwards, because i can always read that book and i always enjoy it and that was again true this time, i think it is just a perfect work of science fiction</p>
+<p>* (i read this fucked up thing somewhere in the <em>new york times</em> that one possible sign of early dementia is a person switching from reading fiction to nonfiction because it&#39;s easier for them to process to which i am skeptical of as one should be skeptical of most speculative neuroscience but also i know that very often in the past i would often read a novel while eating lunch whereas now i read a magazine or look at my phone (come back soon <em>today in tabs</em>) because getting into a novel feels &quot;hard&quot;)</p>
+<p><em>- for all mankind</em> (i&#39;m 2/3 through the first season), a show that i, as a person with deep fondness for both <em>mad men</em> (this show is set in the 60s and early 70s (so far)) and <em>battlestar galactica</em> (the show runner is the show runner for that) and who has consumed more than my share of space race related culture in the past (still totally fucking blows my mind that the lunar lander landed on the moon and then took off and merged in orbit with the command module, like the precision of the timing required), thought i was going to love and then bounced off of hard because it felt like i was just watching a less witty and interesting version of <em>mad men</em>. i&#39;m thankful that i tried it again (and that i let myself just skip ahead to the episode after i stopped watching rather than rewatching the first few episodes) and even though it&#39;s not as good as <em>mad men</em> or <em>battlestar galactica</em> i&#39;m into it now).</p>
+<p>- <em>moonfall</em>, which is exactly what you&#39;d expect from a roland emmerich movie (massive scale disaster porn setpieces) and which i was really worried at the beginning because the guy who played the nerd on <em>game of thrones</em> plays a nerd in this who has a fanboy boner for elon musk and based on several painful lines of his dialogue early on i got really worried that elon musk was going to show up in the movie and i was just going to have to shut it off so as not to have to look at him but thankfully he didn&#39;t appear and it was fun to watch hundreds of millions of dollars of CG granularly depicting what it might look like if the moon&#39;s and also it went in a more sci-fi direction at the end than his later movies usually do which felt grafted on but was entertaining</p>
+<p><em>- the last white man</em> by mohsin hamid, which was really great (i also highly recommend his last novel <em>exit west</em>) and i thought made a very smart choice to lean deeply into being really close to the characters (through third person free indirect discourse run-on sentences, one of my favorite styles for representing the cadence of consciousness) rather than going heavy with the high concept world-building macro sociology of the premise (a world in which white people start turning black), though i would also read a book that did it that way too.</p>
+<p>- <em>men</em>, which we watched last night and honestly what the <em>fuck</em> was that, the movies it reminded me most were <em>mother!</em> (which i hated) and <em>under the skin</em> (which i liked but didn&#39;t understand and found hard to watch)<em>,</em> what a horrific film festival theme night that triple feature would be, and it also made me think of <em>the art of cruelty</em> and the idea that even if all this had a point was that like...worth it? i&#39;m thankful to prefer art that is mysterious and that i don&#39;t completely understand to art and that makes me go &quot;what the fuck was that&quot; to art that is really obvious and clear but i&#39;m thankful also to be able to call bullshit on unredeemed pretension sometimes.</p>
+<p>_
+- watcher_, another A24 horror movie, which isn&#39;t really doing anything new (though i like the way the movie, about an american woman living in romania with her romanian-american husband, enacts the feeling of being around people who are all speaking a different language than you and the sense of not knowing what&#39;s happening) but is very competently and stylishly executed and briskly paced</p>
+<p>- <em>your pretty face is going to hell</em>, which i started watching on a whim, as a person who despite being of a certain age and smoking a lot of weed somehow never really got into the whole adult swim cultural universe or any of its many products, and which despite my distaste for crude body humor (it&#39;s unfortunately not a show you can watch while eating dinner, which i learned the hard way!) is a very fun exploration of hell and the lives of demons and i&#39;m thankful for the way that the beats of a comedy shift when each episode is 11 minutes long instead of 22. i&#39;m thankful that ec told me about how the creator and star of that has a podcast on spotify where he recaps all of the <em>dune</em> books</p>
+<p>- weed but less, because while i have had a very high weed tolerance for...ever? lately it feels like my tolerance is so high that despite throwing more and more THC at my brain, i never really get high, which is my favorite way to be, probably because i&#39;ve burned out my THC receptors, and so i did a tolerance break for 3 days (a record for me, people usually do a week or two weeks or twenty one days) and i am now trying to do the thing where i smoke much less than i normally do on a daily basis in the hope that will still reduce my tolerance without requiring total abstinence and it is annoying to be doing this on my vacation from work (when ideally i&#39;d be very high all day long for the whole vacation) but also i know that doing it now free from the stress of work is probably the best time for it</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/licorice-pizza.html" class="btn btn-secondary">← licorice pizza</a>
+        <a href="/letters/korean-reality-dating-show.html" class="btn btn-secondary">korean reality dating show →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

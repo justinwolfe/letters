@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 6/10">
+  <title>thank you notes 6/10 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 6/10</h1>
+        <time datetime="2016-06-10T00:00:00Z">June 9, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the season finale of <em>the americans</em>, though i don&#39;t have anything articulate to say about it. i&#39;m thankful sometimes to be left mute by awe. i&#39;m thankful, very very thankful, that fx has committed to producing and airing two more seasons of the show. i&#39;m thankful for keri russell&#39;s ability to control tiny shifts in the position of her eyes and facial muscles to create a slowly unfolding narrative of emotions as a locked down camera focuses on her for a period of time. i&#39;m thankful for <a href="https://itunes.apple.com/us/podcast/americans-slate-tv-club-insider/id962741924?mt=2">the podcast</a> i listened to afterward with russell and her husband matthew rhys (i&#39;m thankful for his delightful welsh accent every time i hear it) in which they said some very interesting things about a monologue in the episode that phillip delivers about the pain of being a travel agent and which keri related to acting and the showrunners related to writing. i&#39;m thankful for the discussion of the need to tune how satisfying a finale is, since apparently based on network metrics a too satisfying finale of a show that you love actually leads to people not returning to the show. i&#39;m thankful for their discussion of using a tiny amount of CG in each episode as a way to get around the cliches of hiding russell&#39;s pregnancy. i&#39;m thankful for the moment when keri affectionately mock&#39;s matthew&#39;s idealization of wales. </p>
+<p>i&#39;m thankful for the finale of <em>the girlfriend experience</em>, which was also excellent but which i do have something to say about. i&#39;m thankful for the way that the finale, which was a kind of <a href="https://en.wikipedia.org/wiki/Bottle_episode">bottle episode</a>, represents one of the things that was so great about the show, which was how it didn&#39;t bother to explain things or make explicit the connections the way that other tv shows (even some great ones) would. i&#39;m thankful for its resistance of our expectations, how so many times i would be sure that something was going to happen, because my absorption of the conventions of television had primed me to believe it would, and then thankful that the show would resist it and do something more interesting. i&#39;m thankful for how the chilly fragmentation of the show empowers the viewer to think and consider what they&#39;re watching and what it might mean (which could be a number of things) rather than receive the show like a roller coaster on a track they&#39;re strapped into. i&#39;m thankful for the devastating speech the main character delivers at her parents&#39; anniversary party.</p>
+<p>i&#39;m thankful for <a href="https://docs.google.com/spreadsheets/d/13tQ8-bUoICO3ziweml5bWs4coHvxh4FkXcw3r0I0Qno/edit#gid=2108571733">this google doc</a> from <a href="https://theawl.com/newsletter-83b47d181923#.69y7e820d">everything changes</a>, which is a compilation of people saying what helps them when they&#39;re feeling down. i&#39;m thankful for the specificity of the responses, which makes so many of them feel actionable, like little links to bits of happier places. i&#39;m thankful that someone else likes listening to &quot;the morning of our lives&quot; by jonathan richman to feel encouraged. i&#39;m thankful for JHE&#39;s suggestion of &quot;<em>Zoloft and psychotherapy! The best thing I&#39;ve ever done for my (chronic, relentless) depression is admit that I need interventions beyond what I can administer myself. Also: allowing myself to lean in to bad feelings, acknowledge and ride them out, rather than trying to pretend that they don&#39;t exist. A useful metaphor for me is a long-haul flight: I hate long-haul flights, I&#39;m terrified of them, but I&#39;ve learned to tolerate them by focusing on the knowledge that in 12 hours (or whatever) the plane will either crash or land. So I just have to wait it out. And (touch wood, so far) it&#39;s always landed. So, too, bad feelings: I&#39;ve been through enough cycles of depression now that I know that in time, with the aid of those interventions, the plane will land</em>.&quot; i&#39;m thankful for hsh&#39;s practice of &quot;<em>Shooting a basketball. Preferably in a light rain. It&#39;s meditative and calming. Being in the world, physically, helps tether me to the world in ways that help. Maybe it also helps that I know I can&#39;t make every shot -- sometimes an attitude I should carry over from the court to life</em>.&quot;  </p>
+<p>i&#39;m thankful for AM, who writes that &quot;<em>I&#39;ve watched The Emperor&#39;s New Groove every time depression hits for the past 10 years</em>.&quot; i&#39;m thankful that up until a few years ago, i had never seen that movie, even though d had mentioned loving it, because i am a grump about animated films and don&#39;t like many of them. i&#39;m thankful that one labor day a few years ago, before i went on medication for my anxiety/depression and before i started doing yoga and before i started meditating and trying to be mindful, i, after several sleepless nights, had a very horrible panic attack that wouldn&#39;t stop letting me feel like i was dying. i&#39;m thankful that d took me to the urgent care clinic (i&#39;m thankful to remember that she had to do this twice during that labor day vacation, a period she described in a one sentence journal entry she later showed me as one of the scariest times in her life). i&#39;m thankful that the doctors told me i wasn&#39;t dying and sent me home with a sedating antihistamine and prozac (which, despite feeling like i was dying, i didn&#39;t want to take). i&#39;m thankful that we got home late because we&#39;d waited at the clinic for a long time and had dinner and i suggested that d pick something for us to watch, anything, because i at least wanted to show her in this small way that i could that i appreciated the support she was giving me in this bout of craziness. i&#39;m thankful that she picked <em>the emperor&#39;s new groove</em> and thankful that as we watched it together on the couch, my heart rate slowed and my muscles began to untense. i&#39;m thankful that this was probably correlation and not causation, but also thankful for how fondly i think of that movie as marking the light at the end of a very dark few days in our lives. i&#39;m thankful for david spade.</p>
+<p>i&#39;m thankful that a few days ago at the gym, i noticed that the bored employee at the equipment checkout counter was reading a harry potter book. i&#39;m thankful i could tell this at a glance from the distinctive sleeve art, and thankful that sparked a memory of when i was fifteen and we were living in tennessee and my dad took me to the dmv to do the written exam for my learner&#39;s permit and i either failed or almost failed the exam (which, since i was an excellent student, seemed ridiculous and had to be a subconscious attempt to keep myself from having to drive, which terrified me) and we went home and i sat in the armchair in our living room by the window and read one of the harry potter books, mainlining the childish happiness of being lost in a fantasy world. i&#39;m thankful that yesterday, i saw another employee at the checkout desk was reading the harry potter book or a harry potter book and i smiled and said &quot;<em>are you guys passing that back and forth</em>?&quot; and she said &quot;<em>what</em>?&quot; and i told her about having seen another employee reading the book a few days ago and she started laughing and said &quot;<em>oh my god, no, i had no idea</em>.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-marco.html" class="btn btn-secondary">← thank you notes (marco)</a>
+        <a href="/letters/thank-you-notes-moe3.html" class="btn btn-secondary">thank you notes (moe)(3) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

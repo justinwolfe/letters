@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="4/9/17">
+  <title>4/9/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>4/9/17</h1>
+        <time datetime="2017-04-09T00:00:00Z">April 8, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that d died part of her hair pink yesterday, even though i didn&#39;t want her to. i&#39;m thankful to remember how i got all pissy the last time she decided to die her hair, a few years ago, and then after i got used to it, it didn&#39;t really matter at all to me, even though i prefer her hair in its natural black and was happy when it eventually inevitably grew back and even though that memory didn&#39;t prevent me from getting a bit pissy this time. i&#39;m thankful that she can afford to go to the hair salon for 5 1/2 hours to get her hair died properly and i&#39;m thankful this is an experience that is meaningful to her and worth the expense. i&#39;m thankful that she has found a stylist who she really likes, both as a stylist and as a person (the latter being important since spending 5 1/2 hours talking to a person you don&#39;t like doesn&#39;t seem like a good time). </p>
+<p>i&#39;m thankful that d is an independent person and does not believe her purpose (or her hair&#39;s purpose) is to please me or meet my preferences, which is as it should be. i&#39;m thankful to ponder what it is specifically about her dying her hair that gets to me, even though this feeling is stupid and doesn&#39;t actually matter in any real way. i&#39;m thankful for the closest i can get is the idea that i have a certain image of her lodged in my mind and heart, sketched in when we first met and then deepened and solidified over time, and her changing her hair causes conflict with the image and my brain has to reorganize and reshape itself to handle it (i&#39;m thankful to remember a brief discussion before we got married of whether she would take my name and how i couldn&#39;t imagine her taking my name because her last name (kim) was such an essential a part of who she was to me, who i was choosing to marry). i&#39;m thankful to think that maybe the other thing is that her wanting to change her hair seems to me to symbolize some need or want in her life that&#39;s not being filled by her life as it is, a life of which i am a large part, which makes me feel like i am not enough, or doing enough, or something? i&#39;m thankful after writing this down to recognize what a solipsistic view of the world these thoughts seem to reflect. i&#39;m thankful that though we can&#39;t control the thoughts and feelings we have as they appear, we can at least try to capture them as they appear and then interrogate them.</p>
+<p>i&#39;m thankful to remember when i was an adolescent and i went through a period of several years where i always had my hair bleached blond. i&#39;m thankful that i think before the bleach, there were a few summers where my mom for whatever reason had my brother and i put sun-in in our, which softened and lightened my natural dark brown hair. i&#39;m thankful that my mom praised this, i think because it reminded her of when i was a much younger child, a little boy, a time at which my natural hair color was much blonder. i&#39;m thankful that because i was an intense reader of stories from a young age and since so many stories are about love this made me a very romantic child who prioritized (over things other boys favored like being good at sports) wanted to be loved by the opposite sex, and so the thought that my hair being blonde made me more attractive to women (of which my mom was the primary one i interacted with and model of femininity) made the practice of bleaching my hair a very attractive one.</p>
+<p>i&#39;m thankful that this plus a 90s trend toward men bleaching their hair and frosted tips and et cetera (i&#39;m thankful for sugar ray) led to me sitting in a barber&#39;s chair in the back room of the house of a family friend who cut hair, getting mine died. i&#39;m thankful to remember the strange intensity of the process, the chemical smell which reminded me of model airplane glue and, and the burning of my scalp, which seemed an echo of the messages i had absorbed from pop culture about women that pain experienced in the search for beauty (i&#39;m thankful to remember later in college a girl i liked pushing back my cuticles so that she could apply a coat of clear lacquer, which felt excruciating but which i suffered through gladly because of the feeling of her other hand, warm, holding and supporting mine). i&#39;m thankful for a funny story in family lore, which is that my brother was also getting his hair bleached at the same time, but grew impatient (i&#39;m thankful this is a common motif for stories about my brother in family lore) and wanted to go play and so ended up with half-bleached hair which was dorito orange.</p>
+<p>i&#39;m thankful at band practice on friday we did an unintentional extended a capella cover of &quot;smooth&quot; by santana and rob thomas which i remember listening to on MTV in the house of the woman who bleached my hair and how it was my favorite song at the time and how the older son of the woman said that it wasn&#39;t really good santana and said &quot;oye como va&quot; was better and i&#39;m thankful to have thought this was a crazy opinion. i&#39;m thankful that band practice was good and that we now have some original songs that are coming together in interesting ways. i&#39;m thankful for how much fun we have together. i&#39;m thankful that i think i have convinced them to try a cover of &quot;shut up kiss me&quot; by angel olsen, which i feel would fit her song well. i&#39;m thankful that while i am not a technically gifted player i am a pretty good improviser. i&#39;m thankful to feel more and more affection for playing the bass.</p>
+<p>i&#39;m thankful for the running joke i have where i call the keyboardist&#39;s dog &quot;brian eno&quot; because of his habit of unplugging microphones and stepping on effects pedals, and i&#39;m thankful that the keyboardist always laughs at this, and i&#39;m thankful at the most recent practice that i realized that the whole time the keyboardist was actually thinking of brian <em>wilson</em> from the beach boys, which made us all laugh and made me think of a comedic side project we could start called &quot;eno wilson&quot; where i played brian eno and he played brian wilson. i&#39;m thankful for another moment when he asked the guitarist, who was wearing a mesh tank top, if they had another original for us to jam on by saying &quot;what else you got up your sleeve...&quot; and then paused because they were wearing a mesh tank top, and then completed the sentence &quot;...less...shirt?&quot; i&#39;m thankful that i remember that because i noted it in my phone and am now writing about it now. i&#39;m thankful to have this space to memorialize small moments that made me happy.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/41017.html" class="btn btn-secondary">← 4/10/17</a>
+        <a href="/letters/49-addendum.html" class="btn btn-secondary">4/9 (addendum) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

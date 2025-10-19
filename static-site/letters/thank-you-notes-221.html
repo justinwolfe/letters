@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/21">
+  <title>thank you notes 2/21 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/21</h1>
+        <time datetime="2016-02-21T00:00:00Z">February 20, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i don&#39;t really believe in the secret, but thankful that if i did, i might see an example of its power in the moment that happened to me on friday evening, when i wrote a brief note soliciting you to send me your thank you notes and saved it as a draft to send the next morning and closed my computer and not ten minutes later, while i listened to a podcast debate about <a href="http://greatdebates69.podbean.com/e/72-bill-wants-hillary-to-win/">the existence of luck</a>, got an email notification that someone had sent me her thank you notes, which were lovely. i&#39;m thankful to have gotten to send them out to you yesterday and to have taken a day off from writing thank you notes (if not from being thankful). </p>
+<p>i&#39;m thankful for <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-esm">for</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-l">all</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-julia">the</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-patrick">wonderful</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-m-o">notes</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-pierce">you&#39;ve</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-anonymous">written</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-ashley">that</a> <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-k">i&#39;ve</a> been able to send out so far. i&#39;m thankful for the windows they provide into your lives and for the way that hearing what other people are thankful for helps me to understand new things in the world that i can be thankful for, which makes me happier. i&#39;m thankful, also, for the people who have told me that writing thank you notes made them feel happy or good or appreciate things about their lives, even during difficult times. i&#39;m thankful to get to send out my own notes to you, but i&#39;d also be thankful to make this project more polyphonic. i&#39;m thankful, then, to ask you to consider sometime, if you feel like it, <a href="https://docs.google.com/forms/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/viewform">sending me thank you notes</a> that i can send out to all the other yous reading this.  </p>
+<p>i&#39;m thankful that yesterday the temperature got up to 68 degrees and d and i walked around town in a glorious sun-drunk daze. i&#39;m thankful for the people we passed in the meadow at the center of campus who had strung temporary hammocks between the trees by the creek, for the woman in one of them who i heard say to the others, &quot;<em>i&#39;m an introvert, but i&#39;m an external processor</em>.&quot; i&#39;m thankful for the adorable siberian husky puppy, which looked like a living stuffed animal, that we passed outside the irish pub. i&#39;m thankful that d pointed up and said, &quot;<em>look, a v,</em>&quot; and i gazed up over a concrete block dormitory to see a neat v of geese flying west. i&#39;m thankful for the strange limbs of a tree we examined, which in the mechanical pattern of their branches reminded me of old computer punch cards. i&#39;m thankful for the poem enclosed in <a href="http://tinyletter.com/thealiporepost/letters/384">this letter</a>, which begins, </p>
+<p>&quot;<em>please describe</em></p>
+<p><em>the weather in great detail. If possible,</em></p>
+<p><em>enclose a fist of snow or mud,</em></p>
+<p><em>everything you know about the soil,</em></p>
+<p><em>how tomato leaves rub green against</em></p>
+<p><em>your skin and make you itch, how slow</em></p>
+<p><em>the corn is growing on the hill.</em></p>
+<p><em>Thank you for the photographs</em></p>
+<p><em>of where the chicken coop once stood</em>,&quot;</p>
+<p>i&#39;m thankful for the song &quot;<a href="https://www.youtube.com/watch?v=D5JX4-zZbiY">the fairest of the seasons</a>&quot; which i thought of as d and i talked about the strangeness of feeling so warm outside in february. i&#39;m thankful for the playful combination of fingerpicked electric guitar and chamber strings, especially at the little call and response cascade from ~1:45 - 1:50. i&#39;m thankful how, after being cold for so long and fantasizing about spring coming for so long, with this first flicker of warmth, all of our sense memories of the swelter of summer came rushing back along the rivers of our synapses. i&#39;m thankful that, rather than increasing our lust for the future, instead it made us appreciate the season we&#39;re inside right now and want to grasp its cold hands a little longer. i&#39;m thankful how we were slightly relieved to learn from the forecast that it will cool down again next week, that winter isn&#39;t quite over yet. i&#39;m thankful that i used to think of february as the worst month of the year, but that actively being thankful (as well as antidepressants and love and a job and lots of other things) has helped me to appreciate that it contains just as much capacity for happiness as any other time of the year.</p>
+<p>i&#39;m thankful to have looked in the window of the fire station as we passed and seen two large boxes of pop-tarts on a conference table. i&#39;m thankful to learn from the pop-tarts <a href="https://en.wikipedia.org/wiki/Pop-Tarts">wiki</a> that the foil wrapping technology used to keep pop-tarts fresh was invented for dog food; that, like <em>sergeant pepper&#39;s lonely hearts club band</em> and many other wonderful things, frosted pop tarts were created in 1967; and that &quot;<em>as of 2014, sales of Pop-Tarts had increased for 32 straight years</em>.&quot; i&#39;m thankful that our firefighters have enough carbs to fuel the important work they do. i&#39;m thankful for the <em>guardian</em>&#39;s important coverage of <a href="http://www.theguardian.com/business/2016/feb/18/tesco-bows-to-customer-demand-in-selling-straight-croissants">the tesco croissant controversy</a>, and especially for the intricate quotes from &quot;harry jones, tesco&#39;s croissant buyer&quot; (i&#39;m thankful to imagine that this is a job that exists) about the &quot;<em>spreadability factor</em>,&quot; how &quot;<em>with the crescent shaped croissants, it’s more fiddly and most people can take up to three attempts to achieve perfect coverage, which increases the potential for accidents involving sticky fingers and tables</em>.&quot; i&#39;m thankful for the depth of the research that &quot;<em>up to three attempts</em>&quot; implies and thankful, sincerely, that someone is looking out for incidents of accidental stickiness. </p>
+<p>i&#39;m thankful for the $50 gift certificate to red lobster that d&#39;s parents gave us for christmas. i&#39;m thankful that as a daily special, red lobster had raw oysters on the halfshell, which were definitely not the best raw oysters on the halfshell i&#39;ve ever had, but which satisfied my (ever-present) craving for raw oysters on the halfshell and also did not make me sick. i&#39;m thankful for the lightly breaded fried shrimp which were coated in a sweet (but not too sweet) chili sauce. i&#39;m thankful that, since we were splitting an entree, our server sweetly put our side salad in two little bowls. i&#39;m thankful how our entree, which was lobster and scallops and shrimp and mussels over linguini and covered with a white wine sauce containing what must have been at least an entire stick of melted butter, was delicious, even if we both felt a bit sick afterwards. i&#39;m thankful that we stopped at the supermarket on the way home and d suggested that we get one of those fruit-juice flavored san pellegrinos in <a href="https://www.sanpellegrinofruitbeverages.com/us/en/beverages">aranciata</a>, thankful for the sweetness of it and the way the fizzing acidity seemed to cut through the fat in my veins and reinvigorate me for the rest of our walk. i&#39;m thankful i haven&#39;t had any alcohol in a week and a half and that these drinks, though caloric, might prove useful for my mocktail mixology.</p>
+<p>i&#39;m thankful that on the way home, we stopped at the library so d could pick up a <a href="http://www.amazon.com/gp/product/B00USBMAQ8/ref=dp-kindle-redirect?ie=UTF8&btkr=1">cookbook</a> she had on reserve (i&#39;m thankful how the bio of the author of the cookbook notes that he is the nephew of bob marley) and i could browse the graphic novels (i&#39;m thankful i got <a href="http://www.latimes.com/entertainment/arts/miranda/la-et-cam-leah-hayes-graphic-novel-about-abortion-20150824-column.html">this one</a> and <a href="http://www.amazon.com/gp/product/B00C3SAHO6/ref=dp-kindle-redirect?ie=UTF8&btkr=1">this one</a>, as well as a few others which i&#39;ll tell you about if they&#39;re good). i&#39;m thankful for how the library staff put a little plastic footstool in front of the book return slots so that kids can return their own books. i&#39;m thankful to my mom for always taking my brother and i to the library through our childhood (i&#39;m thankful for <a href="http://www.nybooks.com/daily/2012/06/02/north-west-london-blues/">this old essay</a> by zadie smith about public libraries and <a href="https://www.penguin.co.uk/books/288384/public-library-and-other-stories/">this new book</a> by ali smith devoted to public libraries). i&#39;m thankful to suddenly remember when i was 6 and i read a book about a girl in a wheelchair to my first grade teacher and the school principal in a hushed corner of the school library, which was the test that determined that i would be skipped the next week to the second grade. </p>
+<p>i&#39;m thankful that to avoid the school-spirited crowds on the main drag downtown, we went down an alleyway that neither of us had entered in our years living here. i&#39;m thankful for how the combination of this narrow route and the sun and the light breeze made downtown, which each of us travels through every day, feel a little bit new again. i&#39;m thankful, occasionally, to be struck by a glimpse of the majesty of the expansiveness of the world, how it just keeps going in all directions for so much farther than our minds have the ability to fully comprehend. i&#39;m thankful that today and tomorrow and the next day will happen and that in them, there is the chance to explore a tiny fraction more of everything that exists.</p>
+<p>i&#39;m thankful for <a href="https://www.youtube.com/watch?v=KzHc2LpkUVk">this video of cookies</a> being intricately decorated to look like mount fuji surrounded by cherry blossoms.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-222.html" class="btn btn-secondary">← thank you notes 2/22</a>
+        <a href="/letters/thank-you-notes-k.html" class="btn btn-secondary">thank you notes (k) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

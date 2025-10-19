@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/20">
+  <title>5/20 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/20</h1>
+        <time datetime="2018-05-20T00:00:00Z">May 19, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that when we were in the airport in seoul before heading home trying to spend off the last of our korean money, which i had saved a decent amount of because i wanted to spend it at a convenience store buying neat snacks i could not get elsewhere and we could not find a single convenience store in this enormous ultra-modern luxurious airport which was maddening and i eventually gave up and bought an expensive pack of dried strawberries from a juice bar and resigned myself to exchanging the rest but d knew it was important to me and did not give up and eventually, on a hidden second level around a corner a little 7-eleven, where i bought a number of delightful things but most delightfully perhaps a package of what i thought was chewing gum but, i found on putting the first stick into my mouth, was actually bubble gum. </p>
+<p>i&#39;m thankful for bubble gum, which upon beginning to chew that stick, as it gave way under my molars and started transforming from its stiff packaged form to something soft and wet and chewable, i realized i had not consumed possibly since i was literally a child (a blow pop here or there nonwithstanding), despite being someone who has chewed a lot of chewing gum in that same space (i&#39;m thankful, in social situations, to be &quot;the person who has gum,&quot; which is something that can make other people feel a small jolt of happiness or relief). i&#39;m thankful, though i like chewing gum, that this bubble game made me think about the difference between chewing gum, which is utilitarian, about &quot;cleaning&quot; teeth or freshening breath or trying to skip dessert or other empty calories while still experiencing something food-like, and bubble gum, which has (macgyver notwithstanding) no practical purpose, is a thing that exists purely for the sake of play. </p>
+<p>i&#39;m thankful for the firm springiness of the bubble gum under my teeth, the rubber of it, the sense that i could chew it for hours and it would hold it structural integrity (if not its taste), in contrast to the chewing gums that normally fill my mouth and that degrade, over time spent staring at a spreadsheet or waiting for a commuter shuttle and TMJishly gnawing, into fragmentary nubs of gray gunk, edible eraser scrapings. i&#39;m thankful, chewing it, to have been transported to my childhood favorite bubble gums. i&#39;m thankful for dubble bubble, which was my dad&#39;s favorite gum and so probably my first—for the uniquely milky juice it made of your saliva. i&#39;m thankful for big league chew, a bubble gum imitation of chewing tobacco that i still cannot quite believe was legal but which had the tastiest hit of green apple flavor and a unique texture (it came in loosely linked strands) that felt like what you wanted eating play dough shot through the spaghetti extruder to feel like. i&#39;m thankful for my standby, though, which was bubble yum, which throughout my childhood got the pleasures of bubble gum perfectly, from the size (each piece was thick and substantial, so that even as you pulled one out of the pack and began to unwrap the thin paper you had the sense of pleasurable excess), to the taste (aggressive, gaudy fruit and non-fruit (&quot;cotton candy&quot; as a &quot;flavor&quot; for bubble gum such an odd ontological problem)), to the texture (robust, malleable, snappy).</p>
+<p>i&#39;m thankful for the sensation of preparing to blow a gum bubble, how your tongue navigates the wad of gum around until it&#39;s in the front of your mouth, anchored against your teeth on either side, perhaps dimpling it out with the tip of your tongue, and how you simultaneously start to open your lips, stretching the canvas, and blow into the center of it, perhaps cautious and slow at first but then, as you feel it begin to become something else, an object, stronger, your breath filling this thing until eventually you hit an invisible tipping point and it pops, your inner air expelled into the outer air and the gum sproinging back to you and you, if you are an expert gum chewer, have already by reflex yanked it back into your mouth as this happens so that you can chew a few times to negate the effects of the atmosphere and then prepare for another blow.</p>
+<p>i&#39;m thankful for bubble gum and for other small and inexpensive ways of remembering for a moment what it felt like to be a child.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/521-7687.html" class="btn btn-secondary">← 5/21</a>
+        <a href="/letters/519-6830.html" class="btn btn-secondary">5/19 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

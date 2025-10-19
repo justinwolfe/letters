@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/14">
+  <title>thank you notes 5/14 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/14</h1>
+        <time datetime="2016-05-14T00:00:00Z">May 13, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for this passage from sarah bakewell&#39;s <em><a href="https://www.amazon.com/Existentialist-Caf%C3%A9-Cocktails-Jean-Paul-Merleau-Ponty-ebook/dp/B00Z3E2KEC?ie=UTF8&qid=1463228270&ref_=tmm_kin_swatch_0&sr=8-1">at the existentialist cafe</a></em> that i read last night before falling asleep:</p>
+<p>&quot;<em>Letting-be became one of the most important concepts in the later Heidegger, denoting a hands-off way of attending to things. It sounds straightforward. &#39;What seems easier&#39;, asks Heidegger, &#39;than to let a being be just the being that it is?&#39; Yet it is not easy at all, because it is not just a matter of turning indifferently away and letting the world get on with its business. We must turn</em> towards <em>things, but in such a way that we don&#39;t &#39;challenge&#39; them. Instead we allow each being to &#39;rest upon itself in its very own being&#39;.</em></p>
+<p><em>This is what modern technology does not do, but some human activities do ohave this character, and foremost among them is art. Heidegger writes of art as a form of poetry, whcih he considers the supreme human activity, but he uses the word &#39;poetry&#39; in a broad sense to mean much more than arranging words into verses. He traces it to its Greek root in</em> poesis_—making or crafting—and he cites Holderlin again, saying, &#39;poetically, man dwells on this earth&#39;. Poetry is a way of being._</p>
+<p><em>Poets and artists &#39;let things be&#39;, but they also let things come out and show themselves. They help to ease things into &#39;unconcealment&#39; (<em>Unverborgenheit</em>), which is Heidegger&#39;s rendition of the Greek term</em> aletheia_, usually translated as &#39;truth&#39;. This is a deeper kind of truth than the mere correspondence of a statement to reality, as when we say &#39;The cat is on the mat&#39; and point to a mat with a cat on it. Long before we can do this, both cat and mat must &#39;stand forth out of concealdness&#39;. They must un-hide themselves._</p>
+<p><em>Enabling things to un-hide themselves is what humans do: it is our distinctive contribution. We are a &#39;clearing&#39;, a</em> Lichtung_, a sort of open, bright forest glade into which beings can shyly step forward like a deer from the trees. Or perhaps one should visualize beings entering the clearing to dance, like a bowerbird in a prepared patch in the undergrowth. It would be simplistic to identify the clearing with human consciousness, but this is more or less the idea. We help things to emerge into the light by being conscious of them, and we are conscious of them_ poetically_, which means that we pay respectful attention and allow them to show themselves as they are, rather than bending them to our will._</p>
+<p><em>Heidegger does not use the word &#39;consciousness here because—as with his earlier work—he is trying to make us think in a radically different way about ourselves. We are not to think of the mind as an empty cavern, or as a container filled with representations of things. We are not even supposed to think of it as firing off arrows of intentional &#39;aboutness&#39;, as in the earlier phenomenology of Brentano. Instead, Heidegger draws us into the depths of his Schwarzwald, and asks us to imagine a gap with sunlight filtering in. We remain in the forest, but we provide a relatively open spot where other beings can bask for a moment. If we did not do this, everything would remain in the thickets, hidden even to itself. To alter the metaphor, there would be no room for beings to emerge from their shell.</em> </p>
+<p><em>The astronomer Carl Sagan began his 1980 television series</em> Cosmos <em>by saying that human beings, though made of the same stuff as the stars, are conscious and are therefore &#39;a way for the cosmos to know itself&#39;. Merleau-Ponty similarly quoted his favorite painter Cezanne as saying, &#39;The landscape thinks itself in me and I am its consciousness.&#39; This is something like what Heidegger thinks humanity contributes to the earth. We are not made of spiritual nothingness; we are part of Being, but we also bring something unique with us. It is not much: a little open space, perhaps with a path and a bench like the one the young Heidegger used to sit on to do his homework. But through us, the miracle occurs.</em></p>
+<p><em>This is the sort of thing that enthralled me when I read Heidegger as a student—and I was most impressed by this post-&#39;turn&#39; Heidegger, difficult though he was to grasp. The more pragmatic</em> Being and Time_-era material about hammers and equipment was pretty good, but it didn&#39;t have this deeper, more perplexing beauty. The late Heidegger is writing a form of poetry himself, although he continues to insist, as philosophers do, that this is_ how things are; <em>it is not only a literary trick. Rereading him today, half of me says, &#39;What nonsense!&#39; while the other half is re-enchanted.</em></p>
+<p><em>Beauty aside, Heidegger&#39;s late writing can also be troubling, with its increasingly mystical notion of what it is to be human. If one speaks of a human being mainly as an open space or a clearing, or a means of &#39;letting beings be&#39; and dwelling poetically on the earth, then one doesn&#39;t seem to be talking about any recognizable person. The old Dasein has become less human than ever. It is now a forestry feature. There is glamour in thinking of oneself as a botanical or geological formation, or a space in the landscape—but can Dasein still put up a set of bookshelves? In the very period when Sartre was becoming more concerned with questions of action and involvement in the world, Heidegger was retiring almost entirely from consideration of those questions. Freedom, decision, and anxiety no longer play much of a role for him. Human beings themselves have become hard to discern, and this is particularly disturbing coming from a philosopher who had not yet convincingly dissociated himself from those who perpetrated the twentieth century&#39;s worst crimes against humanity.</em></p>
+<p><em>Besides, even the keenest Heideggerians must secretly feel that, at times, he talks through his hat. An oft-cited section in &#39;The Origin of the Work of Art&#39; concerns, not a hat, but a pair of shoes. To convey what he means by art as</em> poiesis_, Heidegger describes a Van Gogh painting which he claims depicts shoes belonging to a peasant woman. He goes off on a flight of fancy about what the painting poetically &#39;brings forth&#39;: the shoe-wearer&#39;s daily trudge through the furrowed earth, the fields&#39; ripening grain, the land&#39;s silence in winter, and the woman&#39;s fears of hunger and memories of the pains of childbirth. In 1968, the art critic Meyer Schapiro pointed out that the shoes were probably not a peasant&#39;s at all but Van Gogh&#39;s own. Schapiro kept investigating and, in 1994, found evidence that Van Gogh may have bought them second-hand as smart urban shoes in clean condition, only to then distress them with a long walk through the mud. He capped off his research by citing a note in Heidegger&#39;s own hand, admitting &#39;we cannot say with certainty where these shoes stand nor to whom they belong&#39;. Perhaps it doesn&#39;t matter, but it seems clear that Heidegger read a great deal into the painting with very little justification, and that what he read in was a highly romanticized notion of peasant life._</p>
+<p><em>It may be a personal matter: either Heidegger&#39;s thoughts on Van Gogh&#39;s painting speak to you, or they don&#39;t. To me they don&#39;t, yet there are other passages in the same essay which do move me. I always loved his description of an ancient Greek temple that seems to call forth the very earth and sky:</em></p>
+<p>&#39;Standing there, the building rests on the rocky ground. This resting of the work draws up out of the rock the mystery of that rock&#39;s clumsy yet spontaneous support. Standing there, the building holds its ground against the storm raging above it and so first makes the storm itself manifest in its violence. The luster and gleam of the stone, though itself apparently glowing only by the grace of the sun, yet first brings to light the light of the day, the breadth of the sky, the darkness of the night. The temple&#39;s firm towering makes visible the invisible space of air.&#39;</p>
+<p><em>I&#39;m prepared for the possibility that someone else will find this boring or even odious. But Heidegger&#39;s idea that a human architectural construction can make even the</em> air <em>show itself differently has stayed somewhere behind my perceptions of buildings and art ever since I first read the essay</em>.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-515.html" class="btn btn-secondary">← thank you notes 5/15</a>
+        <a href="/letters/thank-you-notes-513.html" class="btn btn-secondary">thank you notes 5/13 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

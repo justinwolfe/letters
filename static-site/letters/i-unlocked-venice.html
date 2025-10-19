@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="i unlocked venice">
+  <title>i unlocked venice - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>i unlocked venice</h1>
+        <time datetime="2020-09-16T00:00:00Z">September 15, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>the air quality went from &quot;hazardous&quot; to &quot;very unhealthy&quot;</p>
+<p>feeling comfortable asking my boss for help with something i don&#39;t know how to do (and the feeling that there is so much i can learn from her)</p>
+<p>the stateless microservice design pattern</p>
+<p>that we have started putting our compost bin in the backyard right by the deck rather than in the driveway, which makes it more convenient to get to, even though when leaning over the rail of the deck to go to dump in two bio bags, i looked down and because of the mask straps over my ears, my glasses fell off my face, bounced off the top of the compost bin, and landed on the concrete of the patio, but somehow, when i recovered them, they were not any more noticeably scratched than they already were</p>
+<p>for dinner i had planned roasted brussels sprouts and carrots (which is not seasonal but i felt the need for something substantial) with a pearled couscous and then tuna steaks and then when we went to the grocery store, i forgot to get the couscous and realized today when prepping that i forgot and decided &quot;fuck it&quot; and then d praised it, thinking it was an intentional choice i had made rather than an improvisation around a mistake</p>
+<p>a system i built at work broke overnight which gave me dread flashbacks to my last job but this project is still small and easy to take apart reason about and i quickly understood why it had broken and figured out (hopefully) and implemented how to prevent it from breaking in the same way in the future </p>
+<p>coworker recorded a very funny video of herself eating the desperation snack another coworker had described to her, which was sour cream roughly mixed with brown sugar (&quot;and some raw sugar i had&quot;) and lime juice and which was surprisingly good, a macgyvered attempt at a cheesecake</p>
+<p>i&#39;ve been stuck with the same levels on <em>tony hawk 2</em> for several days, unable to reach a new level because of my inability to succeed at enough challenges, i can get the pro score but not the sick score and some of the challenges that involve finding hidden things are harder because of the relative density of the graphics in their modern remastered incarnation versus the tightly budgeted polygons of the past but today i looked at a faq and finally found the fifth bell that i did not know where to wallride in the school 2 and i unlocked venice</p>
+<p>deborah had the notes app file list view open on her phone and one of the entries was titled &quot;justin life path&quot; and i briefly laughingly panicked at the thought of her expectations of my potential and flash remembered all the times when i was younger and my mom would send me a newspaper clipping or article about a successful person my age because she thought i would find it inspiring but it always brought me to a sense of my own inadequacy and lack of accomplishment but this trip through my baggage was irrelevant because, actually, deborah revealed, opening the file to reveal the numerical values of the letters of my name added up, that life path is apparently just some ridiculous numerology thing</p>
+<p>weed (always); playing <em>folklore</em> songs on guitar with deborah; the way taylor businessman/business mans &quot;Wordsworth&quot; on &quot;<a href="https://www.youtube.com/watch?v=tOHcAc3r2kw">the lakes</a>&quot;; the video for &quot;<a href="https://www.youtube.com/watch?v=ln4S83JeY2Y">on the floor</a>&quot; by perfume genius; the most recent episodes of <em>the vow</em> and <em>lovecraft country</em>, which really just fucking goes for it; elisa gabbert&#39;s <em><a href="https://us.macmillan.com/books/9780374538347">the unreality of memory</a></em>, which is nicely mind tickling; from <em><a href="https://www.penguinrandomhouse.com/books/547335/square-haunting-by-francesca-wade/">square haunting</a></em>, virginia woolf&#39;s single line consolation letter to hope mirlees for jane harrison, which was &quot;<em>But remember what you have had</em>&quot;</p>
+<p>deborah has been timing the amount of time that miso can stay in the backyard to limit her exposure and so she&#39;s always saying &quot;siri set a time for three minutes&quot; and i let miso out and i said, in my talking to siri voice, &quot;deborah, set a timer for three minutes&quot; and she laughed and then dutifully spoke the command into her wrist</p>
+<p>to remember what we have had</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/every-movie-is-between-one-and-a-half-and-two-and.html" class="btn btn-secondary">← every movie is between one and a half and two and half hours</a>
+        <a href="/letters/modern-dance.html" class="btn btn-secondary">modern dance →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

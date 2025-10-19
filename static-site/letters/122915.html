@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/29/15">
+  <title>12/29/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/29/15</h1>
+        <time datetime="2015-12-29T20:42:44Z">December 29, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that yesterday evening while i was getting ready to make a simple dinner of pasta and salad, d reminded me that today was trash and recycling day, which i had forgotten about in the loose time of a long vacation. i&#39;m thankful that since it had been raining all day for days and was still raining that d offered that we could drive over to the recycling center downtown later in the week to get rid of our recycling rather than me have to deal with all of it in the rain. i&#39;m thankful for her thoughtfulness and thankful that i agreed, even though this (packing the recycling into her small car, transporting it, getting it out of the car into the industrial receptacles of the recycling center) seemed like it might be its own kind of ordeal. i&#39;m thankful, though, that when i took the trash down to the street (because it had to go out even if it was raining outside, because we had too much), i found that, contra to what it seemed when inside looking out into the dark wet world, it was really actually barely raining. i&#39;m thankful that it was 50 degrees out, the last gasp of the warm front that we&#39;ve been living inside for the past little while, and that by going out in the rain to take out the trash, which i did not want to do, i got to experience that kind of temperature outside for the last time for a long time, probably.</p>
+<p>i&#39;m thankful that, because of the warmth and the lightness of the rain, i decided to go ahead and take care of the recycling too, to save us the trip to the recycling center. i&#39;m thankful that d, who i called to from the mud room off the kitchen where i had stacked all the recycling, agreed to take over the making of dinner so that i could prepare, arrange, and transport the recycling. i&#39;m thankful that the large stack of cardboard boxes left over from christmas (i&#39;m thankful for all of their contents, and for the love each represents) broke and folded easily into flat planes that i could stack and insert into the recycling bins. i&#39;m thankful that d had collected the miscellaneous scraps of paper and tape and bubble wrap and et cetera into grocery bags, which made it easy to carry them to the bins; i&#39;m thankful for the satisfying sounds that beer bottles and crunched aluminum cans make when tossed into a container from a short distance. i&#39;m thankful for the fun one can find if one tries, even in a light rain, in trying to pack large quantities of disparate materials as efficiently as possible into small plastic containers (i&#39;m thankful that i can enjoy this because of the privilege of it not being something that i rely on for my livelihood). i&#39;m thankful that the ground was so waterlogged from days of rain that i decided not to take my normal trash day route through the yard on the left side of the house, but instead to go down the gentle slope of the asphalt driveway on the right side of the house. i&#39;m thankful that this meant i avoided getting stuck by the burs of the pest of a plant in the yard that i always run into unawares on trash day (i&#39;m thankful that by checking whether the correct spelling is &quot;bur&quot; or &quot;burr,&quot; i found out what kind of plant it is: burdock). i&#39;m thankful that taking the trash and recycling on my normal route through the yard on the left side of the house requires three trips (trash, recycling bin 1, recycling bin 2), whereas, with this new route, i realized i could pull the two recycling bins during the same trip like sleds down the asphalt driveway, thus saving myself an entire trip. i&#39;m thankful to find ways in both my personal and professional life to be more efficient, because there is a real satisfaction in achieving greater mastery of tasks (i felt such a childish burst of joy pulling the bins down the asphalt driveway, slick and shining in the rain, the journey terminating like a kind of water slide in a bed of crunchy gravel at the border of the street), even as i worry, on the other hand, that making myself more efficient is just playing into the hands of an ideology that i find toxic, hands that close a little more around our throats every day. i&#39;m thankful, i guess, somewhat darkly ironically, that i have been told many times how the departmental office where i work used to have two full time service staff and one part time support staff member, but, since i was promoted from the part time position to the full time position, they have not needed to hire a new part time support staff member because i&#39;m &quot;so good at my job.&quot; i&#39;m thankful for the complex feelings i experience in relation to this comment, both the way i enjoy the praise for my abilities, which i work hard to hone, and yet am disturbed that my efficiency has removed a job opportunity from the world (one that i desperately needed when i applied for it and was so thankful to receive) and that i, as a worker, have not benefited from my efficiency, the fruits of which have instead been funneled back into the larger organization (i&#39;m thankful for the quiet compassion of my manager as she explained, when i tried to make instrumental the fact that my efficiency had eliminated the need for a part time position in a perfunctory annual performance review, that she would love to give me a raise and thought i deserved one but had no ability to do so, thankful for how transparently and completely she unpacked the regulations and procedures that prevented her from doing so. i&#39;m thankful that with other managers this might have felt like lip service or excuses, but that it felt like a sad kind of honesty from my manager.).</p>
+<p>i&#39;m thankful to think of the city sanitation workers who come to our street so early in the morning on tuesdays that, even though i get up early in the morning every day, i have to take the trash and recycling out on monday night to have it ready for them in time. i&#39;m thankful for my maternal grandfather, who is not a perfect person, and who worked first as a trucker (bringing the cardboard boxes and their contents to the buildings) and then as a city sanitation worker (picking up the cardboard boxes and their contents from the buildings) and who is now retired and living out on a small piece of land in the country. i&#39;m thankful that even though he is not a perfect person, and was not a great father to my mother the way that my mother is a great mother to me and my father is a great father to me, he was always kind to me when i was a child and i&#39;m thankful that he showed love in the ways that he was able, which mostly involved gifts (in cardboard boxes and palmed wads of cash) rather than words. i&#39;m thankful to remember our most recent trip to my hometown in north carolina for the funeral of my maternal grandmother, when my brother and my father and i spent a genuinely pleasant time with him in his garage refuge swinging a ring hanging from a piece of fishing line tied to the ceiling across the garage to try to catch it on a hook attached to the wall several feet away. i&#39;m thankful for the way that we all shared strategies for better swings, for the right angle and speed, and i&#39;m thankful how we were proud for each other when we got the ring close to catching on the hook, whooping when it clanged against the hook. i&#39;m thankful that i can&#39;t remember whether any of us managed to accomplish the task and actually catch the ring on the hook, but i&#39;m thankful that doesn&#39;t really matter to whether it&#39;s a good memory or a bad memory.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/123015.html" class="btn btn-secondary">← 12/30/15</a>
+        <a href="/letters/122815.html" class="btn btn-secondary">12/28/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

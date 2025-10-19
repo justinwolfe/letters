@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 6/25">
+  <title>thank you notes 6/25 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 6/25</h1>
+        <time datetime="2016-06-25T00:00:00Z">June 24, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful we quit watching the movie <em>deadpool</em> after the first twenty minutes or so (i&#39;m thankful that it was probably a bad sign when, trying to search for the movie because we couldn&#39;t settle on anything else to watch, i kept calling it &quot;daredevil&quot; and d volunteered &quot;deadshot&quot; from which we eventually got <em>deadpool</em>). i&#39;m thankful for how annoyed the movie&#39;s empty irony and reflexive reflexivity made me. i&#39;m thankful that though i&#39;ve never really been much of a fan of whedon or the whedonesque, i can at least admit that sometimes he&#39;s funny and that his characters usually have some measure of intelligence and heart and aren&#39;t just nihilistic quip machines. i&#39;m thankful, since we quit watching the movie after the first twenty minutes, to not have had to listen anymore to the various strained vocal inflections and tonal quirks that the actors used to try to play their cards against humanity, which to me were the equivalent of when people immediately preemptively laugh after they say something not very funny to signal to others that it is funny. i&#39;m thankful to prefer deadpan to <em>deadpool</em> (i&#39;m thankful that i love puns, so i admit i&#39;m not speaking from a position of perfect aesthetic/moral rectitude, and if you had a good time watching <em>deadpool</em>, i&#39;m glad for you). i&#39;m thankful that d sensed my growing annoyance with the movie and broke the silence of not laughter by saying we didn&#39;t have to watch it anymore because she didn&#39;t like it either and thankful for how happy i was to turn it off. i&#39;m thankful that d is such a positive person that she still found something to like in the movie, which was that the cg animation of deadpool&#39;s mask was impressively expressive and in that way really captured something from the comics.</p>
+<p>i&#39;m thankful that instead of the rest of <em>deadpool</em>, we watched <em>the big short</em>, which is an imperfect movie but is at least a movie that wants to do something and has an interesting way of trying to do it. i&#39;m thankful to the movie&#39;s commitment to not pulling away too far from the complexities of boring financial instruments but for its desire, at the same time, to be entertaining (which i think it mostly is, largely due to great performances and good writing). i&#39;m thankful that rather than <em>deadpool</em>, which breaks the fourth wall as a way of glossing over the fact that it doesn&#39;t have any interesting ideas, to try to make it a &quot;bad movie&quot; (omg haha, in ironic quotation marks!) rather than just a bad movie, <em>the big short</em> uses metacinematic techniques either to <em>a</em>) make clear the moments when the facts of the crisis are smudged in order to fit cinematic conventions (thus, ultimately, solidifying the truth claims the movie makes in other self-conscious asides to the audience (&quot;<em>i swear, this really happened</em>&quot;)) or <em>b</em>) to try to jolt the viewer out of complacency, to plead that even if it&#39;s hard or boring it&#39;s important to try to understand the labyrinthine manipulations of the finance industry because a lack of popular understanding is one of the things that allows a system so insidious to persist. i&#39;m thankful for steve carell, who, especially because of the extratextual resonance of his career-defining performance as michael scott, well-intentioned but inept businessman, provides such a perfect warm emotional center for the movie.</p>
+<p>i&#39;m thankful for <em><a href="https://www.amazon.com/This-Census-Taker-China-Mi%C3%A9ville/dp/1101967323/ref=sr_1_1?ie=UTF8&qid=1466865068&sr=8-1&keywords=this+census+taker">this census-taker</a></em> by china mieville, which i started reading last night and which i am compelled by, even though it seems to be doing that thing of withholding what the mystery is of this post-apocalyptic world a bit too long, especially considering it&#39;s just a novella. i&#39;m thankful that d really liked <em><a href="https://www.amazon.com/Girls-Novel-Emma-Cline/dp/081299860X/ref=sr_1_1?ie=UTF8&qid=1466865087&sr=8-1&keywords=the+girls">the girls</a></em> and that i think i&#39;ll read that next. i&#39;m thankful that i&#39;m still enjoying reading sarah bakewell&#39;s montaigne book and also liked dipping a toe into michael clune&#39;s <em><a href="https://www.amazon.com/Writing-Against-Time-Michael-Clune/dp/0804770824/ref=sr_1_1?ie=UTF8&qid=1466865113&sr=8-1&keywords=writing+against+time">writing against time</a></em> the other day. i&#39;m thankful that i rented the new <em>doom</em> from redbox rather than buying it, since i didn&#39;t really like it very much. i&#39;m thankful for <em>alien isolation</em>, which was on sale during e3 and which i somewhat enjoyed (though not as much as soma?) until i got stuck at a part where i had to kill some people with a wrench. i&#39;m thankful for the new dj shadow album (and i&#39;m thankful for the terrible/great pun in the headline of <a href="http://www.spin.com/2016/06/review-dj-shadow-the-mountain-will-fall/">this review</a>).</p>
+<p>i&#39;m thankful that it&#39;s summer and berries continue to be so cheap, which means we are eating so many. i&#39;m thankful for cherries and blackberries and raspberries and strawberries and big chunks of sweet watermelon. i&#39;m thankful to make a salad (and/or a fruit salad) rather than heat the oven up to roast things. i&#39;m thankful for d&#39;s discovery that the oven malfunctions when we run the living room air conditioner, which is on the same circuit and probably shouldn&#39;t be (i&#39;m thankful to have tabbed over to amazon and bought the necessary equipment to change this). i&#39;m thankful that yesterday, during a bout of unpleasant side effects from a new supplement, i had a moment where i was imagining a vitamin/supplement/alternative medicine store where you could buy one or two pills of a particular supplement like you would a loosie cigarette rather than having to buy the whole bottle without knowing how it would affect you and realized afterward that i was basically trying to invent drug dealers.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-626.html" class="btn btn-secondary">← thank you notes 6/26</a>
+        <a href="/letters/thank-you-notes-624.html" class="btn btn-secondary">thank you notes 6/24 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

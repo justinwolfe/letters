@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/16">
+  <title>thank you notes 3/16 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/16</h1>
+        <time datetime="2016-03-16T00:00:00Z">March 15, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that last week, one of my favorite faculty members invited my coworker and i to go out to lunch this thursday. i&#39;m thankful that last week, i was feeling so tired of being around my coworker, who is a good person and good employee who contributes a great deal to the office, that when i received his email invitation to the lunch, i almost went into his office and closed the door behind me and said something like &quot;<em>i would love to go to lunch with you, as always, but i really need a little space from [coworker]--she&#39;s great, but we have different communication styles and she&#39;s getting on my nerves a little lately, so why don&#39;t you just take her out and you and i can go out another time</em>.&quot; i&#39;m thankful that i know, because he is a good and caring person who i really like, that he would&#39;ve been receptive and supportive, but i&#39;m also thankful that i didn&#39;t ask him to do that. i&#39;m thankful that i know that my issue with my coworker is my issue and she is not doing anything wrong and i have been working very hard to try to not be passive aggressive to her and to think kind things about and for her. i&#39;m thankful that it&#39;s feeling a bit easier this week, though at times it has still been difficult.</p>
+<p>i&#39;m thankful that yesterday, when the faculty member asked us where we wanted to go for lunch and i asked him if he knew about the vietnamese sandwich place near my old apartment and he said no and was very excited to hear that it existed, but courteously said, <em>&quot;would [coworker] like it</em>?&quot; i&#39;m thankful i leaned out of his office, where we had been talking, and said, &quot;<em>[coworker], do you like bahn mi</em>?&quot; and she said &quot;<em>no</em>&quot; and nervously laughed afterward and i smiled and politely said to the faculty member, &quot;<em>okay, we&#39;ll do that another time!</em>&quot; i&#39;m thankful that my coworker walked over and said, by way of clarification, &quot;<em>i just don&#39;t like...international food</em>.&quot; i&#39;m thankful that i found her use of the blanket term &quot;international&quot; to be a bit racially something or other and also not a useful generic category, but i&#39;m also thankful to recognize that my sense of culinary cosmopolitanism is a product of social capital which is a product of privilege. i&#39;m thankful i said, <em>&quot;well, a bahn mi is really just a sandwich, but that&#39;s fine! we can find somewhere we all like</em>.&quot; </p>
+<p>i&#39;m thankful that she added &quot;<em>yeah, i just can&#39;t do international food. mexican, thai, it&#39;s all bad on my stomach. i have to be near a toilet if i eat it</em>.&quot; i&#39;m thankful to be sympathetic with her about that in retrospect, even though i wasn&#39;t sympathetic in my mind in the moment, because i&#39;ve had my own issues with food and my stomach and trying to figure out what triggers bad things and what doesn&#39;t and even if i think that sometimes the schemas of food fears we develop are composed in large part of magical thinking, they can nevertheless feel very real and visceral to us, these defenses we erect against pain and embarrassment, and are therefore a thing to be gently respected and not dismissed or made fun of. i&#39;m thankful to remember how i always used to mock people with gluten intolerance and then i had a friend in grad school with celiac disease who several times when we were out at restaurants would suddenly realize that she&#39;d inadvertently eaten gluten and things were going bad and i remember the intense look of fear on her face in those moments, which reminded me of the moments right before i&#39;ve felt like i was going to throw up, when you know it&#39;s coming and there&#39;s nothing you can do about it. </p>
+<p>i&#39;m thankful that the faculty member got a phone call and we let the discussion drop and went back to work. i&#39;m thankful that later, when the faculty member brought up where to eat again, i remembered my coworker telling me last year about how she loved the food at a bar downtown (i&#39;m thankful to remember her ecstatic description of a fresh chocolate chip cookie baked in a tiny cast iron skillet and then covered with vanilla ice cream) and said &quot;<em>hey, [coworker], you like the food at [that bar], don&#39;t you</em>?&quot; i&#39;m thankful that she happily agreed and thankful that the faculty member was happy to eat there as well, especially since most of the students are out of town for spring break and so it won&#39;t be crowded like it normally is. i&#39;m thankful that my coworker said, of the bar, &quot;<em>i love their nachos</em>&quot; and i&#39;m thankful that, despite my desire to be nice, i couldn&#39;t stop myself from yelling across the room to her, in a half-joking tone, &quot;<em>aren&#39;t nachos international</em>??&quot; </p>
+<p>i&#39;m thankful that she and the faculty member laughed and that she was playfully defensive and said that no, they were american because they had pulled pork on them. i&#39;m thankful that in the spirit of not crossing the line into being an asshole, which i had arguably kind of already crossed with my question about the international nature of nachos, i held my tongue and did not say &quot;_okay, so, pieces of fried tortilla covered with queso and carnitas and frijoles and crema and jalapeno which you dip into salsa, yeah, totally america_n!&quot; which is what i was thinking. i&#39;m thankful that instead, the faculty member (who is of mexican heritage) and i briefly and mock-seriously discussed whether nachos counted as &quot;international&quot; and how blurry the dividing line between mexican food and tex-mex were and thankful the conversation ended with all of us pleased with the choice of restaurant. </p>
+<p>i&#39;m thankful when you have a good moment with someone and then you have another and you can have this sense of building onto it with each new moment, like adding links to a chain. i&#39;m thankful that this morning, my coworker and i had a nice and long conversation, our nicest and longest in a while, about the video games we are playing right now. i&#39;m thankful that she is playing <em>far cry 3</em>, which is one of my favorite video games ever because of the lush beauty of the tropical island it depicts and the rigorous physicality with which you can traverse it. i&#39;m thankful to have discussed the story&#39;s characters and the fun of hunting and exploring the island and to have listened to her describe how she gets so frustrated at difficult parts of the game sometimes, like when she was in a boss battle over the weekend and died 5 times in a row, and how she had to tell herself to put the controller down and walk away before she let it make her too upset. i&#39;m thankful how she told me she walked away from the boss fight and when she came back to play it again later, she beat it on her first try.</p>
+<p>i&#39;m thankful that she told me that story because the previous night, after dinner, i had been playing <em>metal gear solid v</em> and had been involved in a difficult battle with a sniper who, every time i shot her, would evaporate into smoke and then reappear somewhere else on the map and i had similarly kept dying over and over, getting more and more frustrated (even though i respected the game design and appreciated the unique challenge). i&#39;m thankful that in the midst of my many deaths, d asked if it was time yet to have dessert (i&#39;m thankful that d made strawberry shortcake, which is so good, for us to eat this week) and i said, in a distracted and self-serious tone, &quot;<em>sure, we can have it later, i have to beat this first.</em>&quot; i&#39;m thankful that d was understanding of this, but thankful that after a few more deaths and seemingly no closer to beating my adversary, i put down the controller and said &quot;<em>fuck it, i need a break</em>&quot; and went to warm the shortcakes and add the strawberries and the strawberry syrup and cover them with whipped cream. i&#39;m thankful to have eaten them, because they were so good. i&#39;m thankful that after i finished my shortcake, i picked up the controller again and beat the sniper not long afterward. i&#39;m thankful that yesterday after my coworker told me her story, i told her mine, which was basically the same story. i&#39;m thankful to try to add links to the chain.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-317.html" class="btn btn-secondary">← thank you notes 3/17</a>
+        <a href="/letters/thank-you-notes-julia-weston.html" class="btn btn-secondary">thank you notes (julia weston) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

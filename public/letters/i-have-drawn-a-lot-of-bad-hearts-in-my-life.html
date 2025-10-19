@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="i have drawn a lot of bad hearts in my life">
+  <title>i have drawn a lot of bad hearts in my life - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>i have drawn a lot of bad hearts in my life</h1>
+        <time datetime="2021-03-28T00:00:00Z">March 27, 2021</time>
+      </header>
+
+      <div class="letter-body">
+        <p>today&#39;s word of the day email: asterism, &quot;<em>(1)</em></p>
+<p><em>a prominent pattern or group of stars, typically having a popular name but smaller than a constellation. (2) A group of three asterisks (⁂) drawing attention to following text</em>.&quot;</p>
+<p>i&#39;m thankful to admit, after having sat at the gmail window, that i just don&#39;t really feel like writing lately (i&#39;m thankful imagining my dad saying &quot;you don&#39;t look like writing either&quot;), even though in writing this, i am trying to push against not feeling like writing, in the hope that writing, the mechanical act of it, will unstick whatever is stuck my mind (as it so often does) and make the days not go pear-shaped, as they have sometimes seemed to go lately</p>
+<p>i&#39;m thankful to wonder about the source of that idiom, how going pear-shaped is a bad thing. at first i thought sizeism, but i looked it up and apparently one explanation is &quot;<em>They believe that the term originated with the Royal Air Force to describe pilots’ poor executions of loops in the air, ending up with pear shapes rather than a round shapes</em>.&quot; </p>
+<p>i&#39;m thankful for a fact that i don&#39;t know if i&#39;ve shared but that i can&#39;t find searching through my email (i&#39;m thankful that though there is an external archive of these notes, they also all exist in my email with everything else) blew my mind when i first learned it, which is that those single engine planes you see towing advertisement banners behind them (often at the beach, i remember seeing them almost every day when i lived in miami) don&#39;t take off towing the banners (which apparently is too dangerous), but instead take off without them and then do another pass down low to the runway with a hook that they use to catch the end of the banners and pull them into the air (which sounds more dangerous, but is apparently not).</p>
+<p>i&#39;m thankful that at the grocery store d found heart shaped cheerios and we had a discussion while waiting in a long line about how accurate the photo of the heart shaped cheerio on the box would be to the actual cereal inside (which reminds me of how d always laughs because i am very bad at drawing hearts and given that my family was always a &quot;make your card&quot; rather than &quot;buy your card&quot; family, i have drawn a lot of bad hearts in my life) and then about whether a miniature cadbury egg was a valid cadbury egg experience (because in some ways, the classic cadbury egg is so unmanageable and too much, and yet is that sense of excess not the essential defining factor of the experience, to view the candy in a formalist way?)</p>
+<p>i&#39;m thankful for the special starburst-flavored fruit by the foot we impulse bought at target, which i would not <em>recommend</em>, per se, but which is an interesting aesthetic experience</p>
+<p>i&#39;m thankful after yesterday&#39;s dinner to recognize that, at <a href="https://killerburger.com/">our current favorite burger place</a>, though the last two times i have upgraded the classic burger (the platonic ideal) to have a second patty, making it, in their idiolect a &quot;fatty classic&quot; (which h said is my rap name), which is what my mind tells me when looking at the window i do not actually want or need a burger so unwieldy and gargantuan and i should just get a single.</p>
+<p>i&#39;m thankful for the lunch i had today, which is chick peas sauteed in coconut oil and dusted with dry spices tossed with chiffonaded kale that&#39;s been sauteed in olive oil in the same pan, with furikake and hot sauce dumped on top (i&#39;m thankful for miso&#39;s love of aquafaba) (i used to do an egg on it also and that&#39;s good, but as with the fatty classic, it feels like overkill (i also sometimes add a slice of very processed cheese, but we didn&#39;t have any since cleaning out our fridge after the power outage last month))</p>
+<p>i&#39;m thankful i took half a tab of acid yesterday (another effort at resetting), even though the comedown (or lack thereof) from acid always kind of sucks (though is not as bad with a half, and having taken some advil, and having not taken any for like six months), and even though it wasn&#39;t necessarily the most fun trip (i got looped into something kh said about me that i played off in the moment but made me feel weird in retrospect), because if nothing else, whatever that chemical reaction does feels like it serves to make a kind of useful dividing line between seasons of my consciousness.</p>
+<p>i&#39;m thankful for <a href="https://www.instagram.com/reel/CM-D_j6gEc1/?igshid=1t1mviqlx50rr">this tiktok</a> an old coworker shared on insta of a man playing a bass saxophone with a traffic cone shoved in it, which adds this very satisfying grimy filter effect.</p>
+<p>i&#39;m thankful, though i have always preferred to be barefoot (extending to a brief affectation my freshman year of college in tallahassee where i was constantly barefoot, which was disgusting) and socks and shoes have always felt like cages to me, generally (i&#39;m thankful for allbirds), i have found that wearing a pair of soft but structured slippers inside for most of the day is better for my late-onset plantar fasciitis than any amount of regular stretching has seemed to work. i&#39;m thankful i have gotten so used to them that i accidentally wore them to the grocery store today (i&#39;m thankful to d for cleaning the soles and i&#39;m thankful also that they are machine washable).</p>
+<p>i&#39;m thankful that with my feet not hurting anymore i&#39;ve climbed past the plateau i was on for running on the treadmill, where for months i was consistently running at 6 mph while playing <em>hades</em>, whereas now i&#39;m running at 7 or 7.5 mph while playing tetris 99 (against the computer at the 4 or 5 difficult setting rather than real people, which i love because a successful run of the game takes about 3/4 of a mile and so that helps segment the run into just-the-right-sized chunks that i can count off in my mind)</p>
+<p>i&#39;m thankful for the <a href="https://www.hillrunner.com/treadmill-pace-conversions-faq/">faq</a> for this <a href="https://www.hillrunner.com/calculators/treadmill-pace-conversions/">treadmill running conversion chart</a> and i&#39;m thankful to fantasize about running a long way in the early morning in the summer, which is one of my favorite things to do with my body.</p>
+<p>i&#39;m thankful for the book <em>t<a href="https://www.google.com/search?q=there%27s+no+such+thing+as+an+easy+job+goodreads&oq=goodreads+there%27s+no+such+thing+as&aqs=chrome.1.69i57j0i22i30.6135j1j4&sourceid=chrome&ie=UTF-8">here&#39;s not such thing as an easy job</a></em> by kikuko tsumura, which has been very entertaining so far (the first section covers the narrator&#39;s job watching surveillance footage of a novelist working, which maybe superficially sounds like such metafiction 101 obvi shit but so far it&#39;s so much more pleasant to read than like whatever early paul auster would have done with the conceit)</p>
+<p>i&#39;m thankful for the two most recent episodes of <em>the walking dead</em>, which are not in any way good but are fascinating examples of covid production aesthetics—bottle episodes starring single characters with very limited interactions (in a show that is at its best when it is giving you an action movie) in spaces that in normal episodes have been merely glanced at (the communal kitchen of the survivors) but which are exhausted by long takes. i&#39;m thankful for the weird slow tv affect of it, the dull quotidiana of a character making stone soup.</p>
+<p>i&#39;m thankful for keisha rae witherspoon&#39;s short film <em>1968 &lt; 2018 &gt; 2068</em> (streaming in the criterion collection&#39;s afrofuturism collection, but also on vimeo <a href="https://vimeo.com/521147194">here</a>)<em>,</em> which reminds me of chris marker and peak godard and fits so many ideas and sounds and textures into a small package (even the credits, which are this amazing contrapuntal collaged palimpsest version of &quot;i say a little prayer&quot;) </p>
+<p>i&#39;m thankful that last night we watched (for the second time) the series finale of <em>the leftovers</em>, which is really just a perfect experience and which breaks all the rules (especially at the end, it&#39;s all telling no showing but that is absolutely the right decision) (i&#39;m thankful that if you&#39;ve watched it (if you haven&#39;t or don&#39;t remember in detail (i didn&#39;t) you really shouldn&#39;t spoil yourself) <a href="https://en.wikipedia.org/wiki/The_Book_of_Nora">wikipedia article</a> which provides some interesting details about the creative decisions that were made).</p>
+<p>i&#39;m thankful that deborah just printed something while i was writing this (i&#39;m thankful for her little laser printer, which she has had for more than a decade and just finally refilled the toner for) and i asked what it was, thinking it was a recipe or some guitar chords or something and she showed me that it was a sizing chart for a pair of gardening gloves she was considering buying. i&#39;m thankful to have put my hand on the paper and learned my size.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/drinking-exactly-three-cocktails.html" class="btn btn-secondary">← drinking exactly three cocktails</a>
+        <a href="/letters/sign-of-the-times.html" class="btn btn-secondary">sign of the times →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

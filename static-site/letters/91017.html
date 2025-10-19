@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="9/10/17">
+  <title>9/10/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>9/10/17</h1>
+        <time datetime="2017-09-10T00:00:00Z">September 9, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <a href="https://www.amazon.com/dp/B01NAKSWW1/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">blood, sweat, and pixels</a> by jason schreier, which i&#39;ve been reading this weekend and which is a very interesting and sad look into the game development business. i&#39;m thankful in the stories of overwork and obsession to be able to recognize glimmers of the way i feel when i get sucked into a project i&#39;m working on (like the slack app i&#39;ve been working on this week), how sometimes that can be exhilarating (because as i keep pushing forward, i see all of these gears i&#39;ve built slide into alignment and the machine start to go, which is an ecstatic feeling) but how indulging in that feeling too much, for too long, is not good for me or my health or my marriage. i&#39;m thankful, as someone who often feels bad, that the feeling of it when it is good is drug-like, but i&#39;m thankful to keep reminding myself that because of that, i know that i have to be always aware of how much i am doing, what my tolerance is, how close to overdose. i&#39;m thankful to know that&#39;s a metaphor in one sense, but i&#39;m also thankful to know how finding work that truly satisfies you, which, while you don&#39;t have it seems like a kind of holy grail, is really always a double-edged sword, just as likely to wound you and those around you as it is to give your life the meaning that wasn&#39;t there before you found it.</p>
+<p>i&#39;m thankful to have been particularly disturbed by the chapter on <em>stardew valley,</em> which is a game i love and which is one which in its form and content seems to exist outside of and resist the overwhelming violent maleness of most games (even indie games): it&#39;s a game about appreciating nature, making things grow, building relationships, helping others, falling in love. i&#39;m thankful to have been most disturbed at the book&#39;s revelation that the solitary romantic programmer hero i&#39;d heard about in various articles after the game&#39;s release, who was dedicated to creating this auteur product and only releasing it when it was perfect, was only able to do this because for years while he worked alone on the game (that work in his own admission involving plenty of fallow periods of looking at reddit and playing other games), his partner was working multiple jobs on nights and weekends (for <em>years</em>) while also finishing up her undergraduate degree and then applying to and getting into graduate school, in order to be able to support him while he did this. </p>
+<p>i&#39;m thankful that i still love that game and look forward to playing it on switch (hopefully with d, since it will have a multiplayer mode and i think it is a rare game that we will enjoy playing together), and i&#39;m thankful to know that every relationship is different and i wouldn&#39;t want to diminish the agency of his partner in making that choice to support him, which she made and continued to make for years, but i&#39;m thankful to also feel that it&#39;s kind of a fucked up choice to force someone to continue to make. i&#39;m thankful to know that it&#39;s extra fucked up because, as the other stories in the book go to show, this kind of fucked-up choice is overwhelmingly inflicted upon the women and children of these overwhelmingly male crunch addicts. i&#39;m thankful to be disturbed by the way that the men repeatedly talk about that in the book, how they refer to the loss of their personal lives (and their absence in the lives of those they are ostensibly committed to) as something terrible but, after a beat, ultimately a necessary evil, something that just had to happen in order to build the machine.</p>
+<p>i&#39;m thankful that reading this book help provides perspective to the fight d and i had about who was going to boil water and make pasta for dinner on friday night when we were both trying to finish up busy workdays in which we were each, in our own silos, doing work we felt was very important and couldn&#39;t be put aside right that moment. i&#39;m thankful to d for making the pasta that night and thankful to hope that i am doing enough of the making the pasta (metaphorically: pasta as a metaphor for everything) at the times she needs me to. i&#39;m thankful that she is in bed beside me playing <em>mario vs. rabbids</em>, which i got her as a surprise since it&#39;s the kind of game she really likes but she hadn&#39;t heard about. i&#39;m thankful that sometimes i feel guilty about writing these notes every morning in bed next to her, but i&#39;m thankful that she knows that they&#39;re important to me and i&#39;m thankful to do my best to be respectful of her when she&#39;s doing things that are important to her.</p>
+<p>i&#39;m thankful to have yesterday sat beside her on the couch while she played that playing some other games. i&#39;m thankful for <em>downwell</em>, which is a treasure of psychedelic minimalism. i&#39;m thankful for the different color palettes you unlock as you play through the game, which don&#39;t actually change how it plays but have a significant effect on how you feel while playing (i&#39;m thankful for matcha, which is my favorite i&#39;ve unlocked so far). i&#39;m thankful that the other day i watched <a href="https://www.youtube.com/watch?v=qsTRako9C-M">a hypnotic speed run</a> and i&#39;m thankful to have found that in doing so i learned things about the mechanics. i&#39;m thankful for <em>infamous: second son</em>, which was the big playstation plus game this month and which though it has too-long cutscenes is beautiful to watch and move through (i&#39;m thankful for the floaty jumps and the power that lets you turn into a fireball and shoot yourself through fences and doors). i&#39;m thankful for dishonored 2, especially since i have given up on trying to do perfect stealth runs and just started letting the game happen. i&#39;m thankful to let the game happen.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/91117.html" class="btn btn-secondary">← 9/11/17</a>
+        <a href="/letters/vic.html" class="btn btn-secondary">Vic →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

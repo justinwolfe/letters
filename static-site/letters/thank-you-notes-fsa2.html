@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (fsa)(2)">
+  <title>thank you notes (fsa)(2) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (fsa)(2)</h1>
+        <time datetime="2016-02-29T00:00:00Z">February 28, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i’m thankful for mondays. for today especially, for when the morning sky revealed itself crisp and clear and blue like only winter lisbon skies are. i’m thankful for the bright blue tint of these same skies filled with sunlight, and how the city gleams underneath, and for dreaming of being a seagull lounging in the harbour, and on the top of cargo ships and walking around lisbon red tiled roofs and flying past smells of fish and flowers which must mean that this city, oh this city is mine and i am hers and the dirty white of my wings matches the stone walls and the soul of this damned place that the gods seem to love so much… my gomorra, lisbon, under earthquakes and fire to be baptised again by crashing waves and storm and rebuilt hill after hill after hill of neatly organised streets and then chaotic amass of buildings and buildings and generations of the same family in succession in the same exact house, in the same bed they are born and die and i am the same and the seagull is the same and i am the seagull that watches lisbon from the skies.</p>
+<p>i’m thankful about the frequency in which i dream i fly, and i always say goodbye to my earthly body who stays in bed without ever looking behind (goodbye, goodbye, let a silver thread hold my soul to my recipient human-shell) and then go out to the balcony and JUMP and soar the night skies of my neighbourhood, close to the dirty paved sidewalks and count the tiles, past negligent couples who kiss and walk hand in hand, and i am thankful for their love or lust it doesn’t matter when i soar beneath the yellow streetlamps that fill the street and then i leave, i go and drink the city and the night in one long breath that dissolves deep in my eternal sleep (for i am dead and i do not exist, and the beam that holds me is just light…</p>
+<p>i’m thankful for my increasingly less frequent nightmares, and how in freudian narrative i get to know more of myself through my very metaphorical fears. i’m thankful that the one i had a few nights ago was just a dream, and our dog is not dying and i am not stranded in east asia either (dog or no dog), and i am thankful that this very literal painting was taken from ‘no escape’ (the movie starring owen wilson) and thankful that it meant i am united in pain with my sister who is experiencing a very stressful time with her sick dog l, 18 and alone all the way in the czech republic. i’m thankful that my deep conscience perceives b as my son. i’m also thankful that my sister got to have this experience in brno, but even more thankful for the fact that she can come back any time she wants. i’m also thankful for the distance and the way it underlines how much we love each other, how similar and strikingly different we are at the same time. i’m thankful that she is coming next weekend and thankful for being thrilled to see her, and can only hope she is as excited as i am. </p>
+<p>i’m thankful for all mondays with the woozy childish exhilaration we get in new years’, and every week on sunday i can’t wait for another week to start anew and glorious, ready to receive all my tiny rituals that keep me grounded (exercise, bathe, eat nutritious food, take my supplements, put moisturiser on and make-up and leave on time and get on time and keep up with the insane amount of work i may have for each week and then repeat), my eternal struggle for perfection. i’m thankful for forgiving mondays because whenever i fail - because i  will fail - by not stretching or i get late or the alarm clock doesn’t manage to drag me out of my paralysing sleep, and regardless of how early into the week it is i am always thankful that another monday is always lurking in the corner because there is always time to start over and have a perfect[ly imperfect] week. i am thankful that my disordered perfectionism hasn’t taken the best of me yet, and i’m thankful that when i fail i don’t purge or shatter or cry but rather doze it off and settle into my own nest of lazy and indulgent imperfection. i am thankful that j and my friends and family appreciate the effort i put into letting go and condone my lonesome splurge, and that j and my friends recognise that this has made me much happier in the past years. this is why it is never too much to say: thank you, mondays, every monday and this monday, because it is the weekly redemption i need and thrive on, releasing me from the tight grip of obsessive paranoia and compulsion that so many of us flawed and imperfect people have, whilst obsessing over some random and broken ideal of perfection.</p>
+<p> i’m especially thankful for this monday., because i exist in the present and should stop worrying too much about the semiotics of the future like j tells me to (even though he is addicted to nostalgia like no one else i know). i’m thankful that my focus is truly on the future and i look ahead confident and cocky like a sunflower at bloom, (i’m thankful for what sunflowers mean to me and thankful that i’ll be holding one down the aisle at our wedding a month from today). i’m thankful that in this spiral of crazy of double masters degree and post graduate stuffs and doing the bar and being exhausted just from living, the wedding date is speeding by and it’s only a month from now. </p>
+<p>i’m thankful for mondays and sunflowers and sun, in the same way i am thankful that my sundays of rigorous darkness and cold, my bony winter soul always gives in to balmy summer days.</p>
+<p>f.</p>
+<p>- fsa (2/29/16). portuguese, <a href="mailto:mfmcss@gmail.com">mfmcss@gmail.com</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-229.html" class="btn btn-secondary">← thank you notes 2/29</a>
+        <a href="/letters/thank-you-notes-228.html" class="btn btn-secondary">thank you notes 2/28 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

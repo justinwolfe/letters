@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2/5">
+  <title>2/5 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>2/5</h1>
+        <time datetime="2017-02-05T00:00:00Z">February 4, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i had another night of poor sleep last night. i&#39;m thankful that last night, probably because too late yesterday evening i was doing some work related to the end of my current job, it was an anxiety dream about my new job, which in the dream was a writing job at MTV news, which in the dream was based in phoenix, arizona for some reason. i&#39;m thankful to remember how uncool i felt at the job and how i was constantly struggling to find clothes to wear (which i think is a reflection of the fact that in the real world i need to do our laundry). i&#39;m thankful there were other new people starting at the same time as me (as there will be at my real new job, which i&#39;m thankful for) and they were also flailing and didn&#39;t fit in, though the solidarity of that wasn&#39;t as strong as it is in the real world. i&#39;m thankful to remember a very weird part at the end of the dream where my new coworkers were tricked into drinking yellow water with essential oils in it out of a diffuser as a hazing ritual and i refused. i&#39;m thankful that in the dream it was very difficult to ride my bike, which is not true in real life. i&#39;m thankful that things in life are rarely as difficult as they are in anxiety dreams and i&#39;m thankful in waking life to be very excited about my new job and to only have one more week at my current job. i&#39;m thankful that tonight i will be more careful about my sleep hygiene so that i can catch up on sleep debt (i&#39;m thankful for the horrible concept of sleep debt, which is an example of the incursion of the economic sphere into every area of life).</p>
+<p>i&#39;m thankful that yesterday evening we watched <em>american ultra</em>, the semi-comedic action movie starring jesse eisenberg and kristen stewart. i&#39;m thankful that though the movie wasn&#39;t perfect, it was very diverting and funny. i&#39;m thankful to like both of these actors and to believe that they both gave some of their best performances here. i&#39;m thankful also for connie britton (i&#39;m thankful for <a href="http://www.huffingtonpost.com/2014/09/18/connie-britton-kirsten-gillibrand-throwback-photo_n_5844510.html">this amazing photo of she and kristen gillibrand as roommates</a>) and topher grace (who should always play an asshole) and john leguizamo and the guy who played buster on arrested development (i&#39;m thankful to recognize he is named tony hale and should be addressed as such, since it must be very annoying to always be called the name of one character you played)(i&#39;m thankful to know we really need to watch <em>veep</em> at some point)(i&#39;m thankful we are still watching <em>crashing</em>, which is still very uproariously funny but has become more and more sad at the same time—i&#39;m thankful for how good phoebe waller-bridge is at walking that particular tightrope)</p>
+<p>i&#39;m thankful for <a href="http://tinysubversions.com/essays/dontcry/">this really cool interactive essay about j dilla&#39;s &quot;don&#39;t cry&quot;</a> (i&#39;m thankful for its demonstration of how difficult it is to make sample-based music, which i have tried at and failed at many times) and to have bought <a href="https://www.amazon.com/gp/product/1623561833/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1623561833&linkCode=as2&tag=tinysubversio-20">this book</a> it mentions, which i&#39;m looking forward to reading. i&#39;m thankful for the pop music class i took my last semester of college where we read the <a href="https://www.amazon.com/Led-Zeppelins-Zeppelin-IV-33/dp/0826416586/ref=sr_1_1?s=books&ie=UTF8&qid=1486303280&sr=1-1&keywords=led+zeppelin+33+1%2F3">led zeppelin IV 33 1/3 book</a> and i accidentally plagiarized part of it and my professor gently pointed this out but said that from the writing in the rest of my essay it was clearly just an accident rather than me trying to get away. i&#39;m thankful to remember that book makes some argument about walter benjamin and the notion of the aura re: &quot;stairway to heaven&quot; that i found very powerful (i&#39;m thankful to have found things about walter benjamin very powerful in college, like when i was taking a class on byzantine art and i learned about the status of the copy in icon painting (where icons represent a direct connection to the divine, <em>are</em> the divine, rather than just representations of it) and wrote an essay talking about walter benjamin and i&#39;m thankful when she handed our papers back the professor sarcastically said &quot;<em>a lot of you are very interested in walter benjamin</em>&quot;). </p>
+<p>i&#39;m thankful for this twitter bot of the arcades project and i&#39;m thankful for <a href="https://www.marxists.org/reference/archive/benjamin/1940/history.htm">the angel of history</a>:</p>
+<p>&quot;<em>A Klee drawing named “Angelus Novus” shows an angel looking as though he is about to move away from something he is fixedly contemplating.  His eyes are staring, his mouth is open, his wings are spread.  This is how one pictures the angel of history.  His face is turned toward the past.  Where we perceive a chain of events, he sees one single catastrophe that keeps piling ruin upon ruin and hurls it in front of his feet.  The angel would like to stay, awaken the dead, and make whole what has been smashed.  But a storm is blowing from Paradise; it has got caught in his wings with such violence that the angel can no longer close them.  The storm irresistibly propels him into the future to which his back is turned, while the pile of debris before him grows skyward. This storm is what we call progress</em>.&quot;                                                         </p>
+<p>i&#39;m thankful while googling to have been reminded of <a href="https://www.amazon.com/dp/B01DUNXW9E/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">this novel</a>, which sounds like something i&#39;d like to read. i&#39;m thankful for the recent episode of <a href="http://www.bbc.co.uk/programmes/b08c2ljg"><em>in our time</em> about hannah arendt</a>, which makes me want to read her work, which i never really have. i&#39;m thankful to still be enjoying <em>substitute</em>, which feels meaningful considering how much i didn&#39;t enjoy school. i&#39;m thankful for <a href="http://www.vulture.com/2017/01/what-happened-to-paul-auster.html">this burn on paul auster</a>; i&#39;m thankful he definitely functioned as the postmodernist gateway drug for me and am thankful to have loved some of his books at one time (especially <em><a href="https://www.amazon.com/Book-Illusions-Novel-Paul-Auster-ebook/dp/B0080K3Q2G/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1486304675&sr=1-1&keywords=the+book+of+illusions">the book of illusions</a></em>, which is my favorite, and especially not the new york trilogy, which i think is massively overrated though d enjoyed the graphic novel version of <a href="https://www.amazon.com/City-Glass-Graphic-Novel-Trilogy/dp/0312423608/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1486304711&sr=8-1&keywords=new+york+trilogy+graphic+novel">city of glass</a>)(i&#39;m thankful to have a vivid memory of lying in a beach chair in some swampy grass besides a power station near the house where we lived when i was in high school trying to get a tan while reading a library copy of <a href="https://www.amazon.com/Country-Last-Things-Paul-Auster/dp/0140097058/ref=sr_1_1?ie=UTF8&qid=1486304784&sr=8-1&keywords=in+the+country+of+last+things">in the country of last things</a>). i&#39;m thankful for my favorite 33 1/3 book i&#39;ve read, which is probably the one about <em><a href="https://www.amazon.com/Radioheads-Kid-33-1-3/dp/0826423434/ref=sr_1_1?s=books&ie=UTF8&qid=1486303650&sr=1-1&keywords=kid+a+33+1%2F3">kid a</a></em>, which is very dry and technical if you like that kind of thing (i&#39;m thankful also for this exhaustive <a href="http://www.metafilter.com/153507/-i-am-not-here-and-this-is-not-really-happening">metafilter post</a> about <em>kid a</em>, which if you are me you could happily spend your whole sunday afternoon exploring.)</p>
+<p>i&#39;m thankful to have facetimed with my parents and to have been surprised to find that my brother and m were in town. i&#39;m thankful to have congratulated them about getting married and to have learned about their time in illinois, which my brother said was the coldest he has ever been. i&#39;m thankful that they were blissful enough about having just gotten married that it didn&#39;t bother them too much and i&#39;m thankful they had warm socks. i&#39;m thankful that m emailed andrew bird&#39;s publicist a few weeks before the trip saying what big fans they were and how they were getting married the day they saw him and requesting that at the show he play their favorite song (and one of my favorite songs by him), &quot;tables and chairs.&quot; i&#39;m thankful that near the end of the show, he announced that he&#39;d had a request and then said my brother and m&#39;s names and that they&#39;d gotten married. i&#39;m thankful that he said he&#39;d been thinking a lot recently about &quot;<a href="https://www.youtube.com/watch?v=UjKpHnF_sRg">tables and chairs</a>,&quot; which is a hopeful song about the apocalypse, and i&#39;m thankful that he played a version of it with new lyrics that try to be hopeful in the present. that was dedicated to them.</p>
+<p>i&#39;m thankful to watch d trying on her clothes and deciding what to keep and what to donate. i&#39;m thankful for the terms describing clothes that she knows that i don&#39;t, including: dolman bat wing, asymmetrical hem (which looks so weird and self-consciously modern, like a malevich), and cold shoulder (which is what it sounds like). i&#39;m thankful for our discussion about what is and is not a caftan. i&#39;m thankful for a black dress the bottom part of which is covered with glittering sequins i&#39;m thankful for the blue cardigan she is trying on over a flowered spring dress. i&#39;m thankful that it will eventually be spring and she will be able to wear the dress outside the house and we&#39;ll be able to walk through the sunshine. i&#39;m thankful for &quot;it all feels right,&quot; by washed out, which i associate with the springtime and sunshine and which briefly is a portal to those things from my bed on this cold winter day.</p>
+<p><a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-2-5">one year ago</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScTx88zH7_2J3rq5fQIkVw0g5KDc-sIg4ToS53S7g1xrtMSHQ/viewform?usp=send_form">share your notes</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/26-1523.html" class="btn btn-secondary">← 2/6</a>
+        <a href="/letters/2416.html" class="btn btn-secondary">2/4/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

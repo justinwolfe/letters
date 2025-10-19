@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (fsa)(11)">
+  <title>thank you notes (fsa)(11) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (fsa)(11)</h1>
+        <time datetime="2016-06-27T00:00:00Z">June 26, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i am thankful for the withering jacaranda trees in lisbon, thankful for the lilac mantle  that covers the traditional portuguese tiles of calçada with added purple slipperiness, a  still image of flowery runway built by the gods to frame the wilting flower crowns and greens of trees and to welcome balmy summer breezes as they strut  through open avenues and winding back alleys. i am thankful for lisbon’s tropicality, of this cross-breed looks of a love child between southern europe and africa.</p>
+<p>i’m thankful for my mischievous puppy new prank which cost us our summer holidays in vet bills, for how o went to lengths to grab a fine glass water container from the tall seating room table, which was a wedding gift, and proceeding to casually eat it. i’m thankful that in a turn of events and after a lunch cancellation i came home from lunch and noticed a glass shard under the low living room table. i am thankful that i was angry at first with j for never cleaning the living room at night, although the glass was used by me in one of my frugal lime and sparking water ‘nightcaps’, but then concerned for b’s and o’s paws and how they might have been cut. i am thankful that after close inspection i turned my attention for the remains of the glass, and noticed a huge portion was missing, and proceeded to gather all the glass chunks and check beneath the couch which led me to find gleaming glass traces on the creases of our mustard yellow leather couch. i am thankful that my creative deduction led me to immediately to guess o’s actions. i am thankful for my frantic phone call and j’s dismissal of the problem, i’m thankful that the vet thought i was paranoid on the phone. i’m thankful that my paranoia led me to check b and o’s mouth and o, as i suspected, had a faint shimmer of glass in his tongue and the smallest cut on the side, which was proof enough that i needed to take him to the vet asap. i am thankful that j grudgingly left his lunch date and dragged himself to the vet, albeit not soon enough to keep me from climbing the narrow and steep staircase of the vet’s office with a 20kg olive in my arms and dragging 30kg b from the leash. i am thankful for weightlifting, for posture, for activated cores and general athletic ability pumped by the adrenaline of urgent matters. i am thankful for the vet and vet assistant’s complacent gazes of someone used to overprotective female owners. i am thankful that i am not phased by the standard patriarchal reaction of dismissal whenever a woman portrays emotion or concern, and how little it differs from old clinical diagnosis of female histeria. i am thankful that in spite of o’s tongue cut in had healed by the time we were seen, the vet was diligent enough to take him to have an x-ray. i am thankful o’s x-ray revealed a food mass in the stomach and faint outlines of density consistent with 3mm chunks of bone or, maybe, glass. i am thankful for my insistence that o didn’t eat off chunks of bone from his chew bones, and it must have been glass: i am especially grateful for the vet’s diligence in doing an endoscopy. i am thankful that o’s endoscopy revealed so much glass in his stomach that the vets called me to the o.r. to see it for myself. i’m thankful that the food mass of puppy chow i fed him in the morning kept all the shards together in a clunk and prevented further damage to o’s g.i. tract. i am thankful we opted for open-stomach surgery and now o is wearing a shame-collar and has a shaved belly and a huge scar in his mid-section. i am thankful for o’s pink baby belly and little nipples which we had never seen before beneath his white belly fur. i am thankful all is well, thankful for o’s health and grateful for b’s safety. i am thankful for financial stability which enabled us to undergo the surgery without much question, and i am not thankful for people who need to be faced with the choice to put their pets down because of crippling vet bills.</p>
+<p>i am thankful that in between classes and a meeting for our family firm i managed to squeeze time yesterday to get b from my home, put him in the car, jump in a bikini and lather myself with sunscreen (i am thankful for c’s motherly help spreading sunscreen on my back), drive the 40k with an ‘iron foot’ as we say here and grab what would be a 1h sun break with my little sister a in the pool. i am thankful that i was dismissed altogether from the meeting upon arrival, although i would have enjoyed participating in designing the negotiation strategy for the entrance of new partners to the olive oil factory. i am thankful that i have many opportunities to showcase my negotiation skills as i am now organically involved in the family office and family business(es).</p>
+<p>i am thankful that i went and picked up a from elementary school as a surprise, for her joy in seeing me, for then urging her to put her bathing suit on and jumping in the pool. i am thankful the meeting started eventually in the garden patio, while i frolicked in the pool with my sister. i am thankful that the enormous slanted peach tree provided partial camouflage and blocked the view from the meeting taking place from the southernmost corner of the swimming pool i was chilling in. </p>
+<p>i am thankful that my one hour of sunlight stretched to two and a half. i am thankful for the summer solstice yesterday with coincided with the full moon (also called the peach moon). i am thankful for the my feminism involves witchcraft newsletter i get from tinyletter and for monday’s recommendations:</p>
+<p>“This evening, some time before the sun goes down but after it has passed its peak in the sky, bathe your visual altar in sunlight. It&#39;s okay if it&#39;s not finished, or if you still want to add things or move them later; your goal is not to visualize the altar as sealed and complete, but to imbue the physical object with the potential and power of today&#39;s solstice sun. </p>
+<p>Stand with your altar in the light, preferably outdoors, though light through a west facing window will do. Make sure that you, too, are bathed in light. Visualize the light as a gold and red mist coating everything it touches in shimmering brightness. Visualize this mist interacting with your own personal energy - the energy of your body, the parts of you that you put into your altar. See that the sun&#39;s light makes your light stronger. See that the sunshine sticks to your altar like glue.”</p>
+<p>i am thankful to visualize my body as an altar and to sanctify it to the energies of the beaming sun and summer to come. </p>
+<p>i am thankful that my sister’s laughter was chided by my giggling pleas to keep quiet  so that i could remain unseen. i am thankful that we finished playing as she went to have a snack and the scenery eventually transitioned into peaceful silence paused by the chirping of birds scattered throughout my mother’s lush garden, accompanied by the low hum of the meeting happening a few yards away. i am thankful for relaxing to the sound of other people talking and working in the distance. i’m thankful for the birds that visited the still pool water to drink, for the white wild doves that nested in the trees above my chair, for my dog b running in the garden playing with my mother’s 3 dogs. i am thankful to revere and bask in the sun with perfect completeness and happiness, and to be as mindful of the beauty of that specific moment as i was in my reading evenings in the maldives where i contemplated the starry night skies. i am thankful that more often than no i have these contemplatives moments  of beauty and peace which stay permanently (as far as i can tell) branded in my memory. i am thankful for every time i feel perfectly happy. i am thankful for aesthetic (and sometimes cinematographic) intent and how we can be active directors of our perceptions and, later, curators of our fondest memories. i am thankful for the intimacy of these moments, and equally thankful for my mediocre attempt to share them with you.</p>
+<p>i am thankful to keep the last piece of hailyn belay’s my feminism involves witchcraft  advice:</p>
+<p>“Once the summer sun has kissed your altar, put it in a place where it gets at least some sun every day (and, more importantly, a place where you will see it every day). If you add or remove anything from your altar, or if you just feel a little disconnected from the goals and desires you articulated on your altar, do this meditative visualization again to keep the sun on your side, all summer long.”</p>
+<p>i am thankful that today i came to work and classes with a fresh face and absolutely no make up, which is rare, and i look healthy and already have that typically portuguese golden summertime glow. i am thankful that i was especially joyous this morning, much to j’s dismay and envious stare as he put sunscreen on my shoulders. i am thankful that i am wearing a  newish bikini underneath my very proper equally newish office-dress because i will again have a two hour break, this time between classes, and my llm classmates and i are going to our friend i’s pool close to our university to swim and laugh and get some sun. </p>
+<p>i am thankful that the afternoon’s class is finishing early so that we can watch our nation’s soccer match in the euro 2016 championship. i am thankful to live in a country whose soccer culture makes this is not only acceptable, but truly necessary.</p>
+<p>f. </p>
+<p>- fsa (6/22/16). 24, portuguese, <a href="mailto:mfmcss@gmail.com">mfmcss@gmail.com</a></p>
+<p>previously: <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa">1</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-2">2</a>, <a href="http://tinyletter.com/thankyounotes/letters/tyn-fsa-3">3</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-4">4</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-5">5</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-6">6</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-7">7</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-fsa-8">8</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-9">9</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-10">10</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-628.html" class="btn btn-secondary">← thank you notes 6/28</a>
+        <a href="/letters/thank-you-notes-626.html" class="btn btn-secondary">thank you notes 6/26 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

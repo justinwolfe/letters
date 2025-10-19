@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/20">
+  <title>thank you notes 5/20 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/20</h1>
+        <time datetime="2016-05-20T00:00:00Z">May 19, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that on wednesday morning, we woke up rested and refreshed. i&#39;m thankful that the time zone here is one hour earlier, so even though we still woke up at the clock time we usually wake up, it felt like (and, in a sense, was) sleeping in. i&#39;m thankful for the heavy blackout curtains of hotels, thankful for the way they block out ambient light at night while you try to sleep but then also thankful for the moment when you get out of bed and pull them open, the casters holding them up whooshing along the track, and reveal the morning. i&#39;m thankful that our room is on the eleventh floor of the hotel and out our window we have a nice view of downtown minneapolis facing toward the mississippi river (which we can&#39;t see from our window, but which i know is there from navigating along the streets below us to get there). i&#39;m thankful that when we first got into the room, i felt annoyed by the fact that the bed was facing the window rather than the TV, but thankful that this feng shui was actually fortuitous because of the nice view. i&#39;m thankful that before we left bloomington, i bought 10 granola bars to keep in our backpacks for emergency hunger and thankful that i had a delicious apple pie larabar for pre-breakfast so that my stomach didn&#39;t feel too empty. i&#39;m thankful that we didn&#39;t rush ourselves out of bed, especially since the museum we were going to first wouldn&#39;t open until 10.</p>
+<p>i&#39;m thankful that the good donut shop wasn&#39;t very far from our hotel. i&#39;m thankful always on trips to find the good donut shop. i&#39;m thankful that in chicago the good donut shop was surprisingly vegan and that in the san francisco the good donut shop was in the tenderloin and that i felt i earned my donuts by climbing steep hills. i&#39;m thankful that the good donut shop here had many good lucking donuts and that because &quot;it&#39;s vacation&quot; i over-ordered and got us 6 donuts and some milk. i&#39;m thankful that they had seats at a bar facing the open kitchen and that we watched a pastry chef slicing the tops off of cakes to make them flat for layering. i&#39;m thankful that because d was more restrained, i ended up eating four donuts, which was really a bad idea but felt lovely at the time (i&#39;m thankful, in my defense, that the donuts in the case looked very small while the ones we received were huge). i&#39;m thankful for the best two donuts, one of which was a twist with curls of cinnamon inside the dough with a honey cinnamon frosting and the other of which was a raspberry jam donut which unlike the textureless industrial red jelly of most jelly donuts (tho that&#39;s delicious in its own way) was homemade raspberry preserves with seeds and all (i&#39;m thankful that just because the filling was homemade, the shop didn&#39;t skimp on it).</p>
+<p>i&#39;m thankful that as we left the donut shop and started making our way through downtown, i started to feel that eating four donuts was a very bad idea. i&#39;m thankful that the barnes and noble we stopped at had a bathroom where d could wash her hands. i&#39;m thankful for the interesting buildings we saw while heading to the waterfront, especially the public library, which seemed to be composed of equal parts steel, glass, and light. i&#39;m thankful that near the waterfront we saw a whole foods and i&#39;m thankful we went in to try what aminatou said was the best fizzy water (i&#39;m thankful for <a href="https://twitter.com/dire/status/730933648359337985">d&#39;s comic on this subject</a>). i&#39;m thankful that though whole foods didn&#39;t have the best fizzy water (badoit), they did have the second best (ferrarele). i&#39;m thankful that despite its fancieness, a wine-bottle sized green glass bottle of the ferrarele was still less than half the cost of the plastic bottle of smartwater i had bought at the airport the previous day. i&#39;m thankful that out on the street, we took turns swigging bubbles out of the bottle and found it pleasant and interesting (i&#39;m thankful it&#39;s naturally rather than artificially fizzy) but not particularly notable. i&#39;m thankful sometimes when things that i have been told are supposed to be good (and better than the things i like) turn out to not be as good (to me, at least) as the things i like. i&#39;m thankful for the refreshment of sparkling water after eating too many donuts.</p>
+<p>i&#39;m thankful that minneapolis is a very pedestrian and bike friendly city (i&#39;m thankful that i have seen more people biking here than in any other place i&#39;ve been) and that there was a nice pedestrian path across the mississipi river (which seemed pretty placid and not at all &quot;mighty&quot; at the point where we intersected it). i&#39;m thankful that on the other side of the river, the world was much quieter and more peaceful. i&#39;m thankful for the trail we walked along the waterfront, which was beautifully green and flowered (i&#39;m thankful for the workers we watched place squares of sod at the edge of the sidewalk). i&#39;m thankful for the campus of the university of minnesota, which was very pretty and mostly empty. i&#39;m thankful for the open building we found where i used the bathroom and stripped out of my heattech underlayer, which was unnecessary given the windless sunny day. i&#39;m thankful for d&#39;s cuyana bag, which is suprrisingly capacious without seeming ostentatiously large. i&#39;m thankful to remember in san francisco drunk the two of stumbling across their store and going in and having her initials monogrammed in gold onto the bag for free and then stepping back onto the street and taking a picture of her to remember the serendipity.</p>
+<p>i&#39;m thankful for the small campus art museum, which was in a beautifully crumpled aluminum can gehry building. i&#39;m thankful that i think our campus art museum has both a better permanent collection and better traveling exhibits, though i may be biased. i&#39;m thankful for the temporary exhibition we saw devoted to how artists represent clouds, which included constable sketches (i&#39;m thankful to have learned that he was trained to be a windmiller), a cloud made of lightbulbs with hanging rain chains that you pulled to turn on or off the lights, and a lovely dry little image of a cloud constructed from pieces of scotch tape overlapped onto blue paper. i&#39;m thankful that after the museum, we went to a nearby vietnamese lunch place called &quot;bun mi.&quot; i&#39;m thankful that like d, i ordered a &quot;bahn mi salad,&quot; which did feature some vegetables, but was mostly meat. i&#39;m thankful, even though it was wasteful, that i stopped about a quarter of the way through the salad when i realized that my body was still fucked up from eating 4 donuts and that adding &quot;salad&quot; on top was not helping. i&#39;m thankful that d enjoyed her salad, though, and some of mine, and thankful for the refreshing mango bubble tea i had. i&#39;m thankful that there is a light rail station on campus and that we took the train back to downtown. i&#39;m thankful for the insane thing we discovered about the light rail system here, which is that the fares are based on the honor system—like there are ticket machines and card-swiping pedestals on the platforms, but there are no turnstiles to prevent you from entering the platform or the train if you don&#39;t have a ticket and there are no (or very few) conductors roving the trains checking tickets. i&#39;m thankful that this was so baffling to us and that in googling the issue, i read two articles and found out that a) despite the lack of enforcement, there is something like a 99% compliance rate, which seems like a crazy caricature of midwestern honesty but might actually be true? and b) of course, since that statistic makes you feel too good about humanity, that the fare enforcement that does occur disproportionately targets young black men.</p>
+<p>i&#39;m thankful that we got off the train in downtown minneapolis and decided ot try to walk back to the hotel through the skyway system. i&#39;m thankful that because it gets so cold here in the winter (i&#39;m thankful for the story my dad told me of the husband of someone he knew who rode his bike to work in the winter and had to break tiny icicles out of his mustache when he arrived at work), there are <em>seven miles</em> of enclosed skyways linking the second floors of eighty blocks of buildings downtown. i&#39;m thankful for how strange and interesting it is to travel long distances through and between buildings this way. i&#39;m thankful for how fast people travel down them, much faster than they would walk on the street, and thankful for how the skyways mean you don&#39;t have to wait for lights at intersections, which speeds traversal. i&#39;m thankful that we made it almost all the way to our hotel through the skyway but then hit a dead end at an office building that, we saw in the directory, would have required a lot of backtracking to get to the passage that would get us to the hotel, so we just walked the rest of the way on the street.</p>
+<p>i&#39;m thankful that after a lovely siesta in the hotel room, we walked along a greenway and through a park and across an overpass to the walker art center. i&#39;m thankful that by coincidence, it was national museum day and so entrance was free. i&#39;m thankful for the walker art center, which i think might be my new favorite museum. i&#39;m thankful that it has the most interesting structure of any one i&#39;ve ever been too—the guggenheim is cool, but i feel like the central spiral is too overpowering to the galleries and the works themselves and i love ps1, but the feature/bug there is that it was a school and so it only has the kind of rooms and layout that a school would have. i&#39;m thankful for how navigating the walker felt like discovery and how there was a magical sense of disorientation, where you would enter a hallway thinking it might be a dead end and come out into a massive black box room showing a video and then exit that into a dimly-lit tomb of a gallery that sloped into the earth and was filled with little antechambers of installation. i&#39;m thankful for the exhibitions we saw, which included one inspired by stock photos about how photographers engage with the quotidian and the cliches of representation (i&#39;m thankful for ed ruscha&#39;s aerial photos of the abstraction of empty parking lots), a single artist show without wall text which used overlapping projections and music and nam jun paik style tv-walls to create a very mysterious but soothing ambiance (i&#39;m thankful for the video about a person who came to feel that she was a blue plastic box), a group show of contemporary european artists, a guerrilla girls retrospective, and selections from the permanent collection celebrating the 75th anniversary of the museum and its creation as part of the <a href="https://en.wikipedia.org/wiki/Federal_Art_Project">federal art project</a>. </p>
+<p>i&#39;m thankful that d found a cute book for jk&#39;s daughter at the museum store when we stopped there on our way out. i&#39;m thankful that while walking the mile and a half or so to the restaurant where we were going to have dinner, we were both quiet and tired and i said something about how strange it was that in our normal lives we would gchat to each other all day and then come home and still have plenty more to talk about but that we&#39;re so often silent on vacation walks. i&#39;m thankful this led to us having this realization that, even though it was the kind of life we had both idealized when we were younger and still fantasize about at times, neither of us really wants to live in a big city anymore. i&#39;m thankful to have observed that some people are really energized by being flaneurs but that, while we love to walk, the constant sensory overload drains us, and that while the amenities of urban centers (good restaurants, wonderful art museums, cool architecture) are nice, we mostly like staying at home and cooking and sitting on our couch—i&#39;m thankful to recognize that and not be ashamed of it, to know myself in that way. i&#39;m thankful that we&#39;re on the same page on this issue and how talking about how uncomfortable we had felt (rather than just trying to ignore or block out that discomfort) loosened us up and led to much freer &quot;more normal&quot; conversation. </p>
+<p>i&#39;m thankful for haute dish, the restaurant where we ate dinner which ruth recommended. i&#39;m thankful that i thought about having a cocktail because d&#39;s manhattan looked good but resisted and stuck with water. i&#39;m thankful that since my system was still in need of a defrag after all the morning sugar, we didn&#39;t order as many things as we might have otherwise. i&#39;m thankful that quality is more important than quantity. i&#39;m thankful for the macaroni and cheese we had, which was strewn with crab and creamy sauce and tufts of fluffy parmesan and crunchy breadcrumbs, and thankful for the &quot;general tso&#39;s sweetbreads,&quot; which was perfectly fried rice with soft scrambled egg and slices of foie gras and sweetbreads breaded and fried and coated in a fancy version of that sweet american chinese classic sauce. i&#39;m thankful that even though we only had two appetizers, we felt quite full. i&#39;m thankful that we stopped again at whole foods, which was near the restaurant, to buy cherries and a chocolate bar for dessert. i&#39;m thankful that i urged d to get peonies and that she agreed and thankful that i was intrigued by an endcap display of <a href="http://www.spoonkspace.com/">an accupressure mat</a> covered with rings of tiny plastic spikes and impulse bought that as well. i&#39;m thankful that we got back to our hotel room again and showered and i stood on the mat, which was painful but also interesting (i&#39;m thankful for trigger point massage, which has helped me to understand the appeal of combining pleasure with pain, which i never really understood before) and did seem to make my sore feet feel better. </p>
+<p>i&#39;m thankful that i laid in bed beside d eating cherries pieces of milk chocolate and reading the first chapter of geoff dyer&#39;s <a href="https://www.amazon.com/White-Sands-Experiences-Outside-World-ebook/dp/B013NIF7WG?ie=UTF8&qid=1463757295&ref_=tmm_kin_swatch_0&sr=8-1">new book</a>, which, like all geoff dyer books really, is about the frustrations of travel (in this case to small polynesian islands where gauguin lived and worked). i&#39;m thankful for his very geoff dyer version of the adam and eve story:</p>
+<p>&quot;...<em>it seemed certain that the apple in Eden grew on the tree of knowledge of</em> elsewhere_. Up until that point Adam and Eve were happy where they were. Then they at the apple and it was slightly_ disappointing <em>to them, and they started to wonder if maybe there were other kinds of apples elsewhere, if there were crunchier and crispier and sweeter apples to be had from somewhere else. They began to think that there might be a funner place where the food was better. They even began to suspect that</em> paradise itself <em>might be somewhere else</em>.&quot;</p>
+<p>i&#39;m thankful for his discussion of the concept of pilgrimage and about how frustration in travel (and in life) is actually a sign of something more positive:</p>
+<p>&quot;<em>This is the essential difference between religious and secular pilgrimage: the latter always has the potential to disappoint. In the wake of this realization there swiftly followed another: that my enormous capacity for disappointment was actually an achievement, a victory. The devastating scale and frequency of my disappointment(&#39;I am down, but not yet defeated,&#39; Gauguin snivel-boasted) was proof of how much I still expected and wanted from the world, of what high hopes I still had of it. When I am no longer capable of disappointment the romance will be gone: I may as well be dead</em>.&quot;</p>
+<p>i&#39;m thankful for his incredible closing run in that chapter, which uses the first person plural (i&#39;m thankful, as in <em>out of sheer rage</em>, for when geoff dyer shifts from his carefully defined i to a royal we) which provided amusement and solace as i recovered from the second day of my summer vacation:</p>
+<p>&quot;<em>That was the thing about Hiva Oa: the huge wait to leave contained within it other little pockets of waiting, so that one was caught in an endless hierarchy of waiting. I was always waiting for the next bit of waiting, climaxing with the final day&#39;s waiting, in which I would wait to be transferred to the airport, where I would wait for the plane taking me back to Tahiti before waiting for the enormous airborne wait of the flight back to L.A. (more waiting) and on to London itself. In a sense</em> that <em>is what we are here for: to wait. In Tahitian terms,</em> to put on wait_. While waiting, however, one necessarily ponders other questions, questions that don&#39;t go away irrespective of how long one waits: the tiki questions, the questions_ that stay put, <em>the same questions, according to Harrison Ford&#39;s voice-over in the climactic scene of Blade Runner, that the replicant Rutger Hauer wanted answered, &#39;the same answers the rest of us want. Where did I come from? Where am I going? How long have I got?&#39; But the answers to those big questions turn out to be small, or at least have to be itemised in detail if they are to have any chance of doing justice to the big questions. We are here to accrue the unredeemable air miles and tier points, to try to be upgraded on aeroplanes and in hotels whenever possible, to try to alter our itineraries to include Bora Bora and Huahine and to wish that the Internet connections were faster and more reliable. We are here to suffer terrible disorientation and jet lang and to be plagued constantly by the desire to be somewhere else, either somewhere else in French Polynesia or, ideally, somewhere else altogether, preferably nearer home. We are here to wish we had brought different books to read and to wonder what happened to our biography of Gauguin. We are here to wish the food was better and to be afflicted by the torment of heat rash and to wish that we had brought some calamine lotion to lessen that torment. We are here to buy presents for our loved ones and then to spend long hours constructing excuses as to why this was impossible because everything in Tahiti is so expensive and there&#39;s nothing worth buying anyway. We are here to be bored rigid and then to wonder how it was possible to be so bored. We are here to wait at Hiva Oa Airport in the drenching humidity and to feel definitively what we have felt before, albeit only fleetingly: that we</em> are <em>glad we came even though we spent so much of our time wishing we hadn&#39;t. We are here to make sure our seatbelts are securely fastened, our tray tables stowed and our sets are in the upright position before take-off and landing. We are here to go somewhere else</em>.&quot;</p>
+<p>i&#39;m thankful to be here and to go somewhere else.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-kflo4.html" class="btn btn-secondary">← thank you notes (kflo)(4)</a>
+        <a href="/letters/thank-you-notes-518.html" class="btn btn-secondary">thank you notes 5/18 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

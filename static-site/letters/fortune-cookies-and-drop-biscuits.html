@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="fortune cookies and drop biscuits">
+  <title>fortune cookies and drop biscuits - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>fortune cookies and drop biscuits</h1>
+        <time datetime="2020-11-10T00:00:00Z">November 9, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>nation&#39;s avoidance of the absolute worst possible outcome</p>
+<p>even though all that shit dampened the feeling myself vibes of scorpio season that i was feeling more strongly at its outset, i still feel a little residual glow in my soul</p>
+<p>remembering when d was getting into tarot cards and was going to do a reading for me but then the first card she pulled was kind of a bad vibe and i was like i cannot take this and bailed out</p>
+<p>the idea that symbols and their meanings aren&#39;t fixed, such that i had a traumatic memory of d throwing crystals at me during a manic episode which joined my preexisting skepticism of pseudoscience and ways we are parted with our money to make me hate crystals, but i have this pencil-shaped piece of fluorite on my desk she gave me that i fiddle with while on video calls and i do like it, even if it&#39;s not magic (and isn&#39;t liking something a kind of magic)</p>
+<p>we ordered panda express delivery and my fortune cookie &quot;fortune&quot; was &quot;you are always delightful and entertaining&quot; which is the best &quot;fortune&quot; i have ever received from such a cookie</p>
+<p>thinking that the pickup on my acoustic guitar was dead and then realizing that it just needed a new battery</p>
+<p>the way it feels to be inside my body for a few hours after running ten miles, that such a feeling is possible, even if i also feel annoyed that i have to take the time and energy to run ten miles in order to get it (with the added difficulty that because the next day it doesn&#39;t feel quite as good to be inside my body)</p>
+<p><a href="https://www.seriouseats.com/recipes/2007/11/cooks-illustrated-best-drop-biscuits-recipe.html">these drop biscuits</a>, which we have made ten million times and never disappoint, which we are having for dinners this week alongside big kale/chard kardashian salads</p>
+<p><em><a href="https://www.amazon.com/Julia-Jacques-Cooking-at-Home/dp/B01M2X89NR">julie and jacques cooking at home</a></em>, which is streaming on prime video and is suffused with vintage pbs analog warmth, and also suffused with all the other kinds of warmth; the experience of watching these two people who are both very skilled (but never in an egos clashing kind of way) and have a huge amount of affection for each other enjoying spending time together (feels like kind of proto-podcast energy)</p>
+<p>working with my teammates to figure out complicated technical problems and learning from the things they know and understand that i don&#39;t know and understand; how easy and freeing it is, because of their personalities and the environment of our department, to be grateful to learn from each other rather than feeling inadequate or lesser than or competitive</p>
+<p>at the end of the day yesterday i thought i had lost an email that i had laboriously written because of a misunderstanding of what &quot;discard&quot; meant in the context of our mobile app, and finding mild comfort in the fact that i had accidentally discarded it while doing a screen recording of a bug in the mobile app so i had a video of the text i could transcribe, but then finding that the PM that i had sent the email to for approval had left the tab open in her browser and was able to copy and paste</p>
+<p>the energy of all the people who maintain a browser environment full of aging tabs day after day, even though that is an energy i have never really had</p>
+<p>i have managed to keep my desk clean for the longest stretch that i have ever managed to keep my desk clean</p>
+<p>whenever a minor bit part character in a TV show is named &quot;deborah&quot; or &#39;deb&quot; turning to d and giving her a look and making her laugh</p>
+<p>miso came and sat on my lap while i was typing this sentence and her paw is resting on top of the keyboard</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/watching-d-spin-around-jumping-up-and-down-with.html" class="btn btn-secondary">← watching d spin around jumping up and down with glee</a>
+        <a href="/letters/red-car.html" class="btn btn-secondary">red car →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/21">
+  <title>12/21 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/21</h1>
+        <time datetime="2017-12-21T00:00:00Z">December 20, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that my day yesterday was a little better than the day before. i&#39;m thankful that though the feeling bad still hit me pretty hard in the evening, i felt pretty good for most of the workday, which was definitely an improvement.</p>
+<p>i&#39;m thankful that my performance review, which was basically my manager and i both telling each other how much we appreciate each other for an hour, certainly didn&#39;t hurt there. i&#39;m thankful that though we were both sad this was our last official one on one (since they are moving to another part of the company, to pursue their passion), i&#39;m really happy that they are going to get to pursue what makes them happy in the same way that they&#39;ve made it possible for me to do.</p>
+<p>i&#39;m thankful that when i opened my inbox this morning i had the gmail &quot;upcoming trips&quot; popup thing for the trip d and i are taking to las vegas for new year&#39;s. i&#39;m thankful that we don&#39;t have any real plans besides chilling as hard as possible and seeing <em>the last jedi</em> at a movie theater with a good screen.___PARAGRAPH_BREAK___</p>
+<p>i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/1DzNyccqAwnOS5MJdITcNI">i miss that feeling</a>&quot; by tennis, which i cannot stop listening to, brill piano pop with sequins of guitar and AM smooth vocals. i&#39;m thankful for ringo drum fills connecting different sections of a song. i&#39;m thankful for all the little variations on the melody.</p>
+<p>i&#39;m thankful that yesterday morning at work, sparked my a joke someone made at work, i listened to the luna discography for the first time in years. i&#39;m thankful for shoegaze, for guitars, for too much reverb. i&#39;m thankful to remember vividly the last time i listened to luna, in my first apartment here in the summer of my second year of graduate school, sitting on the ugly carpet in the little living room and writing a newsletter about my feelings (i&#39;m thankful that though things change, they also stay the same). i&#39;m thankful to have just indulged myself and read one of those old letters, which was about watching the short-lived bravo reality show starring julia allison, who many of the people reading this newsletter now probably don&#39;t even know who she was, and to share a bit of one with you:</p>
+<p><em>But then here I am again writing about her.  Which is why I find it really hard to hate her, even though I think she&#39;s living her life wrong in some ways.  Because I am doing the same thing she is doing.  I am writing to you even though I don&#39;t know if in six months or a year I will find this at all meaningful or worthwhile, even though a lot of the time it is hard for me to write to you and I often think about how I might be happier on a day to day basis or might find a way to have more security for my future, more &quot;potential,&quot; if I didn&#39;t write at all, If I just gave up on all this, maybe, and found a more &quot;productive&quot; use of my time, and yet I keep writing!  I am really annoyed lately at this project (which I have been thinking about all week how to change or just stop altogether) because instead of really writing things for you like I want to I find I end up half the time just stressing about my deadline and writing about writing or or not writing or writing about &quot;being a writer,&quot; which seems mostly worthless to me and which I think has to be growing less charming and more annoying as time goes on and the messages pile up in your inbox, texts from a needy friend.  And yet, I continue!  And I have periods in my life like this where I get fed up with this kind of stuff and I don&#39;t write for a while, but after a little honeymoon period the old desire always keeps coming back, the need to communicate with people in this way, using my life as a lens, maybe because I have some true calling or inner spiritual thing or whatever but maybe on a more banal level because this is what my life has been for a long time and even if it&#39;s not perfect, I can&#39;t understand how my life would look if it was different; it&#39;s hard to even begin to conceptualize the shape that change would take.  For so many reasons it seems like a dumb idea to try to be a writer today and no way to make a living and &quot;writer&quot; does not describe every aspect of my life or who I am but it is the best-fit identity I have been able to find and so I keep trying to find new, slightly different ways to make it fit when I come undone, just the same way that Julia Allison keeps dating guys and then making representations of those dates and her life that make everybody (people on the Internet, television audiences, the guys, herself) hate her and experiencing the force of this hatred and then trying to make a change in her life which, seemingly inevitably, given the skills and life and worldview she has to work with (however they might have minutely evolved in response to disappointment in her life) means making even more representations of dates and her life and etc...</em></p>
+<p><em>That&#39;s why I can&#39;t hate Julia Allison because I feel like Julia Allison is fucking up her life the same way I am fucking up my life and, I think, a lot of us are fucking up our lives, because we don&#39;t really know what else we can do and we want to do something so we keep repeating, with slight variations, these patterns that we&#39;ve carved out, knowing that the patterns are problematic and maybe not the best things for us, in the hope that some iteration or other of them is going to finally click, be the right one that get us to the place that we want to be.  Which is probably a dumb thing to believe in, but believing in the promise of a better life in the future is in general, kind of a dumb thing, given the evidence to the contrary that the world gives us every day, but God, fuck the alternative, I will take Julia Allison&#39;s fake dumb ugly hope any day over not believing.</em></p>
+<p>i&#39;m thankful that though some things stay the same, some things also change. i&#39;m thankful that though i don&#39;t think of myself as a writer anymore, at least not in the way i did back then, i also don&#39;t have the same kind of stress and baggage about my writing that i had back then, that while writing a newsletter every day back then felt like a constant struggle that i had to force myself in to to &quot;succeed&quot;, today it feels much less hard and like it&#39;s something i&#39;m doing because i know it always makes me feel better to do it (and i think makes other people feel better sometimes too). i&#39;m thankful that i have found some patterns for myself that click, even if i&#39;m still working on others. </p>
+<p>i&#39;m thankful for julio cortázar&#39;s <a href="https://twitter.com/lilghosthands/status/943625657178836993">instructions on how to sing</a>. i&#39;m thankful for <a href="https://twitter.com/joshywinty/status/943742389948002304">these pictures of toni morrison at a disco in new york in 1974</a>. i&#39;m thankful for <a href="https://twitter.com/kellyconaboy/status/943641206231269377">this joke about david foster wallace and water</a> and <a href="https://twitter.com/TriciaLockwood/status/943667651036971008">this joke about colin firth and water</a> and <a href="https://twitter.com/kumailn/status/942845516265562112">this one about guillermo del toro and water</a> and in general for <a href="https://twitter.com/fairdefeat/status/943560069983092736">the transformations that water makes possible</a>. i&#39;m thankful <a href="https://open.spotify.com/track/4uK1agHAnOsyCo62SBEO5y">to wait for the magic</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/122217.html" class="btn btn-secondary">← 12/22/17</a>
+        <a href="/letters/122017.html" class="btn btn-secondary">12/20/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

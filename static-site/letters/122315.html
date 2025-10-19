@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/23/15">
+  <title>12/23/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/23/15</h1>
+        <time datetime="2015-12-23T21:06:59Z">December 23, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that it&#39;s the first day of vacation. i&#39;m thankful that though we had planned to walk across town to see the new <em>star wars</em> this morning, it&#39;s going to rain so we decided to go tomorrow, when it is supposed to be warm and cloudless. i&#39;m thankful we slept in and i&#39;m thankful for the absence of alarms. i&#39;m thankful for a lazy morning in bed. i&#39;m thankful for the compilation of the &quot;<a href="http://www.tastefullyoffensive.com/2015/12/the-best-and-weirdest-japanese.html">best (and weirdest)</a>&quot; japanese commercials of 2015 that we watched. i&#39;m thankful for the anecdote d told me after, which was how KFC really took control of how christmas was marketed in japan when the holiday was starting to become popular and now many people eat KFC on fried chicken or, even if they don&#39;t, associate the holiday with the brand. i&#39;m thankful for her telling me about how her friend who lives in japan doesn&#39;t like fried chicken and how wrong we both found this. i&#39;m thankful that writing this will drop a thought anchor in my subconscious about fried chicken and we will probably eat it sometime this vacation.</p>
+<p>i&#39;m thankful for the fun i had working and playing with the faculty member&#39;s son yesterday. i&#39;m thankful for his help emptying out, crushing, and recycling old soda bottles (i&#39;m thankful i saved this task for him and i&#39;m thankful for the great sound the bottles made as we crushed them with our feet). i&#39;m thankful for our science experiment grossout at a floating culture blob that plopped out of an old jug of sweet tea into the sink in the men&#39;s bathroom (baby kombucha?). i&#39;m thankful that he helped me take down our office christmas decorations (i&#39;m thankful for this gift that we gave to my future self when i return from vacation) and i&#39;m thankful for his glee at using the industrial paper shredder (under careful supervision) to destroy old tests and papers. i&#39;m thankful that after our work was done, we went and played frisbee in a cavernous empty gym. i&#39;m thankful for his joy at making trick shots by bouncing the frisbee off the ground with a sharply angled shot and for the cool throws he made that caused the frisbee to ride along the wall and then drop down for me to catch. i&#39;m thankful my work friend t snuck out of her office to come throw with us for a while. i&#39;m thankful that, seeing me in workout clothes for the first time, she said &quot;damn, justin, you have amazing legs.&quot; i&#39;m thankful for the rhythm and variations introduced when you have three people playing frisbee rather than two. i&#39;m thankful for our camaraderie and fun and the way that we all faux-formally shook hands and told each other good game after we finished. i&#39;m thankful the faculty member’s son was surprised by the tiny secret christmas <a href="http://www.amazon.com/Flickerz-Flying-Disc-White-Silver/dp/B00BLDFQ86">present</a> i bought him, which is a tiny plastic frisbee you flick with your fingers.</p>
+<p>i&#39;m thankful, despite my anxiety about videophones, that we had a wonderful skype with our friend jk in seoul. i&#39;m thankful that in a lot of ways, it was just like the old days. i&#39;m thankful for <a href="http://declineofscarcity.com/?page_id=2527">this passage</a> from <em>infinite jest</em> about videophones and anxiety that i sent jk and d out of nervousness in the morning before the call. i&#39;m thankful for her toddler daughter, who was wearing confetti patterned leggings and who connected through the screen and across the globe with d&#39;s puppycat plush, babbled adorably, spun an office chair, turned the laptop to find a new composition, and then ended the call after an hour or so by closing the computer and shutting it down. i&#39;m thankful for how much skype has improved since i last used it, when i was the one living in korea; i&#39;m thankful that the lag was almost imperceptible. i&#39;m thankful to get to catch up with jk, who we miss very much, to be able to exchange gossip and talk about tv shows and art and books.</p>
+<p>i&#39;m thankful for the <a href="https://tinyletter.com/griefbacon">grief bacon</a> tinyletter, which i came to through <a href="http://tinyletter.com/forwards/letters/fwd-malls">tinyletter forwards</a> and which has been great so far and had an especially great letter yesterday about what it feels like to be in new york during the holidays. i&#39;m thankful to remember d and i&#39;s first trip to new york one christmas a few years ago, our first trip together as a couple, which i didn&#39;t want to go on because of (partly) a fear of spending money and (mostly) a fear of the unknown. i&#39;m thankful for the revelation that was taking a slow cab down from laguardia through harlem and the upper east side to our tiny boutique hotel room south of the park, for the fact that all i could dumbstruck say was that it reminded me of GTA IV. i&#39;m thankful for the dark polished surfaces of the hotel, for the expensive textures, and for the colors and shapes we could see out our window, especially at sunrise, which a view reminds me in retrospect of an <a href="http://www.metmuseum.org/toah/hd/ashc/hd_ashc.htm">ashcan school</a> landscape, even though i hadn&#39;t studied the ashcan school at that point (on our second trip to new york, we would see a <a href="http://www.metmuseum.org/exhibitions/listings/2012/bellows">george bellows</a> show at the met after i had studied him and his depictions of a snowy city in warm light would give me a powerful sense of deja vu). i&#39;m thankful to remember walking through little italy on our first night after a dinner of sichuan frog legs in chinatown and feeling completely overwhelmed by the crowded sidewalks and a guy with a family who was headed in the opposite direction, catching my glance and telling me in a stereotypical tv new jersey voice, &quot;hey buddy, it&#39;s christmas, how about a smile?&quot; and this command crushing my spirits even further so that my face crumpled and i almost cried and he looked embarrassed he&#39;d said anything. i&#39;m thankful for our subway mishaps and triumphs and long walks down the avenues. i&#39;m thankful to remember my first trip to moma and the guggenheim and my first time eating dim sum, which changed my culinary life and in itself would have made the trip worthwhile. i&#39;m thankful for my favorite art exhibition i have maybe ever seen (though the traveling magritte show at the chicago institute of art last year is close competition), which was this incredible retrospective at ps1 of an artist i had never heard of, <a href="http://momaps1.org/exhibitions/view/363">thomas lanigan-schmidt</a>. i&#39;m thankful for the agony and ecstasy of his work, for all the ways he used text in images, which inspired me to fill pages of a notebook with ideas that i never followed through on, and for his embrace of foil and glitter and magic markers and saran wrap and the way he elevated those materials until they became holy, sanctified. i&#39;m thankful for how hot we were walking through the museum in our coats because we were afraid to check them, and how that warmth lent a certain intensity to the experience. i&#39;m thankful for the james turrell room that&#39;s open to the sky, which was so refreshing with its blast of cold air and natural light. i&#39;m thankful that coming across it on the top floor of the museum at the end of an anonymous hallway felt like coming across a secret and that when we entered, there was no one else around for a long while, so it was like the sky belonged to us. i&#39;m thankful how, so we could rest our feet after the workout of traversing the galleries before we headed back to manhattan, we stepped into the theater downstairs and, watched a half hour or so of pasolini&#39;s <a href="https://en.wikipedia.org/wiki/Sal%C3%B2,_or_the_120_Days_of_Sodom"><em>salo</em></a>, which was just as insane as i&#39;d always heard it was. i&#39;m thankful for getting quite drunk in our hotel room before and after dinners and taking pages of fuzzy selfies. i&#39;m thankful for channel surfing late one evening while exhausted in bed and coming across dune. i&#39;m thankful for the furry hat with ear flaps that i got at the giant forever 21 in times square and continue to wear in the winter to this day, though the faux fur is now quite matted. i&#39;m thankful for how momofuku was less than we&#39;d expected and times square was more than we&#39;d expected. i&#39;m thankful for our time sitting on a bench in central park on an unseasonably warm morning waiting for the museum of natural history to open. i&#39;m thankful for how sad i felt when the trip was over and the cab driver was dropping me off at my terminal at laguardia so i could fly to miami before taking d to a different terminal so she could fly to san diego. i&#39;m thankful for the intensity of how much i missed her while sitting there in my terminal waiting for my flight, how deeply her absence strained my heart.</p>
+<p>i&#39;m thankful that though that trip was in many ways as stressful as it was wonderful, it made the next trip (when we stayed at a weird hasid hotel in williamsburg) less stressful and more wonderful, and i&#39;m thankful, though i&#39;m so happy we&#39;re staying home together this winter, to get to fantasize about all the trips we will take someday. i&#39;m thankful for how the space that vacation creates is not just about the freedom you&#39;re experiencing in the present, but about the way it allows your mind to envision, in optimistic soft focus, what the future might be like.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/122415.html" class="btn btn-secondary">← 12/24/15</a>
+        <a href="/letters/122215.html" class="btn btn-secondary">12/22/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

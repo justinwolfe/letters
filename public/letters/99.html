@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="9/9">
+  <title>9/9 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>9/9</h1>
+        <time datetime="2018-09-09T00:00:00Z">September 8, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that after it rained all day yesterday, a wave of cool air came in, which made this morning feel like the first flush of fall. i&#39;m thankful that it was supposed to rain all day today too but now it isn&#39;t. i&#39;m thankful to have gone for a run and to have not ended it with my clothes completely soaked through with sweat. i&#39;m thankful that the warm weather will be back in a few days, but i&#39;m thankful for this taste of days to come. i&#39;m thankful to have had shin ramen for lunch. i&#39;m thankful for the built-in portion control of ramen in a cup, since when i make it from a packet in a bowl it&#39;s always too much broth and i feel bloated afterward. i&#39;m thankful for the espresso-flavored mini snickers i had for dessert (check your local halloween aisle, they also have chili ones and &quot;sweet and salty&quot;, which basically already describes the flavor profile of a snickers and so seems somewhat redundant).</p>
+<p>i&#39;m thankful i did not have a nervous breakdown and become afraid that i was dying or was in imminent danger of dying and have to seek medical attention as i have around three (3) separate labor day weekends in the past decade, which feels like a kind of progress. i&#39;m thankful that i have lost a little weight since i moved my runs to the morning and have been able to go longer every day and also started doing those arbitrary daily pushups, not because i think losing weight is virtuous or is going to make any real difference to my health, but because usually when i look at myself in the mirror i&#39;m comparing myself to some generalized and hazy platonic ideal of myself (there aren&#39;t a lot of old pictures of me because i used to hate having my picture taken for this very reason, and the fact that i don&#39;t hate it as much feels like another kind of progress) and i so rarely measure up to it and &quot;look like myself&quot; (the way i imagine myself to be from inside) and that makes me sad, to not like the way i look, and lately when i&#39;ve looked in the mirror, i&#39;ve felt i look like &quot;myself&quot; slightly more often than normal.</p>
+<p>i&#39;m thankful that though i feel very anxious about going to work tomorrow, i know that is something i always feel to a certain extent on a sunday and that i always feel extra extra hard on the sunday after a vacation. i&#39;m thankful that though knowing this (and knowing that lots of other people have those same kinds of feelings) doesn&#39;t make me feel that much less anxious, it is still good to remember it. i&#39;m thankful that i am very respected and appreciated at work, even though a side effect of that can be me putting too much pressure on myself. i&#39;m thankful that at this job i am always growing and learning, even though that can be stressful. i&#39;m thankful to feel good about the future in general, even if i feel some anxiety about tomorrow and the day after that and the rest of the week and so on. i&#39;m thankful that though i had planned to do some work this afternoon to try to get ahead of things for next week, i&#39;m going to try not to do that (i&#39;m thankful to have stopped my brain from looping and made some notes about the things i was planning to do to help get them out of my brain, since one thing that i think can lead to me ruminating is the idea that if i don&#39;t keep thinking about these ideas i will forget them)(i&#39;m thankful to remember a habit i had when i got my first smart phone, when i was first starting grad school, which was to constantly record voice memos of ideas i had, which felt important even though i never listened back to them).</p>
+<p>i&#39;m thankful for <a href="https://ask.metafilter.com/326230/Everything-in-my-life-should-be-as-simple-as-possible-but-no-simpler#4699163">this ask metafilter thread of things that people have given up doing</a>. i&#39;m thankful for <a href="https://twitter.com/markleidner/status/1037605939778445312">this tweet</a>, which starts with the tone of the banal advice in one of those threads and then becomes, through the power of weirdness, a kind of poem. i&#39;m thankful for <a href="https://twitter.com/that1mum/status/1038067196507955200">this tweet about masturbating with an electric toothbrush</a> (something i also tried as a youth). i&#39;m thankful for <a href="https://twitter.com/VitaVirginiaBot">this bot</a> collecting fragments of the letters of virginia woolf and vita sackville-west, which is my favorite twitter bot since <a href="https://twitter.com/sontagdaily">the susan sontag diary bot</a>. i&#39;m thankful to metafilter also for <a href="https://www.metafilter.com/176399/Dirty-Girls">this post</a> introducing me to <a href="https://www.youtube.com/watch?v=h3MxEHQk644">this video</a> of a group of punk-feminist eighth graders known as &#39;dirty girls&#39; in santa monica in 1996. </p>
+<p>i&#39;m thankful that we ordered pizza last night from the good pizza place. i&#39;m thankful that we always get the same two pizzas from them: one which has red sauce and sausage and pepperoni and whole olives and onions and one that has more mozzarella and prosciutto and roasted grapes and arugula and honey. i&#39;m thankful for how pleasurable it is to alternate between slices of the &quot;sweet&quot; and &quot;savory&quot; pizza. i&#39;m thankful that because it is expensive, i usually restrain myself so we can have leftovers the next day, but i didn&#39;t do that yesterday and ate all the pizza i wanted. i&#39;m thankful we watched the christina tosi episode of <em>chef&#39;s table</em>, which was enjoyable, even though that show normally feels pretty flat and airless to me, because i like her as a person and have actually eaten some of the food in the show and so could remember/imagine what it tasted like more than i can with most of the food on that kind of show.</p>
+<p>i&#39;m thankful that last night before bed, i started reading <em><a href="https://www.amazon.com/dp/B07BLLFKS5/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">crudo</a></em>. i&#39;m thankful that though i bounced off of <em>the lonely city</em> when i tried reading it a while ago, p tweeting about how good <em>crudo</em> was made me decide to give it a chance. i&#39;m thankful i did, since i really like it so far—it feels like a melange of geoff dyer and gertrude stein and frank o&#39;hara and lots of other ways of thinking and feeling i love (&quot;<em>short skirts but in sentences-form</em>&quot;). i&#39;m thankful for the tumbling run-ons, the pinball of the voice, grace notes of acidity squeezed and zested over the crowded trains of thought. i&#39;m thankful for the description of the 2016 election as feeling &quot;<em>like the Red Wedding episode only actual and huge,</em>&quot; for the weight &quot;<em>only actual and huge</em>&quot; is carrying there. i&#39;m thankful that it feels like if a novel was twitter (not the individual unit of the tweet, but the cumulative effect of being in the stream) in the best possible way.</p>
+<p>i&#39;m thankful also for <a href="https://twitter.com/chillmage/status/1036988687823851520">this description of twitter</a>. i&#39;m thankful that it&#39;s possible <a href="https://twitter.com/ohsalad_days/status/1038606480965083136">to sing without crying</a>. i&#39;m thankful for <a href="https://twitter.com/markleidner/status/1037579093212950528">this taxidermy</a>. i&#39;m thankful to think that <a href="https://twitter.com/post_rhymes/status/1038569433390874624">inner space is finite</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/910.html" class="btn btn-secondary">← 9/10</a>
+        <a href="/letters/98.html" class="btn btn-secondary">9/8 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

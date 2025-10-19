@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="spring asparagus">
+  <title>spring asparagus - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>spring asparagus</h1>
+        <time datetime="2024-04-26T03:00:45.473232Z">April 25, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/253" alt="image.png"> </p>
+<p>things i&#39;ve been watching: <em>the zone of interest</em> (now streaming on max if you missed it, haunting and i appreciate jonathan glazer as a director who is still actually trying to do some shit formally, even if the movie felt like more of a tone piece), <em>fallout</em> (superb no notes and (unfortunately) brought into further relief for me how truly terrible the netflix adaptation of <em>the three body problem</em> really was; i regret trying to hype you up for it). the <em>jerrod carmichael reality show</em> (i wish people were talking about this show more, every new episode effortlessly doing hard stuff that nobody else on tv would even think to try), <em>couples therapy</em> (we&#39;ve watched all the seasons now and are bereft with the loss of it), <em>bands on the run</em> (classic vh1 reality show <a href="https://www.youtube.com/@bandsontherun3324">dvd rips uploaded to youtube by some minor saint</a>)</p>
+<p> <img src="/api/images/252" alt="image.png"> </p>
+<p>things i&#39;ve been reading: <a href="https://www.haymarketbooks.org/books/1990-a-spectre-haunting">china mieville&#39;s book about the communist manifesto</a> (great, much more readable than <a href="https://www.versobooks.com/products/169-october">his book about the russian revolution</a>, which first thrilled and then bored me in its granularity), <a href="https://wwnorton.com/books/9780393240252"><em>the waste land: a biography of a poem</em></a> (lots of funny/interesting trivia (eliot was such a freak! also  anti-semitic!)  but i wanted more of a sustained close reading of the poem to go with it)</p>
+<p> <img src="/api/images/251" alt="image.png"> </p>
+<p>things i&#39;ve been listening to: <a href="https://open.spotify.com/track/0WbMK4wrZ1wFSty9F7FCgu?si=7c23ca5de7364fe0">&quot;good luck, babe!&quot;</a> by chappell roan (i did not like &quot;casual&quot; (which deborah loved) and liked &quot;pink pony club&quot; at first but ultimately found it annoying but i really really love this song, which i described to a friend who&#39;s in the know as <a href="https://www.youtube.com/watch?v=ON3qRFzTzo4">Tennis-pilled</a>), <a href="https://open.spotify.com/track/2CO04OO1MMV1z8zY5N1pyD?si=e943cd06030a4175">&quot;get it right&quot;</a> by bnny (why yes i do love to gaze at my shoes), &quot;<a href="https://open.spotify.com/track/7mOC6phfrfz3jfigg1aGsE?si=nCEVXPRfSf-SPJyFMWci6w&nd=1&dlsi=23f307953ec7467e">&quot;wanna be&quot;</a> by glorilla with megan thee stallion (always here for new good feeling myself-core, also particularly love &quot;<em>white boy wasted / channing tatum</em>&quot; line in the chorus), <a href="https://open.spotify.com/track/0juMDnoo3u3uDJ32wjK2BF">&quot;hold me up (thank you)&quot;</a> by khruangbin (it sounds like all their other songs that i like but honestly they can just keep doing that same thing forever and it&#39;s fine because they do it so good),
+<a href="https://open.spotify.com/track/7y91nQBMhyeHWTn9wVvhKl?si=bb7a5d29f64e4940">&quot;una vida pasada&quot;</a> by camilo and carin leon (came across it during a weekly new music friday trawl and it&#39;s my new <a href="https://open.spotify.com/track/36FTXlmbiV2diZdZukzLDm?si=ccc2ee38bc3748ac">&quot;bubalu&quot;</a>, an aural encoding of the vibes i&#39;m trying to live as spring blooms)</p>
+<p>things i&#39;ve been eating and drinking: honey mango, grillo&#39;s pickle flavor kettle chips, tequila cocktails deborah has been making with fresh citrus juice, a reese&#39;s snack cake left in the fridge too long and consumed greedily in a moment of weakness upon discovery, jeni&#39;s sweet cream biscuits and peach jam ice cream (hadn&#39;t had it for a while and confirmed still a top 2 ice cream for me), smashburgers with sweet potato &quot;fries&quot; and a brussels sprout and apple salad (shave some brussels sprouts, dice some green apple, slice a little onion, mix and then dress with some improvised combination of vinegar, honey, mustard, salt, pepper, and spices)(i was describing the recipe to deborah so she could execute it and using &quot;some&quot; to describe the proportions of things and she said that if i had a cookbook every recipe would just be &quot;some this&quot; and &quot;some that&quot;), sundubu in a stone pot (the stone pot is soooo worth it also frozen mixed seafood dumped in), garlic stem kimchi, spring asparagus   </p>
+<p> <img src="/api/images/250" alt="image.png">                                                  </p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-425/">2016</a> (<em>cheeseburgers, my parents&#39; hbo go password was still saved in d&#39;s old computer, one of the best books i know about the problems of being an artist today</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/42517/">2017</a> (<em>convinced d to try watching the second season of The Leftovers, my mom actually got out of work on time once last week, this extensive guide someone in my team came across describing how to use our app to change the color of a light in the bowl of your toilet</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/425-2467/">2018</a> (<em>met up with JK in Gangnam, Dior cafe that felt like one of the compartments near the end of the train in Snowpiercer, Hello Kitty museum</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/42520/">2020</a> (<em>deborah coughed in the exact rhythm of the stuttery synthesizer at the beginning of &quot;love in this club&quot;, neti pot after a long walk through thick pollen, bread and butter</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/champagne-problems-version-of-this-take-i-know.html" class="btn btn-secondary">← champagne problems version of this take i know</a>
+        <a href="/letters/not-something-id-experienced-in-carrot-cake-before.html" class="btn btn-secondary">not something i&#039;d experienced in carrot cake before →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

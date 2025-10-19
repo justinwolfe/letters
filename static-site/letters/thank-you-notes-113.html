@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/13">
+  <title>thank you notes 1/13 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/13</h1>
+        <time datetime="2016-01-13T00:00:00Z">January 12, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for how crazy things have been this week with the students back on campus and the semester started and research projects restarted and tenure dossiers and cover letters in need of editing. i&#39;m thankful, even if i feel more exhausted than normal at the end of the day, because it also makes the day go faster (i&#39;m also thankful also for how it makes me better appreciate the times when i&#39;m less busy). i&#39;m thankful for the students, who, despite the way they&#39;re often caricatured in the media and popular culture as entitled and shallow and vapid, are generally sweet and kind and energetic, and who want to learn and do a good job and figure out who they want to be. i&#39;m thankful for the moment yesterday when i asked a lost-looking student in the hall if she needed directions and she did and i gave her directions and then literally six more students immediately came up to me to ask where other places in the building and on campus were. i&#39;m thankful that my action gave them that permission to stop feeling lost and ask me where they needed to go (a permission i would have definitely needed when i was a student) and i&#39;m thankful that i (mostly) knew where they needed to go. i&#39;m thankful for the feeling of having bearings in a place and thankful for the good sense of direction and navigation that i inherited from my mother. </p>
+<p>i&#39;m thankful even for the rare student who is an asshole, like the one who stood in front of my desk with a shit-eating &quot;serve me, peasant&quot; smirk and insisted on waiting there for me to email him a document before he would leave because he didn&#39;t trust me (his words) to email it to him if he walked away. i&#39;m thankful for the way that in such moments i imagine my smile as armor, like the shield that link holds up in zelda—i try to experience every unkind word or rude gesture as the tiny plink sound of an attack bouncing off of me and falling away, all my hearts intact. i&#39;m thankful also for the way that the occasional bad apple reminds me of the blessing of just how good most of them are, like the lost student who continuously thanked me as we toured the school trying to find her self defense class, which, after going down so many fluorescent-lit badly labeled hallways, we discovered was being held, unexpectedly, in a racquetball court. i&#39;m thankful for the generosity of hyperbole, like i received from the student who told me i was &quot;literally saving her life&quot; by printing out a copy of her resume for an internship application.</p>
+<p>i&#39;m thankful for the tiny pineapple cakes that a visiting lecture brought back in her suitcase from a holiday trip to taiwan for me. i&#39;m thankful that the box they came in was beautifully printed with the photo-realistic yellow brown skin and green stalk of a real pineapple and for the way that the &quot;stalk&quot; at the top of the box was folded intricately to gesture towards the geometry of a real pineapple stalk. i&#39;m thankful for the dry pale shortbready crumbliness of the small round cakes inside, for the beautiful wastefulness of their individual plastic wrapping, for the delicate and subtle dab of pineapple preserve in the center of them. i&#39;m thankful for how nicely they paired with the vanilla porter i got at the grocery store and was drinking with dinner. </p>
+<p>i&#39;m thankful that over the holidays, i watched a stupid documentary on netflix about north korea. i&#39;m thankful, even though the documentary was stupid (i&#39;m thankful to recommend instead, if you&#39;re interested in the subject, two excellent books about north korea i read last year: <a href="http://www.amazon.com/Without-You-There-No-Us/dp/0307720667/ref=sr_1_6?ie=UTF8&qid=1452706013&sr=8-6&keywords=korea+memoir">1</a>, <a href="http://www.amazon.com/Kim-Jong-Il-Production-Extraordinary-Kidnapped/dp/1250054273/ref=sr_1_1?ie=UTF8&qid=1452706028&sr=8-1&keywords=kim+jong+il+film">2</a>), because thinking about the stupidity of the documentary revealed to me a vein of my own stupidity i had not yet tapped. i&#39;m thankful for how a brief discussion of taiwan in the documentary made me suddenly realize with shame that for all the time i&#39;ve known the taiwanese visiting lecturers here, which is years now, and for how they are some of my favorite people to work with and talk to and joke around with, i didn&#39;t know anything about taiwan except that the climate is hot and the capital is taipei and it one of three words in a label that was stamped on cheap plastic toys i owned as a child in the nineties. i&#39;m thankful to realize how i&#39;ve stupidly always operated in conversation with the visiting lecturers under some uninformed subconscious perception that taiwan was like, a wholly-owned subsidiary of china with maybe an aura of some kind of quasi-democratic/independent status like hong kong, when actually, it turns out, that&#39;s not really true and the government is completely independent, even if the question of statehood is <a href="https://www.quora.com/Is-Taiwan-part-of-or-separate-from-China">complicated</a>. i&#39;m thankful to reckon with how the fact that i lived in (a completely different!) country in asia (for one year) and am married to a korean american woman (i&#39;m thankful for the time when she taught me not to use a hyphen) and like ramen and uniqlo and read a bit of the <em>new york times</em> on my phone every morning does not actually make me an informed global citizen. i&#39;m thankful to know a little bit more now and to hope that in my conversations with the visiting lecturers i haven&#39;t said anything too egregiously stupid or offensive. i&#39;m thankful that they like me so they&#39;ve hopefully forgiven me if i did and thankful that i&#39;m able to have nice moments with them and offer to help them with cover letters and presentations and print orders and all the things i do know about.</p>
+<p>i&#39;m thankful to try to be conscious of how i subconsciously other people so i can try my best not to do it. i&#39;m thankful for the ongoing banter that i have with the faculty member whose office is closest to my desk about how he eats his lunch so late (i&#39;m thankful that he eats it so late because he&#39;s so devoted to making time to meet with his students, even if he&#39;s having serious health issues that cause chronic pain and has four children with another coming and is also finishing his doctorate). i&#39;m thankful for the joke he made the other day, when heating up his lunch at 3:30pm, about how his new motto, inspired by &quot;it&#39;s 5 o&#39;clock somewhere,&quot; is &quot;it&#39;s noon somewhere.&quot; i&#39;m thankful for how briefly surprising i found the joke because he&#39;s a mormon, and then thankful at how i immediately had a meta-thought correcting myself about how of course him being a mormon doesn&#39;t, like, preclude him from participating in the culture and having at some point heard that dumb country song slogan about drinking. </p>
+<p>i&#39;m thankful for the first time i had this kind of double self-conscious reaction to his mormonism, last year when i was moving the mouse on his new computer every five minutes so that it wouldn&#39;t go to sleep while his box account synced. i&#39;m thankful that i made a reference to desmond and the computer on <em>lost</em> to describe how committed i would be to making sure his computer wouldn&#39;t go to sleep and he didn&#39;t seem to understand what i was saying and i&#39;m thankful i had the stupid thought that &quot;of course&quot; he didn&#39;t get the reference &quot;because he&#39;s mormon&quot; and then i repeated myself louder and he laughed in recognition and said that was one of his favorite shows of all time. i&#39;m thankful for <em>lost</em>, which i loved all of, even the ending (i&#39;m thankful for the ongoing semi-serious debate i have with d about whether a bad ending invalidates a good tv series, with me arguing that it doesn&#39;t, that from a formalist perspective, TV is essentially defined by its seriality, so it&#39;s more important that it&#39;s pleasurable and engaging from episode to episode over the course of a series even if an ending is reallly bad (like <em>battlestar galactica</em>), and her finding that thread of argument not to be wholly satisfying, which is many people&#39;s totally valid reaction to purely formalist critiques). </p>
+<p>i&#39;m thankful that my work friend t came in while i was rambling through that digression in the last paragraph to say hi and thankful that when i asked her about the finite math class she just started taking to try to finish a degree she abandoned when she was younger and wilder, she described how weird it was to be so much older than the other students in her class (&quot;i realized that i&#39;m probably seventeen years years older than most of them—i&#39;m basically a whole them older than them&quot;)  but how she felt positive about the choice to take the class and how much better of a learner she feels like she is because of her age and knowing herself better than she did when she was &quot;college age.&quot; i&#39;m thankful for how, changing the subject, we were talking about how it was 1 degree this morning but at least there was no wind-chill and how she said that her friend who is canadian came over the previous night and, over bourbon, taught her how to rap. i&#39;m thankful for her laughter when i gave her a perplexed look and said &quot;what?&quot; and that she made clear that she meant how to wrap two scarves around her head and neck to stay warmer in the cold wind and i said &quot;oh, that makes sense, because i was like...canadians aren&#39;t known for their rapping&quot; and she said &quot;yeah, canadians are not rappers&quot; and we laughed. i&#39;m thankful for the chance to apologize here to drake.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-l-9611.html" class="btn btn-secondary">← thank you notes (L)</a>
+        <a href="/letters/thank-you-notes-112-6186.html" class="btn btn-secondary">thank you notes 1/12 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

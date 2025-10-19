@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/8">
+  <title>thank you notes 4/8 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/8</h1>
+        <time datetime="2016-04-08T00:00:00Z">April 7, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the experience of converting the in-text citations in a faculty member&#39;s tenure dossier from endnotes to APA parentheticals was one of the most unpleasant tasks i&#39;ve ever had to do at my current job. i&#39;m thankful for the cramps i got in my shoulder and neck (which i still have) from going from a printed copy of the endnote reference list to a printed, marked-up copy of the APA reference list to the working copy of the dossier on my monitor to the APA reference manual to several internet tabs of grammar girl-ish style advice. i&#39;m thankful, now that it is over and i feel calm and centered, to reflect on how angry and crazy it made me that the faculty member liberally sprinkled citations throughout the dossier, how there were often 5-10 citations (often repeated) at the end of any given sentence. i&#39;m thankful that converting these from endnotes to APA citations was challenging because a) there were often 6+ authors on the citations but i couldn&#39;t use &quot;et al.&quot; to compress them much because she was the lead author on so many of them (understandably, because it was her tenure dossier)  and so many of them were published in the same year and i needed to make it possible for the citations to properly delineate between them and b) to add another level of difficulty of that, for many of the things, she cited the abstract, presentation, and publication separately, requiring the use of letters to distinguish between them in the citations (i.e. Ridiculous-Professor, 2015a; Ridiculous-Professor, 2015b). i&#39;m thankful for the way that i felt like my brain was going to perhaps actually maybe really explode from the act of trying to manage all of this information at one time yesterday afternoon. i&#39;m thankful for the chicago manual of style, for how, for every annoying moment i spent writing these APA citations, i was a little more grateful for its logic, clarity, simplicity, and, dare i say, beauty.</p>
+<p>i&#39;m thankful for the email i sent to the faculty member at 5:01pm, in which i included the slightly rude but necessary sentence &quot;<em>I am also, because i’m not a citation manager software program, doing my best but struggling to keep up with the many different iterations of the references</em>&quot; and offered a sample paragraph in which sentences of the text of her very important tenure dossier statement would be frequently separated by 2-5 lines of parenthetical citation, which made the statement itself very difficult to read. i&#39;m thankful that i asked, in a polite but pointed way, whether she was sure a hybrid format might not be acceptable to the review committee, given the readability issue. i&#39;m thankful that i politely but pointedly asked her to write me back with her thoughts so i could continue in the morning in a way that would help her attain the results she was hoping for. </p>
+<p>i&#39;m thankful that she had not written me back this morning when i got to work, even though it made me VERY annoyed that she hadn&#39;t, and thankful that later in the morning, when i had returned to the project even though i had not received input from her, because i am a good employee and felt that i needed to get the project done even without her feedback, i heard walk by, say something to my coworker, and then continue on her way without stopping to say anything to me, which made me, in the moment, VERY VERY annoyed and drove me to lync my coworker &quot;<em>is she fucking serious with this shit.&quot;</em> i&#39;m thankful for this in particular because of the nice lync conversation venting about the annoying things that faculty members sometimes ask us to do i had with my coworker, which was one of our best bonding moments in a while. </p>
+<p>i&#39;m thankful to have listened to death grips while i worked on my citations, which helped channel my rage into greater productivity. i&#39;m thankful that eventually later in the morning i talked to the professor, when i was, through herculean effort, nearly done with the conversion and thankful that, in our conversation, she agreed with me that the APA citations made the paper difficult to read. i&#39;m thankful that she told me that because of this, she might not use them and might just use the original endnote-d version, but to go ahead and send her what i had done so far and thankful that she thanked me &quot;so much&quot; for my hard work. i&#39;m thankful, as i walked away from her office breathing deeply, that the feeling of frustration that i went through all of this intense mental strain for work that <em>might not even be actually used</em> was outweighed by the feeling of relief of not having to do the work anymore.</p>
+<p>i&#39;m thankful for the faculty member, who is generally a lovely person who is doing important research, even if she is sometimes a bit demanding in terms of asking my coworker and i to do work which is not a part of our job description. i&#39;m thankful for the delicious baked goods she often brings to the office (most recently lemon bars, though also chocolate chip cookies). i&#39;m thankful, because she is a runner too, for our conversations about running stuff and her high fives and compliments on my form when she sees me in the gym or out on campus. i&#39;m thankful for the night that d and i and our friend l were out at a bar at the same time as she and some of her friends and i accidentally left the free promotional pint glass i was given with my order and she made the effort to take it for me and then to bring it in to the office and put it in my office mailbox with a nice note. i&#39;m thankful for how appreciative she is when i compliment her clothing style, which is quite good. i&#39;m thankful for how much her students like her and for the good relationships she has with them. i&#39;m thankful for her daughter, who i sometimes babysit in the office when her sitter falls through and who, though manic and a bit of a little tyrant, is also adorable and sweet and very fun to play with. i&#39;m thankful to reflect on how hard it must be to be a single mom of an elementary school age kid while also trying to teach and publish and present and go up for tenure and to cut her a little slack on the APA citation thing, even if it nearly drove me insane.</p>
+<p>i&#39;m thankful i gave my brain a break from thinking and my legs a break from running and went for a swim yesterday. i&#39;m thankful that i have easy access to a heated pool and that all the other people who swim here are serious swimmers who stay in the cold lap pool, so i get the heated pool all to myself. i&#39;m thankful for the nice student from our department who is also a lifeguard at the pool. i&#39;m thankful for the way when she sees me enter the pool deck from the showers, she always gets up and goes over and turns on the lights in the water of the empty heated pool because she knows that&#39;s where i&#39;m headed (i&#39;m thankful for the perks of being a regular). i&#39;m thankful that when i apologized to her for swimming in the heated pool, which means, because of the pool rules, she has to get up from her lifeguard stand by the main pool and walk over to the lifeguard stand by the heated pool by herself rather than hanging out with the other lifeguard on duty, she first said, &quot;<em>it&#39;s okay, it&#39;s kind of my job</em>&quot; and smiled and the second time, after i apologized again, said, &quot;<em>i like the quiet—it&#39;s meditative</em>.&quot; i&#39;m thankful that while i was adjusting my loaner goggles yesterday, we had a nice conversation about how her semester was going, the problematic branding of her degree/field, and what she might try for grad school. </p>
+<p>i&#39;m thankful that this morning, when she came by the office to meet with a professor, she took the time to say, &quot;<em>hi justin</em>&quot; to me as she was leaving and i&#39;m thankful that because she was on the other side of a bookcase and i didn&#39;t see her, i confused her voice with the voice of a student who catcalled me out of the window of her car in the parking lot yesterday after work when i was already in a really shitty mood from doing the citations. i&#39;m thankful that i made a distracted &quot;joke&quot; about yelling at her out of a car next time i saw her and i&#39;m thankful that then the lifeguard came around with a hurt/confused look on her face. i&#39;m thankful that i apologized for mistaking her for the catcaller and addressed her by name to show her that i know it (i&#39;m thankful that i&#39;m better at remembering people&#39;s names than i used to be). i&#39;m thankful that we had a nice conversation about the netflix show <em>love</em>. i&#39;m thankful that she said that i was just like the paul rust character on that show, which i think she intended as a compliment even though i don&#39;t know if i really think of it as a compliment.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-tj.html" class="btn btn-secondary">← thank you notes (tj)</a>
+        <a href="/letters/thank-you-notesesme3.html" class="btn btn-secondary">thank you notes(esmé)(3) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

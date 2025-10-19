@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(sharanya)(1)">
+  <title>(sharanya)(1) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(sharanya)(1)</h1>
+        <time datetime="2017-06-17T00:00:00Z">June 16, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>The way the morning light can suddenly rush in and compensate for a hearty breakfast, for a long time now—only a few weeks, or several months—the way too much water can sometimes compensate for bodily demands you are aware of but cannot articulate. It means I am saved from the unhinged terror of spring afternoon light, because I am distracted enough by the prospect of lunch. It means I can lounge in, without paying attention to.</p>
+<p>The faded black covers of my bed, when I want to pretend it’s dark, but want to forget that I am pretending. </p>
+<p>My black shirts and jumpers, which can size up instantly to my wants, when I feel sized down by the world.</p>
+<p>Neon-coloured plastic bowls filled to the brim with steaming tofu and rice, that I ate out of sitting by an expansive window at a Japanese fast-food joint every single day the week I moved house last year. The window too, because I came to believe by the end of that week that it was designed specifically for women seeking a spare hour by themselves to feel the right kind of lonely—the kind you cultivate specifically by watching crowds from a spot where they could not care to watch you, and then could not, of course, if they tried. It’s what I told myself anyway.</p>
+<p>The servers at that restaurant, who were obviously so used to women with limp hair and long black coats seating themselves away from everyone else that they knew only to interrupt when the food began to cool, startling me frequently into the realisation that ‘kind strangers’ is an oxymoron because they have clearly paid enough attention to intervene in a way that makes the heart beat just a little bit faster, and didn’t you know you needed that to be able to walk home the rest of the way?</p>
+<p>The splendid camellia bush growing at a height on the streets of a very conservative area near where I live now, the sight of which compels me to feel a whole spitting range of emotions that I am able to quieten and dust back simply by photographing the bush close-up. That beauty could be bred and tended to even by vicious hate and xenophobia is not as much of a paradox as I sometimes tell myself it is, is a reminder that could not arrive often enough. Up-close, the petals look like dead skin, like what they call millennial pink, but gone war time-Spam rotten. Up-close, camellias are approximations to roses. William Carlos Williams writing of cyclamen: “the colour/ draws back while still/ the flower grows/ the rose of it nearly all lost”. Ugly. Writing elsewhere of an item that apparently isn’t a flower, apparently—“This, with a face like/ lie a mashed blood orange/ that suddenly/ would get eyes.” I’m smiling.</p>
+<p>My ability to ‘quickly whip up’ some shakshuka for myself, which I first learnt to make over a clean page of a cookery book—once so clean and unsplattered that I was dismayed and now so dotted with dried tomato splashes and smudges of parsley that I can’t understand why I had longed for a dirty cooking book in the first place, or the image of it, and it makes me ashamed and a bit sad at my inability to enjoy an affect I had internalised to the point of desiring its negative. I think. A dirty cookery book is an intimate cliche, like the sweat patches on your favourite shirt, and I am possibly too selfish to allow my inability to matter more than it should. I think.</p>
+<p>My best friends, one of whom lives far away in New York state, and the other who lives a quick car-ride away from here, but also a 45-minute walk away from here, for understanding my too-selfishness as simply the ways we live, like my need to have my breakfast uninterrupted, or my last-minute cancellations, or my inability to meet after an evening shift. I am thankful for the way in which their comprehensions of those circumstances and situations are always uneventful, and never tedious incorporations into our friendship(s); the careful inattention, most special form of selfishness.</p>
+<p>Recovering from an illness so completely that I forgot I ever had it. Gaslighting bodies. I know I have photographs somewhere, but surely the point now is the knowledge of them, and not looking necessarily. </p>
+<p>My bedside reading list, which forever remains partially read, and forever a patient reminder that tomorrow is a thing, not to sound so petty about it, but tomorrow is a thing.</p>
+<p>Sunday mornings with J. His coffee, maybe croissants. The way he turns Sundays into luxuriant maybes, the way the thrill of the moment exceeds the maybe, and then orbits it. The way I can look at him reading and think to myself, tomorrow maybe, and it’s funny and melodramatic and also a thing, like tomorrow, which at that moment I believe in so completely, it’s stupid! Like how we look when we’re laughing hard. Like the exclamation mark in a Frank O’Hara poem. The last verse of that poem by him that everybody keeps quoting about waking up and drinking too much coffee and smoking too many cigarettes which has no exclamation marks, but is, don’t you think, a giant exclamation mark. Maybe even two. All sincerity and goof and oh god it’s wonderful, like he says.</p>
+<p>My feverish reliance on the moving image, when I cannot read. My ability to read, when I think I no longer can.</p>
+<p>Skype with I. Occasional texts from W-H. I am thankful for being remembered like that. Voice notes from V; I know it’s night for her when she sends them, and they are still the best instant approximation of night, and of a telephone conversation. I rarely have the energy to participate deeply in either, unless I’m watching them unfold on film in which case I have endless regard for both, and I like that V squeezes herself tall and sparkling between them, bringing them up front like a large wet canvas. </p>
+<p>My walk to work on a Saturday morning, which is now year-long routine. I am thankful for the brief glamour of putting on a leather jacket and spritzing some perfume at 7:45 on a Saturday morning. It feels like the inverse of coming home late, but more—the rush, maybe, of a sudden, invincible promise.</p>
+<p>- sharanya (6/10/17). sharanya lives and writes in england.
+<a href="https://docs.google.com/forms/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/edit?usp=forms_home&ths=true">what are you thankful for?</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/61817.html" class="btn btn-secondary">← 6/18/17</a>
+        <a href="/letters/51617.html" class="btn btn-secondary">5/16/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/11">
+  <title>thank you notes 3/11 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/11</h1>
+        <time datetime="2016-03-11T00:00:00Z">March 10, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful i watered the office plants first thing this morning. i&#39;m thankful that the cactus seems to really be thriving—it&#39;s fuller than i&#39;ve ever seen it. i&#39;m thankful i kicked a small black screw that was on the floor in the center of the hallway against the wall so hopefully no one would slip on it. i&#39;m thankful to neatly arrange and rearrange the furniture in the conference room. i&#39;m thankful that i fixed a jammed stapler using a corn poker which for some reason i had in the little bowl where i keep tacks and binder clips (i&#39;m thankful that i have no memory of ever eating corn on the cob at work, which is good because that sounds like a horrible idea). i&#39;m thankful for my manager&#39;s surprising use of the word &quot;bivouac&quot; in an email about a faculty member. i&#39;m thankful that when i looked up scree plots yesterday, i learned that scree, in nature, is &quot;a mass of small loose stones that form or cover a slope on a mountain.&quot; i&#39;m thankful that this reminded me of how the original meaning of &quot;broadcast&quot; is to spread seeds over a large area. i&#39;m thankful to think as these sentences as seeds i scatter into the wind.</p>
+<p>i&#39;m thankful that i noticed b had gotten a haircut this morning and that he was pleased by my noticing (i&#39;m always thankful to notice when people get haircuts, especially since people almost never notice my haircuts). i&#39;m thankful that i complimented t on her black and white checkered flannel shirt and she told me that several people had already complimented her that morning. i&#39;m thankful that i tr i&#39;m thankful for a, an undergraduate student who came in to see a professor for office hours yesterday and who beamed when i greeted her with her name and said &quot;you&#39;re really good with names.&quot; i&#39;m thankful for the faculty member who was happy that i was able to automate her powerpoint slideshow of pictures with crossfades and use her choice of song, &quot;eye of the tiger,&quot; as the background music (i&#39;m thankful that she told me she had the mp3 because it&#39;s on her workout playlist). i&#39;m thankful that i made sure to ask a faculty member about the car accident he was in yesterday and thankful that he wasn&#39;t hurt, even though his car was. i&#39;m thankful for when i come into a building from the rain and i try to wipe off my wet shoe soles on the carpet but they&#39;re still squeaking. i&#39;m thankful when i&#39;m not the only person in the hallway with my shoes squeaking, which makes me feel less alone.</p>
+<p>i&#39;m thankful that while i was biking home in the rain yesterday, i took solace from the cold and wet by thinking of plays on the chorus of &quot;i can&#39;t stand the rain,&quot; which included &quot;i can&#39;t stand dwayne&quot; and &quot;i can&#39;t stand my brain.&quot; i&#39;m thankful for how those bits of singsong stupidity comforted me in ugly weather. i&#39;m thankful that i feel like my notes haven&#39;t been very good this week, like, labored and boring and full of errors, not smoothly flowing, but thankful that i want to keep writing the notes anyway, that the ritual is important to me (and hopefully to you) even if it doesn&#39;t result in perfect content. i&#39;m thankful for regular exercise, to do my best and know that&#39;s what i&#39;ve done. i&#39;m thankful that i want to give you something, but that some times there is only so much to give. i&#39;m thankful that i feel better about today&#39;s notes so far and thankful that i don&#39;t know whether it&#39;s because i just generally feel a little better about life today or because today&#39;s notes are actually better (i&#39;m thankful that i don&#39;t really care which is true, that feeling better is its own reward).</p>
+<p>i&#39;m thankful that in the bath last night, i watched the first half of <em>what happened, miss simone</em>. i&#39;m thankful for all the amazing archival footage and songs and everything. i&#39;m thankful for nina simone, for her voice and mind and soul and everything. i&#39;m thankful for the first nina simone song i loved, which was her cover of fairport convention&#39;s &quot;<a href="https://www.youtube.com/watch?v=OXeh742_jak">who knows where the time goes</a>&quot; from <em>black gold</em>. i&#39;m thankful that it was played in the background of the ending of the movie <em><a href="https://en.wikipedia.org/wiki/The_Dancer_Upstairs_(film)">the dancer upstairs</a></em>, which my friends and i saw at our campus theater when i was in college. i&#39;m thankful for those moments when a music supervisor picks such a perfect song for a movie that it&#39;s actually kind of distracting from the movie itself, damaging to the gestalt, but which is okay because you get to take the song away with you after the movie and have it in your life. i&#39;m thankful that sitting in the dark watching a movie, you&#39;re in a more receptive state, which can allow the song to embed deeper inside you. i&#39;m thankful for the musings on the problems of music supervision in the dana spiotta novel, when meadow is struggling to score a movie she&#39;s made about trains:</p>
+<p>&quot;<em>Meadow tried to add some of the Britten music to her films. Then she tried something more repetitive and tense, Steve Reich. Or something lush and melodic, Gershwin. Music can invisibly amplify or music can be an ironic counterpoint to the images. Music can seduce or make you slightly off, uncomfortable. She always thought that a pushy film score was cheating, but she realized maybe she just wanted to eliminate variables to make things simpler. She was simple, plain. She knew nothing. She needed to see movies! How did they use music? Sound effects? Silence? There is true silence—which feels like negative sound, it almost sucks you out—and then there is movie silence with ambient sounds, like breathing and chair scraping. She paired her train images with music bright and nostalgic. Then just the sound of the river, which seemed so pastoral and almost invisible next to the train, but now suddenly had a fighting chance for her attention. She then filmed the outmoded, obsolete, obscure Mohawk River. The train in deep background. She filmed just the river—untrained or pretrained. She cut these together. The river disturbed and obliterated by the train. In a logical sequence. In a sequence of no logical chronology. The left and right expectations resisted. You lose logic, you lose legibility. It unnerves. Yes! She shot the untrained, unmanned world: birds, river, teh wind on the leaves. The river roar made faint by the train roar. But then it returns after the train passes. If she took away the sound and let the train pass in the background without its steady clack clack clack, it still found its rhythm in your head. You supplied the clack clack clack form a hundred other movies or real-life trains. You could do that, play on the sounds already in people&#39;s heads. The memory of trains. But not even that: the memory of trains seen in movies. Was it fair or good or right to count on—even consider—an assumption of memory? But isn&#39;t that what all film counted on, a kind of shared memory of everything we have seen in the movies?</em>&quot;</p>
+<p>i&#39;m thankful that i usually prefer studio recordings to live recordings (i&#39;m thankful for george martin), but i&#39;m thankful that some live recordings by performers i love seem to capture a moment in time and space and in the spirit of the person so beautifully that i can understand the appeal of loving the grateful dead, the way that you can listen to a recording of a particular night and feel as if a part of you is in that night or a part of that night is in you.. i&#39;m thankful for the sound image of the recording, for the grainy reverb, for the hiss of the recording equipment. i&#39;m thankful for the gently strummed guitar in the left side of the stereo field and how it rises in pitch with her voice for the chorus. i&#39;m thankful for the quaver of her vibrato, for the moments when it breaks, for how long she can hold her notes, for the rainbow of her range. i&#39;m thankful for how her piano enters in the instrumental break, playing a lithe solo which seems so young.</p>
+<p>i&#39;m thankful for her stage banter before the song, which you should <a href="https://www.youtube.com/watch?v=OXeh742_jak">listen to</a> for its richness and beauty and which is, in full:</p>
+<p> &quot;<em>we are recording tonight, and, because we are recording, we are trying to do some things that actually we are too tired to do. [laughter]. but as faye dunaway i think it was, she said when bonnie and clyde came out and all, she said &#39;we tried to give people what they wanted.&#39; that&#39;s a mistake, really i, know. well, uh, you can&#39;t do it but only...you use up everything you got trying to give everybody what they want [laughter, cheers].</em> </p>
+<p><em>but i will learn my lesson soon and then you will buy more records, right? because you won&#39;t see me.</em> </p>
+<p><em>let&#39;s see what we can do with this lovely, lovely thing that goes past all racial conflict and all kinds of...conflicts. it is a reflective tune and some time in your life, you will have occasional to say &#39;what is this thing called time? you know, what, what is that?&#39;</em> </p>
+<p><em>the clock. you go to work by the clock, you get your martini in the afternoon by the clock, and your coffee by the clock and you have to get on the plane at a certain time and arrive at a certain time and it goes on and on and on.</em> </p>
+<p><em>and, time is a dictator, as we know. where does it go? what does it do? most of all, is it alive? is it a thing that we cannot touch and is it alive. and then one day you look in the mirror and you are old and you say &#39;where did the time go?&#39;</em> </p>
+<p><em>we&#39;ll leave you with that one.</em>&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-fsa4.html" class="btn btn-secondary">← thank you notes (fsa)(4)</a>
+        <a href="/letters/thank-you-notes-r.html" class="btn btn-secondary">thank you notes (R) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

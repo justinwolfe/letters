@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="on fridays we don&#039;t have meetings">
+  <title>on fridays we don&#039;t have meetings - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>on fridays we don&#039;t have meetings</h1>
+        <time datetime="2024-01-26T17:01:03.698925Z">January 26, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/441" alt="image.png"> </p>
+<p>i&#39;m thankful that last night we were watching a particularly beautiful episode of <em>terrace house</em> where yusuke, a sweet shy sad boy who is very good at playing ukulele and who in his own earlier season of terrace house (aloha state) had a famous failed date that ended in him eating catfish alone at a counter-service restaurant where he had totally unnecessarily reserved a table and in this season we&#39;re currently watching is visiting japan to play some shows and immediately falls in love with one of the current cast members, who we know from the outset does not actually want to date him (at one point she describes him as &quot;creature-like&quot;) and who arguably gives him too much hope at the outset but catches herself and corrects to not lead him on.</p>
+<p> <img src="/api/images/439" alt="image.png"> </p>
+<p>i&#39;m thankful in this episode there is a scene where even after she tries to let him down easy he wants to try one more time to get her to like him and asks her to go to a fireworks festival (a classic <em>terrace house</em> summer date) with him, as he describes it so seriously to someone else on the show, to make &quot;final memories&quot; with her before he leaves japan. i&#39;m thankful how she calls him to tell him she doesn&#39;t think they should go together, which is a kindness, and i&#39;m thankful that then later in the episode (after an incredibly moving scene where another pair on the show who both like each other but have both been in denial that the other person likes them finally break through their misunderstanding), he goes to the fireworks show alone.</p>
+<p><img src="/api/images/443" alt="image.png"> </p>
+<p>i&#39;m thankful for how the fireworks show is filmed (wordlessly, long wide shots of the sparks and trails streaking across the night sky, occasional intercuts of yusuke&#39;s eyes wet with emotion and the highlights of the explosions), which is beautiful even by the always beautiful standards of <em>terrace house</em> and reminded me of <a href="https://www.youtube.com/watch?v=7mwZYGcbQCo">the opening scene to <em>manhattan</em></a> where a series of static beautifully composed shots of new york rhyme with <a href="https://www.youtube.com/watch?v=ynEOo28lsbc"><em>&quot;rhapsody in blue&quot;</em></a> and trace the early morning to a night sky where at the climax of the song thunderous fireworks cascade over the hudson. i&#39;m thankful for how beautiful this scene is still to me despite woody allen giving me the ick and after finding this not seeming to exist on youtube decided to make a cut where there is none of his voiceover monologue, just the music and the images.</p>
+<p><img src="/api/images/440" alt="image.png"> </p>
+<p>i&#39;m thankful to have learned from <em>terrace house</em> that the japanese word for male virgin is &quot;cherry boy&quot;. i&#39;m thankful for the song <a href="https://www.youtube.com/watch?v=_EBvXpjudf8">&quot;cherry bomb&quot;</a> by the runaways which i first learned from <a href="https://www.youtube.com/watch?v=HXUGchwb91o">the shonen knife cover</a>, which i downloaded off of napster as a teenager after learning about how kurt cobain loved them (i&#39;m thankful for my first love japanese punk band, hi standard, who i first learned to love from their cover of <a href="https://www.youtube.com/watch?v=PRqR1PdvVt8">&quot;the kids are alright&quot;</a> by the who which like shonen knife&#39;s &quot;cherry bomb&quot; i did not understand was a cover (i&#39;m thankful to have experienced life in an age before pervasive metadata)(i&#39;m also thankful for the tyler the creator album <a href="https://open.spotify.com/album/621OhgnZJ7Pz8iUazct1In"><em>cherry bomb</em></a>)</p>
+<p><img src="/api/images/442" alt="image.png"> </p>
+<p>i&#39;m thankful that there is a new ice spice song <a href="https://www.youtube.com/watch?v=Le7zha5Ua90&embeds_referring_euri=https%3A%2F%2Fhypebeast.com%2F&source_ve_path=OTY3MTQ&feature=emb_imp_woyt">&quot;think u the shit (fart)&quot;</a>. i&#39;m thankful that miso doesn&#39;t normally fart that much, that it&#39;s rare enough that when it happens she looks at her butt confused like wtf is happening. i&#39;m thankful that deborah made soy cured egg yolks and had leftover whites so she gave miso and frankie (who we were dog sitting and who was cuddlebug as per usu) both one and miso proceeded to have constant relentless toxic gas for a day and a half so now we know not to give her egg whites again.</p>
+<p><img src="/api/images/444" alt="image.png"> </p>
+<p>i&#39;m thankful that miso started limping earlier in the week and was limping more and deborah was very worried and took her to the vet yesterday where despite her screaming (despite being ostensibly tranquilized with trazodone and gabapentin) they found no major issues pulled some tiny barb out of her paw and gave her pain medication and antibiotics to take as well as one of those cones which was a nonstarter. i&#39;m thankful that she&#39;s found that she likes to sit in the flow of the heating vent in my office so i put her little bed near my desk (within petting range, where she would never normally sit) and she lays there regularly now. </p>
+<p><img src="/api/images/446" alt="image.png"> </p>
+<p>i&#39;m thankful that while searching my gmail to see if i had written about this fireworks scene or the opening of manhattan in a previous issue of thank you notes (i don&#39;t think that i had) i came across a word doc with one of the stream of consciousness journal entries from grad school where i would try to talk myself into being able to write something and i&#39;m so thankful to not have a life where i have to force myself to try to write literary fiction! (i&#39;m thankful i don&#39;t even have to force myself to <em>read</em> literary fiction if i don&#39;t want to!)</p>
+<blockquote>
+<p>IDEAS AND FIGURING OUT:
+You don&#39;t have to do everything on your first day back, you just have to do something to start the fire in the engine
+that will eventually, some time in the future, pull you into the station. You set the coal in the furnace and you light
+it by folding paper and sticking it into the cracks between the black lumps. This is all you have to do, set up the
+cracks of space so the paper fits inside of them and then you light the paper on fire.</p>
+</blockquote>
+<p><img src="/api/images/447" alt="image.png"> </p>
+<p>i&#39;m thankful that deborah wrote a <a href="https://buttondown.email/dire/archive/its-the-most-dreadful-part-of-winter-and-so/">new newsletter</a> about ross gay and samantha irby and cooking. i&#39;m thankful the town hall presentation i had to do at work yesterday went well (the director of engineering DMed me &quot;GREAT job&quot;) and also &quot;finished&quot;  (enough to resubmit for review at least) a PR which i had reasonably scoped and pre-approved my plan for with the reviewers and then the scope grew a lot in the reviews, which is always a little frustrating when it happens but in this case i think was ultimately the right choice in terms of what they were asking for, and anyway now i don&#39;t have that or the presentation hanging over my head and there are two days left in the sprint and (<em>mean girls</em> voice) on fridays we don&#39;t have meetings. </p>
+<p> <img src="/api/images/445" alt="image.png"> </p>
+<h3>Previously on this day</h3>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-126/">2016</a> (<em>gastroenterologist, paper airplane, kylie jenner</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/12617-7592/">2017</a> (<em>cracked tooth, insurance, gold thread</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/12618/">2018</a> (<em>hackathon, rachel cusk, salami</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/the-dalai-lama-apparently-on-worrying/">2021</a> (<em>boxer briefs, dalai lama, pretty sunrise</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/no-more-dying.html" class="btn btn-secondary">← no more dying</a>
+        <a href="/letters/it-is-possible-it-really-can-happen.html" class="btn btn-secondary">it is possible, it really can happen →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

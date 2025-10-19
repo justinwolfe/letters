@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="leftover pizza">
+  <title>leftover pizza - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>leftover pizza</h1>
+        <time datetime="2023-01-03T00:00:00Z">January 2, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p>that though i wrote here less last year than in previous years, i still wrote some and that i wrote something yesterday (taylor swift voice: &quot;on NEW YEAR&#39;S DAY&quot;) even though it was only one word.</p>
+<p>(there is so much dumb language in tech (i nearly have an embolism every time someone says &quot;learnings&quot;) but one phrase i do like is &quot;directionally correct&quot;, which is usually used when a given task doesn&#39;t necessarily solve a problem completely (because often it&#39;s hard to do so that atomically) but still in some way gets you &quot;moving in the right direction&quot; and as a person that (perhaps sometimes to a fault!) always thinks it&#39;s better to do something than not do something (or have a meeting about the possibility of doing something) obvi resonates with me ).</p>
+<p>not eating the traditional new years day foods that i was forced to eat throughout my childhood (instead we ordered pizza). thinking about as a kid disliking new year&#39;s day because it meant christmas vacation was almost over and then the food was insult to injury.</p>
+<p>we went to trader joe&#39;s for the first time in a while and bought a lot of stuff, including one ton of dried fruit, the orange chicken, frozen burritos, and my problematic (for me) fav the little bags of variety chocolate covered espresso beans that they sell at the checkout (problematic for me bc i can&#39;t have caffeine but i just kind of deal with it )</p>
+<p>that we don&#39;t often go because it seems &quot;far&quot; but it&#39;s not actually that far (thankful for deborah&#39;s reminiscence of us driving from bloomington to indianapolis to go to TJ&#39;s when we lived in indiana, which writing it also triggers a memory of how we first started officially being a couple right before she left school for thanksgiving break and she stopped there on the way home and brought cheesecake and prosecco to my shitty little apartment where we fell in love) </p>
+<p>jane got married with her corgi bertie as the ring bearer!</p>
+<p>the harry and meghan netflix documentary, which is basically just the taylor swift song &quot;sweet nothing&quot; in the form of a prestige docuseries but also i like that song and like prestige docuseries. that after watching it it seems so funny to me that i got harry and william confused in the past because of not being interested in the royals or in men because wow harry is so much better looking than william.</p>
+<p>leftover pizza for lunch, heated in the oven. eating a reasonable amount of pizza for once instead of eating too much pizza (though i also love eating too much pizza and will do it again)</p>
+<p>put a twenty in my pocket when we went out so i&#39;d have it if someone asked for money (even though i often do this and don&#39;t get asked) and then a guy outside walgreens asked for a quarter and i gave it to him</p>
+<p>picked up my prescriptions only a couple days after they were filled which will help me to build back up the buffer of medication after slow walking picking up some of my prescriptions in the past meant that</p>
+<p>realizing when i was filling my pill organizer (more fleeting new year &quot;doing things right&quot; energy) that walgreens had only filled half my gabapentin prescription. feeling annoyed and not wanting to go back to walgreens but reframing it as was a way to force myself to have a run outside, which i haven&#39;t done for several months.</p>
+<p>the winter running jacket that d bought me, which is waterproof and warm and breathable. that because of not running all vacation so had a deep bench of podcasts i listen to while running to listen to. that though it felt cold (especially because it was very windy) i forced myself to keep running and eventually warmed up. that my feet didn&#39;t hurt and that (other than being cold) i felt better and made better time than i&#39;d expected after so long just on the treadmill. </p>
+<p>that though i was standing in a long line at walgreens for the second time of the day (so long and slow that multiple people got in line behind me and then decided to leave and come back another day), it didn&#39;t take as long as i thought it would and that they filled the rest of my prescription without any of the red tape that i had envisioned there being (also without an apology, which i reflexively expected but did not need!).</p>
+<p>running down a stretch of road that i run down infrequently and looking at a possible detour that i might take then remembering that i had done the same thing before in the summer and taken the detour and it was a dead end but in that moment in my mind&#39;s eye seeing a kind of deja vu palimpsest </p>
+<p>glass onion, even though (and i say this as someone whose favorite star wars movie is by far the last jedi) i think it&#39;s nowhere near as good as the first one (there is no emotional center like ana de armas and that&#39;s a real lack) and in particular really suffered from dropping on netflix after lots of people including me had just binged two seasons of the white lotus, which while a different thing is playing in some similar tonal and thematic registers and just doing them a lot better (esp. the dialogue in comparison felt so forced and &quot;quippy&quot; in glass onion), but it was still at the end of the day enjoyable (and i&#39;m glad i didn&#39;t go to a theater to see it).</p>
+<p>watching d play and ultimately beat inscryption, a &quot;card game&quot; which is much more and is just overflowing with creativity and cool ideas and was very fun to &quot;play as a couple&quot; (i.e. take turns playing/pair programming it until the math and logic got too complicated for me the software engineer at which point i watched d play the rest amazed at her ability to juggle the numbers)—nothing has made me have more interesting thoughts about UI design than about how this game (re)presents its interface.</p>
+<p>dreading going back to work like i always do after a long break (okay or after a short break or you know a weekend) but also knowing that it&#39;s always fine once i get back into the swing of the things and looking forward to writing code again after almost two weeks of not doing so. </p>
+<p>we&#39;re having charcuterie plate for dinner and i am going to open a bottle of wine after sending this.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/using-the-heart-emoji-on-jira-comments.html" class="btn btn-secondary">← using the heart emoji on jira comments</a>
+        <a href="/letters/pizza.html" class="btn btn-secondary">pizza →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

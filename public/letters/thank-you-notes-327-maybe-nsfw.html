@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/27 (maybe NSFW?)">
+  <title>thank you notes 3/27 (maybe NSFW?) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/27 (maybe NSFW?)</h1>
+        <time datetime="2016-03-27T00:00:00Z">March 26, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful, on my lovely walk with d through the springtime yesterday, to have remembered my ninth grade biology class. which i hated at the time. i&#39;m thankful for my teacher, who i hated at the time, who made us go out into the world birdwatching and make notes of the birds we saw, with homework quotas that affected our grade. i&#39;m thankful that at that time, i didn&#39;t like going outside and resented being forced to traverse our beige murfreesboro suburb looking up into the trees on a saturday rather than doing what i wanted to do, which was playing sega dreamcast or watching mtv or masturbating. i&#39;m thankful for the vivid sense memories i have of the bland endlessness of the neighborhood and how i convinced my dad to let me borrow our hi8 video camera so i could use the zoom to help me see faraway birds (i&#39;m thankful the zoom did not help). i&#39;m thankful to remember how the reason my horndog dad almost certainly bought that particular model of video camera he bought for our family was because of the brief media fury about the possibility of <a href="http://www.x-raycameras.com/introduction.htm">using the camera&#39;s night vision feature to see through people&#39;s clothes</a>.</p>
+<p>i&#39;m thankful for how hard and frustrating i found the birdwatching assignment, how even when i managed to glimpse birds, they were so far from me and i couldn&#39;t tell what they were and they just flew away. i&#39;m thankful that i felt impotent, insufficient, angry. i&#39;m thankful for how it seemed so arbitrary, that i could just write down the names of some of the birds and how would she be able to know whether i&#39;d seen them or not. i&#39;m thankful to remember a one on one conversation with the teacher after a brief class nature walk &quot;quiz&quot; where i had seen no birds and how i said, near tears, that the assignment was prejudiced against people who didn&#39;t have good vision. i&#39;m thankful to remember the culminating experience of the birdwatching unit, which was a day trip observing the ecosystem of a forest and a creek near our school. i&#39;m thankful to remember slipping into the cold fresh water in my fluorescent swim trunks and hearing a girl nearby wading into the water in hotpants and gleefully yelling out, with a honey barbecue twang, &quot;<em>the water just touched my coochie</em>!&quot; </p>
+<p>i&#39;m thankful to remember that, which i think is the first time i ever heard a real girl refer to her vagina. i&#39;m thankful to remember another weird ritual from that class, which was that the teacher was for some reason famous within the school for singing a song called &quot;the donut man&quot; and that every year, her classes goaded her into singing it and how she would resist but the tension would build over the semester and eventually one day she would sing it. i&#39;m thankful that i feel like there was some weird sexual aura around the song (like the implication that the donut man was making the holes in the donuts with his penis?), which is why everyone had wanted to hear it and it had made her school famous, and thankful that through googling, i can&#39;t find any written record of the song, the only lyrics of which i can remember are &quot;<em>the donut man / makes them while he can</em>&quot; (i&#39;m thankful that googling i did find <a href="http://www.slate.com/blogs/xx_factor/2014/02/26/the_doughnut_on_a_penis_sex_tip_the_history_of_cosmopolitan_s_weirdest_sex.html">this amanda hess article</a> about the history of a <em>cosmo</em> sex tip about eating a glazed donut off of a penis). i&#39;m thankful for the <em>american pie</em> inspired time when i was a horny teenager and i made homemade pizza dough so i could try to fuck it (i&#39;m thankful to not recommend this experience or the use of extra virgin olive oil as a lubricant)(i&#39;m thankful to have been extra virgin back then, even though i wasn&#39;t thankful for it back then).</p>
+<p>i&#39;m thankful to remember the art class i took that year, where we made things out of clay and i made what i thought was a really cool claymation-y character with a long pink face and how this guy in the class who was this letterman-ish stoner wiseguy who was obsessed with the movie <em>manos: the hands of fate</em> came over and, after assessing my sculpture, which i had been working on for several class periods and said, &quot;<em>that looks like a dildo</em>&quot; and i had never seen a dildo and didn&#39;t know what it was but which i know now really did look like if there was a wallace and gromit character who was also a dildo. i&#39;m thankful for katie notopoulos&#39;s story &quot;<a href="http://www.theawl.com/2016/03/a-note-from-the-dildo-man">consider the dildo man</a>,&quot; which includes the line. &quot;<em>so, when one of the silicone mixers accidentally gets the pH balance off, we’re not going to let you end up with one of those defective space invaders in your poop chute.</em>&quot; </p>
+<p>i&#39;m thankful to remember perhaps the most i have ever laughed at anything on the internet, which was reading aloud to do all the amazon user reviews for a dildo that squirted fake semen, which involved various evocative complaints about the horrible smell of the fake semen that the dildo squirted and which i cannot find now because either that particular model is not sold now or the market is just <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=amazon+squirting+dildo">too saturated</a> to find that particular dildo. i&#39;m thankful for the funny reviews i just found for other squirting dildos while searching in vain, which include &quot;<em><a href="http://www.amazon.com/review/RR5ELQDS14T6C/ref=cm_cr_dp_title?ie=UTF8&ASIN=B00347A4VG&channel=detail-glance&nodeID=3760901&store=hpc">The head in this is so big it was painful</a>... Secondly the tube in the end is jagged and pokes your cervix... Thirdly the recipe for cum that is on the box involves raw egg white and sugar... Which if ingested could cause illness or if you get it in your hoohaw could cause a mad infection... I&#39;m just going to use this to prank ppl with a fat cock suction cupped to the wall randomly</em>&quot; and &quot;<em>a lot more girth than needed, <a href="http://www.amazon.com/review/R2LMOU2F30QXNC/ref=cm_cr_dp_title?ie=UTF8&ASIN=B00JVYXLCU&channel=detail-glance&nodeID=3760901&store=hpc">but still a good buy due to authenticity</a></em>&quot; and &quot;<em>I ordered this and what I received today was a solid dong that cannot squirt at all. <a href="http://www.amazon.com/gp/customer-reviews/RYJAMIN8496O5/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&ASIN=B00CMQVZJ0">RETURN</a>.</em>&quot; i&#39;m thankful to imagine, re: that last review, how annoying it would be to excitedly wait for your squirting dildo to arrive and then have it just be a solid dong that cannot squirt at all.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-328.html" class="btn btn-secondary">← thank you notes 3/28</a>
+        <a href="/letters/thank-you-notes-fsa7.html" class="btn btn-secondary">thank you notes (fsa)(7) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

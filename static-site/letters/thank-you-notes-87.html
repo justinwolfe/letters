@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 8/7">
+  <title>thank you notes 8/7 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 8/7</h1>
+        <time datetime="2016-08-07T00:00:00Z">August 6, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that it&#39;s not supposed to rain today or tonight or tomorrow or tomorrow night, which meant i could take out the trash and sort the recycling after lunch today. i&#39;m thankful when weather allows me to do that on sundays rather than mondays at the end of the day when i&#39;m exhausted from work and don&#39;t want to do anything. i&#39;m thankful that doing it on sunday doesn&#39;t make it, like, fun, per se, but that it&#39;s still much better than the alternative. i&#39;m thankful to remember taking out the trash in the apartment where we lived before this, which involved walking down a long corridor and down two flights of stairs to throw the trash in a disgusting and almost always overflowing dumpster which was parked in the corner of the underground parking garage.</p>
+<p>i&#39;m thankful that when we first moved in here, we read the instructions from the city about how to package our trash and recycling for pickup, which included finnicky-sounding things like bundling our cardboard and paper with twine. i&#39;m thankful we did that for a few weeks before d&#39;s coworker (who is now also my coworker) said that he had done that at first and then stopped and they still picked up his recycling anyway, and he had noticed that other people didn&#39;t seem to do things to the letter of the law and still had their recycling picked up. i&#39;m thankful for how happy i was to learn this, how it made the chore of waste disposal seem slightly less unpleasant.</p>
+<p>i&#39;m thankful that i went along this way for a while quite happily until one day i came home from work and the sanitation workers had left one of our recycling bins full rather than emptying it. i&#39;m thankful for how i realized that we must have crossed some line, that, because our garbage wasn&#39;t neatly packed and sorted enough, some of it, wrapped in grocery bags, looked like garden variety trash. i&#39;m thankful, i guess, for the stupid anxiety paradox i have now, wherein i want sorting and taking the recycling to be as quick and easy task as possible, but wherein i know that there is some invisible line of sloppiness that i don&#39;t want to cross because then the sanitation workers might not take the recycling and we would have to hold on to it for two weeks while yet more recycling piled up with no place to put it.</p>
+<p>i&#39;m thankful to remind myself this anxiety is stupid and unproductive and that worst case scenario even if they didn&#39;t take any of our recycling some week, we could just say &quot;oh well&quot; and put it in the garbage can, since the trash is picked up weekly rather than every two weeks. i&#39;m thankful, also to remember a time in my life when i was much more stressed about taking out the trash, which was the year i lived in korea teaching english. i&#39;m thankful that one of my greatest sources of anxiety my first weeks there was taking out the trash and recycling, which was stored in a variety of bins (they recycle more things, and compost) in the ground floor of my apartment building. </p>
+<p>i&#39;m thankful that initially i wasn&#39;t anxious (or at least wasn&#39;t any more anxious than i was about anything else) taking out the trash, until the second or third time i took it out, when, as i went to lift my bag in the bin, the security guard came over and started yelling at me in korean. i&#39;m thankful that i let the bag down, wondering if i had put it in the wrong bin, and tried to lift it to another, and he yelled again and i pulled it back. i&#39;m thankful to remember the shame of walking back up the stairs to my apartment carrying my trash (since it seemed even more embarrassing to be seen in the elevator with it. i&#39;m thankful i eventually learned that i had to buy specially taxed garbage bags and this was the reason my trash was rejected. i&#39;m thankful that even after i learned that, i still always had a jolt of fear when i took down my trash that for some reason i was doing something wrong and it wouldn&#39;t be allowed.</p>
+<p>i&#39;m thankful to remember that and to feel that my waste disposal situation now is not really that bad (i&#39;m thankful, also, to have remembered this <a href="https://drive.google.com/file/d/0B2VRwWG-2y5sOVZ4QkhsOWMxR0E/view?usp=sharing">story</a> about waste disposal i wrote in grad school). i&#39;m thankful that i had a nice long run today and that it wasn&#39;t too hot outside. i&#39;m thankful for the tangerine and honey scented incense i&#39;m burning. i&#39;m thankful that i&#39;m done taking out the trash and am now going to take a bath and read a book.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-88.html" class="btn btn-secondary">← thank you notes 8/8</a>
+        <a href="/letters/thank-you-notes-86.html" class="btn btn-secondary">thank you notes 8/6 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

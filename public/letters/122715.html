@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/27/15">
+  <title>12/27/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/27/15</h1>
+        <time datetime="2015-12-27T21:13:39Z">December 27, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for my first massage. i&#39;m thankful that when i gave d a gift certificate for a local spa for christmas, she insisted that instead of getting a fancy facial or long massage, as i intended, that we split it and each have a short massage. i&#39;m thankful that she said it was more important to her that we get to share the experience. i&#39;m thankful that though i worried that we were going to be late for our appointment, we were right on time. i&#39;m thankful for the weird dimly lit purgatorial &quot;tranquility room&quot; we waited in while we filled out forms and drew on outlines of the human body where we wanted to be massaged the most. i&#39;m thankful that my masseuse, l, was a nice older woman who reminded me of one of my grandmother&#39;s friends when i was growing up. i&#39;m thankful that, learning that i had never had a massage, l very clearly explained the process. i&#39;m thankful that once i had stripped down and laid under the blanket and put my face into the padded receptacle, i didn&#39;t have to open my eyes or say anything else for the next half hour.</p>
+<p>i&#39;m thankful for the strangeness of the bodily intimacy of getting a massage. i&#39;m thankful that the only reference point for being touched in that way is sex, or the occasional massages that d and i will give each other, but that this is different, because when i&#39;m giving d a massage, even if i&#39;m concentrating very diligently on making her feel good (or, if she&#39;s unwell, feel better), my own arousal, because of my love for her and for her body, is always an undercurrent to the process (and an undercurrent that sometimes becomes a current and then a wave). i&#39;m thankful for how, at the spa, having l&#39;s hands laid on me didn&#39;t feel sexual (though i did get a semi as she worked her elbow into the sides of my hips) or medical (my only other context for being touched without clothes, since i&#39;ve never really done sports) but weirdly spiritual, in a way. i&#39;m thankful to think sacrilegiously of mm washing j&#39;s feet and to wonder whether she gave him a massage while rubbing them. i&#39;m thankful for the strangeness of l using not just her hands, but her forearms and elbows, for how i didn&#39;t expect that her forearms would be her primary tool (i&#39;m thankful for d&#39;s comparison, after the fact, of her masseuse&#39;s similar moves to a &quot;human rolling pin&quot;). i&#39;m thankful for maybe my favorite move l did, which was to drive her elbow up along my back and through the knots in my shoulder, culminating in lodging it for a second in the bowl between my shoulder and kneck and creating an uncanny feeling, like when someone &quot;cracks an egg&quot; over your head. i&#39;m thankful for the dark soft room and the weird harold budd in middle earth soundtrack.</p>
+<p>i&#39;m thankful that my forecast app told me it wasn&#39;t raining and wouldn&#39;t rain and then when i went outside to go running, it rained the whole time. i&#39;m thankful that the rain wasn&#39;t heavy but was ever present. i&#39;m thankful i wore a waterproof jacket even though it wasn&#39;t supposed to rain. i&#39;m thankful, as i ran through the rain, for the opportunity the weather app&#39;s inadequacy gave me to think about why it might have failed (is the amount of precipitation that triggers the &quot;light rain&quot; label an amount greater than 0? what is the rain that is not &quot;rain&quot;?). i&#39;m thankful for the tiny rainbow glitter that&#39;s formed by pixels of mist on my phone screen. i&#39;m thankful that even though i ran through a puddle, it was on the back end of my run and i have more than one pair of shoes and i can leave the others out to dry. i&#39;m thankful that i ran by the town donut store which is at the base of the graveyard and that it made me fantasize about getting donuts sometime during vacation. i&#39;m thankful that their jelly and cream filled donuts are well and truly filled, are so filled that i often feel sick afterward (but it&#39;s worth it). i&#39;m thankful to think that if ghosts have to haunt the graveyard after death, they at least get to smell the warm yeasty exhaust of the donut store every day. i&#39;m thankful that the families of people visiting the graves of loved ones at the cemetery also get to smell the donut smell and maybe afterward visit the donut store to celebrate the sweetness of life, the children in their church clothes with red jelly smeared across their faces, their hands sticky.</p>
+<p>i&#39;m thankful for the canned smoked oysters that my parents sent me for christmas. i&#39;m thankful that i had them with slices of sharp cheddar and one of d&#39;s mozzarella sticks and ritz crackers and a perfect pear for lunch. i&#39;m thankful that though i don&#39;t really like baked potatoes that much and so don&#39;t cook them very often, d was really in the mood for one and so i baked her a potato to have with our pork chops and roasted broccoli last night. i&#39;m thankful that i forgot to make the grated cauliflower that i was going to have instead of a baked potato and so d graciously agreed to split her potato with me, the same way she shared the massage. i&#39;m thankful for the fun of piercing the uncooked potato repeatedly with a fork, which was a job my mom gave me in the kitchen when i was a kid. i&#39;m thankful for the tip i read on serious eats about rubbing the outside of the potato with olive oil, which helps the skin crisp. i&#39;m thankful i cooked the potato perfectly, since in the past i&#39;ve often underdone the inside, which is unpleasant. i&#39;m thankful for the experience of splitting the hot potato and pressing pats of butter into it, for the unctuousness of the butter as it melted and spread through the fractured chunks of starch. i&#39;m thankful for the little bag of maldon salt that my parents sent me for christmas, which i sprinkled flakes of on top of the crispy brown skin and into the melty center of the potatoes.</p>
+<p>i&#39;m thankful to be an adult and get to choose what i eat every day. i&#39;m thankful to remember how my parents, meaning well, tried to force me to eat foods i didn&#39;t like when i was a kid, and how they often tried to force me to eat mashed potatoes, which were the food i then (and now, to a slightly lesser extent) find the most disgusting. i&#39;m thankful that my parents did not force me to eat mashed potatoes and foods i didn&#39;t like out of a reflexive parental authoritarianism but, i think, to encourage me to appreciate the food that we could afford and to respect the labor my mother had put into the meal and i think, more than anything in the specific case of mashed potatoes, out of incredulity that anyone could dislike something as wonderful as mashed potatoes, which everyone in both my immediate and extended southern family loved like babies love mother&#39;s milk.</p>
+<p>i&#39;m thankful for the sunday lunch at my grandparent&#39;s house, much retold in family lore, when my parents were trying to force me to eat mashed potatoes. i&#39;m thankful that i had a bad gag reflex as a kid, especially when confronted with foods i didn&#39;t like, so that as i tried to force the mashed potatoes down my throat, i started to gag and choke, the strangling sounds marring the quiet clatter of forks against plates and chewing and conversation. i&#39;m thankful that after i tried another bite, gagging more, that my paternal grandfather, an incredibly kind and soft-spoken man who loved his grandchildren and golf and feeding birds, said, firmly and loudly and definitively, &quot;this is enough. if he does not want the mashed potatoes, he does not have to eat them.&quot;</p>
+<p>i&#39;m thankful that this meal, more than 20 years ago now, was the last time i have had more than a spoonful of mashed potatoes (i&#39;m thankful that i have tried fancy haute thomas keller mashed potatoes as an adult, just in case you were wondering, in the hopes that they would make me like them and i could share that with my family, which i would love to do, but unfortunately, though i find them slightly less disgusting than my family&#39;s mashed potatoes, i still find them disgusting). i&#39;m thankful that if i don&#39;t want to, i may never have to eat mashed potatoes again (though i would do so to be polite if offered them at a dinner party, since as an adult my gag reflex is weaker and my willpower is stronger). i&#39;m thankful for my grandfather, who i loved and who loved me and who i hope, if there is an afterlife, is resting in peace in a place filled with nice smells.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/122815.html" class="btn btn-secondary">← 12/28/15</a>
+        <a href="/letters/122615.html" class="btn btn-secondary">12/26/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

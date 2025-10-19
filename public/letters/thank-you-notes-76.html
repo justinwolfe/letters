@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 7/6">
+  <title>thank you notes 7/6 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 7/6</h1>
+        <time datetime="2016-07-06T00:00:00Z">July 5, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that though i thought we were out of eggs, we weren&#39;t, they were just in a different part of the fridge. i&#39;m thankful for the times when you crack an egg into the frying pan and the yolk doesn&#39;t break. i&#39;m thankful for that tiny bit of slow motion anxiety as you&#39;re sliding the egg into the pan and you aren&#39;t sure yet if it&#39;s not going to break. i&#39;m thankful for the wobble of the yolk in the white as it dampens the force of the slide. i&#39;m thankful for the way that the white transmogrifies, changing from clear snot into its namesake color and from a thick liquid into a slippery solid. i&#39;m thankful, still and always, for the moment of <a href="http://firmuhment.tumblr.com/post/587077657">breaking a yolk</a>.</p>
+<p>i&#39;m thankful for two of my favorite funny lines in this week&#39;s kardashians: one, when rob, to emphasize his honesty about the love he&#39;s confessing to his sisters, says &quot;<em>i&#39;m being bible,</em>&quot; and another when kylie and kris are huddled with website people watching a visitor counter during the launch of a lip kit and there&#39;s a problem with the website which someone offhandedly ascribes to a &quot;cache&quot; issue, which kris seems confused by (why would there be a problem with cash in an online store? she seems to be thinking), and thankful that one of the website people gently touches her arm and says &quot;<em>different &#39;cache&#39;&#39;.&quot;</em></p>
+<p>i&#39;m thankful for the focus on kylie&#39;s anxiety in the episode. i&#39;m thankful for it even if the cause of her anxiety seems ludicrous at times, and almost offensive, if it&#39;s even possible or fair to be offended by someone professing their feelings of anxiety (probably not, even if it still feels like that way), as i am offended by her snapchats of dressing up in sterile scrubs and visiting what she calls &quot;my factory&quot; and her constant comments about &quot;working hard&quot; on the lip kit line. i&#39;m thankful to remind myself that we can&#39;t know what it feels like to be inside of someone else&#39;s body and mind and to remind myself of how horrible anxiety that&#39;s invisible to other people has made me feel so many times in the past.</p>
+<p>i&#39;m thankful for the conversations she has about anxiety with her sisters. i&#39;m thankful that kourtney and khloe, eager to problem-solve, invite her to work out with them and talk about how exercise has been the thing that has helped them most to be able to deal with bad feelings (by surrounding those feelings with a flood of chemical happiness in the form of endorphins, by building confidence and self esteem). i&#39;m thankful for how impressed i always am by kourtney&#39;s devotion to her workouts when i see them on snapchat, for her impressive form and focus, and thankful to have found out that for her like me part of that devotion (like her other devotions to healthy food and etc.) is a kind of desperate (but maybe also heroic? i think, at least) attempt to feel better. i&#39;m thankful to have discovered early in my adulthood how valuable exercise is for this and thankful that my physical health has been good enough that i haven&#39;t had to stop working out for some reason, which i worry might precipitate some kind of breakdown for me. </p>
+<p>i&#39;m thankful, even though it sucks for her, for how the abortive workout (which i remember watching on snapchat a while ago without the context of the anxiety and took as just another example of kylie being flakey) doesn&#39;t seem to help kylie feel better and thankful for how she leaves after the first quarter, still clearly distracted and distressed, despite kourtney and khloe&#39;s entreaties to stay and work harder to feel better. i&#39;m thankful for the example that provides to viewers, thankful for how it reminded me of times when, anxious, i&#39;ve tried to do some yoga or meditate to help myself calm down but have found that i can&#39;t focus enough to do those things or that even if i do they don&#39;t help me feel better. i&#39;m thankful that i still am usually able to pull together the willpower to try but thankful also to not beat myself up if they aren&#39;t working.</p>
+<p>i&#39;m thankful for the second conversation kylie has with her sisters about her anxiety, thankful for the way that what ultimately seems to comfort her much more than solutions is when kim, who always seems so serene and peaceful, confesses that she too felt anxiety about her fame in the past and spent too many long nights at her computer googling herself. i&#39;m thankful for that reminder that sometimes anxiety isn&#39;t a problem that can be &quot;solved&quot; like a jigsaw puzzle or something that you can stop feeling because someone tells you that there&#39;s nothing to be anxious about and so you should just &quot;stop.&quot; i&#39;m thankful that instead sometimes what helps most is to hear about how other people, maybe people you wouldn&#39;t assume were anxious, felt bad things the way you&#39;re feeling bad things in the past and then eventually felt better. i&#39;m thankful that kim gave kylie the gift of her vulnerability in that moment and am thankful sometimes to be able to give people the gift of mine </p>
+<p>i&#39;m thankful that d just mentioned lam to me and i thought she meant lamar odom but she meant the animal the lamb. i&#39;m thankful for <em>babel-17</em>, which continues to be weird and great. i&#39;m thankful for a good, if long, day at work yesterday. i&#39;m thankful that i felt like i made tangible contributions to my team. i&#39;m thankful that the standing desk thingy i bought from amazon is helping with my posture and thankful for the stacks of old issues of <em>wired</em> i used to get my wireless keyboard and trackpad to a properly ergonomic height. i&#39;m thankful for the cherry pie larabar i ate as a snack.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-moe5.html" class="btn btn-secondary">← thank you notes (moe)(5)</a>
+        <a href="/letters/thank-you-notes-75.html" class="btn btn-secondary">thank you notes 7/5 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

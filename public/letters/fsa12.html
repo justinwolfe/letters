@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(fsa)(12)">
+  <title>(fsa)(12) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(fsa)(12)</h1>
+        <time datetime="2016-11-26T00:00:00Z">November 25, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i am thankful for the pale light of winter that has been shining proud and fiercely over lisbon in the past couple of weeks. i am thankful for how it transitioned from a beaming  and electric summer light to this warm winter blessing. i am thankful that this will be one of the coldest winters portugal has felt in a long time, because cold reminds me of scotland and how happy (and unhappy) i was there. i am thankful for st andrews, and thankful that whenever i come back to those days i always think of the peace i felt in the snowy meadows, of the greens of summer and yellows and reds of autumn and the full whiteness of winter, of the quiet and the strong gushes of cold seawind, of the smells and sounds of the sea and sights of brown bunnies across the plains, of the cobblestone streets and the old castle, of the abandoned graveyard and the haunted pier, of east sands (the beach) and the empty old course. i am thankful to have been so immensely happy while mostly alone, and contemplating the jaw-dropping scenario.</p>
+<p>i am thankful for the first time i saw snow. it was a cold november night, and i was out to dinner to a very typical and somewhat posh bicentennial pub by the golf course, by the sea, with my maniac brazilian friend b and her heroin-addict friend g. while they were talking nonsense, i was out smoking a cigarette and again just drinking the view. and i remember distinctly feeling a heavy wet patch of ice falling on my eyelashes, taking me by surprise, and rubbing it off and seeing that in fact it was a snow flake. and as i looked up, the whole dark sky had begun crying white specs that reflected the streetlamp light, like a snowglobe, falling lightly on the floor, on the grass, on treetops and rooftops of the few buildings scattered on that far part of campus. i am thankful for having had my breath taken away for a bit before calling b and g and crying out that it was snowing. i am thankful for b’s and g’s typical blasé dismissal of any exteriorisation of enthusiasm, (a snobbish cynicism that still makes me annoyed), by claiming that it was probably just a random thing because it never snowed so close to the sea. and then, 2 hours later, still heavily snowing, the university halls started competing on who could build the biggest snowman, and on facebook my muslim friends called me out for a snow fight (also a first) and i laughed and laughed as i fell on heaps of freshly fallen snow, and laughed and laughed until my stomach and throat ached as i lunged to get my friends back, and i laughed and laughed from the pure bliss of be experiencing something so beautiful and so new. i am thankful that the longest period of snow  in a century fell on town, holding us all in a knee-deep snow from that night in the earliest days of november until april.</p>
+<p>i am thankful for the lack of sunshine and like on a crisp december morning i waited on the smoker’s bench outside of my halls for my taiwanese friend g to finish breakfast and head to our international relations lecture, far up in the other side of town. and although it was 11am, the sun was only showing then. and the sky was clear, but the sun never rose high in winter, and the snow reflected the pinks and reds of sunrise and mixed with the dark blues of night for a few minutes it seemed as the entire plain in front of my hall and in way to town turned purple and then violet and then lavender, before setting in the prettiest - and saddest - shade of orange. and i was grinning wildly staring at what happened before my eyes, when g leapt over the bench next to me and asked me what was i all happy about, and i just smiled. i have always shared secrets with nature.</p>
+<p>i’m thankful for having turned 25. i’m thankful that j made sure i had the best day of my life, although i never cared much for my birthday. i’m thankful we ended up having dinner in loco, a restaurant i’ve mentioned in this space before, together with g, db and dg.</p>
+<p>i’m thankful for self-given birthday gifts. i’m thankful for khloé kardashian’s good american jeans, which although expensive were one of the best purchases i have made in the last years - my first jeans in over 10 years, and damn comfortable, great fit and good quality.</p>
+<p>i’m thankful for the job interview i had yesterday in one of the biggest law firms in the country. i’m glad it went well, although i am a bit daunted by the perspective of being rejected because my biggest trump is always my downfall - my resumé attracts employers for being diverse and full, but law partners and never keen on hiring interns or associates with that many interests and who are constantly changing - they fear dispersion and lack of focus. i’m happy that it went well and they liked me plenty, but i am most thankful for this fear of being rejected, which finally pushed me to accepting the fact that i need to move on to a big law firm from my current individual practice internship, for financial reasons, and also for my sanity. doing the amount of things i am doing now but having the erratic schedule, painted with long free periods, is making me feel like i am being left behind professionally by my peers. and also, receiving financial compensation for my law trade will be very nice. and as for this firm in particular, it is convenient for being opposite side of the street from j’s law firm, and working with a lot of my friends (including my best friend g!) will be a big perk. i’m thankful to hope that i move on to the next stage of recruitment, and english test, and to hope that if i do i will surely proceed until the final meeting with the firm partners.</p>
+<p>i’m thankful for hope.</p>
+<p>f.</p>
+<p>- fsa (11/19/2016). 25, portuguese.</p>
+<p>previously: <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa">1</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-2">2</a>, <a href="http://tinyletter.com/thankyounotes/letters/tyn-fsa-3">3</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-4">4</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-5">5</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-6">6</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-7">7</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-fsa-8">8</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-9">9</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-10">10</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-fsa-11">11</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1127-6850.html" class="btn btn-secondary">← 11/27</a>
+        <a href="/letters/1125-8391.html" class="btn btn-secondary">11/25 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

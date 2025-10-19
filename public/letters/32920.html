@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="3/29/20">
+  <title>3/29/20 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>3/29/20</h1>
+        <time datetime="2020-03-29T00:00:00Z">March 28, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for a conversation i had with sm about great live recordings and thinking about how, though i love studio trickery and perfect sound forever, there is something unique and magical about how live recordings capture this residue of reality in a particular place and time. i&#39;m thankful for <a href="https://www.newyorker.com/magazine/2012/11/26/deadhead">this old <em>new yorker</em> article</a> i always think of.</p>
+<p>i&#39;m thankful for the recordings he mentioned, <a href="https://open.spotify.com/playlist/2EoCrKsgmVjDd8hRJ6rdNO">the velvets live at max&#39;s kansas city</a> and <em><a href="https://open.spotify.com/album/4FR8Z6TvIsC56NLyNomNRE">stop making sense</a></em> and <a href="https://open.spotify.com/track/4CGjzckFcKtWpuXgNqyBkp">this grateful dead performance</a> from london in 1972 where <em>&quot;jerry is tripping face on acid and goes into this song and just starts crying during the guitar solo part. and the sound engineer who is sitting outside the venue is so moved by the music that he ditches the recording van and comes inside and sees jerry crying and he starts crying and then we are just fortunate enough that the machines worked without a hitch and preserved this song.</em>&quot; i&#39;m thankful to be just fortunate enough.</p>
+<p>i&#39;m thankful for <a href="https://open.spotify.com/album/4FR8Z6TvIsC56NLyNomNRE">the three song stretch from jay-z&#39;s <em>unplugged</em></a> where he goes into an abbreviated &quot;can i get a...&quot; that&#39;s a juggling act of trying to maintain a complex cadence while cutting out the curses and ends with him saying &quot;bounce, bounce, bounce&quot; and the band vaults off a springboard into &quot;hard knock life&quot;. i&#39;m thankful for how in &quot;hard knock life&quot; the crowd starts singing too early and he giggles and says &quot;naw you don&#39;t sing yet&quot; and then when his backup singers officially come in with the hook he says &quot;now sing&quot; and then, when they sing, says, endeared, &quot;i love you&quot; and then after a chorus of that the beat switches up again into &quot;ain&#39;t no *&quot; and the crowd is so excited, the tempo builds and does this roller coaster ride through a great verse and then the song ends with the crowd singing in full voice. i&#39;m thankful how at the end of &quot;song cry&quot; he admits &quot;i got lost for a second, i&#39;m not gonna lie. i was in my own thoughts for real.&quot;</p>
+<p>i&#39;m thankful to be in my own thoughts, for real. i&#39;m thankful to have been listening to <em>marquee moon</em> still, which has made me think of <em>anna karenina</em>, a book i could never get into for years until the point at which i finally for some reason could and was then <em>so</em> into it, which is how i feel about this album now, which for me in the past was always something i respected but didn&#39;t love. i&#39;m thankful when something shifts inside of me and i get the opportunity to love something.</p>
+<p>i&#39;m thankful for <a href="https://www.newyorker.com/magazine">this week&#39;s issue of</a> <em><a href="https://www.newyorker.com/magazine">the new yorker</a>,</em> which was great front to back, and for yoko ogawa&#39;s <em><a href="https://www.amazon.com/dp/B077RG9JFX/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">the memory police</a></em>, which feels like kafka in the best worst ways, but more tender. i&#39;m thankful for the book i started reading after that, <em><a href="https://www.amazon.com/What-Real-Unfinished-Meaning-Quantum-ebook/dp/B073P4GBPD/ref=sr_1_1?dchild=1&keywords=what+is+real&qid=1585513065&s=digital-text&sr=1-1">what is real</a></em>, which so far is interesting; i think there&#39;s a risk with a book like that where you&#39;re riding the line between being true to the material and letting that make you opaque and hard to read on the one hand and on the other hand dumbing it down so much it&#39;s like what&#39;s the point and it feels like the book is riding that well so far. i&#39;m thankful that d hung in there with <em>the wire</em> and we&#39;re now deep into the really good part of season 1.</p>
+<p>i&#39;m thankful that i already filled up my pill organizer for the week. i&#39;m thankful for sumo mandarins. i&#39;m thankful kh will be back at work tomorrow, since things were extra quiet without her. i&#39;m thankful we made plans for next weekend even if the forecasted weather now threatens our planned distanced backyard quarantine rendezvous next week, since forecasts can always change.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/33020.html" class="btn btn-secondary">← 3/30/20</a>
+        <a href="/letters/32820.html" class="btn btn-secondary">3/28/20 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

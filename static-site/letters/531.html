@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/31">
+  <title>5/31 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/31</h1>
+        <time datetime="2018-05-31T00:00:00Z">May 30, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that yesterday evening i was watching videos of kacey musgraves performing songs from golden hour and was struck by <a href="https://www.youtube.com/watch?v=WoxPkD0Xyjs">her awkwardness on stage</a>, how, despite how thick and rich and pure her vocals are live, she holds her body so stiffly, how gestures like walking over to vibe with her guitar player (i&#39;m thankful to posit that her awkwardness feels partly like the awkwardness of someone used to having a guitar to hold, see her much more natural in <a href="https://www.youtube.com/watch?v=t6GWckNEIEE">this</a>) feel like they require a great deal of effort and intentionality rather than being casual and improvised, how her face is so stil and placid. i&#39;m thankful that this doesn&#39;t really matter at all since i love kacey musgraves to pieces and noticing her apparent discomfort with being on stage just endeared me to her more,</p>
+<p>but i&#39;m thankful that noticing and thinking about it got me to watch this old video of lana del rey in dublin. i&#39;m thankful, as a person who is not really religious, that certain videos/songs/poems/documents can still seem to be enriched with some kind of holy spirit and that this is one of the key ones for me, which i watched for the first time when d and i were on mushrooms years ago. </p>
+<p>i&#39;m thankful for how the title is &quot;<a href="https://www.youtube.com/watch?v=DdiGekiibQ0">Lana del Rey, Tears of emotion during Video Games, Vicar Street, Dublin 26-05-2013</a>&quot;, which feels like some kind of commemoration of the miraculous appearance of a saint, a testimony to remember. </p>
+<p>i&#39;m thankful that the video is shot from the crowd, at a distant zoom, which involves occasionally racking in and out of focus, as happens <a href="https://youtu.be/DdiGekiibQ0?t=2s">at the beginning</a>, an immaterial blob against a dark blue sky resolving into her.</p>
+<p>i&#39;m thankful that she begins the video by talking about how people have been saying things about her and how she &quot;really appreciates all of my friends and all of my fans&quot; (i&#39;m thankful for how she collapses that distance with that parallel structure), which is the kind of bullshit every pop star says all the time but you can see it on her face, it&#39;s real in that moment. i&#39;m thankful that the crowd cheers and whistles and hoots in response</p>
+<p>i&#39;m thankful for how her strong face, which she had geared up to make her statement, breaks under the adulation of her fans. i&#39;m thankful to try to soak it in and regain her composure at the same time, unable to speak, she <a href="https://youtu.be/DdiGekiibQ0?t=21s">pulls her hands</a> into the <a href="https://en.wikipedia.org/wiki/Sign_of_the_horns">sign of the horns</a>, the rock and roll analogue to a pastor, moved by the spirit, saying &quot;praise jesus.&quot; i&#39;m thankful for how her arms shake as they channel the energy.</p>
+<p>i&#39;m thankful that it&#39;s not enough, the crowd is so in love with her, and <a href="https://youtu.be/DdiGekiibQ0?t=28s">her face breaks again, this time into a smile</a>, she grips the microphone for stability.</p>
+<p>i&#39;m thankful that when she steps away from the mic, the video zooms out. i&#39;m thankful that the crowd to us are just silhouettes, crushed black, and we try to peer around them <a href="https://youtu.be/DdiGekiibQ0?t=35s">to see her</a>.</p>
+<p>i&#39;m thankful for how <a href="https://youtu.be/DdiGekiibQ0?t=52s">she turns away to cry</a>, <a href="https://youtu.be/DdiGekiibQ0?t=1m11s">inaudibly says thank you</a>.</p>
+<p>i&#39;m thankful that <a href="https://youtu.be/DdiGekiibQ0?t=1m22s">the video gets blocked out by a person,</a> the whole screen black, but we can still hear the cheers. i&#39;m thankful that when the camera pans around the person, <a href="https://youtu.be/DdiGekiibQ0?t=1m28s">it&#39;s zoomed in close again</a>, we see lana standing in front of a projector that&#39;s showing clips from the &quot;video games&quot; video, wiping tears from her eyes.</p>
+<p>i&#39;m thankful that as the first chords of the song start to play she says that <a href="https://youtu.be/DdiGekiibQ0?t=1m32s">she thinks the crowd is going to have to sing it for her</a>, because she&#39;s so overcome. i&#39;m thankful that this seems like a bit of a joke, she grins through her tears, but i&#39;m thankful that <a href="https://youtu.be/DdiGekiibQ0?t=1m41s">as she sings the first line of the song, the crowd&#39;s voices are all around her, a wall of sound, a chorus of support</a>. </p>
+<p>i&#39;m thankful that she starts the song with her eyes closed and, as the crowd comes in, <a href="https://youtu.be/DdiGekiibQ0?t=1m42s">she opens them and briefly looks out to the crowd</a> (and to us, through the camera) but then, that too much, she closes here eyes again. i&#39;m thankful for her glittery gold eyeshadow, for her wingled liner, which accentuate all of the beautiful movements of her eyes.</p>
+<p>i&#39;m thankful for the way <a href="https://youtu.be/DdiGekiibQ0?t=1m54s">she grabs the microphone stand for support</a>, the way you would embrace a friend while walking down the street together on a nice day.</p>
+<p>i&#39;m thankful that <a href="https://youtu.be/DdiGekiibQ0?t=2m03s">every time she cries, despite herself, the crowd cheers, which just makes her cry more</a>. i&#39;m thankful for this fragment of an interview a fan included in the youtube comments: &quot;<em>I’d been sick on tour for about two years with this medical anomaly that doctors couldn’t figure out. That’s a big part of my life: I just feel really sick a lot of the time and can’t figure out why. I’d gotten these shots in Russia, where we’d just been. It was just heavy. It’s just heavy performing for people who really care about you, and you don’t really care that much about yourself sometimes. I thought it was sad. I thought my position was sad. I thought it was sad to be in Ireland singing for people who really cared when I wasn’t sure if I did</em>.&quot;﻿</p>
+<p>i&#39;m thankful <a href="https://youtu.be/DdiGekiibQ0?t=2m7s">she stops singing and the crowd fills in for her</a> until <a href="https://youtu.be/DdiGekiibQ0?t=2m12s">she comes back</a>.</p>
+<p>i&#39;m thankful for the chorus comes in and she and her fans sing at each other &quot;<a href="https://youtu.be/DdiGekiibQ0?t=2m18s">it&#39;s you, it&#39;s you, it&#39;s all for you</a>&quot;, that &quot;<a href="https://youtu.be/DdiGekiibQ0?t=2m27s">heaven is a place on earth with you</a>&quot;. i&#39;m thankful as the crowd&#39;s voice rise <a href="https://youtu.be/DdiGekiibQ0?t=2m35s">she breaks again</a> and just listens to them singing her song to her.</p>
+<p>i&#39;m thankful for the little <a href="https://youtu.be/DdiGekiibQ0?t=3m12s">skip of curtsy of a dance</a> she does to the drum fill at the end of the first line of the second verse.</p>
+<p>i&#39;m thankful for <a href="https://youtu.be/DdiGekiibQ0?t=3m22s">the broken triangle composition of the video of the second verse</a>, a black hand holding a phone recording video on the right side, lana at the top, and us, watching across time and space, the implicit third corner on the left (sometimes a silhouette of a person in front holding our place).</p>
+<p>i&#39;m thankful for how she <a href="https://youtu.be/DdiGekiibQ0?t=3m45s">runs her hand through her hair</a> (i&#39;m thankful i accidentally typed that as &quot;runs her hands through her air&quot;, which is also accurate, the way she seems to be in the air, floating essence).</p>
+<p>i&#39;m thankful that while singing the heaven chorus again, <a href="https://youtu.be/DdiGekiibQ0?t=3m45s">she walks stage right in front of some (inexplicable) palm fronds</a>, which reminds me that i don&#39;t associate any artist with a season as much as i associate lana with summer, that she is summer to me. i&#39;m thankful it doesn&#39;t feel like she chose or planned to walk over there (just as it wasn&#39;t the case when she went stage left earlier in the vide), but that she just has to move because of all the energy that&#39;s flowing through her, and that she wants to be with all the people, or as many as she can.</p>
+<p>i&#39;m thankful near the end of the second chorus <a href="https://youtu.be/DdiGekiibQ0?t=4m15s">she seems suddenly sad</a> and my guess is that she realizes that this moment is going to eventually end, the song can&#39;t go on forever, and once it&#39;s gone she might not feel like this anymore.</p>
+<p>i&#39;m thankful for how she shifts into a smile <a href="https://youtu.be/DdiGekiibQ0?t=4m23s">here</a>. i&#39;m thankful for <a href="https://youtu.be/DdiGekiibQ0?t=4m32s">how she picks up and holds her drink</a> (which has two straws, which i&#39;m also thankful for) in the instrumental break.</p>
+<p>i&#39;m thankful that as the final chorus comes in, the <a href="https://youtu.be/DdiGekiibQ0?t=4m44s">video blurs out of focus</a>, which i know is because a person stepped in front of it, but i like to imagine as the camera crying.</p>
+<p>i&#39;m thankful for how <a href="https://youtu.be/DdiGekiibQ0?t=5m20s">she reaches for and grabs the high note in the penultimate line of the chorus</a>, the one that&#39;s different for this chorus from all the others, a glimmer of light. and then i&#39;m thankful that she then stays up there, where eagles dare, for the last line, taking it <a href="https://youtu.be/DdiGekiibQ0?t=5m24s">higher than it is on the record, the improvised flourish</a> to enshrine the moment.</p>
+<p>i&#39;m thankful, at that last moment, how t<a href="https://youtu.be/DdiGekiibQ0?t=5m26s">here&#39;s so much energy that she has to open her hands around the mic for a second</a>, let it go and flow out into the world.</p>
+<p>i&#39;m thankful that the video ends with <a href="https://youtu.be/DdiGekiibQ0?t=5m37s">clapping</a>, the crowd clapping for her, creating a brakhage staccato in the foreground, and her clapping for them (us) in the background. </p>
+<p>i&#39;m thankful that <a href="https://youtu.be/DdiGekiibQ0?t=5m46s">we lose her for a second</a> but she reappears, distant in the blackness of the space, <a href="https://youtu.be/DdiGekiibQ0?t=5m54s">kneeling, in supplication</a>. i&#39;m thankful to think about frank o&#39;hara&#39;s poem about lana turner and to think we love you get up and i&#39;m thankful she gets up and the last thing she does is <a href="https://youtu.be/DdiGekiibQ0?t=6m05s">thank them (us)</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/61.html" class="btn btn-secondary">← 6/1</a>
+        <a href="/letters/63018.html" class="btn btn-secondary">6/30/18 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

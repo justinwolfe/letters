@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="annotated top songs 2023">
+  <title>annotated top songs 2023 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>annotated top songs 2023</h1>
+        <time datetime="null">December 31, 1969</time>
+      </header>
+
+      <div class="letter-body">
+        <ol>
+<li><a href="spotify:track:0FAKS4dY2MADctcsPbmUvm">&quot;bo$$ chick&quot;</a> by <a href="spotify:artist:6cK3NBO6uP7hh0oyuVELFl">saweetie</a>
+(<a href="https://p.scdn.co/mp3-preview/9685c6ff7b4aed27839aca1b1447f5a463d1820e?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this is one of those songs where there&#39;s one specific little part that just hits so hard for me, which is when she says, the instruments all dropped out, &quot;what&#39;s that in my cup that&#39;s that potion&quot; and then the kick hits</p>
+<ol start="2">
+<li><a href="spotify:track:0aoLgGE9S9qMjIGtTgpnNd">&quot;you wish&quot;</a> by <a href="spotify:artist:0CLW5934vy2XusynS1px1S">flyana boss</a>
+(<a href="https://p.scdn.co/mp3-preview/36b9293f6ed7e048176a81754c77765d7f1ac4ea?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>pure joyful energy. cannot count the number of times my brain has earwormed &quot;jesus CHRIST / i&#39;m bout to sin again&quot;. the song is so short and action-packed that i feel physically compelled to start it again after it ends.</p>
+<ol start="3">
+<li><a href="spotify:track:34sOdxWu9FljH84UXdRwu1">&quot;all-american bitch&quot;</a> by <a href="spotify:artist:1McMsnEElThX1knmY4oliG">olivia rodrigo</a>
+(<a href="https://p.scdn.co/mp3-preview/9e5cc35417bff1a304b3fe03c8e5769af6fb609d?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>love the chorus and the way that the first time it&#39;s incomplete and doesn&#39;t go all the way to her singing &quot;bitch&quot; which makes the moment when that drops in a later chorus so satisfying</p>
+<ol start="4">
+<li><a href="spotify:track:6PfFBEztSncke8MSCohK26">&quot;big one&quot;</a> by <a href="spotify:artist:0CLW5934vy2XusynS1px1S">flyana boss</a>
+(<a href="https://p.scdn.co/mp3-preview/9c491387f87e6774ffee029118b9cf2764d8eaa6?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>not quite as good as &quot;you wish&quot; but almost there? &quot;spitting game so good like blah blah blah&quot;</p>
+<ol start="5">
+<li><a href="spotify:track:0NprRZn1emMhdnHIOdsk0U">&quot;lexicon&quot;</a> by <a href="spotify:artist:17mwzDXKn4ra9cuxXaptwp">vagabon</a>
+(<a href="https://p.scdn.co/mp3-preview/690be60945109ec65e8a3a1cbd1cf0691f189ee9?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>maybe my favorite chorus of the year? joyful soft loving post-disco.</p>
+<ol start="6">
+<li><a href="spotify:track:0ZxhtATQ0a6EvQNZ0z6NKV">&quot;princess diana (with nicki minaj)&quot;</a> by [ice spice, nicki minaj](spotify:artist:3LZZPxNDGDFVSIPqf4JuEf, spotify:artist:0hCNtLu0JehylgoiP8L4Gh)
+(<a href="https://p.scdn.co/mp3-preview/6bd58867187199ac30fa2e6180ac525ae67c5f7c?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>idk how we could consider anyone but ice spice the best new artist of 2023; just an instant star. &quot;in the hood i&#39;m like princess diana&quot; is such an iconic lyric (and the way the meter holds it until the end) and not even her most iconic lyric.</p>
+<ol start="7">
+<li><a href="spotify:track:3IX0yuEVvDbnqUwMBB3ouC">&quot;bad idea right?&quot;</a> by <a href="spotify:artist:1McMsnEElThX1knmY4oliG">olivia rodrigo</a>
+(<a href="https://p.scdn.co/mp3-preview/d0662148a9ad686d71ad404d8c268a7943ebae70?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>perfectly good but not my favorite on the album or one i think i listen to a lot (though deborah karaoked it on NYE and that was great); i think it&#39;s on the list because i listen to &quot;all american bitch&quot; so much  and on the album this song is right after so it gets triggered.</p>
+<ol start="8">
+<li><a href="spotify:track:62xla8336vUnmxTWNzCfRt">&quot;bubalu&quot;</a> by [feid, rema](spotify:artist:2LRoIwlKmHjgvigdNGBHNo, spotify:artist:46pWGuE3dSwY3bMMXGBvVS)
+(<a href="https://p.scdn.co/mp3-preview/ffc434849a937b4c2a780d40874e0e59c2995bc4?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>probably the surprise of the year for me as someone who doesn&#39;t listen to/know enough spanish language music (i found it through my new friday habit of trying to listen to new music friday playlist on shuffle). pure sweetness and light. when we were doing karaoke the other night i tried to do this one but my spanish reading/pronunciation was not up to the challenge</p>
+<ol start="9">
+<li><a href="spotify:track:56Nv3kZNdUPL6BsC1I0jd7">&quot;flavors of karma&quot;</a> by [earthgang, spillage village](spotify:artist:5MbNzCW3qokGyoo9giHA3V, spotify:artist:7izarc0fRIPbdZ8cVyChRf)
+(<a href="https://p.scdn.co/mp3-preview/548197727d664ed7223b491001cc62d6020ce366?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>don&#39;t know this artist at all and i think i caught this on new music friday or my release radar, but it was one of my favorite songs for the back half of the year—some of my favorite rapping and a sweet beat.</p>
+<ol start="10">
+<li><a href="spotify:track:7qLr3HMApUbyDkUvgIvHnB">&quot;oh u went (feat. drake)&quot;</a> by [young thug, drake](spotify:artist:50co4Is1HCEo8bhOyUWKpn, spotify:artist:3TVXtAsR1Inumwj472S9r4)
+   (<a href="https://p.scdn.co/mp3-preview/e0bc5b4bd0c08137d5a0179a355baf99804e0e91?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>free thug: i feel like historically i didn&#39;t appreciate him enough and am trying to catch up. i find the anaphora of this chorus very soothing.</p>
+<ol start="11">
+<li><a href="spotify:track:6Q34tUtXLuWst5c63ddQ7N">&quot;hiding out in the open&quot;</a> by <a href="spotify:artist:6CWTBjOJK75cTE8Xv8u1kj">feist</a>
+   (<a href="https://p.scdn.co/mp3-preview/aaa99993919dc0a7e7658c304024602b43196f4c?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i am generally skeptical of acoustic ballads in our current era, but with plenty of exceptions, and this exception is great in part because while it seems like just voice and acoustic guitar there are so many production tricks that make it more interesting than that.</p>
+<ol start="12">
+<li><a href="spotify:track:1tXn4yWAAyzFikNsJ3bMow">&quot;can i talk my shit?&quot;</a> by <a href="spotify:artist:17mwzDXKn4ra9cuxXaptwp">vagabon</a>
+   (<a href="https://p.scdn.co/mp3-preview/f90e5ad0fc1112d53f5a5518de45ac3d44952487?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this was a big one for deborah and i to listen to in the car right when it came out. a parody fragment i often sang to myself was &quot;i just lost my phone / don&#39;t know where it is / better look again and find that shit&quot;</p>
+<ol start="13">
+<li><a href="spotify:track:5sp71CUt0jXRNqHblPGp7b">&quot;ballad of a homeschooled girl&quot;</a> by <a href="spotify:artist:1McMsnEElThX1knmY4oliG">olivia rodrigo</a>
+   (<a href="https://p.scdn.co/mp3-preview/0e4027b54a70815e39c86c835c34fdc85321b3d2?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>another great chorus with mall-punk power chords. high school was unequivocally the worst time in my life and in retrospect i kind of wish i had pushed for home school, which might have led to the problems of its own (as addressed in the song) but it&#39;s hard to believe those problems would be worse than the ones i was already dealing with.</p>
+<ol start="14">
+<li><a href="spotify:track:3F5CgOj3wFlRv51JsHbxhe">&quot;jimmy cooks (feat. 21 savage)&quot;</a> by [drake, 21 savage](spotify:artist:3TVXtAsR1Inumwj472S9r4, spotify:artist:1URnnhqYAYcrqrcwql10ft)
+   (<a href="https://p.scdn.co/mp3-preview/0859116d6b69da68199ee5d8153bf9e33771267c?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>similar to &quot;bo$$ chick&quot;, this is here because it has a moment i keep coming back to, which is when the beat fully kicks in and drake raps &quot;fuck a pigeon hole&quot; which is so great when i&#39;m running and need a little burst of energy. i also meant to make a tiktok that accused drake of bestiality for this line.</p>
+<ol start="15">
+<li><a href="spotify:track:7nBE8CCq6CpMUxfhODQApq">&quot;star guitar&quot;</a> by <a href="spotify:artist:1GhPHrq36VKCY3ucVaZCfo">the chemical brothers</a>
+   (<a href="https://p.scdn.co/mp3-preview/d39234ec2939f1694e142de0d1f20dc2865e2dd6?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i hadn&#39;t listened to this song since college but deborah brought it into rotation and it gleams and sparkles so dazzlingly; i never regret having put it on.\</p>
+<ol start="16">
+<li><a href="spotify:track:4pgeI9ohPGzSDeKE1D4dYf">&quot;keep dat nigga (part 2) (feat. glorilla, kali &amp; big boss vette)&quot;</a> by [icandy, glorilla, kaliii, big boss vette](spotify:artist:1I0tv3cE1cDIJvQpHyuCYN, spotify:artist:2qoQgPAilErOKCwE2Y8wOG, spotify:artist:1YRqgFNXqRyMDRr8ClS1NL, spotify:artist:6fKiutMtRIcxi4zEau0BuI)
+   (<a href="https://p.scdn.co/mp3-preview/cd360a10f95614fb4a8849595ab73fc695bde3ea?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i don&#39;t think this is a great song but i listened to it a lot because love a posse cut and am also a sucker for the <a href="https://genius.com/Kc-and-the-sunshine-band-boogie-shoes-sample">&quot;boogie shoes&quot;</a> sample the song is anchored around (it&#39;s so obvious but like sometimes things are obvious because they&#39;re great)</p>
+<ol start="17">
+<li><a href="spotify:track:5JYPXqMwYc0zTODQdjMEZN">&quot;deli&quot;</a> by <a href="spotify:artist:3LZZPxNDGDFVSIPqf4JuEf">ice spice</a>
+   (<a href="https://p.scdn.co/mp3-preview/707edd116b024d5e5640b57b31390441ac2ec1f2?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i think this <em>is</em> a great song and has the best dr. seuss lyric he didn&#39;t write (&quot;ooters on ooters you know they&#39;re gon oot&quot;). the play with sound is just so lovely and also i rlly enjoyed the meme videos it spawned especially the one with <a href="https://www.tiktok.com/@beautykardnews/video/7296306696421494049">north and penelope</a>.</p>
+<ol start="18">
+<li><a href="spotify:track:3S68RFe1lsdCdTMPIMJM3X">&quot;cash in cash out&quot;</a> by [pharrell williams, 21 savage, tyler, the creator](spotify:artist:2RdwBSPQiwcmiDo9kixcl8, spotify:artist:1URnnhqYAYcrqrcwql10ft, spotify:artist:4V8LLVI7PbaPR0K2TGSxFF)
+   (<a href="https://p.scdn.co/mp3-preview/b5e119f0ca4fb84c46b46f13f296c1c116c7e542?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>pharrell production is something i&#39;ve always loved and i still really appreciate—there&#39;s such a focus in his work on tiny details of sound engineering and texture, the songs are always &quot;clean&quot; and &quot;tight&quot; (like his ageless face), botox production.</p>
+<ol start="19">
+<li><a href="spotify:track:6QT6j7rKt7Vk3IuV2AUO9W">&quot;lacy&quot;</a> by <a href="spotify:artist:1McMsnEElThX1knmY4oliG">olivia rodrigo</a>
+   (<a href="https://p.scdn.co/mp3-preview/ec46a46218209b81dca72a5d04b96b8639cc4b41?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>you may note at this point that for a number of these songs i have parodies in my head that overtake the original and this one draws on the weird line &quot;skin like puff pastry&quot; which i think is meant to convey delicacy and also to rhyme but i guess i don&#39;t think of puff pastry in a way that is analogous to beautiful skin and talking about people&#39;s skin is weird so i sing it as a parody about john wayne gacy</p>
+<ol start="20">
+<li><a href="spotify:track:5n4Ws20sveldU4wt5UT4Ej">&quot;cadillac on 22&#39;s&quot;</a> by <a href="spotify:artist:7jFaoqWPhYLrKzjzlpXmUO">david banner</a>
+   (<a href="https://p.scdn.co/mp3-preview/1be4a5e6453763bc494167a9f7a7dbd0f7d279d0?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>was on the list last year and the year before, always on rotation, just hits me perfect every time, another song where when the drums kick in it&#39;s just a force of nature</p>
+<ol start="21">
+<li><a href="spotify:track:0oJO0gr6eOZJmLQcSD4Ekw">&quot;black mirror&quot;</a> by <a href="spotify:artist:1EpyA68dKpjf7jXmQL88Hy">noname</a>
+   (<a href="https://p.scdn.co/mp3-preview/b91f847a2ef82e800c075ee36f9f5ab7a8ec8791?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>the new noname album was one of the biggest surprises of the year—i already knew she was great but this was a step change. i love it all, but this opening track has such a pretty major key beat (always the way to my heart) and i listened to the most.</p>
+<ol start="22">
+<li><a href="spotify:track:2FYGZDfsAnNsrm1gVbyKnG">&quot;saoko&quot;</a> by <a href="spotify:artist:7ltDVBr6mKbRvohxheJ9h1">rosalía</a>
+   (<a href="https://p.scdn.co/mp3-preview/a310d38a9cc3dc227fa9b1cba91b53865f0eb4e7?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this is from 2022 but is a favorite &quot;running and need some energy&quot; song and still on retreat. it&#39;s so dynamic, i love the beat switches that keep you on your toes and the lyrics as i understand them.</p>
+<ol start="23">
+<li><a href="spotify:track:23RoR84KodL5HWvUTneQ1w">&quot;(it goes like) nanana - edit&quot;</a> by <a href="spotify:artist:2mLA48B366zkELXYx7hcDN">peggy gou</a>
+   (<a href="https://p.scdn.co/mp3-preview/e36e0bd4714844f1f9d992398b41a3e333f15cc9?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i don&#39;t listen to a lot of dance music but heard this on new music friday and couldn&#39;t stop listening to it over and over. the balance is just right, it builds and fallls and builds again, and it has a really tasty clean lead guitar lick.</p>
+<ol start="24">
+<li><a href="spotify:track:0tSkMuKKrLXEfxc58cEhFX">&quot;off the record&quot;</a> by <a href="spotify:artist:6RHTUrRF63xao58xh9FXYJ">ive</a>
+   (<a href="https://p.scdn.co/mp3-preview/3346ec86648d6aebb9cd5fc4693c3e534719d12a?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>not quite as good as my fave kpop &quot;cupid&quot; by fifty fifty, but honestly a very close finish—lush major key chamber kpop. (also i still love the my morning jacket song of the same title).</p>
+<ol start="25">
+<li><a href="spotify:track:2ysdZYZjBbBJJEycKcnlSu">&quot;finesse (hey baby)&quot;</a> by <a href="spotify:artist:75cW8FFekyCjj0mfZM1Gfb">flamingosis</a>
+   (<a href="https://p.scdn.co/mp3-preview/4db5c710a38988ed354dd6aeb81367874504b712?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this is older and was never a song that was &quot;my favorite song&quot; of the moment but it&#39;s always a song i can go back to and whatever moment i&#39;m in it feels good (the song as a cold glass of water)</p>
+<ol start="26">
+<li><a href="spotify:track:5FkoSXiJPKTNyYgALRJFhD">&quot;orange soda&quot;</a> by <a href="spotify:artist:5SXuuuRpukkTvsLuUknva1">baby keem</a>
+   (<a href="https://p.scdn.co/mp3-preview/16036f2f4b872f58b00af7696e802883c79ae84e?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>another &quot;this one moment&quot; pick: imperfect and misogynstic at times, but i think the line &quot;you&#39;re my orange soda shortie&quot; is just sooooo perfect poetry in its concision and associations (i also appreciated learning there&#39;s a weed strain called &quot;cat piss&quot;).</p>
+<ol start="27">
+<li><a href="spotify:track:739WUU1tPFLO4x4HJq561K">&quot;cupid - twin ver.&quot;</a> by <a href="spotify:artist:4GJ6xDCF5jaUqD6avOuQT6">fifty fifty</a>
+   (<a href="https://p.scdn.co/mp3-preview/af5c16d4c69be9b3278e7079d5aab14aa425127b?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>there was a stretch in the summer where i was listening to this all the fucking time. both it and the sped-up version are perfect. i did a cover of it with distorted electric guitar and autotune and it was one of my favorites i did this year.</p>
+<ol start="28">
+<li><a href="spotify:track:1AtiYbyttcLHmI9wJS51QG">&quot;motor city 17&quot;</a> by <a href="spotify:artist:0IVcLMMbm05VIjnzPkGCyp">j dilla</a>
+   (<a href="https://p.scdn.co/mp3-preview/59ea2aa56d00f16007c71e6beafbbdee4b33aca1?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>dilla has been my core &quot;background music for writing prose or writing code&quot; for years and will probably be for years to come. the dusty, imperfect perfection of literally everything — i have never been religious or liked religious music or really much classical music but he is my my beethoven, my bach, my rachmaninoff.</p>
+<ol start="29">
+<li><a href="spotify:track:0ToG55iJZCOzZkcpWbXxpW">&quot;vampire empire&quot;</a> by <a href="spotify:artist:5QdyldG4Fl4TPiOIeMNpBZ">big thief</a>
+   (<a href="https://p.scdn.co/mp3-preview/8fc598038caa44efe9b06857efbc5d277dcb1ab4?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>maybe my favorite &quot;rock&quot; song of the year? it builds and builds and builds in intensity and hits so hard and i fucking love when a singer overdrives the mic and takes it into the red and her voice is just ragged by the end. i am not a lyrics person generally but also there are some really nice lines.</p>
+<ol start="30">
+<li><a href="spotify:track:56y1jOTK0XSvJzVv9vHQBK">&quot;paint the town red&quot;</a> by <a href="spotify:artist:5cj0lLjcoR7YOSnhnX0Po5">doja cat</a>
+   (<a href="https://p.scdn.co/mp3-preview/f544992f165d4bd069f4d903ff946dc625ba0b8e?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>not my favorite but it was so popular this year for a reason which is that the sample is good and the rapping is also good and the chorus is so catchy.</p>
+<ol start="31">
+<li><a href="spotify:track:4Oy4QE9IHBHnmJaWdjZyXl">&quot;i&#39;m mad at me&quot;</a> by [trippie redd, lil wayne](spotify:artist:6Xgp2XMz1fhVYe7i6yNAax, spotify:artist:55Aa2cqylxrFIXC767Z865)
+   (<a href="https://p.scdn.co/mp3-preview/40a0606f93440a9dddac0b537cc6ac212d5ac835?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i&#39;ll be forever a sucker for weezy, even old man weezy (loved <a href="https://www.youtube.com/watch?v=iuiQBVYcbyc&list=PLi51xc7B3ygxgWMnLVnaVDQPLTElpAUde&index=4&pp=iAQB">the popcast deluxe discussion of &quot;hip-hop&#39;s generation gap&quot;</a>, one of my fave episodes of my fave podcasts of the year) and i love the little late period renaissance he&#39;d had this year. i also love songs where the someone lights a blunt before going into their verse (a trick i first learned about from the belle and sebastian song off their first album where the mic catches stewart murdoch zipping his anorak but see also &quot;shoot me down&quot; by wayne).</p>
+<ol start="32">
+<li><a href="spotify:track:67c5M9gVWemCV5SGH5cc4v">&quot;don&#39;t cry&quot;</a> by <a href="spotify:artist:0IVcLMMbm05VIjnzPkGCyp">j dilla</a>
+   (<a href="https://p.scdn.co/mp3-preview/2842de000c5be2aed1a01940a924d598b3951f21?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>truly dilla forever (and an opportunity to again plug <em>dilla time</em> which was such an excellent music book). i don&#39;t listen to his acknowledged masterpiece <em>donuts</em> as much as other dilla because it&#39;s more front of brain listening than background but the vocal samples on this are just so freaking beautiful.</p>
+<ol start="33">
+<li><a href="spotify:track:0WNfQxDGaPTl0yogcMR5v1">&quot;tomorrow 2 (with cardi b)&quot;</a> by [glorilla, cardi b](spotify:artist:2qoQgPAilErOKCwE2Y8wOG, spotify:artist:4kYSro6naA4h99UJvo89HB)
+   (<a href="https://p.scdn.co/mp3-preview/164e1b5cf7911d49b8a251f7c12d2b3fe8039ef4?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this song goes hard! glorilla has such a great voice (deep and southern, some shared energy with megan). also never unhappy for a cardi feature.</p>
+<ol start="34">
+<li><a href="spotify:track:1SVze8cjUtaq7pI8n6SMAt">&quot;bops&quot;</a> by <a href="spotify:artist:6AMd49uBDJfhf30Ak2QR5s">coi leray</a>
+   (<a href="https://p.scdn.co/mp3-preview/4e2aebefc58ba8bbfbec33fc008c8aab2cba4964?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this song is kinda mid but i put it in my &quot;liked songs&quot; the first time i heard it and found myself returning to it again and again despite myself. the chorus is pretty great though—a really nice use of percussion as a highlighted element.</p>
+<ol start="35">
+<li><a href="spotify:track:7bVQ3KvoMwWw2lqPmVF5kg">&quot;face down&quot;</a> by <a href="spotify:artist:37hAfseJWi0G3Scife12Il">city girls</a>
+   (<a href="https://p.scdn.co/mp3-preview/b32ed0d45acd11ba2176d82a10ce7902ba54ca72?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>my favorite city girls song this year, just relentless power from the start to the finish (&quot;lay it motherfucking down&quot;)</p>
+<ol start="36">
+<li><a href="spotify:track:0JXXNGljqupsJaZsgSbMZV">&quot;sure thing&quot;</a> by <a href="spotify:artist:360IAlyVv4PCEVjgyMZrxK">miguel</a>
+   (<a href="https://p.scdn.co/mp3-preview/d337faa4bb71c8ac9a13998be64fbb0d7d8b8463?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>in this household we love miguel (&quot;do you&quot; is &quot;our song&quot; as a couple, which i associate so deeply with this period in my last winter of grad school where i had a three hour evening seminar on contemporary literature once a week that i would often be hiking to and from in the snow and the snow at night is the best cc lorelai gilmore) but had somehow missed this great song, so i&#39;m grateful that speeding it up brought it back into play.</p>
+<ol start="37">
+<li><a href="spotify:track:3GKL13lkM5nRc4zC1lIOrR">&quot;still not a player (feat. joe) - radio version&quot;</a> by [big pun, joe](spotify:artist:2Xu7q46Hf02xOoEIm4E1Qs, spotify:artist:3zTOe1BtyTkwNvYZOxXktX)
+   (<a href="https://p.scdn.co/mp3-preview/330714e1c2ee9a0c62f3b5c6d5e4f8915fdbfde0?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>a song i was vaguely aware of because it was so popular but came up i think in like the spotify &quot;track radio&quot; for some other 90s hip hop i was listening to and entered the rotation. there&#39;s a small enough amount of spanish that i can rap it when karaoke-ing in the shower.</p>
+<ol start="38">
+<li><a href="spotify:track:4jTs7ny5eSRnKTzxdrFv5I">&quot;smoking on my ex pack&quot;</a> by <a href="spotify:artist:7tYKF4w9nC0nq9CsPZTHyP">sza</a>
+   (<a href="https://p.scdn.co/mp3-preview/86963023df7c2d8580ee5af64f25ec40f00370e1?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>sza had one of the best albums with many great tracks but i am particular a sucker for the production on this song, which reminds me of the sped up soul samples that were my entry point for truly loving hip hop (see also the previous lil wayne song and...many others on the list)</p>
+<ol start="39">
+<li><a href="spotify:track:1L0OmJV0LnPDWuHCIGmBV6">&quot;on the radar freestyle&quot;</a> by [drake, central cee](spotify:artist:3TVXtAsR1Inumwj472S9r4, spotify:artist:5H4yInM5zmHqpKIoMNAx4r)
+   (<a href="https://p.scdn.co/mp3-preview/2056dcb0d4a589f38b9faf3788b15032dd241408?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i don&#39;t listen to a lot of UK rap but as usual i love drake as a scorpio vampire (game recognize game).</p>
+<ol start="40">
+<li><a href="spotify:track:31MNHKE86sEXzIglbGQ6mu">&quot;got me started&quot;</a> by <a href="spotify:artist:3WGpXCj9YhhfX11TToZcXP">troye sivan</a>
+   (<a href="https://p.scdn.co/mp3-preview/11992d7655397c15edbdc2981c4231a9d53bf8d5?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>last year deborah introduced me to a couple of troye sivan&#39;s previous songs (&quot;rager teenager&quot; and &quot;could cry just thinking about you&quot;) which i loved but this album feels like a real consistent accomplishment—a further maturation of an aesthetic and a consistency. this particular song has the funniest fucking synth sound in the chorus which was exploited in <a href="https://www.youtube.com/watch?v=TzBvtMzWNL4">the perfect SNL sketch where timmy plays troye as a sleep paralysis demon</a>.</p>
+<ol start="41">
+<li><a href="spotify:track:1upSmzMw8d6DfAYkgXSCQ5">&quot;birthday&quot;</a> by [saweetie, yg, tyga](spotify:artist:6cK3NBO6uP7hh0oyuVELFl, spotify:artist:0A0FS04o6zMoto8OKPsDwY, spotify:artist:5LHRHt1k9lMyONurDHEdrp)
+   (<a href="https://p.scdn.co/mp3-preview/074e804cace41936fd75a5d01431362a20ba8ee0?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>another one that i don&#39;t think is that great but that i liked the first time i heard it and so returned to when i would come across it in my liked songs.</p>
+<ol start="42">
+<li><a href="spotify:track:4YQImHflXSiIMXntcwPkx8">&quot;bongos (feat. megan thee stallion)&quot;</a> by [cardi b, megan thee stallion](spotify:artist:4kYSro6naA4h99UJvo89HB, spotify:artist:181bsRPaVXVlUKXrxwZfHK)
+   (<a href="https://p.scdn.co/mp3-preview/3b7f907a6418a4ccdf9284584cef4ea80288aedc?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i will listen to anything cardi and megan do together forever.</p>
+<ol start="43">
+<li><a href="spotify:track:79ri2kyVbP57qMLfNDHI3S">&quot;she&#39;s just the type of girl&quot;</a> by [neil frances, dreamcastmoe](spotify:artist:587PA35pRGL1JwQr6idJbb, spotify:artist:05PeUup2zYw9VOGnaknbn9)
+   (<a href="https://p.scdn.co/mp3-preview/dec165d10eb869f8ce013542734af52eca755f40?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>i have no knowledge of these artists or this song or any memory of listening to it even once</p>
+<ol start="44">
+<li><a href="spotify:track:0yUaLqhsVsguBpoOPL4cO7">&quot;in ha mood&quot;</a> by <a href="spotify:artist:3LZZPxNDGDFVSIPqf4JuEf">ice spice</a>
+   (<a href="https://p.scdn.co/mp3-preview/c689b2b0a0eb47f29bba2d86c7cdf18166fb19a8?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>the songs on her EP pull this magic track of being so consistent and of a piece with one another on the one hand and on the other hand each are distinct bangers and don&#39;t feel like the same song over and over. </p>
+<ol start="45">
+<li><a href="spotify:track:5kBBVaQUEisiw5AHIGbRn4">&quot;atomic&quot;</a> by <a href="spotify:artist:5GlFG0lCadjEBnY1w1FwwW">aziya</a>
+   (<a href="https://p.scdn.co/mp3-preview/394281c2beb41c0864a0a8ad708c190ae2865028?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this is my other favorite rock song of 2023—reminds me of early santigold which is high praise.</p>
+<ol start="46">
+<li><a href="spotify:track:6UliIDFULJHvJpSfQ61zu5">&quot;big mad (feat. flo milli)&quot;</a> by [icandy, flo milli](spotify:artist:1I0tv3cE1cDIJvQpHyuCYN, spotify:artist:08PvCOlef4xdOr20jFSTPd)
+   (<a href="https://p.scdn.co/mp3-preview/6c38f901664ae5fcace266c06a600b218f7fd1e5?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>this is my song to sing to miso when she&#39;s being mad (also &quot;in ha mood&quot;). great feeling myself energy.</p>
+<ol start="47">
+<li><a href="spotify:track:3KiKpbpJp9QKuTZb9ocfJi">&quot;for love&quot;</a> by <a href="spotify:artist:3ysp8GwsheDcBxP9q65lBg">lush</a>
+   (<a href="https://p.scdn.co/mp3-preview/ba6ee93de43fc64e746bc4eda34f019d640cf619?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>had never heard this band and i haven&#39;t listened to much of their other music, but it&#39;s just a great post-punk shoegazey thing. the vocals make me think of laetitia sadier (always praise) but also great guitar parts and song structure.</p>
+<ol start="48">
+<li><a href="spotify:track:66VLscP5FZHPeMmtWaopbJ">&quot;two doves&quot;</a> by [dirty projectors, deradoorian](spotify:artist:5VF0YkVLeVD4ytyiyVSIiF, spotify:artist:3jLCHiuXBTGEEku37TsobP)
+   (<a href="https://p.scdn.co/mp3-preview/3af20ada5db1e9efcd8003cd8923ec08acc060a2?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p><em>bitte orca</em> is an album i go back to a</p>
+<ol start="49">
+<li><a href="spotify:track:0CrcwVLUe8wzLUIXgjXVZJ">&quot;kill bill (feat. doja cat)&quot;</a> by [sza, doja cat](spotify:artist:7tYKF4w9nC0nq9CsPZTHyP, spotify:artist:5cj0lLjcoR7YOSnhnX0Po5)
+   (<a href="https://p.scdn.co/mp3-preview/dd641231bb5f32c4e88de653b7ee727a7d9819ce?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>one of the choruses of the year, which i often parodied to myself as &quot;i just lost my vape / </p>
+<ol start="50">
+<li><a href="spotify:track:697cBYjdAjPKe0RsEc6532">&quot;brand new&quot;</a> by [tyga, yg, lil wayne](spotify:artist:5LHRHt1k9lMyONurDHEdrp, spotify:artist:0A0FS04o6zMoto8OKPsDwY, spotify:artist:55Aa2cqylxrFIXC767Z865)
+   (<a href="https://p.scdn.co/mp3-preview/837aaf7f79b36f291a151e17a9e519074fdcea94?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+<p>seems wrong to have 2 tyga songs on my top songs but seems right to have 2+ wayne ones. also has great</p>
+<ol start="51">
+<li><a href="spotify:track:5p3JunprHCxClJjOmcLV8G">&quot;walk on the wild side&quot;</a> by <a href="spotify:artist:42TFhl7WlMRXiNqzSrnzPL">lou reed</a>
+   (<a href="https://p.scdn.co/mp3-preview/afe92a16fcc7d89cd74938d91c9c752bfb65c189?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:65iyYuAIuhttMaYvHQnonf">&quot;pound town 2 (feat. nicki minaj &amp; tay keith)&quot;</a> by [sexyy red, nicki minaj, tay keith](spotify:artist:3DbwFQlvLxRSi2uX8mf81A, spotify:artist:0hCNtLu0JehylgoiP8L4Gh, spotify:artist:5xkFVS6IwwgHEAaRzXc9U3)
+   (<a href="https://p.scdn.co/mp3-preview/1a96a92a644318e61707146ed9c05ca9b44ce299?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:4hXiv4MkvpojVHc30jDp8r">&quot;snooze - sped up&quot;</a> by <a href="spotify:artist:7tYKF4w9nC0nq9CsPZTHyP">sza</a>
+   (<a href="https://p.scdn.co/mp3-preview/6a60a23f8883ac1afc7f732f3964134498195d75?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:1rydhdFtKe2CRkiaVb7aGF">&quot;the black seminole.&quot;</a> by <a href="spotify:artist:6icQOAFXDZKsumw3YXyusw">lil yachty</a>
+   (<a href="https://p.scdn.co/mp3-preview/ac9e159b00ae870ee2d66c5863d1cf5dd004921e?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:2doammtCiLQMD8LXIKl4OE">&quot;princess diana&quot;</a> by <a href="spotify:artist:3LZZPxNDGDFVSIPqf4JuEf">ice spice</a>
+   (<a href="https://p.scdn.co/mp3-preview/812b92c27877ea2a844e12149fcf50b76e535f08?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5yemXFXSGZoTXNOjj3dbuz">&quot;greatness&quot;</a> by <a href="spotify:artist:0VRj0yCOv2FXJNP47XQnx5">quavo</a>
+   (<a href="https://p.scdn.co/mp3-preview/5f38d30e3772326ee7d10c2758d105d3b9a9ac18?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:31To8W4ERzjzq1Jx5XWSMb">&quot;balloons (feat. jay electronica &amp; eryn allen kane)&quot;</a> by [noname, jay electronica, eryn allen kane](spotify:artist:1EpyA68dKpjf7jXmQL88Hy, spotify:artist:0TkqXdyWLsssJH7okthMPQ, spotify:artist:5xI4mPixKfrCCspATqbpy3)
+   (<a href="https://p.scdn.co/mp3-preview/1dc8fd36bb71c665522924e8a570676a9f179844?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:49PyCCLOdJi0jHkGyyY2vv">&quot;sonate pacifique&quot;</a> by [l&#39;impératrice, isaac delusion](spotify:artist:4PwlsrN0t5mLN0C827cbEU, spotify:artist:2HGAZDmVV3GAH4XFAZdvSG)
+   (<a href="https://p.scdn.co/mp3-preview/95a5cf3d271ba4ad49aea942ddbb3c04d5ccc6df?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:7fesNTgTEMEH0ye8MOgEDY">&quot;teenage dream&quot;</a> by <a href="spotify:artist:1McMsnEElThX1knmY4oliG">olivia rodrigo</a>
+   (<a href="https://p.scdn.co/mp3-preview/6b80acd4cda6fd37a6e3d1d2f0d59e669144828e?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:6r8Xk7Fldj4GR4r0fVBH42">&quot;still got it&quot;</a> by <a href="spotify:artist:3WGpXCj9YhhfX11TToZcXP">troye sivan</a>
+   (<a href="https://p.scdn.co/mp3-preview/a75860141adba41cd3d6682317d6ab1d455f3b66?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:6efrjZM4NUpfmDRFNKvC01">&quot;boomboom (feat. ayoni)&quot;</a> by [noname, ayoni](spotify:artist:1EpyA68dKpjf7jXmQL88Hy, spotify:artist:2Tju7nLsAMD6RTBna56hj6)
+   (<a href="https://p.scdn.co/mp3-preview/0d5497433fac1a89d4bbadfd9dc687f96001d669?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:7gh5gihI0rGdrKoSYDrmVu">&quot;i am warm &amp; powerful&quot;</a> by <a href="spotify:artist:28V657x2IVJnSW3Srw6Ubd">someone still loves you boris yeltsin</a>
+   (<a href="https://p.scdn.co/mp3-preview/6f33371a3faf98d9d3bfde0805e4871c0d9ffa9e?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:1Hohk6AufHZOrrhMXZppax">&quot;alien superstar&quot;</a> by <a href="spotify:artist:6vWDO969PvNqNYHIOW5v0m">beyoncé</a>
+   (<a href="https://p.scdn.co/mp3-preview/a5715e753ed35f47ec45920a54448b3b109bb39b?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:26QLJMK8G0M06sk7h7Fkse">&quot;love is embarrassing&quot;</a> by <a href="spotify:artist:1McMsnEElThX1knmY4oliG">olivia rodrigo</a>
+   (<a href="https://p.scdn.co/mp3-preview/b598b3e3e7e941d2e5dc44907051e229dbe91476?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:3B228N0GxfUCwPyfNcJxps">&quot;cupid – twin ver. (fifty fifty) – sped up version&quot;</a> by <a href="spotify:artist:1c0ChJZVluriMPwFrTAmly">sped up 8282</a>
+   (<a href="https://p.scdn.co/mp3-preview/29e8870f55c261ec995edfe4a3e9f30e4d4527e0?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5s7TTyBpzJL1de6l08g4yR">&quot;hold me down (feat. jimetta rose &amp; voices of creation)&quot;</a> by [noname, jimetta rose, voices of creation](spotify:artist:1EpyA68dKpjf7jXmQL88Hy, spotify:artist:7FjGU7aqZcwNk3ICLLmcSX, spotify:artist:40NStGcOMG4jXy2DEyvkdN)
+   (<a href="https://p.scdn.co/mp3-preview/3684f301ca9013d1a5f9bfabcd3771edbf55fd60?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:2Ty7EDf9XLYzEUqEIwJfDC">&quot;twerkulator&quot;</a> by <a href="spotify:artist:37hAfseJWi0G3Scife12Il">city girls</a>
+   (<a href="https://p.scdn.co/mp3-preview/aa01b772d6cb6f9c7dd03a8134e00a815b272fb4?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:1Rq4GtIucW9CAcF8B6PAbW">&quot;i serve the base&quot;</a> by <a href="spotify:artist:1RyvyyTE3xzB2ZywiAwp0i">future</a>
+   (<a href="https://p.scdn.co/mp3-preview/7500496aa2b24710b8780734a53510607794fef2?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:1RepVZpZriLZbdNxY2sWQV">&quot;jay dee 2 - instrumental&quot;</a> by <a href="spotify:artist:0IVcLMMbm05VIjnzPkGCyp">j dilla</a>
+   (<a href="https://p.scdn.co/mp3-preview/a3bee0f065f1b67b1a84c1ff420c1c9bfa31fdcd?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:4doxCAkqckpGTasPN6ByUu">&quot;rebuke&quot;</a> by [kaytraminé, aminé, kaytranada](spotify:artist:5oifjQw72WO7Jut07fVWMy, spotify:artist:3Gm5F95VdRxW3mqCn8RPBJ, spotify:artist:6qgnBH6iDM91ipVXv28OMu)
+   (<a href="https://p.scdn.co/mp3-preview/8bd9f3e1ebded402869d34401087ac1699f68b28?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:2J6OF7CkpdQGSfm1wdclqn">&quot;clouded&quot;</a> by <a href="spotify:artist:3tlXnStJ1fFhdScmQeLpuG">brent faiyaz</a>
+   (<a href="https://p.scdn.co/mp3-preview/8663094142e97cb5a91c978319675555449040df?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:4A8ts0wUeOYu7y11KAAPil">&quot;munch (feelin’ u)&quot;</a> by <a href="spotify:artist:3LZZPxNDGDFVSIPqf4JuEf">ice spice</a>
+   (<a href="https://p.scdn.co/mp3-preview/1257da4e3383babda4e18589f893b7965cc5a215?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5NpVDaUI1vKqFFXw0sXHea">&quot;jay dee 7 - instrumental&quot;</a> by <a href="spotify:artist:0IVcLMMbm05VIjnzPkGCyp">j dilla</a>
+   (<a href="https://p.scdn.co/mp3-preview/4fa2909d71748744a76d422a1e6e22cd2c4f29cc?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:2kp8oCFvA7EJTSLeCaC1uX">&quot;i&#39;m a winner now&quot;</a> by <a href="spotify:artist:6lmKPkIXF8BVrkPXkjccsB">executive suite</a>
+   (<a href="https://p.scdn.co/mp3-preview/3437dc000014289aad336f8033a6ae52b9df67c5?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5e9TFTbltYBg2xThimr0rU">&quot;the chain - 2004 remaster&quot;</a> by <a href="spotify:artist:08GQAI4eElDnROBrJRGE0X">fleetwood mac</a>
+   (<a href="https://p.scdn.co/mp3-preview/9cd01344e96f8dfaf0fb47fbb36d9da930daab2f?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:0B1xarnfKvUFWUoFdQnooq">&quot;riot (rowdy pipe&#39;n)&quot;</a> by [a$ap rocky, pharrell williams](spotify:artist:13ubrt8QOOCPljQ2FL1Kca, spotify:artist:2RdwBSPQiwcmiDo9kixcl8)
+   (<a href="https://p.scdn.co/mp3-preview/feb1d57ed612cfbd37070742725f91d5d8341f7a?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:0AYt6NMyyLd0rLuvr0UkMH">&quot;slime you out (feat. sza)&quot;</a> by [drake, sza](spotify:artist:3TVXtAsR1Inumwj472S9r4, spotify:artist:7tYKF4w9nC0nq9CsPZTHyP)
+   (<a href="https://p.scdn.co/mp3-preview/147bf8e4646c20340ba58199b5f6f185cd9c085c?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:6kLp24Op7cOu8iQkU46sBv">&quot;i&#39;m confessin&#39; (that i love you)&quot;</a> by <a href="spotify:artist:4PDpGtF16XpqvXxsrFwQnN">thelonious monk</a>
+   (<a href="https://p.scdn.co/mp3-preview/82897a4895b09b502e1b3e93f2fe93992f7f5976?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5KN8PcNwnUQ1nF29nJG6Zq">&quot;gualala&quot;</a> by <a href="spotify:artist:3Sz7ZnJQBIHsXLUSo0OQtM">mac demarco</a>
+   (<a href="https://p.scdn.co/mp3-preview/2c99d7fd7766a8f5fb40f8e86142a01829dcd1e7?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:3xMnPIvsaWwzHzqqzaihEX">&quot;nonviolent communication (metro boomin &amp; james blake, a$ap rocky, 21 savage)&quot;</a> by [metro boomin, james blake, a$ap rocky, 21 savage](spotify:artist:0iEtIxbK0KxaSlF7G42ZOp, spotify:artist:53KwLdlmrlCelAZMaLVZqU, spotify:artist:13ubrt8QOOCPljQ2FL1Kca, spotify:artist:1URnnhqYAYcrqrcwql10ft)
+   (<a href="https://p.scdn.co/mp3-preview/646fb099922129826eb1c494dffa7e41a0749bd6?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:2sUImfbz5cpAW50SiQla4h">&quot;4eva&quot;</a> by [kaytraminé, aminé, kaytranada, pharrell williams](spotify:artist:5oifjQw72WO7Jut07fVWMy, spotify:artist:3Gm5F95VdRxW3mqCn8RPBJ, spotify:artist:6qgnBH6iDM91ipVXv28OMu, spotify:artist:2RdwBSPQiwcmiDo9kixcl8)
+   (<a href="https://p.scdn.co/mp3-preview/2e17a2745f1ad47169a079579d0f49b9a2b1afd1?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:0tMMPZEt6Gyrl9FI8zSicm">&quot;glue song (feat. clairo)&quot;</a> by [beabadoobee, clairo](spotify:artist:35l9BRT7MXmM8bv2WDQiyB, spotify:artist:3l0CmX0FuQjFxr8SK7Vqag)
+   (<a href="https://p.scdn.co/mp3-preview/ebc5da952fb39873a45607a661eef52a8cc28bea?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:4OxPOtzU3mnAC7Zzb2jdpD">&quot;somebody&#39;s in love&quot;</a> by <a href="spotify:artist:5hAhrnb0Ch4ODwWu4tsbpi">yo la tengo</a>
+   (<a href="https://p.scdn.co/mp3-preview/f933cf035f56276162673e759c55163e8f943114?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:7gwEKj4xXm9iRqxGhHxSI4">&quot;work for it&quot;</a> by <a href="spotify:artist:37hAfseJWi0G3Scife12Il">city girls</a>
+   (<a href="https://p.scdn.co/mp3-preview/44f8bfafe51b892bb029b6156032519f0683ab28?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:3gZilge8NsINDKKlZD03Zg">&quot;ick&quot;</a> by <a href="spotify:artist:4OVbrPbhvK46A1uXTU1u5F">lay bankz</a>
+   (<a href="https://p.scdn.co/mp3-preview/49ae6dcdf2aa1914d2b42a555c1db282ad9b39b2?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:6hqazBd1QKThu6THWQrrsA">&quot;drug trade (feat. black thought)&quot;</a> by [smoke dza, flying lotus, black thought](spotify:artist:3kf0gOpxWtkyeMNJVDQPtd, spotify:artist:29XOeO6KIWxGthejQqn793, spotify:artist:6DJEUXZm0e2rAohdoZ5Voo)
+   (<a href="https://p.scdn.co/mp3-preview/ac416f3c92cf8b76d274ad462bdc613bd80092ba?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:0DgY053iwPDydoRymeGVZX">&quot;int&#39;l players anthem (i choose you)&quot;</a> by [ugk, outkast](spotify:artist:6ZhjJOJXXwnPS8PrXdmjLw, spotify:artist:1G9G7WwrXka3Z1r7aIDjI7)
+   (<a href="https://p.scdn.co/mp3-preview/d0cab0e7613fd3df7e300dbf6dece28b1a4ee353?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:6GiwLIxSRc3bEBaLj2RPjK">&quot;j&#39;aime les filles&quot;</a> by <a href="spotify:artist:4eArh1v6UwBbKkjdgHCned">kate bollinger</a>
+   (<a href="https://p.scdn.co/mp3-preview/fcaafa906245918f8c2899ab97b514d4c0175fc0?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:7sliFe6W30tPBPh6dvZsIH">&quot;area codes&quot;</a> by <a href="spotify:artist:1YRqgFNXqRyMDRr8ClS1NL">kaliii</a>
+   (<a href="https://p.scdn.co/mp3-preview/d1beed2734f948ec9c33164d3aa818e04f4afd30?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5QLHGv0DfpeXLNFo7SFEy1">&quot;1979 - remastered 2012&quot;</a> by <a href="spotify:artist:40Yq4vzPs9VNUrIBG5Jr2i">the smashing pumpkins</a>
+   (<a href="https://p.scdn.co/mp3-preview/5c2f38c90920f9d3db3784bc0205cf24ec7a1abe?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:7uqaGyvRRFhaQzhVczeZma">&quot;balcony scene - from &#39;romeo + juliet&#39;&quot;</a> by <a href="spotify:artist:526q7RxT5KA1VGeQ5GMSHO">craig armstrong</a>
+   (<a href="https://p.scdn.co/mp3-preview/670edd2dbd5c8f022b6435b3096b393f9a6b5206?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:1FBEnYsjuL5pjKyjLtgtf4">&quot;par 5&quot;</a> by <a href="spotify:artist:5mmXz0LCVnPbgHcZ7KBJlj">kitty craft</a>
+   (<a href="https://p.scdn.co/mp3-preview/0539f46463477664fa2b2f2ad931d0905278d252?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:3UZSpAlc0WZjxkfbUBdUgT">&quot;we will meet again - remastered&quot;</a> by <a href="spotify:artist:4jXfFzeP66Zy67HM2mvIIF">bill evans</a>
+   (<a href="https://p.scdn.co/mp3-preview/4fd56798ea3cbb18d3ae0e6285947c19b5538c57?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:6DraJdQzb2zlaIrF4ts93Q">&quot;in step&quot;</a> by <a href="spotify:artist:6awzBEyEEwWHOjLox1DkLr">girl talk</a>
+   (<a href="https://p.scdn.co/mp3-preview/8b56891672480c9b549d540aeb59c9a1266faac2?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:30elPK31lRDN1kFjnt7HRQ">&quot;in the blue of the evening&quot;</a> by <a href="spotify:artist:5N8jNQsfW9SHBkhVqqnXbU">tommy flanagan trio</a>
+   (<a href="https://p.scdn.co/mp3-preview/a7b41ce6db5c3fee7e150edebd9efd789af7f9ac?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5Qb5Crn9sefQ27M2lKahPM">&quot;tabula rasa (feat. armand hammer)&quot;</a> by [earl sweatshirt, armand hammer](spotify:artist:3A5tHz1SfngyOZM2gItYKu, spotify:artist:3SCI7sXHUZIeDKMWC5NT9C)
+   (<a href="https://p.scdn.co/mp3-preview/f6eeb178d53f4894140045ff798461a247d6c5c8?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:17C96Rsq4f38eMuZRGtku6">&quot;you must believe in spring&quot;</a> by <a href="spotify:artist:4jXfFzeP66Zy67HM2mvIIF">bill evans</a>
+   (<a href="https://p.scdn.co/mp3-preview/faadd25b11797653c8bd43de66d3469029190dbf?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:5bs8OXiOt4BPF2FAnRFP1u">&quot;heads will roll - a-trak remix&quot;</a> by [yeah yeah yeahs, a-trak](spotify:artist:3TNt4aUIxgfy9aoaft5Jj2, spotify:artist:3TaUSUXn41GixL7zbvrIDt)
+   (<a href="https://p.scdn.co/mp3-preview/7010ceb68b6fdac8a783da25d675c1d583171bc7?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+<li><a href="spotify:track:0uEp9E98JB5awlA084uaIg">&quot;doo wop (that thing)&quot;</a> by <a href="spotify:artist:2Mu5NfyYm8n5iTomuKAEHl">ms. lauryn hill</a>
+   (<a href="https://p.scdn.co/mp3-preview/feb1c988c1940d63a3af836f2965f04177dc24c9?cid=9950ac751e34487dbbe027c4fd7f8e99">preview</a>)</li>
+</ol>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/bcd69acf-e263-48da-aa6d-b139bc92f310.html" class="btn btn-secondary">← </a>
+        <a href="/letters/fucking-love-to-muse.html" class="btn btn-secondary">fucking love to muse →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

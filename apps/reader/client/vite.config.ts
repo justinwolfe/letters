@@ -7,6 +7,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'markdown-vendor': ['react-markdown', 'marked'],
+        },
+      },
+    },
   },
   server: {
     port: 5173,
@@ -27,4 +35,6 @@ export default defineConfig({
       },
     },
   },
+  // Make sure public directory assets are copied
+  publicDir: 'public',
 });

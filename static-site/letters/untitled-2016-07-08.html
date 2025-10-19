@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Untitled 2016-07-08">
+  <title>Untitled 2016-07-08 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>Untitled 2016-07-08</h1>
+        <time datetime="2016-07-08T20:11:52Z">July 8, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to consider the question of whether gratitude means an acceptance of the status quo, even if that status quo is unjust and evil. i&#39;m thankful to recognize that my personal investment in the concept of gratitude, as well as the privilege and security inherent in my subject position, might blind me from fully or appropriately considering the question, but thankful that considering the question feels like an important enough thing for me to continue along this line of inquiry here in these notes, however limited my personal perspective on it might be and however useless these words end up being. i&#39;m thankful if you would like to listen to me think but thankful also if you close this email now.</p>
+<p>i&#39;m thankful to know and to recognize that we live in a society which is profoundly unjust for the people of color who live in it with me, even though knowing and recognizing that injustice doesn&#39;t seem to make any difference. i&#39;m thankful to know that the only real way to even begin to try to correct that injustice comes through systemic legislative and judicial reform. i&#39;m thankful that i know the necessity of this even though in the current political climate of my society, it seems impossible to conceive of achieving even a small fraction of the type of reforms that would even begin to try to answer to the enormity of the injustice, the genocide and theft and slavery and appropriation that are the central and foundational acts of the society that we live in and that continue to the present day.</p>
+<p>i&#39;m thank to make clear that while i value gratitude and try to demonstrate that value to you daily as a way to try to help make our lives and, in a small way, the world better, i don&#39;t think we should ever feel gratitude for this kind of injustice, especially injustice as profound as the injustice of the society we live in. i&#39;m thankful that sometimes in these notes i send you i might use a sentence that begins &quot;i&#39;m thankful&quot; and then describes a quotidian unpleasant thing which i then try to view through the lens of gratitude as an exercise, but i&#39;m thankful to know that there are limits to this rhetorical device. i&#39;m thankful to know that there isn&#39;t (and shouldn&#39;t be) any way to be grateful for the murder or discrimination or abuse or theft or harm against people of color that is sanctioned by the state and accepted as the status quo by the society we live in.</p>
+<p>i&#39;m thankful for <a href="http://lazenby.tumblr.com/post/125706997537/how-do-you-explain-the-new-kind-of-civil-rights">this post</a> i was reading which talks about the foundational concept of gandhi&#39;s theory and its revelatory influence on martin luther king jr. when he heard it described one day while he was a student in seminary.</p>
+<p>&quot;<em>On April 9th, 1950 Martin Luther King heard a black preacher named Mordecai Johnson (then the president of Howard University) speak in Philadelphia. Johnson had spent some time in India and spoke at length about the philosophical underpinnings of Gandhi’s method.</em> </p>
+<p><em>To Gandhi, nonviolence was a matchless weapon. This is because it is founded on a concept called <strong>satyagraha</strong>. This word means something like ‘truth-force’ or ‘the persuasive power of love’ in Sanskrit. Nonviolent resistance could never be defeated because it was founded on love for one’s enemies. This love is the source of a protester’s refusal to physically attack his or her adversary. In Gandhi’s hands, and with the help of the international press, it had just been used to win the independence of 390 million people.</em> </p>
+<p><em>King later said that this talk was so “electrifying that I left the meeting and went out and purchased half a dozen books on Gandhi’s life and works.” King was then still a student at Crozer Theological Seminary, just south of Philadelphia. That Sunday in 1950 was the beginning of nonviolent resistance in the American Civil Rights movement.</em></p>
+<p><em>In reading about Gandhi’s philosophy and the strategy for Indian independence that it generated, Martin Luther King came to several realizations:</em></p>
+<p><em>Nonviolent resistance refuses to participate in evil, but not in the same way that pacifism refuses. If pacifism simply refuses to participate in evil, nonviolent resistance is a passionate and relentless intervention in the lives of those who do participate in evil. In this way, King saw that the basic tension in any racial struggle was not between the races but instead within in the hearts of those who oppress. A tension between the basic desire of all human beings to be good and the racist conditioning by which life in America blunts this desire and bends their actions, instead, towards evil. King, like Gandhi before him, realized that nonviolent resistance was a way of untwisting the hearts of those who did this evil. Both saw nonviolent resistance as a kind of therapy that the oppressed performed on the oppressor</em>&quot;</p>
+<p>i&#39;m thankful to hear in the description of nonviolent resistance as &quot;<em>a kind of therapy that the oppressed performed on the oppressor</em>&quot; an echo of the exhaustion that i hear described frequently by people of color, this feeling that not only do they have to suffer every day from profound injustice and discrimination and violence and pervasive fear and alienation in the society that we live in, but then they also have to make white people like me feel better about it too. i&#39;m thankful that i can&#39;t even imagine how hard and frustrating that must be. i&#39;m thankful to recognize that for people to whom profound social and emotional and physical violence is done daily, as part of the basic, accepted routines of life, gratitude for the world must be exceedingly hard to come by. i&#39;m thankful to not expect people living impossibly hard lives to make themselves martyrs or saints, especially since in the society i live in there are enough white policemen murdering people of color and converting them into those holy images already.</p>
+<p>i&#39;m thankful that i admire this concept of satyagraha that drove gandhi and king but i find that however attuned i try to force myself every day to be to gratitude and to kindness in my life, i can&#39;t imagine feeling it, much less imagine myself as a person of color feeling it, can&#39;t imagine the size of the reservoir of love energy that would be required to balance out the mass of the forces of oppression weighing down the bodies of people of color in the society we live in. i&#39;m thankful that, though i am not religious and though i think great evil is and has been and will continue be done in the name of religion, that throughout history and up to the present day, faith and belief have provided oppressed people who are subject to endless violence and fear with some measure of comfort and strength.</p>
+<p>i&#39;m thankful that this is why i write the things i do these days, in the hope that it will provide people with some measure of comfort and strength. i&#39;m thankful, in that spirit, to try to conceive of gratitude as a kind of tactic, in the sense of the situationists, who believed, amid the violence of 68, in the power of &quot;_creating &#39;__situations&#39; where humans would interact together as people, not mediated by commodities. They saw in moments of true community the possibility of a future, joyful and un-alienated society. &#39;_<em>People who talk about revolution and class struggle without referring explicitly to everyday life, without understanding what is subversive about love and what is positive in the refusal of constraints, such people have corpses in their mouths.&#39;&quot;</em> i&#39;m thankful to suggest attention to and gratitude for small things you value in the world as a tactic in this sense, not because the society we live in is just and fair and perfect, but because so much in the world is horrible and wrong and you have to save yourself from it, every day, by reminding yourself why you want to live, what you are living for.</p>
+<p><a href="https://www.youtube.com/watch?v=XykIswFgLpU">i&#39;m thankful for the thudding kick drum and for its dance with the clap and the chimes and the streamers of out of time (and yet in time) guitar flickering at the edges of the image. i&#39;m thankful for the way that the cymbal chokes a breath at the end of bars. i&#39;m thankful for the sense of space in the samples, a place to live inside. i&#39;m thankful for the space echo on her vocals, so that her voice makes a woozy choir of itself behind her, like the train on a ball gown. i&#39;m thankful for when she sings &quot;<em>w__e been livin&#39; through your internet</em>&quot; and suddenly her voice disappears the music falls out, the space collapsing, and there&#39;s the sound of a gong chiming in front of you and then she&#39;s back in the world, singing &quot;<em>you don&#39;t have to believe everything you think / w__e&#39;ve been programmed wake up, we miss you</em>.&quot;</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-79.html" class="btn btn-secondary">← thank you notes 7/9</a>
+        <a href="/letters/thank-you-notes-7816.html" class="btn btn-secondary">thank you notes 7/8/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

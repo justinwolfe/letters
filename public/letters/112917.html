@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="11/29/17">
+  <title>11/29/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>11/29/17</h1>
+        <time datetime="2017-11-29T00:00:00Z">November 28, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that though i don&#39;t normally like holiday episodes of TV shows, since they usually involve over-indulgence in high-fructose sentimentality, i loved the holiday episode of <em>keeping up with the kardashians</em> that aired on sunday. i&#39;m thankful for the way that the episode was structured around the central kardashian drama, which is one family member stealing another family member&#39;s decorating choices. i&#39;m thankful for how stupid that is and yet how real. i&#39;m thankful that in a christmas store where the kardashians are looking at decoration options, kris ignores kourtney to take a call from kylie and kourtney says &quot;<em>why do you lick her ass like she&#39;s perfect</em>?&quot; i&#39;m thankful for the bakeoff between khloe and kris after khloe, who always bakes from scratch, learned that kris&#39;s famous lemon cake is made from box mixes—i&#39;m thankful for kim&#39;s visible pleasure at eating khloe&#39;s strawberry raspberry cobbler and kourtney&#39;s critique that &quot;t_he crust isn&#39;t making me super horny_.&quot; i&#39;m thankful for the genuinely heartwarming moment where kylie tells kris, in the midst of a gratitude roundtable before dinner, how much she appreciates her and kris cries. i&#39;m thankful for the scene where the kardashians are culling dead weight from the guest list for their holiday party, which involves them talking lots of shit about people whose names are bleeped out. i&#39;m thankful for when jonathan wears prosthetic makeup to dress up as santa and surprise everyone and kim doesn&#39;t realize who he is for a long time and then cries tears of glee when she finally figures it out. i&#39;m thankful that the episode ends with the family heading into the calabasas backyard of kris&#39;s house to find a skating rink and, of course, nancy kerrigan there to give the kids skating lessons. i&#39;m thankful for north, who says to nancy kerrigan, adorably, &quot;<em>i&#39;m the best skater</em>&quot; and khloe saying &quot;<em>guess who her parents are</em>,&quot; like, of course kim and kanye&#39;s child will have a strong belief that she can do anything she wants well. i&#39;m thankful for santas in leather jogging pants. ___PARAGRAPH_BREAK___</p>
+<p>i&#39;m thankful for <a href="https://www.newyorker.com/culture/persons-of-interest/the-case-for-not-being-born">this article from <em>the new yorker</em></a> about anti-natalist philosophy. i&#39;m thankful that whether or not you see merit in the philosopher&#39;s arguments, the philosophy provides a useful and interesting defamiliarizing lens on everyday life:</p>
+<p><em>People, in short, say that life is good. Benatar believes that they are mistaken. “The quality of human life is, contrary to what many people think, actually quite appalling,” he writes, in “The Human Predicament.” He provides an escalating list of woes, designed to prove that even the lives of happy people are worse than they think. We’re almost always hungry or thirsty, he writes; when we’re not, we must go to the bathroom. We often experience “thermal discomfort”—we are too hot or too cold—or are tired and unable to nap. We suffer from itches, allergies, and colds, menstrual pains or hot flashes. Life is a procession of “frustrations and irritations”—waiting in traffic, standing in line, filling out forms. Forced to work, we often find our jobs exhausting; even “those who enjoy their work may have professional aspirations that remain unfulfilled.” Many lonely people remain single, while those who marry fight and divorce. “People want to be, look, and feel younger, and yet they age relentlessly”</em></p>
+<p>i&#39;m thankful that this rhymed with <a href="https://twitter.com/333333333433333/status/935276481693052930">this tweet from darcie wilder</a> and an IUD horror story d shared from the <em>glowing up</em> facebook group where a woman had chosen the copper IUD even though it gave her horrible cramps and bleeding every month because she would rather have the physical discomfort of that to the emotional instability that hormonal birth control gave her, which is such a fucking awful compromise to have to make. i&#39;m thankful for my legs and feet, even though they have been really sore for some reason the last few days. i&#39;m thankful for my muscle roller and spike mat and the lacrosse ball i shove into the pocket of my hip, since they do help me feel better for a bit, even though, again, it feels kind of fucked up that i have to experience new pain in order to lesson old pain. i&#39;m thankful for <a href="https://open.spotify.com/album/4KnblhI249kfLv3rpirfBt">this diet cig album</a>, which is really great at expanding the world of their sound without losing the spark that made their first EP so great. i&#39;m thankful that the lyrics are so specific and lovely, like on &quot;<a href="https://open.spotify.com/track/5AluhPmbCey3P8SAyc6Adu">apricots</a>&quot; which juxtaposes a description of the excitement of a new relationship with the experience of buying fruit that will go bad:</p>
+<p>&quot;<em>When I&#39;m homesick</em></p>
+<p><em>I go to the supermarket</em></p>
+<p><em>I buy all the things I think my mom would get</em></p>
+<p><em>Why did I buy four apricots?</em></p>
+<p><em>I&#39;ll never eat them before they rot</em></p>
+<p><em>They&#39;ll just become an afterthought&quot;</em></p>
+<p>and on &quot;barf day&quot; where the first line of the chorus is &quot;<em>i just wanna have ice cream on my birthday</em>.&quot; i&#39;m thankful that even though life is horrible i still want to <a href="https://twitter.com/geekylonglegs/status/935678329419587584">live forever</a>. i&#39;m thankful for the freeze dried strawberry slices in my cereal this morning. i&#39;m thankful that it was warm yesterday afternoon so i raked some more leaves on my break from work—i&#39;m thankful for the tree in our front yard, which just keeps snowing new loads of them. i&#39;m thankful for yesterday&#39;s leaves, which were mostly a golden yellow, which was beautiful against the grass and dirt of the yard. i&#39;m thankful for <a href="https://twitter.com/m_yosry2012/status/935370267542675456">these puppies</a>.___PARAGRAPH_BREAK___</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/113017.html" class="btn btn-secondary">← 11/30/17</a>
+        <a href="/letters/haley-hailee-haileigh-hailey-haylie.html" class="btn btn-secondary">(haley, hailee, haileigh, hailey, haylie) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

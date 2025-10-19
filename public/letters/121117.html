@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/11/17">
+  <title>12/11/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/11/17</h1>
+        <time datetime="2017-12-11T00:00:00Z">December 10, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that outside the grocery store yesterday there was a man in a hoodie and (despite the cold) flip flops who was walking an eight month old corgi named teddy. i&#39;m thankful, since corgis are one of d&#39;s two favorite dog breeds, that his owner allowed us to pet him and teddy was excited to meet us. i&#39;m thankful that it was my first time petting a corgi and it was a nice experience. i&#39;m thankful that d found a shiba inu (d&#39;s other favorite dog type) breeder in our state and though we can&#39;t have a dog yet, we could at least visit there on some long weekend this winter so she could play with the shibes.</p>
+<p>i&#39;m thankful that i went running yesterday afternoon even though it&#39;s cold—i&#39;m thankful to remind myself that running in the cold itself really isn&#39;t that bad and can even be kind of nice if you&#39;re dressed properly and to write this as a way of pushing back against the psychological block i feel every time i consider going running outside in the cold, how unpleasant the idea of it seems. i&#39;m thankful that when i was coming back from my run, the boy next door was dribbling a basketball down the sidewalk a long distance as his father looked on. i&#39;m thankful to have introduced myself to his father, whose name is chad, which i am only writing here so that i will remember it, and that the two of us had a lovely conversation, whereas in the past i was so shy i probably would have just nodded (or not even that) and gone inside. i&#39;m thankful that as we were wrapping up our conversation his sun returned and made a perfect free throw.</p>
+<p>i&#39;m thankful yesterday afternoon to have laid on the couch under a soft furry blanket reading <em>ragtime</em> and drinking a cup of decaf chai tea with sugar and cream instead of milk, which is a lovely winter vision board of an afternoon. i&#39;m thankful for <em>ragtime</em>, which was a fantastic novel, and am thankful to have started reading <a href="https://www.amazon.com/Dawn-New-Everything-Encounters-Reality-ebook/dp/B071RBPV1V/ref=mt_kindle?_encoding=UTF8&me=">the latest jaron lanier book</a>, which is about virtual reality and which does some really interesting things in terms of its form and goals versus the typical &quot;technology book,&quot; using intercuts between memoir and business history and technical explanation, to think philosophically and culturally about what it is and means and feels like to have a body and live in the world and how that then interacts with the technology of virtual reality. i&#39;m thankful for his constant definition and redefinition of what VR is or could be, which helps me to understand some of the transcendent defamiliarizing experiences i&#39;ve had with VR (and meditation, and drugs, and video games, and watching clouds pass, and going on long walks, and dreaming):</p>
+<p>&quot;<em>For me, VR&#39;s greatest value is as a palate cleanser.</em></p>
+<p><em>Everyone becomes used to the most basic experiences of life and our world, and we take them for granted. Once your nervous system adapts to a virtual world, however, and then you come back, you have a chance to experience being born again in microcosm. The most ordinary surface, cheap wood or plain dirt, is bejeweled in infinite detail for a short while. To look into another&#39;s eyes is almost too intense.</em></p>
+<p><em>Virtual reality was and remains a revelation. And it&#39;s not just the world external to you that is revealed anew. There&#39;s a moment that comes when you notice that even when everything changes, you are still there, at the center, experiencing whatever is present.</em></p>
+<p><em>After my hand got giant, it was natural to experiment with changing into animals, a splendid variety of creatures, or even into animate clouds. After you transform your body enough, you start to feel a most remarkable effect. Everything about you and your world can change, and yet you are still there.</em></p>
+<p><em>This experience is so simple that it is hard to convey. In everyday life we become used to the miracle of being alive. It feels ordinary. We can start to feel as though the whole world, including us, is nothing but mechanism.</em></p>
+<p><em>Mechanisms are modular. If the parts of a car are replaced one by one with the parts of a helicopter, then afterward you will end up with either a helicopter or an inert meld of junk, but not with a car.</em></p>
+<p><em>In virtual reality you can similarly take away all the elements of experience piece by piece. You take away the room and replace it with Seattle. Then take away your body and replace it with a giant body. All the pieces are gone and yet there you are, still experiencing what is left. Therefore, you are different from a car or a helicopter.</em></p>
+<p><em>Your center of experience persists even after the body changes and the rest of the world changes. Virtual reality peels away phenomena and reveals that consciousness remains and is real. Virtual reality is the technology that exposes you to yourself</em>.&quot;</p>
+<p>i&#39;m thankful for the oranges we had last night, cold from the fridge, which were those perfect oranges that are drippingly juicy and yet retain their form, that balance sweetness and acidity in a way that makes eating them feel sacred, like some kind of pagan ritual. i&#39;m thankful that oranges are like little icons of the sun, that their taste transmute the feeling of a sunny day into flavor. i&#39;m thankful for the vulgar pleasure of your teeth plunging through the vesicles, flooding your mouth with juice. i&#39;m thankful that we bought more oranges at the grocery store yesterday and that though they may not (probably will not) be as good as the oranges we had last night, there is a chance that they will be and that kind of chance is one of the things that keeps one going in life (if one is me). i&#39;m thankful to keep going.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/121217.html" class="btn btn-secondary">← 12/12/17</a>
+        <a href="/letters/121017.html" class="btn btn-secondary">12/10/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

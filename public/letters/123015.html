@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/30/15">
+  <title>12/30/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/30/15</h1>
+        <time datetime="2015-12-30T21:06:13Z">December 30, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i got lost on my bike ride yesterday. i&#39;m thankful that my phone died unexpectedly as i tried a new route in order to avoid the muddy trails i usually take and i couldn&#39;t check a map, so i just had to make a guess and go in a direction and hope for the best. i&#39;m thankful that i biked for the first time through the tiny town of clear creek, which had a little concrete block post office and an antique store. i&#39;m thankful for the sensation of feeling instinctively that i knew which way i was going, of predicting and then gradually recognizing streets and landmarks. i&#39;m thankful that i&#39;m generally good at orienting myself in space, and thankful that i felt confident in my route for quite some time, but thankful that at a certain point i got turned around in an indistinct suburb and had no idea where i was. i&#39;m thankful that i had brought a coconut cream pie flavored protein bar in my backpack and that i stopped to eat it while figuring out where to go. i&#39;m thankful i finally came upon a road i knew the name of, but wasn&#39;t sure which way was north and which way was south (i needed to go north). i&#39;m thankful that i biked one way for a while and pushed up to the top of a hill and saw just trees and more road in the distance and decided that i was probably going the wrong way and that i should turn around. i&#39;m thankful for the hills here, even if they are punishing sometimes to try to climb, because of the beautiful (and, in this case, useful) vistas they frame. i&#39;m thankful that i made a decision and turned around and went back down the road the other way. i&#39;m thankful that though for a long time nothing looked familiar to me on the road and i wondered more and more whether i was going the wrong way, eventually, a sense of deja vu started to seep into my perception of the space around me (the way the sidewalks were elevated above ditches, the materials and colors of the apartment complexes), reminding me of a time years ago when i got pleasantly lost while running in the blue sky mirage heat of summer. i&#39;m thankful that continuing along the road with increasing confidence got me to a place that i knew which got me on the road home. i&#39;m thankful for the experience of coasting down a hill and seeing a familiar place in the distance and knowing that&#39;s where i&#39;m going next.</p>
+<p>i&#39;m thankful for the depth and breadth of the sadness i was stuck inside of yesterday afternoon and evening after my bike ride. i&#39;m thankful that maybe the sadness was triggered by my fear of being lost on the bike ride and maybe it was triggered by our family dog having surgery to remove a melanoma from her head (i&#39;m thankful she&#39;s okay) and maybe it was triggered by too much red wine at lunch (i&#39;m thankful for how good it tasted, though) but that maybe it wasn&#39;t triggered by anything at all, no proximate cause, and there was nothing i could do to prevent it from enveloping me in its cloud. i&#39;m thankful to think of my brain as a weather radar map, the systems of emotions passing like glitchy primary-colored ghosts over my mental landscape along trajectories and with durations that can be guessed at but not known or controlled. i&#39;m thankful to think of the visual similarities between television weather radar maps and the choppily animated mri slices of the brain which are used to try to tell us things about how and why we think and feel. i&#39;m thankful, even though it wasn&#39;t fun to feel like the sadness inside me, that it&#39;s probably better than other bad feelings i&#39;ve had in the past, like being afraid that i was going to die, or being afraid of interacting with the world around me, or being afraid of hypothetical things that might possibly happen in the feature, all which i used to feel all the time and rarely feel (or feel as intensely) now (i&#39;m so thankful for that). i&#39;m thankful for how the way that i sometimes feel sadness now makes me a little better able to understand the way that d feels sadness, which i always used to try to approach, because i love her and did not want her to suffer, as a concrete problem to be solved as quickly as possible by the application of a technology (concrete solutions, medication, conversation, exercise), like a support ticket i was trying to clear from the workflow of her mind. i&#39;m thankful that, though i didn&#39;t use to be able to understand why d &quot;chose&quot; to &quot;stay inside&quot; feelings of sadness (though i am thankful, always, to gently tease her about her adolescent love of emo music), i do understand it now, what the feeling is, how it feels like there&#39;s only so much you can do to climb out (though i&#39;m thankful for the times when i can help her climb out).</p>
+<p>i&#39;m thankful that even though i was feeling very sad yesterday afternoon, i buckled down and worked on a freelance project for a couple of hours in bed. i&#39;m thankful that rather than being a brat like i&#39;ve been about my writing in the past, i accepted and implemented my editor&#39;s revision instructions without any comment other than to wish him a happy new year. i&#39;m thankful, thinking of this, about how when i was sad in my early twenties, even though, objectively, there were plenty of things in my life worth being sad about, my sadness was almost always related to writing, how writing was going or how writing wasn&#39;t going. i&#39;m thankful to realize that writing now, whether in a professional context or in the context of these notes, doesn&#39;t really make me sad or afraid anymore, at least not in the same way or by the same order of magnitude. i&#39;m thankful for what a huge and wonderful change that is and how in retrospect it feels almost silly how serious i used to take the question of whether i would or wouldn&#39;t be able to write a blog post. i&#39;m thankful that the feelings of sadness i experienced yesterday allowed me to experience this epiphany as i wrote about it today.</p>
+<p>i&#39;m thankful to go through periods of sadness, most of all, because of the unbelievable sweetness of the relief i feel when they end, the way that later yesterday evening, while watching d navigate a labyrinthine dungeon in <em>a link between two worlds</em>, i took an easy breath and then another and suddenly realized that i didn&#39;t feel sad at all anymore, that i actually felt perfectly optimistic and okay and excited about the future. i&#39;m thankful that i slept well and woke up still feeling great, that i still feel great while i type these words. i&#39;m thankful that i don&#39;t suffer with sadness all the time like many people do and that i have many days when i don&#39;t feel sad at all. i&#39;m thankful for the yoga i did last night and the meditation i did after that, for how even if sadness can&#39;t necessarily be immediately and directly evaded or erased or resolved by targeted concrete solutions, it&#39;s still good to try things because they <em>can</em> help. i&#39;m thankful to think of that urban legend they used to tell us as a fact in DARE in elementary school about how if you took acid, traces of it would lodge in your joints and then, without warning, years later, you would bend your elbow or knee the wrong way and be stuck in a horrifying acid flashback. i&#39;m thankful for the way that moving through poses and breathing loosens things in my body which usually makes my mind feel looser as well.</p>
+<p>i&#39;m thankful to have watched d play through the final dungeon in <em>a link between two worlds</em>, for the moment when we figured out that there were invisible bridges between platforms that could only be seen using a lamp in the dark. i&#39;m thankful for her intense effort to try to pass a particularly difficult obstacle, which involved using a wand that summoned large blocks of ice to create stones in a bed of lava that she could walk along while avoiding being snatched up by a giant disembodied hand which floated above the level, hunting her. i&#39;m thankful for how she tried over and over and over to create the stones to walk across the lava, even though it was hard to aim the stones to make them land in the places she needed them to land to make a path in the lava; i&#39;m thankful for how close she would get sometimes before the stones would sink underneath her or the hand would snatch her up and return her to the beginning of the level. i&#39;m thankful that i could cheer on every little bit of progress, every new solution she found. i&#39;m thankful that, past our bedtime, she eventually gave up for the night and then, a few minutes later, i heard her giggling uncontrollably from the other room. i&#39;m thankful that she told me she had found the solution, which is that what we thought was a platform at the edge of the lava where she would begin to try to build her bridge of stones was actually, the whole time, a raft, and that there was no need to build a bridge, all she had to do was use the raft to ride across the lava to the goal. i&#39;m thankful that sometimes solutions are that simple.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/123115.html" class="btn btn-secondary">← 12/31/15</a>
+        <a href="/letters/122915.html" class="btn btn-secondary">12/29/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

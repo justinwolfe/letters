@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="compliment sandwich artist">
+  <title>compliment sandwich artist - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>compliment sandwich artist</h1>
+        <time datetime="2024-03-03T22:36:21.107800Z">March 3, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/361" alt="image.png"> </p>
+<p>friday after getting design approval 😎 and the QA engineer who had been working on my PR being laid off 🙃, i thought i was going to be finally done with it and able to move on to the next task except then the other engineer i&#39;m working with left a million picky comments that i needed to address first and there went the friday i thought i was going to have 🫠. </p>
+<p> <img src="/api/images/357" alt="image.png"> </p>
+<p>i&#39;m thankful that she is a skilled engineer who i respect and that i accepted the validity (if not always the necessity) of her notes and dutifully went through addressing every issue and ultimately making the code better 🔧, but also getting increasingly annoyed as i went because she was constantly using the grimace emoji in her comments like (not real quotes) &quot;i think you should refactor this 😬&quot; or &quot;why don&#39;t you put the JIRA card in your branch name? 😬&quot; and as i went through making changes this repeated 😬 increasingly frustrated me, especially because she is someone (unlike me, a graduate of the American writing workshop establishment and a compliment sandwich artist) who does not give much praise or generally do a lot of emotional labor (which ideologically i think is valid since structural patriarchy forces women to be carers, even if i find it sometimes to be frustrating), so the grimace emojis were not balanced out by other things and as i went they just kept picking at me. </p>
+<p> <img src="/api/images/360" alt="image.png"> </p>
+<p>i&#39;m thankful that in the past i probably would have just swallowed this frustration into the blackness of my soul and had it fuel a dislike of her (i say probably this is literally a way i handled this in the past) but i didn&#39;t want to repeat the past and so after making all of the requested changes and writing a summarizing comment with cheerful responses to some additional points of hers including five quoted lines that ended in grimace emoji, i wrote, as politely as i could:</p>
+<blockquote>
+<p>(Also, if you could please use 😬 emoji a little less frequently, I would appreciate it. I understand that we&#39;re coming to this work with different standards and I&#39;m trying to learn from you and meet yours as best as I can but seeing 😬 😬 😬 all the time is kind of demoralizing. Thank you for your consideration ❤️)</p>
+</blockquote>
+<p>and i&#39;m thankful, since it was stressful to send 😅, that she is in the same time zone as me and even though it was almost the end of the workday on friday responded almost immediately (using the facepalm emoji 🤦‍♀️) to sincerely apologize and also to clarify that she was not intending for the grimace emojis to be read as critical of me but instead the opposite 💡, that she meant them to read as an apologetic smile trying to acknowledge to me that she knew she was making very picky and sometimes out of scope notes that were leading to a lot of extra maybe not necessary (but, in her mind, important enough to ask for, which even if i disagree with i can respect) work for me and she was sorry about that 😟. i&#39;m thankful to have responded thanking her and telling her that i understood and then in our Slack DMs we wished each other a good weekend, which even though i don&#39;t really drink beer anymore i like to use the 🍻 emoji for.</p>
+<p> <img src="/api/images/359" alt="image.png"> </p>
+<p>i&#39;m thankful that we saw <em>dune 2</em> with our friends and that aside from the casting of christopher walken was exactly what i wanted from it. i&#39;m thankful, given the world we are living in, for the often quite moving portrayals of anticolonial resistance. i&#39;m thankful for denis villenueve&#39;s semi-formalist approach to cinema as dream and as spectacle. i&#39;m thankful for zendaya and timmy and a hilarious performance by javier bardem. i&#39;m thankful for ec&#39;s new sweatshirt that said &quot;WORLD PEACE&quot; and that she nudged me to buy a bag of trolli brite crawlers gummy worms as the most appropriate snack pairing for the movie (don&#39;t worry i was already high on the spice before entering the theater). i&#39;m thankful that the coke freestyle machine has lime seltzer and to have repeatedly brought back the joke of saying &quot;denis villenueve&quot; in an exaggerated bad french accent.</p>
+<p> <img src="/api/images/358" alt="image.png"> </p>
+<p>i&#39;m thankful i got so mad during the trailers for dune because there is a children&#39;s movie (🙄) starring ryan reynolds (🤮) that used &quot;all my friends&quot; by LCD soundsystem as its soundtrack (🤬🤬🤬) which should be against the fucking law. on that note, this week&#39;s playlist is not by me but is by deborah, who sent out <a href="https://buttondown.email/dire/archive/time-capsule/">an issue of her own newsletter</a> about the wayback machine trip previously discussed <a href="https://buttondown.email/justinwolfe/archive/curtsying-and-lunging/">here</a> that included both diaries from when she was in eighth grade 🥹 and <a href="https://open.spotify.com/playlist/1J4VrG30BbSlzGAMiqKbfE?si=0d6b69fd425b41ab&utm_source=dire&utm_medium=email&utm_campaign=time-capsule">a playlist of songs from her MP3 blog when she was 13</a>. i&#39;m thankful as a person who has not ever really at any time in my life wanted to listen to &quot;sad music&quot; (when i am sad, i want to listen to happy music to make me feel better, and when i am happy, i want to listen to happy music because i am happy and want to continue feeling that way) to not know most of these songs and to get this window into who young deborah (a figure i possess unlimited tenderness towards) listened to. i&#39;m thankful to be married to someone who cares about music as much as me, even if occasionally our tastes differ (my favorite new-to-me song on the playlist is <a href="https://open.spotify.com/track/1Roe5sWpYp5yWMfclCH9jk?si=bf58c1b2b7e54ee1">&quot;blue collar love&quot;</a> by starflyer 69, which has really excellent guitars). (bonus b-side: deborah is doing a video montage of our lives every month <a href="https://www.instagram.com/dire/reel/C4AHUd1ukOp/">here is february</a>)</p>
+<h2>Previous weekly playlists:</h2>
+<ol>
+<li><a href="https://open.spotify.com/playlist/5jY78ahNAH2gUkDU8h3C8M">daydream repeat</a></li>
+<li><a href="https://open.spotify.com/playlist/21GI8bZqCh9LuBgSjqb3wk">love on</a></li>
+</ol>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-33/">2016</a> (<em>melanie lynskey, creamy cervical mucus, acapella + bass versions of motown songs</em>) </li>
+<li>2016 (<a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-madeleine/">2</a>) (from <strong>madeleine</strong>) (<em>acropolis cups, green tea kit kats, the children of new york city</em> )</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/2317/">2017</a> (<em>band practice, mean reviews, alternate nostril breathing</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/33-4413/">2018</a> (<em>how steam softens wrinkles</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/33-5478/">2019</a> (<em>long morning runs, extra tortillas, slept for 10 hours</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/2320/">2020</a> (<em>playing fetch with miso</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/stath-lets-flats/">2021</a> (<em>my comedy problem, living in reruns, stath lets flats</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/a-charming-way-to-process-the-anxiety-of-feeling.html" class="btn btn-secondary">← a charming way to process the anxiety of feeling late</a>
+        <a href="/letters/curtsying-and-lunging.html" class="btn btn-secondary">curtsying and lunging →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

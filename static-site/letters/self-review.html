@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="self review">
+  <title>self review - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>self review</h1>
+        <time datetime="2023-07-21T00:00:00Z">July 20, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i didn&#39;t have work today except i did a little because our peer and manager and self reviews were due at work and i hadn&#39;t finished my self review and i&#39;m done now and rather than spending more of a summer&#39;s day writing a self review (since what is this if not) i thought it might be interesting to cross the streams of my writing about myself</p>
+<p><strong>What achievements do you want to celebrate since your last review? What led to your success?</strong>
+- General productivity and contribution
+I had been writing code for years before now but I never anticipated getting to a place where I could just forget about code I&#39;d written in the past, but that happens to me. So many parts of REDACTED (both the production code itself and the supporting infrastructure) were shaped by my hands and while it&#39;s possible (likely even) that other more experienced hands might have built the things I did more beautifully or perfectly, I keep showing up day after day ready to do whatever work needed to get done. Based on various analysis scripts I&#39;ve run, I believe I have some of the highest REDACTED in our REDACTED codebase—volume isn&#39;t a direct proxy for quality and impact, of course, but it&#39;s also not meaningless as a representation of effort and commitment. I&#39;ve also been a major contributor at helping to chip away at the stack of REDACTED keeping us from REDACTED.</p>
+<p>- Improved REDACTED RELIABILITY
+This was a long-standing customer issue—during a discussion where we were struggling over the problem of not really understanding the issue and what to do, I proposed a left-field solution (REDACTED). We adopted that, since it was quick and easy to try, and when REDACTED TEAM used it, things were much more reliable than they had been with the previous system. We wanted to build on that and put a more polished solution out into the world and so I worked with senior engineers to identify a way forward. We had to take several runs at the problem because it was using a technology that was new to the codebase and that we weren&#39;t very familiar with (I used GPT 4 as a pairing partner to push through obstacles without having to distract others)—but we persevered and landed in a place where we&#39;re much more confident that customers are REDACTED.</p>
+<p>- REDACTED FEATURE
+This was a relatively small feature, but I feel that I was able to perform quick but thorough discovery, card and plan the work to be able to tested and reviewed effectively, and deliver it as requested without delays—planning is something for me to continue to work on, but in this case I feel good about having nailed down the scope pretty effectively. My facility with the area of the code informed by my discovery (as well as the relationships I&#39;ve developed with the backend engineers on my team, for whom I feel great affection and respect) helped me write a clear and focused doc to communicate what I was experiencing during development and testing helped to identify an issue with REDACTED API that was a blocker for both this and REDACTED OTHER PROJECT.</p>
+<p>- REDACTED TOOL
+This is technically launching REDACTED, but tl;dr: on a previous REDACTED, I built REDACTED that helped make QA and design review of REDACTED much more efficient. In the last REDACTED, I&#39;ve pushed through a lot of technical complexity and unknowns to build what I believe will be a more powerful and user-friendly solution that will have a similarly transformative effect on our ability to test REDACTED. I ideated and advocated for the time to work on this (with help and support from REDACTED and REDACTED) and have driven the project forward (with help and support from senior engineers REDACTED, REDACTED).</p>
+<p>REDACTED PROTOTYPE
+For the REDACTED contest, my REDACTED was the only entry submitted within the original time limit (we later extended the deadline). The app did not ultimately win the most votes and was not production-ready, but as a working prototype, I think it showed a good understanding of customer problems and a creative and REDACTED UX implementation. I heard multiple times from the members of the REDACTED team that my experiences and feedback would be so helpful for finding problems and improving things before REDACTED. I also helped out the ultimate winner of the competition (REDACTED) with getting set up to start working on REDACTED and with identifying a strange issue that was making his app not work for some engineers.</p>
+<p><strong>What challenges did you experience? What did you learn?</strong>
+My biggest challenge was, while fixing an existing bug in production, shipping a new bug to production that resulted in REDACTED THING. I can explain this away by describing how much of an edge case and how difficult it would have been for anyone to predict that this bug would happen (as my coach and peers did), but also, at the end of the day, I take responsibility for the code that I shipped and I regret that it happened and that my team and REDACTED had to recover from it.</p>
+<p>I learned a lot about humility from that experience—even before shipping the bug, I made several attempts at solving it in other ways but after receiving feedback from my reviewers questioning whether these were the ideal solutions, kept going back to the drawing board. The solution I ultimately shipped was the third attempt at solving the problem and it solved that problem well (my reviewers agreed)—we just didn&#39;t see how it was invisibly causing another problem.</p>
+<p>Once I came into work and was made aware of the issue, I tried to be as laser-focused and customer-oriented as possible in immediately finding a hotfix we could ship to REDACTED, as well as drafting an apology and explanation for the affected customer. In the wake of the fix, I wrote a thorough and detailed analysis (pushing myself to dig deeper and 100% understand the root cause of the problem rather than just confirming the fact that I had fixed it) and led two postmortem meetings—an initial high-level overview and then a more focused technical one.</p>
+<p>It was not a fun experience to have and I&#39;m disappointed in the confidence that such a mistake may have lost us among stakeholders and REDACTED, but overall I feel proud of my response.</p>
+<p><strong>Where would you like to improve? What opportunities for growth do you want to focus on before your next review? What next steps do you want to take?</strong>
+My coach REDACTED and I have discussed this a lot and we think the most important thing for me to improve is my ability to estimate a) the effort associated with a particular ticket and b) my capacity over the course of a sprint. That may involve more humility—without giving up on my curiosity or drive or desire to keep going and make things happen, I need to be mindful of my limitations so that I can help make my own capacity (and by extension my team&#39;s capacity) predictable.</p>
+<p>I&#39;m also excited to move over to a new team and start working on new problems with new friends (though I&#39;ve been reviewing most of REDACTED&#39;s PRs for months in addition to those of my own teammates). I know I&#39;ll be getting experience contributing to our (increasingly important) REDACTED offerings and will also starting working in REDACTED as I move to REDACTED and I&#39;m really excited to explore what might be down the road from these paths.</p>
+<p>I&#39;d like to try to continue to find self-directed opportunities to work on prototypes and innovating. On REDACTED I have a history of building internal tools and fun experiments (for example, this January, I released a demo of REDACTED that received a lot of praise). I&#39;ve been so focused on my team&#39;s deliverables this year though that I&#39;ve missed some of those days/opportunities for individual exploration and growth, so I&#39;d like to make sure that when possible I get a chance to keep some of that scrappy energy (while mostly working to become a stronger collaborative product engineer).</p>
+<p><strong>Give an example of how you have demonstrated one or more of REDACTED’s values.
+REDACTED
+REDACTED
+REDACTED
+REDACTED
+REDACTED</strong></p>
+<p>I think I have a reputation as someone who&#39;s quick and responsive to help others in Slack whenever I can, regardless of the topic or whether. I have generally respectful and warm relationships with my teammates and I&#39;m always trying to help bring joy and light into the spaces I participate in. I think I&#39;m a valuable contributor to a meeting in terms of keeping conversation moving and asking good questions. I&#39;ve contributed numerous REDACTED videos/songs and posts in our Slack channels to try to help our culture grow. I do rigorous QA of features I&#39;m code reviewing when others might only look at the code itself. I often answer questions about REDACTED and jump in to help with REDACTED, including REDACTED TASKS even if those aren&#39;t part of &quot;my job&quot; or my team&#39;s area of focus. I volunteer early and often for additional projects and to help with things that come up outside of REDACTED.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/like-literally-i-laughed-in-the-theater.html" class="btn btn-secondary">← like literally i laughed in the theater</a>
+        <a href="/letters/frosting-in-all-its-forms.html" class="btn btn-secondary">frosting in all its forms →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[fiona apple voice] drain the chickpeas">
+  <title>[fiona apple voice] drain the chickpeas - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>[fiona apple voice] drain the chickpeas</h1>
+        <time datetime="2024-06-02T20:39:19.745727Z">June 2, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>on friday, i finally took the thirty seconds necessary <a href="https://macpaw.com/how-to/hide-desktop-icons-on-mac">to hide all the hundreds of files on my desktop</a> after months ago when deborah saw the buildup  (which has only grown since) and was, in the vein of a loved one visiting a house at the beginning of an episode of <em>hoarders</em>, concerned, and looked up how to hide them and pinned a post in our telegram chat with instructions for hiding them months ago which i ignored for months and i finally did it which took thirty seconds and of course everything is so clean and nice now and i feel i should&#39;ve done it a long time ago (like most things deborah suggests i do and then i don&#39;t do immediately but then eventually do).</p>
+<p> <img src="/api/images/237" alt="image.png"> </p>
+<p>i bought <a href="https://www.amazon.com/dp/B0CQ8QLCS1?psc=1&ref=ppx_yo2ov_dt_b_product_details">a foot massager</a> (i&#39;m thankful that it has multiple pressure settings for its three modes of massage, even if i&#39;m always high everything), and put it on the floor in front of my office chair as a way to try to force myself to sit correctly (i am constantly folding my legs into various pretzels and sitting unbalanced) and also add a positive &quot;treat&quot; aspect to sitting at my desk, like it&#39;s not just the place i go forty hours a week to solve difficult engineering puzzles and look at slack too much and create and maintain an endless succession of jira cards but is also the place where my feet get to hurt so good. </p>
+<p> <img src="/api/images/234" alt="image.png"> </p>
+<p>in a continuing struggle to eke out tiny improvements to my mental health and functioning, i&#39;ve meditated for fifteen minutes daily five days in a row, even yesterday evening when i was kind of buzzed/cross-faded from going out to drinks at the pinball bar (i&#39;m thankful for the horchata-based cocktail i had, even though it wasn&#39;t that horchata-y) and that made the experience not quite as good. the thing i tell myself is that like exercise, even if i don&#39;t want to do it, i never regret having done it and even when it doesn&#39;t seem to immediately and concretely &quot;work&quot; (which it actually does more often than not) i still always feel at least a little better (and also hopefully am slowly rewiring my brain to be better for the long term) and also it&#39;s not like exercise in that all you have to do is sit there. took a walk yesterday on a route i usually run, which is nice because even though i only walked a small portion of it (and it is not even my longest normal route), that was still quite a long walk, which made me feel proud of the capacity of my body. </p>
+<p> <img src="/api/images/233" alt="image.png"> </p>
+<p>on one street i walked down, the air was rich with honeysuckle. the rosebush in the back yard started blooming pink. i had the first nectarines of the summer and they&#39;re already great, especially after letting them ripen more while eating other fruit (my kink when a stone fruit has started to wrinkle a bit on the outside but is still firm inside). the papaya salad from eem that we ordered was much spicier than usual which was a bit challenging but also as a seasonal treat it had garlic scapes in it (which as of late have been <a href="https://www.koreanbapsang.com/maneuljjong-muchim-spicy-garlic-scapes/">my favorite panchan</a>). the giant bag of pirate&#39;s booty with &quot;50% extra cheese&quot; that we bought and i forgot about but really is the ideal amount of cheese powder on a cheese puff for me.</p>
+<p> <img src="/api/images/236" alt="image.png"> </p>
+<p>me finally accepting that i really do need to properly drain a can of chickpeas before use in our cast iron skillet for <a href="https://buttondown.email/justinwolfe/archive/my-favorite-quick-meal-to-make">my favorite autopilot recipe</a> because where in the past i could pour off most of the liquid into miso&#39;s food bowl (she loves it) and then lazy drain the rest by holding the jagged can lid against the can and overturning it over the sink and that would be enough, something somehow changed in the last year and the Simple Truth Organic chickpeas now, even after this sort of lazy drain, now hold reservoirs of their liquid quite tightly and really they must be properly and vigorously drained in an actual colander which like i knew in my heart i should do but avoided for a long time out of a desire to do less (a theme emerges) but it&#39;s worth it.</p>
+<p> <img src="/api/images/235" alt="image.png"> </p>
+<p>the video game i play the most lately is <a href="https://www.metacritic.com/game/brotato/">brotato</a>, which is a variant of the dynamic of <a href="https://buttondown.email/justinwolfe/archive/the-most-addictive-video-game-i-have-played-in">vampire survivors</a>, previously the game i was deeply addicted to, where you play as a potato that is defending itself from hordes of enemies and your only control is moving the character around to manage the hordes as your weapons run automatically on a timer loop. but whereas a round of <em>vampire survivors</em> is like a marathon, <em>brotato</em> is a series of sprints increasing in intensity and in between each you have these opportunities to tune your character by purchasing items which makes for a more complex and variable experience than <em>vampire survivors</em> and anyway i&#39;m grateful that video games i can get deeply addicted to keep coming out.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/addicted-to-reality.html" class="btn btn-secondary">← addicted to reality</a>
+        <a href="/letters/the-circus.html" class="btn btn-secondary">the circus →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/17">
+  <title>thank you notes 3/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/17</h1>
+        <time datetime="2016-03-17T00:00:00Z">March 16, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to have played disc golf with my friend t yesterday on my lunch break. i&#39;m thankful that she has talked often about how much she enjoys it and thankful how i think she felt a little nervous to ask me to play and how i was happy to say yes, which made her smile. i&#39;m thankful that we played in the arboretum near our office, which provided lots of fun hazards and obstacles; i&#39;m thankful it was sunny and slightly too chilly because of the breeze at first, but that we got used to it. i&#39;m thankful for her coaching me on proper technique in throwing the &quot;driver&quot; disc, how she taught me to drop my arm as i threw and hold the disk with more of a fist and compensate in my release for the way it hooks in. i&#39;m thankful for the few good throws i had and for how encouraging she was about my skill. i&#39;m thankful for how, beyond technique, she said that what she loves about it is how playing the game in a new place made you notice and appreciate the landscape in new ways by examining it from new angles, which was true. i&#39;m thankful that the trees in the arboretum, in particular, felt much more present to me as i tried to skim my disks around and through them. (i&#39;m thankful how when i was riding my bike home the other day i saw that all the trees on our street were budding red)</p>
+<p>i&#39;m thankful for the light conversation we had while we played about a friend of hers who is working as a consultant on &quot;green death&quot; (i&#39;m thankful to have learned that if you don&#39;t want to be buried but also don&#39;t want to be cremated, you can also have your body decomposed in a liquid solution) and thankful for how this led me to digress weirdly about how excited i am to try a sensory deprivation tank, which is something i have always wanted to do, when d and i are in minneapolis in may. i&#39;m thankful that when i complimented her on the tattoos on the inside of her forearms (a mermaid with rainbow hair on one arm, a yin yang symbol with &quot;be calm&quot; written beside it) and asked if she had anymore, she pulled up her shirt and showed me the tiger she has on her right shoulder, which was sketched in a really cool line style. i&#39;m thankful i pulled up my shirt and showed her my back in a joking quid pro quo way, even though i don&#39;t have any tattoos.</p>
+<p>i&#39;m thankful that when i went by her office yesterday to get her to play disc golf, i jumped dramatically into the office through the open door to surprise her and instead surprised s, whose desk is across from hers and who shrieked and said, when she had recovered her composure, that i was like a &quot;ghost buster.&quot; i&#39;m thankful that i think she meant ghost, but that this morning, i photoshopped a picture of t&#39;s face (i&#39;m thankful that i have a jpeg of t&#39;s face on a transparent background saved from earlier office hijinks) onto dan akroyd&#39;s face from a still from <em>ghostbusters</em> and sent it to s in an interoffice mail envelope with a fake return address. i&#39;m thankful they called me over and i played dumb about it and then s insisted that i write her name on a separate piece of paper so she could compare it to the name written on the envelope. i&#39;m thankful that i asked her if she had seen <em>the jinx</em> and she said, &quot;no, but i watch <em>forensic files</em>, so i know what i&#39;m doing.&quot; i&#39;m thankful that i could not disguise my horrible handwriting and that she triumphantly said, &quot;<em>you&#39;re caught</em>!&quot;</p>
+<p>i&#39;m thankful to have finished my &quot;spring break&quot; project of migrating required work experience records for 800+ students from oncourse, the learning management system my school used to use, to canvas, the system it uses now, before we lose access to oncourse. i&#39;m thankful that in the lead-up to the system transition, emails and articles and knowledge base features highlighted how automatic and easy the process of migration would be through the use of a specially created tool for this purpose and i&#39;m thankful for most people this was true. i&#39;m thankful that exporting the records from oncourse was easy enough, but that when i tried to import them into canvas, even though i used the same kind of formatting in my.csv that the knowledge base articles recommended, instead of automatically importing, canvas requested that i associate each name in my spreadsheet with a name in the canvas site using a drop down box with hundreds of names in it. i&#39;m thankful that inexplicably, to make this even worse than it already would be, the names in this drop down box with hundreds of names in it were not in alphabetical (or any kind of logical) order, so that i had to hunt through to find each name. i&#39;m thankful that i tried to go through the process of associating the names several times but each time one quarter to halfway through i would accidentally hit the backspace key by reflex, which sent the browser away from the page, losing my work. </p>
+<p>i&#39;m thankful that to stop myself from doing this, i pried the backspace key off my keyboard (i&#39;m thankful for an opportunity, only to find out when i tried to try to start over again that my last desperate failed attempt to resubmit the form data had broken the canvas site&#39;s import feature and i couldn&#39;t access it anymore. i&#39;m thankful that thanks to help from an IT person, that issue was resolved i finally figured out that if i exported the empty gradebook from the canvas site, then manually pasted the columns of data from the oncourse export (which, again, was formatted the same, as far as i could tell) into that.csv, it would import correctly and automatically, without drop down boxes (i&#39;m thankful that eventually i figured out that the issue had to do with canvas expecting student ids and (different) id numbers in imports, whereas oncourse only exported the ids). i&#39;m thankful to have figured out how to do this and thankful for the new system, which, now that it&#39;s set up, will speed up my future entry and retrieval of records significantly. i&#39;m thankful if you sat through this description of my boring accomplishment.</p>
+<p>i&#39;m thankful that after finishing that hard and important task, i wrote a novelty rap verse in the voice of a hippie professor here who studies conservation and food systems as my participation in an office email chain about the kids in massachusetts who drove up and asked people to spit bars,:</p>
+<p>&quot;<em>Yeah, I eat local, makes me broker than a yokel</em></p>
+<p><em>But we gotta end the chokehold of the coal</em> </p>
+<p><em>So we can focus on the boatloads of plastic,</em></p>
+<p><em>The forests turned to ashes, the unnatural gases.</em></p>
+<p><em>I don’t smoke trees, I conserve ‘em—</em></p>
+<p><em>Save the bees and drink the bourbon.&quot;</em></p>
+<p>i&#39;m thankful for the chance to be macklemore-core. i&#39;m thankful that one of the visiting lecturers came out to lunch with the faculty member and my coworker and that we all had a nice time. i&#39;m thankful that we had not thought about it being st. patrick&#39;s day, but thankful that the drunken craziness downtown had not yet begun (i&#39;m thankful to remember st. patrick&#39;s day of my senior year of college, when i wore tight green polyester goodwill pants and a green paisley faux-silk dress shirt from the gap to the hellscape of a st. patrick&#39;s day party that several local bars held in a giant parking lot). i&#39;m thankful for our fun conversations at lunch about fraternities and local restaurants and rollerblading and what my coworker&#39;s parents were doing in las vegas. i&#39;m thankful for the mediocre chorizo and potato tacos i had, even though they were underseasoned and underfilled and only composed of single corn tortillas rather than double or triple-wrapped, which meant that their soggy bottoms dissolved and broke almost immediately, spilling the filling. i&#39;m thankful for the well seasoned black beans and the inexplicably bland coleslaw.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-kflo.html" class="btn btn-secondary">← thank you notes (kflo)</a>
+        <a href="/letters/thank-you-notes-316.html" class="btn btn-secondary">thank you notes 3/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="7/11/17">
+  <title>7/11/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>7/11/17</h1>
+        <time datetime="2017-07-11T00:00:00Z">July 10, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for tuesdays, which are not mondays, which is something to be thankful for. i&#39;m thankful that i had a monday yesterday, since having a monday, however unpleasant (and this one wasn&#39;t really that unpleasant), is required in order to proceed to tuesday, which is required in order to get to friday, which is required in order to find the weekend. i&#39;m thankful for how time passes quickly most of the time, even though that&#39;s also a frightening thing, since i don&#39;t want to die.</p>
+<p>i&#39;m thankful that though i thought my front bike tire had a flat, it looks like it was actually just that the valve was loose. i&#39;m thankful for my floor pump, which is solid and has an easy-to-read gauge, unlike the little frame pump i had when i first got the bike. i&#39;m thankful, expecting to see the needle in the pressure gauge continue to drop after i pumped air into the front tire, to have found that it didn&#39;t. i&#39;m thankful that though the cap on the valve wasn&#39;t screwing on i saved it in a cup in the kitchen and i&#39;m thankful that tightening up the valve made it possible to put the cap back on. i&#39;m thankful to have lyft as a backup in case things happen to my bike, but i&#39;m also thankful for my bike, for the range and speed it adds to my mobility and for the pleasure of moving through space using it as my vehicle.</p>
+<p>i&#39;m thankful for <a href="https://open.spotify.com/album/753yeghJKIjYDaLbJB2ZW9">this old album</a>, which was given to me in my discover tab in spotify. i&#39;m thankful that though i don&#39;t think it&#39;s necessarily &quot;cool&quot; and coolness is a central musical virtue for me, i really like it anyway. i&#39;m thankful that i thought d would like it and sent her a link to it describing it as a more minimal m ward and i&#39;m thankful that we were listening to it together in bed yesterday evening while playing video games and she said that she did like it—i&#39;m always thankful when i&#39;m able to find something that she likes and give it to her. i&#39;m thankful for the way spotify starts to play related songs after you run through an album and i&#39;m thankful that it played &quot;<a href="https://open.spotify.com/track/7IJlk42gDKt5dfSSLwtEsp">chinese translation</a>&quot; by m ward afterward, which made us both laugh. i&#39;m thankful when d sings one of the zooey deschanel&#39;s lines from a she and him duet absentmindedly during the day and i chime in a frog singing louis armstrong impression for the m ward part, which makes her laugh.</p>
+<p>i&#39;m thankful that last night i beat the final boss in <em>zelda: breath of the wild</em>. i&#39;m thankful to have stayed up past my bedtime in order to do so, even though i know sleep hygiene is important. i&#39;m thankful for the dungeon of hyrule castle, which felt like the first true dungeon in the game and was excellently designed. i&#39;m thankful that while the final boss was challenging, a final boss should feel challenging and i felt prepared for handling him by the game; i&#39;m thankful that while i beat him in what is kind of a cheap and lame way, using powerful arrows and magical powers i had been granted through the story, it didn&#39;t feel particularly cheap and lame. i&#39;m thankful that there is still so much for me to explore in the world, which is true both of zelda and everything else.</p>
+<p>i&#39;m thankful for <a href="http://hazlitt.net/longreads/what-i-learned-personal-branding-school">this essay</a> in which daniel kolitz (who has previously done these <a href="http://printedinternet.tumblr.com/">amazing</a> <a href="http://thedatadrive.com/">things</a>) takes an online course in personal branding. i&#39;m thankful that many parts of the essay resonated with me, as a person who has done complicated and demanding writing projects, but especially this part, where he talks about how doing those kind of projects on the web can make normal expression feel impossible and difficult, even as you know that it&#39;s crazy to feel that way:</p>
+<p>&quot;<em>A year into that project, I’d so thoroughly fused with my brand that even the most anodyne post on any social media platform (“visiting Philly—any recs?”) came to feel like a deranged, highly public plea for whatever scraps of love or attention my network had handy; and the fish-brained chaos of Internet life, reborn without context every fourth second, seemed to guarantee that whichever plea I posted last would come to stand in for my entire brand/self in the minds of my extended social network, necessitating a second and in some cases a third or fourth post to replace or complicate the self (the brand?) posited in the first one. I’ve barely posted a thing since 2014.</em></p>
+<p><em>It was clear that if I ever again wanted to idly link to something on Facebook without teetering on the brink of all-out psychic collapse, I’d need to re-learn the rudiments of—the rationale for—sharing moderately interesting articles on the Internet</em>.&quot;</p>
+<p>i&#39;m thankful for this project&#39;s dailiness and messiness have helped mostly cure me of this, since i know that if the thing i write today isn&#39;t good (by my standards or someone else&#39;s) and the thing i write tomorrow isn&#39;t good and even if the things i write for the next week or two weeks aren&#39;t good, i am just going to keep writing and i know that eventually i will write something i think is good again. i&#39;m thankful that i guess this is kind of the lesson (re: shitty first drafts) that i was supposed to learn in writing school, but in that metaphor, shitty first drafts are just a way station on the route to Real Writing after you kill your darlings and et cetera, whereas i think what i have been learning through this project is that it&#39;s possible and not only possible but meaningful to cherish a shitty first draft in and of itself, as an imperfect expression of a moment in my life, which is maybe not a lesson that some Real Writers think is valuable but which is very valuable to me.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/claire.html" class="btn btn-secondary">← (claire)</a>
+        <a href="/letters/710-7123.html" class="btn btn-secondary">7/10 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

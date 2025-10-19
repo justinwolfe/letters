@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/3">
+  <title>thank you notes 5/3 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/3</h1>
+        <time datetime="2016-05-03T00:00:00Z">May 2, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for cantaloupe, which was on sale again at the grocery store this week. i&#39;m thankful for the fun of scooping out the gooey innards and trimming off the rind. i&#39;m thankful for the soft pastel color of the flesh. i&#39;m thankful for the sweet but not too sweet bass notes of flavor of the fruit. i&#39;m thankful that when i was selecting my cantaloupes on sunday in the produce section, i ran into someone from work and we had a nice interaction in which she demonstrated how she knocks on cantaloupes and fondles their ends to ascertain whether they&#39;re ripe. i&#39;m thankful that she asked what i was doing with the cantaloupe and i said that i was making a fruit salad to accompany the chicken tacos we&#39;re having for dinner this week. i&#39;m thankful that she showed interest in the composition of my fruit salad and laughed at my anecdote about how the last time i made it, i squeezed a wedge of lime over the fruit salad to try to add some acid and how d didn&#39;t eat very much of the fruit salad that night, which i figured was just because she wasn&#39;t hungry, and how when she later found out i had added the lime juice to the fruit salad, she was like, &quot;<em>OH, THAT&#39;S WHY IT TASTED LIKE THAT</em>&quot; and told me she had thought that our grapes were just really sour.</p>
+<p>i&#39;m thankful that we had a fun dinner with our friends last night and they told us a much better anecdote about running into someone from grad school at the local co-op grocery and the person saying that she had just requested that a staff member cut a cantaloupe in half so she could decide whether it was fresh enough for her to buy it, which is, of course, a completely ridiculous and insane thing to request for many reasons. i&#39;m thankful for the way our friend described how, after the person from grad school complained to the cashier about having had to wait two minutes to get to see whether she wanted to buy the fruit, the person repeatedly emphasized to her that she had not asked the staff member to cut up the fruit into pieces (which apparently in her mind crossed some line into being an unreasonable request), but just to cut it in half so she could examine it (which was totally normal). </p>
+<p>i&#39;m thankful that eventually the staff member came up from the back of the store holding the two halves of the cantaloupe for inspection and apologized for taking so long, indicating that the store was understaffed and he had been taking a phone call. i&#39;m thankful that the staff member holding the two halves of cantaloupe, said, &quot;<em>as you can see, it&#39;s pretty fresh,</em>&quot; the person from grad school scrutinized the fruit, looking unsure. i&#39;m thankful that she asked, &quot;<em>so you&#39;re sure it&#39;s fresh</em>&quot; and the employee, perhaps getting slightly frustrated, said, &quot;<em>well, would you like to smell it</em>?&quot; and the person from grad school said, as if, again, this was suddenly crazy and unreasonable, said, &quot;<em>oh no, of course, i trust you</em>&quot; (which, of course, was plainly not the case). i&#39;m thankful that according to my friend, she did at least buy the cantaloupe in the end.</p>
+<p>i&#39;m thankful to have been reminded of the seinfeld episode about <a href="https://en.wikipedia.org/wiki/The_Mango">kramer trying to return bad fruit</a> to the store. i&#39;m thankful for the dry humor of the first line of the wikipedia episode synopsis: &quot;<em>The episode opens with one of Jerry Seinfeld’s stand-up comedy bits which centers on the creation of seedless watermelon</em>.&quot; i&#39;m thankful actually for every part of the wikipedia episode synopsis, especially this paragraph: &quot;<em>George becomes so obsessed with his performance in bed with Karen, that he experiences what seems to be erectile dysfunction. As George tells Jerry his predicament, Kramer asks Jerry to buy fruits in his place at Joe’s fruit store, having been banned from his store and refusing to get fruits at the supermarket. Jerry reluctantly accepts, and goes to buy fruits for Kramer, but it only ends up in getting banned too, after Joe finds out what he was doing. After the incident, George winds up getting both Kramer’s and Jerry’s fruit. George tastes one of Kramer’s mangoes, which makes an erotic transformation (&quot;I think it moved!&quot;)</em>.&quot; i&#39;m thankful for the intricate spring-loaded plotting of seinfeld episodes and how in one of my undergrad writing workshops, one of my professors taught me a useful thing about writing short stories that she said she had learned from larry david, which i&#39;m realizing now i have actually mostly forgotten but which is (badly paraphrasing) that a good story needs to have a thing, another thing, and a third thing--a lot of stories don&#39;t have the third thing, which makes them feel thin. i&#39;m thankful for <a href="http://bkwriters.weebly.com/uploads/2/3/9/7/23973499/20150302092144956.pdf">caroms</a>, which are a different thing.</p>
+<p>i&#39;m thankful for the conversation i had with my friend at dinner about nudity at the gym. i&#39;m thankful for how hard he laughed when i told him about weighing myself naked in the locker room and how when i go over and stand on the scale, i always drop the towel i&#39;m carrying beside the scale because i don&#39;t want the weight of the towel to be added to the weight of my naked body, even though i know this is kind of ridiculous and sutpid, and how i always everyday think of its ridiculousness and stupidity in the moment of being about to drop the towel and always end up dropping the towel anyway. i&#39;m thankful for how one time, though, i heard a guy behind me snicker and say to his friend, &quot;<em>yeah, gotta get that</em> true <em>weight.&quot;</em> i&#39;m thankful for how funny that was and how i always laugh to myself thinking about it as i weigh myself naked at the gym. i&#39;m thankful that i just thought twenty years too late of the idea for a weird al parody song called &quot;weight ain&#39;t nothing but a number.&quot; i&#39;m thankful that my friend was intrigued when i described the things i had learned from the newsletter my dad receives from the clothing-optional beach, for the varieties of controversy related to tattoos and &quot;body jewelry&quot; and how they do or do not ruin the purity of nudity. i&#39;m thankful for the essay &quot;naked&quot; by david sedaris and how from it i learned about why there are towels everywhere at nudist colonies.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-esme5.html" class="btn btn-secondary">← thank you notes (esmé)(5)</a>
+        <a href="/letters/thank-you-notes-52.html" class="btn btn-secondary">thank you notes 5/2 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

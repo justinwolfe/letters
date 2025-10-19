@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="tyn(L)(5)">
+  <title>tyn(L)(5) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>tyn(L)(5)</h1>
+        <time datetime="2016-08-04T00:00:00Z">August 3, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>I’m thankful for the late-night radio show I’m listening to which appears to be playing lots of songs which remind me of very specific times in my life in quick succession tonight: <a href="https://www.youtube.com/watch?v=HxJhYpTIrl8">Heartbeats</a> by José Gonzalez--though The Knife’s original will always be the one which really pulls me back to 2004 -- then <a href="https://www.youtube.com/watch?v=KY3I8csI0nI">Sunnyroad</a> by Emiliana Torrini () which is beautiful but makes me remember 2007ish in a way I’d really rather not, so vividly that I can’t help but feel exactly as I did then as soon as the first notes sound, as if no time has passed at all.</p>
+<p>I’m thankful they also played <a href="https://www.youtube.com/watch?v=lesbgKpsMDM">Janine I</a> by Camille segueing into <a href="https://www.youtube.com/watch?v=r42A67TqBu0">Soubour</a> by Songhoy Blues (). I’m thankful to remember how my friend G really hates Camille and really likes Songhoy Blues and how he can’t hide his feelings if you play Camille in his presence. I’m thankful to kind of understand why he dislikes Camille’s music so much and thankful he tries to understand why I feel the opposite.</p>
+<p>I’m thankful for both people who marked up every single wrongly-used dash and hyphen in my thesis, independently of each other. I’m thankful to remember how one person’s comments got increasingly exasperated (‘em dash’ ‘em dash’ ‘em dash’ ‘come now, L! Em dash!’ ‘Oh come ON!’ ‘For God’s sake,L’) until they decided I was a lost cause. It became increasingly absurd until I couldn’t help but laugh. I’m thankful that, doing my post-viva corrections, I finally understand how to use dashes correctly.</p>
+<p>I’m thankful for one of my supervisors not only sending me a congratulations gift but also including a lovely note and addressing the parcel to Dr L, my first ever with my new title. I’m thankful for his (totally unexpected) gift, the care he took in choosing it, and the way seeing ‘Dr’ on the parcel made me realise that I did it, I actually did it.</p>
+<p>I’m thankful I went to the big scary conference. I’m thankful the only reason it was scary was because I was anxious about it, for too many reasons to articulate. I’m thankful the attendees I cited in my PhD were exactly as I imagined them (kindly-seeming grandfather type, mellowed-with-age radical type). I’m thankful the panel chairperson introduced me as ‘Dr L’ and I didn’t realise it was me at first and did a little involuntary jump in my seat when I worked out he was talking about me. I’m thankful for new friends met around the conference, who were so kind and who made a stressful few days more joyful.</p>
+<p>I’m thankful I got to spend a relatively long time in Paris last month. I’m thankful I felt back home after a pretty stressful year. I’m thankful I could enjoy it without having to take time for research, for the first time since 2012. I’m thankful for R and her bottle of bourbon and our apparently doppelganger lives. I’m thankful for late-night French TV, reblochon baguettes and black coffee.</p>
+<p>I’m thankful for peaceful holidays, I’m thankful for sunshine and the sea and shingle beaches and long drives and fresh air.</p>
+<p>I’m thankful for Camille’s song <a href="https://www.youtube.com/watch?v=2_I9EqbGBTk">Assise</a> which I listened to a lot when finishing my PhD, particularly for this bit of the last verse:</p>
+<p>C’est à mon tour, regardez</p>
+<p>J’ai une voix pour chanter</p>
+<p>J’ai des pieds pour courir</p>
+<p>J’vais quand même pas</p>
+<p>Rester toute ma vie à écrire!</p>
+<p>Which is basically saying ‘Now it’s my turn to do whatever I want’. I’m thankful for how I clung to this verse when I literally could not do any of the things I wanted to do (sleep, leave the house, talk to people) because I had to get my seemingly never-ending thesis done.</p>
+<p>I’m thankful for how Camille spits out the last couplet and how I always translate it in my head as ‘I’m not going to spend my whole bloody life *writing*!!’</p>
+<p>Because at this point, you know, there’s a fair likelihood I will. And if so, that’s ok, because in the future it will be by choice.</p>
+<p>- L (07/30/2016).</p>
+<p>Previously: <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-l-1">1</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-l-2">2</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-l-3">3</a>, <a href="http://tinyletter.com/thankyounotes/letters/tyn-dr-l-4">4</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/tyn-85.html" class="btn btn-secondary">← tyn 8/5</a>
+        <a href="/letters/thank-you-notes-83.html" class="btn btn-secondary">thank you notes 8/3 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="tyn 8/5">
+  <title>tyn 8/5 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>tyn 8/5</h1>
+        <time datetime="2016-08-05T00:00:00Z">August 4, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <a href="https://twitter.com/presidents/status/760821462966099968">carina&#39;s memory</a> of getting called out by an older girl on xanga for using hurtful feminist stereotypes and how that changed her for the better. i&#39;m thankful to remember that on my old wordpress blog when i was twenty two, the writer and director mike white commented to express his disappointment about me posting a song i had written and recorded called &quot;<em>all the ugly people in the world should be shot,</em>&quot; which was a loungey thing that began &quot;<em>all the ugly people in the world should be shot / kill them all and leave everyone that&#39;s hot / let&#39;s line them up and shoot them in the streets / their ugly blood will run by our pretty feet</em>.&quot; i&#39;m thankful that, like in carina&#39;s case, i was attempting to be satirical, but thankful to have been called out on the affected shallowness and hurtful stereotypes i was deploying in the song and the post that contained it in order to feel/seem &quot;cool.&quot; i&#39;m thankful that while it was bracing to read this critique of my stupidity, it was important and it changed something inside of me in a significant way.</p>
+<p>i&#39;m thankful for a year or so later, when i sent my long distance friend s copies of my white boy hip hop covers of e-40&#39;s &quot;tell me when to go&quot; and jay z&#39;s &quot;girls, girls, girls&quot; and &quot;hola hovito,&quot; she very gently but firmly told me about the importance of recognizing and resisting the misogyny that permeates a lot of hip hop, which was an issue i had never thought of. i&#39;m thankful that i unthinkingly spit the n word in those covers, which is something that makes me cringe now but was something i had never thought about being inappropriate back then. i&#39;m thankful to remember doing karaoke years later with a friend who is nigerian and thankful that before i did my first song, i listened to and noticed her skipping over the n word a song she was singing and, despite being drunk, took this as a clear communication of what i should do when i did my song. i&#39;m thankful that in the first song i did, &quot;99 problems,&quot; when i skipped the first n word, she seemed to visibly relax a little and smiled at me. i&#39;m thankful to have done young money&#39;s &quot;bedrock&quot; in the same manner later in the evening, which is the best karaoke experience i&#39;ve had.</p>
+<p>i&#39;m thankful that early in our relationship, d and i went to dinner with another couple and our friend c to the local irish pub. i&#39;m thankful for the other couple, who were our good friends, even though that evening they were annoying me by monopolizing the conversation, such that i was just sitting there bitterly eating mediocre fish and chips. i&#39;m thankful that i got increasingly annoyed and that when i finally got an opportunity to say something, i was telling some story about d and addressed her as &quot;<em>this bitch</em>.&quot; i&#39;m thankful for the moment of dead painful silence that followed, which was then broken by our friend c giving me a dark glare and saying &quot;<em>d, you have my permission to slap him</em>.&quot; </p>
+<p>i&#39;m thankful to have apologized (though probably not well enough) to d when we got back to my apartment after the dinner and thankful that she accepted it. i&#39;m thankful to not have ever used the word &quot;bitch&quot; in anger again, but i&#39;m thankful that the issue recurred some time later when she got made when i referred to some chocolate chip cookies i loved as &quot;<em>slutty</em>,&quot; which i thought was an interesting and poetic way to describe the overwhelming buttery sweetness of the cookies but which d described was using a demeaning and offensive word that hurt her and other women. i&#39;m thankful that around this time, we also had another conversation about the b word in hip hop, where i used the totally played arguments about it, because of its syllabic and phonemic composition, its way of functioning as the glue holding flow together, meant that it had evolved from a specifically misogynist slur into a unisex insult, the equivalent of &quot;asshole&quot; or &quot;motherfucker.&quot;</p>
+<p>i&#39;m thankful that d is a strong person and she did not let my &quot;logical&quot; argument, which i kept repeating that day with small differences, drown out the personal pain and humiliation she felt when she heard me or others use the word &quot;bitch.&quot; i&#39;m thankful that eventually i stopped being a stupid little shithead and finally heard her and stopped using the word &quot;bitch&quot; altogether. i&#39;m thankful that at first, this seemed to be a huge diminishment of the range of my personal expression that i was having to force myself into in order to appease her, but thankful that stupid selfish feeling quickly faded and i realized it&#39;s actually totally possible to be as profane and cutting and funny as i want to be without using a word that is specifically targeted at demeaning women. </p>
+<p>i&#39;m thankful that now when i hear others use the word, in conversation or in art, i experience a small tinge of its wrongness, of the anger and hatred baked into it, which is not the same as what it must feel like to hear it as a woman but feels like a kindred emotion. i&#39;m thankful that not liking to hear the word hasn&#39;t prevented me from listening to hip hop, even though it&#39;s knitted into the lexicon of even generally thoughtful and progressive rappers. i&#39;m thankful, though, that i <em>am</em> aware of it whenever i hear it in a new song i love, since when i hear a new song i love, i usually think about sharing it with d but then think, &quot;<em>why does this great song have to have this hurtful word in it that will, to whatever degree, diminish her enjoyment of it?</em>&quot; i&#39;m thankful that after the conversation where d changed my mind about using the word, the next time i was home visiting my family, my dad and brother were using the word casually for some reason and expected me to do the same and i&#39;m thankful i said &quot;<em>i don&#39;t say that word anymore</em>&quot; and i&#39;m thankful that didn&#39;t make me feel small or weak but instead made me feel strong.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-86.html" class="btn btn-secondary">← thank you notes 8/6</a>
+        <a href="/letters/tynl5.html" class="btn btn-secondary">tyn(L)(5) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

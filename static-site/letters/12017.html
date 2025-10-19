@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1/20/17">
+  <title>1/20/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>1/20/17</h1>
+        <time datetime="2017-01-20T00:00:00Z">January 19, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful band practice was nice last night. i&#39;m thankful that we&#39;re really starting to find a sound and i&#39;m thankful that we made a decision that helped define it further. i&#39;m thankful for the clarity and power of my new amp. i&#39;m thankful for standing while playing instead of just sitting. i&#39;m thankful for &quot;everything hits at once&quot; by spoon, which is very simple but a workout for muscles within my forearm. i&#39;m thankful that i left at 11, even though everyone wanted to hang out more, because i need to go to sleep at a decent hour to be able to get up and write these notes to you. i&#39;m thankful that it wasn&#39;t raining very hard when i walked home. i&#39;m thankful to cross the street to avoid impassable puddles and then cross back again. i&#39;m thankful for streetlights, since walking at night can be so hard and dangerous without them. i&#39;m thankful that d left the light in the backyard on for me when i got home, which helped me avoid stepping into a huge puddle.</p>
+<p>i&#39;m thankful for this solfa video we watched yesterday evening of <a href="https://www.youtube.com/watch?v=ZiDfkNEcCdw">korean girls doing their mothers&#39; makeup</a> and the one this morning of them <a href="https://www.youtube.com/watch?v=uwfBidCvj08">drawing a nude model</a>.  i&#39;m thankful for the meitu app and the glorious distortions it creates. i&#39;m thankful that after d made one, which made her eyes enormous, i thought about an acquaintance we know with large eyes and wondered aloud about whether d might be able to convince her to download the app. i&#39;m thankful that d was like, &quot;<em>well, we can just get a picture from her instagram</em>&quot; and then did that so that i could see the effect. i&#39;m thankful that in our exuberance, d sent another friend filtered versions of one of her pictures and then we thought about how creepy it would be as a stranger to randomly send people heavily filtered versions of their instagram selfies. i&#39;m thankful that we are privately creepy but mostly not publicly.</p>
+<p>i&#39;m thankful for this posthumous metafilter roundup of the work of <a href="http://www.metafilter.com/164666/Mark-Fisher-Theorist-1968-2017">mark fischer</a>, which i look forward to reading more of. i&#39;m thankful for this snippet, from his work about the links between depression and economic insecurity, how &quot;e_ven when I was on a psychiatric ward, I felt I was not really depressed – I was only simulating the condition in order to avoid work, or in the infernally paradoxical logic of depression, I was simulating it in order to conceal the fact that I was not capable of working, and that there was no place at all for me in society.&quot;_ I&#39;m thankful for the idea of depression as &quot;<em>the shadow side of entrepreneurial culture&quot;</em> and the concept of &quot;<em>the privatisation of stress</em>&quot;:</p>
+<p>&quot;<em><a href="https://theoccupiedtimes.org/?p=12841">Depression is the shadow side of entrepreneurial culture</a>, what happens when magical voluntarism confronts limited opportunities. As psychologist Oliver James put it in his book The Selfish Capitalist, &quot;in the entrepreneurial fantasy society,&quot; we are taught &quot;that only the affluent are winners and that access to the top is open to anyone willing to work hard enough, regardless of their familial, ethnic or social background – if you do not succeed, there is only one person to blame.&quot; It&#39;s high time that the blame was placed elsewhere. We need to reverse the privatisation of stress and recognise that mental health is a political issue</em>.&quot;</p>
+<p>i&#39;m thankful for <a href="https://www.psychologytoday.com/blog/mood-swings/201201/martin-luther-king-depressed-and-creatively-maladjusted">this <em>psychology today</em> article</a> about martin luther king jr&#39;s experience with mental illness, which was linked in the most recent issue of <a href="http://tinyletter.com/lizgalvao">liz galvao&#39;s tinyletter</a>. i&#39;m thankful in particular for this section:</p>
+<p>&quot;<em>The deeper attitude behind King&#39;s philosophy was his view that we should be &quot;creatively maladjusted.&quot; King was explicit in a sermon on this topic: &quot;Everybody passionately seeks to be well-adjusted,&quot; he said. &quot;...but there are some things in our world to which men of good will must be maladjusted....Human salvation lies in the hands of the creatively maladjusted.&quot; Psychiatrists and psychologists call &quot;adjusted&quot; the intention of fitting in, being accepted, &quot;functioning&quot; well. The average teenager is obsessed with being adjusted, but so are adults, more than we care to admit: the average corporate employee, the typical professor, intellectual, television pundit - they are all rewarded for being well-adjusted. But this kind of normal thinking, this conformism, is deadly to creativity. One never has a new idea; the past is the future; all problems become insoluble dilemmas.</em></p>
+<p><em>King realized that to solve the problems of human life, especially the deepest problems—like racism, poverty, and war—we have to become, in a sense, abnormal. We have to stop going along; we have to stop accepting what everyone else believes. We have to become maladjusted if we are at all to become creative, and find that insoluble dilemmas often are the masks for other previously unrecognized problems with simple solutions</em>.&quot;</p>
+<p>i&#39;m thankful for <a href="http://tinyletter.com/deborahkim/letters/text-only">d&#39;s tinyletter about the young pope</a>. i&#39;m thankful for <a href="http://astronaut.io/">astronaut</a>, this aggregator of snippets of youtube videos that have never been watched. i&#39;m thankful for <a href="https://twitter.com/fr__nds/status/822386057966538753">this interview with zadie smith.</a> i&#39;m thankful for <a href="https://twitter.com/OlisaOdele">olisa odele</a>. i&#39;m thankful for <a href="https://twitter.com/miragonz/status/822326423490658304">mira gonzalez&#39;s dog</a>. i&#39;m thankful for <a href="https://twitter.com/priya_ebooks/status/822374142624165888">the reason i prefer cake over pie</a>. i&#39;m thankful to hope that &quot;<a href="https://twitter.com/fakeirl">one day my programming will be calibrated correctly and all of my tweets will elicit this reaction from at least one user</a>.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/12117-9911.html" class="btn btn-secondary">← 1/21/17</a>
+        <a href="/letters/11917-7727.html" class="btn btn-secondary">1/19/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

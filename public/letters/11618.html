@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="11/6/18">
+  <title>11/6/18 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>11/6/18</h1>
+        <time datetime="2018-11-07T00:00:00Z">November 6, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to remember that on this day in 2008, i was living in korea. i&#39;m thankful to remember how one of the unexpected things that was hard about living in korea, which at that point i had been doing for almost a year, was that i was suddenly no longer connected by the umbilical of american cable to the televised present as i had been for the previous twenty one years of my life. i&#39;m thankful that there was exactly one english language channel i had access to, cnn international, since that was better than no channels, but i usually wasn&#39;t very thankful for it because it both a) seemed so:hahabusiness:, like it was meant for plastic jetset executives in airport hotels and not normal people and b) because it seemed atemporal and constant, like it wasn&#39;t plugged into the rhythms of the day the way that, since my dad worked in local tv when i was growing up, i always felt about the 5 and the 6 and the 6:30 and the 11, the stations of the news. i&#39;m thankful to remember when i was younger and my dad would switch stations for the news, because even though he worked for a certain station and wanted to watch the people he knew and lived with, he thought that another channel&#39;s national news was superior (i want to say it was abc, i remember peter jennings being the image i had of a newsman when i was growing up). i remember the solemnity of the 6:30 switch over and the sense that we were plugging into something important, even if it wasn&#39;t something i enjoyed. i&#39;m thankful that my family was never very social, wasn&#39;t plugged into a larger community, except we did feel plugged into the community we had on television, which was not a perfect place but felt like an important thing that was larger than us.</p>
+<p>i&#39;m thankful that in 2008 i woke up in the morning and flipped over to cnn international, which i was overjoyed to find was showing real cnn, the same that was playing live in america. i&#39;m thankful that at first, it wasn&#39;t even the coverage, even though i had been increasingly interested in the election. i&#39;m thankful that 10 am in busan was 8 pm in washington so as i was starting to watch the news was starting to trickle in and i remember at some point it became clear this thing like a wave was cresting, a state would get called and i felt so full of joy, alone in my studio apartment ten stories up in a skyscraper yelling out the name of the state and saying &quot;fuck yeah&quot; and jumping up and down and punching the air, it was happening, the right person was going to win. i&#39;m thankful for how i found myself crying out of happiness, which is not something i think i had ever done up to that point in my life, tears were always sadness but this was this feeling of buzzing, of glowing, of syncing up with all of these people and deciding that we believed, had hope, and the hope was a promise that came true and the cut away from the pundits and he spoke in grant park and i just felt so proud that we had finally been able to do something right together. i&#39;m thankful i was able to watch that, since i think it really would have been a loss to miss it live, like i have to imagine watching a recording of a great football game after it happened must feel.</p>
+<p>i&#39;m thankful to remember, in 2012, going to a friend&#39;s house because he had cable and being glued to his leather couch beside d by a too strong edible we had all taken before one of the obama-romney debates and feeling anxious that even though obama was clearly winning in the debate, clearly making much better points, the friend and i were worried it was somehow going to get spun as something else and that the spin was then going to become something else, a Bad thing, after what had happened in 2010 it seemed entirely possible even if we didn&#39;t want it to be, and so our celebrations of his jabs and feints in the debates were more desperate than mine when i was alone in 2008, a celebration still but one that was guarded. i&#39;m thankful that on election night, we were watching and they called it for our guy and i exhaled and everything was fine, it was just like so much of the worrying you do, where it turns out that it&#39;s all in your head and it&#39;s okay in the end, you were just catastrophizing, you had this internal image, a projection that you had allowed to develop in these unrealistic horror movie dimensions, but it wasn&#39;t real, it was all okay, it was in your head. i&#39;m thankful that at that point, i was struggling to figure out what was going to happen when i graduated from grad school the following year but that i had not yet fully started to have the increasing sense of anxiety that would hit me in the next year and the years to come after that.</p>
+<p>i&#39;m thankful that in the fall of 2016, though, that was the past, and my life was going so well, i had recently gotten a new job that was imperfect but seemed to provide a path for me to grow and i had been on prozac and i had started writing these notes after not writing anything for years and believing i might not ever write anything again. i&#39;m thankful to look back now and see how on 11/6/16, i announced that i had been writing the notes for a whole year, which felt like an impossibly long time, and i&#39;m thankful to remember how d and i had gone to early vote on a beautiful autumn morning and i&#39;m thankful to remember how, even though i didn&#39;t take pictures that often then, i made her stop on the sidewalk so i could take a picture of her looking beautiful in her &quot;i voted&quot; sticker after we had voted for the first woman to be president, it felt like an important thing to capture, and i&#39;m thankful for all the women i knew who took similar pictures of themselves that morning in their pantsuits, and shared them, i&#39;m thankful to remember the hope of their smiles and i&#39;m thankful that i just felt so good and so happy, everything was going to work, we were moving into the future. i&#39;m thankful to look back on it now and i see that on 11/8, i wrote &quot;<em>i&#39;m thankful to feel hope. i&#39;m thankful to hope that you feel it too. i&#39;m thankful for solidarity, for camaraderie, for shared values and attitudes and beliefs. i&#39;m thankful to believe that we&#39;re stronger together. i&#39;m thankful to feel hope. i&#39;m thankful to hope that you feel it too</em>&quot;</p>
+<p>and i just remember watching the live stream that night and after it was over getting in bed with d and staring up at the ceiling in the dark and just feeling these huge tidal waves of dread wash over me, this dawning realization <em>i didn&#39;t understand</em>, that all my optimism and hope and belief was a fucking lie, that my country was filled with a huge number of people who believed the most awful things and chose a monster and the waves just kept coming as i laid there vibrating and sobbing and it wasn&#39;t like all the other times i had felt panic in the years before, which were all about myself, about being afraid that i specifically was going to die, but in a way that was worse, because i couldn&#39;t take my pulse and say &quot;<em>okay, your heart is still beating, and it&#39;s been beating for the last hour, because</em>&quot; because the problem wasn&#39;t this distorted image inside that i could breathing exercise away, it was the <em>outside</em> that was fucking unrecognizable, the world around me, this sense of being stuck in an alternate universe, a twilight zone, and i just could not fucking take it and eventually took a hoarded xanax to force myself to sleep because i could not handle being conscious in this new world and i&#39;m thankful for that, even though it led to the moment when i woke up the next morning and for a second or two forgot that it had happened. i&#39;m thankful that for months and months afterward, i was twitchy, always immediately finding ways to close the window when the video started to autoplay, just the sound of his voice triggered the feeling of the waves that night pushing me into the sand and i couldn&#39;t do it, i could read it written down in the newspaper and i would do that every morning, i would keep up, but i wouldn&#39;t open the stream into that horrible place in my psyche that listening to him talk opened.</p>
+<p>i&#39;m thankful to write this to you in the time i would normally be looking at the thing in my hand where i read about what&#39;s happening, since i don&#39;t want to do that, i can&#39;t have the anticipation where you&#39;re sitting at the top of the rollercoaster but the rollercoaster is the end of the world and that metaphor doesn&#39;t work but who fucking cares i am so terrified. i&#39;m thankful that i was able to write away some time this evening and i&#39;m thankful to have this connection with you, no matter what happens, but i&#39;m thankful to hope and pray that fucking something good happens please god</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1113.html" class="btn btn-secondary">← 11/13</a>
+        <a href="/letters/117.html" class="btn btn-secondary">11/7 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

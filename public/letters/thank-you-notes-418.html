@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/18">
+  <title>thank you notes 4/18 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/18</h1>
+        <time datetime="2016-04-18T00:00:00Z">April 17, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful, since it&#39;s gotten up to 80 the past few days, that i reinstalled our old bedroom window-unit air conditioner yesterday. i&#39;m thankful that i went down to our gross dark spiderwebby basement where there are creepy little dolls nailed up on the rafters (by the previous occupants, who i guess were into ironic horror), picked up the dusty gray box of an air conditioner, and hefted it up the stairs to the back bathroom. i&#39;m thankful, since somehow this house does not seem to have an outdoor hose (?!), that the bathtub was big enough for me to use to hose out the air conditioner, since the air conditioner had not been working well for most of the time we used it last fall, especially toward the end of the fall, when it barely worked at all, which we figured because it was dirty and clogged. i&#39;m thankful to have scrubbed the bathtub very vigorously after i finished hosing out the air conditioner and thankful that the porcelain was already scratched so the couple of extra scratches i added aren&#39;t noticeable.</p>
+<p>i&#39;m thankful for our landlady, who is weird but nice and i think is currently on vacation in nepal. i&#39;m thankful to remember when we first toured the house a few days before moving in and she took us into the kitchen and showed us the oven (i&#39;m thankful so many cheap rental places here have gas stoves and ovens, which has spoiled me for cooking in our future houses and apartments). i&#39;m thankful how, turning on the oven, she said there was a trick to turning it off that had to do with how you turned the knob—i&#39;m thankful that she bragged that a line cook at our town&#39;s nicest restaurant used to live here and how he called her just after moving in in a panic because he couldn&#39;t turn the oven off. i&#39;m thankful that we laughed genuinely at this anecdote and then laughed uncomfortably when she kept turning the knob back and forth and it became clear that she could not remember the &quot;trick&quot; to turning off the oven. i&#39;m thankful this was the first week of august and all of us were dripping with sweat.</p>
+<p>i&#39;m thankful that she breezily gave up on the oven and left her house cleaner to figure it out while she took us out through the mudroom on a tour of the garage, shed, and backyard. i&#39;m thankful that we realized that she would probably be a pretty hands-off landlord when she told us about how previous tenants of hers had hoarded garbage in the shed so as not to have to pay for tax stickers to have the city dispose of it and how she had lazily nagged them over time about it as the garbage had piled up higher and higher inside and how, for her, the final straw was when she went in there one day to get a rake and there was a dead cat inside—apparently he had gotten trapped in there with all the trash. i&#39;m thankful the other instructive story she told us was about how one summer she had sublet a one bedroom apartment in the building we used to live in and, when she got there, there was a chinese engineering student already living there who had been also been sublet the apartment by the former tenant. i&#39;m thankful how i was waiting for her to tell the story of how she straightened out the problem when she told me that she just moved in anyway and they shared the apartment and got along swimmingly, especially because he was always in the lab and so was rarely home.</p>
+<p>i&#39;m thankful that she asked me to pull up a rusted metal grate set in the concrete pathway that led through the yard. i&#39;m thankful that the landlady leaned in and said &quot;<em>i wouldn&#39;t show everybody this, but i think you guys might get a kick out of it</em>,&quot; then asked me to lift up the grate. i&#39;m thankful that i did, even though when i did, a cloud of mosquitoes flew up around me and into the thick sky. i&#39;m thankful that below the grate, there was a rough, manhole-sized hole carved into the concrete, underneath which was a stretch of pure blackness, beyond which I could see a layer of black water with the white highlights of the sky lacquering the contours of its surface. i&#39;m thankful that the landlady explained that apparently, the house had at one point been on cistern water and this was the (now defunct) cistern. i&#39;m thankful for how the landlady went on to muse about the locally famous story of a missing girl who most people assume was murdered and how she said the sentence, &quot;_there are just so many places in this town that you could hide a bod_y&quot; and shook her head wistfully.</p>
+<p>i&#39;m thankful how after that, we tried to go back into the house, but she stopped us and pointed up at the roof and asked if we noticed anything strange. i&#39;m thankful that after a moment, i saw that there was a window on the second floor, but knew that we had not seen any way inside the house to get up to a second floor. i&#39;m thankful that when i pointed this out, the landlady said &quot;<em>that&#39;s right</em>!&quot; (i&#39;m always thankful to get a right answer) and told us she had wondered about this and had, one day, climbed onto the roof with a friend and climbed in through the window to find a tiny, empty room with no doors, only accessible through the window (i&#39;m thankful that i later found a hatch inside the house, which i don&#39;t know how she could&#39;ve missed?). i&#39;m thankful that because we had told her we were writers, she said, &quot;<em>yeah, this place would be a great inspiration for a horror story for you guys. there&#39;s so much material</em>&quot; i&#39;m thankful she said that about the weird old house we were about to move into as newlyweds, which feels like the premise of at least half of horror movies.</p>
+<p>i&#39;m thankful that when we reentered the house on the tour, about ten minutes after we&#39;d left, we were immediately hit with a massive wave of radiant heat coming out of the kitchen. i&#39;m thankful that the cleaner told us that she had just finally figured out how to get the oven off, that there was a trick to it where you had to turn it slowly counter clockwise until you heard a click and, even though the knob said that it was 200 degrees at that point, the click meant that it was off.  i&#39;m thankful that even though this seemed sketchy, i nodded along (and thankful that several days later, d and i spent an hour and a half playing with the knob in an increasingly baking kitchen before finally discovering that the trick is actually getting up to where you feel resistance just <em>before</em> the click, because if it clicks over, that is like 550 degrees or whatever).</p>
+<p>i&#39;m thankful to remember how the landlady told us there were two window unit air conditioners in the basement, which, after living in a one bedroom apartment with one window unit air conditioner for 4 years, seemed like the height of luxury--we could be cool in the living room and the bedroom at the same time! i&#39;m thankful for our frustration, on the day after moving in, one of the dog days of august, to realize that one of the air conditioners would only fit in the window of the back bedroom, where its small stream of cool air would not efficiently leak out to the rest of the house, and that the other would not fit safely in any of the windows anywhere. i&#39;m thankful for how, after carrying the air conditioners around every room in the house, awkwardly trying to fit them into windows and spilling dirty water on myself and/or the floor and scraping myself with their sharp corners and exposed screw heads, how i felt so defeated and unhappy and like maybe moving into the house had been a mistake, even though we were tired of our apartment and needed a change.</p>
+<p>i&#39;m thankful for the several trips to home depot we took over several days to buy an long metal bracket with holes in it at regular intervals (i&#39;m thankful that i&#39;m sure there must be a real term for this, but i have no idea what it is), which i screwed into the top of the AC unit and then used to secure the unit to the window frame. i&#39;m thankful that i learned about the importance of using washers to secure screws. i&#39;m thankful for the foam batting that we bought to seal the gaps of the window, which i secured to the wall using carpet tacks (we didn&#39;t have nails and superglue didn&#39;t work). i&#39;m thankful, when i finished, for the satisfaction i felt at my monstrous frankenstein mounting contraption (i&#39;m thankful that this weekend, i used duct tape and cardboard for sealing, which was much, much easier). i&#39;m thankful to remember the sweet relief of finally having air conditioning after a week spent sleeping shallowly and marinating in our own salty juices. </p>
+<p>i&#39;m thankful that last night after dinner, i went into our bedroom and triumphantly pressed the power button on the air conditioner. i&#39;m thankful that the temperature display came up (77) and the fan started blowing out air immediately, but it wasn&#39;t particularly cold (i&#39;m thankful, because i&#39;m a hopeful person, that i told myself it was kind of cold, even though i knew it truly wasn&#39;t). i&#39;m thankful that i futzed with the temperature and intensity settings to see if it would make a difference; i&#39;m thankful when it didn&#39;t, i decided, still hopeful, to just wait, that maybe the air conditioner just had to &quot;wake up&quot; and &quot;get ready&quot; after being &quot;dormant&quot; for so long (i&#39;m thankful for foolish anthropomorphism). i&#39;m thankful that i sorted and folded two loads of laundry while i waited for the air conditioner to blow cold air. i&#39;m thankful for the moment when i heard the compressor whir on, its unique drone multi tracked over the static of the fan, and thankful that i got up and went over and stuck my hands over vent and felt the icy air washing over me. i&#39;m thankful for how happy i was to go back to my laundry and know that the room around me was getting colder.</p>
+<p>i&#39;m thankful that after a few more minutes of folding, i noticed that the room wasn&#39;t getting colder anymore like it should be, that the temperature indicator, which had dropped to 73, was now back up to 76. i&#39;m thankful i did more setting futzing and eventually, for reasons beyond me, the compressor kicked on again. i&#39;m thankful that when that happened i stood in front of the air conditioner holding my hands in front of the cold air because i was afraid to leave and sit down because it felt like the force of my will and need was the only thing keeping the air conditioner going. i&#39;m thankful that i felt a little like a caveman or survivalist, trying to keep a fire from dying (except the opposite, because it was an air conditioner). i&#39;m thankful, when the compressor cut off and the air warmed again, to have been reminded that electronics do not respond to my will and need and magical thinking. i&#39;m thankful that i eventually gave up and turned the air conditioner off and thankful that even though d gets much colder than i do, she suggested that i put our box fan at the foot of the bed so that i could at least get some airflow going, which helped me not be miserable. i&#39;m thankful for sarah bakewell&#39;s <em><a href="http://www.nytimes.com/2016/03/03/books/review-in-sarah-bakewells-at-the-existentialist-cafe-nothingness-has-a-certain-something.html">at the existentialist café</a></em>, which i started reading before i fell asleep and which i am really enjoying so far. i&#39;m thankful for this paragraph in the layman&#39;s primer on phenomenology she offers early on:</p>
+<p>&quot;<em>The point about rigor is crucial; it brings us back to the first half of the command to</em> describe phenomena_. a phenomenologist cannot get away with listening to a piece of music and saying: &#39;How lovely!&#39; He or she must ask: is it plaintive? is it dignified? is it colossal and sublime? The point is to keep coming  back to the &#39;things themselves&#39;—phenomena stripped of their conceptual baggage—so as to bail out weak or extraneous material and get to the heart of the experience. One might never finish adequately describing a cup of coffee. Yet it is a liberating task: it gives us back the world we live in. It works most effectively on the things we may not usually think of as material for philosophy: a drink, a melancholy song, a drive, a sunset, an ill-at-ease mood, a box of photographs, a moment of boredom. It restores this personal world in its richness, arranged around our own perspective yet usually no more noticed than the air._&quot;</p>
+<p>i&#39;m thankful that we ordered a new air conditioner and it will be delivered tomorrow.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-esme4.html" class="btn btn-secondary">← thank you notes (esmé)(4)</a>
+        <a href="/letters/thank-you-notes-417.html" class="btn btn-secondary">thank you notes 4/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

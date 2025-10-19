@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/31/15">
+  <title>12/31/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/31/15</h1>
+        <time datetime="2015-12-31T20:39:22Z">December 31, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the episode of the <a href="http://songexploder.net/wilco">song exploder</a> podcast i listened to about wilco&#39;s song &quot;magnetized.&quot; i&#39;m thankful to learn about jeff tweedy&#39;s songwriting process, about how he makes what he calls &quot;mumble tracks&quot; where, over an instrumental snippet that seems like it might be something, he mumbles through a melody and then listens to it over and over, looping a single bar, while he searches, like someone doing a jigsaw puzzle, to find words with syllables that match the rhythm. i&#39;m thankful for his belief that sense will always follow sound in this way, that inherently meaning will accrete and attach itself to the words somewhere in the process. i&#39;m thankful to think about my process in writing these notes, about the hope that this sturdy mechanical mantra i start sentences with and the rambling strands that hang from it also get coated sometimes in the glitter of meaning. i&#39;m thankful for the song, which i hadn&#39;t listened to, for the bouncy abbey road tom fills and vocal ahs and oohs, for the use of noise gate as an expressive instrument rather than a studio tool, and for the warmth of the love that&#39;s expressed over the quick chorus chord turnaround when he sings, about what his love for his wife feels like, &quot;<em>i sleep underneath / a picture that i keep of you next to me / i realize i&#39;m magnetized</em>.&quot;</p>
+<p>i&#39;m thankful that fifteen minutes before our friends were supposed to come over for dinner and drinks yesterday evening, as a i trimmed green beans in a kitchen, my temples felt like they were being squeezed by needle nose pliers. i&#39;m thankful that this is probably because i was hungry after spending the afternoon prepping for dinner and helping to get our house cleaner than it has ever been and forgot to eat a snack. i&#39;m thankful that i don&#39;t often get headaches, even if that meant this one felt extra bad in comparison to the baseline of how my head feels. i&#39;m thankful that i decided to have a whiskey and apple cider cocktail to see if that would make my head feel better; i&#39;m thankful that it was tasty, even though it didn&#39;t really make my head feel better. i&#39;m thankful for the sharp chef&#39;s knife i got for christmas, which made trimming the beans easier and faster than ever. i&#39;m thankful that i did not cut my fingertips with the knife, like i did the first time i used it, stupidly testing its sharpness (i&#39;m thankful that d came in immediately and put bandaids around the tiny cuts on my fingers).</p>
+<p>i&#39;m thankful our friends came over for dinner. i&#39;m thankful for how much fun we have talking to them and hanging out with them. i&#39;m thankful for the pure sweet smile of their young child. i&#39;m thankful for the fun conversations we had with them, while sacked out on the carpeted floor of the study as their child crawled around to and fro between us, chasing balls and toys (i&#39;m thankful for the wooden toy they had made of small sticks knitted together in an abstract shape with wires, which made a satisfying xylophone sound when jangled). i&#39;m thankful that as we sat there chatting and playing, the nice conversation distracted me from the fact that rising behind my headache was a wave of horrible body conquering nausea. i&#39;m thankful that d could entertain them for a while i went to the kitchen to finish dinner prep, trying to pull myself together as i sauteed the green beans, cooked sausages, pickled carrots, and reheated caramelized onions. i&#39;m thankful that when i felt as though i was going to throw up and was hanging on to my composure by the tiniest thread, i called to d from across the house and she found me some dramamine in the depths of our medicine cabinet for me to take. i&#39;m thankful to remember after i got a wisdom tooth pulled a couple of years ago, when i was rocked by hydrocodone nausea so bad i couldn&#39;t move, and d came all the way home from work to give me dramamine and i felt better enough to sit up.</p>
+<p>i&#39;m thankful that i was able to pull myself together enough to finish cooking and sit sipping seltzer and trying to eat a banana for a few minutes while d and our friends had dinner. i&#39;m thankful that when eventually conversation amid the smells of food was too much, i escaped to the bathroom to hold my head between my hands and try to breathe and focus. i&#39;m thankful for how compassionate our friends were, how i could hear them, from across the house, inquiring about my welfare and saying that we could always hang out another time if i wasn&#39;t feeling well. i&#39;m thankful that d came to check on me once and then a second time, and thankful that eventually i was able to splash water on my face and feel centered enough to hold it together. i&#39;m thankful that gradually i felt less sick over the rest of the evening until i didn&#39;t feel sick at all anymore. i&#39;m thankful that i didn&#39;t have to call our night early and that we were able to have more fun conversations about disparate topics including the fascinating process of lanolization, gossip about people from our mfa program, the ravages of depression and eating disorders, matcha, the ambient calm of baby einstein (i&#39;m thankful that their baby was entranced by our enormous television), our yoga practices, the difficulty of meditation, david mitchell and rebecca solnit, marina abramovic, stupid stuff we did in college, and xeno&#39;s paradoxes, among other things.</p>
+<p>i&#39;m thankful that we had a good time with them and plan to have more in the near future and i&#39;m also thankful that, once we closed the front door behind them, d and i were able to shed the husks of our outward-facing selves and climb together into the warm couch blanket of introversion. i&#39;m thankful to think about how one of my fears about my relationship with d when it first started was that, because i was spending so much time with her, i had stopped reading the new yorker cover to cover every week. i&#39;m thankful for the retrospective silliness of how i thought this was a real serious thing to be worried about back then. i&#39;m thankful to recognize how stupid it is, when i&#39;m in a shitty mood or a bad place, or when i&#39;m struggling in vain to concentrate on reading or writing or doing some kind of task, to not value the gentle pressure of her hand touching my hip or the side of her body pressing against me in bed or a warm kiss on the cheek or to hear her making small noises of laughter or delight or shock in response to something she&#39;s experiencing. i&#39;m thankful to enshrine that stupidity, to frame it in words here to help me remember that experiencing these little daily things is the most precious gift i can receive in the world and is always more important than whatever else i think i&#39;m supposed to be doing. i&#39;m thankful for the extreme version of this feeling i experience sometimes when we&#39;re having sex and i&#39;m coming, which is this dopamine epiphany of &quot;<em>why the fuck do i think anything else in the world matters besides this? how can writing a song or reading a book be better than this? why do i care about anything else outside of this feeling?</em>&quot;</p>
+<p>i&#39;m thankful, so thankful, for the way my love is crystallized in such moments, even if i&#39;m also thankful for the worth and the meaning that i am able invest in the things of the world at other times. i&#39;m thankful that&#39;s true for d, too—i&#39;m thankful for <a href="http://dire.tumblr.com/post/136275833656">this comic</a> she made yesterday afternoon, which made me laugh harder than any &quot;shouts and murmurs.&quot; i&#39;m thankful that watching a youtube video yesterday, i realized that the <a href="https://www.youtube.com/watch?v=NhCNx7VEUG0">old 90s ballad lyric</a> which i always thought was &quot;i&#39;ll be the greatest man of your life&quot; is actually &quot;i&#39;ll be the greatest fan of your life.&quot; i&#39;m thankful that i get to be the greatest fan of someone&#39;s life. i&#39;m thankful that <a href="https://www.youtube.com/watch?v=_-agl0pOQfs">magnets work</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1116-1872.html" class="btn btn-secondary">← 1/1/16</a>
+        <a href="/letters/123015.html" class="btn btn-secondary">12/30/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

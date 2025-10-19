@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (fsa)(5)">
+  <title>thank you notes (fsa)(5) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (fsa)(5)</h1>
+        <time datetime="2016-03-19T00:00:00Z">March 18, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i am thankful that i’m often thankful for my dreams.</p>
+<p>i’m thankful that i dreamt the other night of being back in new orleans. i’m thankful for new orleans. i’m thankful for having been there and the strong connection to the pavement, to the walls of buildings, to the gardens, to the air, to the music, to the silence, to the excitement of the unknown.</p>
+<p>i’m thankful for louisiana, for getting there under thunder and storm as we drove on roads crossing over the bayou. i’m thankful for the aura of mystery and misery surrounding the swampy waters, of reptiles lurking underneath and all the creatures hidden in the shade. i am thankful for how the gods were angry with the world, throwing lighting at the sky and watching the life below. i’m thankful for the greys and greens of the ride to baton rouge.</p>
+<p>i’m thankful for the silence of new orleans. how sometimes the city was roaring and too often too moorish and quiet as it was deserted in the august draught. i’m thankful for Marie Laveau’s grave, and paying homage to the queen of voodoo just as we entered town. i’m thankful for louisiana cemeteries, for how they resemble central and south european ones - and still they connect to the city so differently. i am thankful that european cemeteries are something hidden, even when they are in the heart of town, but always enclosed by walls and disguised or detached altogether from the city life, but there the cemeteries are venues on their own, how it reminds me of haiti and their culture, how it reminds me of the day of the dead and joy and life and death all together and the smell of graveyard dust, of candles, of flowers, face painting, trumpets and decay.</p>
+<p>i’m thankful for the vieux carré, for the tinted buildings ageing with the enchantment and unique grace of decadence. i’m thankful for the tropical rain showers falling heavily in the sun and warm of a lost summer in no-man’s land. i’m thankful for the jazz twirling in the air from open bar windows, urging us to come in, sit, just have a drink and never leave this forsaken place, and the grave swivels of fans lashing the air. i’m thankful for sazerac, bitters, lavender and tart cocktails, to the sound of tap dancing to flirty songs and fast piano chords. </p>
+<p>i’m thankful for new orleans culture, a melting pot of hybrids that reminds me much of my own, and mutts of quadroons, mustefinos and mulattoes (not black not white not nothing,  ignored, but the lymph of the city they loved). i’m thankful for being in a place where no one exactly belongs, and i fit right in. i’m thankful for the sultry spices of southern creole, for the abundance of cajun flavours to fight the austerity of being poor, for gumbo and oysters and feeling warmer than warm under humidity and heath and the midday sun. i’m thankful for fried fish and chillies and hare, and sticky pull-apart cochon, and the best peach cobbler we ever had.</p>
+<p>i’m thankful for making love in new orleans, and falling senseless in a deep intoxicated sleep, to wake up fully married to the town. i’m thankful to be fusing with the mississippi river, reeds crying loudly from my window, ears open and heart heavy with anticipation, for the bugs that sang to the top of their tiny lungs in a unison choir of sugar canes and despair that left me deaf in the middle of the urban centre. i’m thankful for the train chime that kept beckoning and wanting and willing to take me to a place i never was before, and knowing the time was not right but there i was still hearing the call. i’m thankful for the stuffy air of new orleans carrying an ecosystem of its own, of the smells of louisiana, its people and the graves of all the lives that were forged and cut short on the bloody ground.</p>
+<p>i’m thankful for the louis armstrong park, musically quiet under the blue of twilight, for the absolute loneliness and oppressive nothing smashing us with the force that only exists in pure absence of sound. i’m thankful for the colourful banners of rainbow and acceptance and gay pride, twirling in lampposts in empty avenues asking for orchestras partying crowds. i’m thankful to rushing from the shades and seeking light and illuminated statues of colonial figures and christianity. i’m thankful for st louis church with its gilded altar and venerated saints, and the mass j and i attended, the service about war, and how it felt less of america than anywhere else we had ever been. i’m also thankful for the empty antique shops reflecting long gone people in the mirrors they showed, thankful for our midnight swim in the hotel’s swimming pool, thankful for being so happy and full and complete and so very much in love in that place where i left my heart.</p>
+<p>i’m thankful for the presence of katrina, keeping us sharp in our toes, the lines of the deadly water fading in buildings and still torn apart roads. i’m thankful for the homeless and crazy of new orleans, lazing in the coolness of the night air, and whispering we’re all crazy, we’re all doomed. i’m thankful for the idiosyncrasies of bourbon street, people drunk from their poisons, the joys of acquiescent and pre-emptive doom, for street fairs and blues bars, for drag shows and voodoo shops hiding from curious touristy eyes the real tricks of blood and feathers and brick and chalk, the reds and whites and browns and darks of magic too old to be earthly but too far from divine, and being a hair too distant from divine is a mile too much, for he is waiting open armed and keen to receive us all. i’m thankful for voodoo, houdon and voudon, cursed entities released from pain, i’m thankful to be so close and thankful to be far, far away in my seaside land of peaceful conquerors and creaking ships calmly sailing blessed waves.</p>
+<p>i’m thankful for open-air night markets and bijouterie and fun, blues bars and pub crawling from midnight to dawn. thankful for the impromptu street party with 10 singers and saxophone and drums (and taking a video to remember, to remember the surprise of the moment and the energy it moved and flowed) and the pouring of people out of the crowded bars into the street, like a flood of people, a katrina of souls, celebrating everything they had and could ever wish for. thankful for dancing with j and having a solemn moment communion like it was meant to be had, the aestival eucharist of humans though rhythm and love.</p>
+<p>i’m thankful that when leaving it all felt so right and so wrong, like not belonging was part of the enchantment and being addicted to the mermaid’s song of dark skins and souls longing for power and lusting for more (and more and more). and looking behind my shoulder with sorrow and joy of imagining my prince lestat twirling in roofs in the first light of the moon, and - wait - spotting Marie Laveau’s braided hairdo in a corner, and not knowing if it’s her or one of her own and whether it makes a difference (or none at all).</p>
+<p>i’m thankful that i woke up to the invocation of papa legba dancing in hazy lips, tongue clicking on the roof of my mouth, holding tightly and nails digging on the bed frame, mouth tasting of ashes and earth. i’m thankful for the mist of colours floating in my eyes, of gold and red and fire and black, the purples and oranges of my creole past life. i’m thankful for racing heartbeats and rapid breath.  i’m thankful for the smell of iron and sweaty skin and braiding wax, for the rattling of bronze necklaces and rusty chains i once bore, the sound of the whip lashes that i suffered and also struck me - and shame me - to my damaged white and mangled core. i am thankful to have not lived and yet i have through the burning crosses of the south. i’m thankful for keeping watch of the bedroom door, and for wanting and not wanting for him to come, underworld open, cheap perfume fumes and tangy acidity of cocaine. i’m thankful that i was dreaming, and magic lies mostly within than at my fingertips’ will, and in spite of all silly reminders and connections to this earth and the universe beyond, most of the times normality is magic and my life is mostly normal - and i am thankful it’s magic, and not normal at all.</p>
+<p>f.</p>
+<p>- fsa (3/17/16).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-320.html" class="btn btn-secondary">← thank you notes 3/20</a>
+        <a href="/letters/thank-you-notes-318.html" class="btn btn-secondary">thank you notes 3/18 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

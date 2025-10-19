@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (fsa)(6)">
+  <title>thank you notes (fsa)(6) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (fsa)(6)</h1>
+        <time datetime="2016-03-24T00:00:00Z">March 23, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i am thankful for how time passing feels different every day. i am thankful that some days feel exceptionally long, with every ounce of [time] palpable, mensurable and produced with difficulty, and how in others the hours buzz by unfazed, like tight stitches on crochet, a mile of thread neatly tied. i am thankful that some lie perfectly in between with both opposites in one, the same rhythm of crocheting stitches, the same cadence of a full life, but with no more ease than those dry long days. i’m thankful that my aesthetic representation of one’s time is dark room, a spinning wheel manoeuvred by a crone, a sharp spindle bright under firelight, and that the witch may choose to cut the twine at any time. i am thankful that the semiotics of this image is a perfect marriage between my two prominent cultural influences - perrault’s european narrative of the sleeping beauty and the handling of life as told by ancient mythology - all put together in a dark, cold, stone vault of a room, fireplace and spinning wheel bright with necromancy secrets and full of life and feeling and emotion, the crone’s vengeful and most passionate intentions intercalated with negligent bliss, the crone’s old loves woven with sadness and thought, the crone’s maniac spinning pushing us on and on and on.</p>
+<p>i am thankful for my subconscious fear of corpses that assaults me frequently in my sleep. i am thankful that this does not translate into any particular discomfort with real-life death or decay, although i am extremely wary and perturbed by portuguese death-rituals, i have no crippling fear of dead bodies and much less of the idea of death which i find quite comforting and even romantic in a very organic kind of way. i am thankful that last night, for the first time, dreaming that i am in a mourning or confronted by a corpse didn’t  imply paralysing fear or torment me that much (and in my head i was thinking: “oh, this again, subconscious of mine?”) although i was still slightly [very] scared. i am thankful that for the past year in my corpse-related dreams i am never alone, but always with j and sometimes with other people, and that makes me feel that maybe deep down i know that j is always there for me and i am never really alone but can actually rely on my family and friends for support, and that is a very comforting certainty to have. i’m thankful for how this dream in particular took place in rome, in a huge basilica at night, and how for once i did not have the terror of anticipation (which very likely is what induces me into a corpse-related-narrative) of being consciously dreaming in a church, which very often implies seeing an avatar of dead body very soon! i am thankful that this time i got to enjoy the vastness of the church (the overwhelming feeling you get from opposing your tiny self to the vastness of ecclesiastic architecture, translating perfectly the aesthetic intention of artists working for the vatican which you can only really taste in large quantity in rome), and how it was slightly dim and dark and ethereal under candlelight soft tones. i am thankful i was walking around hand in hand with j, appreciating the paintings, one of them was a caravaggio that i particularly like, and then all of a sudden a tourist guide pointed us to a lateral by the altar, 40 feet ahead, and casually mentioned that there was where caskets were lain to mourn the dead (and right then my mind startled and i realised i was sleeping and soon the corpse would make its triumphal appearance). i am thankful for the distance that separated me from that area reflected too in my sleep. i am thankful that just as i thought this and looked back to the painted wall, there it was - an open coffin and a mourner, but i am especially thankful that it revealed the [fresh, and not decayed like i often fear] mortal remains of a 50 year old lady, very normal and not extremely young or old (both things which upset me very much). i am thankful that all of a sudden tourists started raising their voices in awe and the dead woman rose from her final rest, like if she woke up from a very hungover sleep. i am thankful that the mourner helped her climb out of there, the resurrected woman limping as she walked out of the church supported by her companion, my heart racing with enthusiasm (“i  broke the narrative, i cracked the code!”), my dream-avatar of j squishing my hand and gasping with amazement, when all of a sudden to the sound of  crowd-chanted “aahs” as she rolled her eyes, and collapsed on the floor giving in to a pale and final death, to which i muttered “i should have guessed…” and avatar-j looked very surprised and repeated: “what? what?”. i am thankful i woke up defeated but not bothered, and that i’ve come really close to getting free from these dreams, with the help of real-life j who loves to analyse my dreams and plays the psychotherapist role very well. i am thankful that Holy Week just started, the most important week in Lent and in the year for catholics, and i am thankful that my subconscious and my soul united in painting a ridiculously literal portrait of Resurrection. but with a modern and personal twist. and admittedly not so much of an end. boo-hoo sleepy f! </p>
+<p>i’m thankful that come time i always get release from these recurrent shackles of the night. i am thankful that these nightmares do not, as far as i know, trace back to any former trauma but entail some abstract and in my eye beautiful hidden meaning when i get to it, too sophisticated for my awake-self, and have been so ever since i was very very young. i am thankful that they are age-appropriate metaphors usually related to the fact that i have to step up and face my fears and embrace my truth wholeheartedly, both my flaws and the violence in me and my unescapable decay, and that the solution is so fucking freudian it gets on my nerves!</p>
+<p>i am thankful that my first recurrent dream or dream-narrative from when i was 4 to 9 years old was the wolf dream, in which i was always alone somewhere familiar (my house, pre-school, grandma’s house) and knew - just knew - that the wolves were out to get me, and i ran and ran and hid but they always ended up chasing and eating me alive, which almost came as a relief. i am thankful i had this nightmare for so long it became a joke in my family, and that in time my father presented a solution for me to break the narrative and face the wolves (my fears). i am thankful that the only time i did like he suggested, i faced the huge pack of wolves in my pre-school gym, green pavement and empty benches, and the pack leader was huge and white and grey with blazing yellow eyes. i am thankful that that one time i stared right back at the shiny amethysts in wolf skin and told the pack that they would eat me again that time, but only because i allowed it. and the wolf nodded in consent, bowed his head in respect, and gently opened his massive jaws as i nimbly and willingly leaped inside. i am thankful that ever since i feel like there was yet another solemn communion of symbol and spirit, and since then not only wolves not scare me as they empower me, and i became one with their strength flowing freely inside me, and i like to think that i acquired some of their raw and most iconic characteristics: perseverance, stealth, loyalty and inner strength, and now all things wolfish remind me of the pact/pack. i am thankful that one of the few times i was talked into seeing a medium she unknowingly described the wolf exactly as i dreamt it, and said that it was my inner form.</p>
+<p>i am thankful of my second dream narrative was surrounded by oranges. i am thankful that for almost 6 years, week on week, i dreamt the exact same thing, always in a familiar setting: that i was either in a house i knew (my own, a friends’) or a familiar restaurant, or a cafe or walking down the street, and i got a huge unexplained and out of context urge to eat an orange. and whenever i retrieved/bought/got served/picked up an orange from the tree, i was filled with contentment and joy, but when i went to peel or cut it it was always inedible, either it was full or maggots or other bugs, or yellowish and withered, or just plain dry, or oozing green and blacks of decay, or even crumbling in my hands and turning to dust. i am thankful that i did psychoanalysis for unrelated reasons, and my very old and very wise psychiatrist suggested that maybe it was a sign that i should reconcile with frustration and the fact that i can’t come to terms with not being able to control everything, and ever since he said that i never had that dream before.</p>
+<p>i am thankful that i dreamt of oranges, my absolute favourite fruit, and that now i can never get to eat them whole as nature intended because somehow i always fear it will be sour or rotten like in my former dreams. but i am thankful that it remains as a symbol for who i am today, of vibrance, of curiosity, of creativity, of passion and joy, and that in arabic (fe.) portuguese and orange are said roughly the same way, so when i say &#39;ana min bortoghalia&#39; has the dual meaning of being i am portuguese and, also, i am an orange, in a poetic coincidence or divine irony of sorts, the same godly jest that accompanies me throughout the days.</p>
+<p>f.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-325.html" class="btn btn-secondary">← thank you notes 3/25</a>
+        <a href="/letters/thank-you-notes-l2.html" class="btn btn-secondary">thank you notes (L)(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

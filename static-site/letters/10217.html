@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="10/2/17">
+  <title>10/2/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>10/2/17</h1>
+        <time datetime="2017-10-02T00:00:00Z">October 1, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that over the weekend, we watched <em>blade runner</em>, which i have attempted to watch multiple times before but fell asleep each time. i&#39;m thankful that this time i did not fall asleep and in fact enjoyed the move greatly, as did d. i&#39;m thankful to have also started reading <em><a href="https://www.amazon.com/dp/B01N4P14CI/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">autonomous</a></em> by analee newitz, which is cyberpunk-y in its own way and is in the sweet spot of being engaging on the level of plot and action and thought-provoking on a larger conceptual level and about characters who feel real and specific. i&#39;m thankful for william gibson&#39;s blurb, where he describes the &quot;<em>naturalistic, subjective, paradoxically humanistic but non-anthropomorphic depiction</em>&quot; of the point of view of robots in the book, which does feel new (i&#39;m thankful for a really fascinating scene from last night where the narrator bot&#39;s human partner, a soldier of fortune, has a sexual experience with it on a shooting range, for how the bot processes its feelings about that and how it changes his relationship with his partner).</p>
+<p>i&#39;m thankful to also have started reading, in little bits, knausgaard&#39;s <em>autumn</em>. i&#39;m thankful to know <a href="https://twitter.com/mariskreizman/status/858062097623724033?lang=en">my fave is problematic</a>, but i&#39;m thankful for the way that the best of his writing makes me feel about the world around me and my relationship to it. i&#39;m thankful for this passage from the opening which is dedicated to his unborn daughter, which feels like the raison d&#39;etre for all of his books and is the reason i love them so much:</p>
+<p>&quot;<em>These astounding things, which you will soon encounter and see for yourself, are so easy to lose sight of, and there are almost as many ways of doing that as there are people. That is why I am writing this book for you. I want to show you the world, as it is, all around us, all the time. Only by doing so will I myself be able to glimpse it.</em></p>
+<p><em>What makes life worth living?</em></p>
+<p><em>No child itself asks that question. To children life is self-evident. Life goes without saying: whether it is good or bad makes no difference. This is because children don&#39;t see the world, don&#39;t observe the world, don&#39;t contemplate the world, but are so deeply immersed in the world that they don&#39;t distinguish between it and their own selves. Not until that happens, until a distance appears between what they are and what the world is, does the question arise: what makes life worth living?</em></p>
+<p><em>Is it the feeling of pressing down the door handle and pushing the door open, feeling it swing inward or outward on its hinges, always easily and willingly, and entering a new room?</em></p>
+<p><em>Yes, the door opens, like a wing, and that alone makes life worth living.</em></p>
+<p>_
+To someone who has lived for many years, the door is obvious. The house is obvious, the garden is obvious, the sky and the sea are obvious, even the moon, suspended in the night sky and shining brightly above the rooftops, is obvious. The world expresses its being, but we are not listening, and since we are no longer immersed in it, experiencing it as part of ourselves, it is as if it escapes us. We open the door, but it doesn&#39;t mean anything, it&#39;s nothing, just something we do to get from one room to another._</p>
+<p><em>I want to show you are world as it is now: the door, the floor, the water tap and the sink, the garden chair close to the wall beneath the kitchen window, the sun, the water, the trees. You will come to see it in your own way, you will experience things for yourself and live a life of your own, so of course it is primarily for my own sake that I am doing this: showing you the world, little one, makes my life worth living</em>.&quot;</p>
+<p>i&#39;m thankful for the next chapter, which enacts the statement of purpose of the opening with an extended description of eating apples, which ends with this paragraph:</p>
+<p>&quot;<em>When I was a fairly small child, I began to eat the whole apple. Not just the flesh, but the core with all the pips in it, even the stem. Not because it tasted good, I don&#39;t think, nor because of any idea I might have had that I shouldn&#39;t be wasteful, but because eating the core and the stem presented an obstacle to pleasure. It was work of a kind, even if in reverse order: first the reward, then the effort. It is still unthinkable for me to throw away an apple core, and when I see my children doing it—sometimes they even throw away half-eaten apples—I am filled with indignation, but I don&#39;t say anything, because I want them to relish life and to have a sense of its abundance. I want them to feel that living is easy. And this is why I&#39;ve changed my attitude towards apples, not through an act of will, but as a result of having seen and understood more, I think, and now I know it is never really about the world in itself, merely about our way of relating to it. Against secrecy stands openness, against work stands freedom. Last Sunday we went to the beach about ten kilometres from here, it was one of those early autumn days which summer had stretched into and saturated almost completely with its warmth and calm, yet the tourists had gone home long ago and the beach lay deserted. I took the children for a walk in the forest, which grows all the way down to the edge of the sand, and which for the most part consists of deciduous trees, with the occasional red-trunked pin. The air was warm and still, the sun hung heavy with light on the faintly dark blue sky. We followed a path in between the trees, and there, in the middle of the wood, stood an apple tree laden with apples. The children were as astonished as I was, apple trees are supposed to grow in gardens, not wild out in the forest. Can we eat them, they asked. I said yes, go ahead, take as many as you want. In a sudden glimpse, as full of joy as it was of sorrow, I understood what freedom is.</em>&quot;</p>
+<p>i&#39;m thankful for the chocolate cake that d made from a box mix on saturday. i&#39;m thankful that though she thought it tasted off, i happily ate two large hunks of it on saturday, loosely smeared with gobs of chocolate frosting that was too thick and cool to spread. i&#39;m thankful that she tried it again last night and after a bite decided she still didn&#39;t like it and i&#39;m thankful for her description of it as reminding her of play-dough, which, when i went to eat my slice, i thought of and, while not having thought anything was &quot;wrong&quot; with the cake before, its play-dough-ness suddenly became apparent to me, the feeling intensified by the coldness of the cake, which i had stored in the fridge on a plate wrapped in foil. i&#39;m thankful for the strange interior coldness of something like cake right out of the refrigerator, how it seems that the inside is colder than the outside, perhaps because when the cake is removed from the fridge, the surface of it adjusts more quickly to the air temperature, but it takes time for that warmth to permeate it. i&#39;m thankful that if i am lucky, i will get to eat many more pieces of cake in my life.</p>
+<p>i&#39;m thankful to have recently rediscovered the joy of sliding on a hardwood floor in sock feet.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/10317.html" class="btn btn-secondary">← 10/3/17</a>
+        <a href="/letters/10117.html" class="btn btn-secondary">10/1/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

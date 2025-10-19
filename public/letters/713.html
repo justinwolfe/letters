@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="7/13">
+  <title>7/13 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>7/13</h1>
+        <time datetime="2019-07-13T00:00:00Z">July 12, 2019</time>
+      </header>
+
+      <div class="letter-body">
+        <p>there&#39;s </p>
+<p><a href="https://open.spotify.com/album/4b7iBQ6FtAoFDJTWGGnCRK">a new khruangbin album</a> which is a dub remix of <a href="https://open.spotify.com/album/42j41uUwuHZT3bnedq2XtM">their perfect first album</a></p>
+<p>the recently released <a href="https://open.spotify.com/album/6AzBSTH7yHgFMPQRrckpHO?nd=1">album of folkie david bowie demos</a>, especially the way on &quot;<a href="https://open.spotify.com/track/77LrKGrb9UEZsOR6imFXOe?si=JM0vWm1ySo-wm44I9RmC1w">janine</a>&quot; that bowie just cheekily goes into a straight rip-off of the coda of &quot;hey jude&quot; </p>
+<p>walking miso along the trail last night and listening to <a href="https://m.youtube.com/watch?v=EKirVyxf0do">the band&#39;s version</a> of &quot;i shall be released,&quot; which is so thick and creamy, a pecan pie of a song</p>
+<p>after dinner, inspired by the background movie list in <a href="https://loneliness.substack.com/p/im-off-the-grid">sarah&#39;s most recent newsletter</a>, watching /mission impossible III/, which is on amazon prime video and which i would describe as a hot sloppy pizza of a movie</p>
+<p>the propulsive quality of the movies, which is symbolized in microcosm by the burning fuse of the introduction and also by the way that the majority of the movie is tom cruise running as fast as he can, and you think of the number of takes he has to do and it must be so much running</p>
+<p>and yet how they are so comfortable, in some way, the grain and rhythm of that kind of 90s action movie, or the way that a civilization that stages fake car crashes is decadent in its confidence, how one character says &quot;there&#39;s a fine line between bold and stupid&quot;</p>
+<p>the way that the leap of faith, a common trope in these movies, is like confidence made religion</p>
+<p>the characters riding on a speedboat victory lap through venice wearing very dated looking sunglasses</p>
+<p>the alien confidence of tom cruise, especially fascinating in this role because it seems like (as plot requires) he is always making mistakes or bad decisions, but it&#39;s okay because he always snatches victory from the jaws of defeat</p>
+<p>how when a character tells him that defibrillating keri russell to disable an explosive in her head could stop her heart and he shoots back &quot; fine, it&#39;ll stop her heart and then i&#39;ll start it again&quot; like imagine feeling that way about a decision</p>
+<p>you know he&#39;s not going to die and that makes you feel a little bit like you&#39;re not going to die, either, a contact high, an easy grace. it&#39;s like how people talk about drinking your own koolaid and tom cruise is like on a permanent high dose extended release patch of his own koolaid</p>
+<p>phillip seymour hoffman (RIP), who at one point says the line &quot;i always spill red wine on my expensive custom-made shirt&quot;</p>
+<p>the bit early on where tom cruise rescues keri russell and then they&#39;re trying to escape and he tosses her a pistol and she catches it and starts shooting and it&#39;s a glimpse of a weird alternate universe version of /the americans/</p>
+<p>the absolutely absurd scenery chewing lines of laurence fishburne&#39;s black ops bureaucrat, which include &quot;it&#39;s unacceptable that chocolate makes you fat, but i&#39;ve had more than my share, and guess what?&quot; and &quot;what i /will/ lose sleep over—and i love my sleep—&quot; and &quot;i bullshit you not, i will bleed on the flag to make sure the stripes stay red&quot;</p>
+<p><a href="https://m.youtube.com/watch?v=eR8YUj3C9lI">the simpsons &quot;smarch&quot;</a> </p>
+<p> joke, which i thought of for some reason and it made me happy</p>
+<p>we&#39;re almost done with packing</p>
+<p>we bought an cheesecake made of 6 different flavors of cheesecake which was on sale at the bakery</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/714.html" class="btn btn-secondary">← 7/14</a>
+        <a href="/letters/712.html" class="btn btn-secondary">7/12 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/3">
+  <title>thank you notes 4/3 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/3</h1>
+        <time datetime="2016-04-03T00:00:00Z">April 2, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that when i finished <em>the dark forest</em>, the sequel to the three body problem, in the bath yesterday, the ending was so surprising and great that even though in the second half of the book, i had gotten slightly tired and began to long to read something else, i rushed (well, my thumbs rushed) to the kindle store to buy the third book. i&#39;m thankful for my crushing disappointment when i saw that the translation of the third volume is not out, like i thought it was, and won&#39;t be out until september, which seems, especially because of the cliffhanger ending, like a world away, even though it&#39;s only the other side of summer. i&#39;m thankful to have it to look forward to, and to be able to start a new book, and and <a href="http://www.vulture.com/2016/03/8-books-you-need-to-read-this-april.html">to have learned on friday</a> that the latest knausgaard translation is coming out on april 19. i&#39;m thankful for the previous volume, which i loved like i&#39;ve loved all of them—i&#39;m thankful to paste here a bit from an email to my friend jk about why:</p>
+<p>&quot;<em>The one that would probably be most interesting for you to hear about, though, is the fourth volume of My Struggle, which was released a few weeks ago. The third volume, Boyhood, follows what the title indicates and this new one picks up the story (as much as there is a story, of course), covering his final year of high school and then his trip to a remote fishing village in the north of Norway, where he’s doing the Norwegian equivalent of Teach For America as a kind of gap year experience. I can’t remember if I talked to you about this in person or if it was a thought fragment in one of those gnostic emails that lives in dead bits somewhere underneath the Googleplex, but one of the things that has really impressed me about Knausgaard’s project outside of the moment to moment pleasure I find in the way he renders the quotidian is the kind of long game that he’s playing in terms of how he represents his father.</em></p>
+<p><em>In the first book, the primary thing is the dead body of the father - we get a small sense of what he was like when he was alive in some of the memories Knausgaard tells, but I left that book knowing that Knausgaard felt traumatized by him, but not really seeing why or who he was (though I knew intimately his end and the material circumstances of what was left behind) The second book is kind of the same way in this sense - it’s mostly about what it’s like for Knausgaard to be a father, but his own father is again a kind of shadow presence, someone that he’s striving to define himself against in his own relationships with his children but again, not someone who we actually see very vividly. The third book, by contrast, is largely given over to a high definition portrait of how horrifying and cruel the father was to Knausgaard when he was a boy and the atmosphere of terror that he and his brother and his mother lived in during that time. It charges the first two books’ mostly rhetorical mentions (as opposed to anecdotal depictions) of his hatred and fear of his father, of his desire to be a different person than him, with a visceral reality - the mundane and quotidian, which is gloried in in the other volumes, becomes a space of fear because of the father’s presence.</em> </p>
+<p><em>So then the amazing thing that he does in the fourth book is humanize the father who we have come to see as a monster, show us his divorce from Knausgaard’s mother and the beginning of his descent into alcoholism and the agony that he felt that drove him to it (probably some severe mental illness that was undiagnosed and that he self-medicated for with alcohol), to see how hard he’s trying to connect with his children and with his family through a constant veil of pain (Knausgaard finds a diary his father kept from the period and quotes it at length in the book - it is heartbreaking). He’s still a horrible person, but we can empathize with and understand him in a way that I never expected to be able to. There’s also this fascinating sense of duality in that, during the events of the book, Knausgaard is getting heavily into drinking heavily and is, at the same time, being exposed to these first signs of alcoholism in his father - the young Knausgaard clearly doesn’t see any connection between the two, because he of course can’t imagine that he’s anything like his father, but by the way that the older Knausgaard juxtaposes these images of the two of them drunk, you know that it’s something that he’s really thinking about and trying to process.</em></p>
+<p><em>(I make the book sound so heavy, and it is, but it is in many ways quite silly, too - the structural device used to organize the book is young Knausgaard’s desire to lose his virginity, a task he fails at many times!)</em>&quot;</p>
+<p>i&#39;m thankful for the relief of the weekend after a very intense end of the week at work. i&#39;m thankful that d did the dinner prep on thursday and friday and had it ready when i got home, which was really helpful. i&#39;m thankful that though i had been looking forward to having two days &quot;by myself&quot; at the office, the workload was so intense that it made me seriously consider whether the emotional labor of interacting with my coworker was more or less work than the actual labor of doing all the work by myself. i&#39;m thankful it gave me a new way to appreciate her presence and all she does and i&#39;m thankful she brought her mother, who is visiting, into the office on friday and that we had a nice interaction. i&#39;m thankful that i helped the faculty member who is a mormon collect promotional materials from the school&#39;s marketing office and bring them down to his car for a conference. i&#39;m thankful that when he was filling out a form at the marketing office, he had me hold his crutches, the cuffs of which were warm and damp from the labor of his movement. i&#39;m thankful that he couldn&#39;t figure out how to make a pen work and that i&#39;m pretty sure i heard him say the word &quot;hell&quot; for the first time because of it.</p>
+<p>i&#39;m thankful to have overheard a faculty member&#39;s phone conversation, in which she said &quot;<em>jim harrison? jim harrison died? sure, he was...[pause]well, wasn&#39;t he the guy who did the muppets? [pause while she listened to her friend][embarrassed laughter]&quot;oh, okay, so i don&#39;t know jim harrison..</em>.&quot; i&#39;m thankful for the older man who was standing on the steps outside the locker room at the gym talking to a younger man and who i heard say &quot;<em>work work work work work...</em>&quot; and thankful for how for a hilarious second i thought he was quoting the rihanna song, because the cadence was the same, but how when i paused to listen i heard him continue the sentence by saying &quot;...<em>and then you work some more</em>&quot; and realized that he was talking about the tenure process, as everyone is here most of the time. i&#39;m thankful for the drunk woman we heard in the alley outside the our house last night who shouted &quot;<em>i don&#39;t have any mixers for my vodka</em>!&quot; </p>
+<p>i&#39;m thankful when we were walking to lunch yesterday, we saw the name &quot;<em>jonathan taylor thomas</em>&quot; inexplicably graffiti scrawled on the wall above a downtown brasserie. i&#39;m thankful for the force of the wind blowing through town yesterday. i&#39;m thankful when wind is strong enough that when it blows against you it almost feels like it could lift you up and take you away. i&#39;m thankful for the fireworks cracks and crackles of the american flag by the entrance to campus. i&#39;m thankful we stopped at the mall so d could return some shorts (i&#39;m thankful it is almost shorts weather) and buy some panties ()(i&#39;m thankful that i do not like cats, really, but that if i ever had a cat, i had the idea to name it panties so i could say &quot;<em>where&#39;s my panties</em>?&quot; when looking for the cat and &quot;<em>i can&#39;t find panties</em>&quot; and etc.). i&#39;m thankful for the delicious barbecue we had for lunch and for how much d loves the restaurant&#39;s cornbread and horseradish pickles.</p>
+<p>i&#39;m thankful for <em><a href="http://pitchfork.com/reviews/albums/21185-timeline/">timeline</a></em> by the mild high club, which i have been listening to while writing this and which i think is my new favorite relaxed writing music.</p>
+<p>i&#39;m thankful that the wind was so cold and intense on our walk back from lunch that we decided to stop at the art museum to check out this year&#39;s mfa exhibitions, which just opened yesterday. i&#39;m thankful when we got to the gallery, there were tables with white tablecloths set up in the center room of the gallery and tons of people and we realized that this was the reception for the artists themselves. i&#39;m thankful that in the past we would&#39;ve turned away out of social anxiety (all the artists seemed to be looking at us&quot;) and come back on a day the place was empty, but that because of the cold wind, we went forward and stowed our coats and backpacks by the door and toured the galleries. i&#39;m thankful for our favorite works of the show, which were a series of paintings/collages entitled &quot;<a href="https://www.instagram.com/p/BDW1ER-N-pt/?taken-by=_suljee">i&#39;m ok i&#39;m ok i&#39;m ok</a>&quot; by an artist named <a href="https://www.instagram.com/_suljee/">sul-jee scully.</a> i&#39;m thankful for her artist&#39;s statement, which i took a picture of with my phone:</p>
+<p>&quot;<em>The everyday self is an undercurrent, latent during the truly forgettable—hitting &quot;snooze&quot; one more time, getting dressed—and inescapable for the decidedly regrettable. Unmemorable and imperfect, this self is passed over for (yet essential to) the future, idealized self, the person who transforms today&#39;s mess into well-being. These conflicting selves uncover an inner world established in adolescence, a place characterized by discontent, yearning, and hope. As adults, we vow to Break The Habit of Being Yourself (Joe Dispenza) even as we attempt Radical Self-Acceptance (Colin Tipping). But such pointed missives are fundamentally informed by casually accumulated incidentals, years-worth of those tiny moments that betray buried frustrations of psyche and identity.</em></p>
+<p><em>Primarily a combination of paint and collage, my work is also an assemblage in its content, depicting present and remembered selves, and the settings which reveal them. Images of otherwise unacknowledged moments or belongings are made vivid through the specificity of detail while ambiguity and abstraction reflect emotion. Inconsistencies of physical surface and visual description express vulnerable inner states. In this way, a lowly sock becomes a proxy for complex disappointment—crumpled, uncomfortably familiar, yet, ultimately, more than okay</em>.&quot;</p>
+<p>i&#39;m thankful for that last sentence, which makes me think of the great lydia davis story &quot;the sock.&quot; i&#39;m thankful for how d and i noticed the grace with which her paintings <a href="https://www.instagram.com/p/BAvZvZsN-mU/?taken-by=_suljee">depicted feet</a>, in this way that was both boxy and semi-abstract and yet also felt real and anatomical. i&#39;m thankful for her paintings of <a href="http://worleygig.com/tag/sul-jee-scully/">swimming pools</a>, which remind me of a more crystalline byzantine david hockney. i&#39;m thankful that the paintings&#39; representation of light similarly felt both expressionistic and yet at the sametime very true. i&#39;m thankful how in all of her paintings, the faces of the figures were turned away or blurred or smudged or otherwise obscured, but thankful that the line work and color and texture and gesture all radiated emotions. i&#39;m thankful for a painting of someone doing karaoke, which was particularly good at doing that. i&#39;m thankful for the way the artist defamiliarized small everydya things like <a href="https://www.instagram.com/p/BDFKEAut-kG/?taken-by=_suljee">takeout bags</a> and air conditioners (i&#39;m thankful for &quot;c_asually accumulated incidentals_&quot;).</p>
+<p>i&#39;m thankful that yesterday evening, i looked out into the front yard and saw a green hard-shelled kiddy pool picked up by the wind and blown across our front yard. i&#39;m thankful that i put the shards of a broken drinking glass into an empty red hard plastic protein powder container. i&#39;m thankful i went back and forth between d&#39;s study and the kitchen multiple times, trying to find a way to write &quot;DANGER: BROKEN GLASS INSIDE&quot; on the top of the container in a way that would be clear and indelible—i&#39;m thankful i finally found a pairing of scotch tape and marker that allowed me to leave this warning. i&#39;m thankful i changed the strings on my electric guitar for the first time in months and thankful that i found a patch cable that i had been searching for for weeks in a very obvious location. i&#39;m thankful for the little girl who we saw leaving the art museum with her family—i&#39;m thankful she got into the revolving door at the exit and wouldn&#39;t leave for several moments, just kept going round and round and round.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-44.html" class="btn btn-secondary">← thank you notes 4/4</a>
+        <a href="/letters/thank-you-notes-esme2.html" class="btn btn-secondary">thank you notes (esmé)(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="korean reality dating show">
+  <title>korean reality dating show - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>korean reality dating show</h1>
+        <time datetime="2022-08-24T00:00:00Z">August 23, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the korean reality dating show <em>change days</em>, which is currently in its second season streaming on netflix and which d and i have been avidly watching lately. i&#39;m thankful for the premise of the show, which is that four couples who are struggling with their relationships go to jeju island (the korean hawaii) and stay in an airbnb together and every day members of the troubled couples go on dates with members of the other troubled couples, with the ultimate goal, after two weeks, of each person deciding whether to leave the show with their current partners or with someone new  (i&#39;m thankful that if you also watch reality dating shows you may recognize this premise from the american reality dating show <em>the ultimatum</em> (also on netflix), a show i also enjoyed for what it was but what it was was coarser and uglier).</p>
+<p>i&#39;m thankful that my attention has been so captured by this show, which is an accomplishment since subtitled non-english language reality shows do not get to benefit from the &quot;you can look at your phone and only pay a fractional amount of attention if you want to&quot; grading on the curve that makes english language reality dating shows (for me) more &quot;watchable.&quot; i&#39;m thankful that in order to watch <em>change days</em>, i have to pay basically full attention at all times which means that the fact that i am watching this show basically <a href="https://www.gawker.com/culture/any-offline-activity-counts-as-reading">counts as reading a book</a>.</p>
+<p>i&#39;m thankful that though this show does not rise to some of the heights of one of the only other non-english language reality shows i have watched deeply and comprehensively, <em>terrace house</em>, either in terms of the post-laguna beach magic hour prettiness of that show&#39;s cinematographic aesthetic or the comedic quality of the greek chorus panel of tv presenters, who on <em>terrace house</em> are imo genuinely uproariously funny and interesting individuals (yama-chan 4 lyfe) but on this show don&#39;t express distinct personalities and mostly blandly recapitulate plot points and offer boring opinions, it has its own unique merits.</p>
+<p>i&#39;m thankful that one of these merits is the extreme, almost psychedelic dilation of time vis-a-vis the standard phenomenological conventions of reality dating shows—conversations on a show like <em>the bachelorette</em> are just a series of sound bites smashed together, whereas each episode of <em>change days</em> is like an hour and fifteen minutes long and covers maybe half of a day of &quot;real time.&quot; i&#39;m thankful that this means that you&#39;re not constantly cutting in and out of conversations—instead, you get to sit with them as they develop (or don&#39;t), through so many awkward pauses and mistaken assumptions and emotional outbursts and passive aggressiveness and small moments of intimacy. </p>
+<p>i&#39;m thankful for the visual aesthetic of the show, which as i said is not beautiful in the way that <em>terrace house</em> is but instead leans into its unbeauty and makes use of many many static hidden cameras placed throughout the airbnb, often in the upper corners of rooms. i&#39;m thankful that the producers often, in order to get more of the space into a shot, use fisheye lenses, which, in combination with creatively framed long telephoto shots through the windows of the bedrooms, add a startling reality effect, a voyeuristic grit that you don&#39;t get from most other shows. i&#39;m thankful that there is even a camera in the bathroom (!), a super fisheye stuck at the bottom edge of the vanity and flanked by bottles of skincare and hair products. i&#39;m thankful for the german expressionist vibes of the jagged angular dining room table that they sit around each night.</p>
+<p>i&#39;m also thankful for the way that the premise is explored, which is that every day, the participants go on these day-long multiple activity dates where they seem to often really see new paths for their lives, to be transported into a vision of how they might be happier with someone else...but then at the end of the day, they all have come back to the shared airbnb and the date energy collides with the fact that they and their date are now in the same dining room with their current partner and their date&#39;s current partner (and, as the season goes on, the other partners that they or their date have also dated) and eventually it will be bedtime and they&#39;ll go back to their rooms with their partners and (often) fight some more, in dim light, before falling asleep. i&#39;m thankful that all the couples have private bedrooms, which differs from the conventions of most other reality shows, because, through the cameras in the bedrooms, you get to see different layers of people and different ways that they present themselves. </p>
+<p>i&#39;m thankful that in the episode we watched last night, which was the closest i&#39;ve seen a reality show scene get to a cassavettes movie, the characters play a drinking game (where one person will say a statement like &quot;this person will leave their partner at the end of the show&quot; and then they count to three aloud together and everyone points to the person (including, for this example, one couple pointing at each other) and then they go through and talk about the reasons for their choices and also...everybody takes a shot so i don&#39;t know if it works as a drinking game specifically but as a drama-causing game it&#39;s great (they also have several handheld &quot;lie detectors&quot; that you strap your hand into and it measures something and then eventually delivers a mild shock at the time it announces whether you are telling the truth or lying). i&#39;m thankful for a particularly sad moment in the wake of one of the questions last night, where one person tells her partner that the version of him that she&#39;s seeing with these other people is different than she&#39;s ever seen before and she doesn&#39;t understand why he hasn&#39;t given her that (another source of tension is the date, like one of the guys decides to take a girl on a pleasure cruise on a small yacht and his girlfriend hears about this and says plaintively &quot;i&#39;ve never been on a yacht&quot;). </p>
+<p>i&#39;m thankful that unfortunately the show does suffer from a common problem of reality dating shows (or maybe just reality!), which is that the women tend to be lovely and amazing and ready for love and the dudes are mostly lame children with anger issues. i&#39;m thankful for jkha, my best friend during our MFA program, and how she told me once that she wrote (paraphrasing from memory, i&#39;m sure that the way she put it was much more epigrammatic), about korean men of her father&#39;s generation and their inability to express themselves or talk about this feelings and the pain that this causes them and others and that this show demonstrates that it&#39;s still a problem for this generation (and re: &quot;maybe just reality,&quot; that&#39;s probably not specific to korean men, though there are some interesting contextual things like the different levels of formality of korean grammar that are used to show deference to one&#39;s elders and the desire to abandon those structures and also the impact of two years of mandatory military service that men have to do in their twenties on people&#39;s ability to form solid relationships).</p>
+<p>i&#39;m also thankful, in a couples therapy kind of way, that you <em>do</em> see these people unhappily recognize that they&#39;re falling into these toxic patterns over and over again and, as the season goes on, trying hard to get out of them and i&#39;m thankful that sometimes they do seem to be making progress or understanding themselves and what they want and need from a relationship more. i&#39;m also thankful that though the show is very dramatic in a Drama sense, you also see many moments of genuine joy and connection, of people pleasantly surprised to find new things inside themselves in the company of others. i&#39;m thankful that as the show has gone on (each episode begins and ends with an &quot;{N} DAYS LEFT&quot; counter) my perception of different people on the show has shifted in a way that i wouldn&#39;t have expected and i&#39;m curious to see where it all goes.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/things-i-have-been-consuming-lately.html" class="btn btn-secondary">← things i have been consuming lately</a>
+        <a href="/letters/a-self-portrait-of-a-man-trying-to-reach-past-his.html" class="btn btn-secondary">&quot;a self-portrait of a man trying to reach past his relentless solipsism&quot; →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

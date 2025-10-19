@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="moe(14)">
+  <title>moe(14) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>moe(14)</h1>
+        <time datetime="2017-05-12T00:00:00Z">May 11, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful it was my birthday saturday. i&#39;m thankful i really don&#39;t like the awkwardness of organising something for people to come eat a meal and &#39;celebrate you&#39;. i&#39;m thankful i thought i&#39;d make an effort this year because there is a nigerian tapas pop-up place i wanted to go to. i&#39;m thankful when i asked my friends, some of them were up for it. i&#39;m thankful to then have found out it was closed for the month. i&#39;m thankful i cancelled the plans. i&#39;m thankful i forgot to tell f i had cancelled. i&#39;m thankful for the stupid moment when i was about to leave work on friday evening to have a birthday mcdonald&#39;s and sleep when she called and asked where we were meeting. i&#39;m thankful i freaked out and just went off on a tangent of why did she not know it had been cancelled. i&#39;m thankful i realised my error and then got myself together to go for a drink with her and l. i&#39;m thankful for gin and elderflower presse, which is as amazing as it sounds. i&#39;m thankful for bourbon and coke. i&#39;m thankful for the moment when i realised i was getting drunk. i&#39;m thankful i haven&#39;t got drunk since new year&#39;s when i was breaking my year-long alcohol fast. i&#39;m thankful for the vegan chocolate doughnuts she bought me. i&#39;m thankful hanging out with her is always fun and i&#39;m happy i did. i&#39;m thankful i went home and had my mcdonald&#39;s.</p>
+<p>i&#39;m thankful my actual birthday day was okay. i&#39;m thankful i don&#39;t like people on a normal day and like them even less on my birthday. i&#39;m thankful to not know how to tell people i&#39;m close to that it&#39;s my birthday. i&#39;m thankful i didn&#39;t have to remind a lot of people, though. i&#39;m thankful for the nice feeling that comes with your friends remembering your birthday without facebook prompting them. i&#39;m thankful while making breakfast, to have given my sisters a tour of my flat via snapchat. i&#39;m thankful i had corned beef sandwiches for breakfast. i&#39;m thankful when i came out of my room to do the dishes, my flatmate l had got me two bouquets of my favourite flowers. i&#39;m thankful my people know the way to my heart. i&#39;m thankful she also got me a coffee and walnut cake and a snazzy notebook that had a print similar to one of my shirts. i&#39;m thankful she asked me if i wanted to go on a walk and i said yes. i&#39;m thankful she&#39;s starting to understand how to cheer me up. i&#39;m thankful we went to ravenscourt park and there was a kid&#39;s party in the park. i&#39;m thankful for pink balloons and unicorn balloons and giant bubbles. </p>
+<p>i&#39;m thankful when i got back there was a video on my phone of my cousin and my nephews singing &#39;happy birthday&#39; to me. i&#39;m thankful my nephew who&#39;s just starting to speak mumbled &#39;happy birthday&#39; to me. i&#39;m thankful when i called them later, his face lit up when he saw me. i&#39;m thankful this is probably because i&#39;m the fun aunty and whenever i go to theirs, i take them out to do something fun so their mum can have some peace. i&#39;m thankful my cousin then ordered me some pizza. i&#39;m thankful pizza is such a treat for me because every time i have to eat it, i have to book one specifically without cheese which makes it expensive. i&#39;m thankful for the point on my birthday when my family calls me. i&#39;m thankful i&#39;m okay until my mum prays for me in yoruba and then i just bawl my eyes out. i&#39;m thankful they called me in the evening so my crying didn&#39;t really dampen the day. </p>
+<p>i&#39;m thankful for n, my really good friend who i may like-like (cringe). i&#39;m thankful a couple of weeks ago i was talking about not being able to go to something because it was my birthday and he reminded me his birthday was the day after mine. i&#39;m thankful for how weird it is that one of my best friends&#39; birthday is the day after mine. i&#39;m thankful for all the weirdness in my life- like another one of my best friends has the same quite rare name as me. i&#39;m thankful n and i decided to have a &#39;friend&#39; breakfast date on sunday- his birthday. i&#39;m thankful he&#39;s one of the few people i&#39;d get up before 8 am on a sunday for. i&#39;m thankful he sacrificed breakfast with his family to have breakfast with me. i&#39;m thankful for the mushiness that comes with birthdays. i&#39;m thankful for the point in breakfast when he said &#39;you&#39;re my best friend in london&#39;. i&#39;m thankful there weren&#39;t any string instruments in the background but it felt like one of those moments. i&#39;m thankful because of some of my hangups, i couldn&#39;t exactly communicate that he was my best friend in london too. i&#39;m thankful i wrote him a card to say thank-you and all the other things i wanted to say and posted it to him. i&#39;m thankful i am now freaking out that it was a bit much and could be interpreted as me confessing my undying love for him. i&#39;m thankful i love him and will always do, whatever he is to me.</p>
+<p>i&#39;m thankful for those friendships you know will last a very, very long time. i&#39;m thankful i have those. </p>
+<p>i&#39;m thankful for doughnuts and drinks with f. i&#39;m thankful for flowers, cake and a walk with l. i&#39;m thankful for songs and smiles from my nephews. i&#39;m thankful for candles and quality time with n. i&#39;m thankful my heart is full and i know people in my life love me. </p>
+<p>moe flat 9.</p>
+<p>09.05.17</p>
+<p><a href="http://tinyletter.com/thankyounotes/letters/moe-13">previously</a></p>
+<p><a href="https://docs.google.com/forms/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/edit">what are you thankful for?</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/c11.html" class="btn btn-secondary">← (c)(11)</a>
+        <a href="/letters/51117.html" class="btn btn-secondary">5/11/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

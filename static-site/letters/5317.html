@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/3/17">
+  <title>5/3/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/3/17</h1>
+        <time datetime="2017-05-03T00:00:00Z">May 2, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i had a really good day at work yesterday. i&#39;m thankful for the weirdness of writing a daily diary for a long time, which you might assume would provide a healthy perspective on the fact that some days are going to be good and some days are going to be bad and you just have to take them as they are and as they come, to wade. i&#39;m thankful that i think i <em>do</em> have that perspective but i&#39;m thankful to understand that &quot;having&quot; perspective is different from feeling its effects and that when you are having a bad day, having the perspective to know that that&#39;s normal and you&#39;re going to have bad days sometimes and that&#39;s okay doesn&#39;t really make you feel much better. i&#39;m thankful to imagine that the dangerous ground is the middle distance, that if i could either find ways in those moments to zoom out to this wider perspective or zoom in to mindfulness of my specific occupation of space and life in that moment, that might help, but i&#39;m thankful to again know that&#39;s something easier said than done. i&#39;m thankful to know that all i can do is try.</p>
+<p>i&#39;m thankful for &quot;l<a href="https://open.spotify.com/track/5irmuV4DegIrkorpqXCiB6">et the mystery be</a>&quot; by iris dement, the theme song to season two of <em>the leftovers</em>. i&#39;m thankful that though i have a general (probably unfair, though what is fair about taste) aversion to &quot;roots music,&quot; i think this song is really beautiful, especially the turnaround at the end of each verse where she sings &quot;<em>no one knows for certain / so it&#39;s all the same to me / think i&#39;ll just let the mystery be.</em>&quot; i&#39;m thankful for the way that the spirit of joyful uncertainty of the song (and its placement over <a href="https://www.youtube.com/watch?v=rLSH-81yT7s">beautiful bright images with cutouts representing the departed</a>) is a nice cue for the way that the show isn&#39;t as horribly grim as it was in the first season (even though the last episode we watched, which was inspired by the book of job, got pretty close at times and was a bit of a bitter pill). i&#39;m thankful for <a href="https://manoftheword.files.wordpress.com/2012/11/not-knowing-donald-barthelme.pdf">not knowing</a>.</p>
+<p>i&#39;m thankful in that essay for donald barthelme&#39;s belief that &quot;<em>art is always a meditation upon external reality rather than a representation of external reality or a jackleg attempt to &#39;be&#39; external reality</em>,&quot; for his discussion of how &quot;<em>style enables us to speak, to imagine again. Beckett speaks of &#39;the long sonata of the dead&#39;—where on earth did the word sonata come from, imposing as it does an orderly, even exalted design upon the most disorderly, distressing phenomenon known to us. The fact is not challenged, but understood, momentarily, in a new way. It&#39;s our good fortune to be able to imagine alternative realities, other possibilities. We can quarrel with the world, constructively (no one alive has quarreled with the world more extensively or splendidly than Beckett). &#39;Belief in progress,&#39; says Baudelaire, &#39;is a doctrine of idlers and Belgians.&#39; Perhaps. But if I have anything unorthodox to offer here, it&#39;s that I think art&#39;s project is fundamentally meliorative. The aim of meditating about the world is finally to change the world. It is this meliorative aspect of literature that provides its ethical dimension. We are all Upton Sinclairs, even that Hamlet, Stephane Mallarme</em>.&quot;</p>
+<p>i&#39;m thankful for the depth of the meditation on the physical world in <em>breath of the wild</em>. i&#39;m thankful that unlike most modern video games, which have a tendency to try to represent the physical world with superficial realism (textures, bump maps, occlusion) but with shallow depth (you&#39;re a super soldier killing machine but you can&#39;t get over a 6 foot high fence or through a thin wooden door), <em>breath of the wild</em> is deep, wants to use its depiction of the physical world as a way to think about what the world is and how we can and do and might live within it, what it makes possible. i&#39;m thankful that this is perhaps best seen in the ways in the game that you can climb things, which is one of my favorite video game activities. </p>
+<p>i&#39;m thankful that unlike in other games, where there are artificial barriers set up that can&#39;t be climbed up or over, in this game, if you see it, you can try to climb it. i&#39;m thankful that &quot;try&quot; is the operative word, because unlike in other games, where you can climb sheer rock faces for indefinite amounts of time, in <em>breath of the wild</em>, you can only climb for a certain amount of time and then get tired—i&#39;m thankful for the way that and the difficulty in the game of doing things that are difficult in life like swimming across a river with a strong current makes me think about the mortality of my character, who feels like a boy with a heart and lungs and muscles and not a polygonal ubermesnch (even though i know that i&#39;m not &quot;really&quot; that boy). i&#39;m thankful that when it rains in <em>breath of the wild</em> and you try to climb a rock wall wet with that rain, your hands slip and you can&#39;t make the progress you could otherwise. i&#39;m thankful that there&#39;s a way to climb up things quickly, but in doing so, you use up the energy you have for climbing and can go a shorter distance than you could if you took your time and conserved your energy. </p>
+<p>i&#39;m thankful that in this game, you can climb trees, and not just specific trees designated by the game and signposted visually as &quot;CLIMBING TREES&quot; and put in areas where your objectives require you to climb, but any trees, for no reason other than you want to climb them (or, if they&#39;re apple trees, because you want to get an apple and you can&#39;t reach it from the ground). i&#39;m thankful to remember my favorite climbing tree when i was young, which was a dogwood tree in my grandparents&#39; front yard which had the nexus of its branches at a point which was just high enough that when i was very young, i couldn&#39;t reach it and had to be lifted up into it by an adult but that a certain point (8, 9, who can say), i was tall enough that with enough tries and energy (and i had such reserves of tries and energy at that time) that i could get up and lodge myself up there and look down at the world from this new vantage point, which made everything different. i&#39;m thankful to remember sitting up there and looking out through the branches around me and feeling like i was in another place, which i both was and wasn&#39;t. i&#39;m thankful that&#39;s how this game makes me feel.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/5417.html" class="btn btn-secondary">← 5/4/17</a>
+        <a href="/letters/5217.html" class="btn btn-secondary">5/2/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

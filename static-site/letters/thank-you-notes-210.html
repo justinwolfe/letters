@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/10">
+  <title>thank you notes 2/10 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/10</h1>
+        <time datetime="2016-02-10T00:00:00Z">February 9, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the bizarre dream i had last night, where d and i were visiting my parents at their small apartment in miami beach. i&#39;m thankful that in the dream, unlike in real life, there was another family staying in the apartment with us, which meant d and i had to sleep on a foldout sofa in the living room rather than getting the guest bedroom like we normally do. i&#39;m thankful that the other family, which included most prominently a greasy, gray-stubbled father in a flannel shirt and a dopey all-american son who looked like colton from <em>transparent</em> (i&#39;m thankful last night i told d that so far colton was like if dean from <em>gilmore girls</em> had all the shittiness wrung out of him), gave off a vague aura of menace and made d and i feel ill at ease. i&#39;m thankful that when d and i whispered our discomfort about the living arrangements to my father in the privacy of my parents&#39; bedroom, he agreed and said he didn&#39;t really like them either, but said that he was indebted to the father of the other family because he had taken my parents on a winery tour during which they had somehow received &quot;$3000 in free wine.&quot; i&#39;m thankful that d and i then had a long whisper discussion of getting an airbnb nearby for the rest of our vacation and how my mother, upon hearing this, started to cry, despite my reassurance that we would still spend time with my family during the day. i&#39;m thankful for the jumpcut to the strange final vignette of the dream, which involved all of us driving into the country in a limousine to visit the tomb where there ancestors of the other family were buried. i&#39;m thankful that as we sat across from each other on long stone benches in the vault of hte tomb, the father of the other family angrily tested me on whether i was a christian by way of a smartphone quiz app loaded with bible questions on his iphone 4s. </p>
+<p>i&#39;m thankful that i ran a red light for the first time in my life yesterday evening in the driving wind and snow. i&#39;m thankful that i did not get hit or cause an accident or get a ticket and i&#39;m thankful that i ran the red light, even though i think it&#39;s important for cyclists (and everyone) to follow traffic laws, because i just couldn&#39;t bear to be out in the cold long enough to wait for the lights to change again. i&#39;m thankful that this morning, i hit the light i ran at the same point in the light cycle, just as yellow was disappearing into red, and did not run it, even though i was cold. i&#39;m thankful that the first time my bike skidded out from under me this morning, i was on a quiet street and the car behind me was aware of me and i was able to put my foot down and pull out of the skid without losing the bike. i&#39;m thankful that the second time my bike skidded out from under me this morning, even though i lost my bike completely, i leapt over the bike and landed neatly on my feet. i&#39;m thankful that the nice woman walking behind me didn&#39;t get hit by my bike and smiled and told me she had been worrying about all the bikers she had seen that morning. i&#39;m thankful to imagine a superhero of anxiety, whose worrying over small events in the lives of strangers could magically help to avert catastrophes.</p>
+<p>i&#39;m thankful that it snowed enough overnight that now the tips of the blades of grass aren&#39;t sticking out of the top of the snow, but that instead the snow is deep enough to form a smooth, uniform sheet on top of them. i&#39;m thankful it snowed enough for me to have to shovel our walk this morning before i went to work. i&#39;m thankful for our snow shovel, which always surprises me with its lightness. i&#39;m thankful for the bag of snow-melt salts, which in the past i always examined with excitement when they were piled up at the grocery store  in the winter but had no reason to buy. i&#39;m thankful, after i shoveled the steps and the walk, to have gotten to hold the little plastic cup of snow-melt salts up in the air and then pour them out over the steps. i&#39;m thankful that while i salted, i thought of gabrielle hamilton raising her hand high above a plate to make salt, in her words, &quot;snow&quot; evenly over food and to think that, in a way, i was seasoning our stoop.</p>
+<p>i&#39;m thankful to recommend that, rather than fume over kanye&#39;s cosby idiocy, you listen to yassir and isaiah lester&#39;s excellent new podcast, <a href="https://soundcloud.com/yassirlester">the conspiracy theory of everything</a>, which made me do the opposite of fuming. i&#39;m thankful for <a href="http://graphics.latimes.com/girl-scout-cookies/">this <em>la times</em> graphicle</a> about girl scout cookies (i&#39;m thankful to imagine <em>true detective</em> season 3 starring tavi gevinson as an internet detective searching for the dark heart of a girl scout cookie conspiracy). i&#39;m that the final part of my dream last night was probably inspired by d having us take the new <a href="https://www.pottermore.com/news/sorting-returns-to-pottermore">sorting quiz</a> on pottermore recently. i&#39;m thankful that she got hufflepuff and i got ravenclaw. i&#39;m thankful that d reminded me this morning of key and peele&#39;s &quot;<a href="https://www.youtube.com/watch?v=st21dIMaGMs">continental breakfas</a>t,&quot; which i think is perhaps my favorite comedy sketch.</p>
+<p>i&#39;m thankful to have <a href="https://www.rockpapershotgun.com/2016/02/09/waves-david-li/">heard</a> about this soothing interactive in-browser simulation of <a href="http://david.li/waves/">a square of ocean</a>. i&#39;m thankful for the lush bath bomb that d got me for valentine&#39;s day and that i tried last night. i&#39;m thankful for how it fizzed much faster than the others i&#39;ve had, quickly coloring all the bathwater a brilliant blue, and then started to release hundreds of little black squiggles of seaweed. i&#39;m thankful that, because i didn&#39;t know this was going to happen, it was slightly unsettling as the seaweed brushed against my legs, as it is when seaweed brushes against your legs in the ocean and you wonder if it is something other than seaweed, but i&#39;m thankful that i got used to the experience and for the interesting savory perfume it gave to the water. i&#39;m thankful to have learned that a bath bomb, while being soothing, can also be an aggressive and challenging artistic experience.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-211.html" class="btn btn-secondary">← thank you notes 2/11</a>
+        <a href="/letters/thank-you-notes-29.html" class="btn btn-secondary">thank you notes 2/9 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

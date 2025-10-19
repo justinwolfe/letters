@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/28">
+  <title>thank you notes 1/28 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/28</h1>
+        <time datetime="2016-01-28T00:00:00Z">January 27, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i taught my dad to torrent movies during christmas vacation a year ago. i&#39;m thankful that this was the best gift i&#39;ve given him in years (and i&#39;m a good gift giver). i&#39;m thankful for his glee at the freedom of it, for how he will discuss his readings of pirate bay comments on the phone with me, for his interest in bitrates and compression codecs. i&#39;m thankful for how my mom told me last night that they watched a version of <em>joy</em> that was missing the fifteen minute chunk where the title character comes up with the idea for the miracle mop. i&#39;m thankful that when i said that seemed like an important part to miss, she agreed, but said &quot;<em>it was still pretty good, though</em>!&quot; i&#39;m thankful that though my dad wrenched something in his back and is mostly immobile right now, he was able to get in to the doctor for treatment and medication and that he has things to watch on tv while he lies prone on the couch. </p>
+<p>i&#39;m thankful that i finished an email to my friend jk, who i had not emailed in a while. i&#39;m thankful for this quote from book 2 of <em><a href="http://www.amazon.com/gp/product/B00CBFYQ7K/ref=dp-kindle-redirect?ie=UTF8&btkr=1">my struggle</a></em>, which i sent her to reassure about a decision she&#39;d made: &quot;<em>i never expressed any of these thoughts i had about the children, except to linda of course, because these complex questions belonged only where they were, in me and between us. in reality, in the world vanja inhabited, everything was simple, and found simple expression, and the complexity arose only in the sum of all the parts, of which naturally she knew nothing. and the fact that we talked a lot about them did not help at all in our daily lives, where everything was a mess and constantly on the verge of chaos</em>.&quot; i&#39;m thankful for this excerpt from a letter nabokov wrote to his mother about the pain of exile from the russian landscape of his childhood, which i read in <em><a href="http://www.amazon.com/Natashas-Dance-Cultural-History-Russia-ebook/dp/B00HY0709S/ref=mt_kindle?_encoding=UTF8&me=">natasha&#39;s dance</a></em>: &quot;_mother, dear, yesterday i woke up in the middle of the night and asked someone—i don&#39;t know whom—the night, the stars, god: will i really never return, is it really all finished, wiped out, destroyed? mother, we must return, mustn&#39;t we, it cannot be that all this has died, turned to dust—such an idea could drive one mad. i would like to describe every little bush, every stalk in our divine park at vyra—but no one can understand this. how little we valued our paradise!—we should have loved it more pointedly, more consciousl_y&quot; (i&#39;m thankful also for the hilarious anecdote, a few pages later, about how rachmaninov sent him old suits to wear in america and nabokov, though struggling with money problems, returned them at once because they offended his dandyish sensibilities). i&#39;m thankful, from the same book, for the pain of this lamentation by marina tsvetaeva, that &quot;<em>from a world where my poems were as necessary as bread i came into a world where no one needed poems, neither my poems nor any poems, where poems are needed like—dessert: if anyone—needs—dessert..</em>.&quot;</p>
+<p>i&#39;m thankful for both bread and dessert, which are two of my favorite food groups. i&#39;m thankful that i made seaweed salad for the first time last night to go with the last of our fried rice. i&#39;m thankful for my amazement at how easy it was to make (you just rehydrate the seaweed in a bowl of warm water, then drain it and mix it with a simple dressing) and how, because you&#39;re making it at home, you can make yourself a way bigger portion than you ever get at a sushi restaurant. i&#39;m thankful for the deep dark oceanic smokiness of the wakame; i&#39;m thankful to twirl strands of it around my fork like spaghetti. i&#39;m thankful for the box of fancy chocolates that d gave me as an early valentine&#39;s day gift—i&#39;m thankful that, to make them last longer, i restrained myself to just one after dinner, a burnt caramel truffle. i&#39;m thankful for when restraint can enhance a feeling of satisfaction, even though i firmly oppose austerity. i&#39;m thankful for the last episode of the third season of <em>the mind of a chef</em>, which profiled a service at faviken. i&#39;m thankful for the dish that required diners to dig through a pile of autumn leaves which had been decomposing for a year in order to unearth tiny nubs of boiled new potato resting on a hot stone. i&#39;m thankful that for some reason the <em>daily mail</em> has posted the <a href="http://www.dailymail.co.uk/home/you/article-2209901/Recipe-Vegetables-cooked-autumn-leaves-F-viken-Magnus-Nilsson.html">recipe</a> for this dish, for which one of two steps reads: &quot;<em>plate the potatoes on a hot stone and cover them completely with the leaves. serve some good butter on the side and explain to your diners how to unearth them from the leaves with their hands, crush them in their fingers and dip them in butter in order to enjoy the experience to the full</em>.&quot;</p>
+<p>i&#39;m thankful, after a long afternoon at work in which i seemed to be refreshing my way through the networks forever without ever finding anything but blank screens, for yesterday evening, when i received a panoply of nice emails: personal, professional, and in the form of newsletters. i&#39;m thankful for an old dear friend&#39;s advice about my stomach problems. i&#39;m thankful for the emailed opportunity to schedule a phone screen for a job i&#39;m excited about. i&#39;m thankful for a message from <a href="http://tinyletter.com/jeanhannah">this newsletter</a> about the meaning of gray sweatpants to the author and 2,099 people on amazon. i&#39;m thankful for a message from <a href="http://tinyletter.com/cassiem">this newsletter</a> about how &quot;<em>writing is for hating yourself</em>,&quot; for &quot;<em>turning off all notifications</em>.&quot; i&#39;m thankful for an epic message from <a href="http://tinyletter.com/charlotteshane">this newsletter</a> about love.</p>
+<p>i&#39;m thankful that when i felt like i needed to meditate last night before bed, but i didn&#39;t feel like i could summon the energy to do it, the concentration required, i decided to let myself listen to <a href="http://www.earwolf.com/episode/phish-live-in-ny/">an old podcast</a> while sitting on my yoga mat with my eyes closed and breathing slowly and consciously, staying aware of my body. i&#39;m thankful that even though this is &quot;cheating,&quot; and even though i chuckled condescendingly at the friend who asked me a few months ago, when i was telling him about different ways to meditate, whether i listened to podcasts while i meditate, i reassured myself that doing something, anything, was better than just sitting and looking at more nothing on my phone, that to &quot;half-meditate&quot; was still something in the way that trying to rest in bed when you can&#39;t sleep is still contributing to making you feel better even if it&#39;s not as deep as unconsciousness. i&#39;m thankful for how enjoyable my &quot;meditation&quot; session was and how well-rested i felt afterward—i&#39;m thankful to pass on an important thing that unlocked both <a href="http://www.livestrong.com/article/149332-4-7-8-breathing-exercises/">meditating</a> and <a href="http://www.swimsmooth.com/bilateral.html">breathing in the water</a> for me, which is that exhaling is just as important as (or maybe more important than) inhaling.</p>
+<p>i&#39;m thankful to have learned in passing from a tabloid that lady gaga is younger than me. i&#39;m thankful to have left the period of my life where i was constantly comparing my age with the age of people who had accomplished things that i wished i had accomplished. i&#39;m thankful there is no longer the possibility for me to be a wunderkind, for the way that the closing of that door feels like the opening of a window.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-129.html" class="btn btn-secondary">← thank you notes 1/29</a>
+        <a href="/letters/thank-you-notes-127.html" class="btn btn-secondary">thank you notes 1/27 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

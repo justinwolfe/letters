@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1/2/20">
+  <title>1/2/20 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>1/2/20</h1>
+        <time datetime="2020-01-02T00:00:00Z">January 1, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that this is the eighth day that i have been on vacation from work (i&#39;m not thankful it&#39;s the final day, but i&#39;m thankful that i&#39;ve gotten so much time away, since most people i know get much less). </p>
+<p>i&#39;m thankful that while on vacation i have not pushed myself to write thank you notes, which, in one frame of mind, are a form of work, even though in other frames they feel like therapy or exercise or meditation (which, of course, to recurse further, can be thought of forms of work, in certain frames of mind). i&#39;m thankful, though, to have been feeling anxious about going back to work tomorrow (though i&#39;m thankful it&#39;s just one day and then the weekend again, an immediate reprieve) and stressed about another possible change in my life, and i&#39;m thankful to know that writing these notes never makes me feel worse, only ever better (or neutral), which is a good thing to know.</p>
+<p>i&#39;m thankful to reflect how my problem the first half of the past decade, when i was living with my parents in miami writing a blog and then was in an MFA program in indiana and then sending a paid newsletter in which every letter included a scanned typewritten attachment and then was living in the aftermath of having been in an MFA program and working as a secretary and not writing at all and feeling that i would never write again and would never get the echoing greek chorus of my writing workshop out of my subconscious, was that i thought i was a good writer, that i had written and could write great things, even, but the act of actually getting writing done was very hard to me, because i could never get into a kind of iterative shitty first draft process like other people apparently could and instead i would spend hours at a desk in the quiet stacks of the top floors of our concrete tower of a university library and sometimes have a couple of paragraphs to show for it and sometimes nothing (but sometimes the words would flow out of me, and i had to keep showing up so that i would be there for those times when oil was struck).</p>
+<p>i&#39;m thankful to think about the differences in my life a decade later, how the problem back then was feeling like writing good things was hard and as a person who had claimed the identity of Writer, that made me feel anxious, and the way that i dealt with the problem was trying to throw the resources, time and effort, that i had at it (but also mostly feeling like a failure all the time). </p>
+<p>i&#39;m thankful to now not really have any fear of writing (even though i also don&#39;t really have a desire to write the kind of things that i wanted to write back then), which is a very positive development in my life which i have to thank writing these notes to you over the back half of the decade. i&#39;m thankful that though back in the day writing something good could make me feel really happy, mostly, trying to write felt like a net negative for me emotionally, because my self worth was so wrapped up in what i could produce and not producing things made me feel bad about myself (and also made it feel like the next thing i wrote had to be even bigger and better as every day passed, which didn&#39;t help at all).</p>
+<p>i&#39;m thankful that the frame of the project of writing every sentence starting with i&#39;m thankful, though it is in some ways artistically limiting and i think adds a kind of ceiling on &quot;quality&quot; or expression or form, has also been so freeing to me. i&#39;m thankful to have given myself the gift of that crutch or mantra or whatever you want to call it and i&#39;m thankful that it still works for me now, that in some ways, even though i think this year&#39;s writing hasn&#39;t been as interesting as earlier years (when i had that secretary job and could spend hours every day tapping away at the gmail edit window), i&#39;m at peace with that and it doesn&#39;t bother me at all (and i&#39;m then glad or proud that it doesn&#39;t bother me at all).</p>
+<p>i&#39;m thankful to have recently learned the engineering term &quot;rubber ducking,&quot; which is basically the idea that when you get stuck on a difficult problem, the act of you describing the problem to anyone who isn&#39;t as deep in the weeds as you (or, in the archetypal case, a rubber duck) will help you stop catastrophizing, see another angle, figure out a way forward, and unstick yourself. i&#39;m thankful that another word for this is, like, therapy, but i&#39;m really thankful that i have had this little gmail edit window to rubber duck about my life into and that there are people who find it interesting or useful to read.</p>
+<p>i&#39;m thankful to not believe in milestones or special symbolic days very much and i&#39;m thankful for part of this project, which is to try to engage with my life every day as it happens rather than in sum, but i&#39;m thankful also for the sum of all of the days of the last ten years, which have been the most rewarding and fun years of my life, where i&#39;ve really felt like i&#39;ve come to know myself and be comfortable in my own skin and comfortable interacting with other people socially, after so many years of fear and dread. i&#39;m thankful to have found the love of my life and to have really understood what love and friendship feel like. i&#39;m thankful for that and for this and for you, whatever else happens.</p>
+<p>i&#39;m thankful for forms which resist closure and i&#39;m thankful to prefer writing about specific concrete moments rather than large abstract concepts (i&#39;m thankful for my MFA program for that) and so i&#39;m thankful to end with some more specific things i&#39;ve been grateful for over the past 8 days, even if that undermines the potential aesthetic unity of doing a new yorker ending and stopping at the end of the previous paragraph. i&#39;m thankful to say fuck you to aesthetic unity and that i can write whatever the fuck i want and start and stop whenever and it&#39;s all up to me.</p>
+<p>spending christmas with good friends eating large snow crab legs and taking a little bit of acid and talking endlessly</p>
+<p>the pomelo, a rare late-in-life new fruit for me, which is real pain to peel but is sweet and yet tart, the beatles to the grapefruit&#39;s stones</p>
+<p>jeff vandermeer&#39;s <em>borne</em>, which i think is even better than the southern reach trilogy, more affecting and thought-provoking but still weird and horribly lyrical </p>
+<p><em>control</em>, which feels like a video game based on the second book in the southern reach trilogy (my favorite), which i just remembered had a main character named <em>control</em>) and is a little too hard for me but interesting enough to make me push myself </p>
+<p>that my parents accidentally sent my brother&#39;s christmas gifts to us and vice versa, but that they all got where they were going in the end</p>
+<p>that miso took her gift, a stuffed pig with a buried squeaker inside of it, and immediately ripped what one would have to call a butthole and then dutifully shoved her snout into the pig and destuffed it and unearthed an internal cylinder, which was a wad of bacon that had a face, which seemed like a weird ontological choice to be contained by a pig but she clearly enjoyed it</p>
+<p>that my parents sent us a lot of delicious food and also various weed products in our christmas gift box.</p>
+<p>trying running first thing in the morning, which is something i haven&#39;t ever done before and didn&#39;t think i could for stomach reasons but that seems to be okay now (i&#39;ve gotten a little queasy when i pushed myself hard, but nothing worse) and i think i like the structure better.</p>
+<p>the diary of a song video with taylor swift (<a href="https://youtu.be/UEeWmItgdxA">https://youtu.be/UEeWmItgdxA</a>), which is maybe the best item in a great series in which joe coscarelli gets at a taylor that we don&#39;t really see that often</p>
+<p>to have learned from an eater podcast that the name for those arrays of clickbait articles you see at the bottom of good blogs is &quot;chum box,&quot; which is such an evocative names</p>
+<p>the &quot;hot takes&quot; podcast from the ringer, which is on spotify exclusively (which is annoying, because i am constantly trying to go to my podcast app to pause it and realizing that nothing is playing there) and is really fun (reminiscent of the great half-baked ideas pods from grantland), especially as someone who generally does not like &quot;short&quot; podcasts.</p>
+<p><em>the topeka school</em>, which i think felt sometimes like it was grasping for more than it reached (esp with the darren stuff), but also reminded me (pleasurably) of <em>the corrections</em> and which i devoured over a couple of days.</p>
+<p>rewatching <em>parks and rec,</em> with d, since i had convinced myself for years that i didn&#39;t like the show because of its normalizing of libertarianism and various other little things which grate on me politically, and then d randomly chose an episode one evening and it made me laugh and we watched another and i thought about how, if i cherish harris wittels and chelsea peretti more than anyone else in my comedy pantheon, why on earth wouldn&#39;t i want to watch a show they helped sculpt? so i&#39;m thankful to have that back in my life.</p>
+<p>miso had her first visit from another dog yesterday and though things were tense at the outset it seemed to be good for her (plus we got to see our friends, who are the dog owners)</p>
+<p>my friend ec&#39;s compilation of a year&#39;s worth of her one second a day videos, which was so wonderful to watch (i&#39;m thankful that d is doing them now and so at the end of this year i&#39;ll have hers too) and is a practice that i&#39;d recommend to you if you&#39;re looking for a low stakes high reward new year activity.</p>
+<p>a really good cheeseburger that reminded me of where i grew up</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1520.html" class="btn btn-secondary">← 1/5/20</a>
+        <a href="/letters/122319.html" class="btn btn-secondary">12/23/19 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

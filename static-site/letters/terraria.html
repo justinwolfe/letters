@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="terraria">
+  <title>terraria - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>terraria</h1>
+        <time datetime="2022-08-14T00:00:00Z">August 13, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that lately i have been trying to find new routes for my runs. i&#39;m thankful to recognize what a difference novelty in terrain and environment and choices of direction and road can make for my (mental) endurance and my satisfaction. i&#39;m thankful, since it is so easy for me and my brain to fall into the grooves of routines and patterns and wear them down day by day into arid valleys, to recognize how running for me is at its best when it&#39;s not just a way to maintain my physical and mental health (though it is always that at the base level, and i don&#39;t want to take that for granted) but when it&#39;s undertaken in the spirit of exploration, a way of accumulating through exposure a new knowledge of a space.</p>
+<p>i&#39;m thankful that i ran ~16 miles yesterday morning and felt like i could have run more. i&#39;m thankful that deborah asked me as i was getting ready to go whether i ever have weed before runs, which i don&#39;t tend to but then presented with the option by her mention, i took the two big hits that were left in the bong before heading out, which at first seemed like a bad idea because my speed was a bit down but i think on balance might have improved the experience (i&#39;m thankful, though, to also treasure the experience of running a long distance and coming home and drinking a large glass of water and then getting high). </p>
+<p>i&#39;m thankful that i started out thinking i was going to run in a direction i never really have (northwest) to this park with a tall bridge across the river and then turn around when i got there there and run back. i&#39;m thankful that the route was simple and the weather was really nice, the next part of the route gently curved around the banks of the river. i&#39;m thankful i ran through a university campus i hadn&#39;t seen before (i&#39;m thankful to have been reminded how much i loved running around campus when we lived in bloomington) and when i got to the bridge, i decided that i wanted to run across it (since i love going across a high bridge) before turning around, and i&#39;m thankful that in the middle of the bridge, i decided what if instead of turning back, i just kept going down the other side of the river and then crossed back eventually, and i&#39;m thankful i indulged myself in that.</p>
+<p>i&#39;m thankful for the stretch running through the shipyards along the other side of the river, a sort of abandoned (because it was the weekend) and silent industrial theme park (i think, such stretches of abandoned parking lot. i&#39;m thankful for a stretch along a rail yard near union station where i was running next to a train that was slowly chugging in parallel with me and it felt like i was running in sync with some kind of leviathan. i&#39;m thankful that because i had water from my water bottle i didn&#39;t feel hollowed out as i sometimes can and i&#39;m thankful that i thought &quot;is this the day i finally run twenty miles&quot; but discovered then that my phone battery was dangerously low because i had not been babysitting it (i&#39;m thankful that my body&#39;s battery has greater capacity than my phone battery) and didn&#39;t want to keep going longer without having podcasts or music to listen to so i set it on airplane mode and turned the screen brightness all the way down and crossed back to our side of town at the first bridge i could find and headed home (the battery didn&#39;t make it all the way but turning down the brightness to 0 did make it hang in there at 5% and then 2% for a surprisingly long time). </p>
+<p>(i&#39;m thankful for that feeling, even when my legs are sore, of &quot;i could just keep running,&quot; because i think another aspect of running to me is about proving to myself that i am not dying of the hidden imperceptible to the naked ear genetic heart defect pumping away every minute inside my chest. i&#39;m thankful for how back when i was much more of a hypochondriac (i&#39;m so thankful that i&#39;m not as bad anymore) and also had less control over my anxiety (ditto) i would use running literally as proof, like &quot;you think you&#39;re having a heart attack well someone who&#39;s having a heart attack wouldn&#39;t just have run 6 miles at an 8:30 pace, so i guess it&#39;s just panic yet again dumbass! i&#39;m thankful also that i don&#39;t seem to have the thing i used to have, where a long run would feel so good mentally right after but then i would crash later in the day and feel terrible and not understand why.)</p>
+<p>i&#39;m thankful for the video game terraria, which is available for every platform and to provide a shorthand description is kind of like if minecraft were a side scroller instead of 3D, but i&#39;m thankful for the distinction that i think is crucial, which is that terraria, at least the way i play it, is less about &quot;mining&quot; and more about exploration. i&#39;m thankful for what i love about the game, which is digging deeper and deeper into the ground of the procedurally generated world and finding not just mining ores that you can craft into tools and decorations but, in buried ruins and water temples and dark caverns, you find not random accumulations of nickel or platinum, but specific authored objects, relics, artifacts, potions, weapons—you feel like a treasure hunter.</p>
+<p>i&#39;m thankful for a detail that i love about terraria, which is that the game, like minecraft, at first seems to be built around digging down into the ground, but that also you eventually discover you have the ability to build towers and ladders and rope bridges and climb upward into the sky (and under the ground you can also find, for example, potions that will invert the gravity of the world causing you to suddenly fly upward). i&#39;m thankful that as you build and climb higher and higher, the color of the sky changes to signify the changing atmospheric conditions and eventually you&#39;re in a field of clouds and then you notice, jumping off the platform you&#39;ve built, that some of the clouds are solid ground and not empty vapor, that they have buildings on top of them, little palaces that you couldn&#39;t have seen from the ground, and that inside those temples are even more exotic objects that grant you new and exciting abilities. </p>
+<p>i&#39;m thankful that though i can&#39;t climb to castles in the sky, i can run in whatever direction i want, and i&#39;m thankful to feel the joy of playing with the direction.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/a-self-portrait-of-a-man-trying-to-reach-past-his.html" class="btn btn-secondary">← &quot;a self-portrait of a man trying to reach past his relentless solipsism&quot;</a>
+        <a href="/letters/tapatio-doritos.html" class="btn btn-secondary">tapatio doritos →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

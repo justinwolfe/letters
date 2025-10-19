@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/6">
+  <title>thank you notes 4/6 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/6</h1>
+        <time datetime="2016-04-06T00:00:00Z">April 5, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that the package from amazon that was supposed to be delivered yesterday was not delivered yesterday (i&#39;m thankful for my hope that it will be delivered today). i&#39;m thankful that i put on my shoes and walked around the perimeter of the house to make sure the person who made the delivery hadn&#39;t just put it somewhere else like it said to do on the ups website, even though i was sure that the package wouldn&#39;t be there. i&#39;m thankful that i didn&#39;t urgently need any of the items from the package (even if i had been looking forward to them) and thankful for the nice customer service person on the phone, v, who helped me make a record of my undelivered but marked as delivered package. i&#39;m thankful for the weird rhythmic background sound in our call that was like a creepy form of beatboxing which i think from spy movies was maybe a sign of the call being recorded. i&#39;m thankful as a customer service person to be nice to other customer service people and thankful that being a customer service person has made me feel less anxious and self-conscious about talking on the phone to other customer service people than i was when i was younger. i&#39;m thankful that my calls at work aren&#39;t monitored or recorded (though i&#39;m thankful for the faculty member who used to have his office near me and who would, if i was floundering or giving out incorrect information on the phone, quickly write down the right answer on a post-it note and bring it over to me). i&#39;m thankful, finally, that my package was not delivered yesterday if only for the beginning of the email i got from amazon customer service after i got off the phone, which read: &quot;<em>Hello, I&#39;m sorry to hear your Haribo Gummi Candy Gold-Bears, 5-Pound Bag didn&#39;t arrive by the guaranteed delivery</em>.&quot; i&#39;m thankful to be reminded that many of my problems are not really problems, even when i let them feel like problems.</p>
+<p>i&#39;m thankful that yesterday afternoon i had a bad interaction with a master&#39;s student who i normally have lovely bantery chats with. i&#39;m thankful that she told me she couldn&#39;t get into the graduate student office and thankful at her smile when i leapt up gleefully and said i could help her out. i&#39;m thankful that she thanked me for my help and we went to my manager&#39;s office for the spare key and thankful for the moment, when she reached out her hand for the key, and i told her, &quot;<em>oh, no, i&#39;ll go with you--i can let you in, but i can&#39;t give you the key</em>.&quot; i&#39;m thankful how she immediately looked down and began walking away from me and how her voice, when she spoke, had dropped several semitones and hsharp edges. i&#39;m thankful to see (if i want to be uncharitable, as i first felt in the moment) the other side of people that you sometimes get when you don&#39;t give them exactly what they want or (if i want to be more charitable, which i normally do), the physical manifestation of her feeling vulnerable and embarrassed to have asked me something and gotten turned down. i&#39;m thankful she told me that she had checked out the key before from my boss several times before, that it hadn&#39;t been an issue, that she really needed, and thankful that i paused to consider it and then just said &quot;<em>ok, i don&#39;t really care</em>&quot; and gave her the key. i&#39;m thankful that this was fine and that i probably should&#39;ve just done it from the start since it wasn&#39;t a big deal and i don&#39;t really care about the rules very much, but also thankful to have asserted myself and said &quot;<em>no</em>&quot; at first, which is something that can be hard to do in customer service even though sometimes that.</p>
+<p>i&#39;m thankful that i ran into the student this morning and it seemed we were back to our normal pleasant banter. i&#39;m thankful that in conversation she revealed to me that this cool old abandoned mill on the south side of town which d and i thought we were trespassing on when we found it with our bikes is actually a public park space where they are holding a local beer festival in a few weeks. i&#39;m thankful that at the end of our conversation, she asked me, as she has several times in the past few weeks, if i have yet bought or am going to buy my ticket for the departmental awards show at the country club this friday. i&#39;m thankful that i didn&#39;t tell her the truth, which is that while i like the people i work with (some of them very much) and can occasionally be talked into the occasional happy hour or holiday party, i very much do not want to spend my friday night (and especially not to force my introverted wife to spend her friday night) at a boring departmental awards show at the country club (and definitely do not want to spend $40 to buy tickets to do it)—i&#39;m thankful i didn&#39;t say that, because even if it was true it would have been a rude thing to say. </p>
+<p>i&#39;m thankful that instead of that, i said, &quot;<em>i&#39;m not allowed at the country club anymore&quot;</em> and gave her a mysterious look. i&#39;m thankful that i intended this as a joke but that, maybe because of our interaction the previous day, she didn&#39;t laugh and seemed to think i was being dead serious and looked at me in a new way and started to inquire excitedly about how i had gotten banned from the country club. i&#39;m thankful that instead of saying anything else, i made the motion of closing my mouth, locking my lips shut, and throwing away the key. i&#39;m thankful to imagine that someone could think someone as boring as me could do something as interesting as get banned from a country club.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-patrick2.html" class="btn btn-secondary">← thank you notes (patrick)(2)</a>
+        <a href="/letters/thank-you-notes-45.html" class="btn btn-secondary">thank you notes 4/5 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

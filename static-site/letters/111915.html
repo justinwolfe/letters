@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="11/19/15">
+  <title>11/19/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>11/19/15</h1>
+        <time datetime="2015-11-19T21:21:02Z">November 19, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that it stopped raining. i&#39;m thankful that though i messed up my rear brake while avoiding a puddle yesterday, i did not crash (and also did not hit the puddle). i&#39;m thankful that when i got to work this morning, i looked at the brake assembly and realized i just needed to pull the wire back into a small clip on the underside of the crossbar and my brakes would be fixed. i&#39;m glad doing that in the world was as easy as seeing it in my mind.</p>
+<p>i&#39;m thankful to be moving forward in the interview process for the job i want. i&#39;m thankful i&#39;ve already written a pitch and i&#39;m thankful for an inquisitive mind which will hopefully help me write two more before the end of the day tomorrow. i&#39;m thankful that the company i&#39;m interviewing with seems so awesome.</p>
+<p>i&#39;m thankful for another great night of sleep. i&#39;m thankful that i feel even less drowsy this morning than i did yesterday, despite having more of the medication in my system. i&#39;m thankful for the feeling of being rested. i&#39;m thankful for warm morning snuggles with d and talking about our dreams. i&#39;m thankful for the dream in which i gave a pencil to a student who needed one.</p>
+<p>i&#39;m thankful for the ridiculous doctoral student in folklore who i saw babywearing a tiny chihuahua while walking in the rain. i&#39;m thankful for all the hilarious moments he brought to the class i took with him years ago, including making guacamole on the seminar table and kissing the ass of our teacher by way of a powerpoint slide listing in great detail her accomplishments and his connection to her which made her incredibly embarrassed, which i enjoyed. i&#39;m thankful that seeing him wearing a chihuahua strapped to his chest while walking in the rain gave me the chance to reminisce about these things.</p>
+<p>i&#39;m thankful i finished an email to my friend jk that i had been working on for weeks. i&#39;m thankful that the final email was more than 5000 words long, because i know she likes long emails. i&#39;m thankful for the last email she sent me, which was a pleasure to read during an intense time in california.</p>
+<p>i&#39;m thankful for the moment years ago, after a very bad panic attack, when i went to the park and read the entirety of high windows by phillip larkin and felt somewhat better. i&#39;m thankful for the poetry foundation podcast titled &quot;be kind while there&#39;s time&quot; that got me into larkin in the first place. i&#39;m thankful that googling &quot;larkin&quot; in my gmail turned up this old diary from the beginning of this year, right when i started taking some prozac that had been sitting in my sock drawer for a year and a half “in case i needed it”:</p>
+<blockquote>
+<p>&quot;yesterday i just felt so bad, the intensity of it radiating through every cell of my body, the badness from my nerves generating acid that eroded all of the progress my stomach lining had made recently, and i couldn&#39;t feel this bad anymore and i remembered that this was an option and i figured that i have been in the same bad pattern, of good weeks and bad weeks, for way too long and it&#39;s time to try another door.</p>
+</blockquote>
+<blockquote>
+<p>so i took the pill this morning and i&#39;ve felt so much better today. strange, but better. the last time i tried this was a year and a half ago, the day after the really bad panic attack that had d taking me to urgent care for the second time in two days. i think i just took it once (or maybe twice), on a day that i mostly remember spending in a kind of detached peace in bryan park on a sunny day, where i read the entirety of &#39;high windows&#39; by phillip larkin. i also remember d and i trying to have sex, because i felt better and because i wanted to show her how much i appreciated her and loved her, and i couldn&#39;t feel my penis. that was enough to stop me from taking it and to tell my doctor that i felt like i was handling things with meditation and exercise and good sleep hygiene. and the fear of that absence of feeling is the primary thing that&#39;s kept me from considering this in the past and instead indulging in a panoply of expensive and i think mostly useless over the counter herbal whatevers.</p>
+</blockquote>
+<blockquote>
+<p>i hope the numbness goes away but, as i said, i can&#39;t keep going forward on the path i was on. it would destroy me much sooner than would be natural otherwise. (that sounds so melodramatic, but it is true). so let&#39;s try this! i feel like i started feeling something after a few hours - i had to make a catering order for the retreat tomorrow, which stressed me out but the stress felt like the volume was turned down just a few db and then faded much faster than it normally would. then i guess the next thing i noticed was a sense of strangeness as i gchatted with d. my thoughts felt much more clearly segmented/fragmented than the long rambly chains i normally employ. i also felt a certain self-consciousness that made me think of tao lin - a dissociation or a sense of strangeness at trying to use words to express myself. i inadvertently was rude to d but she forgave me, so that was all okay and as we talked more i felt more articulate and normal. on my lunch walk, i talked to my parents and i think felt and came across as normal, though i was maybe slightly less engaged than i normally would have been.</p>
+</blockquote>
+<blockquote>
+<p>then this afternoon, it&#39;s been perhaps more muted but again, i just generally feel a lot lighter, like my nervous system&#39;s tuning strings have been loosened. it is great. i also seem to be able to let things go faster and to not obsessively check over emails (which lead to me making a typo, but i didn&#39;t really care! that&#39;s great!!! i used to feel so destroyed by a typo, even when the person i was writing to could barely communicate with me). maybe a slight tension in my temples and occasional shakiness, but not really any other negative side effect feelings. i will check in again tomorrow but i feel much better than yesterday and that is a cause for celebration.&quot;</p>
+</blockquote>
+<p>i&#39;m thankful for the way that diaries let us track how we change over time and how we stay the same. i&#39;m thankful for how great i feel all the time now. i&#39;m thankful i can keep the kind of diary that&#39;s in this email instead of the kind of diary that&#39;s in that one.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/112015.html" class="btn btn-secondary">← 11/20/15</a>
+        <a href="/letters/111815.html" class="btn btn-secondary">11/18/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="6/7/16">
+  <title>6/7/16 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>6/7/16</h1>
+        <time datetime="2017-06-07T00:00:00Z">June 6, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i have a doctor&#39;s appointment this afternoon, even though going to the doctor makes me feel very anxious. i&#39;m thankful that i can afford to go to the doctor and that i have good health insurance and i can get out of work in the middle of the afternoon without it being a big deal, which are things that are not true for lots of people. i&#39;m thankful that though my doctor&#39;s office is on the other side of town i can bike there and if it rains i can take a lyft there. </p>
+<p>i&#39;m thankful to know that i don&#39;t need to feel anxious about the doctor even if that doesn&#39;t make me not feel anxious about going to the doctor. i&#39;m thankful that i am seeing a new doctor for the first time today since my old doctor is moving out of state. i&#39;m thankful that though my old doctor was fine and a pleasant person, we didn&#39;t really have a connection and i never felt like she was so that her absence doesn&#39;t feel like a loss. i&#39;m thankful to wish her the best in all of her future endeavors. i&#39;m thankful that though my new doctor is not technically a doctor but a nurse practitioner, i&#39;m not really anxious about that in particular, and i&#39;m thankful to see her, since the earliest i could get in with a new actual doctor at the same practice was september.</p>
+<p>i&#39;m thankful to try to think about the worst things that could happen, which i guess is the doctor telling me there is something seriously wrong with me that i didn&#39;t know about. i&#39;m thankful to know that even if that happens, which it most likely won&#39;t, that would still just make it good that i went to the doctor today even though i was anxious and she was able to find it out and begin to treat it instead of it continuing to get worse without us knowing about it. i&#39;m thankful that knowledge is power. i&#39;m thankful that i am going to make sure to get a referral for the annual ultrasound of my heart, which i am behind on, and to ask for the name of the cardiologist i was referred to before, who i really liked.</p>
+<p>i&#39;m thankful to make a list of the things i take in advance so that i don&#39;t have to relay it aloud to the nurse. i&#39;m thankful, daily, for fluoxetine 20mg, fluoxetine 10mg, amitryptiline 50mg, cetirizine 10mg, fish oil 2400 mg, super b complex 250mg, zinc 50mg, calcium XR 1000mg, magnesium 600 mg, probiotic/digestive enzymes a number of mg i don&#39;t want to have to add up this early in the morning so i will just write &quot;1 pill&quot;. i&#39;m thankful, occasionally and during peak allergy season frequently, for benadryl. i&#39;m thankful because i never can remember my height at the doctor&#39;s office that i looked up old notes from <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-2-14">2/14/16</a> and found out that it is 5&#39;6&quot;. i&#39;m thankful to know that my weight may be up a bit from the last time i checked it and to be okay with that and know that i&#39;m working on eating less sweets and i am very active.</p>
+<p>i&#39;m thankful to wonder if one of the physician&#39;s assistants who i got chummy with during the period where i was going to the doctor&#39;s office very regularly while finding the right dose for my antidepressants and trying to figure out what was wrong with my stomach still works there and to hope that if i do that i get to see her. i&#39;m thankful to have always appreciated her smile and cheery demeanor and as time went on how she remembered things about me and i remembered things about her and that made both of us happy. i&#39;m thankful that i may try upping my antidepressant dosage today to see if that makes an appreciable difference to how i handle the stresses of my life.</p>
+<p>i&#39;m thankful to try to get to the doctor&#39;s office early but not too early, since being late makes me anxious about my blood pressure because it&#39;s high from biking across town but when i sit in the waiting room for too long i get anxious thinking about my impending doctor&#39;s appointment and that makes it high. i&#39;m thankful for the combination of relief/fear i feel when the physician&#39;s assistant finally opens the door to the waiting room and calls my name. i&#39;m thankful to try to feel more relief than fear today. i&#39;m thankful i have a doctor&#39;s appointment this afternoon.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/6817.html" class="btn btn-secondary">← 6/8/17</a>
+        <a href="/letters/6617.html" class="btn btn-secondary">6/6/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

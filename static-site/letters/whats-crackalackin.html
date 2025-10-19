@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="what&#039;s crackalackin">
+  <title>what&#039;s crackalackin - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>what&#039;s crackalackin</h1>
+        <time datetime="2024-04-16T14:37:00.292443Z">April 16, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>the show <em>couples therapy</em> which i had avoided because it seemed like it might be a downer and sometimes it is but mostly it&#39;s just very entertaining to witness the personalities and human drama of these people and perhaps see resonances with our own conflicts at a safe remove and also the therapist orna has such great eyebrows and facial expressions and voice (and a cute dog). i&#39;m thankful for our period in couples therapy in the late spring of 2019 which helped us to get through the hardest time in our marriage, an outcome which i don&#39;t think was necessarily down to the therapist, who did not seem particularly skilled or like he had a lot to offer, but even if it wasn&#39;t him specifically, being in the space and having to listen to each other regularly was very useful for bridging a divide. i remember very vividly sitting in the car outside the doctor&#39;s office after a session and feeling like things were hopeless and tearfully expressing this to deborah who had been and her seeming to actually hear me and understand how i was feeling for the first time in months and it was kind of a turning point. i remember it was a nice sunny day.</p>
+<p> <img src="/api/images/268" alt="image.png"> </p>
+<p>related: deborah not divorcing me because of my tendency to run sayings into the ground like for a long time when leaving my office at the end of the day before dinner i would come into the kitchen and say &quot;are you ready for some FOOTBALL?&quot; which is a historic jingle for monday night football but which i used to express &quot;it&#39;s time for dinner and i&#39;m excited to eat it.&quot; then i wore that out (for now) and then one day i said &quot;what&#39;s crackalackin?&quot; in the voice we use for miso and now i have said that nearly every time i have touched base with deborah during the day for a while and am trying to make myself stop.</p>
+<p> <img src="/api/images/267" alt="image.png"> </p>
+<p>deborah slices things very thinly since she got her fancy japanese knife and i love that because of the way that the delicacy (a cucumber in particular is something i like less when chonky but becomes exquisite when it&#39;s too thin to maintain a flat disk) and in response to my praise deborah said &quot;i&#39;ll always cut your cucumbers delicately&quot;. she also makes homemade banana babies when bananas get too old (mix chocolate chips with a spoonful of coconut oil, melt in a double boiler, coat bananas) and she had leftover chocolate from her most recent batch so she dipped some strawberries too and we had those for dessert. using her tide pen to get out the chocolate stain on my new yellow long-sleeved shirt. having the opportunity to watch coachella livestreams, even though none of the performances we watched this year were particularly good. having bonded over watching <em>the amazing race</em> with a coworker i love who just had a baby and went on leave and it giving us a reason to touch base.</p>
+<p><img src="/api/images/266" alt="image.png"></p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-sydney/">2016</a> (from <strong>sydney</strong>) (<em>to go to school, a group of girls who support me, my brothers</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/41617-5086/">2017</a> (<em>a joyous band practice, tacos outside the distillery, o.j.: made in america</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/41617/">2018</a> (<em>getting ready to go to korea; that though the whole time i lived there after college i was profoundly alone, this time, i am going with my wife and will get to see one of my best friends, which will be a wonderful change; refilled my antidepressant prescription in time</em>)</li>
+<li>2018 (<a href="https://buttondown.email/justinwolfe/archive/415/">2</a>) (<em>beds</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/phoenix-down/">2020</a> (<em>portrait of a lady on fire, the flow state of working on a project, banana snacking cake</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/tavi-gevinson-doing-i-love-dick-on-taylor-swift.html" class="btn btn-secondary">← tavi gevinson doing i love dick on taylor swift</a>
+        <a href="/letters/another-bespoke-mental-illness-i-have-recently.html" class="btn btn-secondary">another bespoke mental illness i have recently discovered →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

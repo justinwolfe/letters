@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="3/29">
+  <title>3/29 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>3/29</h1>
+        <time datetime="2018-03-29T00:00:00Z">March 28, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>[tw: suicide, death, drowning]</p>
+<p>i&#39;m thankful that despite feeling bad and sad many times in my life, i don&#39;t think i have ever really wanted to kill myself. i&#39;m thankful to have always been struck by that when a panic event sent me to urgent care or the emergency room, where the first thing they ask you after your temperature and blood pressure is whether you have been thinking about killing yourself, and i would always provide a very spirited &quot;no,&quot; like, why would you even think that, or ask it, even though of course they have to think that, and ask it. i&#39;m thankful that my problem was always what i thought was the opposite, that i felt like i was dying and/or was afraid i was dying and didn&#39;t want to die, not that i did want to die.</p>
+<p>i&#39;m thankful to have thought about this last night when, after an hour of trying to figure out a complex math problem with bad input information that made solving that problem the right way impossible, i realized that it was impossible, and i closed my computer and went and laid facedown on our bed for a long time, trying to breathe into the fitted sheet and feeling huge tidal washes of badness washing over me. i&#39;m thankful to have occasionally thought &quot;<em>maybe i should try to distract myself with something else</em>&quot; but to have felt that it was impossible to do anything else besides lie there and feel bad and breathe, that this was all i was capable of. i&#39;m thankful, at one point, to have raised my head and looked down at the black screen of my sleeping phone and seen, in its face, the reflection of the string of lights hanging above our bed, the bulbs covered in little paper stars, and to have thought about how it would be nice to be dead so that i would not have to feel this way anymore.</p>
+<p>i&#39;m thankful to be emphatic, since you need to in situations like this, that i do not want to kill myself and am not thinking about killing myself, but i&#39;m thankful also to have recognized in the moment, my consciousness floating above my body like a movie ghost, that i understood why a person would commit suicide in a way that i hadn&#39;t before, how it could feel like a freeing choice, rational even, and that death could feel like a relief rather than the ultimate in pain, and to have recognized how i had never understood those things before, not really. </p>
+<p>i&#39;m thankful to have been reminded of the time after i came back from living in korea and i was living with my parents and writing a time-consuming blog and generally felt like i was going nowhere in my life. i&#39;m thankful that though there were some bad things about that period (the feeling of going nowhere), there were also some good things, and one of them was that at the time my parents lived across the street from the ocean and i could go swimming every day. i&#39;m thankful that though i have never been good at sports and physical activity was generally traumatic for me as a child, in my adulthood, i found, through vigorous exercise, endorphin-fueled solace from the daily pain of my brain and also a larger sense of self, a sense that even if i didn&#39;t like the way that i looked (never have, probably never will) or feel that i had much that would be enticing to a particular romantic partner, i could take pride in the fact that i had this body that could do these difficult and strenuous things that the average person just couldn&#39;t do—that even though i was lesser or weaker than other people in all of these other ways, in this one, i was powerful, strong.</p>
+<p>i&#39;m thankful that, even though my formal technique was never that great and still isn&#39;t, with exercise, success really can be in just showing up, and the more i swam, the better i got at swimming more. i&#39;m thankful that though i started out swimming up and down the coast close to the shore, where i knew i could put down my feet and stand on my toes if i needed to, as i swam more and got more confident, i would go a bit further out, not too far (like my dad, who liked to swim out so deep and which always scared me), just so that i could have more room and space. i&#39;m thankful that the waves didn&#39;t crash there, but instead swelled, a feeling which could be eerie but also cool and either way didn&#39;t disrupt my stroke in the way that crashing did.</p>
+<p>i&#39;m thankful that one day it was cloudy and had been raining earlier but the rain had stopped and so i was having my swim. i&#39;m thankful that it started as normal and i had decided to head south that day—i&#39;m thankful that i used the big beach hotels in miami as landmarks so i could tell where i was and how far i&#39;d gone. &#39;m thankful that at a certain point, i looked at the shore to get my bearings and realized i had gone out further than i usually would. i&#39;m thankful that since i didn&#39;t wear goggles and didn&#39;t have good form, this kind of thing was pretty normal for me, so i didn&#39;t worry about it, corrected course, and kept going.</p>
+<p>i&#39;m thankful to have looked up a bit later and realized that despite correcting course, i hadn&#39;t actually gotten any closer to the shore and to have thought that was weird. i&#39;m thankful, after trying the same thing again, to have decided i should stop worrying about making progress down the beach and just cut directly in toward the shore until got a bit closer. i&#39;m thankful that i started swimming in, as hard as i could, which was pretty hard (and yet not exhausting, because i was in good shape) but that the current was strong and i wasn&#39;t getting anywhere. i&#39;m thankful to have thought that was weird, though it didn&#39;t worry me, since i was in good shape at the time, and after trying for a bit, to have paused and treaded water for a minute to prep for another try.</p>
+<p>i&#39;m thankful while i was floating there, to have watched the people bobbing along in shallower water between me and the shore. i&#39;m thankful that this was one of my favorite things about these swims besides the release of the exercise and feeling of the water, was the people watching. i&#39;m thankful to remember watching, another time, what i thought was a dead woman who had washed but which turned out to be someone doing a very still swimsuit photo shoot. </p>
+<p>i&#39;m thankful that this day, i was close to a lifeguard tower and i saw, as i floated, a lifeguard start tearing through the sand carrying an emergency flotation device and then splash into the water and start swimming out. i&#39;m thankful that i had never seen a lifeguard rescue someone like this and to have thought that it was really very similar to what baywatch made it look like. i&#39;m thankful (if slightly ashamed), gawker that i have always been, to have been slightly excited about this, that i would get to watch him rescue someone, and i started to try to figure out, based on the people i could see and his trajectory, who it would be.</p>
+<p>i&#39;m thankful that he passed the people i was thinking it was and got out deep enough that i couldn&#39;t see any more people near him, though at the crest of a wave i craned my neck to try to see. i&#39;m thankful, as he swam further out, to have realized that actually the person he was coming to rescue was me, because i was drowning (even though i hadn&#39;t realized it).</p>
+<p>i&#39;m thankful that when he got close enough that we could shout at each other, he yelled &quot;are you okay?&quot; and i, embarrassed, did a big smile and gave him a thumbs up and said, in an upbeat and friendly voice,  &quot;yeah, totally fine, i just can&#39;t seem to get closer in, the current is so strong&quot; and he said &quot;you&#39;re in a rip current. you can&#39;t swim in like this—grab onto this float and we&#39;ll go this way to get out of it.&quot; i&#39;m thankful that i grabbed onto the float and he led me further down the beach and then slowly diagonally in, until we were in calmer water where my feet could touch the bottom. i&#39;m thankful that when i tried to let go of the float, feeling safe now, he said, &quot;i need you to grab onto the float,&quot; since that is a good safety procedure, and i&#39;m thankful that when we got further in, so the water was only up to my mid thigh, i tried to let go again, so embarrassed because i could see all the people on the beach and in the shallows watching us (the way i had been watching them), and he made me grab on again and not let go until we were out of the water.</p>
+<p>i&#39;m thankful to have filled out some paperwork for him logging the details of the rescue and then grabbed my stuff and walked back to my parents apartment. i&#39;m thankful that whole time to have been mostly feeling embarrassed (i&#39;m thankful for the concept of the word &quot;mortified,&quot; the idea of being so embarrassed you could die) and also to have been thinking about how this was a weird story i could write about sometime. i&#39;m thankful that then, when i got home to the empty apartment (both my parents still at work for another couple hours) and started to take a shower to warm up and wash off the sand and salt, the sense that i could have just died suddenly and finally hit me hard and i began hyperventilating and sobbing uncontrollably, my tears mixing with the falling water.</p>
+<p>i&#39;m thankful that i didn&#39;t die then and that i don&#39;t want to die now and that i hope it will be a long time until i do die. i&#39;m thankful to hope that soon i stop feeling so bad that i can entertain, even in the abstract, an understanding of why a person might choose to die, though i am grateful for that knowledge, which will hopefully help me be more empathetic to other people who make or entertain such choices. i&#39;m thankful to have hope that i will start feeling better soon and until i do to put less pressure on myself in my free time to do things like complicated math problems, which are not going to help me feel better. i&#39;m thankful to give myself a break and take a helping hand and to hope that if you need one of those, you give and take it yourself too, since it is better to be embarrassed than to drown.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/330-8993.html" class="btn btn-secondary">← 3/30</a>
+        <a href="/letters/328-3426.html" class="btn btn-secondary">3/28 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

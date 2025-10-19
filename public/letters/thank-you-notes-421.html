@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/21">
+  <title>thank you notes 4/21 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/21</h1>
+        <time datetime="2016-04-22T00:00:00Z">April 21, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the fun irony of how wearing my tightly-cinched heavy military poncho to keep me dry from the light rain on my ride to work caused me to sweat so much under the poncho, my back and armpits soaking through my light casual shirt, that i think i probably ended up wetter than i would have if i had just not worn the poncho in the first place. i&#39;m thankful for this reminder that sometimes solutions are actually problems. i&#39;m thankful for a faculty member&#39;s intense disgust at the way that some people call light rain &quot;spitting,&quot; which she thinks would be much more pleasantly described as &quot;misting.&quot; i&#39;m thankful to agree that &quot;spitting&quot; is a disgusting description, but also to argue that &quot;spitting&quot; and &quot;misting&quot; are usefully distinct in how they describe the intensity and spread of precipitation (i&#39;m thankful for the sensation of rotating the nozzle of a shower head or hose through its different settings). i&#39;m thankful for precise descriptions of physical experiences with language, which help me appreciate those experiences and the world they belong to. i&#39;m thankful that i woke up at 5am and couldn&#39;t go back to sleep, which i thought was because allergies had caused a clot of mucus to lodge in the back of my throat, but which was actually (primarily at least, though the mucus was still annoying) because it turned out that i forgot to take my sleeping pill before bed. i&#39;m thankful to have learned yesterday that both <a href="http://www.thenakedscientists.com/HTML/questions/question/1842/">spit and tears are filtered blood</a>. </p>
+<p>i&#39;m thankful that the heavy rain came early this morning before i had to leave the house and that if i had to be awake and uncomfortable because of the mucus stuck in my throught, i at least got to listen to it fall softly over the house. i&#39;m thankful, from the dry warmth of my bed, to have been able to read knausgaard&#39;s descriptions of getting stuck in the rain in the beginning of <a href="http://www.amazon.com/My-Struggle-Karl-Ove-Knausgaard-ebook/dp/B01CXON606/ref=sr_1_1?ie=UTF8&qid=1461278583&sr=8-1&keywords=my+struggle+book+5+kindle">the newly translated fifth volume of</a> <em><a href="http://www.amazon.com/My-Struggle-Karl-Ove-Knausgaard-ebook/dp/B01CXON606/ref=sr_1_1?ie=UTF8&qid=1461278583&sr=8-1&keywords=my+struggle+book+5+kindle">my struggle</a></em>. </p>
+<p>&quot;<em>Oh no. Now the raindrops were getting bigger as well.</em></p>
+<p><em>Fortunately it wasn&#39;t cold though.</em></p>
+<p><em>I lit a cigarette, ran a hand through my hair. The rain had made my <strong>hair gel</strong> sticky, I dried my hand on my thigh, leaned forward, and took the Walkman from my pack, rummaged through the few cassettes I had with me, chose Skylarking by XTC, put it in, and straightened up</em>.&quot;...</p>
+<p>&quot;&#39;<em>Isn&#39;t that where we  went that time?&#39; I said, nodding toward the building across the road.</em></p>
+<p><em>&#39;That&#39;s right,&#39; Yngve said.</em></p>
+<p><em>I had been sixteen, visiting him for the first time; I had held the hand of one of the girls we were with in order to get in. I had borrowed Yngve&#39;s deodorant, and in the minutes before we left his place he had stood in front of me, rolled up the sleeves of my shirt, passed me his <strong>hair gel</strong>, watched me rubbing it in, and said good, now let&#39;s go.</em>&quot;...</p>
+<p>&quot;<em>I didn&#39;t have an umbrella and I didn&#39;t want to wear my raincoat, so even though it was unpleasant and <strong>hair gel</strong> was beginning to run down my forehead, I hunched my shoulders and began to tramp downhill</em>&quot;</p>
+<p>i&#39;m thankful that in the first 8% of the book, there have already been multiple descriptions of the use of the hair gel knausgaard wore as an adolescent and how it responded to various weather conditions. i&#39;m thankful to know that for some people the presence of multiple descriptions of hair product performance in the first chapter of a book is a perfect example of why they would not want to read this book and thankful that for me it is a perfect example of why i do. i&#39;m thankful, in his writing, for the deja-vu-ish sense of reading about some small quotidian moment (like hair gel running down your forehead in the rain) that you find you recognize from your own life and for the feeling of then realizing that this little everyday experience he&#39;s describing is actually something you&#39;ve spent a lot of time over the years living over and over and over again and subconsciously experiencing and storing memories of without maybe ever once actively, consciously considering it (much less seeing it depicted in an artwork) but now here it is, the thing right in front of you. </p>
+<p>i&#39;m thankful that despite my particular affinity for the way his books help me rediscover the banal, i had to put the aside after a while last night because his detailed descriptions of beginning a writing workshop course in his early twenties were so resonant they were giving me cringey acid flashbacks to the beginning of my time in my writing program. i&#39;m thankful for knausgaard&#39;s description of first entering the writing academy and meeting his professors, which is kind of like the exact diametric opposite of the description of harry potter first encountering the wonder of hogwarts:</p>
+<p>&quot;<em>She opened the door at the top of the stairs, and we stepped into a large room with slanting walls and three big windows on one side, two doors with a bookshelf between them on the other. In the middle were some desks arranged in a horseshoe shape. Three people sat there. Two men were standing in front of them. One, tall and slim, wearing a suit jacket with the sleeves rolled up, looked straight at us and smiled. He wore a gold chain around his neck, I noticed, and had several rings on his fingers. The other man, shorter in stature, also wearing a suit jacket, with a slight paunch which the much-too-tight jacket emphasized, sent us a hasty glance and looked down. Both had mustaches. The former may have been pushing thirty-five; the latter, who stood with his arms crossed, was around thirty.</em></p>
+<p><em>They appeared nervous, in the sense that they both radiated a feeling that they would rather not be right here, right now. But in diametrically opposed ways.</em></p>
+<p><em>&#39;Welcome to the Writing Academy,&#39; the tall one said</em>.&quot;</p>
+<p>i&#39;m thankful to remember feeling so overwhelmed during the orientation week of my writing program that one evening when i was in the shower before going out to a mixer, i just started spontaneously crying, which is not something that had ever happened ot me before. i&#39;m thankful that i wasn&#39;t even sad, or at least not actively sad in that moment, that it wa just like a physical reaction to all of the intensity that i was carrying inside me. i&#39;m thankful for this kind of detachment i felt at the strange phenomenon of crying in the shower, like i was looking at myself from outside my body. </p>
+<p><em>&quot;The round of comments began. There was a lot of hesitation and groping for words, most people confined themselves to saying they liked this image or that sentence, but amid all this some concepts emerged which were carried on and slowly became the standard currency for everyone, such as &#39;rhythm,&#39; the rhythm was &#39;good&#39; or &#39;didn&#39;t quite flow,&#39; and then there was mention of &#39;tone&#39; and &#39;the opening&#39; and &#39;the ending&#39; and &#39;deleting&#39; and &#39;cutting.&#39; That was a nice opening, and the rhythm&#39;s spot on, there&#39;s something a little unclear in the middle section, I&#39;m not quite sure what it is, but something jars there, well, maybe you could shorten it a bit, I don&#39;t know, but then there&#39;s that strong image at the end.&quot;</em></p>
+<p>i&#39;m thankful to remember in our brief pedagogical training that week how people kept using the terms &quot;<a href="https://en.wikipedia.org/wiki/Enjambment">enjambment</a>&quot; and &quot;enjamb&quot; to talk about the fake student poems we were fake workshopping to learn how to workshop and how not to and I had to eventually admit to the group that I did not know what enjamb, which seemed like something one would do to either bread or doors (i&#39;m thankful that i was able to turn my discomfort at my intellectual inadequacy into a dad joke), meant. i&#39;m thankful for the condescending smiles i was given by the poets in our group when i admitted that. i&#39;m thankful knausgaard experienced a similar thing:</p>
+<p>&quot;<em>Also the question of line breaks came up in these readings. It soon transpired that chopped-up prose, as it was called, whereby standard prose was divided up as if it were a poem, was the enemy, the nightmare in person</em>.&quot; </p>
+<p>i&#39;m thankful that at the time, as a young writer with an enormous ego who felt like i could do anything (i&#39;m thankful, i guess, for the way my time in the writing program cured me of both of those things), the concept of prosody seemed like this mystical arbitrary racket designed by people who had attained the guild identity of &quot;poet&quot; to keep other people from taking on the identity as well and therefore diluting their status (i&#39;m thankful that i understand it&#39;s a real, valid thing now, and see its worth, even though i still think some poets are kind of full of shit a lot of the time).</p>
+<p>&quot;<em>I would have liked to buy some books, preferably a couple of collections of poetry because I had barely read a poem in my life, except for those we&#39;d had at school, which had mostly been by Wergeland and Wildenvey, and the stuff I encountered during the weeks when we put on a kind of cabaret in Norwegian at gymnas [high school], with Lars and me reading texts by Jim Morrison, Bob Dylan, and Sylivia Plath on stage. Those six poems were the only real poems I had read in my life, and first of all, I didn&#39;t remember any of them, and secondly, I had an inkling the kind of poems we would be analyzing at the Writing Academy would be different</em>.&quot;</p>
+<p>i&#39;m thankful that the week before orientation week, when i was getting settled into my apartment, i sat down on a wooden bench in a small clearing in a forest at the center of campus read the second whole book of poetry (after <em>lunch poems</em>, which i read in college) that i had ever read, jane hirshfield&#39;s <em>given sugar, given salt</em>, which was recommended to me by a friend (i&#39;m thankful for the book, which was lovely, and thankful also to have gotten to spend that time in the forest, which was <a href="http://firmuhment.tumblr.com/post/6284762617">decimated by strong storms</a> the following summer and has since been a shadow of its former self). </p>
+<p>i&#39;m thankful, in my conversations about poetry during orientation, when i was asked what poets i was into, to have confidently said &quot;<em>i really like jane hirshfield and louise gluck</em>&quot;—who i had read like a grand total of two poems by at the recommendation of the same friend—&quot;<em>is so dark but also really great</em>.&quot; i&#39;m thankful for the times when we can be full of shit and not get called out on it. i&#39;m thankful, in the part of <em>my struggle</em> i read last night, for petra, the manic pixie dream girl (&quot;<em>The other was a girl, quite short, wearing a large black leather jacket, black trousers, and a pair of robust black shoes. Her hair was also black, and she tossed her head and stroked back her bangs twice in the short time I was watching them. But her mouth was sensitive, and her eyes were as black as two lumps of coal</em>.&quot;) that knausgaard immediately falls in love with, who, when at the end of the first day he asks her what she thinks about the course, says:</p>
+<p>&quot;<em>The lecturers were full of themselves and vain. But they might be able to teach us something all the same</em>.&quot;</p>
+<p>which is a pretty good assessment of writing programs, i think, though i don&#39;t have <a href="http://www.lrb.co.uk/v32/n18/elif-batuman/get-a-real-degree">a real degree</a>, so what do i know. i&#39;m thankful that there are more things this book is making me think about and remember about my time in the writing program but it has been a long day and i want to finish this and relax and writing makes time go by fast, which is good at work but not so good at home, and i know that i can always write more in the future about the things, that i won&#39;t lose them before then. i&#39;m thankful, even if it is uncomfortable, that <em>my struggle</em> might offer me more opportunities to process my experience of my time in my writing program, even if that is sometimes a not entirely pleasant thing for me to do. (i&#39;m thankful to hope that isn&#39;t too boring a prospect for you, but also thankful that i know that if you are reading this far in these notes, you are my kind of person and derive some satisfaction from sitting through lengthy descriptions of boring things)(i&#39;m thankful that at least i don&#39;t wear hair gel anymore, so there will be none of that).</p>
+<p>i&#39;m thankful that today, a student of the department i work for who, when i was in my writing program, was my student in an introductory creative writing class i taught, came into the office to fill out her internship registration paperwork. i&#39;m thankful for the first time this student came into the department office after i started working here, a couple of years ago, and we had a conversation which involved me struggling to (but eventually succeeding in) remembering her name and her saying &quot;<em>so...you work</em> here <em>now</em>&quot; and me not feeling embarrassed, exactly, since at that point i mostly just felt lucky to have a job at all, but embarrassed because (either actually, or in my mind) my former student seemed to be embarrassed for me, on my behalf. i&#39;m thankful that though she was a terrible writer when i had her in my creative writing class, i had by that point in my pedagogy gotten enough clarity about how my time in the writing program had fucked up my writing and myself that i was no longer trying to help &quot;fix&quot; my students&#39; (work)—my goal had become to simply maximize the happiness they felt from doing it and to give them interesting things to read and help them to enjoy them (because i remembered how happy writing and reading had once made me, even though that happiness had been walled off by workshop PTSD and spiderwebs of ugly feelings).</p>
+<p>i&#39;m thankful that today i helped my former student register for her internship, as i have done or will do for the ~100 students in our department who are doing their internships this summer. i&#39;m thankful that our department requires students to complete internships, which i wish mine had required when i was in school, and thankful that for many students, the internship is the last bit of coursework they do before the enter &quot;the real world.&quot; i&#39;m thankful for the ritual i go through with each of them to get them registered, which involves a green registration form and a white two page liability waiver and a manilla folder with a sticker with their name on the tab. i&#39;m thankful that in addition to that paperwork, as well as documents from the agency which the student is interning with describing what they&#39;ll do on the internship (i&#39;m thankful that when i prepare the folders, i read this information, partly out of curiosity and partly so that i can make small talk with the students and be excited for them), there are also Q&amp;A forms the students filled out for their advisors about their career goals and interests when they first entered the program, which for many of them was years earlier. i&#39;m thankful for how after the students finish filling out the green registration form and signing the liability waiver, i say &quot;<em>i&#39;ll be right back</em>&quot; and leave them to go to the other end of the office to use the copier. i&#39;m thankful that the copier is often slow to warm up and that sometimes the automatic sheet feeder doesn&#39;t recognize the paper i&#39;ve stuck in its tray and so just makes a blank copy of the empty plate of glass underneath and i have to recycle that copy and then slightly nudge the paper in the feeder until it hits the sensor that registers its presence.</p>
+<p>i&#39;m thankful for that delay because it often means that by the time i get the copy of the green registration form made and walk back to the other side of the office, the student, out of boredom while waiting for me, has flipped through the contents of his or her folder and found the Q&amp;A form they filled out years ago. i&#39;m thankful for how when i come through the doorway to my section of the office and see them looking at the folder, i often see them smiling at the descriptions of the hopes and dreams their younger selves wrote down and promptly forgot about. i&#39;m thankful to nudge them from their reverie by saying something like &quot;<em>oh, blast from the past, right</em>?&quot; i&#39;m thankful that they look at me and smile and then often look right back at the paper, as if they can&#39;t believe that it exists. i&#39;m thankful, in these days of big data, for the way that a stupid form they filled out when they were freshmen is still meaningful to them. i&#39;m thankful that sometimes they want to talk about the form with me, about what it says, and thankful for how sometimes they are shocked at the difference between what they wanted then and what they want now and for how sometimes they realize that they&#39;ve always known what they wanted to do with their lives and now they&#39;re about to really do it. i&#39;m thankful to give them the green registration form and, before i send them to another office to file it, to tell them to have a good day.</p>
+<p>i&#39;m thankful that today i was very busy and a little stressed out at work (which is why i didn&#39;t have time to write my notes earlier) but i felt like i accomplished things and it was a good day. i&#39;m thankful that i was able to line edit a faculty member&#39;s important grant proposal at the last minute and thankful that after my edit, i got her abstract to 2995 characters, with spaces (the limit was 3000). i&#39;m thankful that i got a lot of students registered for their internships. i&#39;m thankful that i excitedly listened to my coworker&#39;s description of buying an xbox one and about how she and her boyfriend are going to have their first party as a couple tomorrow night. i&#39;m thankful that i facilitated the transfer of a laptop from a graduate assistant for another department to a professor for another department (i&#39;m thankful that the professor for the other department seemingly trusted me more than the staff of her own department, even though that also makes me a little sad).</p>
+<p>i&#39;m thankful that the visit from the etext publisher to our faculty meeting went well. i&#39;m thankful for the cantankerous old faculty member who raised a stink-eye question during the Q&amp;A about royalties for ebooks and how they compare to royalties for paper books. i&#39;m thankful for how he made everyone around him seem to feel uncomfortable but that he didn&#39;t give a fuck, because he was going to say his piece. i&#39;m thankful that in the bathroom afterward, while peeing at the urinal, i told him that i appreciated him standing up for authors rights and expressed my opinion that the publisher&#39;s arguments about how authors can update etexts at any time as research changes sounded less like the privilege it was described as and more like an &quot;opportunity&quot; for unpaid labor. i&#39;m thankful for his righteous harumph of agreement.</p>
+<p>i&#39;m thankful that the etext publisher bought boxed lunches from panera for the department. i&#39;m thankful that i had it delivered to the office rather than the conference room where we were having the meeting so we wouldn&#39;t be disturbed. i&#39;m thankful to have ducked out when it was delivered to tell my manager and coworkers to make sure and go ahead and get themselves lunch before i came back to bring the rest of the lunches to the conference room (i&#39;m thankful for solidarity). i&#39;m thankful that when i came back, i found out that my coworker had gotten a lunch and my manager had gotten a lunch and the accountant had gotten a lunch but that the hourly temp employee, who was working today, hadn&#39;t been allowed to get a lunch. i&#39;m thankful that my manager is an incredibly kind and good person but i thought this was the wrong decision, even though i know she made it out of a sense of protocol and not unkindness. i&#39;m thankful that i went to the hourly temp employee after i carried the rest of the lunches into the conference room and told her (truly) that i wasn&#39;t going to eat the lunch that was intended for me because i had already brought a lunch and was on a &quot;very specific diet,&quot; that it would just go uneaten, and was she sure she didn&#39;t want to take it. i&#39;m thankful how i think she almost said yes before her eyes tightened and she said no thank you. i&#39;m thankful that me saying the thing about my diet gave her (i think) an excuse to save face.</p>
+<p>i&#39;m thankful, when the publisher asked for our orders last week, that i made sure to ask for some vegetarian lunches, because one of our academic advisors as well as a few of our faculty are vegetarian. i&#39;m thankful that though the advisors left before i brought in the food, i grabbed a vegetarian meal for one and (after a brief consideration of what the other might want) a turkey sandwich for the other. i&#39;m thankful that i took the lunches down to their offices. i&#39;m thankful that i knocked, but they weren&#39;t there, so i left the boxes outside their office doors. </p>
+<p>i&#39;m thankful, while the faculty ate in the conference room, to have taken my lunch break and gone to the gym and had a good run on the treadmill. i&#39;m thankful for the song &quot;gangsta lean&quot; by clipse and the song &quot;the devil is a lie&quot; by rick ross and the song &quot;dipset anthem&quot; by dipset and the song &quot;pop style&quot; by drake and the song &quot;the good life&quot; by weezer and for all the other songs that made it fun to run and sweat away a half hour. i&#39;m thankful, even though it&#39;s annoying to be so hot and sweaty that even after a cold shower i&#39;m still soaking my shirt, to get the chance to run on my lunch break. i&#39;m thankful to have had the chance to reflect on how i was sweaty that morning and then it had dried and i had forgotten about it and the same thing would happen with this sweat, however uncomfortable it was right now. </p>
+<p>i&#39;m thankful that walking back from lunch, i stopped by the conference room to make sure the faculty hadn&#39;t left any food or garbage and saw that a staff member from another department was setting up the conference room for another event. i&#39;m thankful that i asked her if she needed help, which i expected she would say &quot;no, i&#39;m fine&quot; to, and i&#39;m thankful that instead she said &quot;<em>well, you can help me if you want to. or you don&#39;t have to if you don&#39;t want to</em>&quot; and i&#39;m thankful for the kind of combination of vulnerability and bravado in that response, which was almost kind of like a challenge, and thankful that i put down the grocery bag with my sweaty gym clothes in it and said &quot;<em>what can i do?</em>&quot; </p>
+<p>i&#39;m thankful that she had me help her move the wooden meeting tables into a different configuration than the one we had used for my meeting. i&#39;m thankful that we worked together to crumb the chairs and to align them in perfect neat rows. i&#39;m thankful that i was following her lead and thinking about how i wasn&#39;t very good at making neat rows and never went to the trouble of that when i was setting up for meetings when she said &quot;<em>i don&#39;t think i&#39;m getting these lines that straight, but i&#39;m doing my best</em>&quot; and i said &quot;<em>me too</em>.&quot; i&#39;m thankful that we took turns trying to fix the broken feet of one of the tables so that it would be level, with her holding up the weight of the table so i could fiddle with the feet first and then us trading places (i&#39;m thankful she finally managed to get one of the bolts to grip). i&#39;m thankful for her jokes about the wrinkled white tablecloth she had brought from home. i&#39;m thankful that i asked her what the event we were setting up was and she said it was an event recognizing some staff members for their years of service. i&#39;m thankful for how much more meaningful that made her attention to detail, which i had earlier thought was nice but perhaps a bit obsessive, and how much more meaningful it made the work feel to me. i&#39;m thankful that the last task she gave me was to unpack a couple cases of water bottles and put them on one of the tables on the side of the room. i&#39;m thankful i laid them out in three long rows and thankful that i tried to straighten them, but i couldn&#39;t get the lines right. i&#39;m thankful i had an idea and left the conference room and went to my department office to get a meter stick, which i brought back to the conference room. i&#39;m thankful the staff member was happy to see me (i&#39;m thankful that i briefly wondered if she had thought i would leave without saying goodbye) and thankful that she laughed when i said &quot;gotta straighten out these rows.&quot; i&#39;m thankful to have held the meter stick against the table and used it to straighten the bottles of water, until the rows were as neat as i could make them. i&#39;m thankful that she thanked me for my help and that we high fived as we left the conference room.</p>
+<p>i&#39;m thankful that the rest of the afternoon passed quickly with more work, which sometimes felt good to do and sometimes was tedious or unpleasant or not what i wanted to be doing. i&#39;m thankful that just before i left work, one of the academic advisors sent me a short email titled &quot;<em>thank you</em>!&quot; that read: &quot;<em>I understand we have you to thank for the great lunches, Justin—that was so kind of you.  I was expecting to have cottage cheese, and instead I had a terrific turkey sandwich and oatmeal cookie—thank you so much!</em>&quot; i&#39;m thankful to have received her email at the end of a long and eventful (yet, in its way, ordinary and boring) day. i&#39;m thankful, in the email, for her description of the turkey sandwich as &quot;terrific&quot;; i&#39;m thankful that poets havev always told me that you should be sparing with adjectives, but i&#39;m thankful for the meaning and feeling her adjective encodes, which i think are too important to revise out for the sake of concision. i&#39;m thankful that i (obviously) don&#39;t give a fuck about concision. i&#39;m thankful to have saved someone from eating cottage cheese for lunch, to know that i at least have made a difference in the world in that way today (and hopefully in others).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-c.html" class="btn btn-secondary">← thank you notes (c)</a>
+        <a href="/letters/thank-you-notes-422.html" class="btn btn-secondary">thank you notes 4/22 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

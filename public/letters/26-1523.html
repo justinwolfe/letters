@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2/6">
+  <title>2/6 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>2/6</h1>
+        <time datetime="2017-02-06T00:00:00Z">February 5, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the movie <em>mustang</em>, which i watched on netflix last night during the super bowl and which was so very beautiful and moving. i&#39;m thankful for the moment in the game at a football match attended only by women and girls, which made me feel how sports can be revelatory, powerful, transcendent, which is not something i feel very often. i&#39;m thankful for one of the most moving scenes in the movie for me, which is when the girls, who aren&#39;t allowed to leave their house, &quot;go swimming&quot; on their beds and the carpet using their imaginations, such that if they pull a blanket over themselves, they are &quot;underwater&quot; (i&#39;m thankful for miranda july&#39;s story &quot;<a href="http://www.babettewagenvoort.com/verhalen/julyuk.pdf">swim team</a>&quot;).  i&#39;m thankful for the stillness and quietness and sense of place of the movie, which reminded me of what i love about eric rohmer. i&#39;m thankful for the complications with which it depicts the role of the grandmother and other adult women in the story in enforcing the patriarchal status quo—i&#39;m thankful for how they privately censure and berate the young girls for risky and controversial behavior but then go out of their way, risking their own lives, to defend and protect the girls from their uncle and other men who would attack them for the same behaviors.</p>
+<p>i&#39;m thankful i didn&#39;t have to watch the super bowl. i&#39;m thankful for the super bowl episode of <a href="https://itunes.apple.com/us/podcast/the-great-debates/id924258984?mt=2">the great debates</a>, which was great despite me not liking or knowing anything about football and which featured a GOAT performance by <a href="https://twitter.com/minakimes?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">mina kimes</a>. i&#39;m thankful that we bought a rack of spareribs from the supermarket because they were on sale for the super bowl. i&#39;m thankful that i know now how to remove the membrane from the bone side of the ribs (and the importance of doing so). i&#39;m thankful for my improvised dry rub. i&#39;m thankful for aluminum foil. i&#39;m thankful for the phrase &quot;low and slow,&quot; which is both a good cooking philosophy and a nice concept in general for thinking about life. i&#39;m thankful for how pull-apart tender the ribs came out after three hours in the oven. i&#39;m thankful for the basic vinegary mustardy slaw i made with napa cabbage. i&#39;m thankful that we had leftover buttermilk from the last time we made biscuits to make biscuits again (i&#39;m thankful that the extra buttermilk almost always goes to waste and so i&#39;m thankful to use it). i&#39;m thankful that we got two kinds of barbecue sauce, a sweet one for d and spicy for me. i&#39;m thankful for cran-raspberry la croix, which is d&#39;s least favorite flavor but which i love the artifice of.</p>
+<p>i&#39;m thankful that at the international market, i was looking at a bottle of tea labeled &quot;barely tea,&quot; which is a pretty amazing typo for &quot;barley tea.&quot; i&#39;m thankful for barley tea, which d found our bags of in the back of the cupboard and brewed for us. i&#39;m thankful for its soothing, earthy taste. i&#39;m thankful that d, complaining last night about the important annoyance of two factor authentication, accidentally called it &quot;two-bit authentication.&quot; i&#39;m thankful for my 2FA key, which i have to touch with my skin to activate, which adds an interesting physical intimacy to my human computer interface. i&#39;m thankful to have gotten a raspberry pi and that i will have a week off next week to experiment and play with it and do some other projects that i want to do. </p>
+<p>i&#39;m thankful for old television and the pictures (literal, conceptual) of a world that it contains. i&#39;m thankful that on the most recent episode of <em>the amazing race</em> i watched on the treadmill, there was a product placement challenge where the contestants had to use new &quot;wireless intel centrino laptops&quot; to connect to america online and check their mail, which provided their clue for the next challenge. i&#39;m thankful for the quaintness of watching them hunt and peck at the strange machines (i&#39;m thankful, too, for my frustration at the outset of my workout with pairing my bluetooth headphones with my tablet, which i eventually gave up on). i&#39;m thankful for what is not quaint, which is the often shocking degree of misogyny and racism. i&#39;m thankful sometimes to imagine the show being transported to the future so that the people who are assholes can get dragged. i&#39;m thankful to know this is a small feeling but i&#39;m thankful to be composed of both large and small feelings. i&#39;m thankful to be more sensitive and knowledgeable than i was when i was first watching this show. i&#39;m thankful for <a href="https://twitter.com/AliaM_H/status/828282878173773824">this incredible blast from the past</a>, which took me back to when i was a child and watched hours and hours of DIY home and garden improvement shows every week.</p>
+<p>i&#39;m thankful to have received my new passport in the mail (i&#39;m thankful for d&#39;s labor in doing my passport application, which i would have put off and not gotten to). i&#39;m thankful for the bath melt i used in the bath, which made me so moisturized i was maybe too moisturized, if that&#39;s possible, but which smelled and felt lovely. i&#39;m thankful that today is a monday but it&#39;s the last monday that i&#39;ll work at this job. i&#39;m thankful to have been working on a secret project to try to help my coworkers with a common problem before i go. i&#39;m thankful that though i don&#39;t know if the project will yield the results i want it to yield, i&#39;m trying my best anyway. i&#39;m thankful to know that i will miss them. i&#39;m thankful that even though i worked on it a lot over the weekend, i also took time to relax and feel rested this morning. i&#39;m thankful to have gotten a good night&#39;s sleep last night. i&#39;m thankful that though i think i had a bad dream, i don&#39;t remember it.</p>
+<p><a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-2-6">one year ago</a></p>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLScTx88zH7_2J3rq5fQIkVw0g5KDc-sIg4ToS53S7g1xrtMSHQ/viewform?usp=send_form">share your notes</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/tynj.html" class="btn btn-secondary">← tyn(J)</a>
+        <a href="/letters/25-4831.html" class="btn btn-secondary">2/5 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

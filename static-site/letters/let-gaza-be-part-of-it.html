@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="&quot;let Gaza be part of it&quot;">
+  <title>&quot;let Gaza be part of it&quot; - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>&quot;let Gaza be part of it&quot;</h1>
+        <time datetime="2024-01-01T00:08:31.756109Z">December 31, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/506" alt="image.png"> </p>
+<p><img src="/api/images/507" alt="image.png"> </p>
+<p><img src="/api/images/504" alt="image.png"> </p>
+<p><img src="/api/images/508" alt="image.png"> </p>
+<p>arriving at the portland airport at night, which always tries to kick up some residual PTSD as i walk down the anonymous darkened hallway because meeting in that terminal for the first time was the beginning of deborah&#39;s first manic episode. i&#39;m thankful for all the other times we&#39;ve landed in that airport since that first time, happy to be returning home together.</p>
+<p>sleeping in our bed for the first time after being away (also getting home late at night after a day of travel and feeling gross but also feeling too tired to taking a shower so committing to being dirty now and washing the sheets the next day)</p>
+<p>deborah leaning far off her side of the bed to get her phone that had fallen deeply under the bed and me tickling the bottoms of her bare feet</p>
+<p><img src="/api/images/505" alt="image.png"> </p>
+<p>when we picked miso up from the boarding place deborah, hopeful, asked the attendant &quot;did miso make any friends?&quot; and the attendant said &quot;no, she didn&#39;t do much playing.&quot; i&#39;m thankful that she&#39;s been a little cuddlier the past few days, which is always a little true in winter (she wants our warmth) but maybe feels slightly more true after her longest time away from us.</p>
+<p>as someone who doesn&#39;t drink that much anymore but likes to have red wine on hand for cooking and the few dishes that i feel need red wine as an accompaniment, i&#39;m grateful for the wine box technology (specifically the bota box, our box of choice), which really keeps red wine alive for so long.</p>
+<p><img src="/api/images/512" alt="image.png"> </p>
+<p>learning from deborah the difference between translucent and transparent (light passing through partially vs. light passing through almost completely).</p>
+<p>deborah was wearing her pink playstation hoodie yesterday and i kept saying &quot;playstation&quot; in the style of the classic 90s commercial because i am annoying/funny</p>
+<p>that also makes me think of the 90s commercial voice that barked &quot;sega&quot; (we were a sega family, in the same way that we were a pepsi family, for better or worse). and that makes me think of &quot;barks&quot; which is the game development term for the little bits of inessential (but important to creating a texture of realism) voice acting in a game.</p>
+<p><img src="/api/images/509" alt="image.png"> </p>
+<p>part of the reason that these notes have been delayed is that since we got back is that instead of writing or reading or doing my art i&#39;ve been playing a lot of the video game <em>baldur&#39;s gate 3</em>. i&#39;ve never played D&amp;D or this kind of hardcore computer role playing game built on it before and am generally quite allergic to games with tons of rules and systems and math, but even though dealing with the complexity of the game can be frustrating at times (i so wish sometimes i could just like plug a ChatGPT agent up to it and tell it to like optimize my inventory and give me suggestions of how to behave in battles), it&#39;s been one of the most enjoyable experiences i&#39;ve had with a video game in years. the world and the characters are just so deep and richly textured and there&#39;s such a wide array of possible choices to make and after most big games for me (most notably this year, <em>starfield</em>) feeling hollow where i give up on playing them not because the game is difficult or i&#39;ve beaten the main story but because i reach a point where on every level i just don&#39;t care anymore, where it feels like i am just forcing myself to check off items on a to-do list that doesn&#39;t matter, i&#39;m grateful to be playing one that&#39;s been so absorbing.</p>
+<p><img src="/api/images/510" alt="image.png"> </p>
+<p>first trip back to our &quot;home&quot; grocery store and the first sumo mandarins of the winter, as good as ever and the cashier, missing a barcode and dealing with a bad search UI, rang a couple of them up as regular mandarin oranges.</p>
+<p>the security checkpoint they incrementally added to our grocery store, where first they had a rent-a-cop checking receipts as you exited and then over time also installed a full-on stainless steel turnstile system around him, which is ridiculous especially horribly-designed because when entering, the place where you pick up your cart is the same side as the &quot;exit&quot; (which for years had been the &quot;entrance&quot;) but if you try to take your cart through it you get rejected so you have to instead cross through a stream of people exiting with their own carts to get to the entrance, none of which i&#39;m grateful for except as a yet another example (a microscopic one in the grand scheme of modern horrors, but it&#39;s all related (capitalism!)) of how security infrastructure is anti-human and dumb)! </p>
+<p>the <a href="https://www.youtube.com/watch?v=-eDmeaMy-pc">pork shogayaki</a> that deborah made for dinner last night, which she made so well (the delicacy of the textures of the carefully cut vegetables, one of my favorite uses of cabbage (i&#39;m thankful that when she dispatched me to get a head of cabbage at the grocery store and i brought back a head of lettuce, she caught my zombie mistake (i&#39;m thankful for multiple points of failure in grocery shopping and in most aspects of life)) and which i can&#39;t wait to eat leftovers of tonight.</p>
+<p><img src="/api/images/511" alt="image.png"> </p>
+<p>catching up on <em>the curse</em> which i allowed several episodes to build up instead of immediately devouring because it can be such a hard show to watch (in a way that wasn&#39;t true (for me) of the other nathan fielder shows, which is weird because the cringe on those shows was &quot;real&quot; and the cringe on this one is &quot;fictional&quot; idk) but also the power of that cringe is ultimately, when i look out from behind the hands covering my eyes, a dramatic gift (shoutout aristotle) and unlike many shows (shoutout <em>beef</em> which also did this) i have no idea where it&#39;s going and i like the weird antonioni&#39;s <em>red desert</em> by way of david lynch cinematography</p>
+<p>(also, i don&#39;t think i wrote about <a href="https://www.criterionchannel.com/lynch-oz">lynch/oz</a>, but aside from the one bad choice of terribly out-of-place generic rootsy americana soundtrack played over the concluding sequence, if you&#39;re someone who like me loves the form of the <a href="https://www2.bfi.org.uk/news-opinion/sight-sound-magazine/features/deep-focus/essay-film">essay film</a> it&#39;s a deeply pleasurable experience and imo worth a month&#39;s subscription to the criterion collection (in addition to the many other worthwhile things there))</p>
+<p><img src="/api/images/513" alt="image.png"> </p>
+<p>watching <em><a href="https://www.israelismfilm.com/">israelism</a></em>, which doesn&#39;t really offer much of anything new but if you have people in your life who haven&#39;t been reading about the genocide, i think it could be a good gift for them.</p>
+<p>switching between watching <em>90 day fianceé</em> and <em>90 day: the other way</em> which is kind of like switching between an indica and a sativa (they both hit good, but different, and if you get to where it feels like one isn&#39;t hitting as good because of overuse just switch). the other way continues to impress me even more than the primary version (which also does this) in terms of its ability to provide, at the same time, huge amounts of &quot;wtf lmao these people are insane&quot; and also &quot;this is so sad some of these people are insane in large part because of this complicated matrix of socio-economic factors arrayed against them and just generally the fucked-up world they are trying to find some measure of love and security in&quot;</p>
+<p><img src="/api/images/516" alt="image.png"> </p>
+<p>for christmas, h gave deborah these <a href="https://www.roselosangeles.com/">fancy turkish delight microdose delta 8/CBD edibles</a> and so far they&#39;ve been perfect for her (also a multi-layer dumb joke in my brain was first a dick joke like does anybody abbreviate it to &quot;turkish d&quot; and then a riff on the hack joke about chinese food that&#39;s like in turkey they just call it &quot;delight&quot;)). i on the other hand hope to train for a century in 2024 (by which i mean consuming 100mg of &quot;classic thc&quot; edibles in one go without getting sick).</p>
+<p>holiday gift box from my parents, which included, among other highlights: wyld sour tangerine gummies (sourness is an underused tool in the gummy edible toolkit but it&#39;s so good at neutralizing weed taste!), a vessel vape battery, a big bag of yogurt pretzels (so dangerous for me), trader joe&#39;s truffle powder (look out 2024 i&#39;m becoming a new american bistro chef!)</p>
+<p>when i remember to really vigorously shake a ketchup bottle before using it for the first time in a given meal.</p>
+<p>playing electric guitar again after no having been able to  while we were in hawaii. i&#39;m thankful that i have been playing guitar for more than 10 years now and it continues to bring me so much joy every single time i do it.</p>
+<p><img src="/api/images/517" alt="image.png"> </p>
+<p>yesterday me on mushrooms thinking i had been doing an instagram live jamming in the studio for like an hour and then finding when i finished and checked my phone that my phone had popped up the low battery modal and i hadn&#39;t actually been live (or recording) for some time (the sand of the mandala swept away but that just means the opportunity to make another one)</p>
+<p><img src="/api/images/514" alt="image.png"> </p>
+<p>even typing on a keyboard now no longer restricted by the speed of the ballpoint pen the last afternoon of the year has slipped away in drafting and this is not all i wanted to write here, but i always feel better to do something than nothing. writing these notes lately feels extremely &quot;kim there&#39;s people that are dying&quot; but instead of being paralyzed by that and writing nothing (or trying to immediately become a completely different kind of writer than the one i am, which i&#39;ve attempted in the past and always failed at), what i&#39;m trying to do is in my very small way is use form as a tool to render the contradictions inherent in a world that lets me muse about edibles and ketchup bottles and role playing games as, simultaneously, other people who deserve the same basic human rights to life and freedom and happiness that i do (that everyone does) have their society broken and their homes destroyed and their lives (and the lives of their families and friends and neighbors) taken from them (or at least that&#39;s what i&#39;m telling myself right now).</p>
+<p><img src="/api/images/515" alt="image.png"></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/kissed-at-midnight.html" class="btn btn-secondary">← kissed at midnight</a>
+        <a href="/letters/fucking-love-to-muse-8857.html" class="btn btn-secondary">fucking love to muse →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

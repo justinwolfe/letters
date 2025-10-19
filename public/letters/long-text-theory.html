@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="long text theory">
+  <title>long text theory - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>long text theory</h1>
+        <time datetime="2023-12-03T17:40:08.847151Z">December 3, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <ul>
+<li><p>i have an axiom called the long text theory which posits that, generally, there is no such thing as a good long text message (using &quot;text message&quot; as a catchall for SMS/telegram/signal/whatsapp/etc.), that every long text message one receives is in some way or another &quot;bad,&quot; and this is, at its core, a formalist argument (a category of aesthetic criticism that i have always found seductive while also acknowledging its limitations) that the text message&#39;s central defining characteristic is its brevity (160 characters once a hard limit, now a soft one) and it is fundamentally not naturally meant to contain the overstuffed garbage bag bulk of a long text and so the abuse of the form by the long text is alway indicative of something bad/wrong about the circumstances in which it is sent or the motives of the sender or the health of the relationship at the core of the exchange and of course the truth of every rule is that there are exceptions that prove it and one the other day for the long text theory was a text my brother sent me out of nowhere telling me the he was on mushrooms and he loved me which led to us reminiscing about past mushroom trips we had taken and him sharing that his first time years and years ago after they had harvested some from cow shit in some random pasture he had tried to text me about whether he should do them but for some reason my dad had my phone and just texted back &quot;don&#39;t&quot; but he told me he ignored it and they ate them at midnight and danced outside in their underwear to the jackson 5 as the sun rose.</p>
+</li>
+<li><p><a href="https://nymag.com/intelligencer/article/bisan-plestia-motaz-gaza-through-my-instagram-feed.html">this essay</a> from a few weeks ago by zaina arafat about watching the war in gaza through instagram which is beautiful and sad and ends with this passage which ends with this string of images of joy</p>
+</li>
+</ul>
+<blockquote>
+<p>My uncle’s Gazan wife once told me that during Gaza’s many wars, people would often go to the beach after a bombing to celebrate the fact that they were still alive. Joy is its own form of resistance. It allows people to sustain. I find myself looking for any signs of normalcy among Bisan, Plestia, and Motaz’s images. A makeshift birthday party atop the rubble. Laughter in the long lines of exodus. Sometimes, all I can find is a sunny blue sky. Gaza has long been called an open-air prison, a description I bristle at despite its fully land- and sea-locked status. Its people are not criminals, and to call it a prison is to suggest they deserve what they get. They lead big lives in spite of confinement. Before the war, each of them had a life that, while difficult and dehumanizing, contained joy. In a video from October 4, days before the war began, Bisan is by the beach, upbeat bistro music playing in the background. There is footage of her riding a Jeep through the desert, of Motaz dancing at a graduation, of Plestia sitting beside an electric fireplace in Gaza City, smiling.</p>
+</blockquote>
+<p>and then bathed in that warm light of that, the ugly dissonance of reading <a href="https://www.instagram.com/p/C0XbItmrj4N">this awful message</a> from one of the correspondents the essay is about and who we have lately learned to love the most, bisan owda, yesterday</p>
+<blockquote>
+<p>I no longer have any hope of survival like I had at the beginning of this genocide, and I am certain that I will die in the next few weeks or maybe days. I have been sick with severe viral infection for days and cannot move from the mattress!</p>
+</blockquote>
+<blockquote>
+<p>I suffer from nightmares that are so closely resemble reality that I no longer differentiate between reality and dream.</p>
+</blockquote>
+<blockquote>
+<p>I live in a world other than the one I claimed to be building! I am a community activist who lived on the fantasy that the world was free and just, and I sought to bring rights not only to my people, but to many men and women in third world countries!</p>
+</blockquote>
+<blockquote>
+<p>I was shocked that I was not from the third world! Indeed, we are the most humane and moral! Yes, because the world approves, supports, and finances the genocide we are being subjected to, legislates it, and gives reasons for for 58 days! While we are a people who have been living on occupied land for 75 years and are still searching for our rights and communicating our voice to the world!</p>
+</blockquote>
+<blockquote>
+<p>My message to the world: You are not innocent of what is happening to us, you as governments or peoples that support Israel’s annihilation of my people. We will not forgive you, we will not forgive you, humanity will not forgive you, we will not forget, even if we die, the history will never forget.</p>
+</blockquote>
+<blockquote>
+<p>A Message to friends: Thank you and the supporters around the world. You have been compassionate and very strong. We ask you not to lose hope, even if the world seems completely unfair and your efforts have not yet resulted in a ceasefire.</p>
+</blockquote>
+<ul>
+<li>the frank o&#39;hara poem &quot;<a href="https://www.loc.gov/programs/poetry-and-literature/poet-laureate/poet-laureate-projects/poetry-180/all-poems/item/poetry-180-105/today/">today</a>&quot;</li>
+</ul>
+<pre><code>Oh! Kangaroos, sequins, chocolate sodas!
+You really are beautiful! Pearls,
+harmonicas, jujubes, aspirins! All
+the stuff they’ve always talked about
+still makes a poem a surprise!
+These things are with us every day
+even on beachheads and biers. They
+do have meaning. They’re as strong as rocks.
+</code></pre>
+<p>which was introduced to me my sophomore year of college after i dropped out of film school in a creative writing class in the little orange and blue paperback of <a href="https://www.amazon.com/Lunch-Poems-Lights-Pocket-Poets/dp/0872860353">lunch poems</a> and which was such a revelation because all the poetry i had ever been given up to that point was either antiquated or academic or opaque or corny or depressing or all of the above at once, i <em>hated</em> poetry, but this little lyric spoke to what inside i had always wanted (my) art to be able to do, which is to be a beacon, a chuckle, a sparkle, a spring in your step, a reminder of what is gleaming and good and possible. when we talked about the poem in class and were sharing our eager college sophomore surface level readings of the fun lists of happy nouns the professor asked if anyone had looked up what &quot;beachheads&quot; or &quot;biers&quot; were and what they were doing in the poem and of course we hadn&#39;t so he told us (beachhead: &quot;<em>a temporary line created when a military unit reaches a landing beach by sea and begins to defend the area as other reinforcements arrive</em>&quot;, a reference to the landings during world war 2 where thousands of human beings rushed from the sea into carnage; bier:&quot;<em>a stand on which a corpse, coffin, or casket containing a corpse is placed to lie in state or to be carried to the grave</em>&quot;) and showed us how in that turn, the poem is not abandoning the joy it started with but, amid violence and horror and death which strain our capacity for hope and dreams of progress, still trying to reach for it, to grasp at these baubles for solace.</p>
+<p><a href="https://www.instagram.com/reel/CvcWnv0ONoW/"><img src="/api/images/576" alt="a picture of wizard bisan wearing a jean jacket in front of sunflowers"></a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/people-are-often-cats.html" class="btn btn-secondary">← people are often cats</a>
+        <a href="/letters/i-tease-her-from-a-place-of-eternal-love.html" class="btn btn-secondary">i tease her from a place of eternal love →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

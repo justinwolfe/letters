@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2/26">
+  <title>2/26 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>2/26</h1>
+        <time datetime="2018-02-26T00:00:00Z">February 25, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for this hilarious take on unboxing videos from youtube queen julia carusillo, creator of the legendary &quot;<a href="https://www.youtube.com/watch?v=02vJi9EaE-M">my movie 1</a>&quot; and &quot;<a href="https://www.youtube.com/watch?v=aLvaulyEm6w">my movie 2</a>&quot;: <a href="https://www.youtube.com/watch?v=QtZK4THSSew&feature=youtu.be">my movie 3</a>, <a href="https://www.youtube.com/watch?v=M0t20fOG9v0">my movie 4</a>. i&#39;m thankful for the depth and knowledge of genre underpinning the parody, but also for the atypical formal features she adds (the black and white cutaway interviews, the rollercoaster dips between irony and sincerity).</p>
+<p>i&#39;m thankful for pranks both &quot;<a href="https://twitter.com/zhashx/status/967119485189722114">failed</a>&quot; and <a href="https://twitter.com/giphz/status/967863456203526144">successful</a>, as long as they come from <a href="https://twitter.com/kyliemoy/status/966475989936046080">a place of love</a>. i&#39;m thankful for <a href="https://twitter.com/Brocklesnitch/status/967215078620581889">how this lady pronounces &quot;licorice.&quot;</a></p>
+<p>i&#39;m thankful for <a href="https://open.spotify.com/track/0DD2BVM9NkDoC5Bb3mi2g2?si=WHp3iITyTTmNk54zcTP3TQ">this wonderful deconstruction</a> (off <a href="https://open.spotify.com/album/1eQDLtPYhvZMFaWyMAcsJz?si=yfMJGx7KSq6n_JZ5wXcR0w">an EP of remixes</a>, an embarrassment of riches) of my favorite song from last year&#39;s avalanche&#39;s album. i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/1z6WtY7X4HQJvzxC4UgkSf?si=o-dXsjwvTt-5iv6Qs5b9nQ">love on top</a>,&quot; which is <a href="https://twitter.com/fakeirl/status/967422183868981248">a perfect videogame speed run, the key changes killscreen bonus rounds</a>, <a href="https://twitter.com/morosehuman/status/967423558665285632">the octave leaps new rounds in a boss fight</a>. i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/79GsUxLyzxgnN4I1E11dtO?si=zL2XB4PpT3qqUhel6-kVjA">make me feel</a>&quot; by janelle monae, which i thought was musically <a href="https://twitter.com/fakeirl/status/966820717609267200">a perfect postmodern homage</a>, but might actually just <a href="https://twitter.com/CaseyRain/status/967236156109787136">be prince</a>.</p>
+<p>i&#39;m thankful for <a href="https://www.youtube.com/watch?v=FTZhMGMe3SU">this video of kazuo oga</a>, a background artist for studio ghibli, at work. i&#39;m thankful for <a href="https://twitter.com/ArtPicsChannel/status/967777489589239808">monet&#39;s serialism</a>. i&#39;m thankful for <a href="https://twitter.com/CampMarmalade/status/967476717479776256">hockney&#39;s yellows</a>. i&#39;m thankful for the <a href="https://www.avclub.com/celebrating-the-game-boy-camera-one-of-nintendo-s-weir-1823194235">game boy camera</a>. i&#39;m thankful that &quot;<em>since e-ink displays don&#39;t require power except when they change, old parts bins full of <a href="https://twitter.com/Foone/status/967882921305563136">used e-ink screens are little snapshots of history</a>, as each display is still showing the last thing it ever showed</em>.&quot;</p>
+<p>i&#39;m thankful to have <a href="https://twitter.com/PaperFury/status/967736824138317824">internet friends</a>. i&#39;m thankful to live <a href="https://twitter.com/holden_a_fork/status/966817808968486912">a simple life</a>. i&#39;m thankful for <a href="https://twitter.com/cat_mparadise/status/966718246853361669">this cat&#39;s happiness</a>, which is a goal.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/225-3508.html" class="btn btn-secondary">← 2/25</a>
+        <a href="/letters/224.html" class="btn btn-secondary">2/24 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (dana)">
+  <title>thank you notes (dana) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (dana)</h1>
+        <time datetime="2016-06-04T00:00:00Z">June 3, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>[ed: <em>i&#39;m thankful for the opportunity to share some recent thank you notes by <a href="https://twitter.com/danaanmm">dana,</a> who posts <a href="https://danaanm.tumblr.com/">daily notes on her tumblr</a>, which is wonderful. if you&#39;d like to submit notes for me to share, you can do so <a href="https://docs.google.com/forms/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/viewform">here</a>.</em>]</p>
+<p>5/18</p>
+<p>I’m thankful that I tried meditating in the morning for ten minutes. I’m thankful that I found the setting on my phone that turns off all alerts except alarms because it tends to buzz and beep more in the morning. I’m thankful that as I tried to focus on my breathing my stomach kept growling and it made me laugh as in <em>Of course you would start making noise just when I’m trying to be quiet</em>. I’m thankful that my stomach was probably growling because I was thinking of what I was going to order for breakfast at the cafe with N and F. I’m thankful that an old mentor CP and I talked about meditation once and he said it was really fucking hard but always good to try. I’m thankful that for the time he shared an article with the class on mindfulness in the hope it would help us. I’m thankful for CP in general. I’m thankful that while meditating I didn’t slip into self loathing thoughts because this is where my brain often goes when it’s idle.</p>
+<p>I’m thankful that on the crowded train a man was eating a roll near me and smell of his food made me more hungry and happy that I was going to eat breakfast soon at a good cafe I’ve been to lots of times.</p>
+<p>I’m thankful for the very cool looking tall woman dressed in all black while I waited at the station for F to pick me up so we could go to the cafe. I’m thankful for her thigh high boots, crocheted cape-like coat and short dress. I’m thankful for her long hair which was also black and the way she breezed past everyone like Miranda Priestly going to an important meeting.</p>
+<p>I’m thankful that I didn’t have to wait very long for F as she is always punctual. I’m thankful that in the car I rested my hand between our two seats and at a stop light she put her hand in mine. I’m thankful that I laughed and said <em>Oh!</em> and she said <em>I thought you were giving me a signal or something!</em> and how sweet that was. I’m thankful that we held hands until she needed to turn the steering wheel. I’m thankful that she welcomes my being open with her with her own openness. I’m thankful that we regularly express gratitude for the other and this is the first friendship where I’ve experienced this. I’m thankful for my adult friendships, which feel markedly different and better than my teenage ones.</p>
+<p>I’m thankful for the coat I was wearing which has become my favourite coat that I got for five dollars at Target. I’m thankful that I’ve been seriously thinking over the concept of a capsule wardrobe and could probably do it. I’m thankful for the many blogs and videos that exist on how to capsule-ify your wardrobe when it essentially seems very simple to me. I’m thankful for the porridge I ate that had walnuts, honey and rhubarb in it. I’m thankful for my recent decision to never ever wear heels again and how good I feel about it. I’m thankful for my deep and painful regret each time I’ve worn high heels and how each time this has happened it’s cemented the lesson that took me until now to learn. I’m thankful that now whever I see women wear heels I can’t help but internally cringe at the pain they’re surely feeling or will feel later.</p>
+<p>5/23</p>
+<p>I’m thankful that yesterday I hung out with my young cousin L for a few hours. I’m thankful that she told me about high school and how miserable she is, that she feels comfortable sharing those things with me. I’m thankful that she calls me her best friend but very much wants a best friend of her own age and didn’t realise that it would be such a struggle to find a best friend in high school (it’s her first year). I’m thankful that she complains about everyone in her classes talking about cute boys (she goes to an all girls school) and doesn’t understand why that’s all they talk about when she wants to run and play. I’m thankful that she spoke about feeling inadequate and ugly compared to her friends and that I didn’t become impatient with her as this reaction would be something that I could easily see myself do. I’m thankful that I don’t care about what anyone thinks of me anymore and I almost said that to her: <em>L, I can’t wait for you get older because then you’ll stop caring what other people think</em>. But I’m thankful that I didn’t because I believe it’s a very common experience for children to have adults dismiss their problems like this as they have the luxury of hindsight.</p>
+<p>I’m thankful for her impressive emotional intelligence at the age of (nearly) 13. I’m thankful that she spoke of how it’s important to have friends and people that you can share secrets and things with so that you don’t feel alone. I’m thankful that she didn’t have the words to say <em>It’s important to have friends and family around you so they can validate and support you</em> and instead said <em>I want to feel like people care about me</em>. I’m thankful for the way children often express themselves, both very simply and sometimes incoherently because they’re dealing with things they don’t have the words to describe yet.</p>
+<p>I’m thankful for my generally shitty time in high school and that I spend a lot of time when I’m volunteering in schools thinking about how I can make upset students feel better about their situation. I’m thankful for one time I got to do this with a student who was worrying about her terrible performance in math and that I told her about a really good math teacher I had who made the class really interesting to me and I got all As for the subject that year (in previous years I’d been close to failing because I hated math so much and didn’t put any effort in). I’m thankful that she told me about a teacher who had that effect for her but she was worried she’d be annoying him if she went to him for help even though he wasn’t her regular math teacher. I’m thankful I got to tell her that this wouldn’t be the case at all and he was literally being paid to help her so take advantage of it. I’m thankful that after she left I daydreamed a little about a student coming to me because they felt I had the skills to help them that other teachers didn’t have and how I could make them feel better about whatever mythical subject it was.</p>
+<p>I’m thankful for my conflicting feelings about the education system in general, and for movements that exist about alternate modes of learning. I’m thankful for Steiner schools, Montessori education etc. and books like <em><a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fwww.amazon.com%2FFree-Learn-Unleashing-Instinct-Self-Reliant%2Fdp%2F0465025994%2Fref%3Dsr_1_1%3Fie%3DUTF8%26qid%3D1421370498%26sr%3D8-1%26keywords%3Dpeter+gray&t=NTFjNGUwNmU0NDY4MjEzNmJlNzcyZjkzOTJjYWI4MTFiNjI3OTk5YyxSdlpMaHVKZg%3D%3D">Free To Learn</a></em>.</p>
+<p>I’m thankful that L tells me things she doesn’t tell her parents because they are rather strict and very small minded (I don’t know how to word that without sounding mean lol). I’m thankful that when they had to leave we decided we would message each other on Skype and Instagram. I’m thankful for the instant bonding that comes with secrecy.</p>
+<p>6/3</p>
+<p>I’m thankful that I nearly forgot to write this. I’m thankful for time and that I have plenty of it (even if I seem to think otherwise often).I’m thankful for my calendar and that I was late to keeping one but now the first thing I do when someone starts a sentence with Are you free on… is pull out my phone and look at the GCal app.</p>
+<p>I’m thankful that I felt extremely angry for most of the day, the kind where I get headaches an grind my teeth. I’m thankful that there was no real external reason for it and knowing that made it seem silly. I’m thankful that the silliness kind of diffused it. I’m thankful that GM rang and and I answered the phone with <em>Grrrrrr!</em> because I was so angry and said <em>I’m so fucking pissed off right now</em> and he said <em>Why?</em> and I couldn’t think of a response.</p>
+<p>I’m thankful that in my neverending quest for zesty, tangy and spicy things I chopped up a lemon into tiny pieces, fried the pieces with chilli and salt and ate them with a handful of rice. I’m thankful for starch.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-65.html" class="btn btn-secondary">← thank you notes 6/5</a>
+        <a href="/letters/thank-you-notes-53.html" class="btn btn-secondary">thank you notes 5/3 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

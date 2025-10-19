@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/23">
+  <title>thank you notes 1/23 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/23</h1>
+        <time datetime="2016-01-24T00:00:00Z">January 23, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the coupon we had for the grocery store promising us $10 off an order of $100 or more. i&#39;m thankful that even if this worked exactly as the store intended, by getting us to spend more than we would normally spend in pursuit of an &quot;discount,&quot; it was nice to enjoy the splurge and what it brought. i&#39;m thankful always for the experience of going grocery shopping, which is probably the part of capitalism that i feel most sentimental about. i&#39;m thankful for the time we ran into one of our grad school professors in the parking lot of the kroger carrying a large brick of sharp cheddar cheese, which was her only purchase, and for the time when we ran into a pair of gray-haired emeriti in the produce section, people who we&#39;d taken a seminar with the semester before, and they didn&#39;t seem to know who we were. i&#39;m thankful for the poem &quot;<a href="https://www.poets.org/poetsorg/poem/supermarket-california">a supermarket in california</a>&quot; by allen ginsberg. i&#39;m thankful for d and i&#39;s experience, while dinner finished cooking, of comparing tasting notes on glasses of wine from two different bottles; i&#39;m thankful for the luxury of having multiple open bottles of wine. i&#39;m thankful i bought a large can of whipped cream instead of a small or medium sized can of whipped cream. i&#39;m thankful for my susceptibility for &quot;limited edition&quot; oreo flavors, which led me, yesterday, to buy &quot;cinnamon bun&quot; oreos, which basically just taste like regular golden oreos with a slight hint of cinnamon that may just be a placebo effect (i&#39;m thankful for red velvet oreos and reese&#39;s peanut butter cup oreos, which according to my extensive research are the best &quot;limited edition&quot; oreo flavors, even though i&#39;m thankful (i guess, despite my obsession) that no custom oreo flavor is ever as good as the original). i&#39;m thankful for the frozen mussels and take-and-bake baguette and wedge of gorgonzola cheese and plump red grapes we had for dinner last night with just the right amount of glasses of wine from the two open bottles.</p>
+<p>i&#39;m thankful for the most recent episode of <a href="https://itunes.apple.com/us/podcast/the-rewatch/id1057723495?mt=2">this podcast</a>, which was about <em>now that&#39;s what i call music 2</em>. i&#39;m thankful for the adolescent memories it magnetizes up from the depths, of the deprivation of scarcity, of the importance of hearing a snatch of the catchiest part of a pop song in a tv show or a commercial for a compilation, of watching <em>trl</em> in the hope of hearing a song i loved and then only getting to hear half of it. i&#39;m thankful to think of how much more important it was for a song to be an earworm when you couldn&#39;t just call it up at will at any time, how you had to try to capture as much of it in your brain as possible, to hold it there for when you needed it. i&#39;m thankful for the way the podcast&#39;s excerpt of sheryl crow&#39;s &quot;<a href="https://www.youtube.com/watch?v=AmIlUKo4dQc">my favorite mistake</a>&quot; made me appreciate how wonderfully sweet and jangly the chorus of that song is, especially after the downcast petty-ish verses. i&#39;m thankful for one host&#39;s description of how sheryl crow, in one phase of her career, tried to become a &quot;female jimmy buffet&quot; and thankful that he says her celebrity cookbook is called &quot;if it makes you hungry&quot; (i&#39;m thankful that it is actually called &quot;<a href="http://www.amazon.com/gp/product/B004TD6TZ4/ref=dp-kindle-redirect?ie=UTF8&btkr=1">if it makes you healthy</a>&quot;). i&#39;m thankful for the dream i had the other night, in which in the empty ballroom of a convention center, i tried to convince r. kelly to write a song about windows 95. </p>
+<p>i&#39;m thankful for the first album i loved in a social way, which was <em>tragic kingdom</em>. i&#39;m thankful to remember jessie and leah, the two cool girls in sixth grade at my new school in virginia, and how they loved no doubt and how, to try to make them think i was cool too, i arranged one day, as we were getting ready to leave homeroom, for a cassette version (i&#39;m thankful my family had both the cassette and the CD, because only one of our cars had a CD player) to slide out of my backpack&#39;s front pocket and into the space on the floor by jessie&#39;s backpack so she would have to pick it up and give it to me (i&#39;m thankful to remember how i felt when she handed it to me and then ran off to leah giggling and said &quot;justin wolfe likes no doubt&quot;). i&#39;m thankful to remember the brief trend in sixth grade when eating kool-aid powder was the cool thing to do and how we used paper and scotch tape to construct various elaborate bongish paraphenalia to consume it in class and at lunch. i&#39;m thankful to remember a few years later when jessie and leah (who by then had nose piercings and were rumored to have smoked weed, which put them even further out of my league than they had been before) and i were in honors art together, a class which mostly involved eating candy, listening to music on a silver-colored boombox, and trying to make counterfeit money with the scanner and photoshop. i&#39;m thankful to remember the time we filled the sink with plaster of paris and then started the water running and left the room. i&#39;m thankful to remember our teacher, mr. burwell, who had a glass eye, which, because i was shy and didn&#39;t really make eye contact with people and had bad vision myself, i didn&#39;t know until somebody mentioned it after we&#39;d had him as a teacher for a year. i&#39;m thankful to remember that i still had baby teeth that year, eighth grade, and thankful to remember sitting at the photoshop computer and using a starburst to pull one, thankful for the mixture of blood and tropical fruit flavor.</p>
+<p>i&#39;m thankful for the first album i bought with my own money, which was <em>godzilla: the album</em>, the soundtrack to the 1998 remake of <em>godzilla</em>. i&#39;m thankful for how much i loved the wallflowers&#39; cover of &quot;heroes&quot; (i&#39;m thankful for e-bow) and &quot;deeper underground&quot; by jamiroquai, but how the reason i bought the album was for &quot;<a href="https://www.youtube.com/watch?v=vrSyrOaoAug">come with me</a>,&quot; the song where puff daddy rapped about nothing (and/or godzilla) over an interpolation of &quot;kashmir&quot; (i&#39;m thankful that i had probably never heard a led zeppelin song at that point and probably only knew puff daddy abstractly from the &quot;hypnotize&quot; video). i&#39;m thankful for how much i loved how that song made me feel, the energy, how i had to use the little bit of money i had saved to buy it and keep it with me to be played at will. i&#39;m thankful for the weird deja vu i experienced in college, when at an outer orbit of my groups of friends were glen and megan and leah (a different leah) and the two kevins (i&#39;m thankful for the two kevins, who were both gay theatre majors and who we all called &quot;kevin long hair&quot; (klh) and &quot;kevin short hair&quot; (ksh) to distinguish between them) who shared a weird large squat of an apartment in a complex on the west side of campus called &quot;royal oaks.&quot; i&#39;m thankful to remember the time i was hanging out in glen&#39;s bedroom with glen and megan on glen&#39;s bed before we went to a concert and they were giving each other massages and cracking each other&#39;s knuckles (which was one of their favorite things to do together) and i was a sheltered virgin and i remember thinking how weirdly intimate this seemed and wondering if it was how orgies started. i&#39;m thankful for the time i showed up to an under-attended party at their place pre-drunk to find (what must have been) a VHS recording of the &quot;come with me&quot; video playing on their TV at deafening volume and slam dancing exuberantly to it with glen in their living room.</p>
+<p>i&#39;m thankful for the beautiful notes that people have sent me to send out to you so far. i&#39;m thankful for how excited i am to get a notification that a spreadsheet has been edited (thankful for being excited by something as boring as a spreadsheet), thankful that i get the privilege of reading what people are thankful for by myself, to feel a secret connection with them, and then to get to share it with you, so you&#39;re connected to. i&#39;m thankful to remember the year in grad school when i was the nonfiction editor of the literary magazine and d was the eic. i&#39;m thankful for the experience of treading through the slush in our submission manager, for the excitement of finding something i liked in the piles of bad language trash. i&#39;m thankful that at the semesterly &quot;slush flushes,&quot; which were mostly an excuse for people to drink free beer and eat free pizza, d and i were notorious for the speed with which we could reject, thankful for how we could reject hundreds of essays and stories and poems in the time someone else might do twenty five or thirty. i&#39;m thankful that it wasn&#39;t a lack of care or a bitterness or malice on our parts, it was just, for us, easy to know very quickly what wasn&#39;t what we thought was good. (i&#39;m thankful that these notes that i&#39;m writing and sharing now aren&#39;t about rejection, but about acceptance, about appreciation). i&#39;m thankful for the <a href="https://indianareview.org/2012/09/nonfiction-submission-guidelines/">submission guidelines</a> i wrote for our nonfiction section and thankful for the <a href="https://indianareview.org/2012/09/partial-transcript-of-secret-presidential-debate-on-contemporary-literature/">outlet</a> that the <a href="https://indianareview.org/2013/01/point-of-entry/">blog</a> provided <a href="https://indianareview.org/2012/09/partial-transcript-of-secret-presidential-debate-on-contemporary-literature/">me</a> at a time when <a href="https://indianareview.org/2012/10/notes-toward-apps-to-reconnect-me-andor-other-people-with-my-childhood/">i felt</a> too afraid to <a href="https://indianareview.org/2012/10/nsfw-25-ways-to-make-your-writing-more-sexually-exciting/">write</a> on my blog. i&#39;m thankful that the magazine recently made available one of my favorite essays from my tenure, which is called &quot;one more artificial organ&quot; and is by kate birch and is about how the guy who invented the artificial heart was a shitty father, <a href="https://indianareview.org/2016/01/online-feature-one-more-artificial-organ-by-kate-birch/">online</a>.</p>
+<p>i&#39;m thankful for the way that the sun comes in through our bedroom windows in the late morning and early afternoon.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-124.html" class="btn btn-secondary">← thank you notes 1/24</a>
+        <a href="/letters/thank-you-notes-pierce.html" class="btn btn-secondary">thank you notes (pierce) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

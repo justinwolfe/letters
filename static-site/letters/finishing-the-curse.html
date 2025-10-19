@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="finishing the curse">
+  <title>finishing the curse - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>finishing the curse</h1>
+        <time datetime="2024-02-22T15:54:53.417694Z">February 22, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>finishing <em>the curse</em> after leaving the last two episodes unwatched for weeks because it was so deeply (intentionally) cringe that as the season went on, i found it increasingly difficult to summon the energy to pick it back up and finish it off—it felt like a show that was all stick and no carrot (or, i guess, like a curse :rimshot:).</p>
+<p><img src="/api/images/378" alt="image.png"> </p>
+<p>this is also a problem i had with the first season of <em>the leftovers</em> (a show i ultimately loved but the first season was so hanya yanagihara at times let me BREATHE) and another resonance i see between <em>the curse</em> and <em>the leftovers</em> (and a number of other prestige TV shows, but the <em>leftovers</em> series finale is the GOAT in this respect for me) is a formal gesture wherein the final episode of the series seems, without explanation, to exist in a fundamentally different version of &quot;base reality&quot; than the rest of the show up until that point*. </p>
+<p><img src="/api/images/382" alt="image.png"> </p>
+<p>this is a move i love deeply, partly because i basically always want art to become more mysterious and ambiguous and dreamlike rather than more legible and direct and partly for the way the gesture reifies the rupture you feel transitioning from the world of the television show you&#39;ve lived inside of however many hours over however many days/weeks/years back to the reality where the screen goes black and there is no more of it.</p>
+<p><img src="/api/images/381" alt="image.png"> </p>
+<p>i&#39;m thankful for the finale of the <em>the sopranos</em> (the screen goes black and there is no more of it) and that show&#39;s dream sequences and their inspiration in fellini, who i felt notes of in the strangely affected line readings and purposefully stilted dialogue (i will always remember the maybe apocryphal (don&#39;t care!) story of fellini just having his actors say numbers out loud instead of lines and dubbing in the lines later), for antonioni (<em>zabriskie point</em> a foundational alienated southwestern desert aesthetic touchstone, those ominous long lens shots and slow takes), for david lynch (the menace lurking under everything), for lars von trier (the menace lurking on top of everything, also i found myself thinking a lot about <em>melancholia</em> during the surreal climactic sequence and about <em>dogville</em> (or maybe just brecht) during the long monologue nathan does about art and judaism).</p>
+<p><img src="/api/images/379" alt="image.png"> </p>
+<p>i don&#39;t think i&#39;ll return to this show in the way that i do <em>nathan for you</em> or <em>the rehearsal</em> (flashing back to when we were watching <em>the rehearsal</em> and it was so precious and filling to my soul that each week i would rewatch all the episodes leading up to the new episode) but i&#39;m glad we finished it and i do ultimately feel like it&#39;s a great artistic accomplishment, even if it&#39;s one that i respect more than i like. </p>
+<p><img src="/api/images/380" alt="image.png"> </p>
+<p>i&#39;m thankful that the star of the show is absolutely and undeniably <em>emma stone</em>, whose performance is just fucking mindblowingly painfully good, but i was also blown away that nathan fielder (in addition to writing and directing a show that resonates authentically for me with the work of the raging bull auteurs) convincingly and sometimes movingly plays a character who is not the version of himself he played in his other shows but who is distinct and complicated and weird in his own way. i&#39;m thankful, having been concerned after <em>nathan for you</em> that there would be nowhere new for him to go artistically, that he keeps finding new ways to make me cringe; i already can&#39;t wait for the next one.</p>
+<ul>
+<li>I&#39;m speaking about prestige drama here but parallel examples in other genres also abound. thinking of the fourth wall stroking in the finale of <em>friends</em> where part of the emotion is not just about the story of the characters ending but about the actors leaving the reality of the show or of the live finale of a reality show like <em>survivor</em>, which serves as a bridge from tv reality back into real reality (90 day fiancée exploits this dynamic in a fascinatingly baroque way in its finales, where in addition to the retrospective clips and montages of the season and the live-in-the-studio panel discussion, there is a third layer in the green room where the people have more &quot;real&quot; conversations (while being filmed))</li>
+</ul>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-222/">2016</a> (<em>helle helle, wabi-sabi, stone arabia</em>) (<a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-anonymous/">2</a>) (from <strong>anonymous</strong>) (<em>hating thanksgiving, valeria luiselli, new job</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/222-1925/">2017</a> (<em>first full day of work, codenames, facetime with d</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/22218/">2018</a> (<em>edith zimmerman</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/221/">2019</a> (<em>favorite restaurant, free brunch cocktail, cardi b&#39;s sponsored post for lactaid</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/freeze-dried-sour-skittles.html" class="btn btn-secondary">← freeze-dried sour skittles</a>
+        <a href="/letters/daydream-repeat.html" class="btn btn-secondary">miso says free palestine →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

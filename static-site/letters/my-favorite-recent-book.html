@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="my favorite recent book">
+  <title>my favorite recent book - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>my favorite recent book</h1>
+        <time datetime="2024-02-11T23:10:53.271006Z">February 11, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/405" alt="image.png"> </p>
+<p>my favorite recent book is <a href="https://www.amazon.com/Love-Time-Hate-Passion-Shadow/dp/0593713931"><em>love in a time of hate: art and passion in the shadow of war</em></a> by florian illies, an anecdotal fragmentary gossipy cultural history of europe between 1929 and 1939. right before it, i read and loved his book <em>1913</em>, which was in a similar style. i don&#39;t know what i think of it as scholarship per se (it is very imaginative about describing situations that there can&#39;t have been such intricately detailed records of, just think of it as a really well-researched historical novel if that bothers you) but for a week or so it was the perfect stream of bite-sized candy for my brain (i.e. the ideal book for me right now). as a kind of sampler, what follows are my highlights in the book:</p>
+<p>page 3</p>
+<blockquote>
+<p>&quot;She tells him she&#39;s Simone&#39;s sister, Helene de Beauvoir. Simone can&#39;t make it today, sadly. She is very sorry. &quot;But how did you recognize me so easily among all these people?&quot; Sartre asks. &quot;Simone told me you were short, wore glasses, and were very ugly,&quot; she explains&quot;</p>
+</blockquote>
+<p>page 5</p>
+<blockquote>
+<p>He is asleep by the time Mascha [Kaleko] gets back to their flat on Hohenzollernkorso in Tempelhof. She gazes at him as his earnest features softly rise and fall in time to his breathing. She goes over to the kitchen table, takes a sheet of paper and a pencil, and writes him a love poem—perhaps one of the most moving love poems ever written. It begins:</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>The others are the boundless sea</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>You, though, are the harbor deep</p>
+</blockquote>
+</blockquote>
+<p><img src="/api/images/407" alt="image.png"> </p>
+<p>page 11</p>
+<blockquote>
+<p>Brecht&#39;s sadistic desire to see all his women suffer simultaneously makes for good drama. It is now, of all times, that <strong>Uhu</strong> magazine chooses to ask hime what he thinks about jealousy. A swaggering Brecht answers: &quot;The bourgeois are now the last representatives of what was once a tragic virtue.&quot; He writes this while smugly contemplating a plaster cast of his own face that sits on his desk.</p>
+</blockquote>
+<p>page 14</p>
+<blockquote>
+<p>Many times, Isherwood shows English friends around the institutes museum—a &quot;must&quot; for friends of homosexuality, because Hirschfeld has spent decades collecting the finest artifacts, aphrodisiacs, and curios from sexuality&#39;s gray zones. In 1929 he is writing a new book about sexual stimulants that will be four hundred pages long and contains one hundred detailed and instructive illustrations&quot;</p>
+</blockquote>
+<p>page 14</p>
+<blockquote>
+<p>Even Albert Einstein, the inventor of the theory of relativity, knows that time and space play a significant role in love and are not easily overcome. &quot;Writing is stupid,&quot; he writes in a telegram to his wife on the lakeshore at Caputh. &quot;This Sunday I will kiss you on the lips.&quot;</p>
+</blockquote>
+<p><img src="/api/images/408" alt="image.png"> </p>
+<p>page 15</p>
+<blockquote>
+<p>...a film that is as ephemeral and illogical as life itself. Or as life in Berlin, at any rate. Lust, quickly satisfied under tall pines on a Sunday, still causes some pain and much melancholy in the light of a bedside lamp that evening. There is no mention of love—and not because this is a silent film</p>
+</blockquote>
+<p>page 30</p>
+<blockquote>
+<p>Marriage, he writes in <strong>Ad me ipsum</strong>, resolves the &quot;two antimonies of life—that of passing time and permanence, and that of loneliness and community.&quot;</p>
+</blockquote>
+<p>page 48</p>
+<blockquote>
+<p>He isn&#39;t unfeeling; he is scared of feelings because he has so often seen them expressed in the slushiest sentimental terms.</p>
+</blockquote>
+<p><img src="/api/images/406" alt="image.png"> </p>
+<p>page 80</p>
+<blockquote>
+<p>It&#39;s obvious to Heinrich Mann that there is something desperate about his affair with Trude Hesterberg.</p>
+</blockquote>
+<p>page 102</p>
+<blockquote>
+<p>Yet the sexualization of Berlin life in the 1930s disturbs her, too. She loves the lesbian bars and loves the women, but she wants to restore physical love &quot;to its correct position on the scale of sensual feelings.&quot; In the poems of Bertolt Brecht, Georg Trakl, or Alfred Lichtenstein, she thinks, one sees that &quot;sex per se is a death sentence for imagination and emotions, whereas eroticism continually replenishes them.&quot; It is about swamping the brain with erotic images, she says. It stimulates love, desire, and longing—the true substances of poetry</p>
+</blockquote>
+<p>page 110</p>
+<blockquote>
+<p>His friend Charlotte Wolff once formulated it differently, with kindness and clarity: &quot;Walter [Benjamin] reminded me of Rainer Maria Rilke, for whom the longing for one&#39;s beloved was more desirable than her presence</p>
+</blockquote>
+<p>page 121</p>
+<blockquote>
+<p>One day when Manon and Kurt are out, she writes him a note: &quot;My love, your world is not mine.&quot;</p>
+</blockquote>
+<p>page 123</p>
+<blockquote>
+<p>Kurt immerses himself completely in Helene&#39;s spartan lifestyle. In hindsight, it is as if they were unconsciously rehearsing for the hardships of emigration. In the evenings, he and Helene sit alone on their terrace, with their legs on the green table, quietly listening to nature sink into darkness, she tells him that all of this—the glittering sea in the distance, the fig trees with their biblical scent, the mountains with their cool crowns, the lemon trees with their dazzling fruit, the grasses bending in the gentle evening breeze—is just the &quot;background.&quot; To what, he asks. &quot;To love,&quot; she replies.</p>
+</blockquote>
+<p><img src="/api/images/409" alt="image.png"> </p>
+<p>page 129</p>
+<blockquote>
+<p>Osborn has sent Nin a few chapters from the manuscript of <strong>Tropic of Cancer</strong>, so she&#39;s aware of the kind of man her lawyer has in tow. When the two men leave, she confides her first impressions to her diary: &quot;He is a man who gets high on life. He is the same as me.&quot; This is the forty-second volume of her monumental diary, which will from this day on be entirely devoted to Henry Miller</p>
+</blockquote>
+<p>page 130</p>
+<blockquote>
+<p>It&#39;s a springtime dream—up above, a chain of snow-capped mountains; down below, the deep blue of the lake; and along the promenades, palm trees in whose leaves the wind sings the eternal song of the south</p>
+</blockquote>
+<p>page 132</p>
+<blockquote>
+<p>Living together in Hollywood is proving an increasing trial for Josef von Sternberg and Marlene Dietrich as they gradually get to know each other. He thinks her too capricious; she finds him too demanding. After watching her brush her teeth too often in the evenings, he needs to retreat into his imagination to be able to make her shine in front of the camera. It takes him a great deal of effort to help her deliver on the title of her final silent movie, <strong>The Woman One Longs For</strong>. </p>
+</blockquote>
+<p><img src="/api/images/414" alt="image.png"> </p>
+<p>page 134</p>
+<blockquote>
+<p>However her husband flies into a rage when he reads the book; he cannot believe that Zelda dared to fictionalize these memories. Only he is allowed to do that, he writes to her; he is the &quot;professional novelist.&quot;</p>
+</blockquote>
+<p>page 135</p>
+<blockquote>
+<p>Other models of marriage are available, however. &quot;You are only loved when you can show your weakness without provoking strength.&quot; This is Theodor Adorno&#39;s experience of the profound love shown to him by Gretel Karplus, a beautiful and proud woman. </p>
+</blockquote>
+<p><img src="/api/images/413" alt="image.png"> </p>
+<p>page 137</p>
+<blockquote>
+<p>Benjamin tumbles into despair and writes to his friend Gershom Scholem that he wants to celebrate his fortieth birthday in Nice with an &quot;odd fellow,&quot; by which he means the Grim Reaper. Olga says she will come again for his birthday, but he smokes so much hash with a fleeting acquaintance on the days leading up to it that he spends the big day itself totally stoned.</p>
+</blockquote>
+<p>page 140</p>
+<blockquote>
+<p>He starts to drink even more, while she starts a new life, writing in her farewell letter to him: &quot;You would like to love, but you will never know love.&quot;</p>
+</blockquote>
+<blockquote>
+<p>What does he think hell is? Simone de Beauvoir asks him after they&#39;ve brushed their teeth and before they go to sleep. Sartre sits up in bed again and says, &quot;Hell is other people before your first cup of coffee.&quot; Noticing her sour expression, he adds, &quot;I was talking about other people. Not you, Simone. Good night.&quot;</p>
+</blockquote>
+<p>page 155</p>
+<blockquote>
+<p>Stalin sits opposite her, tossing back one vodka after another. Then he, too, begins to flirt, with Galia Yegorova, who is visibly flattered and doesn&#39;t object when he starts to roll up little balls of bread and flick them down the front of her dress.</p>
+</blockquote>
+<blockquote>
+<p>Nadezdah watches all this in horror from the other side of the table, her anger rising. She speaks more and more loudly about her husband&#39;s brutal treatment of the farmers. Desperate to interrupt her, he raises his glass and cries, &quot;To the extermination of all state enemies&quot; All the other dinner guests immediately raise their glasses—all except Nadezhda. He calls out to her, &quot;Hey, drink with us!&quot; To which she responds, &quot;My name is not Hey&quot;</p>
+</blockquote>
+<p><img src="/api/images/410" alt="image.png"> </p>
+<p>page 164</p>
+<blockquote>
+<p>&quot;It was like the premiere of a great play or the beginning of a battle,&quot; George Grosz will later say. &quot;You were constantly clearing your throat and glancing nervously at the clock because every day the newspapers would announce that it was a few seconds before midnight. There were only allusions to what might happen after twelve, but it was clear it would be nothing uplifting or welcoming for me and my friends&quot;</p>
+</blockquote>
+<p>page 166</p>
+<blockquote>
+<p>After the war, Truman Capote will be especially fascinated by her extravagant sex life. He will come up with a game called International Daisy Chain that counts the beds linking specific people. Mercedes is the trump card because &quot;you could get to anyone from Cardinal Spellman to the Duchess of Windsor.&quot;</p>
+</blockquote>
+<p>page 173</p>
+<blockquote>
+<p>In February 1933, the poet Else Lasker-Schuler, a friend of Franz Marc, Karl Kraus, and Gottfried Benn, and the creator of beautiful love poems that are imbued with an unshakable belief in reconciliation between Judaism and Christianity, is beaten up by two young SA fighters in the streets of Berlin. She bites her tongue, almost severing it, and blood trickles from her mouth. She has to go to the hospital, where her tongue is stitched back together, leaving her unable to speak.</p>
+</blockquote>
+<p><img src="/api/images/412" alt="image.png"> </p>
+<p>page 230</p>
+<blockquote>
+<p>Sartre&#39;s most important impetus lies elsewhere, though: &quot;I reconnected with the irresponsibility of my youth.&quot; Even as swastika flags wave over Berlin and all the country&#39;s great authors have fled to Paris, Sartre recognizes Berlin as &quot;the city of love.&quot;</p>
+</blockquote>
+<p>page 246</p>
+<blockquote>
+<p>The first part of the title refers to the observatory that he sees every day on his way to work and which he has inserted in the bottom left of the painting. It is also an allusion to Miller, who lives in a different, American time zone; &quot;United States Observatory Time&quot; is what people hear when they call the American talking clock. Finally, les amoureux, or &quot;the lovers,&quot; is a tender nod to the time they shared together. The lips flying across the sky look like two bodies cuddling in a kind of cosmic ecstasy. It is a miracle that the result of all these symbols isn&#39;t kitsch. &quot;Love,&quot; Man Ray later says, &quot;assumes a universal dimension in this work, painted just at a time when the rising tide of hate was about to submerge Europe.&quot;</p>
+</blockquote>
+<p>page 248</p>
+<blockquote>
+<p>They murdered his Jewish colleague and friend Henry Erlanger right in front of him. He will avenge all this, he tells her, his voice calm yet resolute.</p>
+</blockquote>
+<p><img src="/api/images/411" alt="image.png"> </p>
+<p>page 276</p>
+<blockquote>
+<p>Kurt Tucholsky has lost his elixir of life—writing. He is able to produce only if he knows that his work is going to be printed immediately, but the newspapers he used to write for no longer exist, and the publishers who used to print them are all in jail.</p>
+</blockquote>
+<p>page 278</p>
+<blockquote>
+<p>On December 21, as Tucholsky is slipping out of life, Klaus Mann also takes Veronal at his parents&#39; house in Kusnacht near Zurich, &quot;but somewhat reluctantly, only because there happened to be some in the room.&quot;</p>
+</blockquote>
+<p> <img src="/api/images/415" alt="image.png"> </p>
+<p>page 287</p>
+<blockquote>
+<p>She slips some powerful sedatives into Henry&#39;s tea so that he dozes off early in the evening, then she tiptoes from the house and spends a night of passion with More. At six in the morning, she hurries back and sneaks into bed with Henry at Villa Seurat, where he is snoring away, blissfully unaware of her absence. After a nice breakfast she goes to see her husband in their own splendid new flat, bringing with her a bunch of flowers. That evening she notes in her diary: &quot;No blame. No pity, no guilt. Only love.&quot;</p>
+</blockquote>
+<p>page 296</p>
+<blockquote>
+<p>Their letters, which used to be so imbued with warmth and wit and poignant love, now take on an unsettling tone. Vladimir acts as if nothing has changed and writes: &quot;Little pussy is it time for you to get ready to come to me?&quot;</p>
+</blockquote>
+<p>page 314</p>
+<blockquote>
+<p>Sartre chides her for this and thinks she should write about herself for once—in her letters and also in her books. He argues that her life is much more interesting than her fictional characters. To which Beauvoir replies: &quot;I would never dare.&quot; And Sartre counters: &quot;Do dare!&quot;</p>
+</blockquote>
+<p>page 323</p>
+<blockquote>
+<p>That summer, they meet up with Marcel Duchamp and Coco Chanel. Dali does painting after painting, as if obsessed, while Gala reads him books about alchemy and metaphysics. Sometimes she tickles his feet and he purrs like a cat. After Dinner, Dali loves to let Gala gently brush his teeth so that he can feel clean. Before they go to bed, Gala lays tarot cards, but however much she shuffles them, the same ones keep coming out on top: Judgment, the horned Devil, and Death as a skeleton</p>
+</blockquote>
+<h3>Previously on this day</h3>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-211/">2016</a> (<em>fish sauce, our favorite weeknight cake, alexandra kleeman</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/krs3/">2017</a> (from <strong>krs</strong>) (<em>morning rituals, earl grey tea, tiny babies</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/fsa19/">2018</a> (from <strong>fsa</strong>) (<em>healthy life choices, prescription eyewear, not having cancer</em>) (<a href="https://buttondown.email/justinwolfe/archive/210/">2</a>) (<em>not completely forgetting</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/1210/">2020</a> (<em>the walkmen, list of good cries, karafun</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/i-never-have-to-think-about-the-temperature-of-my/">2021</a> (<em>perfume genius, bong hits, feeling loved and appreciated</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/two-recipes-deborah-made-for-dinner.html" class="btn btn-secondary">← two recipes deborah made for dinner</a>
+        <a href="/letters/teslas-are-the-subaru-of-la.html" class="btn btn-secondary">teslas are the subaru of LA →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

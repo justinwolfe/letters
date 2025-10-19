@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="every movie is between one and a half and two and half hours">
+  <title>every movie is between one and a half and two and half hours - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>every movie is between one and a half and two and half hours</h1>
+        <time datetime="2020-10-14T00:00:00Z">October 13, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>realizing that the only way to start doing something again is to start doing it again</p>
+<p>yesterday i crossed the road at the beginning of a run and got stopped at the exact last second by a train crossing and had to wait what felt like a very long time for the train to pass from east to west, it kept going and going but every time i tried to look off into the east i still couldn&#39;t see the end of it yet and i was forced to stand still in one place for longer than i have in recent memory, which was frustrating but in a way that i appreciated</p>
+<p>d has gotten really into weeding and now our front yard looks like our neighbor&#39;s front yards rather than looking much much worse than them</p>
+<p>it&#39;s rained a lot lately which has been annoying as an impediment to social life and as a harbinger of fall  but really does fill out the grass so wonderfully greenly</p>
+<p>i was going to write a seinfeld joke about like &quot;what&#39;s the deal with the word &#39;harbinger&#39; and &#39;spring&#39;; you never hear about a harbinger of fall!&quot; and then i googled it and apparently goldenrod is the harbinger of fall</p>
+<p>the expression &quot;just like riding a bicycle&quot; which i thought about the other day when riding my bike for the first time in a few weeks along a route i know very well, but going in the reverse of the direction i usually do and finding the novelty stimulating</p>
+<p>this googled definition, the second sentence of which is very comfortingly phrased: &quot;_The old expression, “Just like Riding a Bike,” is often used to describe something that comes second nature and should be easy to do. It implies that we know everything about an activity and can take off where we left of_f&quot;</p>
+<p>riding home that night in a t-shirt and the fact that it was still just warm enough to do that comfortably, so it can&#39;t be fall all the way yet</p>
+<p><a href="https://www.youtube.com/watch?v=KGlYQ5SoeKE">this mashup of &quot;WAP&quot; with &quot;bohemian rhapsody&quot;</a> which just keeps going and going, which is one of my favorite things for a thing to do </p>
+<p>a portrait of my concept of time at the age of eighteen, which is that in college we went to the free movies at the student union a lot and sometimes people would ask how long a movie was and i would always say &quot;every movie is between one and a half and two and half hours&quot; and i genuinely did believe that the difference didn&#39;t matter at all</p>
+<p>feeling free to jump out of something if it doesn&#39;t engage me, even if it&#39;s something that&#39;s supposed to be really good. i remember doing slush flushes at the literary magazine in grad school and some people would read five pages of a piece before deciding to reject it and i get that but also usually i would know within about three sentences whether i thought there was any there there </p>
+<p>the fucking canva ad that plays before every youtube video we watch on our apple tv where this college kid says &quot;i used to be the only one in my class who knew about canva, but now everybody&#39;s using it&quot; like lamest hipster moment ever</p>
+<p>there was a period in my life when i thought i would never be able to switch from typing two spaces after a period to typing one space after a period but i totally did</p>
+<p>i didn&#39;t do many of the tasks i told myself i would do over the long weekend but i did clean my office and find my favorite sweatpants, which i had misplaced for weeks, in one of those fabric boxes you put in a shelf to hold things but also those things being held means they are invisible</p>
+<p>i read the anne helen petersen book which provided some useful perspective for how i think about stress and had a final chapter about choosing not to have children that spoke to me</p>
+<p>making the <a href="https://smittenkitchen.com/2013/01/lentil-soup-with-sausage-chard-and-garlic/">fall soup i always make</a> and like always briefly convincing myself i&#39;m never going to find the bay leaves that have disappeared under the surface but then like always finding all of them eventually</p>
+<p>over-power-soaking the lentils because i was lazy and used a pot that was too small and their presence making the soup more of a grainy stew than it usually is (which is a negative for me, i don&#39;t like grainy soup, do not at me about potatoes)</p>
+<p>understanding that power soaking the lentils is actually probably not even a necessary step and not something most people do with lentils since they&#39;re so small, but remembering in the past having such bad heartburn and one time having the first bowl of the soup and having a terrible heartburn / anxiety attack episode and being afraid to eat more and feeling happy (even with grainy soup) that my physical and mental health are so much better now than they were then</p>
+<p>spending years of dark nights thinking often that i was about to die and eventually training myself not to think that all the fucking time since it was not true in any of those cases and it&#39;s not like i&#39;m doing anything more useful with the time i saved from that but i&#39;m grateful for the difference nonethless, especially given current events</p>
+<p>the part of the recipe that i think is really essential and a good portable rule, which is rather than adding all of the greens to the pot when cooking the soup, adding them just to the portion you&#39;re serving each night so they always stay fresh, which as a person who sometimes gets bored with soup leftovers really helps</p>
+<p>prozd&#39;s videos <a href="https://www.youtube.com/playlist?list=PLhyHc3W8oSouW-0FQ13hs1kgUW1aA5ffj">where he ranks all the permutations of a snack food</a>, all of which give me joy and peace but start with <a href="https://www.youtube.com/watch?v=4lfReeYL95I&list=PLhyHc3W8oSouW-0FQ13hs1kgUW1aA5ffj&index=12">the oreo one</a>.</p>
+<p>the way you learn you don&#39;t really know songs by singing them as karaoke, learning today that the chorus of &quot;<a href="https://www.youtube.com/watch?v=hjaQt96NegU">shades of cool</a>&quot; is not &quot;you are in-vince-a-ble&quot; but &quot;you are un-fix-a-ble&quot;</p>
+<p>the fact that the request a client sends to the server to indicate a connection is alive is often called a &quot;heartbeat&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/just-for-now.html" class="btn btn-secondary">← just for now</a>
+        <a href="/letters/i-unlocked-venice.html" class="btn btn-secondary">i unlocked venice →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

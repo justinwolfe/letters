@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="psycho of love">
+  <title>psycho of love - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>psycho of love</h1>
+        <time datetime="2024-09-02T16:20:48.991585Z">September 2, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>as deborah lay in bed waiting to have sex with me on saturday morning, i gripped a bag of ice in the freezer to chill my hands, then rushed in and embraced her with the cold hands, which, laughing and squealing, she said made me &quot;psycho&quot; and i said &quot;psycho of love&quot; (similar recent psycho (of love) behavior: 1) every time deborah says [resigned/exasperated at being a perfectionist forced yet again by life to accept an imperfect option, often prefaced by a deep sigh] &quot;<em>it&#39;s fine</em>&quot;, i immediately try to counter-program by singing [extremely chappell roan voice] &quot;<em>it&#39;s cool</em>&quot; (also since she went through a period of frequently singing &quot;logical&quot; doing a similar bit at a lower frequency when she says something is &quot;<em>possible</em>&quot; and i say [olivia rodrigo voice] &quot;<em>but is it logical</em>&quot;?) and 2) she was describing possibly buying a butcher-block counter top to use for her desk and for the rest of the day i could not stop saying the phrase &quot;<em>butcher-block counter top</em>&quot; whenever humanly possible).</p>
+<p> <img src="/api/images/181" alt="image.png"> </p>
+<p><em><a href="https://www.goodreads.com/book/show/176443093-sociopath">sociopath</a></em> by patric gage, which was not always beautifully written (the book inadvertently reveals a linguistic tell for sociopaths, which is using <em>italics</em> to stress <em>words</em> in lines of <em>dialogue</em> in almost every <em>paragraph</em>!) or insightful, but a fascinating memoir where a lot of crazy shit happens that i read in one sitting and now i know the difference between psychopaths and sociopaths (if it exists) and the traits i share with them! ruth posted on her stories about the books she was taking on summer vacation (thankful for the image of her reading <em><a href="https://en.wikipedia.org/wiki/Minima_Moralia">minima moralia</a></em> at the beach) and in that vein other great stuff i&#39;ve read lately: <em><a href="https://www.simonandschuster.com/books/An-Honest-Woman/Charlotte-Shane/9781982126865">an honest woman</a></em> by (old tumblr friend) charlotte shane (one of those books where at the end of it you&#39;re just like this person is <em>wise</em>), <em><a href="https://www.penguinrandomhouse.com/books/739405/banal-nightmare-by-halle-butler/">banal nightmare</a></em> by halle butler (her previous two books are simply perfect to me and this one is perhaps not as tight as those but also represents real growth and expansion in her style and concerns that are cheering in the sense of a band making a third record that goes new places without forgetting why you loved the first two), <em><a href="https://www.goodreads.com/book/show/91239751-death-valley">death valley</a></em> by melissa broder (another writer where i love every single word they write and feel like a crazy deep kinship seeing like extremely specific patterns of thoughts i have had rendered on the page also this book kicks off with a scene of the narrator fingering a hallucinatory cactus what more do you need?!?! i&#39;m also always moved by how her in some ways very dark novels find ways to manage to be hopeful), <em><a href="https://www.penguinrandomhouse.com/books/716128/private-revolutions-by-yuan-yang/">private revolutions: four women face china&#39;s new social order</a></em> by yuan yang (if you loved <em>factory girls</em> by leslie chang you will love this (if you haven&#39;t read it read it first then read this!)). currently reading: <em><a href="https://www.versobooks.com/products/3031-immediacy-or-the-style-of-too-late-capitalism?srsltid=AfmBOoq8aA0CLpn73yraneIF39pISC2H2O5bV66E3a8AtgRvopHVcr-d">immediacy: or the style of too late capitalism</a></em> by anna kornbluh (i have not intentionally read theory in years but this book is just what i want from it—every sentence so delightfully dense with reference (without feeling obtuse or jargon-y) and the subject is work i think about a lot (but coming from a place of critique where i would normally bring fandom)), and <em><a href="https://groveatlantic.com/book/enter-ghost/">enter ghost</a></em> by isabella hammad (such a haunted book, all the characters (living, dead, or ghost) so vividly drawn). </p>
+<p> <img src="/api/images/180" alt="image.png"> </p>
+<p>a friend posted a picture of her daughter standing in front of the back to school section at target with a poll asking whether &quot;back to school shopping&quot; made people excited or anxious and with my fingertip channeling the depths of my very soul i smashed &quot;anxious&quot; only to see that the result  was 85% &quot;excited&quot; which i guess maybe doesn&#39;t mean that much besides a lot of the people filling out the poll were parents and/or not deeply psychologically messed up but god i just hated school so fucking much that the thought of being excited about it is deeply insane to me (an admittedly insane person)(adding &quot;being a child&quot; to Things Reasonable People Love That I Hate)! (my friend said she was also firmly an &quot;anxious&quot; and surprised at the percentage but then her child is not yet of school age). i&#39;m so thankful that i never have to go back to school ever again for the rest of my life!</p>
+<p> <img src="/api/images/179" alt="image.png"> </p>
+<p>several new hot sauces: a tamarind one, a jalapeno pineapple one, and (gift from t) a grillos pickles one. whenever we go to h-mart, we buy a container of peeled garlic cloves and then just have even more garlic than we&#39;d already have and deborah&#39;s latest cooking innovation was putting the whole roasted garlic cloves she makes in the air fryer to put in pork belly ssam are also excellent in tacos (her previous taco chef kiss was sauteeing very thinly sliced fresh pineapple). she also made shrimp salad rolls and i accompanied them with a bag of shrimp chips which she called, in the style of a fancy restaurant, &quot;shrimp two ways&quot;. the yellow nectarines are still hitting just as good as they were earlier in the summer (though i know it&#39;s our last gasp in terms of bountiful fruit and i will try to stretch it as far as i can). blueberry muffins, ruby jewel ice cream sandwiches, plentiful ice. sitting on the curb in a parking lot in the shade on a warm day eating a cold sandwich together. </p>
+<p> <img src="/api/images/182" alt="image.png"> </p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.com/justinwolfe/archive/thank-you-notes-91/">2016</a> (<em>24 hour donut shop, that my mom was happy to tell us about how she had quit her job at the luxury hotel, china mieville</em>)</li>
+<li><a href="https://buttondown.com/justinwolfe/archive/rachel2/">2017</a> (from <strong>rachel</strong>) (<em>staying in my teenage bedroom, to be called baby, memes</em>)</li>
+<li><a href="https://buttondown.com/justinwolfe/archive/92-5401/">2018</a> (<em>it doesn&#39;t feel like a sunday</em>) (<a href="https://buttondown.com/justinwolfe/archive/91/">2</a>) (<em>fresh tortilla chips, still warm from the fryer</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/im-good-at-all-the-narcissisms.html" class="btn btn-secondary">← i&#039;m good at all the narcissisms</a>
+        <a href="/letters/good-natural-light.html" class="btn btn-secondary">good natural light →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

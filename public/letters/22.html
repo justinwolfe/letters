@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2/2">
+  <title>2/2 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>2/2</h1>
+        <time datetime="2017-02-02T00:00:00Z">February 1, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to have gone out with our friends last night, even though i didn&#39;t want to. i&#39;m thankful that though i was upset that i had misremembered the time and made us go to the bar a half hour early, that was also good because we were able to get a table in the quieter part of the back of the bar which we probably wouldn&#39;t have been able to get if we had just been &quot;on time.&quot; i&#39;m thankful for <a href="https://untappd.com/b/the-tap-brewery-gingerbeer-d-man/1832269">the beer i got,</a> which came in a glass rimmed with cinnamon sugar (i&#39;m thankful for cinnamon sugar, which is a heavenly substance that improves most things). i&#39;m thankful that d noticed that the glass was can shaped and we were wondering what the fancy name for that kind of glass is, since all specialty beer glasses have some kind of fancy name, or so we thought because actually she was right the first time and it&#39;s called <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=can+shaped+glass&start=10">a can-shaped glass</a>. i&#39;m thankful for when the names for things are lazy and prosaic.</p>
+<p>i&#39;m thankful that my beer was tasty, even if during dinner (i couldn&#39;t finish my sandwich) after dinner and through the night i regretted drinking two of them. i&#39;m thankful to have gotten further evidence that at this period of my life, the negative side effects of drinking outweigh the positive ones. i&#39;m thankful to know this and remind myself of this when i am given the opportunity to drink in the future. i&#39;m thankful for water, flat and sparkling. i&#39;m thankful to try to remember life before everyone carried around water bottles all the time and to wonder how people weren&#39;t constantly massively dehydrated. i&#39;m thankful to know that maybe what i feel at thirst at times is socially constructed, is in my head because it&#39;s in the culture rather than me actually needing more water. i&#39;m thankful that i don&#39;t have to test this hypothesis because i have water when i need it.</p>
+<p>i&#39;m thankful to have thought about the time before water bottles because of a sentence in nicholson baker&#39;s book <em>substitute</em> about the items allowed on students desks in a fifth grade classroom where he was substitute teaching. i&#39;m very thankful for the book, which is full of paragraphs like this:</p>
+<p>&quot;<em>Here&#39;s what was going on in their weekend lives. JoBeth was learning to balance a sword on her head like her mom: &quot;It&#39;s fun, but you have to be very careful, or you&#39;ll get stabbed badly.&quot; Danielle went to a monster truck rally and almost got a splatball egg at the mall. Sara made some origami figures. Nicole, Rory, and Troy played Minecraft; Nicole said there was a weird stalker guy following her around in the game. Carlton worked with his dad on his pinewood derby car. Nash raced in a pinewood derby and came in second twice but seventh overall. Zeke said he was going to go to monster trucks with his dad, but his dad said it was sixty dollars just to get in the front door, so his dad looked up the Harlem Globetrotters, and tickets for them cost 300 dollars, so he took them to The Lego Movie instead, and then after the movie they were going to go to the gun show but they didn&#39;t. Zoe was going to get a new iPod but didn&#39;t. Toby ate a ham sandwich. Pauline, who was shy, went to the science museum to celebrate her brother&#39;s birthday, and a scientist rubbed a balloon on her head. Larissa was FaceTimed by two boys from class and then she whittled a stick with a knife for twenty minutes. Jess picked up her dog&#39;s ashes—she still missed him—and she slept over at her friend&#39;s and FaceTimed with two boys from class. Amber L. went to the doctor to be tested for strep throat and then went to her aunt&#39;s house and then she rode her bike with her brother. Amber S. got a new bike and learned that the Girl Scouts have sold more than a million boxes of cookies in the state of Maine. Ian went swimming at the YMCA. Ethan started to write a book about a girl who uncovers secrets about her family and brings an evil creature to life, and then he decorated a cake with a whale for his mom&#39;s boyfriend, and afterward he learned that cake decorating was in his family on both sides: &#39;I have cake decorating in my blood basically,&#39; he said. Amanda said the stove in her house caught fire and her brother helped her get out of the house. Nadia said she made a tunnel in a snowbank that was big enough that she could turn around inside it</em>.&quot;</p>
+<p>i&#39;m thankful at times such as this to nuzzle into the comforts of the quotidian. i&#39;m thankful for the book and for <a href="http://danaanm.tumblr.com/post/156637538003/thank-you-notes-31st-january">dana&#39;s thank you notes</a> (i&#39;m thankful that dana really likes her new job even though she has to wake up at 5am), which remind me of things about teaching ESL in korea and creative writing and english comp during grad school. i&#39;m thankful to remember how in korea our classrooms were named after ivy league schools and that i taught first in &quot;harvard&quot; and then settled in &quot;oxford.&quot; i&#39;m thankful to remember that oxford had glass walls, so you could see into the hallway, and i&#39;m thankful to remember a game where i would hide behind my desk and then pop out when a student appeared on the other side of the glass wall, causing a scream of fear and glee, and then chase the student down the hall and go back to my desk and start the whole cycle again. i&#39;m thankful to remember the flash game <a href="http://armorgames.com/play/1760/hedgehog-launch">hedgehog launch</a>, which the younger students and i would play projected onto the whiteboard. i&#39;m thankful to remember a private tutorial where a high school student and i took turn readings john krakauer&#39;s <em>into thin air</em> to each other and i&#39;m thankful that he had horrible breath and i got into the habit of carrying gum to offer him, which made both of us happier. i&#39;m thankful for h, s, and j, who were my gifted second grade class and who cried and made me cards on my last day of work and had to come back from their other classes later in the day to hug me again. i&#39;m thankful to have written about another nice moment in an essay at the time, which will help me keep from forgetting it:</p>
+<p>&quot;<em><a href="https://songsaboutbuildingsandfood.wordpress.com/2009/01/13/dancing-wrt-architecture/">so anyway</a>, the students liked the new yorker article and maybe learned something and maybe didn’t and whatever, i am not jaime escalante and this was not october sky.  after we finished reading the article, we killed some time playing a flash game on the classroom’s big projection screen and then class ended at 10.  we all packed up our stuff and headed out, me immaturely leading the charge to get the hell out of the academy.  despite my rush, the class had been really good that day and there was this kind of buzzy energy in the air.  as we were standing around waiting for the elevators to come, one of my students asked me what day christmas was.  i thought this was kind of a strange question but then a lot of my students, especially the teenage boys, were avowed atheists (also i hadn’t had anything but green tea in like 8 hours so my blood sugar was pretty low). “um, december 25th?” i said.  the students who were around me laughed and the kid said, “no, what day?”  “oh,” i said, “thursday.”  our class met on tuesdays and thursdays — the next thursday was christmas day.  the student then asked if we were going to have class on christmas and i told him no.</em></p>
+<p><em>“oh darn,” he said, and i looked at him, waiting for the haha, the “just kidding,” the “gotcha”  — we’d worked a lot on comic timing and sarcasm (important academic subjects) in class.  but he didn’t do anything, he just stood there, looking back at me.  just after he said “oh darn,” another kid who was standing with us said,  “yeah, too bad,” and again, no laugh, no irony, no tone, not even a change in his facial expression.  that was it, there was no saccharine string motif or close-up to signify it, but that was it.  these kids, who go to school six if not seven days a week from eight in the morning until ten at night, they were saying they would rather come and have class with me than have the day off for christmas.</em>&quot;</p>
+<p>i&#39;m thankful for <a href="http://tinyletter.com/Emily_Gould/letters/airplane">this letter about reading something difficult</a> to a child. i&#39;m thankful for <a href="https://www.youtube.com/watch?v=Ep3jK1bZrB8">five ways to comfort a kitten</a>. i&#39;m thankful to have been experimenting with taurine supplements as a way to calm myself down. i&#39;m thankful that i practiced bass for a little while yesterday; i&#39;m thankful that i have been resistant to practicing outside rehearsal, which feels too much like homework, but i&#39;m thankful to know that it&#39;s good to practice some if i can make myself. i&#39;m thankful for <a href="https://www.youtube.com/watch?v=65gqX2QhVRA">this first-person video of a chef who is blind cooking</a>. i&#39;m thankful for <a href="https://www.instagram.com/p/BP-hK1DloZl/?taken-by=lanadelrey&hl=en">lana del rey</a>. i&#39;m thankful for <a href="https://twitter.com/RitaByci/status/825452262277410816">bodyguard confusion</a>. i&#39;m thankful for <a href="https://www.theatlantic.com/science/archive/2017/02/why-frog-tongues-are-so-sticky/515193/">frog tongues</a>, which are &quot;<em>among the softest biological substances ever measured</em>.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/23-9884.html" class="btn btn-secondary">← 2/3</a>
+        <a href="/letters/21-4838.html" class="btn btn-secondary">2/1 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

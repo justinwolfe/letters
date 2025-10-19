@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/2">
+  <title>thank you notes 2/2 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/2</h1>
+        <time datetime="2016-02-02T00:00:00Z">February 1, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for &quot;the one where they take it too seriously,&quot; the <a href="http://www.newstatesman.com/culture/tv-radio/2016/02/srsly-29-one-where-they-take-it-seriously">latest episode</a> of the <em>new statesman</em>&#39;s <a href="http://www.newstatesman.com/srsly">srsly</a> podcast, which is a comical omnibus exploration of <em>friends</em>. i&#39;m thankful when people in the uk in 2015 have many complicated thoughts about <em>friends</em>, which is endearing to me on a number of levels (i&#39;m thankful whenever d and i are watching british vloggers and they mention that their evening plans include watching <em>friends</em>, which happens fairly often and seems so anachronistic to me, like they&#39;re in some kind of partial time warp). i&#39;m thankful for one panelist&#39;s argument about the generalized urban placelessness of <em>friends</em> (vs. SATC&#39;s more embodied NY) and for the idea that it&#39;s a kind of science fiction. i&#39;m thankful for the humorous discussion of the extent of ross&#39;s sociopathy and general human shittiness, which, when i was a teenage &quot;nice guy&quot; i could not see at all, despite it being so glaring now. i&#39;m thankful for the discussion of the sweet small moments in monica and rachel&#39;s friendship, like one of them putting a blanket on the other when she feels sad. ___PARAGRAPH_BREAK___</p>
+<p>i&#39;m thankful for how much i loved <em>friends</em> when i was a teenager and how the romances that streamed into my brain from that show had so much to do with my early conceptions of what love was and could be and might feel like (i&#39;m thankful how i used to joke with d when we first started dating and i found out she hadn&#39;t watched <em>friends</em> or <em>dawson&#39;s creek</em> that our relationship would never work because she wouldn&#39;t be able to understand what love meant to me). i&#39;m thankful that <em>friends</em> made such a mark on my brain that at one point in college i unashamedly said out loud (and really, genuinely believed) that my idea of the best possible heaven, out of all the possible <a href="http://www.amazon.com/gp/product/B001TKA0VO/ref=dp-kindle-redirect?ie=UTF8&btkr=1">conceptions of heaven</a>, would be cuddling in a fluffy celestial bed with someone i loved and binge-watching <em>friends</em> in between bouts of hot sex (i was a virgin). i&#39;m thankful to remember one valentine&#39;s day my junior year of college emo-ly updating either my facebook status or my livejournal (or gasp maybe both) to tell the world that i was watching <em>friends</em> to soothe my unlovable loneliness.</p>
+<p>i&#39;m thankful for g., who was the second girl i fell in stupid love with during my freshman year of college. i&#39;m thankful that she had gone to my last high school, where i was a total loser, and i had sort of known of her from a distance then, but had more of an impossible unspoken crush on her best friend e, whose father was the local paper&#39;s film critic (i&#39;m thankful for e, who once praised an impressionistic stop motion animation of an orange rolling around a patio set to &quot;<a href="https://www.youtube.com/watch?v=3qK82JvRY5s">sunday morning</a>&quot; by the velvet underground that i&#39;d made for my humanities class, beaming at me and calling me a genius from her seat next to me in the back of our AP european history class for a minute or two which is perhaps the nicest fragment of memory i have from all four years of high school). </p>
+<p>i&#39;m thankful i ran into g for the first time one day behind my dorm as i went to buy a sandwich at the dorm convenience store/deli, which was named montague&#39;s after the inventor of the sandwich. i&#39;m thankful i was wearing a beatles t-shirt and we started talking about the beatles and sixties music, which we were both into. i&#39;m thankful for the clingy green and yellow spring dress she was wearing, which i think had a paisley print. i&#39;m thankful that it was such a natural conversation (which was rare for me, especially with girls i didn&#39;t know) and she had such a nice warm smile and she ended the conversation by touching my arm (i&#39;m thankful i had read that this was a sign girls might like you!) and saying &quot;we should hang out sometime&quot; and i&#39;m thankful that i was naive and stupid and did not ask for her phone number, because my extensive education in the romantic comedies of the 90s had taught me that fate and the invisible hand of <a href="https://en.wikipedia.org/wiki/Serendipity_(film)">the plot</a> would inevitably nudge us together at the perfect time for our love to bloom.</p>
+<p>i&#39;m thankful to learn that that, of course, wasn&#39;t true, that despite telling my friends about her and hanging out on the quad around our dorms for hours every day and buying so many mediocre sandwiches from that deli, i, of course, didn&#39;t see her for weeks. i&#39;m thankful that over time, despite the fact that i had built her up to be my <a href="http://www.youmightfindyourself.com/post/22131227213/on-seeing-the-100-perfect-girl-one-beautiful">100% perfect girl</a>, my longing lessened (i&#39;m thankful that year that i read murakami for the first time, in an introductory collection from vintage which had this story and &quot;<a href="http://sharepoint.snoqualmie.k12.wa.us/mshs/meserveb/Language%20Arts/World%20Literature%20full%20texts/Honey%20Pie%20edited.pdf">honey pie</a>.&quot; i&#39;m thankful that i had almost forgotten about her one friday night, when my friends and i were pre-drinking and getting ready to go out to a party. i&#39;m thankful that i was good friends with the guys who lived across the hall (i&#39;m thankful that one was one of my best friends, z, and thankful that we bonded over my ziggy stardust poster) and thankful that often we would both keep our doors open so we could go back and forth easily and also to attract passers-by to come in and hang out (i&#39;m thankful, after being alone all through high school, for how effortless making friends felt in college). i&#39;m thankful that i was sitting in my darkened room looking at my computer (i&#39;m thankful i don&#39;t know what i was doing—facebook didn&#39;t come to our school till the next year and my most active social network was our dorm&#39;s shared itunes library) and drinking a jack daniels and cherry coke, when two girls walking down the hall paused to look in. i&#39;m thankful that the first one i saw was l, this persian girl who I was vaguely acquainted with who always wore a smoky eye and had a very outre sex and critical theory-driven livejournal and a generally intellectual and aggressive demeanor that intimidated me (though i think in retrospect she may have actually had a small crush on me at the time).</p>
+<p>i&#39;m thankful that the other girl in the hallway was g, who it turned out was one of l&#39;s best friends. i&#39;m thankful that they came in and we talked and i think maybe drank a little, i can&#39;t remember, i was so nervous, sweaty hands. i&#39;m thankful that they were looking for a party to go to and i&#39;m thankful that we were going to a party and i could invite them. i&#39;m thankful that after a few minutes, they left to get ready and that they were going to meet us there. i&#39;m thankful that i went over to the other room where my friends had gathered to tell them about her and they were all reassuring me that it was going to be fine, that the party was supposed to be great and we were going to have an awesome night.</p>
+<p>i&#39;m thankful that when we got to the party, it was the kind of jam-packed backyard bacchanal that i had imagined parties to be from watching them in movies and tv shows when i was a teenager. i&#39;m thankful there was fire and a loud rock band and thankful that g and l showed up and found us in the crowd and that we had to stand very close together in order to be able to hear each other&#39;s voices. i&#39;m thankful that the party was so good, that it was actually too good; i&#39;m thankful that maybe 5 minutes after we&#39;d met up with g and l, while we were still waiting in the keg line, the cops came and broke up the party. i&#39;m thankful that there were other parties that my friends were going to go to, but g and l weren&#39;t into them because they sounded too fratty. i&#39;m thankful that it all seemed like it was going to fall apart and i would never see her again, but then i&#39;m thankful they suggested that we go back to the dorms and get stoned and i&#39;m thankful that my friends s and j agreed to come with.</p>
+<p>i&#39;m thankful for the small comedy of getting the weed, which we bought from this guy named warren who lived on the third floor of my dorm and who was a surfer stoner with long blonde hair and cargo shorts who looked to me like he was probably 30 years old. i&#39;m thankful that when warren wasn&#39;t answering the door at first, i offered to share my alcohol stash with everyone, and thankful that g beamed at me and said that i was so generous. i&#39;m thankful that we eventually were able to buy the weed and walked over through the warm night to g&#39;s dorm to smoke and hang out.</p>
+<p>i&#39;m thankful for how  to enter her dorm room, which felt like a sacred space to me. i&#39;m thankful for the aimless conversation we made while g got the room ready and got her equipment and packed a bowl. i&#39;m thankful when g asked what we thought about pink floyd and i had never heard pink floyd except maybe in like a commercial, but i was really obsessed with having classic rock opinions at the time and said, based on reviews i had read by <a href="http://starling.rinet.ru/music/">this russian internet rock critic</a> who shaped my early musical taste, that i didn&#39;t like pink floyd because they were too &quot;cold.&quot; i&#39;m thankful for the scene i would see, years later, in <em>the squid and the whale</em> when a character is describing something as kafkaesque to try to impress his love interest and then, when she questions him on it, it becomes clear that he&#39;s never read kafka. i&#39;m thankful to cringe in recognition. i&#39;m thankful for &quot;<a href="https://www.youtube.com/watch?v=0SqFPNTBnv8">shine on you crazy diamond</a>&quot; and &quot;<a href="https://www.youtube.com/watch?v=IXdNnw99-Ic">wish you were here</a>,&quot; which i heard for the first time that night and which are both very warm songs. </p>
+<p>i&#39;m thankful that while we sat in the circle on the carpet and passed the bowl, i noticed, on top of the TV, a stack of DVD box sets of what seemed to be every season of <em>friends</em>. i&#39;m thankful that l noticed me looking and i said &quot;wow, every season of friends.&quot; </p>
+<p>i&#39;m thankful that g smiled and asked &quot;justin, do you like friends?&quot;</p>
+<p>i&#39;m thankful that l preempted me saying anything by groaning and saying, &quot;ugh, friends. that show has nothing to do with what new york is really like&quot; and i&#39;m thankful that, despite the fact that i not only liked <em>friends</em> but loved it and thought of watching it with someone i was in love with as literally being the closest thing to heaven i could imagine, and also despite the fact that i had never been to new york and had no idea what it was &quot;like,&quot; i wanted to seem cool, so i shook my head in agreement. i&#39;m thankful that i said &quot;yeah, friends is lame.&quot; </p>
+<p>i&#39;m thankful that after a second, g nodded along and said, gesturing to the DVDs, &quot;yeah, they&#39;re my roommate&#39;s--she really likes that show.&quot;</p>
+<p>i&#39;m thankful that the night went on and we got more and more stoned, listening to music and exhaling through a paper towel tube covered with a fabric softener sheet out the screen of the opened window into the warm night. i&#39;m thankful that i had some idea that it was important to keep my air-path as open as possible to get the smoke deep into my lungs, so i sat up really straight while taking my hits—i&#39;m thankful that g told me that i had such good posture, which felt good because it meant she was watching me, conscious of what my body was doing. i&#39;m thankful that later we listened to _yoshimi and the pink robot_s, which i really loved at the time (i&#39;m thankful to offer this aside, from the <a href="https://en.wikipedia.org/wiki/Yoshimi_Battles_the_Pink_Robots">wikipedia</a> entry for that album: (&quot;<em>For the television show Friends, Flaming Lips re-wrote the song &quot;Yoshimi Battles The Pink Robots&quot; into &quot;<a href="https://www.youtube.com/watch?v=HEaKdBSNS3k">Phoebe Battles The Pink Robots</a>&quot; to fit one of the show&#39;s main characters. The music video appears on Disc 4 of the 9th Season DVD</em>&quot;). i&#39;m thankful that after a while, g broke out a woven basket containing her candy stash and we ate nerds rope, thankful that i made her laugh by saying it looked like strands of DNA.</p>
+<p>i&#39;m thankful for the pivotal moment of the evening, even though i don&#39;t remember, through the murk of memory, how exactly we got there, when g looked at me from across the circle and said she had a secret. i&#39;m thankful that i thought she was flirting with me by saying this, for how happy it made me that she seemed interested. i&#39;m thankful she began by saying, &quot;sometimes i like to play a little game with people, to test them.&quot; i&#39;m thankful that i was like, oh, really, smiling, waiting for her to tell me i don&#39;t know what, but something good. i&#39;m thankful that instead, she said: &quot;the truth is, those friends DVDs aren&#39;t actually my roommate&#39;s--they&#39;re mine. it&#39;s my favorite show. i know it&#39;s lame, but i really love friends.&quot;</p>
+<p>i&#39;m thankful to imagine that if the me of now could go back in time and whisper in the ear of the me of then, i would tell him to just tell her the truth, to say that he had wanted to seem cool earlier but that he really loved friends too, to talk about how the one where with the prom video and the one where ross and rachel take a break and the one with the proposal part ii and the one where ross finds out and all of the other ones he had watched were so meaningful to him, how in high school, when he wanted <em>friends</em> but it wasn&#39;t on, he read transcripts of episodes that some crazy person on the internet had created so that he, another crazy person, could still feel like he was in the world of the show. i&#39;m thankful to tell him that he should own his basic-ness, that it&#39;s okay not to be cool all the time, that there are no guilty pleasures.</p>
+<p>i&#39;m thankful that i didn&#39;t know how important it was for love to be honest then, that i didn&#39;t yet know how to be okay with just being myself. i&#39;m thankful that lacking those things, i didn&#39;t say anything, just laughed impotently and sat on the carpet in the dark, listening to the flaming lips and eating candy that reminded me of DNA.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-23.html" class="btn btn-secondary">← thank you notes 2/3</a>
+        <a href="/letters/thank-you-notes-21.html" class="btn btn-secondary">thank you notes 2/1 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

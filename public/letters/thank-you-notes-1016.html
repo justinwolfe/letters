@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 10/16">
+  <title>thank you notes 10/16 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 10/16</h1>
+        <time datetime="2016-10-16T00:00:00Z">October 15, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that yesterday i walked with d to the local pet store so that she could play with the puppies. i&#39;m thankful for the pet store employees were very sweet old ladies who love animals. i&#39;m thankful that d got to spend time with three different tiny cute puppies. i&#39;m thankful for how happy this made her. i&#39;m thankful to have taken pictures of her holding all of the puppies. i&#39;m thankful to have eventually excused myself to go outside because my cat/pet hair allergies were acting up,my eyes red and skin itchy and nose ticklish. i&#39;m thankful to have sat on the sidewalk outside the store reading record reviews on my phone to pass the time. i&#39;m thankful for <a href="http://pitchfork.com/reviews/albums/22434-schaum/">this album of experimental vibraphone music</a>, which i am listening to now.</p>
+<p>i&#39;m thankful to know that i was probably in a bad mood as we walked home yesterday and then after because i didn&#39;t get to go running on friday and that messed up my brain chemistry. i&#39;m thankful also to acknowledge that i felt sad that i don&#39;t love animals as much as d loves animals and, perhaps because of my endorphin deficit, was struck very hard by this sadness of this after we left the pet store and felt guilty about it. i&#39;m thankful to have at least gone to the pet store with d so that she could get a little cuddling time. i&#39;m thankful that we stopped at home after the pet store so that i could take a benadryl and to get clothes, books, and the pair of rollerblades i foolishly purchased before realizing that i am thirty years old. i&#39;m thankful that we took these things to goodwill rather than throwing them away and am thankful to hope that they will make other people happy.</p>
+<p>i&#39;m thankful that since the low tire pressure light had come on, we tried to pump up d&#39;s car&#39;s tires at the pump in the parking lot of the grocery store, but am thankful that we eventually gave up when we realized that something was wrong with the nozzle of the pump. i&#39;m thankful we drove to the gas station down the road, which had a correctly fitted nozzle and made for easy inflation. i&#39;m thankful that at the grocery store, i tried to spend my way out of my bad mood, which was somewhat successful (though that may have just been correlation and it was actually that i was naturally emerging from the bad mood)—i&#39;m thankful for beer and vodka and cookies and salted ice cream bars and the assorted halloween candy bag composed of butterfingers, crunch bars, nerds, and gobstoppers. </p>
+<p>i&#39;m thankful for the nice long conversation i had with the cashier who rang us up about halloween and the excitement of getting to venture off into the night with your friends and rich people giving big candy bars and her three halloween costumes this year, one of which is a rainbow panda and one of which (her fallback) she could draw from her classic set of <em>rocky horror picture show</em> costumes. i&#39;m thankful for my brother, who makes a very good frank n furter. i&#39;m thankful to have gone online after we got home and filled out the customer survey about how great she was and how she contributed to my experience.</p>
+<p>i&#39;m thankful that after lunch and after i vacuumed and puttered around the house, i still felt lousy and so decided to go on a run. i&#39;m thankful that i really really did not want to go for a run, but forced myself because i never feel worse after a run and almost always feel better. i&#39;m thankful that it was perfect weather outside, which helped, even though i felt like my body was moving so slowly. i&#39;m thankful to have not pushed myself too hard and thankful to have indeed felt a bit better when i got home and even better after i had taken a shower. i&#39;m thankful to have made us bacon cheeseburgers and (frozen) french fries for dinner.</p>
+<p>i&#39;m thankful that after dinner, we watched <em>anomalisa</em>. i&#39;m thankful for that movie, which is unlike anything i&#39;ve ever seen before. i&#39;m thankful for the stillness and and the quietness and the awkwardness, the hyperrealism. i&#39;m thankful for how the premise of the movie is not overt and over-explained, for how it sneaks up on you and you grasp it. i&#39;m thankful for the movie&#39;s exquisite physicality, the textures of hotel duvets and fluffy white towels and pieces of ice, and for the care with which the smallest of gestures are rendered. i&#39;m thankful for the puppets, which never feel like a gimmick but an essential formal characteristic of the work.</p>
+<p>i&#39;m thankful for a moment when a character, flush with love like he&#39;s never felt before, lets a stupid small thing at breakfast bruise that love, then another, then another, these normal and inoffensive things seized on by his brain and made into a kind of pollution of how he feels. i&#39;m thankful for the pain of watching that and seeing through the puppet playing the role myself walking home from the pet store in the morning, responding in grunts and monosyllables and silence to d&#39;s excitement about the puppies. i&#39;m thankful that i am not the character in the movie but that i can learn about myself from watching the character. i&#39;m thankful for the end of the movie, which i think is in a way hopeful. i&#39;m thankful that my general inclination is to read ambiguous or unresolved endings as hopeful. i&#39;m thankful to be hopeful.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-1017.html" class="btn btn-secondary">← thank you notes 10/17</a>
+        <a href="/letters/thank-you-notes-micha.html" class="btn btn-secondary">thank you notes (Micha) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

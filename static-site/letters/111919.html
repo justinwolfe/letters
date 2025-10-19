@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="11/19/19">
+  <title>11/19/19 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>11/19/19</h1>
+        <time datetime="2019-11-20T00:00:00Z">November 19, 2019</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the video game <em>death stranding.</em> i&#39;m thankful that i have not yet, in the first few hours, received a gun, such that my interaction with the game world is based entirely around the problem of walking over uneven and unknown terrain in rough conditions while overloaded with heavy things i have to carry. i&#39;m thankful to think of the term &quot;walking simulator,&quot; which is a pejorative often applied to games without guns in them by people who think all games should have guns with them, and i&#39;m thankful that though i am not one of those people, i don&#39;t tend to like those games, either, not because they don&#39;t have guns in them, but because what they call &quot;walking&quot; is often an incredibly shallow interaction that could be better described as &quot;gliding&quot;, since walking with your body through a real space is, if you are in the frame of mind to appreciate it, an incredibly rich and information-dense sensory experience that those games fail to capture. i&#39;m thankful to recognize what i find lacking in those &quot;walking simulator&quot; games, which is that the experience of walking is actually just a means to an end to get you to places where they can deliver a narrative—even if they&#39;re &quot;walking simulators,&quot; they&#39;re not games simulating walking.</p>
+<p>i&#39;m thankful that <em>death stranding</em>, in addition to a rich and deep and fucked up lore about a post-apocalyptic america where the seam between the world of the living and the dead is open and psychic entities have the power to detonate nuclear blasts (which i find myself reading the optional flavor text descriptions for, something i rarely do in games), is centrally concerned with being what i&#39;d call a hiking simulator, where the game tries to capture the experience of walking over uneven and unknown terrain in rough conditions while overloaded with heavy things you have to carry. i&#39;m thankful for how well it captures things like the skittery steps you take to support yourself when going too fast down an unexpectedly steep hill. i&#39;m thankful that all of the heavy things you&#39;re carrying are visible on your body and have direct and tangible effects on how you move through the world. i&#39;m thankful that the enhanced &quot;witcher vision&quot; (a trope i hate in modern video games) is not used for reductive fetch quests but instead to get a more granular read of the roughness of the terrain around you so that you can more safely walk through it. i&#39;m thankful that there is no fast travel, at least yet (since i find that when i start using fast travel in a game, it&#39;s the canary in the coal mine of me losing interest in the game) and no mini map, that part of the game is learning the contours of the environment around you and being able to move through it organically rather than constantly staring at a little top down representation of the world around you. </p>
+<p>i&#39;m thankful for one reason i think i found this appealing, which is that as you know, i haven&#39;t been running outside recently but instead do my morning jogs on the treadmill in our basement while playing video games (<em>tetris</em> and <em>slay the spire</em>). i&#39;m thankful that the access to the treadmill/video game combination has gotten me out of a rut i was in with exercise when we moved here and helped me be much more consistent about working out in substandard weather and thus have more regular access to endorphins and feel more at home in my body, like the person i am looking at in the mirror is the person i recognize as my internal conception of myself. i&#39;m thankful, though, to wonder if i have veered too far in this direction, if my love of this game simulating walking and running and hiking is in part about the fact that i&#39;m not doing as much of those things in my life.</p>
+<p>i&#39;m thankful that the game has been interesting so far and (since it&#39;s a rental) i might get it, but i&#39;m also thankful for how it&#39;s had me think about the limitations of what games have to offer me. i&#39;m thankful to consider, if what i find so satisfying about this game is its simulation of hiking around outside, why, as a person who has hiking available to him, i should just go hiking outside instead of playing it, since the simulation will never be as rich as the actuality, and the actuality is good for me in ways the simulation isn&#39;t. i&#39;m thankful that there are reasons that one might prefer the simulation, like bad weather or a lack of time or a disability, (i&#39;m thankful that last night while i played at hiking through the rain, it was raining heavily outside) and i&#39;m thankful that there is also an aesthetic satisfaction for me in seeing how games manage, in their limited ways, to represent the quotidian experience of being embodied, of living in the world. i&#39;m thankful for that, since unlike shooting people with guns, that is a central part of my own existence and it&#39;s satisfying to see art interact with something, unlike shooting people with guns, that i deeply know. i&#39;m thankful to have hope that VR is going to explode the possibilities for different kinds of interactions and experiences, different games and simulations, even if i wonder if those opportunities will ultimately constitute a new kind of uncanny valley, like life yet not.</p>
+<p>i&#39;m thankful that i&#39;ll have to venture out into the pre-apocalyptic world to ride my bike to the store to return the game to redbox. i&#39;m thankful that i&#39;m going to try switching up my routine today and doing a chunk of work first rather than exercise to see if that makes my day feel any better than my day normally feels. i&#39;m thankful i only have one meeting and it&#39;s with k. i&#39;m thankful that i did a bunch of code reviews yesterday and helped unblock people. i&#39;m thankful that r shared with me details about the games she&#39;s playing lately. i&#39;m thankful d made these salted shortbread chocolate chunk cookies, which are so fucking good (<a href="https://cooking.nytimes.com/recipes/1019152-salted-chocolate-chunk-shortbread-cookies">https://cooking.nytimes.com/recipes/1019152-salted-chocolate-chunk-shortbread-cookies</a>). i&#39;m thankful for our rice cooker and i&#39;m thankful for rice.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/112119.html" class="btn btn-secondary">← 11/21/19</a>
+        <a href="/letters/112019.html" class="btn btn-secondary">11/20/19 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

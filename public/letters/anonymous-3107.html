@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(anonymous)">
+  <title>(anonymous) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(anonymous)</h1>
+        <time datetime="2018-06-16T00:00:00Z">June 15, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that my sister is getting married next weekend and i&#39;m thankful to have been asked to play a small role in the day by saying a few words at the reception. i&#39;m thankful my mother asked if i could say something about my dad, perhaps raise a toast to him, because it will be father&#39;s day (in the uk) and he will not be there because he died very suddenly, almost six years ago, from a combination of flu and an undiagnosed heart condition. </p>
+<p>i am thankful about having to give this speech as an exercise in thought, even though i am not at all happy about actually having to stand up in front of a hundred or more people and actually say it. i am thankful my mother said kind things about the reading i did at my father&#39;s funeral - a passage from montaigne that has always stayed with me - and she suggested i could do something similar on sunday.</p>
+<p>i am thankful to have thought of a different passage i could read at my sister&#39;s wedding even though i am very, very unsure about whether i should use it; whether i shouldn&#39;t just say something extemporaneous about how i am really feeling, which might be more appealing and affecting than trying to tie my emotions to somebody else&#39;s wheels - more earnest than just calling attention to myself with a gesture not dissimilar to those rattling cans you see tied to the back of wedding cars. </p>
+<p>but i suppose i am thankful for myself as a person who has strong feelings about passages from books, because i wouldn&#39;t want to be without that, even though i have trouble feeling or expressing emotions in conventional ways or through memories, which i sometimes feel like i don&#39;t really have. i am of course thankful to have a sister (actually i have two, thankful for both) - even though if i were commanded to put together a few entertaining anecdotes about her and/or my dad, i feel like i would have nothing. nothing at all. </p>
+<p>i am thankful for that classic exercise a therapist once put to me - &#39;what would you say to him, if he were here?&#39; - even though i think it is also extremely facile. i&#39;m thankful for things that are facile but also functional. i&#39;m thankful to think about what i would say to my dad if he were here, but i am also thankful to know that much of that is beyond words. </p>
+<p>i&#39;m thankful that i myself will also be getting married in about three months from now. i&#39;m thankful it is going to be a very small affair relatively speaking, and especially thankful that we found a lovely private garden in cornwall to hold the ceremony in, with a view over the ocean shaded by tall tree ferns. i&#39;m thankful it is so small and far from london it could not hold more than 30 people and i&#39;m thankful we are expecting maybe half of that to arrive. i&#39;m thankful the thought of this is manageable even though i have alternated between that and wishing it was only me and her, by ourselves. </p>
+<p>i&#39;m thankful to have visited the garden a couple of weeks ago and to have met the woman who owns it with her husband, and to have been jumped all over by her dogs, and to have been visited in the garden by an assortment of small birds, who i briefly thought were inhabited by the souls of my dead ancestors, until the woman who owns the garden reminded me that they are accustomed to being fed on crumbs from the cream teas had by her guests. </p>
+<p>i am less thankful for the arguments that our difference of feelings about wedding guests has caused between me and the woman i am going to marry, partly because i am a person who doesn&#39;t really believe in things like social niceties or obligations and who (relatedly) doesn&#39;t really have any friends as such and who would honestly rather have as few people there as possible, and she is a person with friends and family who are close to her and who wants to make it easy for her guests. i am thankful to be the sort of person who finds solace in being alone or with only a few people; i&#39;m thankful she feels secure in large family groups because it feels complementary, and because it means i&#39;m often less alone than i sometimes think i want to be. i&#39;m thankful we have arrived at a nice compromise.</p>
+<p>though it sometimes makes me feel very angry that the world in general does not really respect or understand people who would prefer to step outside it for a while, unless it can pathologise them with a psychological condition of some sort, i am thankful that for the most part i am able to claw out those spaces to be by myself, because sometimes they are the only times i really feel like i am myself. i am thankful the awareness that those moments are the precise opposite of the moments i feel worst, when i feel intensely that it would be easier to stop living entirely than to get through whatever it is i am worrying about. i am thankful for the knowledge that this is kind of ideation is less about actually wanting to die and more about me trying to impose control on a life which i sometimes feel like is no longer my own.  </p>
+<p>i&#39;m thankful for the passage below, which is the aforementioned thing i thought of reading (and probably won&#39;t read) at my sister&#39;s wedding. it is from the play &#39;no man&#39;s land&#39; by harold pinter: </p>
+<p>&#39;i might even show you my photograph album. you might even see a face in it which might remind you of your own, of what you once were. you might see faces of others, in shadow, or cheeks of others, turning, or jaws, or backs of necks, or eyes, dark under hats, which might remind you of others, whom once you knew, whom you thought long dead, but from whom you will still receive a sidelong glance, if you can face the good ghost. allow the love of the good ghost. they possess all that emotion...trapped. bow to it. it will assuredly never release them, but who knows...what relief..it may give to them...who knows how they may quicken...in their chains, in their glass jars. you think it cruel...to quicken them, when they are fixed, imprisoned? no...no. deeply, deeply, they wish to respond to your touch, to your look, and when you smile, their joy...is unbounded. and so i say to you, tender the dead, as you would yourself be tendered, now, in what you would describe as your life.&#39;</p>
+<p>- anonymous (6/9/18)</p>
+<p><a href="https://docs.google.com/forms/u/1/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/edit?usp=forms_home&ths=true">what are you thankful for?</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/617.html" class="btn btn-secondary">← 6/17</a>
+        <a href="/letters/615.html" class="btn btn-secondary">6/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

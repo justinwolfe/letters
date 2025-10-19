@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="my favorite tinyletter">
+  <title>my favorite tinyletter - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>my favorite tinyletter</h1>
+        <time datetime="2023-12-07T16:54:35.717003Z">December 7, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p>icymi, mailchimp announced that they&#39;re finally <a href="https://www.theverge.com/2023/11/29/23981363/mailchimp-shutting-down-tinyletter">shutting down tinyletter</a> next spring. as someone who works at a tech company and has had to support aging products/features that not many people use, i think this is 1000% the right decision and i&#39;m happy that the people who work there will be able to close the door and move on to other stuff and am grateful for the years of free service i got from them.</p>
+<p>i&#39;m thankful to <a href="https://tinyletter.com/meaghano/">meaghan</a> for blazing the trail and that tinyletter existed at the exact right time when i needed it and felt so...small (lol) and personal (which matched what i wanted to do with it)—it helped me enter a new stage for my writing which has been the first (to use a concept from <em>the three body problem</em>) stable era of my creativity (all previous projects ended in me eventually burning out, having a breakdown, and moving on to something else, where it feels like this one could pretty easily go on forever in one form or at some frequency or another).</p>
+<p>i moved this newsletter over from tinyletter to <a href="https://buttondown.email/">buttondown</a> a few months ago. i had wanted to get off tinyletter for a while because i was starting to chafe against the decaying technology and the limitations that placed on what i could (easily) do, but for a long time, whenever i considered it, i froze in place and chose to do nothing, because it seemed like the obvious choice for a new home, especially if i wanted the newsletter to ever maybe grow (it&#39;s stayed basically the same size for years at this point—new subscribers come but basically only to replace the old ones who (understandably!) decide they&#39;ve had enough), was substack (and they had, since their early days and up to pretty recently, tried to pitch me on joining), but also <a href="https://www.techdirt.com/2023/04/14/substack-ceo-chris-best-doesnt-realize-hes-just-become-the-nazi-bar/">their policies and their founders&#39; statements</a> on the <a href="https://www.vanityfair.com/news/2022/05/substacks-founders-dive-headfirst-into-the-culture-wars">transphobic</a> and <a href="https://www.theatlantic.com/ideas/archive/2023/11/substack-extremism-nazi-white-supremacy-newsletters/676156/">anti-semitic</a> writing and writers they choose to platform in the name of &quot;free speech&quot; just grossed me the fuck out and made it kind of inconceivable as a place to move this newsletter about gratitude.</p>
+<p>i write this without judgement and not from a place of perfect ideological purity (i mean, even if tinyletter had continued to exist and i had stayed on, it would still be a product from mailchimp which is owned by intuit which is a company that is premised on <a href="https://donmoynihan.substack.com/p/how-the-tax-preparation-industry">the administrative burden of tax preparation continuing forever</a>, so, like, very little ethical maneuvering space in capitalism). i don&#39;t begrudge anyone who uses substack (many writers whose work i cherish use it and i pay for premium subscriptions for a number of them because i want to support those people and that work) and very importantly i have the privilege of a stable career as a software engineer (at least until the AI fully settles in) which means that these thank you notes are not my livelihood and i&#39;m not dependent on network effects or growth hacking to be able to provide for my family now or in the future.</p>
+<p>you may have noticed recently (thanks to pierce for bringing it to my attention!) that when trying to click links in thank you notes, you would get a scary little security pop-up warning you before you click through the link. </p>
+<p> <img src="/api/images/568" alt="image.png"> </p>
+<p>i emailed buttondown&#39;s support yesterday and this morning the same support person i have talked to every time i&#39;ve had a problem for my $8-a-month account told me they had a ticket open with AWS about it and were waiting for a resolution and also gave me a workaround (just disable click tracking, which i don&#39;t care about anyway and have done now, so hopefully links will be good from now on). this scary little popup is probably a thing that wouldn&#39;t happen (or wouldn&#39;t continue over a period of time) if i had a substack (bigger companies that spend more money have more leverage with providers like AWS), but like, imo, little stuff like that and $8 a month is a small price to pay to not have to be side-by-side with Nazis! </p>
+<p>that is my review of buttondown so far: it&#39;s a small product built by a couple of people and there are some occasional rough edges or quirks or limitations that you might not see on a larger platform and who knows how durable it might be (i launched my first paid newsletter in the summer of 2012 on an app, letter.ly, that promptly died in the fall of 2012), but overall i&#39;m very happy with it (i will write another time about some of their features and design choices that i haven&#39;t seen elsewhere and that i enjoy).</p>
+<p>anyway, to wrap up, the point of this email is i wanted to celebrate my favorite tinyletter, <a href="https://tinyletter.com/pome">pome</a>, which i think was originally called <em>lunch poems</em> and was, over six seasons over even more years, <a href="https://medium.com/@flaneur/365-days-of-pome-a75bb02d8d06">a daily poem curated by matthew ogle</a>. matthew used the tinyletter deprecation announcement as an exit and i don&#39;t begrudge him, even if i will miss his taste in poetry, which has been foundational for my own and has provided so much light to my days. here&#39;s the last poem he chose, by ron padgett:</p>
+<pre><code>Poem
+
+I’m in the house.
+It’s nice out: warm
+sun on cold snow.
+First day of spring
+or last of winter.
+My legs run down
+the stairs and out
+the door, my top
+half here typing
+</code></pre>
+<p>as we celebrate poetry, which we have to keep doing forever, i think of adorno and no poetry after auschwitz, and so instead of closing with that poem, i&#39;ll close with <a href="https://www.poetryfoundation.org/poetrymagazine/poems/154658/fuck-your-lecture-on-craft-my-people-are-dying">this one</a> you may have seen recently and which is all bars.</p>
+<pre><code>Fuck Your Lecture on Craft, My People Are Dying
+BY NOOR HINDI
+Colonizers write about flowers.
+I tell you about children throwing rocks at Israeli tanks
+seconds before becoming daisies.
+I want to be like those poets who care about the moon.
+Palestinians don’t see the moon from jail cells and prisons.
+It’s so beautiful, the moon.
+They’re so beautiful, the flowers.
+I pick flowers for my dead father when I’m sad.
+He watches Al Jazeera all day.
+I wish Jessica would stop texting me Happy Ramadan.
+I know I’m American because when I walk into a room something dies.
+Metaphors about death are for poets who think ghosts care about sound.
+When I die, I promise to haunt you forever.
+One day, I’ll write about the flowers like we own them.
+</code></pre>
+<p> <img src="/api/images/569" alt="image.png"></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/renaissauce.html" class="btn btn-secondary">← renaissauce</a>
+        <a href="/letters/im-a-fucking-caveman.html" class="btn btn-secondary">i&#039;m a fucking caveman →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

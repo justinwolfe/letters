@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="tyn (esmé)(7)">
+  <title>tyn (esmé)(7) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>tyn (esmé)(7)</h1>
+        <time datetime="2016-06-15T00:00:00Z">June 14, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>I&#39;m thankful I got into a facebook argument with my Uncle yesterday. I&#39;m thankful that my Uncle, the youngest of five men in his family, is a known loud-mouth and arguer. I&#39;m thankful for the memories of my cousins and I sitting in the &quot;TV Room&quot; during our large family dinners playing the card game war (and later mario kart), listening to the inevitable rise of voices as my Uncle argued one inane point or another with his brothers or my grandmother or my grandfather until someone ended up banging out the kitchen door and we were told to help clean up and do the dishes or help feed the dogs. </p>
+<p>I am thankful for the dogs. I&#39;m thankful that my Grandad was a prize-winning breeder of hunting dogs and that he let me believe the dogs were mine. I&#39;m thankful he let me help him feed them, while he pushed a wheelbarrow full of chow, using the red plastic cup that was meant for measuring their specific food amounts. I&#39;m thankful he let me sit in the puppy pen and let a wash of tiny paws and tails sweep over me and they would lick and whine and pant and yip until I thought I could become a puppy and not be a human ever again. </p>
+<p>I&#39;m thankful that after chores my Grandad also let me wedge my tiny body into the recliner next to him to watch Nash Bridges or some John Wayne film. </p>
+<p>I&#39;m thankful that I learned about death pretty early on. I&#39;m thankful that I saw this cold steel man turn into a powdery ghost of himself. I&#39;m thankful that he kept the raccoon stuffed animal I had my mom buy him next to his hospital bed and that he only let me come and see him once. I&#39;m thankful that before he died he had to tell my Father where he had hidden all the loaded guns in the house. I&#39;m thankful that he hid them all very well and the only one us kids knew about was the one on top of the antique grandfather clock, a loaded 6-shot revolver. </p>
+<p>We could see it as we went up the stairs from the living room to the second floor landing, a cold metal, mean thing. I&#39;m thankful I was so afraid of that gun that I would edge away from it as I passed down or up the stairs, pressing my body into the handrail and risking being chastised for touching the wallpaper with any part of my body. </p>
+<p>I&#39;m thankful that I was equally frightened of the locked shotgun cabinet at the top of the stairs. Whose door I would always take a bounding leap past so I could sleep in the room with the bed right next to it. I would snuggle down, as far from it as I could risking being grabbed by the closet monster but I preferred that to those cold steel snakes. </p>
+<p>I&#39;m thankful for my family and these strange memories I had forgotten. I&#39;m thankful for how spacious the upstairs landing felt after grandad died and his brother came up from Missouri and took the guns. He took the guns and the dogs. </p>
+<p>I&#39;m thankful that my family is loud and while they never shied from argument they also never really expressed tenderness or caring. The men were raised to be men. My uncle, the youngest of the men, was also considered wildly successful and lived in Houson and would slip us $50 when he saw us on holidays. He now lives in the shell that was once my grandparent&#39;s house- the home with the dogs and the arguments and the place where we would gather at least once a month to eat and be a family. I&#39;m thankful that now that my grandmother is gone it feels like a totally alien place. I&#39;m thankful that I rarely go there, choosing instead to preserve the place of my past and my childhood. </p>
+<p>I&#39;m thankful that my Uncle spouted a lot of guns-rights rhetoric and whatever you would think a stereotypical NRA supporter might say when I said the 2nd Amendment was archaic. I&#39;m thankful that he said that I never studied history or have a grasp on current policy that covers anything from immigration to gang violence. I&#39;m thankful to remember that my Uncle still sees me as the small girl tagging along to feed the puppies. </p>
+<p>I&#39;m thankful that my Uncle chooses, I think, to see me in that light, which is why he called me a &quot;girl&quot; on my facebook wall. I&#39;m thankful that I don&#39;t think he knows that I have these swinging fears in New York City sometimes, where I&#39;ll catch someone acting strangely on the bus or in the subway and then think about what I would do if they had a weapon. Where I could go. How I could protect myself. What would happen if I was killed. </p>
+<p>I am thankful that there have been times in this city where I have been followed and felt afraid. I&#39;m thankful that I was sexually harassed on the street in the Lower East Side and had a moment where I didn&#39;t even know if I could call the police when a man did something like that to me. I&#39;m thankful that my Uncle doesn&#39;t realize that yes, I have been afraid and yes may have wanted to defend myself in anger or out of fear but never once would I consider using a gun. </p>
+<p>I&#39;m also thankful that I didn&#39;t insult, I didn&#39;t blame, that I defended my opinion concisely, clearly and so many of my friends spoke up on my behalf and that it seems to have been laid to rest. </p>
+<p>I&#39;m thankful for social media and sharing but I am also thankful that yesterday I felt so overwhelmed and tired after all of this. I&#39;m thankful that when I crawled into bed, my pregnant best friend, who is so far away in LA, and I texted about this whole mess and then I sent her this: </p>
+<p><a href="https://www.youtube.com/watch?v=6M1fUVOETsc">https://www.youtube.com/watch?v=6M1fUVOETsc</a> </p>
+<p>I&#39;m thankful for the possibilities that being young and courageous affords. And I&#39;m thankful that this is type of kid I want to raise, one day, even on this mad planet, cheesy as the editing is and whatever else was done to illicit emotion for nighttime TV. </p>
+<p>I&#39;m thankful that I&#39;m going to try my damnedest to give her a world without the same fears or even with just a few less than the ones I had. </p>
+<p>And I&#39;m thankful for being a little girl once and not forgetting who she was, when she would tag along and wedge herself into spaces that were just a little too small, unafraid. </p>
+<p>- esmé (6/14). internet spaces: esmeawright</p>
+<p>previously: <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-esm">1</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-esm-2">2</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-esm-3">3</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-esm-4">4</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-esm-5">5</a>, <a href="http://tinyletter.com/thankyounotes/letters/tyn-esm">6</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-616.html" class="btn btn-secondary">← thank you notes 6/16</a>
+        <a href="/letters/thank-you-notes-615.html" class="btn btn-secondary">thank you notes 6/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

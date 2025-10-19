@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="4/1">
+  <title>4/1 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>4/1</h1>
+        <time datetime="2018-04-01T00:00:00Z">March 31, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to be writing this while sitting in a soft chair near an open window in our living room. i&#39;m thankful that this is the first weekend we&#39;ve been able to open the window without feeling frozen and that though it isn&#39;t yet actually warm, it&#39;s nice to feel fresh air moving in through the screen.</p>
+<p>i&#39;m thankful this morning while d slept in to have read the most recent issue of <em>the new yorker</em> on my phone. i&#39;m thankful to remember a stupid concern i had early in our relationship, which was that since we had gotten together, i wasn&#39;t always reading everything* in every issue of <em>the new yorker</em> (*except shouts and murmurs and the fiction section, both of which i considered distasteful and so ignored).</p>
+<p>i&#39;m thankful, in retrospect, to have realized that rather than being about <em>the new yorker</em> itself, this was an expression of a larger concern, that i was being subsumed into us and the i that was left didn&#39;t know how he felt about that. i&#39;m thankful, though, that if i want to be generous to my past self, maybe he was also anxious about something less general, about the idea that reading all of <em>the new yorker</em> let his brain live in a certain kind of way that other things didn&#39;t and that by not reading all of <em>the new yorker</em> was like letting</p>
+<p>i&#39;m thankful that this last thought was inspired by <a href="https://www.newyorker.com/magazine/2018/04/02/the-mind-expanding-ideas-of-andy-clark">my favorite article</a> i read this morning, which is about a philosopher who believes that thought isn&#39;t something that exists just inside of our heads, but always involves an extension out into the world and an integration with the things of it, from which thinking is inextricable.</p>
+<p><em>How is it that human thought is so deeply different from that of other animals, even though our brains can be quite similar? The difference is due, he believes, to our heightened ability to incorporate props and tools into our thinking, to use them to think thoughts we could never have otherwise. If we do not see this, he writes, it is only because we are in the grip of a prejudice—“that whatever matters about my mind must depend solely on what goes on inside my own biological skin-bag, inside the ancient fortress of skin and skull.”</em></p>
+<p><em>One problem with his Otto example, Clark thinks, is that it can suggest that a mind becomes extended only when the ordinary brain isn’t working as it should and needs a supplement—something like a hearing aid for cognition. This in turn suggests that a person whose mind is deeply linked to devices must be a medical patient or else a rare, strange, hybrid creature out of science fiction—a cyborg. But in fact, he thinks, we are all cyborgs, in the most natural way. Without the stimulus of the world, an infant could not learn to hear or see, and a brain develops and rewires itself in response to its environment throughout its life. Any human who uses language to think with has already incorporated an external device into his most intimate self, and the connections only proliferate from there.</em></p>
+<p>i&#39;m thankful to also recommend the article about <a href="https://www.newyorker.com/magazine">the psychological effects of embodiment in virtual reality</a> (i&#39;m thankful for the concept of the &quot;subtle body,&quot; an &quot;immaterial version of the self, capable of traveling through space&quot;) and the very sad one about <a href="https://www.newyorker.com/magazine/2018/04/02/how-a-young-woman-lost-her-identity">a woman&#39;s dissociative fugues</a>. i&#39;m thankful for <a href="https://twitter.com/LoneberryWang/status/980534952004603905">virginia woolf on rhythm</a> and <a href="https://twitter.com/sontagdaily/status/980464600985477120">susan sontag on living her life but not living in it</a>. i&#39;m thankful for bernadette mayer&#39;s &quot;<a href="https://www.youtube.com/watch?v=8XFVx-fpYfA&feature=share&list=LLwy5VFylrU2zTyyTpy7hODw&index=2">eve of easter</a>.&quot; i&#39;m thankful for <a href="https://www.youtube.com/watch?v=t6GWckNEIEE">this amazing performance</a> of what kacey musgraves&#39;s grandmother calls &quot;the slut song,&quot; which i heard on the <a href="https://www.nytimes.com/column/popcast-pop-music-podcast">popcast</a>. i&#39;m thankful for <a href="https://tinyletter.com/sophiehelf">this tinyletter by sophie helf</a>, which has three issues so far: <a href="http://tinyletter.com/sophiehelf/letters/a-puke-up-of-some-memories">1</a>, <a href="http://tinyletter.com/sophiehelf/letters/l-egg">2</a>, <a href="http://tinyletter.com/sophiehelf/letters/it-s-hospital-time">3</a>. </p>
+<p>i&#39;m thankful that d gave me a haircut yesterday. i&#39;m thankful that though i have felt poorly about the way i look recently (i&#39;m thankful that the other day my mom facetimed me and i spent the first minute of the call thinking about how my chin looked (it wasn&#39;t a great angle or good lighting but still) only to have my mom then say &quot;don&#39;t look, i feel like i&#39;ve gained so much weight the past few weeks!&quot;), a haircut always helps me to reframe, a shock to the mental model i&#39;ve made of myself. i&#39;m thankful for the way that rain sounds when it falls on the skylight in our kitchen. i&#39;m thankful for <a href="https://twitter.com/zachlieberman/status/980060952367333377">more blur tests</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/331-1515.html" class="btn btn-secondary">← 3/31</a>
+        <a href="/letters/330-8993.html" class="btn btn-secondary">3/30 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

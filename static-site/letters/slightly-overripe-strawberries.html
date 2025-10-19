@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="slightly overripe strawberries">
+  <title>slightly overripe strawberries - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>slightly overripe strawberries</h1>
+        <time datetime="2020-05-20T00:00:00Z">May 19, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i had to have my google password reset by an administrator this morning but they responded quickly and other people had also had to get their passwords reset recently so i didn&#39;t feel as embarrassed. i moved my standing desk into sitting position, which i&#39;m going to try this week to see how much of my feelings of exhaustion and soreness are caused by standing poorly all day. there were multiple moments when i felt cringey about my interactions with the product team i&#39;m starting on, since my boss who i&#39;m taking over is deeply loved and respected by them and i am noone to them and so i feel this sense of &quot;i need you to love me&quot; and every interaction feels weighty and i overthink it and cringe at myself but i don&#39;t feel like i have the ability to engender love yet and i just need to be patient</p>
+<p>i was talking to katie after reading her always excellent (but particular excellent in <a href="http://tinyletter.com/CapitulateNow/letters/capitulate-now-issue-39">the most recent issue</a>) newsletter and she was saying this thing about how it feels like writing builds up in her mind and she needs to get it out or things just back up, and i think i&#39;ve felt like this in the past, but for me now it&#39;s more like i know that every day i don&#39;t write is, in some sense, a &quot;lost&quot; day, that i know if i don&#39;t write about some thoughts in the moments close to when they coalesce they fade or vacate and then whether i&#39;ll have a memory later to revisit them feels so contingent, i have a pretty good memory but you can&#39;t remember EVERYTHING, but so i feel this sense of loss if i don&#39;t do the project</p>
+<p>(it makes me think of the moment in &quot;<a href="https://soundcloud.com/songsabout/the-circus-feat-kenneth-koch">the circus</a>&quot; where kenneth koch writes &quot;<em>It is beautiful at any time but the paradox is leaving it / In order to feel it when you’ve come back the sun has declined</em>&quot; the paradox of leaving it in order to feel it)___PARAGRAPH_BREAK___</p>
+<p>i didn&#39;t write about it at the time we finished it because i didn&#39;t have the energy to invest in writing at length but i really did end up appreciating <em>the wire</em>, especially the final season and the parallel structure of mcnulty and that shitty newspaper columnist, the fun awful parallels between the pair of white male fabulists failing upwards on the strength of their ability to tell people what they want to hear, ___PARAGRAPH_BREAK___</p>
+<p>that i write these notes without (as far as i know, for the most part, as much as i am aware of) egregiously making shit up or juicing details, which is something that i absolutely did intentionally and without shame in my nonfiction writing when i was younger (i remember my mom calling me after a certain essay was published and pausing and saying, softly, &quot;it was very beautiful. but...you know that&#39;s not true, right?&quot;) and thought that people who argued against doing it were either delusional liars who were definitely doing it but didn&#39;t truly know themselves enough to realize it or people who weren&#39;t artist enough to marshal the full power of genre and form</p>
+<p>but i don&#39;t feel that way now, or at least with nothing like the force i used to, and part of why these have been a different project for me is this knowledge that there is this form which in some ways feels like a restriction, because these are by their nature less composed, not polished, but also accepting that allows me to share something and then let go of it, especially because i can&#39;t go back and change it and i am not trying to be a writer so there&#39;s no like career reason to lie about things because this writing project leads nowhere (in a good way!) than to continuing this writing project, and to do so in such a way that it enhances my life, </p>
+<p>one of the reasons that having a newsletter is so different than what blogging was like is that for days after publishing a blog post i would be going back and catching typos and tweaking editing, chasing these ghosts in my head, and with this sometimes i&#39;ll click send and then know that i wrote the date completely wrong in the subject line and i just say &quot;fuck it&quot; and publish it anyway and that&#39;s very freeing</p>
+<p>i did acid on saturday for the first time in a few months and that was clarifying in the way that it always is for me, a reset, it&#39;s so weird that i just eat this tiny piece of paper that tastes like nothing (this one had a picture of bart simpson on it) and yet i become what feels like the best version of myself, with this engine running on wonder churning in my stomach all day, my favorite state of mind is &quot;having lots of ideas happily&quot; and that gets me into that place pretty well</p>
+<p>joanne mcneill&#39;s book <a href="https://www.amazon.com/dp/B07MYX4S1Z/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1">lurking: how a person becomes a user</a>, which is some of the best tech writing i&#39;ve ever read, it&#39;s so sharp and fun and dense with thoughts and readings and anecdotes and experiences, the kind of book where you feel an urge to highlight every paragraph</p>
+<p><a href="https://twitter.com/ericschmerick/status/1261680615784579073">this tweet about the new york times food section</a>, which i think is just perfectly crafted with nine (9) very funny jokes that build on each other and crescendo with anchovies</p>
+<p>this cool <a href="https://twitter.com/everestpipkin/status/1261893242683109376">experimental bookmarking prototype</a>
+ </p>
+<p>today s reminded me of <a href="https://apps.apple.com/us/app/huji-cam/id781383622">hujicam</a>, which is my favorite camera app (thanks to ec for teaching me about it and giving me instagram lessons), what i love is the lack of control and the sense of randomness and physicality, that you can &quot;redevelop&quot; pictures multiple times and they&#39;ll take on different characters</p>
+<p>the <a href="https://open.spotify.com/album/2xkZV2Hl1Omi8rk2D7t5lN">new strokes album,</a> which, as someone who has enjoyed isolated moments off the back half of their catalog without getting too deep into them, this new one has really hung in there on the listens and even d mentioned liking it, the hill and valley chorus melody in &quot;<a href="https://open.spotify.com/track/5ruzrDWcT0vuJIOMW7gMnW">the adults are talking</a>,&quot; the song &quot;<a href="https://open.spotify.com/track/2mDYYGaGd9uXKkK2YhDA3i">brooklyn bridge to chorus</a>&quot; has some disco falsetto moments but also the chorus reminds me of green day, the verse guitar tone on &quot;<a href="https://open.spotify.com/track/55N8cxpE1QDoeaaNqUnoZ2">bad decisions&quot;</a> which sound like the cure, the staccato piano rollercoaster in the dark of &quot;<a href="https://open.spotify.com/track/7lu6YLrlB1MU7HW8DJSuPa">at the door</a>&quot;, the guitar tone on &quot;<a href="https://open.spotify.com/track/5ncofiedz9Ej6YkvvXMKVn">not the same anymore</a>&quot; which bites &quot;into the great wide open&quot; everything is references to references but they&#39;re put together prettily and with energy which is most of what i want most of the time</p>
+<p>i pulled a thorn out of miso&#39;s paw this morning</p>
+<p>slightly overripe strawberries</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/frozen-pizza.html" class="btn btn-secondary">← frozen pizza</a>
+        <a href="/letters/untitled-2020-05-13.html" class="btn btn-secondary">Untitled 2020-05-13 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

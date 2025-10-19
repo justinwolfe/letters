@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="teslas are the subaru of LA">
+  <title>teslas are the subaru of LA - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>teslas are the subaru of LA</h1>
+        <time datetime="2024-02-10T21:20:51.645133Z">February 10, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><a href="https://www.instagram.com/ellenogradyart/p/C3LYwswPqMl/"><img src="/api/images/418" alt="image.png"></a></p>
+<p>i&#39;m thankful we could afford to take a brief vacation to LA last weekend to get out of endless rainy portland winter, even though as it turned out it rained, often heavily, basically all day every day the entire time we were there, yielding to reveal the sun only the cold morning we left for the airport to go home (i&#39;m thankful for a former coworker who lives in london and whenever she is flying out somewhere else posts a picture of the tarmac to her stories to show that london is once again sunny the exact moment she leaves it).</p>
+<p>i&#39;m thankful, as a person who does not drive and who loves very much walking long distances in most types of weather but who does not like doing so in the rain when not adequately protected, for the existence of ride share apps, even though i know that in many ways they are bad. i&#39;m thankful for the experience of taking the shortest uber ride i have ever taken to avoid getting drenched and cold again after having just barely kind of dried off.</p>
+<p><img src="/api/images/417" alt="image.png"> </p>
+<p>i&#39;m thankful for the truism that everyone in portland drives a subaru and thankful for d&#39;s observation that teslas are the subaru of LA, which led to a game of pointing out all the teslas we saw (along with her observation that some of them have translucent roofs which provided information about the degree to which i do not look up but also i was underwhelmed because in my head i imagine the glass not being tinted which of course it would need to be for safety reasons). i&#39;m thankful that we were at a stationery store and i overheard two women around our age talking about concerts and woman one asked the other if she&#39;d been to any hardcore shows and woman two said &quot;i&#39;ve never been to like a DEIY show&quot;</p>
+<p>i&#39;m thankful that we stayed in koreatown because that meant our favorite restaurants (and multiple H Marts) were all within easy walking distance and we could go to them repeatedly. i&#39;m thankful for for the whole fried fish that comes with the soondubu at BCD tofu (and the experience, if you get the seafood version which we always do, of slurping a mussel shell full of broth and tofu and the meat, the seollongtang with assorted meats at sun nong dan that comes with the perfect (and heaping) trinity of fresh panchan (cabbage (for me), radish (for deborah), scallion (to share)) and the overpriced but heavenly hand rolls at kazunori (the creamy scallop and crab and i don&#39;t even generally love creamy as a savory food adjective). i&#39;m thankful that as someone who didn&#39;t read <em>the catcher in the rye</em> at the right age to read it and coming to it later was like &quot;why do people like this so much?&quot; i have a similar experience of in-n-out but i&#39;m thankful that we ate it outside while hungry during a short break in the rain and it totally hit the spot.</p>
+<p>i&#39;m thankful despite many obstacles we got to hang out with h on our last night there and got out of the rain and into a bar where deborah ordered the worst tasting $17 cocktail i have ever drunk which she clearly hated and i traded to give her my better tasting cocktail thinking i could force myself to drink it but it was so gross (fernet-based don&#39;t @ me) that i just stopped and occasionally pretended to be taking a sip but then after drinking my drink and realizing i wasn&#39;t drinking the other one at all was buzzed enough that the taste didn&#39;t matter to her and so she downed the whole thing and afterward i tried to pass a law that she could never again in her life order a cocktail at a bar that could not be plausibly described as &quot;sweet and fruity. i&#39;m thankful for the taco place we went to which had whatever fillings and salsas but did this really cool thing where they sandwiched a spiderweb of hard fried cheese in between the two tortillas of the taco and also we&#39;d managed to get the one outside table under an umbrella with a heat lamp.</p>
+<p><img src="/api/images/420" alt="image.png"> </p>
+<p>i&#39;m thankful that the hotel was across the street from a 7/11 and i&#39;m also thankful that we ate and drank various things from the minibar (which growing up just seemed like something people in movies did and like not actually real? which also reminds me of a meme that really made me laugh that shows a table covered with an elaborate array of healthy portions of various breakfast foods and then the caption is something like &quot;breakfasts kids in 90s movies take a single bite of and then leave&quot;). i&#39;m thankful that i learned as we discussed what she might drink from the minibar she had been operating in a reality where &quot;underwood&quot; canned wine is carrie underwood&#39;s vanity brand (her 818). i&#39;m thankful for the experience of standing outside of the hotel smoking a joint just barely dry under an overhang as the rain falls heavily all around (i&#39;m thankful that weed is legal in california, even though it is so expensive compared to oregon).  </p>
+<p>i&#39;m thankful that though i had a deeply unpleasant digestive health complaint which had me thinking that i might have to go to the hospital (i&#39;m totally fine) and which i will say nothing more specific of because it&#39;s gross but i have to record it here because i don&#39;t know if i have ever in my life felt such a deep intense chemical rush of gratitude as i did when i knew it was over!</p>
+<p>i&#39;m thankful, when stuck in a hotel room more than you expected to be, for the experience of surfing basic cable, which is like so deeply proustian in me. i&#39;m thankful that this trip i primarily switched back and forth between a marathon of <em>below deck</em> on bravo and a marathon of <em>the hunger games</em> on amc. i&#39;m thankful for the formal experience of half-watching two different TV channels and trying to surf back and forth between them, always chasing an unreachable high where their commercial breaks line up just right and you&#39;ve beat the system), which is a mode of consumption not replicated in the streaming era (or i guess it is, but different, since instead of toggling back and forth between content in one screen you&#39;re toggling back and forth between two different screens).  </p>
+<p><img src="/api/images/419" alt="image.png"> </p>
+<p>i&#39;m thankful for how ridiculous <em>true detective: night country</em> (after <em>a murder at the end of the world</em> it&#39;s really been a bad year for snowy murder shows!) is (which is not a shock since the other seasons were all ridiculous in their own ways) but that i continue to be entertained by it especially an extended sequence in last night&#39;s episode of jodie foster reexamining footage on her phone like she is scrubbing through a porn video which seemed to hook into an interesting larger genre critique in the episode. i&#39;m thankful that <em>survivor</em> is coming back soon (i wish <em>survivor</em> was just constantly on and it already basically is). i&#39;m thankful we tried to watch this korean reality dating show called <em>heart signal</em> and the first episode was like two hours of nothing at all happening it makes <em>terrace house</em> look like dickens (one of my theories about why it was so boring is that the contestants weren&#39;t allowed to share their ages or professions and i feel like age and thinking about your age relative to others is so infused into the culture to the level of the language that maybe that was why they literally had nothing to say).  </p>
+<p><img src="/api/images/416" alt="image.png"> </p>
+<p>i&#39;m thankful we were talking to my parents about watching the current season of <em>the traitors</em> (which is entertaining though unpopular opinion the show would be better without alan cumming) and i did the riff i do often about how reality shows would be so improved if you could cut out all the repetition and previewing and just watch pure &quot;fresh content&quot; and my dad did the hack bit he does where he&#39;s always like &quot;well why don&#39;t you make the app and get rich!&quot; but i feel like while it&#39;s not a hard problem technically to process video in that way, it&#39;s really not a problem that can be solved externally in any way that&#39;s usable because of a lack of external access to the underlying video for most people (even i&#39;m too lazy to torrent now)—it has to be handled internally by the services themselves (like i could envision a bad version of it where someone is actually manually tagging the repetitions in the shows using a chrome extension and then those sequences are shared and used to drive the playback in the browser), but it doesn&#39;t scale). i&#39;m thankful to listen to <em>the office</em> sometimes while playing guitar because there&#39;s no soundtrack so it doesn&#39;t disturb my playing.</p>
+<p>i&#39;m thankful for the movie <em>american fiction</em>, which was incredible and one of the very rare times i think a movie actually improves on a book (which i put down to a certain infusion of sentiment, both in the individual performances (especially jeffrey wright&#39;s, which is beautiful) and in the way small moments of grace, often superfluous to the plot, are framed and presented, and normally i am really allergic to sentiment but i feel like the movie totally earned it. you do miss some of the metatextual experience of reading the actual full text of <em>my pafology</em> but also idk how you would translate that cinematically and the compromise they come to is pretty good).  </p>
+<p><img src="/api/images/421" alt="image.png"> </p>
+<h2>Previously on this day</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-210/">2016</a> (<em>bizarre dream, biking on ice, simulation of the ocean</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/21017/">2017</a> (<em>my last day at this job, fish sauce on pizza, the feelings linger in the ends of the hair</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/slack-dming-someone-a-joke-in-a-boring-meeting/">2021</a> (<em>free britney</em>, <em>jonathan strange and mr. norrell</em>, <em>slack DM</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/my-favorite-recent-book.html" class="btn btn-secondary">← my favorite recent book</a>
+        <a href="/letters/bulldozing-for-content.html" class="btn btn-secondary">bulldozing for content →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/2">
+  <title>thank you notes 5/2 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/2</h1>
+        <time datetime="2016-05-02T00:00:00Z">May 1, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the documentary <em>finders keepers</em>, which is on netflix and which we watched over the weekend. i&#39;m thankful that the movie takes place in a small town in north carolina, which is the kind of place where i&#39;m from. i&#39;m thankful for movies that take place in that setting, where i haven&#39;t lived since i was in fifth grade—i&#39;m thankful in particular for <em>sherman&#39;s march</em>, which gave me grainy 8mm glimpses of the lifeworld that my parents were young in, and <em>eastbound &amp; down</em>, which reminds me so intensely of my own 90s NC childhood (down to kenny powers&#39; brother&#39;s young son being named justin and having bleached blonde hair and wearing an oversized t-shirt and jorts as i did when i was a young child)(i&#39;m thankful to remember boogie boarding at myrtle beach in my body glove rash guard). i&#39;m thankful that <em>finders keepers</em> at first felt like it was going to be a broad local color character comedy about the weird coincidence of shannon whisnant finding john wood&#39;s amputated leg in a barbecue smoker he buys at a storage unit auction.</p>
+<p>i&#39;m thankful that it <em>was</em> that at first, kind of, but that over the course of the movie, it deepened into something more rich and sad. i&#39;m thankful (slight spoiler alert for the rest of these notes) for the way that it seems as if the john wood, who lost his leg in an airplane crash that killed his father and who went through several downward spirals into drug abuse and alcoholism and homelessness, will be the tragic figure of the film, but that actually his story ends in redemption and it&#39;s shannon whisnant, the small town chronic entrepreneur who is desperate to use the amputated leg to make himself famous, who is the one we feel bad for. </p>
+<p>i&#39;m thankful for two very sad scenes of him late in the movie: one in which he tearfully describes the experience of leaving the courtroom after he appears on <em>judge joe brown</em> and meeting a crowd of paparazzi taking his picture and calling his name, which he implies in a talking head is perhaps the happiest moment of his life, and another when he has the opportunity to appear on a reality show about small town auctioneers and at first feels like this could be his big break but then breaks down when on camera he asks the person who has bought his auction item (a lamp shaped like a woman&#39;s leg) if he wants him to sign it and the person says no. i&#39;m thankful for the hard-to-watch footage of him pacing in a dark parking lot and feeling angry about being made a fool of and wanting to be done with all this bullshit and then thankful for how sad i feel when he caves to a producer&#39;s request to return to set film more talking head footage for the show, thankful for the limp, deflated performance of his usually smiling, snake-oil-selling self that he provides.</p>
+<p>i&#39;m thankful for the documentary crew&#39;s interviews with his wife. i&#39;m thankful for how we&#39;ve seen evidence through the film that she seems to genuinely love him despite/because of his ridiculousness, thankful for how her eyes sparkle when she talks about how he makes her laugh. i&#39;m thankful for how sad this makes it when in their kitchen says that their marriage has been destroyed by his quest to be on TV and that they talk a lot about divorce lately. i&#39;m thankful how in one of the interview segments, she&#39;s talking about this and we hear his voice, slow and slurry with drunkenness, and the camera tracks over and refocuses on him, sitting in a darkened living room and wearing sunglasses inside so we can&#39;t see his eyes and rambling about how things would be different if he could just get in front of a camera and show people what he can do. </p>
+<p>i&#39;m thankful for the uncomfortable twinges of recognition i see when i watch shannon whisnant. i&#39;m thankful to remember how my dad filmed a video of me drawing and singing along in to a tom petty song that won a radio station concert ticket contest when i was a little kid. i&#39;m thankful to remember watching VHS dubs of his appearances on style file, the weekly local TV news magazine he helped produce. i&#39;m thankful to remember appearing in his local TV news promos over the years when i was a kid (i&#39;m thankful to remember one in which i wore a green beret my grandfather had given me and planned a charity baseball event as if it was a military coup and another in which i ate a school lunch sitting next to my dad&#39;s large cameraman who was dressed in a prison uniform to promote a story about how school lunches and prison lunches were the same). i&#39;m thankful to remember how cool it seemed when my teachers and kids at school would tell me they had seen <em>me</em> on TV. i&#39;m thankful to remember when my parents tried to take me to an acting class to explore my performances becoming more professional and i was really bad at it and didn&#39;t go more than once or twice. i&#39;m thankful that my brother is an actor and a good one and thankful for the times i&#39;ve gotten to see him perform in regional theater, even though i don&#39;t really tend to like the theater.  </p>
+<p>i&#39;m thankful to remember how cool i thought it was when he was working at the family channel and he went all the way to new york city (which seemed like an impossibly exotic metropolis) to film a promo campaign with the actors from the <em>dukes of hazzard</em> (a show i had never watched) in times square. i&#39;m thankful to remember how after that job ended (because of the channel&#39;s acquisition by fox and rebranding as the fox family channel) and we moved to tennessee so he could work at the nashville network (which then within a year was bought by viacom and became the national network and then spike TV) and how when we moved that time, he had an expense account and how i thought this was like a blank check situation and that we were really living like celebrities now. i&#39;m thankful to remember going to a chain steakhouse with my family during the expense account days and ordering a full rack of ribs even though i was tiny and didn&#39;t need a full rack of ribs because it was expensive and i wanted something expensive, to make me feel important. i&#39;m thankful that the waitress was impressed that i ate the whole rack of ribs, my hands and face sticky with sweet barbecue sauce, and my dad said, &quot;<em>he&#39;s wiry, like barney fife</em>&quot; and then i went to the bathroom and was very sick from my excess.</p>
+<p>i&#39;m thankful to remember the periods of my childhood (usually during stints working in local TV news) where my dad&#39;s work life was really hard and unpleasant and made him very unhappy. i&#39;m thankful that i think part of the reason that as an adult i associate so much happiness with domestic things like cooking and cleaning and running errands is that my stay at home mom seemed so much happier doing those things, while it seemed like when my dad would get home in the evening he had suffered so much, which i think subconsciously imprinted on me in a deep way. i&#39;m thankful that though i was encouraged by both my parents and the american culture of the clinton years to follow my dreams, the example i saw of work was that, save for the occasional moment of artistic satisfaction you got from a creative edit you did or a cool shot you snuck into a boring promo, work was just something unpleasant you had to do every weekday in order to get to the time you spent with your family, which you primarily spent watching television (i&#39;m thankful for all my years of watching television with my dad, how from him i learned to be an auteur and a connoisseur and a critic). i&#39;m thankful that my dad didn&#39;t have a stroke or a heart attack when i was younger, which i often feared he would when i would see the veins in his head bulge with frustration and anxiety. </p>
+<p>i&#39;m thankful for the guilt i felt when i was exploring myself during and after college when i realized that my dad had never really developed any hobbies or ways to enjoy his free time because rather than &quot;exploring himself&quot; he had to earn a living to support our family. i&#39;m thankful for the year i spent living with my parents after i came back from living in korea in which i was not working and writing and steadily getting more anxious and self-conscious —i&#39;m thankful that my parents were supportive of me, which allowed me the space to do some work that i&#39;m proud of and eventually get to a good new place in my life, even if it was also an emotionally difficult period for all of us and i know my dad (even more than my mom) was worried about me and what i was doing with my life. i&#39;m thankful that all my parents have ever wanted is for me to be happy. i&#39;m thankful that my dad likes to joke that the last book he read was <em>charlotte&#39;s web</em> as a child, but that he always wants to read the things i write. i&#39;m thankful that my dad at this point in his life has found some things that he loves to do and places he loves to be and people he loves to spend time with. i&#39;m thankful that work still isn&#39;t always the greatest pleasure in his life, but that i think he&#39;s developed much strong skills for enduring its occasional unpleasantness. i&#39;m thankful for how much he loves facebook, even if it weirds me out because social media weirds me out—i&#39;m thankful that he has that space to express himself, which i think is really important to him in the way that these notes are really important to me. i&#39;m thankful for the ALS challenge video he filmed a few years ago on the nude beach near my parents&#39; apartment in miami, which made me laugh when i watched it (i&#39;m thankful for the extra-long blur he put over his dick).</p>
+<p>i&#39;m thankful for how multiple times a week, i delete the twitter app on my phone or give myself rules for how often i can look at it during the work day because i feel like it&#39;s bad for my brain and soul and also i feel kind of pathetic on it, like everyone can see how nakedly i want to be liked and loved and favorite and retweeted and how i envy people who seem to be &quot;doing it well&quot; or better than me and for the gap between what some dark small part of me wants it to be and what it actually is, which is just me standing before a massive void and being reminded of how small i am in the universe. i&#39;m thankful for how excited i was yesterday when a reality star i was obsessed with when i was younger liked a tweet i mentioned him in. i&#39;m thankful for the magic of knowing a person that i had watched on the screen and thought about for hours and for years had looked at words that i wrote and held them in his mind. i&#39;m thankful for the daily opportunities i get on the internet to question whether that magic is a blessing, because of the shots of joy it provides, or a curse, for the way that my addiction to the shots exacerbates and feeds this lack inside of me, this strange need i feel to be known outside of my family and my street and the small town where i live. i&#39;m thankful for <em>finders keepers</em> and for <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=dave%20eggers%20teen%20idol">other artworks</a> that give me the opportunity to explore the complicated pain that the desire for fame can create.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-53-1551.html" class="btn btn-secondary">← thank you notes 5/3</a>
+        <a href="/letters/thank-you-notes-51.html" class="btn btn-secondary">thank you notes 5/1 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

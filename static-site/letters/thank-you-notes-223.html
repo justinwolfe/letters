@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/23">
+  <title>thank you notes 2/23 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/23</h1>
+        <time datetime="2016-02-23T00:00:00Z">February 22, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that our neighbors&#39; band was rehearsing extra loud last night. i&#39;m thankful that when we first moved in, i thought i would find their rehearsals annoying or disruptive, but that actually i find them reassuring. i&#39;m thankful to hear them play the same songs over and over again, that i have favorites within their set, that i think of this one as &quot;the single&quot; (the catchiest basslines and most dynamic structure, the one they play the most) and this one as &quot;the egyptian sounding one&quot; (a march with a snakey modal moog line). i&#39;m thankful that because they were playing louder last night (or had the basement door or the windows open to the warm air), i could hear, from my bathtub, new (or new to me) details on &quot;the single,&quot; including some really cool high pitched howling background vocals that grated in an interesting way against the lead singer&#39;s low ian curtis growl and the noisy synth bed. i&#39;m thankful that i still haven&#39;t managed to make out a single word of the lyrics.</p>
+<p>i&#39;m thankful, with <em><a href="http://www.amazon.com/gp/product/B004G8QTG6/ref=dp-kindle-redirect?ie=UTF8&btkr=1">stone arabia</a></em> still in mind, for the way that while listening to them rehearse, i fantasize about what their band looks like when they play and how they dress, what their record covers would look like, what their songs are named. i&#39;m thankful for the night d and i spent an hour digging through <a href="https://bandcamp.com/tag/bloomington">our town&#39;s bandcamp</a> and concert listings trying to figure out who they are with no luck. i&#39;m thankful for the fragments of mysterious information we&#39;ve gleaned about them by overhearing the conversations they had while drinking on their porch in the fall (i&#39;m thankful for the time when i heard them describing what sounded like their experience conducting a demonic seance, how i laid flattened to the carpet under the closest open window so i could hear them without them knowing i was there). i&#39;m thankful to occasionally think of the different ways i might describe their sound if i ran into them (lately i have been thinking &quot;new order conducting a demonic seance&quot; or &quot;the fall after being struck by lightning&quot;) and to occasionally fantasize about writing a fan letter and putting it in their mailbox (though that might be difficult because a) i don&#39;t want it to come across as a stealth passive-aggressive noise complaint but b) also don&#39;t want to go too far in the other direction and encourage them to play too much louder or later.). i&#39;m thankful, even though i enjoy hearing them, that they always stop playing before 10:00pm.</p>
+<p>i&#39;m thankful that yesterday was a recycling day and i was finally able to clear out the last of the pile of cardboard boxes and packing filler and other assorted recycling, which, because of a disruption in recycling pickup caused by unfortunately timed snowfall in january, had been sitting in the little hallway between our bedroom and the kitchen since christmas, ambiently annoying me with its clutter every time i passed through. i&#39;m thankful that i put the yellow trash tax sticker on the handle of the trashcan before taking it down the driveway to the front yard, because i find that i always forget to put it on if i wait to do so when i get to the front yard and then have to make an extra trip. i&#39;m thankful that i found out that the office accountant, who is extremely conservative, recycles everything that she can, not out of some devotion to the environment or because she believes in climate change, but because she is a penny pincher and this way she doesn&#39;t have to pay for her trash to be collected (i&#39;m thankful for when you can do something that feels selfish but that it also creates a small good). </p>
+<p>i&#39;m thankful that when i asked the office accountant if she was feeling better this morning (she went home early yesterday because her stomach was upset), she blew a raspberry with her mouth and then said &quot;enh, about 90%&quot; (i&#39;m thankful when people quantify their feelings and to remember how at the hospital recently, a nurse asked me to give her my pain tolerance and i said &quot;very low!&quot; and she said &quot;so about a 3 or a 4?&quot; and i swallowed and agreed even though i wanted to say &quot;no, lower!&quot;). i&#39;m thankful occasionally, when i find myself frustrated by what seems like the office accountant&#39;s excessive anger or an inability to give people the benefit of the doubt, to remind myself that, because of years of smoking, she doesn&#39;t have a sense of smell or taste anymore, that every day of her life she goes through the world not smelling and tasting things, which is such a sad thing to imagine that it always makes me empathize and understand her crabbiness a little better. i&#39;m thankful, also, for how she is just as often delightful as she is grouchy, especially in the clever ways that she solves problems, like how she described, since her husband was out of town and she&#39;s afraid of heights and doesn&#39;t trust ladders, driving her truck around the walls of her house and standing in its bed to take down her christmas lights.</p>
+<p>(i&#39;m thankful that as i was writing the previous paragraph, d gchatted me to tell me that when she went down to the street to retrieve the emptied recycling bins and trash cans (i&#39;m thankful that she always does this the morning after i take out the trash, even if it rains or snows), she saw one of the members of the band next door &quot;drinking her morning coffee in a big poncho in the backyard.&quot; i&#39;m thankful to add this juxtapose this with my vision once of the singer of the band, who kind of looks like <a href="https://www.google.com/search?q=hamilton+leithauser&espv=2&biw=755&bih=750&source=lnms&tbm=isch&sa=X&ved=0ahUKEwia1YuZio7LAhVok4MKHTvlBDQQ_AUICCgD">hamilton leithauser</a> with a pompadour, biking sweatily up our driveway in a white dress shirt one warm evening.)</p>
+<p>i&#39;m thankful that on my sunday run, rilo kiley popped up in my spotify discover and i was reminded of when my friend a and i briefly tried to be a vocal-guitar duo my junior year of college. i&#39;m thankful to remember the rehearsals we had in my bedroom, which were, at that time, the only times i was ever alone with a girl in my bedroom and thus qualified as the most intimate moments of that period of my life, though i only understand this in retrospect and simply felt it as an abstract anxiety at the time. i&#39;m thankful to remember us awkwardly drinking our high lifes and sitting cross legged on my beige carpet in the mood lighting of my desk lamp. i&#39;m thankful to remember how i would open the back window because the sound of traffic outside seemed to make it feel less still and tense in the room, even though that also meant that people outside could hear us better. i&#39;m thankful that being more exposed to the world made it feel safer to be exposed to each other.</p>
+<p>i&#39;m thankful for our repertoire, which, at our most rehearsed, included covers of rilo kiley&#39;s &quot;<a href="https://www.youtube.com/watch?v=l58oAbglcW8&index=8&list=PLUqcjnbyz1vNmReU9cv705K7MuHXy1i3h">more adventurous</a>&quot; and &quot;<a href="https://www.youtube.com/watch?v=Zm-JvDhzNJs&index=5&list=PLUqcjnbyz1vNmReU9cv705K7MuHXy1i3h">i never</a>&quot; (which is what recalled this memory), nellie mckay&#39;s version of &quot;<a href="https://www.youtube.com/watch?v=FHcUArjHxHI">what&#39;ll i do</a>&quot; (our best song), and the VU&#39;s &quot;<a href="https://www.youtube.com/watch?v=jog8gh40Fho">femme fatale</a>.&quot; i&#39;m thankful for our only original, which was called &quot;io voglio una bicicletta (i want a bicycle) and was a song we wrote in italian (i&#39;m thankful we were both studying italian at the time) because we were both too nervous around each other to express our feelings in english and i had read somewhere about beckett writing in french when he felt unable to continue in english. i&#39;m thankful for &quot;io voglio una bicicletta,&quot; which was a cheery acoustic pop song about a young italian girl who sells everything she owns and then becomes a prostitute (&quot;ho venduto mio corpo&quot; (i sold my body)) in order to be able to afford a bicycle (i&#39;m thankful for the moment i half remember from <em>my brilliant friend</em> when lila is in the city and she sees someone reading a newspaper and she&#39;s so shocked because she&#39;s never seen a newspaper before, for how well that detail conveyed postwar scarcity)(i&#39;m thankful for how the word &quot;bicicletta&quot; always made me think of chiclets). </p>
+<p>i&#39;m thankful to remember how bummed out i was that our first scheduled performance, at a dinner party at a&#39;s house, was cancelled because i was in a car accident on the way to a party and got stranded in gainesville. i&#39;m thankful for how we got busy after that or something and stopped rehearsing often and drifted apart. i&#39;m thankful to remember the moment in the fall of senior year when i was outside a party peeing on the brick wall of a house with my friend b and he told me that a had a crush on me, that she had been avoiding me because it was too intense for her. i&#39;m thankful how i was naive and had no idea, and thankful to be able to confide in b, as we continued to pee, that i didn&#39;t really like a that way but was nurturing a similarly intense yet unspoken crush on a&#39;s friend k. </p>
+<p>i&#39;m thankful to remember how a few weeks after i told b this, he took me out one night and we sat on the rear bumper of his car talking and taking swigs from a bottle of nice tequila my parents had given me for my 21st birthday with a homeless man before he brought me to a party that k was at and where there was inexplicably a moon bounce in the backyard (i&#39;m thankful for our conversation about regional naming idiosyncracies, how she called it a &quot;bounce house&quot; and i called it a &quot;moon bounce,&quot; which i thought was <a href="https://www.youtube.com/watch?v=K1SFoFbeYMc">more poetic</a>). i&#39;m thankful to remember how the two of us bounced together in the moon bounce and how we collided in a sweaty heap on the rubber floor and it was the first time we had really touched.</p>
+<p>i&#39;m thankful to remember an underwear party that we had at the house where i lived senior year that a came to, long after our &quot;band&quot; dissolved and after i had forgotten completely that she had a crush on me or assumed that it had gone away (i&#39;m thankful that at that point, i had a crush on t, who at that same party leaned against me and whispered huskily in my ear &quot;i want you to come over to my house and i&#39;ll make you dinner,&quot; which was the most sexy thing a girl had ever said to me at that point). i&#39;m thankful to remember that at the party, i was wearing the outfit i always wore to underwear parties then (lol i am thankful this is a thing that existed in that stage of my life), which were a pair of vertically-striped blue boxers from old navy that i thought looked really good on me and a tight midnight blue t-shirt. </p>
+<p>i&#39;m thankful to remember at a certain point going into the living room of the house and a was the only person there, in some kind of nightie, and i&#39;m thankful that because of the sadness i associated with the memory, which has blurred it into a gerhard richter painting, i can&#39;t remember whether she kissed me or embraced me or just blurted out that she liked me. i&#39;m thankful to remember how bad i felt in the moment to say some version of no, that i didn&#39;t like her that way, which was a conversation i had always been on the other side of at that point in my life and had never been able to understand the difficulty of from the point of view of the person rejecting someone. i&#39;m thankful for the pain of gaining that knowledge. i&#39;m thankful to remember her eye makeup running and how we hugged and then she stepped out our back door into the night and never really hung out again.</p>
+<p>i&#39;m thankful for the album i was listening to while meditating last night, <em>tenderly (an informal session)</em>, which is a lo-fi practice tape of duets between the pianist bill evans and don elliot playing vibraphone. i&#39;m thankful for the intimacy and hiss of the music, for the studio chatter, for how the album offers a &quot;<a href="https://en.wikipedia.org/wiki/Tenderly:_An_Informal_Session">voyeuristic snapshot of two musicians playing purely for their own enjoyment</a>.&quot; i&#39;m thankful for how, halfway through the song &quot;laura,&quot; bill starts loudly and un-selfconsciously singing drum fills and everyone else in the studio seem to be trying very hard not to laugh. i&#39;m thankful how i love his overdub album <em>conversations with myself</em>, but thankful to prefer the sound of two people trying to connect, for the moments when they fail and the moments when they succeed.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-224.html" class="btn btn-secondary">← thank you notes 2/24</a>
+        <a href="/letters/thank-you-notes-anonymous.html" class="btn btn-secondary">thank you notes (anonymous) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/7">
+  <title>thank you notes 3/7 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/7</h1>
+        <time datetime="2016-03-07T00:00:00Z">March 6, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that in the fall mice started to eat our silicone muffin cups until i trapped and killed them all in the night and then we threw the remnants of the candy-colored cups away along with the other things contaminated by mouse poop and/or teeth. i&#39;m thankful that we forgot about this until yesterday, when d was in the middle of making <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.howsweeteats.com%2F2014%2F08%2Fbanana-streusel-muffins%2F&sa=D&sntz=1&usg=AFQjCNGxu324ict_CzpoRmV_pmN2Y3fr9A">banana muffins</a> for us to eat for dessert this week and realized we didn&#39;t have any muffin cups. i&#39;m thankful that walking out the back door, i could smell the floral scented dryer exhaust from the laundry i was doing. i&#39;m thankful that i biked over to the grocery store to buy more muffin cups in the shorts and a t-shirt i was wearing without putting on a jacket because it looked nice and warm outside. i&#39;m thankful that i just took my credit card with me, to travel light, and then thankful that a block away from the house, i also needed my keys to be able to lock my bike and went back and got them. i&#39;m thankful that it was colder out than i expected, especially when the wind blew hard, but that it wasn&#39;t that bad and was actually kind of invigorating, like it was waking up my skin. i&#39;m thankful that the muffin cups only cost.79 for 50. i&#39;m thankful that when i went to check out, i shared a nice warm smile with the employee overseeing the automatic checkout, who looks kind of like ann dowd and who i once had a lengthy conversation with about football (which i don&#39;t know anything about) and professional wrestling (which i know more about). i&#39;m thankful that in addition to the muffin cups, i also impulse bought two packages of those fruit-flavored icebreakers duo mints (strawberry and raspberry), which i think taste too good to not have any calories in them. i&#39;m thankful for the textural play of each tablet on my tongue, to roll it around feeling the tart nubbly bumps on one side and the smooth sweetness on the other. i&#39;m thankful that i was introduced to this candy in california by d&#39;s father, who kept them in his car and would give us all one each morning when we left the house, calling them &quot;our daily mints,&quot; which because he&#39;s a pastor made me think of communion.</p>
+<p>i&#39;m thankful thinking of eating these mints and communion reminds me of the sunday which was our last day in california with d&#39;s family last summer, when we all went to church together before splashing in the ocean at la jolla cove (i&#39;m thankful that i slipped on a rock while posing for a picture and got my pants wet and so changed into another pair of pants in the back of the car once and how when i got back in the car, d and e were scandalized that i&#39;d gotten &quot;<em>naked</em>&quot; out on the street for all to see and i said &quot;<em>but i was wearing my underwear</em>&quot; and they said &quot;<em>to us, that&#39;s naked</em>!&quot;). i&#39;m thankful for my amusement at finding out that the church where we were attending service, which was not d&#39;s father&#39;s parish church, was the bigger, more impressive church where d&#39;s mom was demanding that we have our second &quot;real&quot; wedding (after we eloped) back when she was demanding that (i&#39;m thankful we didn&#39;t have to have a second wedding because she overplayed her hand in the ever-escalating negotiations about the wedding by asking, through e, whether e&#39;s friends, who d and i had never met and who are a decade younger than us, could serve as d&#39;s bridesmaids and my groomsmen, &quot;because we would look lonely up on the stage just by ourselves&quot; and it would be bad for the pictures, which was really the straw that broke the camel&#39;s back). </p>
+<p>i&#39;m thankful for the church, which was really beautiful and made me respect d&#39;s mom&#39;s taste, even though i&#39;m happy we didn&#39;t have to have a second wedding there (i&#39;m thankful this fact made it possible for me to enjoy the church even more). i&#39;m thankful that the church was set at the base of a steep hill and the tall window behind the altar offered a beautifully picturesque view of the hill that, in its landscaping, nicely split the difference between nature and cultivation, with scrub and rocks and bushes and flowers and trees and squirrels. i&#39;m thankful that morning the hill and the sky and the hall of the church were all full of warm sunlight, which is one of the natural phenomena which allows me to momentarily imagine the existence of a benevolent god. </p>
+<p>i&#39;m thankful that last night when i was meditating in the dark, a minute and 35 seconds before my 40 minute timer was about to go off, i heard an explosion in our bedroom. i&#39;m thankful that i yelled out &quot;<em>are you okay</em>?&quot; and d yelled out that she was okay; i&#39;m thankful that though a light bulb exploded, flinging shards across the carpet, neither of us was near it and so it was okay. i&#39;m thankful that, mortal danger escaped, my brain slipped into a mode of light irritation, despite the fact that i had just meditated for 38 minutes and 25 seconds. i&#39;m thankful that meditation hasn&#39;t cured me of the problem of being a person, but that it makes me feel good generally when light bulbs are not exploding. i&#39;m thankful that i picked up the big pieces of glass with my fingers and then carefully vacuumed the rest of the carpet. i&#39;m thankful that the broken filament seemed stuck in the fixture of our cheap lamp, but that i was able finally to untwist it and replace it with the fluorescent bulb d gave me. i&#39;m thankful that because of some green promotion we got a whole box of fluorescent bulbs for free in the mail from our power company. </p>
+<p>i&#39;m thankful for the ios &quot;chimes&quot; alarm, which i think is the least jarring default alarm sound.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-l2-2678.html" class="btn btn-secondary">← thank you notes (L)(2)</a>
+        <a href="/letters/thank-you-notes-36.html" class="btn btn-secondary">thank you notes 3/6 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

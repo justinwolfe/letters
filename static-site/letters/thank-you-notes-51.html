@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/1">
+  <title>thank you notes 5/1 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/1</h1>
+        <time datetime="2016-05-01T00:00:00Z">April 30, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that when i woke up this morning, it was sunny outside and when i checked the forecast, the rain that was supposed to fall in the morning had been pushed back to the afternoon. i&#39;m thankful that now it&#39;s the afternoon and the sun is still shining and the rain has been pushed back to the evening. i&#39;m thankful that yesterday, while d was working in the study, i snuck out the backdoor in my raincoat and walked to the grocery store to get treats for dinner. i&#39;m thankful for haagen dazs salted caramel ice cream bars and thankful for the baguette which i underbaked but which was still delicious.</p>
+<p>i&#39;m thankful that, even though we had really enjoyed a long lazy lie-in yesterday morning, i suggested to d that we take advantage of the change in the weather to walk to the cemetery so that she could take pictures of the peonies there if they&#39;re blooming. i&#39;m thankful that though the peonies haven&#39;t really come in yet, as we found out when we got there, it seems like it might be warm enough that next weekend they&#39;ll have bloomed. i&#39;m thankful that at the edge of the cemetery, we watched a lone deer vault over a stone wall into the thick grass. i&#39;m thankful that he didn&#39;t run off as we edged closer to him and d took pictures, but instead turned and looked at us from different positions and directions, which made d joke about him posing for us. i&#39;m thankful that we saw spindly purple flowers on our way home that reminded d of something from final fantasy. i&#39;m thankful that i always identify the gravel alley that leads down to our backyard by the bronze-looking statue of a dog in the side yard of a neighbor&#39;s house.</p>
+<p>i&#39;m thankful for this description of simone de beauvoir&#39;s joie de vivre from <em><a href="http://www.amazon.com/gp/product/B00Z3E2KEC/ref=dp-kindle-redirect?ie=UTF8&btkr=1">at the existentialist cafe</a></em>: </p>
+<p>&quot;<em>The physical lusciousness of life was never a threat to Beauvoir: she could not get enough of it. As a child, she wanted to consume everything she saw. She would gaze greedily into the windows of sweet shops—&#39;the luminous sparkle of candied fruits, the cloudy lustre of jellies, the kaleidoscopic inflorescence of acidulated fruit-drops—green, red, orange, violet—I coveted the colours themselves as much as the pleasures they promised me.&#39; She wished the whole universe could be edible, so it could be eaten as Hansel and Gretel ate from the gingerbread house. Even as an adult, she wrote, &#39;I wanted to crunch flowering almond trees, and take bites of the rainbow nougat of the sunset.&#39; Travelling to New York in 1947, she felt an urge to eat the neon signs brightly arrayed against the night sky</em>.&quot;</p>
+<p>and for this passage about a private joke she and sartre shared:</p>
+<p>&quot;<em>For fifty years, it was a philosophical demonstration of existentialism in practice, defined by the two principles of freedom and companionship. Lest this sound too earnest, their shared memories, observations and jokes bound them together just as in any long marriage. A typical joke began soon after they met: visiting the zoo, they watched an enormously fat and tragic-looking sea elephant which sighed and raised its eyes to heaven as if in supplication while the keeper stuffed its mouth with fish. From then on, every time Sartre looked glum, Beauvoir would remind him of the sea elephant. He would roll up his eyes and heave comical sighs, and they would both feel better</em>.&quot;</p>
+<p>i&#39;m thankful that on our drive to the hardware and grocery store this morning, d pointed to the subway on woodlawn ave. which is locally famous as the subway where jared fogle lost all his weight. i&#39;m thankful that she jokingly called it &quot;<em>the subway of shame</em>&quot; and wondered about whether they had removed the plaque that for so long commemorated what he accomplished there. i&#39;m thankful for my most distinctive memory of that particular subway, which is walking there at sunset to buy dinner after a saturday afternoon of tripping on mushrooms with d, because even  the simple task of microwaving and assembling the leftovers in our fridge seemed too cognitively challenging to bear. i&#39;m thankful that i think that was the evening that while coming down we watched the movie <em>adore</em>, which is on netflix and which i highly recommend if you enjoy weird movies about australian people. i&#39;m thankful that on the drive home, i played &quot;<a href="https://www.youtube.com/watch?v=cvfxKbpoxRE">she don&#39;t use jelly</a>&quot; and thankful for d&#39;s revulsion at the idea of putting vaseline on toast, as well as her enjoyment of the silliness of the final chorus rhyme being &quot;<em>tangerines</em>.&quot;</p>
+<p>i&#39;m thankful that at the hardware store, i eventually found the right drill bit to replace the one i broke installing the bedroom air conditioner, as well as a matching screw and washer (i&#39;m thankful for how baffling i find all the measurements at the hardware store, how difficult it seems to find things and yet how i know that for those with the knowledge, their organization must make perfect sense). i&#39;m thankful that i had a dream last night in which i used needle nose pliers to easily gracefully remove the screen to the window in the living room where we&#39;re installing a new air conditioner. i&#39;m thankful that when i set myself to the task after lunch (homemade fried egg mcmuffins and hash browns with ugli fruit, the latter of which i&#39;m thankful i finally bought after often ogling in the produce section and which is a large and juicy and slightly tart but otherwise unremarkable in flavor and texture citrus). </p>
+<p>i&#39;m thankful that after several minutes of trying to budge the screen without any luck, i watched several youtube videos about how to remove window screens while gobbling handfuls of haribo gummy bears for strength. i&#39;m thankful that all the videos seemed to rely on tabs or plastic bars that our window didn&#39;t have. i&#39;m thankful that i briefly considered just cutting out the screen and leaving its frame in place, which is what i did when we first moved in and i couldn&#39;t pop out the screen in the bedroom window. thankful that finally on googling &quot;<em>remove window screen no tabs</em>&quot; i found a forum discussion in which someone mentioned just jamming a butter knife under the bottom lip of the screen and prying it loose, which i did and which worked perfectly. i&#39;m thankful, the part i was dreading done, that i then opened the air conditioner box to finish assembly for installation, only to find we&#39;d been sent a different (shittier) air conditioner than the one we ordered. i&#39;m thankful that i pondered just installing it anyway because the thought of having to repackage and ship back the air conditioner is daunting, but that instead i emailed the seller and will think about this further.</p>
+<p>i&#39;m thankful to have learned that my favorite actor <a href="http://www.hollywoodreporter.com/live-feed/elisabeth-moss-star-hulu-straight-888858">elisabeth moss is going to star</a> in an adaptation of <em>the handmaid&#39;s tale</em>. i&#39;m thankful for <em>the handmaid&#39;s tale</em>, which i read way too late a couple of years ago after liking some other margaret atwood and not liking some other margaret atwood and which is, i think, a perfect book. i&#39;m thankful, in other novel adaptations, for <a href="https://www.instagram.com/legokarlove/">this instagram devoted to reproducing scenes from knausgaard in lego</a>. i&#39;m thankful that for what feels like months, heid montag has been snapchatting the cover of a book called <em>believing god</em> and captioning it &quot;<em>need to read more of my book</em>&quot; or &quot;<em>i have got to finish this book</em>&quot; and how every time an image of the book comes up in her snaps, i think, &quot;<em>oh, she&#39;s actually done</em>,&quot; and then realize that she&#39;s still reading it. i&#39;m thankful that <a href="https://twitter.com/katienotopoulos/status/726237016384495616">katie notopoulos also enjoys</a> watching spencer pratt make and buy espresso every day. i&#39;m thankful, as someone who has not had coffee for years, for how invested i feel in whether he will pour or be poured a perfect 32 gram shot and for how happy it makes him when it happens. </p>
+<p>i&#39;m thankful that after several evenings of trying to defeat a giant killer robot in <em>metal gear solid v</em> and being killed by it, i finally managed to defeat it by cowering behind a rock to avoid its one shot kill laser cannon. i&#39;m thankful for <em>spirited away</em>, which is d&#39;s favorite miyazaki and which i fell asleep when trying to watch it the first time but which we watched all of on friday and was amazing. i&#39;m thankful for the devotion to both representing and reinventing nature that drives ghibli movies. i&#39;m thankful for <a href="http://helloglow.co/8-sinus-infection-remedies/">this tea</a> (item 3), which c recommended for allergies and which is very tasty. i&#39;m thankful that i did yoga for an hour instead of a half hour yesterday and thankful for the way that at the end when you lie on the back and lower your knees to your sides for a spinal twist, i didn&#39;t feel a twinge of a pull in my back like i normally do. i&#39;m thankful for times when doing more work pays off with tangible results. i&#39;m thankful for <a href="https://danaanm.tumblr.com/">dana&#39;s thank you notes</a>, which i look forward to reading every morning. i&#39;m thankful for <em>aquemini</em>.</p>
+<p>i&#39;m thankful that after i send these notes to you, i&#39;m going to go for a long bike ride in the sunshine. i&#39;m thankful for the extra benadryl i have taken to hopefully protect me from what i will inhale as i pedal through the springtime. i&#39;m thankful for drivers who yield at the intersections of the road with the walk/bike path, not only because that&#39;s the law but also because it&#39;s nice. i&#39;m thankful for the grace of a moving truck which came swinging around a tight turn when i was riding down fourth the other day and how i drifted to the far side of the lane to give him room but didn&#39;t even need to. i&#39;m thankful that now it&#39;s warm, lots of drivers have their windows open, which i like because when they wave me through intersections ahead of them on my bike, i can say &quot;<em>thank you</em>&quot; and know they hear me.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-52.html" class="btn btn-secondary">← thank you notes 5/2</a>
+        <a href="/letters/thank-you-noteskflo3.html" class="btn btn-secondary">thank you notes(kflo)(3) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

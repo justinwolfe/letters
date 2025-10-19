@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 10/19">
+  <title>thank you notes 10/19 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 10/19</h1>
+        <time datetime="2016-10-19T00:00:00Z">October 18, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <a href="https://twitter.com/lorenschmidt/status/788593213711982593">this cellular cityscape</a>. i&#39;m thankful for <a href="https://leejo.github.io/projects/lost_in_shinjuku/">multiple exposures</a> shot in shinjuku in one night in october of this year. i&#39;m thankful for <a href="http://www.rookiemag.com/2016/10/have-we-met-before/">these collages</a> about finding yourself in other people. i&#39;m thankful for <a href="https://www.google.com/search?q=hockney+polaroid+collage&espv=2&biw=1369&bih=732&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwjixZnl4ebPAhXBVj4KHfnYDWwQ7AkIKg">the hockney polaroid collage</a> my college had in its small art museum, which was the first art museum i visited as an adult. i&#39;m thankful for <em>a bigger splash</em> (the <a href="https://www.youtube.com/watch?v=vjArtzfHmNQ">movie</a> and the <a href="http://www.tate.org.uk/art/images/work/T/T03/T03254_10.jpg">painting)</a>. i&#39;m thankful for <a href="http://csmt.uchicago.edu/glossary2004/utpicturapoesis.htm">ut pictura poesis</a>. i&#39;m thankful for michael fried&#39;s seminal essay &quot;<a href="http://webcache.googleusercontent.com/search?q=cache:vSvOXxCY5AUJ:atc.berkeley.edu/201/readings/FriedObjcthd.pdf+&cd=1&hl=en&ct=clnk&gl=us">art and objecthood</a>,&quot; even if i don&#39;t really agree with most of what it says or the shots it fired at art that i love. i&#39;m still thankful for the closing paragraph, which i have always found weirdly sad and moving, and which reads:</p>
+<p>&quot;<em>This essay will be read as an attack on certain artists (and critics) and as a defense of others. And of course it is true that the desire to distinguish between what is to me the authentic art of our time and other work, which, whatever the dedication, passion, and intelligence of its creators, seems to me to share certain characteristics associated here with the concepts of literalism and theatre, has largely motivated what I have written. In these last sentences, however, I want to call attention to the utter pervasiveness—the virtual universality—of the sensibility or mode of being that I have characterized as corrupted or perverted by theatre. We are all literalists most or all of our lives. Presentness is grace</em>.&quot;</p>
+<p>i&#39;m thankful to imagine an inkjet printout of his seminal essay covered in streaks of semen. i&#39;m thankful for how instantly infinitely complex and beautiful a normal piece of paper can become if you crumple it in your hands, an improvised sculpture. i&#39;m thankful for how aluminum foil reflects light. i&#39;m thankful for the cloth napkins my parents bought us as a gift, even though we prefer paper towels. i&#39;m thankful for the kimchi fried rice that d made for dinner this week. i&#39;m thankful for the way that the kimchi juice stains rice red. i&#39;m thankful for the crunch of roasted seaweed under my teeth and then to feel it on my tongue, giving way and rehydrating and returning to some version of its original form. i&#39;m thankful for falling leaves, dead but still beautiful, for the small sounds they make as they fall and scatter and are stepped on. i&#39;m thankful for <a href="https://twitter.com/no1_emily/status/788694393976918016">a mown lawn</a>. i&#39;m thankful for the way that words can feel like objects sometimes.</p>
+<p>i&#39;m thankful for <a href="http://nymag.com/selectall/2016/10/it-doesnt-get-much-more-gimmicky-than-this-cloud-speaker.html?mid=twitter_selectall">this levitating cloud speaker</a> and to imagine it attacked by a rich person&#39;s dog. i&#39;m thankful for these silly <a href="https://shop.nga.gov/item/639528/rothko-untitled-1958-red-white-boxed-holiday-cards/1.html">rothko christmas cards</a>. i&#39;m thankful for <a href="https://en.wikipedia.org/wiki/Rothko_Chapel">the rothko chapel</a>. i&#39;m thankful for the idea of action painting. i&#39;m thankful for <a href="https://www.youtube.com/watch?v=KNwvUco146c">hans namuth&#39;s film of jackson pollock painting</a>. i&#39;m thankful for a while that there was no copy of the film on youtube and i uploaded a copy i found while doing research and received grateful comments from strangers. i&#39;m thankful to have gotten to pay very close attention to the film when i was in grad school, writing an essay about documentaries about art: </p>
+<p><em>Hans Namuth’s short documentary Jackson Pollock 51, filmed at Pollock’s home in East Hampton, NY,  features the only footage ever filmed of Pollock at work; Namuth’s still photographs, which he took before the film, are the only still photographs of Pollock working. Thus, much of the public perception of Pollock is a result of Namuth’s images and documentary.  In a long essay about the relationship between Pollock and Namuth, art critic Sarah Boxer notes that, in the wake of Pollock’s death, Namuth’s photographs were so popular that “articles on Pollock were often illustrated with Namuth&#39;s photographs rather than the paintings.”  The art historian Barbara Rose has suggested that Harold Rosenberg’s famous theory of action painting was, in fact, “not about painting at all”  but instead “describing Namuth&#39;s photographs of Pollock,” and, one might also assume, his documentary.</em>  </p>
+<p><em>In one of the most striking sequences in the documentary, which begins about halfway through the ten minute running time, shots of Pollock’s shadow flinging paint from a silhouetted brush are intercut with shots of the canvas he is painting.  At the beginning of the sequence, the viewer’s attention is focused by the shift in mise-en-scène from a more naturalistic rendering of Pollock in the previous scene to the shadowy figure filmed against a white curtain and by the sudden presence of music which accompanies the first shot of this sequence; prior to this, the film had either been silent or accompanied by a Pollock voice-over.</em>  </p>
+<p><em>One might read this sudden music as a sort of metaphor for the sudden assertion of the filmmaker’s artistic identity; the soundtrack, a single cello scored by Morton Feldman, is as bold and attention-grabbing as the change in the visuals.   The intercutting between Pollock’s shadow and the canvas is synced in rhythm with the montage, “as if in response to choreography”; the volume of the music swells each time the film cuts from the shadow to the canvas and, as the progression continues, each shot of the canvas moves closer into the surface than the previous one in order to create a sense of cinematic dynamism.</em>  </p>
+<p><em>In this sequence, Namuth is depicting Pollock’s muscular style as an excuse to flex his own stylistic muscles; Pollock is, quite literally, a shadow of himself, an absence masquerading as a presence.  As the sequence goes on, his figure disappears altogether from the montage.  Instead of crosscutting between painter and painting, the camera then moves across the canvas in a series of dynamic tracking shots, which quickly rotate in sharp curves around the splatters and drips; there are dissolves between these moving shots as well as several self-conscious focus pulls which seem to be trying to replicate, in some rough way, the mechanism of seeing.  All of these gestures serve to remind the viewer that she is not merely watching a painting by Jackson Pollock, but a film of that painting by Hans Namuth.</em>  </p>
+<p><em>In an earlier sequence, the artist is filmed working outside his East Hampton studio on a large canvas spread across a concrete platform.  Pollock is shown putting on his paint-flecked shoes, mixing pigment, examining his canvas, smoking, and demonstrating his famous “drip” technique.  The soundtrack for the sequence is a recording of Pollock talking about his biography and artistic process.  The editing and camerawork are sometimes awkward or distracting, but, unlike in the previously discussed sequence, the jumpcuts and shot choices do not appear to be self-consciously expressive moves but merely clumsy camerawork.  Therefore, this scene, because of the way it lacks the evident cinematic facture of the previous scene and because of the way that it features Pollock’s own voice speaking, thus, might seem to a casual observer to be free of the sort of obvious imposition by Namuth that shapes the previously discussed scene.</em>  </p>
+<p><em>However, a closer study of the scene reveals this not to be the case; the mediation by Namuth may seem subtler, but, if anything, is deeper.  First of all, there is the fact that, though he is depicted painting outside for most of the running time of the film which has helped to define his public image, Pollock did not paint outside.  He worked exclusively in his studio and was so averse to the distractions of the surrounding landscape that, when Lee Krasner suggested adding windows after the barn was moved, she says he declined, saying, “No, no, I don’t want to be disturbed by the outside view when I’m working.”   Working outdoors was actually antithetical to his drip method during the filming of the documentary because “the wind interfered with the fall of the pigment.”</em>   </p>
+<p><em>Therefore, the notion of his working practice that the film enshrines is simply untrue; the setting which appears to be an authentic “location shoot” is actually as false as the facades of any studio set.  This “naturalistic” rendering of Pollock at work may have been necessitated by Namuth and his producer Paul Falkenberg not being able to afford the lighting equipment required to shoot color film indoors.  However, in an essay called “Photographing Pollock,” Namuth wrote:</em></p>
+<p>We filmed during the height of autumn, when the leaves were changing. One day as I was driving from my home in Water Mill to Pollock&#39;s house, I glanced up and watched the way in which the leaves of the elm and maple trees blurred as I was passing them. Squinting my eyes, pictures seemed to form above. It seemed to me that this was what Pollock was trying to do. His work was close to nature. </p>
+<p><em>In other words, there is the possibility that filming the artist in landscape was not just a technical necessity but an artistic choice by the filmmaker, an attempt to impose on the audience, through the use of mise-en-scène and setting, his own understanding of Pollock’s work, his personal belief, daydreamed up while working on the film, that “what Pollock was trying to do” was “close to nature.”  It can potentially be read as Namuth’s own desire to do a sort of cinematic landscape painting, to privilege, once again, his “brush” over Pollock’s.  The canvas Pollock is working on in the outdoor scene, as art critic Jonathan Jones has noted, looks “small, framed as it is by a larger landscape.”  In contrast, the images of Pollock which Namuth has captured against the canvas of the ominous skyline and dead autumn grasses are startling and powerful.</em>    </p>
+<p><em>The final and most famous sequence in the film shows Pollock painting on the surface of a large pane of glass; the camera is placed underneath the glass with Pollock above it, so that both he and the painting can be seen at the same time.  This glass seems here as if it’s supposed to serve as a sort of metaphor for the lack of mediation by Namuth; the idea that this scene, with its clear glass, is somehow a “pure” or “transparent” representation of Pollock, without the distractions of mise-en-scène or montage.  In this scene, the camera does not move; there are cuts, but they seem to be necessitated by reel changes and are not of the expressive variety discussed previously.</em>  </p>
+<p><em>Again, though, this notional lack of mediation is an illusion.  Just as he did not work outside, Pollock did not work on glass, either.  Number 29, 1950, the painting he is filmed creating in Jackson Pollock 51, is his only glass painting.   While Lee Krasner has (somewhat unconvincingly) ascribed the original idea for the glass painting to Pollock,  Namuth, in his essay, claims responsibility, stating that:</em>  </p>
+<p>I realized that I wanted to show the artist at work with his face in full view, becoming part of the canvas, so to speak -- coming at the viewer -- through the painting itself. How could this be done?...One evening it came to me: the painting would have to be on glass and I would film from underneath…After many unsuccessful attempts, I finally figured out how to lie on my back with the camera on my chest and photograph him from below. </p>
+<p><em>Rosalind Krauss, in her book The Optical Unconscious, argues that actually Namuth copied the idea of filming the artist painting on glass from an earlier documentary about Picasso by the Dutch filmmaker Paul Haesserts, which features Picasso painting on glass and signing his name and year in a manner very similar to the one which Pollock employs in the film.   Either way, whether this was a moment of creative inspiration or artistic borrowing, it’s exemplary of the Namuth’s aggressive imposition on Pollock in order to make his film as powerful as possible.  With the glass painting sequence, not only is Namuth altering the viewer’s understanding of Pollock’s work after the fact through use of editing and mise-en-scène (as he does in the sequence with Pollock’s shadow), or altering the context in which Pollock worked to contextualize him according to Namuth’s point of view (as in the outdoor sequence); he is imposing on Pollock a completely new way of working for the sake of his film.</em></p>
+<p><em>With this context, it’s not difficult to see the pane of glass as a different sort of metaphor: not a clear window into a genius, but a prison in which Pollock is trapped.  Instead of being able to perform the role of the triumphant action painter, dancing around the canvas and vigorously flinging paint, Pollock is stuck within Namuth’s small frame.  The use of the glass in the final scene of the film is not the result of a technician recording a document of an artist for posterity.  Instead, it places Pollock and Namuth in parallel, both literally (Namuth is directly beneath the glass during the sequence, filming Pollock; just as Pollock is cast an action painter, Namuth is an action director) and figuratively (since the lens, the mechanism through which the camera records images is made of glass, both artists could, in this scene, be said to be painting with glass).  By forcing Pollock to paint with glass, just as he does, Namuth is both bringing Pollock down to his level and, in some sense, elevating himself to Pollock’s.</em> </p>
+<p>i&#39;m thankful also for <a href="https://www.youtube.com/watch?v=C2inNYauU1o">philip glass</a> and for <a href="https://www.poetryfoundation.org/poems-and-poets/poems/detail/48636">the glass essay</a>. i&#39;m thankful to be self-indulgent, but i&#39;m thankful also to put a frame around myself. i&#39;m thankful for the way that a frame can imply a sense of coherence, even when it surrounds such a miscellany of ephemera. i&#39;m thankful for the opportunity to speak to you through glass.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notesc5.html" class="btn btn-secondary">← thank you notes(c)(5)</a>
+        <a href="/letters/tyn-k.html" class="btn btn-secondary">tyn (k) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

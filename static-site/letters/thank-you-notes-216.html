@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/16">
+  <title>thank you notes 2/16 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/16</h1>
+        <time datetime="2016-02-16T00:00:00Z">February 15, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that the waiting room at the hospital had a fish tank. </p>
+<p>i&#39;m thankful for the bright blue backdrop of the tank and for the two kinds of sea grass (a mossy green and a cinnamon sugar brown) growing on the rocks. </p>
+<p>i&#39;m thankful there were seven fish in the tank. </p>
+<p>i&#39;m thankful for the smallest fish, which was orange but so covered with deep purple crosshatching that it looked almost black when i came closer to the glass and it swam away to the back of the tank. </p>
+<p>i&#39;m thankful for another small fish, which was actually black, with squiggly white vertical stripes and a brilliant splotch of orange on its face. </p>
+<p>i&#39;m thankful for the third small fish, which was canary yellow; i&#39;m thankful to think of a color named after a bird being used to describe a fish.</p>
+<p>i&#39;m thankful for the two larger brown fish with white vertical stripes, who were the most boring fish of the group, but whose genial presence i appreciated nonetheless. </p>
+<p>i&#39;m thankful for the grey fish with white vertical stripes which i noticed, after catch it a few times, had a thin horizontal streak of yellow running perpendicular to the white stripes on one side of him.</p>
+<p>i&#39;m thankful for my favorite fish of all, which was longer and more sardine-shaped than the others. i&#39;m thankful for the horizontal white stripes on the sides of its yellow head and the way they merged with its body&#39;s scales, which had this oil slick rainbow gradient of yellow and green and blue.</p>
+<p>i&#39;m thankful to watch the bubbles escape from the mouths of the fish, in a motion my mind wanted to describe as a plug (a reverse gulp).</p>
+<p>i&#39;m thankful, at times when i feel nervous or afraid, which often occur while i wait alone for doctors, to try to counteract my feelings by giving attention to the the stuff of the world, to get out of my own head by carefully noticing things.</p>
+<p>i&#39;m thankful for all the things in the exam room that i noticed while i waited nervous and afraid for the nurse to come and check my vital signs and explain my procedure, which is scheduled for tomorrow. </p>
+<p>i&#39;m thankful for the first thing i noticed, which was the large photo print on the wall above the office&#39;s desk, which was of a river in chile and was taken by a doctor as part of the hospital&#39;s &quot;art of health&quot; series. i&#39;m thankful that the photographer must have been standing in the grass on the bank of the river, thankful for the way that the stones on the edge of the riverbed were visible in the clean shallow blue shallow water in the lower right corner of the composition. i&#39;m thankful for the stand of trees on the other side of the river and, in the blurry distance to the left, a mountain covered in bright green vegetation.</p>
+<p>i&#39;m thankful for the calendar on the wall to the right of the print, which featured a much smaller image of a white sand beach covered in palm trees. i&#39;m thankful for the way that the intense color correction might not have been noticeable if the calendar image was the only picture of water in the room, but which, when compared with the softer, less affected tonalities of the chilean river photo, seemed kind of garish. (i&#39;m thankful, though, to imagine that in its garishness it still offers something to the nurses and to the patients, either a memory or a dream or both).</p>
+<p>i&#39;m thankful for the hands-free motorized paper towel dispenser over the sink, which is similar to the ones you usually see except its cover was white instead of black, which made it look nicer but i guess would also make it harder to clean.</p>
+<p>i&#39;m thankful for the stacked plastic shelves holding three different cardboard boxes of disposable gloves. i&#39;m thankful that the smallest box held the smallest gloves.</p>
+<p>i&#39;m thankful that the doorstop, rather than being above the running board on the floor, was at the same height as the doorknob.</p>
+<p>i&#39;m thankful for the syringe disposal box, which is an important contributor to public safety, even though whenever i see them they make me think of getting a shot and i shudder. i&#39;m thankful to remember when my mom banned my brother and i from saying the word &quot;suck&quot; when we were kids and then for some illness, i had to get a painful shot in my right butt cheek and after the nurse delivering the shot left the room, i said &quot;this sucks this sucks this SUCKS.&quot;</p>
+<p>i&#39;m thankful for the laminated printout scotch taped to the wall which said, in a rounded, childish looking font, &quot;It&#39;s important to us that we answer your questions about your procedure today!&quot; over a background field of vaguely menacing look light blue question marks.</p>
+<p>i&#39;m thankful that the fluorescent light fixtures in the ceiling each featured a grid of squares that was 29 x 13. i&#39;m thankful that when i first counted 29 across, i recounted, sure that it must be 30 and i had miscounted, but i&#39;m thankful that even when i counted several more times, i always got 29. </p>
+<p>i&#39;m thankful that there were 3 chairs in the room and that none of them matched the others in either color or style.</p>
+<p>i&#39;m thankful that on the stand of the computer monitor were a black stapler, two straws, a short but sharp ticonderoga pencil, and a stack of small white paper cards listing medications which were designed to fit in people&#39;s wallets.</p>
+<p>i&#39;m thankful that, though i was nervous, my blood pressure was still lower than it usually is at doctor&#39;s offices, almost normal, and when i repeated my hacky stock nurse joke of &quot;i normally have white coat hypertension...or, i guess, green smock hypertension,&quot; the nurse smiled and said that she hardly ever sees a normal blood pressure.</p>
+<p>i&#39;m thankful that when the nurse took my blood pressure, i distracted myself from my fear of having my blood pressure taken by thinking of the moment the day before when the faculty member&#39;s daughter and i came around a corner and she saw the school&#39;s blood pressure machine. i&#39;m thankful that rather than be afraid, her eyes lit up and she said &quot;cool, i want to try!&quot; and ran over and sat down at the machine. i&#39;m thankful for how tiny her arm looked when she stuck it through the cuff and how i had to show her to push her forearm through because it had to go around her upper arm. i&#39;m thankful that i warned her that it might feel tight and she said that was okay and hit the start button. </p>
+<p>i&#39;m thankful, as the cuff inflated around her arm, for her wide-eyed surprise at its intensity, for how at first she was clearly trying to be brave and strong but then gave in to her discomfort and fear. i&#39;m thankful, when i hit the emergency stop button, for the way she sighed in relief as the cuff deflated.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-217.html" class="btn btn-secondary">← thank you notes 2/17</a>
+        <a href="/letters/thank-you-notes-215.html" class="btn btn-secondary">thank you notes 2/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

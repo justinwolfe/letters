@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 7/3">
+  <title>thank you notes 7/3 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 7/3</h1>
+        <time datetime="2016-07-03T00:00:00Z">July 2, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for a nice saturday after a long week. i&#39;m thankful that i cleaned the house, even wet swiffering the floor, which i sometimes skip even though i cook enough with open skillets that the kitchen floor gets oily. i&#39;m thankful that we rode our bikes across town for d&#39;s eye exam. i&#39;m thankful that it was unexpectedly cool out, so that we didn&#39;t get sweaty. i&#39;m thankful that while d was at the eye doctor, i rode my bike aimlessly through neighborhoods over by the mall that i hadn&#39;t ridden through before. i&#39;m thankful that riding around them felt like adding data to the invisible map of town that lives inside of my brain; i&#39;m thankful that i gave myself the opportunity to test that and thankful for the satisfaction of eventually coming around a corner or through an intersection and seeing a familiar landmark and suddenly knowing where i was. </p>
+<p>i&#39;m thankful, that said, that when d texted me to let me know her appointment was over, i used google maps because i didn&#39;t want to make her wait. i&#39;m thankful that we stopped at the mall and she got some new extra low-cut socks to wear with her keds. i&#39;m thankful that i bought a bag of chips deluxe cookies and d got a bag of reese&#39;s flavored chips deluxe (even if the cookies were disappointingly soft rather than crunchy and crispy). i&#39;m thankful that on the way back through campus to downtown, i led us along a street which was recently resurfaced and so was wonderfully smooth. i&#39;m thankful that d got her prescription at cvs and had a coupon which we used to buy probiotics. i&#39;m thankful for the funny coincidence, after we left cvs and rode the five minutes home, to have looked at my phone and seen that i had a five minute old text from cvs telling me that my prescriptions were ready for pickup.</p>
+<p>i&#39;m thankful we ordered a pizza for dinner, even if it did exacerbate my acid reflux (i&#39;m thankful it was worth it and thankful to suffer for pizza). i&#39;m thankful we watched <em>spectre</em>, which was often very stupid but an entertaining enough experience. i&#39;m thankful for christoph waltz. i&#39;m thankful that a particularly stupid moment in which a henchman played by a professional wrestler is able to pause and utter the line &quot;<em>oh shit</em>&quot; before he is pulled out of a speeding train by a rope tied around his neck to ponder the binary re: superhero movies of the serious nolan-y grimdark vs. the fizzy semi-ironic action comedy. i&#39;m thankful that even though i think it&#39;s the unpopular stance on the approval matrix to prefer the grimdark, i tend to find self-seriousness and antiheroic difficult men less annoying than jokes i don&#39;t like, though i don&#39;t think this is a particularly superior moral stance and like everyone (&quot;everyone&quot;) i think it would be great if there were fewer of these kinds of movies in general.</p>
+<p>i&#39;m thankful that it&#39;s supposed to rain all day. i&#39;m thankful for rainy days where you don&#39;t really have to go anywhere. i&#39;m thankful for the idea of nature enforcing or supporting human laziness. i&#39;m thankful to still be in bed. i&#39;m thankful that i started reading <em><a href="https://www.amazon.com/Babel-17-Empire-Star-Samuel-Delany/dp/0375706690">babel-17</a></em>  by samuel r. delany, which i started the other day and is great so far. i&#39;m thankful that it feels much more accessible than <em><a href="https://www.amazon.com/Dhalgren-Samuel-R-Delany/dp/0375706682">dhalgren</a>,</em> which i have tried and failed to start a number of times (but which i have a new hope i might be able to read sometime because of my affection for this book). i&#39;m thankful that the main character of the book is a famous poet who can use her super-focused powers of observation and language to read people&#39;s minds (i&#39;m thankful for the way the book literalizes the anxiety of influence in her fear that she is literally stealing her poems from other people&#39;s thoughts) and who is working to decode mysterious transmissions in a cryptic alien language. i&#39;m thankful that to fly spaceships in this universe you need dead (semi-dead? ghost? zombie? not totally sure) people, as well as a trio of navigators who must, in addition to working together, be involved in an emotional and sexual relationship in order to properly, for lack of a better term, <a href="http://birthmoviesdeath.com/2013/05/21/how-does-jaeger-piloting-work-in-pacific-rim">jaeger</a>. </p>
+<p>i&#39;m thankful for <a href="https://twitter.com/naomiaweber/status/748827818092625920">this defense of difficult art</a> from <a href="http://www.nytimes.com/2016/07/02/books/geoffrey-hill-dense-and-allusive-british-poet-is-dead-at-84.html">geoffrey hill</a>. i&#39;m thankful for &quot;<a href="https://twitter.com/danaanmm/status/749405905662332928">Alison brie Larson von trier</a>.&quot; i&#39;m thankful for these photos of <a href="https://twitter.com/adultblackmale/status/749381073671299072">jack nicholson eating a sandwich</a> on a boat in the mediterranean. i&#39;m thankful for wesley morris always but especially in <a href="http://www.nytimes.com/2016/07/04/movies/in-the-shallows-blake-lively-surfs-in-kate-hudsons-wake.html?_r=0">this hilarious review</a> of the blake lively surfing movie. i&#39;m thankful for <a href="http://www.nytimes.com/2016/02/04/t-magazine/hanya-yanagihara-swims-marthas-vineyard.html">this hanya yanagihara essay about swimming across martha&#39;s vineyard</a>, which is lovely and surprisingly free of torture. i&#39;m thankful that <em>a prairie home companion</em>, which was always such a crushing folksy disappointment to come across when turning to NPR on a long drive in the days before podcasts, is <a href="http://money.cnn.com/2016/07/02/media/garrison-keillor-retirement-prairie-home-companion/">ending</a> (i&#39;m thankful to ask <a href="https://www.youtube.com/watch?v=P8y3jbuuzDg">why anyone would want to leave baltimore</a>). i&#39;m thankful for <a href="https://theringer.com/sriracha-is-a-quintessentially-american-flavor-46febefe46#.713w70c4k">this danny chau essay about the americanness of sriracha</a>. i&#39;m thankful for this picture of <a href="https://twitter.com/miragonz/status/749028124906565632">a melancholy dog in gray sweatpants</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-esme8.html" class="btn btn-secondary">← thank you notes (Esmé)(8)</a>
+        <a href="/letters/thank-you-notes-sara-black-mcculloch.html" class="btn btn-secondary">thank you notes (Sara Black McCulloch) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

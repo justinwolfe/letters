@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="vacuum cleaner battery">
+  <title>vacuum cleaner battery - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>vacuum cleaner battery</h1>
+        <time datetime="2022-12-03T00:00:00Z">December 2, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>had &quot;learn something&quot; day at work on friday which is a monthly day where i do not have to meet with or respond to anyone about anything and can just sit in peace and write code to solve relatively self-contained problems that i choose and that particularly interest me</p>
+<p>(this friday, working on a small chunk of migrating our web embed product to Typescript and doing a favor for our newsletter person by scraping his archive from this year from multiple online sources and formatting it all in a particular way in markdown)</p>
+<p>knowing that most people just use this day as basically a day off (it is booked the same as vacation and sick days in our HR software, just a different dropdown choice), a choice that i also respect, but i&#39;m thankful that i like building things and solving problems so much and especially for the joy of getting to do that in a pure and solitary way where i get to make all the decisions</p>
+<p>(also the experience of my subconscious mind chewing on things in the background until suddenly while often not even thinking directly about something i have a sudden moment of inspiration for a direction or a structure or an experience or an idea, which i&#39;m thankful i usually can grab hold of (and not worry about losing) by writing myself a note)
+ </p>
+<p>the ongoing note i have in my phone that is titled &quot;things reasonable people love that i hate&quot; and is just a bulleted list of things reasonable people love that i hate (currently there are 35 items) and i&#39;m thankful that in the experience of realizing a new thing rather than stewing in my negativity i can feel a bit of positive reinforcement because i have learned a new thing about myself to add to my list</p>
+<p>not publishing the list even though i&#39;m tempted, as an oversharer who is so metaphorically horny on main all the time, since i don&#39;t want to alienate people (reasonable people!) who like the things i despise, because even if i foreground everything with &quot;this is just me being totally arbitrary! a lot of these things i might like if i had not already chosen not to like them and bound myself to my choice forever! everyone is entitled to their own taste&quot; i think it could still feel hurtful (even if at the same time it also could provide solidarity with other people who also hate things i hate))</p>
+<p>the ringer podcast <em><a href="https://www.theringer.com/the-hottest-take">the hottest take</a>,</em> which is the only short (each episode is less than 10 minutes) podcast i listen to and is a great accompaniment to short sets of chores or breathwork (and the most recent set of episodes have had wesley morris on them!), i think my favorite recent ones were about <a href="https://www.theringer.com/2022/11/3/23438439/ted-lasso-the-hottest-take">ted lasso</a>, <a href="https://www.theringer.com/2022/11/30/23485829/cannibalism">cannibalism</a>, and the phrase &quot;<a href="https://www.theringer.com/2022/11/10/23451067/no-worries">no worries</a>&quot;</p>
+<p>d and i tag team cleaning the house on a saturday morning, not because anyone is coming over but so that we can get full enjoyment out of the peace for ourselves</p>
+<p>vacuum cleaner battery lasted through vacuuming the entire house, which it usually doesn&#39;t (i think i have discovered the trick, which is that switching to the &quot;power&quot; setting even for a moment, no matter when in the vacuuming cycle, will frequently result in an almost immediate battery death and that if something needs that much &quot;power&quot; i should just pick it up)___PARAGRAPH_BREAK___</p>
+<p>weird to think about batteries as these things that are constantly dying and being resurrected (zombies) by us so we can kill and resurrect them again, the cycle diminishing this magic power over time until there are just weakest of echoes of the current and then eventually nothing.</p>
+<p>lithium as both a thing in batteries and also a thing that people take to stabilize mood (i think they&#39;re the same thing? not a science person) </p>
+<p>ketamine, a drug that seemed too &quot;clubby&quot; and so i had never thought of taking until [redacted a] mentioned it casually and [redacted b] got me some and, at the small doses i&#39;ve tried (enmeshed with my usual medication stack), it&#39;s just so nice and soft and warm and gentle, like the things i love about benzos but brighter and peppier (though also briefer and with a comedown (but not too bad of one)).</p>
+<p>snorting a drug for the first time, which is an interesting experience that i don&#39;t hate but then i have always loved neti pot and flonase and etc. so feels like a natural extension (thankful to [redacted b] for performing careful testing to ensure the purity and safety of the substance i ingested and thankful that i do not struggle with addiction). </p>
+<p>the tiny cardboard tube that had been used as the support system for a pre-rolled joint cone in its packaging that i used for inhaling the powder</p>
+<p>the current season of <em>survivor</em>, which if you enjoy reality competition shows at all is an extremely good example of the form, a form which in some ways is so calcified (like truly i think they could keep the show going even after jeff probst dies because he says the same things the same way every episode, to the point where i try to predict what he&#39;s going to say and talk along with the show in his inflection) but still manages to give me pleasure.</p>
+<p>the challenge in this week&#39;s episode, where there are metal grates on the surface of the ocean like jail cells and people have to stay under them as the tide comes in and gets higher and higher, swells blocking the ability to breathe constantly and with increasing duration, and the fact that (spoiler sorry) two people manage to hang in there for 3 HOURS as the tide has started to go down again and they do an unprecedented thing and crown them both as winners</p>
+<p>the show <em>pantheon</em>, which is about a singularity of sorts and which as a general hater of animation (re: earlier note i&#39;m thankful to have realized that in our team social meeting as a preamble to recommending <em>pantheon</em> i showed a little too much skin by saying &quot;i hate pixar&quot;) i really enjoyed watching (even if i would rather it wasn&#39;t animation) and would recommend if you liked <em>severance</em> (the show) which i think it shares a lot of concerns with</p>
+<p><a href="https://ask.metafilter.com/368818/Whats-your-Check-Please-hand-signal-and-what-does-it-signify">this ask metafilter thread</a> about how to signal to a waiter that you want the check, which totally blew my mind as many many people reported doing an elaborate pantomime of signing or writing (i have never done or been aware of this gesture!)</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/rap-capital.html" class="btn btn-secondary">← rap capital</a>
+        <a href="/letters/a-promotion-she-deserved.html" class="btn btn-secondary">a promotion she deserved →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

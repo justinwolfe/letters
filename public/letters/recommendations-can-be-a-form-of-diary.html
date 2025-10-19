@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="recommendations can be a form of diary">
+  <title>recommendations can be a form of diary - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>recommendations can be a form of diary</h1>
+        <time datetime="2025-02-02T18:42:58.518313Z">February 2, 2025</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/43" alt="IMG_1790.jpg"></p>
+<p>it&#39;s winter which means watching even more television than the lots of television i normally watch and i am here to tell you the best recent reality show you haven&#39;t watched is <em>couple to throuple</em> (peacock) which i missed when it came out last winter and have never heard people talk about but which was so messy and good and weird and had deborah and i basically constantly shrieking at the TV throughout the entire run! the show is what it sounds like from the title (couples trial bringing a third into their relationships) and it&#39;s the antithesis of the damp squib that was the most recent season of <em>the ultimatum</em> (though it makes me wet dream of the next queer <em>ultimatum</em>). every episode of the show is dense with event and light on recaps and precaps and the show takes place in the bubble of a <em>love island</em>-style villa but the characters and conflicts feel genuinely complicated and interesting and the show foregrounds consent on the parts of both couple and single in its formal structure in a way that makes it feel less icky than it otherwise might (it still feels icky sometimes, but then that&#39;s part of the pleasure). the stars of the show are probably this gay couple ashmal and rehman where ashmal is just this super-verbal happy-go-lucky free spirit and rehman is...not and is really clearly not doing well with [nick lachey voice] &quot;the experiment&quot; but trying <em>so hard</em> to convince himself he&#39;s into it but then repeatedly melting down (frequently you&#39;ll see his eyes change and it&#39;s like &quot;yep his soul just left his body again&quot;). there are literally challenges on the show, led by a woman who is ostensibly a couple&#39;s therapist, that are like &quot;okay now make out with this person&quot; and like how many things do i have to tell you to make you watch it?!</p>
+<p><em>the traitors</em> is back with a new season and is very enjoyable to me and those close to me but i don&#39;t know how well it translates if you have little familiarity with its cast of reality day laborers (and if you have familiarity, you&#39;re probably already watching the show and don&#39;t need the recommendation, but recommendations can also be a form of diary (everything here is a form of diary) so i don&#39;t care if this is actually servicey or whatever). that said, even without context (and to be clear mariah carey voice i don&#39;t know her some of these people at all), there is really no better show for what is not quite (or not just) schadenfreude but some other german word for &quot;<em>the pleasure of watching c and d list &#39;celebrities&#39; making passionate claims about who is a traitor but thanks to the dramatic irony inherent to the show&#39;s structure you the viewer already know they are wrong and are total fucking idiots and then at the end of every episode you get to watch them be confronted with that in real time</em>.&quot; i do continue to have a minor gripe with the editing of the show&#39;s challenges, which unnecessarily stretch the limits of credulity (the inept and out-of-shape contestants always manage to finish an arbitrarily timed challenge right at the buzzer like <em>every time</em>) and also the blatant use of CG for fire and explosion effects which like i&#39;m not expecting this to be the maysles brothers/<a href="https://www.newyorker.com/magazine/2025/01/27/charlottes-place-living-with-the-ghost-of-a-verite-pioneer">charlotte zwerin</a> but come on it&#39;s just not necessary!</p>
+<p>deborah and i watch 99% of the television shows we watch together (or, if not that, &quot;together&quot; which is to say one of us watching it on the TV while the other person looks at another screen or multiple screens next to them and absorbs the show at some lower level), but one place where i&#39;ve splintered recently is <em>the real world</em>. over the last year we watched/&quot;watched&quot; (/for me rewatched) basically all the seasons available on streaming (most are on paramount+, there are one or two for sale on prime video), with a few timeouts for when deborah felt understandably overwhelmed with the (really frankly insane!) levels of constant binge drinking (and subsequent interpersonal chaos) that characterize most if not all of the seasons after the (in retrospect, though they seemed so transgressive at the time!) quaint and earnest first handful. this show&#39;s particular ethical messiness and engagement with the concept of &quot;real life&quot; is my personal catnip and i could watch it every day for the rest of my life and after we finished the last ones on streaming for a while i was truly bereft to no longer be able to live in <em>the real world</em> and in particular to have not been able to revisit a number of key seasons that aren&#39;t officially available and then one day doing some desperation searching i found the youtube channel <a href="https://www.youtube.com/@that90sshow01">That 90&#39;s Show</a>, where some archivist doing god&#39;s work has made several otherwise inaccessible seasons available. it&#39;s incredibly low resolution (clearly VHS rips off cable TV) and without the necessary millenial subtitles, which has been a blocker for deborah, and over the holidays i had a plan (which i piloted as a proof of concept) to use AI to upscale the video and caption them and upload them for her and also for the culture but i have not followed through on that and maybe if i write it here that will help me commit to actually doing it instead of just having the idea but for now i continue to watch them by myself on my phone while doing the dishes or stretching/trigger pointing and other tedious personal tasks and they bring me great joy (i&#39;m thankful to be able to afford to subscribe to youtube premium, which i resisted for so long but t is so right it&#39;s amazing not to have to deal with those ads). </p>
+<p>in december we watched all of <em>twin peaks</em> for the first time (followed by <a href="https://www.youtube.com/watch?v=7AYnF5hOhuM&t=18s">this four and a half hour explainer video essay</a> and me inhaling episode-by-episode oral histories of the show) and it was a completely overwhelming and transcendent experience that i do not have anywhere near the time or mental energy to unfold here (and also i missed the david lynch death news peg) but also i can&#39;t write about television and not register that one in this list. i enjoyed <em>squid game</em> season 2 more than the first one even though i don&#39;t think it&#39;s as good as the first one (i just personally love when lore opens up and gets more complicated and also it&#39;s less sad and some of the action sequences near the end really benefit from a bigger budget and are the most enjoyable shooty shooty bang bang i&#39;ve seen on screen in a while). <em>the walking dead: the ones who live</em> was laughably bad even by the standards of <em>the walking dead</em> (a series i have historically loved to dog here even as i have also loved to watch it) and in particular has the funniest sex scene i have seen since _oppenheimer. <em>silo</em> is one of those rare adaptations that improves on the books and if you got apple tv+ for <em>severance</em> and haven&#39;t watched it and like science fiction you&#39;re missing out! we watched the ben stiller-run <em>escape at dannemora</em> trying to catch some <em>severance</em> methadone and i enjoyed it and found it compelling (i always love a prison break story and when i lived in korea enjoyed that the one show that i overlapped watching with my students was the titular <em>prison break</em>) but i also don&#39;t feel strongly enough about it being actually <em>good</em> to actively recommend watching it (but that still might be enough for you if you have a limited-series-size hole in your viewing calendar and to be clear <em>prison break</em> was also not &quot;good&quot;). last night we watched the first three episodes of <em>the agency</em> and i really enjoy it so far—kinda feels like <em>mission impossible</em> but with the tone of <em>succession</em>. we haven&#39;t watched a lot of movies in the theater lately but imo <em>nosferatu</em> is visually amazing and you see every penny on screen but at the same time it was boring and sucked and we had a much better time inviting friends over for a (rewatch for me, first watch for everyone else) of <em>shadow of the vampire</em>, which has an unbelievably good willem dafoe performance (which is intentionally funny in all the ways that bill skarsgard&#39;s <em>nosferatu</em> performance is unintentionally funny) and also some quality john malkovich aggravated yelling.</p>
+<p>in terms of books i have read or tried to read since i last wrote about books here: <em>high weirdness</em> by erik davis is an extremely me subject (postwar psychedelic freaks of american literature) but the treatment was too academic lit review for me to finish; <em>paris in ruins</em> by sebastian smee (narrative nonfiction about the birth of impressionism; not academically rigorous but super readable); <em>lesser ruins</em> by mark haber (if you haven&#39;t read <em>out of sheer rage</em> by geoff dyer just read that instead but if you want a version of that about montaigne instead of d.h. lawrence with more run-on sentences and lyricism and a grief subplot, this is still very good so far); <em>the great transformation</em> by odd arne westad (modern chinese history, dry, didn&#39;t finish); <em>american bulk</em> by emily mester (entertaining post-sloane crosley personal essays about costco and the cheesecake factory); <em>a philosophy of software design</em> by john ousterhout (recommended by mentor at work, profound and more pleasing to read on the sentence level than so much engineering stuff) <em>the anthropologists</em> by aysegul savas (highest recommendation, one of the best recent novels i have read, a story of a happy relationship that is somehow not boring, pure joy); <em>juice</em> by tim winton (post-apocalyptic sci-fi that is mostly a collection of tropes from <em>dune</em>, <em>star wars</em>, etc. but those tropes hit and it collects them real good); <em>the ancients</em> by john larison (post-apocalyptic sci-fi that was fine but not as good as <em>juice</em>); <em>i who have never known men</em> by jacqueline harpman (post-apocalyptic sci fi that has a first person narrator who doesn&#39;t annoy me (so rare!) i learned about from <a href="https://www.thecut.com/article/booktok-i-who-have-never-known-men-novel.html">book gossip</a>); <em>stone yard devotional</em> by charlotte wood (good novel about becoming a nun, but as with earlier recommendation of <em>lesser ruins</em> if you want to read a novel about nuns and haven&#39;t read <em>matrix</em> by lauren groff read that instead); <em>the city and its uncertain walls</em> by haruki murakami (i have read basically all of his books and defend them more than they sometimes deserve but this one began in such an overpoweringly twee way that i couldn&#39;t get past the first few chapters); <em>nineteen ways of looking at wang wei</em> by eliot weinberger (a short perfect book about translating poetry)</p>
+<p>recent newsletters i have enjoyed: <a href="https://daybook.substack.com/p/daybook-proust-morandi-and-taking">daybook on proust and giorgio morandi</a>, <a href="https://iwilldowhateveriwant.substack.com/p/notes-from-january-im-handling-it">mackenzie thomas&#39;s ongoing diary</a>, <a href="https://toodepressing.substack.com/p/hardly-working">crissy with a sharp insight about the relationship between the <em>mad men</em> elevator and the <em>severance</em> elevator</a> and managing to work in the incredible anecdote about david lynch calling elisabeth moss and jon hamm by their character names, which makes my grinch heart grow two sizes every time i think about it. also in friends of the pod, every day is a great day if you&#39;re in the sarah hagi fan club but in particular she ate in <a href="https://variety.com/2025/film/awards/journalist-sarah-hagi-discovered-karla-sofia-gascon-tweets-1236293396/">this variety interview</a> top 3 lines i&#39;m grateful for 1. &quot;<em>I entirely disregard those people intellectually on every level</em>&quot; (this should be a t-shirt), 2. &quot;<em>You can’t have it both ways. You can’t have your “representation pick” show how progressive an institution is and then have no consequences for a person who is the opposite of that</em>.&quot; 3. when asked if she would want to say anything to karla sofía gascón, ending with &quot;<em>Nothing. She’s just another racist</em>&quot; like ETHERED. </p>
+<p><img src="/api/images/44" alt="IMG_1787.jpg"></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/getting-high-on-my-own-supply-20-american-idyll.html" class="btn btn-secondary">← getting high on my own supply - 20. &quot;american idyll&quot;</a>
+        <a href="/letters/the-italian-word-is-camera.html" class="btn btn-secondary">the italian word is camera →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

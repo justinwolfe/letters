@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 6/20">
+  <title>thank you notes 6/20 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 6/20</h1>
+        <time datetime="2016-06-20T00:00:00Z">June 19, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to have recently watched <em>midnight special</em> and rewatched <em>interstellar</em>, both of which are on the spectrum of sentimental/spiritual science fiction that is a sweet spot for me, even though i admit that the movies are often flawed (i&#39;m thankful sometimes to love a work of art more rather than less because of its flaws). i&#39;m thankful that in <em>midnight special</em>, it only took me like a half hour to get past the feeling that one of the leads looked like an alternate universe joaquim phoenix and one of the leads looked like an alternate universe channing tatum and get into the movie properly; i&#39;m thankful for adam driver and kirsten dunst, who both looked like themselves (as they always do). i&#39;m thankful for hidden manifestations of celestial architecture. i&#39;m thankful for matthew mcconaughey&#39;s performance in <em>interstellar</em>, which, like so much of his work, is both ridiculous and beautiful at the same time. </p>
+<p>i&#39;m thankful that i thought of him reading david edelstein&#39;s <a href="http://www.vulture.com/2016/06/why-have-johnny-depp-films-been-so-bad-lately.html">review cum thinkpiece about what&#39;s eating johnny depp</a>, which has some sick (and imo totally warranted) tim burton burns and has a very interesting section about how after <em>last tango in paris</em>, marlon brando said his performance “<em>required a lot of emotional arm wrestling with myself, and when it was finished, I decided that I wasn’t ever again going to destroy myself emotionally to make a movie. I felt I had violated my innermost self and didn’t want to suffer like that anymore.&quot;</em> i&#39;m thankful that i sometimes think about the validity of decisions like this in a culture that romanticizes the art object at the expense of the health of the artist who produces it (and which often goes beyond that to fetishize the suffering of the artist as a sign of &quot;devotion&quot; or &quot;commitment&quot;). </p>
+<p>i&#39;m thankful, as a thought experiment, to posit that you are a writer working on a book and you decide to really torture yourself, not sleeping enough and eating garbage and neglecting important relationships and your own mental health, for a month or three months or six months or whatever, out of a noble and good desire to try to make your book (or whatever) &quot;the best book you could write&quot; and i&#39;m thankful, even, to posit that in this thought experiment, at the end of the line, all of this crunch time actually <em>does</em> make your measurable book better than it would have been if you had maintained a more measured work/life balance (which is not at all a guarantee), i&#39;m thankful, given all this, to ask: <em>is that worth it</em>? </p>
+<p>i&#39;m thankful to acknowledge that there can be differences of opinion on this issue, but also thankful to challenge the conventional wisdom that always says <em>yes, it&#39;s worth it</em> and <em><a href="http://therumpus.net/2010/08/dear-sugar-the-rumpus-advice-column-48-write-like-a-motherfucker/">write like a motherfucker</a>,</em> even though i know there are artists whose work i love and admire (probably many and/or most of them!) who would argue that it is worth it and you should work that way, and even though i sometimes do more work on these notes, for example, than i feel like i &quot;should&quot; or is &quot;good for me&quot; (because i &quot;want to&quot;). i&#39;m thankful to tell you that i just wonder about the (completely unverifiable) cost-benefit analysis of the whole thing: like, is it worth making your life 25% worse for three months if it results in your eventual book being 7% better than it would have been otherwise, and thankful, if you believe it <em>is</em> worth it, which is, again, a reasonable and good thing to believe, to then complicate that calculus even further by pointing out that equation isn&#39;t even considering the reader&#39;s experience of the text: is all that work worth it if the book is 7% better for you but if most readers might have read the 7% worse work and loved it just as much as the better version (or more! stranger things have happened)? i&#39;m thankful, if this weren&#39;t complicated enough, to also complicate the notion of writing &quot;the best book you could write,&quot; which is something that&#39;s constructed from your perceptions and standards and tastes at a certain point in time, which will change (maybe dramatically! as is often the case for authors looking back on their early work) as time goes on, and also of course to remind you that there is no direct correlation between quality and $value$, such that your 7% better book has absolutely no guarantee of earning you 7% more money (and might even earn you 7% less!). i&#39;m thankful to ask again: &quot;<em>is that worth it</em>?&quot;</p>
+<p>i&#39;m thankful to admit that i don&#39;t know the answer to this, and that the answer i might give is not necessarily the right one, but thankful for the opportunity to question why an intellectual culture that increasingly challenges the neoliberal fetishization of the &quot;value&quot; of work and the cost of entrepreneurship can sometimes be blind to the toll of the invisible labor of the artist. i&#39;m thankful for the way that considering these issues has changed the way i&#39;ve thought about my literary production. i&#39;m thankful that when i was younger, writing was always instrumental, was worthwhile because i believed it would &quot;get&quot; me something or somewhere. i&#39;m thankful that i sometimes experienced pleasure during the act of writing then, the way that finding the right word could spark an association or an image or the deletion of a sentence could make a paragraph click into place, but thankful that the pleasure i mostly got was from having finished something and having somebody read it and &quot;what might happen&quot; when they read it, whether that was a good grade or a validating comment or interest in me romantically or a job or a book deal, which were the things that drove me to work harder and harder, even at a cost to my mind and body that, from the remove of hindsight, doesn&#39;t feel &quot;worth it.&quot; </p>
+<p>i&#39;m thankful that i&#39;m human and the desire for validation and gratification still affects me every day (because otherwise why not just write a private diary?), but thankful that i&#39;ve found a form of practice that, for me at least, adds value and richness to my life most days (which is not the same as being &quot;easy,&quot; since this isn&#39;t always &quot;easy&quot;) rather than feeling like something that at times i&#39;m suffering through the dark wilderness of in order to get to an eventual reward (that (spoiler alert) might not exist). i&#39;m thankful that it takes all kinds and to clarify that this is just a description, not a prescription, bound to the way i&#39;m thinking and feeling about my life and work right now (i&#39;m thankful for the part in sarah bakewell&#39;s <em><a href="https://www.amazon.com/How-Live-Montaigne-Question-Attempts/dp/1590514831/ref=sr_1_3?ie=UTF8&qid=1466450050&sr=8-3&keywords=sarah+bakewell">how to live</a></em>, the book i&#39;m reading and loving now, about how every sentence montaigne writes could have &quot;but i don&#39;t know&quot; appended to it). i&#39;m thankful for writers with the discipline to push themselves hard enough to do amazing things, but i&#39;m also thankful to care about those writers as humans and not assembly lines trying to reach every more impossible requirements for optimization.</p>
+<p>i&#39;m thankful, in further super exciting and fun news, as my stomach burbles slightly from the froth i have worked myself up into while speed-typing this, to provide an unsatisfying conclusion (for now? i hope?) to my gastroenterological saga, which readers from earlier this year got all the gory details about. i&#39;m thankful that i was finally able to get in to talk to my doctor about the results of the ph monitor i had implanted (twice) in the spring to measure the acid reflux in my esophagus. i&#39;m thankful that he gave me a bemused smile and said that when he first looked at the results from the monitor, it confirmed that i definitely had reflux, but that he was perplexed, because then, reviewing my very scrupulous notes of my experience of my symptoms from when the monitor recording, he found that my experience of my symptoms did not seem to correlate with the measurement of my reflux and that in fact these two seemed to have a largely inverse relationship, such that during the times when i was experiencing &quot;acid reflux symptoms,&quot; my ph was at a normal level whereas the times i wasn&#39;t experiencing symptoms were the times the reflux was actually affecting me. </p>
+<p>i&#39;m thankful for the way he threw his hands up in the air as if to say, &quot;<em>yes, this doesn&#39;t make sense</em>!&quot; i&#39;m thankful that he was happy to hear that quitting drinking had reduced the frequency and severity of my symptoms, if not completely getting rid of them, and that he was hesitant to suggest the surgery we had previously discussed (in which the top of my stomach is pulled up and twisted tightly around the bottom of my esophagus), both because my symptoms don&#39;t warrant it and because, given the strangeness of the pattern of symptoms he&#39;d observed, he couldn&#39;t promise it would actually improve things. i&#39;m thankful that he was hopeful that things could continue to improve slowly and said that if my symptoms worsen again and medication doesn&#39;t help enough, the test results had provided the justification for surgery (both medical and in terms of my insurance) and i could come back and see him if necessary. i&#39;m thankful for that, even if it doesn&#39;t make for a particularly satisfying resolution to this story. i&#39;m thankful for an email from a friend earlier this year describing how cutting back on alcohol had improved similar stomach issues for her. i&#39;m thankful that it was a combination of her email and <a href="http://www.tipsybaker.com/2016/01/i-may-never-taste-white-negroni-now.html">a moving post from my favorite blogger</a> that helped drive me to commit more fully to something i had only tried half-heartedly in the past. i&#39;m thankful for how good writing (private, public, literary, or otherwise) can (empower us to) make our lives better.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-621.html" class="btn btn-secondary">← thank you notes 6/21</a>
+        <a href="/letters/thank-you-notes-619.html" class="btn btn-secondary">thank you notes 6/19 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

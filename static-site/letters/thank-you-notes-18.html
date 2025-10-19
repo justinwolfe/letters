@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/8">
+  <title>thank you notes 1/8 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/8</h1>
+        <time datetime="2016-01-08T00:00:00Z">January 7, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the faculty member who asked me what i was drinking at lunch today, for how, when i told her it was kombucha, her face lit up and she said that she remembered making it with her family in china in the seventies when she was a girl. i&#39;m thankful for her reminiscence of how it was harder back then because they didn&#39;t have refrigeration and so they had to drink their supply quickly before it soured too much. i&#39;m thankful that she said she hadn&#39;t thought of it in decades and enjoyed being reminded of her childhood and was impressed that it is semi-trendy now because of the probiotics and et cetera. i&#39;m thankful that she seemed excited about making some of her own so she could remember what it tastes like, that she was interested in my brewing process and flavoring choices, and that she was grateful when i offered her a scoby.</p>
+<p>i&#39;m thankful that the recurring motif of the kardashians&#39; trip to st. barts was running away from, trying to kill, and being bitten by mosquitoes. i&#39;m thankful to think that even rich people in expensive villas on caribbean islands get bitten by mosquitoes, which feels like a tiny shred of cosmic justice. i&#39;m thankful for the way that time still passes amid all the capturing of images, that suddenly, without me having realized it, nori is old enough that she&#39;s up and running around the pool hand in hand with penelope (and both of them in mermaid costumes, no less). i&#39;m thankful for kourtney&#39;s blase insistence to kris that mermaids must actually exist. i&#39;m thankful for the way that the family pass an inflatable crown back and forth between themselves, which seems like a perfect symbol of their status as new american aristocracy. i&#39;m thankful for kourtney&#39;s statement that &quot;i want everyone to stop bothering me with like...<em>information</em>, unless it&#39;s like an emergency,&quot; which seems like the ultimate contemporary away message. i&#39;m thankful for the intense disdain that permeates her pronunciation of the word &quot;information&quot; (i&#39;m thankful for <a href="http://www.jstor.org/stable/pdf/10.1086/427304.pdf?acceptTC=true">this great essay</a> on &quot;information writing,&quot; which i once <a href="http://somedrafts.com/tyn/wolfe_informationasthenewcharacter.pdf">used</a> in school to write about a beef with james wood). i&#39;m thankful for all of the sisters&#39; enthusiasm for helping kourtney get over her divorce, but i&#39;m also thankful for the knives look that kim gives khloe when she suggests, half-joking, that kourtney should publish her own book of selfies (i&#39;m thankful for <em>selfish</em>, which is a beautiful book that i am proud to own).</p>
+<p>i&#39;m thankful for kendall because of my realization, halfway through the episode, that my dislike of her is really a dislike of myself, of the parts of myself that are uptight and passive-aggressive and unfun (i&#39;m thankful for kylie, who is the id to her super-ego, even though i&#39;m much more a kendall than a kylie). i&#39;m thankful for kendall&#39;s constant complaints about the family&#39;s activities on vacation and not having enough time to spend with kylie, which reminds me of how frustrated i would get at extended family reunions at my grandparents&#39; house when i was a kid, when, at the end of the day, everybody wanted go to the movies, which seemed to me like a waste of time that i could be playing with my cousins (i&#39;m thankful to now understand the importance of a break in motion for exhausted adults). i&#39;m thankful for how happy kendall is to go on an ocean cliff hike with kylie and tyga, for the olive branch of that, and for her wide smile when she claps a mosquito dead between her hands. i&#39;m thankful for how excited tyga is to eat flaming hot cheetos off a white ceramic plate before the hike. i&#39;m thankful for the subtlety of kylie&#39;s <a href="http://www.mirror.co.uk/3am/celebrity-news/kylie-jenners-heart-tattoo-meaning-6270860">heart tattoo</a>. </p>
+<p>i&#39;m thankful for the depth of the sadness of the scene at the end of the episode where scott sits with kris and the kardashian sisters and talks about how hard it is for him to not have them in his life anymore. i&#39;m thankful to think of kanye&#39;s tweet about how he didn&#39;t mean to diss lebron in &quot;<a href="https://soundcloud.com/kanyewest/facts-explicit">facts</a>,&quot; because lebron is &quot;fam bottom line,&quot; and to think about how important i think having the kardashian family has been to him since his mother died, despite his limited appearances on the show and what people say about their marriage being fake. i&#39;m thankful for the ridiculousness of how scott enters this very emotional moment on the show with his shirt unbuttoned halfway down his tanned chest, for the thin armor of bravado he&#39;s trying to wear. i&#39;m thankful that khloe mocks him for wearing sunglasses indoors to cover his tears at the beginning of the conversation, but that they&#39;re all crying by the end of the conversation. i&#39;m thankful for the way that the sisters stand up and speak for each other, but i&#39;m thankful they also listen to scott, who seems to be very genuinely and sadly expressing his pain and how alone and lost he feels. i&#39;m thankful that when kourtney finally speaks up at the end of the conversation, joining kim and khloe&#39;s chorus, she says to him, &quot;i want to see that you have faith in your own self.&quot; </p>
+<p>i&#39;m thankful that she says that to him, not only because i think it&#39;s true and because i think it&#39;s something he needs to hear, but because the phrasing of &quot;have faith in your own self&quot; made me think of the very beautiful song &quot;the morning of our lives&quot; by jonathan richman, where he sings a similarly-phrased lyric over and over again. i&#39;m thankful for the intimate acoustic <a href="https://www.youtube.com/watch?v=BBgpM8nF69k">demo version</a> of the song that i just heard for the first time on youtube, which is small and melancholy, thankful for the the way you can see him working out the song as he sings it, his voice a pencil tracing a crooked line, the harmonies smudges of shading. </p>
+<p>i&#39;m more thankful, though, for the version i know best, a live <a href="https://www.youtube.com/watch?v=AbUYJfbZ-Qc">electric version</a> that i first heard when i was in college and have loved ever since. i&#39;m thankful for the aura and room tone that the live recording has, how the picture it puts in my head, which is probably inaccurate but i don&#39;t care, is of the band playing in a small city park amphitheater in the evening in midsummer, the air cool and perfumed by blooming flowers. i&#39;m thankful for the warm round bass and the way he simplifies the lyrics and structure of the song from the other version, making it more of a prayer or a pep talk than a narrative, repeating over and over how it hurts him that &quot;<em>you have no faith in your own self</em>,&quot; because &quot;<em>you don&#39;t got nothing to be afraid of, you&#39;re not as bad as you think</em>&quot; how &quot;<em>you&#39;re always putting yourself down, but i&#39;m just going to tell you that i like you</em>,&quot; how &quot;<em>i&#39;ve got faith in you</em>,&quot; how &quot;<em>there&#39;s no need to think that other people can do things better than you can do them, because you got the same power in you</em>&quot; and &quot;<em>you can do anything you set your heart on</em>.&quot; i&#39;m thankful for how he sings these things over and over again, trying to make you really, really hear them, and i&#39;m thankful for the break of the chorus, when he sings &quot;<em>our time is now / now we can do anything we really want to / our time is now, here in the morning of our lives</em>.&quot; i&#39;m thankful for the poetry of the title of the song, the conflation of two different time-scales. i&#39;m thankful for silly harmonies and well-intentioned clapping. </p>
+<p>i&#39;m thankful, even though it stressed me out, that i pulled my blood pressure cuff out of my sock drawer and took readings yesterday evening and this morning before my doctor appointment, which i&#39;m supposed to do weeklyish but i don&#39;t do as often as i should because it makes me stressed out, which makes my blood pressure high, which makes me stressed out, which feedback loops until i have a panic attack or stop trying to take my blood pressure or both. i&#39;m thankful for that experience, even though it sucks, for the way it shows how a thing that i can intellectually understand shouldn&#39;t be frightening, that is actually a preventative measure to protect me and make me safe, can, because of the way that strands encoded with fear and dread have wrapped around it in the fibers of my brain, feel like an electric shock to my body, almost as if the cuff is a haunted object. i&#39;m thankful how yo try to calm myself down while i took my blood pressure yesterday evening and while the nurse took it in the doctor&#39;s office this morning, to try to fight my existential fear, i closed my eyes and tried to picture kim kardashian peacefully sitting pregnant on a deck chair beside a blue pool in a villa st. bart&#39;s, the breeze gentle, the way other people might meditate on the virgin mary. i&#39;m thankful that though my blood pressure was still higher than it should be despite this effort, when i joked to the nurse that she was so nice that i didn&#39;t know why i was always making myself afraid of her, she joked back that it it was true, that i shouldn&#39;t be getting white coat hypertension because she was wearing a blue coat (rimshot). i&#39;m thankful that my doctor wasn&#39;t too concerned about my blood pressure, and that i&#39;ve graduated from a one month followup to a six month followup appointment. i&#39;m thankful for the woman i overheard in the waiting room before my appointment, telling the man sitting beside her about a lab tech: &quot;she&#39;s one of my friends...i mean, i mostly know her from drawing blood...but she&#39;s one of my friends.&quot; i&#39;m thankful for the nervous old man standing at the window of the reception desk and trying to get a walk-in appointment, for the way his stammering voice broke as he related his symptoms and he said, pained, &quot;why do the words stop coming out when they want to?&quot; i&#39;m thankful that he laughed and then tried again to express himself and that he was understood.</p>
+<p>i&#39;m thankful if you read to the end of this way-too-long email, and i promise they will not usually be this long. i&#39;m thankful i just had a lot i wanted to say today.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-19.html" class="btn btn-secondary">← thank you notes 1/9</a>
+        <a href="/letters/thank-you-notes-126-1494.html" class="btn btn-secondary">thank you notes 12/6 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

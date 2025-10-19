@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/31">
+  <title>thank you notes 1/31 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/31</h1>
+        <time datetime="2016-01-31T00:00:00Z">January 30, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i had chipotle for the first time on friday evening. i&#39;m thankful that d had to go to a team dinner for work, so that i had to find dinner on my own. i&#39;m thankful that before we got together, i loved cooking for myself and did so basically every night, but that now to cook for myself seems like an impossibly difficult task and so i rarely do it. i&#39;m thankful to think about how because of the privilege of our love i don&#39;t know really how to be alone anymore now, even if that&#39;s a painful thing when i have to be alone, as we all sometimes do. </p>
+<p>i&#39;m thankful for the chipotle app for the iphone, which simplified the burrito ordering process, which i found stressful one time a while ago when i tried to go in qdoba for the first time in years while wearing glasses with an outdated prescription and literally could not read the menu posted above the ordering line and turned around and left without ordering anything, feeling very old. i&#39;m thankful for my burrito, which was ready for me to pick up when i got to the restaurant. i&#39;m thankful for sofritas, rice, black beans, fajita veggies, tomatillo salsa, sour cream, and mozzarella cheese. i&#39;m thankful that i biked home quickly and that when i sat down at the coffee table to eat, the burrito was still warm in its foil wrapper. i&#39;m thankful for how delicious it was, how each bite offered new colors and textures for my tongue to explore. i&#39;m thankful for <a href="http://www.newyorker.com/magazine/2016/02/01/time-is-a-ghost">&quot;time is a ghost&quot;</a>, the profile of vijay iyer that i read part of while eating and and still haven&#39;t finished.</p>
+<p>i&#39;m thankful for video games, which, at their best, provide an impressive degree of absorption and mind-emptying and time passage at a much lower effort cost than reading fiction or meditating, and which are perhaps slightly less toxic to the body than fast food. i&#39;m thankful for the motorcycle racing video game, <em><a href="https://en.wikipedia.org/wiki/Trials_Fusion">trials fusion</a></em>, which i bought for my dad for christmas because it seemed like a stupid fun game he would like and then bought for myself this weekend because i wanted a stupid fun game. i&#39;m thankful for the purity of the joy of motion in the game, for how satisfying it is to not crash, to slip over the lip of a cliff or rocket off a ramp into the air. i&#39;m thankful that the game is so bodily involving that i actually find myself twisting the controller around through the air the way that people who are badly pretending to play video games in movies do.</p>
+<p>i&#39;m thankful that i got fooled not once, not twice, but three times by fake versions of rihanna&#39;s &quot;work&quot; on youtube and soundcloud as i tried to listen to it on launch day in the office on my work computer. i&#39;m thankful, since each of the songs was disappointing and not matching the flames emoji furor on twitter, that none of them were &quot;work&quot; or any of the other songs on <em>anti,</em> thankful that as each of the intros of the fakes went on, i began hoping and hoping more and more that they weren&#39;t real &quot;work,&quot; even though i really wanted the hear the real &quot;work_.&quot;_ i&#39;m thankful i finally got my shit together enough yesterday to download the real <em>anti</em> and listen to it all the way through on the good speakers in the living room a couple of times yesterday. i&#39;m thankful for all the code switches and different interesting things she does with her vocal inflections on the first song, which reminds me of a really elegant (and sexy) version of that magic trick where the magician keeps disappearing behind a curtain on stage and reappearing on the other side in a different costume. i&#39;m thankful that i&#39;ve never been able to get into tame impala, but her voice singing the high super-chorus late in their too-long song is one of the most beautiful ways i&#39;ve heard her voice (or any voices, recently) be. i&#39;m thankful for &quot;love on the brain,&quot; for how i would never have expected her to do something that traditional, but for how the fact that she flirts with an obvious structure clears room for a trampoline off which her voice can do these great tricks and flips and twists of timbre and tone (i&#39;m thankful for the cavernous reverb, which subtly estranges the song from its obviousness in a similar way to the reverb and low-passed analog delay on lana&#39;s cover of &quot;<a href="https://www.youtube.com/watch?v=H0gr2abrE64">blue velvet</a>&quot;). i&#39;m thankful for how many times on the album she beautifully sings the word &quot;fuck,&quot; for how she makes profanity feel so necessary. i&#39;m thankful for the laugh line about lip gloss in &quot;sex with me,&quot; thankful for the blunt(ed) chorus of &quot;sex with me,&quot; thankful for the sheer existence of &quot;sex with me.&quot; </p>
+<p>i&#39;m thankful for alex g&#39;s <em>beach music</em>, which i was listening to on the good speakers in the living room and really enjoying today after looping <em>anti</em> on headphones all this morning while working on a project. i&#39;m thankful that when d, very stressed out by an issue she was having with a freelance client, came into the living room so i could read over an email before she sent it, i asked her, to try to distract her for a minute, if she liked the music and i&#39;m thankful that i said that it kind of reminded me of elliot smith (who she likes, unlike a lot of the music i like). i&#39;m thankful for the hilarious crankiness of her response, which was that it <em>was</em> kind of like elliot smith, kind of, &quot;but&quot;—and she paused, thinking hard to find a way to articulate her feelings—&quot;...slightly annoying.&quot; i&#39;m thankful i enjoy the album anyway and that i was able to convince her that her email was good and that she should send it and stop thinking about it and try to spend the rest of her sunday on more pleasurable things.</p>
+<p>i&#39;m thankful to have finally watched this week&#39;s kardashians, which was a pleasurable thing (i&#39;m thankful for the most pleasurable line of the episode for me, which is when kourtney, searching for a non-non-stick pan in a kitchen cupboard, says &quot;copper i think is not teflon?&quot;). i&#39;m thankful for how i had been avoiding watching kardashians because it was feeling like &quot;keeping up&quot; was a chore or a homework assignment, something i forced myself to do for you, but that this story i was telling myself in my head, like most of the stories we tell ourselves in our heads, was a false narrative, an unnecessary plot. i&#39;m thankful for how earlier, when d was stressed out, i suggested that she take a run, because she definitely wouldn&#39;t feel worse afterward and she would probably feel better. i&#39;m thankful that this is how i feel about running as well as watching kardashians.___PARAGRAPH_BREAK___</p>
+<p>i&#39;m thankful for the most prominent plot in this week&#39;s episode, which was about khloe feeling stressed out about trying to finish her book, <em><a href="http://www.amazon.com/Strong-Looks-Better-Naked-Kardashian/dp/1942872488/ref=sr_1_1?ie=UTF8&qid=1454272050&sr=8-1&keywords=strong+looks+better+naked">strong looks better naked</a></em>, by the deadline her editor set while also trying to work her other jobs and live her life. i&#39;m thankful to see this problem, which is such a major one for writers with jobs and lives, being dramatized on such a popular television show. i&#39;m thankful for the delicious irony that the most time-consuming thing that&#39;s keeping khloe from working on her book is a photo shoot at a studio called quixote. </p>
+<p>i&#39;m thankful for the opening scene where kim comes into khloe&#39;s bedroom as she tries to work on her laptop and annoys and distracts khloe, brazenly flaunting the freedom that all people who don&#39;t have to write anything seem to exude when you&#39;re under a deadline. i&#39;m thankful for how khloe, echoing jonathan franzen in his bunker with his broken wireless card and earplugs, says that sometimes when she really needs to concentrate, she writes in the bathroom, seated at her vanity. i&#39;m thankful that when kim gets to be too much, khloe actually gets up and goes and sits in there. i&#39;m thankful to think about how writing in front of a mirror, which would drive me insane, is comforting to her.</p>
+<p>i&#39;m thankful for the most crucial moment of the episode (at least to me), which is when at, the kitchen table, kim tells khloe to chill out. i&#39;m thankful that she says &quot;your book is about mind, body, and soul, so you have to take time for you,&quot; that she tells her khloe that for the book to be &quot;true, you have to <em>live it.</em>&quot; </p>
+<p>i&#39;m thankful for the silent pause and, then, for the wrung-out, searching tone in khloe&#39;s voice when she replies, &quot;when do we <em>ever</em> live it?&quot;</p>
+<p>i&#39;m thankful for the honesty of that, for the way that it cuts away at the smooth facade of their digital lives and at the plastic happiness of so many others who we envy. i&#39;m thankful to imagine that if i could appear to khloe at the apex of this struggle between work and life, like a guardian angel of creativity, i would try to console her with poetry.</p>
+<p>i&#39;m thankful for &quot;<a href="http://buoy.antville.org/stories/355406/">you want a social life, with friends</a>&quot; by kenneth koch, the first poem of his that i became acquainted with, through <a href="https://www.youtube.com/watch?v=gjXHRUlKe_M">a youtube video</a>. i&#39;m thankful to imagine playing that video for khloe so that she can know that she&#39;s not the only one who&#39;s ever gone through this sort of thing, for the way i imagine that we would laugh at the silly little rhyming lines about michelangelo and homer and start to talk about what was really important to us in life.</p>
+<p>i&#39;m thankful, if she was receptive to that, to imagine then giving her my favorite poem of his, &quot;<a href="http://www.poetryfoundation.org/poem/237626">the circus</a>,&quot; which is a poem about him remembering writing an earlier poem which was also called the &quot;circus.&quot; the poem is addressed to his wife janice, who he would soon divorce and who would die a few years later of cancer. i&#39;m thankful to imagine playing khloe <a href="https://media.sas.upenn.edu/pennsound/authors/Koch/Koch-Kenneth_The-Circus_Appearing-on-The-Poetry-Foundation_2006.mp3">this recording of him reading the poem</a> so she could follow along with the text, since the poem is very prosy and the rhythm isn&#39;t obvious. </p>
+<p>i&#39;m thankful to think about how much the poem means to me but how i&#39;ve not been able to communicate it with people in the past. i&#39;m thankful to remember one early fall afternoon walking around campus and listening to the recording and taking pictures of the leaves on the trees and the grass and the sky, which suddenly felt incredibly important to record (and yet futile at the same time). i&#39;m thankful to remember that day coming to an evening class i was teaching and playing the recording at the end of the class for my favorite creative writing students and almost crying and swooning at the same time myself and them just blank mute still not feeling it at all and me letting them leave early in an awkward silence. i&#39;m thankful for how much i feel the poem and to hope they&#39;ll feel it and you&#39;ll feel it sometime, even if not now. i&#39;m thankful that sometimes when you don&#39;t feel something, you can feel it at a different time, later, which is one of the subjects of the poem. i&#39;m thankful for the poem, which you should <a href="http://www.poetryfoundation.org/poem/237626">read</a> and/or <a href="https://media.sas.upenn.edu/pennsound/authors/Koch/Koch-Kenneth_The-Circus_Appearing-on-The-Poetry-Foundation_2006.mp3">listen to</a> all the way through first without spoilers, but, to go on explicating, for you and for khloe in my imagination, i&#39;m thankful for the run early on where he starts to state the themes of the poem:</p>
+<p>&quot;<em>Sometimes I feel I actually am the person</em></p>
+<p><em>Who did this, who wrote that, including that poem The Circus</em></p>
+<p><em>But sometimes on the other hand I don’t.</em></p>
+<p><em>There are so many factors engaging our attention!</em></p>
+<p><em>At every moment the happiness of others, the health of those we know and our own!</em></p>
+<p><em>And the millions upon millions of people we don’t know and their well-being to think about</em></p>
+<p><em>So it seems strange I found time to write The Circus</em></p>
+<p><em>And even spent two evenings on it, and that I have also the time</em></p>
+<p><em>To remember that I did it, and remember you and me then, and write this poem about it</em>&quot;</p>
+<p>for the way the poem questions whether good work is worth what it can cut from our lives</p>
+<p>&quot;<em>Noel Lee was in Paris then but usually out of it</em></p>
+<p><em>In Germany or Denmark giving a concert</em></p>
+<p><em>As part of an endless activity</em></p>
+<p><em>Which was either his career or his happiness or a combination of both</em></p>
+<p><em>Or neither I remember his dark eyes looking he was nervous</em></p>
+<p><em>With me perhaps because of our days at Harvard</em>.&quot;</p>
+<p>for his joking conflation of a long poem and a long life</p>
+<p>&quot;<em>...I wonder how long I am going to live</em></p>
+<p>_And what the rest will be like I mean the rest of my lif_e.&quot;</p>
+<p>for his exploration of how we feel time</p>
+<p>&quot;<em>He was ahead of his time I was behind my time we were both in time</em></p>
+<p><em>Brilliant go to the head of the class and “time is a river”</em></p>
+<p><em>It doesn’t seem like a river to me it seems like an unformed plan</em></p>
+<p><em>Days go by and still nothing is decided about</em></p>
+<p><em>What to do until you know it never will be and then you say “time”</em></p>
+<p><em>But you really don’t care much about it any more</em></p>
+<p><em>Time means something when you have the major part of yours ahead of you</em></p>
+<p><em>As I did in Aix-en-Provence that was three years before I wrote The Circus</em></p>
+<p><em>That year I wrote Bricks and The Great Atlantic Rainway</em></p>
+<p><em>I felt time surround me like a blanket endless and soft</em></p>
+<p><em>I could go to sleep endlessly and wake up and still be in it</em></p>
+<p><em>But I treasured secretly the part of me that was individually changing</em></p>
+<p>for his metaphor about what a &quot;career&quot; means for a young writer versus an older one,</p>
+<p><em>&quot;Like Noel Lee I was interested in my career</em></p>
+<p><em>And still am but now it is like a town I don’t want to leave</em></p>
+<p><em>Not a tower I am climbing opposed by ferocious enemies</em>&quot;</p>
+<p>for the part where he lists his friends&#39; names, because those names hold so much meaning for him, like incantations to summon memory, to resurrect the shadowy edges of presence</p>
+<p>&quot;<em>I never mentioned my friends in my poems at the time I wrote The Circus</em></p>
+<p><em>Although they meant almost more than anything to me</em></p>
+<p><em>Of this now for some time I’ve felt an attenuation</em></p>
+<p><em>So I’m mentioning them maybe this will bring them back to me</em></p>
+<p><em>Not them perhaps but what I felt about them</em></p>
+<p><em>John Ashbery Jane Freilicher Larry Rivers Frank O’Hara</em></p>
+<p><em>Their names alone bring tears to my eyes</em></p>
+<p><em>As seeing Polly did last night</em>&quot;</p>
+<p>for his painful identification of the central paradox of being a writer, of &quot;leaving it&quot; (the moment) &quot;in order to&quot; (write about it and) &quot;feel it,&quot; for how this vampiric part of art can be a consolation for a lack in life when your work is going well (&quot;<em>your sureness is like the sun / while you have it</em>&quot;) but how that can&#39;t last and the pain of being left in the lack of its wake</p>
+<p>&quot;<em>It is beautiful at any time but the paradox is leaving it</em></p>
+<p><em>In order to feel it when you’ve come back the sun has declined</em></p>
+<p><em>And the people are merrier or else they’ve gone home altogether</em></p>
+<p><em>And you are left alone well you put up with that your sureness is like the sun</em></p>
+<p><em>While you have it but when you don’t its lack’s a black and icy night...</em>&quot;</p>
+<p>for the concluding address to janice, when he talks about the paradox of feeling like wanting to write poems about his life may have actually kept life at arm&#39;s length and kept him from appreciating her and their life together when she was there, and how, despite all the loss he&#39;s suffered, maybe the poems he wrote weren&#39;t worth it</p>
+<p>&quot;<em>I came home</em></p>
+<p><em>And wrote The Circus that night, Janice. I didn’t come and speak to you</em></p>
+<p><em>And put my arm around you and ask you if you’d like to take a walk</em></p>
+<p><em>Or go to the Cirque Medrano though that’s what I wrote poems about</em></p>
+<p><em>And am writing about that now, and now I’m alone</em></p>
+<p><em>And this is not as good a poem as The Circus</em></p>
+<p><em>And I wonder if any good will come of either of them all the same</em>.&quot;</p>
+<p>but then i&#39;m thankful for the return of the paradox, that maybe some good has come of the poem because maybe he was only able to realize all these things (and to guide us towards realizing them about our own lives) by, once again, sitting down and writing a poem about them, even if, in the end, the poem becomes a consolation prize for the life it drives him to understand he&#39;s lost, a half-empty vessel.</p>
+<p>i&#39;m thankful to imagine that i could tell all that to khloe the way i told it to you and then we could open one of the glass jars in her kitchen and eat oreos. i&#39;m thankful for her relief, at the end of the episode, when she descends the stairs from her bedroom and says that she&#39;s finished the book. i&#39;m thankful, in the same way, to be finished with this email now.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-21.html" class="btn btn-secondary">← thank you notes 2/1</a>
+        <a href="/letters/thank-you-notes-ashley.html" class="btn btn-secondary">thank you notes (ashley) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

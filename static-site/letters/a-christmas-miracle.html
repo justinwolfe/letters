@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a christmas miracle">
+  <title>a christmas miracle - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>a christmas miracle</h1>
+        <time datetime="2022-12-26T00:00:00Z">December 25, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>that this morning when i clogged the toilet in the bathroom of our airbnb in hawaii and could not despite vigorous effort and much negative emotion unclog it with the included plunger i saw that while there were no hardware stores open on christmas, there was a target a few miles away in an area of industrial parks across the bridge in honolulu and we walked there to buy a snake and when we got there the metal shutters were closed behind the door of the target because duh it was also closed for christmas, i just hadn&#39;t paid attention to that detail when looking it up before we walked there in the sun, and i saw on google maps that there was a walmart nearby (duh also closed) and then as we walked through a mall (also closed, very dawn of the dead but in hawaii vibes) deborah mentioned needing to go to the bathroom at some point in the near distance and there were no open restaurants nearby so we both stood in the shade of the closed mall looking at our phones and deborah found, in one direction, a japanese restaurant that appeared to be open and seemed acceptable from yelp (we were burned after the previous night having gone to one of those &quot;cajun boil&quot; places which honestly fool me once (los angeles CA) shame on you, fool me twice shame on me (seaside OR), fool me three times (waikiki, HI) what the fuck is wrong with me, why do i go to restaurants that are not on the chesapeake bay where the gimmick is &quot;hey, let&#39;s start the meal by dumping big plastic bags full of boiling shellfish slurry onto the table in front of you&quot; and expect the food to be good and not wildly overpriced for how not good at is, i publicly swear i will never let myself eat at one of these places again just because of my proustian memories of happily eating perfect old bay blue crabs in my youth) and the japanese restaurant would surely have a bathroom but then she also found in the other direction a japanese grocery store (named, somehow, don quijote&#39;s, which i spelled as quixote in my phone when google mapping it even though it was like a few blocks away and it didn&#39;t show up), which seemed to be the only grocery store nearby that was open, but we weren&#39;t sure if it would have a bathroom (d googled it and apparently in hawaii a liquor license is what determines whether you have to have a bathroom) but we couldn&#39;t do both, it felt like, because they were in opposite directions, and only one (the restaurant) would definitely have a bathroom, and it also in the meta sense just felt so annoying to have to be dealing with this on our first vacation in beautiful paradisiacal hawaii but eventually we decided it was the only store open where we might be able to buy a toilet snake and we had to try even if it was only a small chance that they might actually have one and also hopefully they would have a bathroom (we were thinking both short and long term) and so we walked there and it was maybe the largest japanese grocery store i&#39;d ever been in and we walked the perimeter looking to see whether there was a bathroom covering one wall (no bathroom), two walls (no bathroom), three walls (no bathroom), and at the last second there was a bathroom and then after that we went back through the store trying to find a toilet snake and going through all the sections where you might find one not finding one (but also not like plungers which gave me hope that we were just not finding it yet rather than they didn&#39;t have it) and then in the last place we could think to look deborah saw a box of liquid plum&#39;r (or however it is written, i hope it&#39;s just plumber but i don&#39;t think it is) snake/chemical drain cleaner combo and we were so happy and relieved that deborah didn&#39;t have to pee and also we would be presumably be able to clear the toilet (clutching the box of drain cleaner, i said &quot;everything&#39;s going to be okay now, we&#39;ve come back to life&quot; in the style of geoff dyer when he&#39;s being wistful and optimistic about the possibility that with a change things will improve that despite so many mishaps and annoyances he goes like &quot;surely things will be better now that {x: tiny arbitrary thing}&quot; (when of course actually things will be fucked and annoying soon again and the idea that they won&#39;t is just an illusion that you&#39;re allowing yourself), and joyous and unrushed we did tour the store buying various delicious food items in celebration including some grocery store sushi which is not something i generally wanna eat but this was a good enough grocery store and all the fish here has been so good that i felt it was worth the try and the lines were very long (because other people had figured out this was the only open grocery store int his area) so we ate lunch outside at a picnic table and felt revitalized by food and warmth and hope (sidebar in that vein the traffic lights here are incredibly long but the first night we were here walking along a CG sunset (like in that david foster wallace cruise ship essay, it really unreal how the sky can do these things with the water) to go to dinner and stopped at one i started to get annoyed waiting and then was like &quot;but wait the whole reason i&#39;m here is to be outside in this warm weather what is wrong with standing here nothing look at the sunset asshole&quot; anyway i&#39;ve already been writing this longer than i intended or wanted to be but so we walked home and deborah&#39;s feet were sore and she was very tired and i went into the bathroom and found that the toilet had drained (after being fully stuck and not just slow earlier) and i was like &quot;hooray, maybe it just worked itself out and i will not have to even do anything and can just leave this drain cleaner for a future person who might be in this situation&quot; so i tried to flush it as confirmation and then it clogged again immediately and i said to myself &quot;that&#39;s okay that&#39;s okay&quot; and i opened the box and saw that the drain snake, which in my head i had imagined despite the small and cheap box to be some kind of robust ballistic device was basically a rolled piece of hard plastic with sharp bits that did not seem very effective but i had to try and wishing that i had kept the pair of plastic gloves they gave me at the cajun boil restaurant i did the best i could with the &quot;snake&quot; and it made no difference at all and so i poured the liquid drain cleaner into the pipe and said &quot;now all we can do is pray&quot; which is funny because neither of us is religious despite deborah growing up with a pastor father and me having a lot of pseudo-religious OCD rituals during periods of my life when i did not have drugs and alcohol and exercise to treat my anxiety) and after i made her a cocktail (i&#39;m thankful for the little airline bottles of liquor, there is some spalding gray movie i watched repeatedly after taping it off IFC when i was in college (i think monster in a box, though i later bought the DVD of swimming to cambodia could also be that) where he was talking about his alcoholism and how he always traveled around with little bottles of vodka that out of thriftiness he would refill out of a large bottle (unless i invented that detail not that he would (could) mind (RIP)) and we reapplied our sunscreen we went down to the beach across the street from the hotel and sat in the sun, me reading (my beach read is Babel by R.F. Kuang, which elevator pitch is like &quot;what if harry potter but postcolonialism&quot; and i am really enjoying it even though i think it&#39;s limited in some ways) and deborah doing watercolors and then we had a swim which was nice except in the water i started to think about how, though i had checked the toilet before we left the house, about a half hour after putting in the drain cleaner, and it had not drained at all, and we left but now it had been maybe 2 hours and you&#39;re supposed to wash it down with water a half hour after it clears the clog and so while we were floating in the warm water in the sunshine i confessed to deborah being distracted by this irrational anxiety and she quickly understood the position, where in my mind i could either see an outcome where the drain cleaner had not cleared the clog (which would suck since we would still not have a working toilet but not be catastrophic) or an outcome where the drain cleaner had cleared the clog but was, because it had not been properly and responsibly washed away, eating through the pipes of the condo building and causing huge amounts of irreparable damage and untold chaos that also could be directly traced back to us specifically, and i told myself in that moment that i was not going to interrupt this lovely moment which was the thing we came here for because of a hypothetical toilet situation that almost certainly had not come to pass and eventually without rushing we came in from the water to the beach and deborah finished her watercolor and then we went upstairs and the toilet had drained and i was hopeful and in the water deborah had been telling me about the importance of holding the toilet handle for several seconds (not several counts, since she knows that i count quickly in my head, but several seconds) to give the flush the greatest chance of success and we got home and the water had drained again and i had her do the flush and still it was clogged and so i closed the lid of the toilet to hide my shame and we took showers (peeing in the shower, ofc) and i resigned myself to starting another day in hawaii thinking about toilet cleaning technology and where it can be acquired and what portion of my time in heaven on earth i will continue spending dealing with someone else&#39;s toilet) and we had some beer and dried fish we had gotten from don quijote&#39;s and watched the fourth episode of the harry and meghan documentary and rather than the other more ambitious dinner options we had bandied about earlier decided to get dinner from the thai food truck a block and we got up to go and i went in the bathroom to check on the toilet and it had drained again and i flushed it again, not wanting to let myself be hopeful again even though i am always hopeful on some level, and it completely flushed, a real flush, and deborah was standing outside the bathroom and heard that it had happened and alive with serotonin we embraced, everything was going to be okay now, we&#39;d come back to life, and it was a christmas miracle</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/roll-on-sunscreen.html" class="btn btn-secondary">← roll-on sunscreen</a>
+        <a href="/letters/philomena-cunk-christmas-special.html" class="btn btn-secondary">philomena cunk christmas special →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

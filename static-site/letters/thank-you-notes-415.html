@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/15">
+  <title>thank you notes 4/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/15</h1>
+        <time datetime="2016-04-15T00:00:00Z">April 14, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that when i was getting clothes together for a load of laundry yesterday evening, i accidentally hit the &quot;2x&quot; speed button for <a href="http://www.feralaudio.com/71-el-hello/">the podcast</a> i was (re)listening to. i&#39;m thankful that while i was cycling through the settings to get back to normal speed, i landed on &quot;1/2&quot; speed and i&#39;m thankful that one of the hosts was laughing at the point when time slowed. i&#39;m thankful to have heard the sound of her laughter in slow motion, for the narrative of breath that underpins it, the sharpness of the inhale, the shift in pitch of the exhale, the bodily tremolo of chest contractions. i&#39;m thankful to have continued to listen to the podcast in half speed because i realized that listening to it in half speed made everyone sound like they were pleasantly drunk or stoned, which i found made me happy to hear. i&#39;m thankful that i cycled through a few other podcasts in this form to test my new discovery and that it was very funny for all of them (i&#39;m thankful to recommend listening to <a href="http://www.bbc.co.uk/programmes/profiles/1nKPV5F8v9NKHLM7zRhG6yh/melvyn-bragg">melvyn bragg</a> in slow motion in particular). </p>
+<p>i&#39;m thankful that as i puttered around the house and did various chores and then took a bath and did some yoga (i&#39;m thankful for the privilege of leisure), i continued to listen to various podcasts in slow motion. i&#39;m thankful that over time, the funny novelty of the stoned voices, while still present, faded into the background and half speed felt more strange and powerful. i&#39;m thankful for the magnification of <a href="http://www.gregsandow.com/BookBlog/grain_of_the_voice.pdf">the grain of the voice</a>, the way that cadences and slurs and inflections and idiosyncrasies of punctuation were all present. i&#39;m thankful for the almost psychedelic time dilation of continuing to listen to people&#39;s voices slowed to half their normal speed for an extended period of time, for the way that listening to people&#39;s voices slowed down seemed to slow down my own thoughts. i&#39;m thankful, if you <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjT86bA_ZDMAhWjnYMKHfqNBI0QFggcMAA&url=http%3A%2F%2Fwww.nytimes.com%2F2016%2F04%2F17%2Fmagazine%2Fletter-of-recommendation-squirrels.html&usg=AFQjCNGjUdhzcuH9fLB7OiX0tWlzOdUXHA&sig2=fjcxOpdqBkIyxPgDHS3Wcw&bvm=bv.119745492,bs.2,d.amc">need</a> <a href="http://www.nytimes.com/2016/04/10/magazine/letter-of-recommendation-looking-out-the-window.html?_r=0">more</a> <a href="http://www.theawl.com/2016/04/thing-that-is-good-ice-cream">recommendations</a> for fun things to do this weekend, to recommend this one.</p>
+<p>i&#39;m thankful that alex pappademas is (seemingly) <a href="https://twitter.com/PAPPADEMAS/status/721018865065394177">returning to podcasting</a>. i&#39;m thankful to fantasize that wesley morris will be able to guest the way he has on channel 33. i&#39;m thankful to imagine <a href="https://twitter.com/333333333433333">darcie wilder</a>, my favorite person on twitter, having a podcast, but also thankful to wonder if i wouldn&#39;t like that, the same way katie notopoulos as a normal person on <em>internet explorer</em>, while very entertaining, isn&#39;t as magical as when i only knew her through buzzfeed quizzes about toilet habits and her weird twitter fursona. </p>
+<p>i&#39;m thankful that finally it is spring and the weather is perfect. i&#39;m thankful that making a hard stop early in my run, i turned my ankle, but thankful that i was able to walk it off (and then run it off). i&#39;m thankful that in the center of campus, i saw a man standing on the meadow in front of an easel painting a landscape of the meadow on the perfect day. i&#39;m thankful that i then saw a girl standing on the sidewalk at the top of the hill above him looking down the hill and taking a picture of him painting the landscape with her phone. i&#39;m thankful to have paused on my run to make a note in my phone of my looking at her taking a picture of him painting the landscape of the meadow on the perfect day. </p>
+<p>i&#39;m thankful that i <a href="https://twitter.com/meaghano/status/720666146773446657">clicked through on twitter</a> to <a href="http://lithub.com/melissa-broder-thoughts-on-open-marriage-and-illness/">this incredible essay by melissa broder</a> yesterday. i&#39;m thankful for how i had been resistant to reading her book <em>so sad today</em> out of petty jealousy for how popular and loved she is and/or out of a hipster self-consciousness that i felt that i was coming to late to her, after other people had already claimed her as their own and so it wouldn&#39;t be &quot;meaningful&quot; for me to like her. i&#39;m thankful that reading the essay made clear to me how stupid and limiting those feelings are and how we have to fight back against them to keep from depriving ourselves of things that are good (i&#39;m thankful to use we even though i mean i). i&#39;m thankful i bought <em>so sad today</em> and started reading it last night and it is so weird and really fucking great. i&#39;m thankful for the chapter with the epic sexts and dictionary definitions of love the most so far.</p>
+<p>i&#39;m thankful for <a href="https://www.youtube.com/watch?v=e4O2mz1LDKU">this episode of vice munchies</a> with aziz and alan yang cooking with an even more manic than normal mario battali. i&#39;m thankful for this clip of <a href="https://www.youtube.com/watch?v=tsTZ2iFRSmw">conan o&#39; brien and steven yeun eating korean food</a>. i&#39;m thankful for this list of <a href="http://firstwefeast.com/eat/big-boi-atlanta-outkast-lyrics/?utm_campaign=fwf&utm_source=twitter&utm_medium=social">big boi recommending places to eat in atlanta based on outkast lyrics</a>. i&#39;m thankful for how honest his recommendations are, like how, for the apple pie recommendation, rather than some editor chosen artisanal rec that has been written around to sound like it comes from him, it says: &quot;<em>You might have to get that from room service at the Four Seasons (75 14th St NE, 404-881-9898) or the Ritz Carlton (181 Peachtree St NE, 404-659-0400). Why? Because I’m used to living in hotels and shit. I know if I’m getting apple pie, I’m getting that shit at the hotel most of the time, which I really shouldn’t even be doing</em>.&quot;</p>
+<p>i&#39;m thankful to remember when my mom and i went to <a href="http://www.yelp.com/biz/la-perrada-de-edgar-miami-beach">la perrada de edgar</a>, a colombian hot dog restaurant near where my parents live in miami beach, partly because the name has always made me laugh (i&#39;m thankful for when proprietors put their names in their restaurants&#39; names) but mostly because anthony bourdain rhapsodized over it on an episode of his most mediocre tv show, <em>the layover</em>. i&#39;m thankful that edgar was certainly a very nice person, who, after we ordered, proceeded to <em>microwave</em> our hot dogs (but only until they were lukewarm) and then cover them in crunchy sickly sweet may garbage. i&#39;m thankful for my fortitude in forcing myself to eat the disgusting hot dog, the worst i have ever had in my life, because edgar was a very nice person and i didn&#39;t want to hurt his feelings. i&#39;m thankful that, though he has continued to make some very good tv shows for CNN, i have not really trusted him since.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-jhe.html" class="btn btn-secondary">← thank you notes (JHE)</a>
+        <a href="/letters/thank-you-notes-414.html" class="btn btn-secondary">thank you notes 4/14 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

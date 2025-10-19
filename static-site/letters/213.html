@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2/13">
+  <title>2/13 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>2/13</h1>
+        <time datetime="2018-02-13T00:00:00Z">February 12, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that though i fell asleep without taking my sleeping pill last night and woke up at 3am wide awake, it didn&#39;t take me that long to realize that i had missed the sleeping pill and me being wide awake wasn&#39;t (or wasn&#39;t just) because i had gone up to the full dosage on my new antidepressant yesterday. i&#39;m thankful that though it took me a long time to fall asleep again, i eventually did and got at least an hour more. i&#39;m thankful for my sleepphones headphones that d bought me, which let me listen to an audiobook on low volume while my brain slowly blurred into sleep rather than listening to bad thoughts pingpong around endlessly. i&#39;m thankful for <a href="http://www.zero-books.net/books/capitalist-realism"><em>capitalist realism</em>,</a> which i was reading before bed last night, especially for this paragraph and for the clever and illuminating connection it makes between mental health management (&quot;management&quot;) and larger neoliberal economic currents with its concept of the &quot;privatization of stress&quot;:</p>
+<p>&quot;<em>Capitalist realism insists on treating mental health as if it were a natural fact, like weather (but, then again, weather is no longer a natural fact so much as a political-economic effect). In the 1960s and 1970s, radical theory and politics (Laing, Foucault, Deleuze and Guattari, etc.) coalesced around extreme mental conditions such as schizophrenia, arguing, for instance, that madness was not a natural, but a political category. But what is needed now is a politicization of much more common disorders. Indeed, it is their very commonness which is the issue: in Britain, depression is now the condition that is most treated by the NHS. In his book The Selfish Capitalist, Oliver James has convincingly posited a correlation between rising rates of mental distress and the neoliberal mode of capitalism practiced in countries like Britain, the USA and Australia. In line with James&#39;s claims, I want to argue that it is necessary to reframe the growing problem of stress (and distress) in capitalist societies. Instead of treating  it as incumbent on individuals to resolve their own psychological distress, instead, that is, of accepting the vast privatization of stress, we need to ask: how has it become acceptable that so many people, and especially so many young people, are ill? The &#39;mental health plague&#39; in capitalist societies would suggest that, instead of being the only social system that works, capitalism is inherently dysfunctional, and the cost of it appearing to work is very high</em>.&quot;</p>
+<p>i&#39;m thankful that the &quot;r&quot; key, the key i use to quickly start a new reply in the customer support software we use, broke off the internal keyboard of my work computer yesterday, which sure feels like a metaphor for something. i&#39;m thankful for the exposure of the light underneath, which normally just comes subtly through the thin letter form in the center of the keyboard but which glared brightly when fully exposed, all thx 1138. i&#39;m thankful, though, that since i can not show my boss a metaphor as proof of my work, d had a spare keyboard i could use and there&#39;s an app you can use to disable the internal keyboard when an external one is connected, such that i can put the external keyboard right on top of the internal keyboard and so still have some semblance of a laptop until i can get this fixed. i&#39;m thankful for <a href="https://mobile.twitter.com/i/web/status/958979895882760193">this thread about japanese ui design</a>.</p>
+<p>i&#39;m thankful for the shrimp and grits we made for dinner this week and for the lemon poppyseed drizzle cake that d made from dessert. i&#39;m thankful that i have meditated the last three days in a row and to hope that i can get myself to continue this streak. i&#39;m thankful for johnny greenwood&#39;s <a href="https://open.spotify.com/album/5WyVg6gJ9kCPkZs4zhIrDz?si=YdW2kaYWTrCl3S3pHn2LaQ">soundtrack to <em>phantom thread</em></a>, which is nice if occasionally eerie background music. i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/7HnuWuX1kzYIaIjmZ8sbxn?si=inEo7R_AQjK5UNCl2FNIBg">antiseptic greeting</a>&quot; by samantha crain, which has a number of great melodies arranged in just the right order. i&#39;m thankful for <a href="https://open.spotify.com/track/1OcDlrb5PTx3AXGkhbUZcs?si=sjzaiErqTri5UMs-jwq6pA">the liquid shoegaze of the autumns</a>, who d introduced me to the other day. i&#39;m thankful for soft sounds in a hard world.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/214.html" class="btn btn-secondary">← 2/14</a>
+        <a href="/letters/212.html" class="btn btn-secondary">2/12 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

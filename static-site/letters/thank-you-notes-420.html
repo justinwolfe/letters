@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/20">
+  <title>thank you notes 4/20 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/20</h1>
+        <time datetime="2016-04-20T00:00:00Z">April 19, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that there is a justin wolfe who runs a marijuana store/growing operation in colorado and i occasionally get emails intended for him checking up on shipments of strawberry kush and tangerine dream. i&#39;m thankful to occasionally fantasize about going into that justin wolfe&#39;s store sometime and the other justin wolfe getting me super blazed when i tell him my name is also justin wolfe. i&#39;m thankful they sell legal weed in colorado, since before that happened i had a 0% interest in visiting colorado and now i am up to maybe 5% (10% if i get to visit my name twin and get a VIP tour of his grow-op). i&#39;m thankful that this other justin wolfe has replaced my previous favorite other justin wolfe, who is a singer for a &quot;melodical death metal&quot; band called (i am not kidding, follow the link), <a href="https://en.wikipedia.org/wiki/Thine_Eyes_Bleed">thine eyes bleed</a>. i&#39;m thankful for the one time i got an email with the subject line &quot;<em>Fwd: Query from NY Times</em>&quot; and got briefly very excited that someone was interested in talking to me about my oeuvre in the paper of record before i realized that they were actually trying to reach the acclaimed economist <a href="https://twitter.com/JustinWolfers">justin wolfers</a>. i&#39;m thankful for justin wolfers, even though i am not normally thankful for economists (or for <em>the economist</em>), because of <a href="https://twitter.com/JustinWolfers?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">his lustrous golden mane</a>. </p>
+<p>i&#39;m thankful for <em>the economist</em>, not as a magazine, but for the way it allows me to remember my naive innocence in the second term of the bush administration, when my college roommate z started getting it delivered to our house, which was behind the best taco bell in tallahassee, and i had not yet learned the word &quot;neoliberal.&quot; i&#39;m thankful to remember how though i thought of myself as very liberal (i&#39;m thankful for the michael moore books i carried in my messenger bag as totems in my senior year of high school lol), i had a fondness for jeb bush because i somehow stupidly ascribed the bright futures lottery-funded scholarship program that was paying for me to go to florida state to his autocratic benevolence as governer. i&#39;m thankful to remember reading z&#39;s weekly copies of <em>the economist</em> in the mornings at our kitchen table while eating flavor-ice popsicles, which were what i was eating for breakfast that year, because i was young and my body had not yet begun to break down and feel pain and require actual nutrition to function (i&#39;m thankful to remember how, in addition to popsicles for breakfast, i often had a coke slushie and a snickers bar (for the nutrition) for lunch in college, with sauceless pasta for dinner). </p>
+<p>i&#39;m thankful to remember how that year i did all my finals high and got straight A&#39;s (i&#39;m thankful to remember in my literature class exam writing an essay question answer about raymond carver&#39;s &quot;<a href="http://www.giuliotortello.it/ebook/cathedral.pdf">cathedral</a>,&quot; which i first read while high and which all my college fiction writing was in some way in imitation of). i&#39;m thankful to remember how we got an old 8 track player from goodwill one day and how early in the mornings in the spring of my junior year, z would sometimes open our front door and blast an 8 track of rick springfield&#39;s &quot;<a href="https://www.youtube.com/watch?v=qYkbTyHXwbs">jessie&#39;s girl</a>&quot; out into the neighborhood, which was arrayed around a deep pit that was intended to be a pond but never had enough water in it to qualify and mostly just served as a breeding ground for mosquitoes and bad smells. i&#39;m thankful, googling z, who i have not spoken to in years, to find out he is now the district attorney of a small town in the pacific northwest. i&#39;m thankful to have known then that he would probably be the most successful of my friends.</p>
+<p>i&#39;m thankful that z didn&#39;t smoke weed, if only because that meant more weed for me. i&#39;m thankful, since i had much less money than my friends in college, that they were generous with their weed (i&#39;m thankful to remember walking with my friends one day and them comparing the monthly allowances they got from their parents and then asking me and me being like, &quot;<em>uh, i don&#39;t get one?</em>&quot;). i&#39;m thankful in particular for my friend j, who i smoked the most with and was the closest with. i&#39;m thankful that he would always ask me to smoke with him (since i would never ask him for weed, which seemed too leech-ish) and when i would sometimes make guilty noises of faux-protest about smoking his weed without ever smoking him out in return, he would make it seem imperative that i smoke, that he didn&#39;t want to smoke alone, that i was doing him a favor. i&#39;m thankful to have hoped this was partially true (i&#39;m thankful that there seemed to be a profound loneliness inside him, which i feel like was part of why we were friends, because i had that too), but also thankful that it was a gesture of generosity on his part and thankful for how easy he made it for me to accept it.</p>
+<p>i&#39;m thankful to remember doing grav bong hits in the sink of his studio apartment and then endlessly playing acoustic guitar loops, like a human ableton, while he soloed over them with heavy delay and reverb (i&#39;m thankful for our name for our &quot;band,&quot; which was flying grape jelly). i&#39;m thankful to remember when he introduced me to the trick of putting a metal cup into the freezer and then shotgunning smoke into it and how because of the magic of physics and temperature the smoke would hang there in the cup like it was a liquid. i&#39;m thankful to remember when we made weed butter but didn&#39;t wait for it solidify, so that when we tried to make brownies, they didn&#39;t solidify and so he and i just ate cups of the brownie batter and got incredibly stoned at an intramural soccer game. i&#39;m thankful to remember when i crossfaded too hard and blacked out and fell into a ditch and vomited and he and my other roommates took me home and i passed out on the floor of my bedroom with my shirt half open and my pudgy belly hanging over the lip of my pants and a puddle of more vomit in front of my face and my friends took pictures of themselves standing over me and smiling and playing the ukulele </p>
+<p>i&#39;m thankful that the first few times i smoked i didn&#39;t get high, even though i desperately wanted to, maybe because i wasn&#39;t inhaling properly (i&#39;m thankful how visualization helped me to learn to use my lungs). i&#39;m thankful i don&#39;t remember the first time i actually got high, despite really trying hard to remember it as i write these notes, which is probably an object lesson in why weed is not always good for you. i&#39;m thankful to remember my first 4/20, my freshman year of college, and how i woke up the next day feeling the happiest i had ever felt in my life up until that point, in a kind of reverse hangover. i&#39;m thankful to remember in the spring semester of my sophomore year how my friend a connected me to his neighbor, who was a sorority girl who dealt drugs to other sorority girls. i&#39;m thankful that in trying to chat up this girl, who he had no chance with, he found out she needed someone to write a paper for her astronomy class and recommended me. i&#39;m thankful to remember how proud i was of the paper i wrote, which was about how SETI@Home crowd processing of radio telescope data democratized science, how i almost wished when i was done that i could take credit for it rather than let it be hers. i&#39;m thankful that the girl was happy with the paper, which she got an A on, and i&#39;m thankful she stuck an extra nug on top of the quarter we had agreed on into the baggie she gave me. i&#39;m thankful that this was the first time (and maybe still the best time?) i was ever compensated for writing anything. i&#39;m thankful to remember after i finished walking to the on-campus convenience store stoned and buying a snickers ice cream bar and eating it on the walk back, finishing it just as i got to the door of my apartment dorm, then turning around and going back and buying another.</p>
+<p>i&#39;m thankful how cool it felt to have my own weed for the first time. i&#39;m thankful that since i didn&#39;t have a bowl, i pierced holes in the side of a doctor pepper can and smoked out of that out of the screen of the window of my apartment dorm (i&#39;m thankful to have felt like a stoner macgyver). i&#39;m thankful to remember doing that one spring evening at sunset and listening to the acoustic version of &quot;<a href="https://www.youtube.com/watch?v=gsd8e4VbjrA">don&#39;t look back into the sun</a>&quot; that pete doherty recorded in the depths of his heroin addiction on his demo mixtape <a href="http://upthealbion.com/session.php?s=40">shaken and withdrawn</a>. i&#39;m thankful for the way after my identity was &quot;friendless loser&quot; in high school, that drugs offered me a readymade &quot;cool&quot; identity that i could slip on like an old comfortable hoodie. i&#39;m thankful, even though it sounds stupid, for how important and useful that was to me, especially because i was still very shy and had trouble sharing who i was inside with other people. i&#39;m thankful that being high was an easy excuse to try out affectations (i&#39;m thankful for the period where i told other people (and half convinced myself) that i could see their auras) and feel confident enough to express myself (i&#39;m thankful for the way that stoned thoughts straddle the fence of stupid and profound and how that makes talking stoned so easy and fun, even if talking isn&#39;t normally that way for you)(i&#39;m also, though, thankful for the way that being stoned helps you to feel okay with sitting still and being quiet or with other people around you being quiet, letting the gears turning in their minds). </p>
+<p>i&#39;m thankful, even if it made me dependent on it and made me during the times when i wasn&#39;t stoned more perhaps more prone to panic and anxiety, for the way weed made me feel comfortable in my own skin for the first time (i&#39;m thankful for the literalization of that metaphor, like, feeling comfortable on the cellular level of my body). i&#39;m thankful for all the books and movies and records i experienced while stoned and that i might not have appreciated otherwise. i&#39;m thankful for how (especially after i did mushrooms for the first time) i learned to appreciate being out in nature, which had never appealed to me when i was younger. i&#39;m thankful to remember getting high late at night and looking for shrooms with some friends in a random pasture one night where there was one black stallion. i&#39;m thankful to remember going up to the horse and feeling like i had some kind of mystical connection with it. i&#39;m thankful for how big and solid it was and how it made me feel small in a cosmic way.</p>
+<p>i&#39;m thankful that in graduate school, d traded some opiates she had been prescribed for a back problem to our friend for some weed so that she could smoke weed for the first time with me. i&#39;m thankful that she liked it and thankful that for the rest of graduate school and after, we had a steady hookup and enough disposable income to afford to get high whenever we wanted, which was often. i&#39;m thankful for weed sex, which is the best sex. i&#39;m thankful for the song &quot;<a href="https://www.youtube.com/watch?v=69MiOxQNnxM">do you...</a>&quot; by miguel, which if we have a song as a couple is our song. i&#39;m thankful for our long stoned walks around town, learning the geography of the streets and trees and flowers and houses. i&#39;m thankful to remember the spring evening when we listened to &quot;<a href="https://www.youtube.com/watch?v=qJILRWBKnQ4">it all feels right</a>&quot; by washed out on loop for like a half hour without realizing it and just thought it was one long amazing song. i&#39;m thankful how getting stoned together before we went out to social things felt like tying ourselves together with this invisible bubble, like that we were both anxious but that by doing this ritual before we went out, we were protected and if we ever felt scared or uncomfortable or awkward we could just live in the bubble together giggling.</p>
+<p>i&#39;m thankful that i have now been sober (from alcohol and weed) for the longest time i have ever been sober since i was 17 years old (which is still not a very long time, but is a long time for me). i&#39;m thankful that even though i decided to try to do this again to see if it would help with my stomach problems and even though it has not helped much (though i think has helped a minor amount), i&#39;m thankful to continue it, at least for now. i&#39;m thankful for my antidepressants, which have stabilized me and made a whole new kind of life possible in the way that weed did when i was younger, but better (i&#39;m thankful how on <em>broad city</em>, amid the joyful cheeching and chonging, they frequently make reference to ilana being on antidepressants, which i think is an important normalizing thing to do). i&#39;m thankful for how weed stopped appealing to me as much after my body stabilized on prozac, how it seemed there was just as much a chance that it would make me feel unhappy or bad as it would make me feel happy and good, which was never the case in the past.</p>
+<p>i&#39;m thankful for the experience of what my mind and body feel like now. i&#39;m thankful that even though i think i&#39;m maybe generally less happy than i was before (i&#39;m not thankful for how much more prone i am to feeling annoyance and frustration than i was before, which i don&#39;t like, but am working on), i feel good and stable and centered (in my body and my spirit) in a way that i didn&#39;t before. i&#39;m thankful for yoga and meditation and running and swimming and other forms of physical and mental exercise, which help me keep feeling that way. i&#39;m thankful how sobriety sometimes feels like a muscle that i am flexing—i&#39;m thankful that after a really hard afternoon yesterday of carefully editing pages and pages of sloppily written reference citations in (supposedly, but not really actually) AMA format, i went home and really really really really really really wanted the relief of a drink or a hit of the vape. </p>
+<p>i&#39;m thankful that instead, i just had my boring but satisfying nightly glass of seltzer with my comically large cocktail ice cube and a squirt of kava and valerian tincture (i&#39;m thankful to know that this last bits means that my sobriety is in air quotes, but i&#39;m thankful to do what feels good to me and not care about definitions or what other people think of it) and i&#39;m thankful that as the evening went on, i eventually felt better. i&#39;m thankful that i always eventually feel better when i feel bad, even if it sometime takes longer than i want and even though it&#39;s often not fun to live in the space between feeling bad and feeling better and when i&#39;m there all i want is a rope that i can climb out of that cave into the light. </p>
+<p>i&#39;m thankful that as the chain of days that i haven&#39;t had a drink or smoke gets longer, it feels more important to me not to break it, even though i know it wouldn&#39;t be the end of the world or really &quot;matter&quot; if i did. i&#39;m thankful that this spell of sobriety has functioned like a spell of the magical variety, how it&#39;s given me a new identity and a new sense of self and an altered perceptual apparatus and mental state and thoughts, in the same way that getting high did in the past. i&#39;m thankful that all the drug experiences i&#39;ve had (good and bad) are still inside of me and that i still have access (even if it&#39;s through a blurry scrim of haze) to what they were and what i learned from them and how they made me feel. i&#39;m thankful to know that giving up drugs (at least for now) doesn&#39;t mean giving up that window through which i accessed fascination and wonder and spirituality and connected with the world and the people in it. i&#39;m thankful that window is still there and i&#39;m looking through it right now.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-422.html" class="btn btn-secondary">← thank you notes 4/22</a>
+        <a href="/letters/thank-you-notes-esme4.html" class="btn btn-secondary">thank you notes (esmé)(4) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

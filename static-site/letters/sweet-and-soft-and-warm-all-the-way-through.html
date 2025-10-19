@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="sweet and soft and warm all the way through">
+  <title>sweet and soft and warm all the way through - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>sweet and soft and warm all the way through</h1>
+        <time datetime="2024-07-14T22:56:53.463830Z">July 14, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/196" alt="image.png"> </p>
+<p>that though the air conditioning for the train to seattle on friday afternoon was broken, they got us on a bus and it was fine (and had air conditioning and i&#39;m thankful for how easy it is to tether to my phone in this day and age) and we only got to town like an hour later than expected and i was able to spend most of the trip working on dumb boring performance review stuff for work that if i was sitting at my desk at home with my enormous monitor i would have procastinated to next week because i&#39;d rather be coding (that&#39;s my &quot;i&#39;d rather be fishing&quot; bumper sticker). i&#39;m thankful after a busy weekend to be typing these notes from the roomier confines of the actual train on the way home now while listening to <em>charm</em> straight through for the second time on noise-cancelling headphones. thankful that the amtrak station in seattle is across the street from uwajimaya village and for lunch we got cod roe onigiri and kimbap and dried nectarines and freeze-dried cheese and calamansi seltzer.</p>
+<p> <img src="/api/images/197" alt="image.png"> </p>
+<p>i&#39;m thankful to have gotten to eat dumplings and dan dan noodles and fancily-cut cucumber with deborah and s.m.e. on friday night and afterward because we wanted to keep hanging out to have bought individual ice creams and walked back to our airbnb, which had a large couch and a very large tv. i&#39;m thankful we watched <em>the boyfriend</em>, a new dating show (netflix) which the elevator pitch is &quot;gay terrace house&quot; (it even has tokui from the TH panel!) and the first two episodes have been really great—so tender and vulnerable (but also flash forwards to real emotional shit to come 😈). in addition to trying to figure themselves out and find love with one another, the boys are running a coffee truck in a small seaside town and only two people can fit in the truck at a time so they&#39;re always going on these kind of work dates but also they really do need the money (the biggest drama in the second episode, is that one roommate who is a go-go dancer is used to eating huge amounts of chicken but the cost of this stresses the household finances and they have to have a house meeting about it). elsewhere in reality, the new season of <em>90 day fiancee: the other way</em> started and there is a lot of chaos to come but i think the couple i&#39;m most excited about are two women, one american and one british, who are planning to start their in-person relationship by living in a van and ambling across europe while remote working. i&#39;m thankful that in the introductory interview with the american she is soaking in a bathtub (her last bath before #vanlife) and says to the producer after a pause &quot;i just peed in my bath&quot; and the producer, offscreen, says &quot;uh, what?&quot; and she says that she likes to pee in her bath before getting out of it because of the &quot;freedom&quot; it makes her feel powerful that no one can tell her what to do and then playfully says &quot;go eff yourself&quot; to the audience who cannot comprehend this anyway excited to see more of this person in weekly installments (i&#39;m thankful to have been weirdly disappointed to be reminded that episodes of <em>the other way</em>, since it&#39;s not the mainline show, are the length of normal TV episodes as opposed to the party-size sub sandwich bulk of the mothership, which is good for us in terms of our lives not being taken over by the show but also disappointing because of all of the missed cringe).</p>
+<p> <img src="/api/images/198" alt="image.png"> </p>
+<p>i&#39;m thankful on saturday we had quiet morning sex because we couldn&#39;t close the window of the airbnb, then a nice little walk and lunch with deborah&#39;s best friend h (who i also love) and her new boyfriend c, who we were supposed to meet last time we went to LA before there were record-breaking rains. i&#39;m thankful that c, who works in advertising, seems very nice and she likes him and that he helped her break the cycle of her toxic ex. i&#39;m thankful that saturday afternoon (and into the evening) deborah got her first tattoo, flowers on her right shoulder from a korean artist she found on instagram who does a very particular kind of work. i&#39;m thankful that deborah had spent thursday night iterating on the design mockup the artist made and that she sent back notes and got exactly what she wanted and that while it was very painful she could hang in there through it (i&#39;m thankful that afterward she told us). i&#39;m thankful as a person who was there for four hours that the tattoo studio was empty, cool, comfortably furnished, and had a water cooler. i&#39;m thankful we went out for sushi later and h smoked a joint with me in the parking lot before.</p>
+<p> <img src="/api/images/200" alt="image.png"> </p>
+<p>i feel like if someone who knew me had to bet a lot of money on &quot;has justin read the book <em>house of leaves</em>&quot; they would bet that i had, even though until now they had been wrong. it&#39;s such a me kind of book but even as a person who read <em>infinite jest</em> twice and <em>underworld</em> and <em>2666</em> and etc. our ships never met in the night and then for like many years i haven&#39;t really read paper books at all (and this book is formally playful and requires you to read it on dead tress), but i saw e.c. was reading it and that gave me the impetus to try it too. i&#39;m thankful that while i don&#39;t think it hit as hard as it would have if i&#39;d encountered it in my 19-21 peak &quot;long postmodern novel&quot; (i think the apex of my ability to accept some difficult bullshit was either gaddis or <em>life: a user&#39;s manual</em>), i had a lot of fun reading it. it feels dated and like very 90s in some ways (the speaker of footnote narratives) and some of the formal play feels like &quot;did you really have to do that, do i really need to use a hand mirror&quot; and i think if i was editor could have been pared back like 15% with no loss but i respect something that takes pretentious swings and the core story of a documentary filmmaker who finds a haunted house and the effect of that on his family is pretty great (in some ways it did a lot of <em>annihilation</em> before <em>annhiliation</em>:there&#39;s even a reverse tower!). i&#39;m thankful that the book i&#39;m currently reading is <em>a place of greater safety</em>, hilary mantel&#39;s epic novel about the french revolution, which so far is so rich and absorbing and i&#39;m thankful, at a time when all news everywhere is just getting worse, the gyre widening like a MOTHERFUCKER, for the escape of big novels (i&#39;m thankful that r.c. changed the theme of our instagram DMs to house of the dragon yesterday and we made dark jokes with each other for a while).</p>
+<p> <img src="/api/images/199" alt="image.png"> </p>
+<p>i&#39;m thankful that <em>charm</em> is everything we (deborah and i, but based on the discourse the royal we too) wanted it to be, i&#39;m so grateful to have another golden summer soundtracked by clairo. thankful that there is literally a song called &quot;thank you&quot; about being in the early limerent limelight of love (the subject of the whole album). i&#39;m thankful for the minimalist piano loop that anchors &quot;slow dance&quot; and the analog synths in the chorus, the chamber pop harmonies. i&#39;m thankful for the slow lope of &quot;second nature&quot;, the melotron strings and clarinet solo and the beat switch at the end, the sampled laughter used as percussion. i&#39;m thankful for the stereolab farfisa of &quot;echo&quot; (which makes me think of clairo&#39;s spotify profile picture, where she&#39;s seated before an organ) and for the cheeky dropout near the end. i feel like even though she doesn&#39;t look like her she should play carole king in the biopic because she&#39;s such an AM gold old soul, a tapestry of tunes. i&#39;m thankful that she has such a good sweet voice, for the almost ASMR quality of the close mic-ed whispers. i&#39;m thankful for all the tumbling drum fills, the dry clap of the snare, how the sound of the songs is always shimmering and sparkling in small highlights all the time, aural fireflies. &quot;glory of the snow&quot; which feels like a cousin of &quot;birds of a feather&quot; (but with a breakbeat). i&#39;m thankful, even though i love how almost all of the songs groove and pulse (&quot;sexy to someone&quot; was a perfect first single in terms of being a harbinger of the bounce to come), for the acoustic epilogue of &quot;pier 4&quot;. i&#39;m thankful, as a person who almost always likes happy music more than sad music, it&#39;s such a very happy album, sweet and soft and warm all the way through. i&#39;m thankful that to me <em>sling</em> feels like a morning album whereas this one is magic hour stretching on into the evening.</p>
+<p> <img src="/api/images/201" alt="image.png"> </p>
+<p>i&#39;m thankful for the thick forests i can see outside the window of the train right now (deborah is sleeping in the window seat next to me and i&#39;ve listened to <em>charm</em> two times through and now have gone back to <em>guts</em>, which is still s tier all killer no filler). i&#39;m thankful that you can buy weed in seattle even though it&#39;s more expensive than portland (i&#39;m thankful every time i buy weed regardless of how much it costs). outside the dispensary i gave a man asking for money a twenty dollar bill and he effusively thanked me and then while we were waiting to cross at the next block he dropped to the ground and started doing pushups. when we were with s.m.e. i was talking about how when she&#39;s mad at me deborah usually sees my (genuine) apologies as too fast or too easy and can&#39;t receive them and s.m.e. was talking about how she loves being apologized to and how when she and her husband are watching movies and TV and there&#39;s a good apology, her husband writes it down in a file on his phone and then in daily life whenever she feels like she needs one she asks him for an apology and he retrieves one from the file and recites it to her (i&#39;m thankful she said that her favorite is one that starts &quot;i know what i&#39;ve done is unforgivable but...&quot;). i&#39;m thankful for faking it until you make it.</p>
+<p> <img src="/api/images/202" alt="image.png"> </p>
+<h2>Previously on this day</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-714/">2016</a> (<em>to hope that today will be slightly less hard of a day than yesterday, but thankful to know that even if it isn&#39;t, i will just do my best and i will still get through it; dinner at the cash only chinese place with one of my favorite faculty members; we shared a group hug before i left and talked about how much fun we had and about spending time together again sometime soon, which i think we all meant genuinely and weren&#39;t just saying because it&#39;s the thing you&#39;re supposed to say at a time like that.</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/71417/">2017</a> (<em>conversations with n, which were like they always were—exuberant, silly, digressive, expansive; the thing i do when i am having a good conversation at a restaurant, which is talk way too loud, which i know is bad and embarrassing but is also one of the few times in life i&#39;m happy to be doing something bad and embarrassing; eating strawberry kit kats</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/the-distance-from-the-sentence-to-your-eye.html" class="btn btn-secondary">← the distance from the sentence to your eye</a>
+        <a href="/letters/clairo-is-your-brandi-carlile.html" class="btn btn-secondary">clairo is your brandi carlile →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

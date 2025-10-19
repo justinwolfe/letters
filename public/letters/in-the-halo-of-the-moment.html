@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="in the halo of the moment">
+  <title>in the halo of the moment - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>in the halo of the moment</h1>
+        <time datetime="2023-07-09T00:00:00Z">July 8, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p>1. doing molly with deborah yesterday. we&#39;ve started spending the day doing it together on a saturday at the beginning of every quarter (this was our Q3 trip) and it&#39;s one of the best things we&#39;ve ever done for our marriage (accepting offers to write a very short self-help book about this). i&#39;m thankful for how carefully she tests and prepares the kit, that we clink pink wineglasses of the bitter clear liquid with each other before tossing them down the hatch to start the chemical reactions. the way that, in addition to the central feelings of love and euphoria that we&#39;re taking the drug with each other for, the individual aches and pains and other complaints of the body fade into the background for a while. on those days, i try to keep my phone recording raw audio for hours as a kind of time capsule that maybe we&#39;ll do something with eventually but maybe will just keep forever. it wasn&#39;t too hot so for hours we played music in the attic, riffing and looping. listening to the recording of the song &quot;<a href="https://www.youtube.com/watch?v=e7aGAIWe3uE&pp=ygUfbGl2ZSBhbmQgbGV0IGRpZSBwYXVsIG1jY2FydG5leQ%3D%3D">live and let die</a>&quot; by paul mccartney for her for the first time and her gleefully marveling at all the beat switches and unexpected bits (also telling her the story of paul and linda and listening to the first <em>mccartney</em> album they home recorded at the cottage in scotland). i remember eating fresh strawberries as the sun came in through the picture window and, in the halo of the moment, thinking like what if all of life, every part and aspect and moment and molecule, could be fresh strawberries.</p>
+<p>2. after the primary effects of the trip had faded yesterday evening and we were lounging on the couch in soft blob mode, i resisted using my phone but started to fall into my normal patterns and made noises about turning on the TV which deborah gently rejected as feeling &quot;too loud&quot;. it was challenging to sit with silence in a way i normally don&#39;t but eventually i started to see the challenging as a challenge i could rise to and eventually crossed over some border into appreciating the quiet (because it wasn&#39;t too hot we didn&#39;t have to have the air conditioner or the fan on) and wanting to preserve it for as long as i could. after all the threads party last week, where i allowed myself to imagine that the cure for my deep social media addiction would be...more/newer social media (?!), it&#39;s a good perspective to have and one i&#39;m going to try to hold onto and sustain. instead of looking at my phone while she slept against me i spent the evening reading almost all of <em><a href="https://www.goodreads.com/book/show/57850265-how-high-we-go-in-the-dark">how high we go in the dark</a></em> by sequoia nagematsu, a literary sci-fi novel in stories about a near-future world ravaged by plague, which maybe sounds hack (and as long-time readers know, i have short story PTSD, so there was a hurdle to climb for me to even start this) but it&#39;s so fucking good (i&#39;m 85% of the way through and have only stopped reading because if i don&#39;t write this note now i probably will not do it at all) and full of cool world-building and images of the future (but also, warning), very sad. recommended if you like the TV show of <em>the leftovers</em>, <em>oryx and crake</em> series, early george saunders. </p>
+<p>3.  we&#39;ve also been rereading <em><a href="https://www.goodreads.com/en/book/show/15824289">white out</a></em> by michael clune after the mention in emily&#39;s newsletter and she nails the thing about it, which is that while showing in great detail how horrible and life-ruining drug addiction can be (CF for example the junkie stuff in <em>infinite jest</em>; great week for <a href="https://www.lrb.co.uk/the-paper/v45/n14/patricia-lockwood/where-be-your-jibes-now">shitting on DFW&#39;s corpse</a>, but i&#39;ve been on that beat <a href="https://songsaboutbuildingsandfood.wordpress.com/2009/01/13/dancing-wrt-architecture/">for more than a decade</a>), it also shows how fun and good drugs can feel, the reason why the people get addicted to them. it&#39;s lyrical and thought-provoking but never abtruse, always readable and filled with resonant detail. thursday, deborah started a new newsletter called <a href="https://buttondown.email/TenderTimes/archive/tender-times-issue-1/">tender times</a> with her friend sarah. n complimented the erasure i did of the platformer column about threads. friday, i had taiwanese fried chicken and wontons with a new friend. in one day, at the end of the work week last week, i helped two other teams recover quickly from bugs impacting users, while also, in my own work, finding a solution for a complicated technical problem that i wasn&#39;t sure i was going to be able to solve but that is very meaningful to have solved. more work to do to finish it (always more work to do, and always i have to struggle to find the balance between riding the wave of it (which feels so good sometimes, a hamster wheel i don&#39;t want to leave) but also not burning myself down into a cherry of ash in the process, a bundle of nerves linked to Jira cards (implements, blocking, caused by)) but for now i&#39;m going to stop writing this and go on a long slow run in the warm morning sunshine (its own kind of work, of course, but one that is just for me)</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/cf-previous-items.html" class="btn btn-secondary">← cf previous items</a>
+        <a href="/letters/it-didnt-rain.html" class="btn btn-secondary">it didn&#039;t rain →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

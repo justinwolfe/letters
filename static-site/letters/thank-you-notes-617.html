@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 6/17">
+  <title>thank you notes 6/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 6/17</h1>
+        <time datetime="2016-06-17T00:00:00Z">June 16, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that tomorrow i will celebrate a year of marriage to d. i&#39;m thankful to celebrate on saturday, even though our anniversary technically isn&#39;t until monday, because it&#39;s always nicer to celebrate things on saturday. i&#39;m thankful that this year has been the happiest year of my life so far. i&#39;m thankful for part of an email i wrote last year to my friend jk, in which i think i best articulated how i feel different now.</p>
+<p>&quot;<em>I was reminded of your closing question the other day when I read in a book about how, when asked, Nabokov described his marriage to Vera with one word (&quot;cloudless&quot;). To be honest, I didn&#39;t think that life would be that different once we got married. Before I proposed, our relationship was wonderful and I couldn&#39;t see how marriage would improve it. We had been living together for years, since basically just after we first started dating, and to me, &quot;making it official&quot; was an unimportant formality.</em> </p>
+<p><em>If anything, marriage seemed like something that might strain our relationship rather than improve it: the various wedding rituals, as I (and to a lesser extent, D) viewed them, were a series of trials that we, as introverts who do not like to be the center of spectacles or to &quot;perform&quot; our love for the benefit of others, would have to endure. While historically marriage has been about a religious sacrament and/or mergers of families and/or about being connected before and with a community, we felt those concepts didn&#39;t really apply to us. It was about something more private, a way to enhance and enshrine the one-on-one connection between us.</em> </p>
+<p><em>At first, I didn&#39;t feel any different, though; people would ask me and I would say that I was happy, and I was happy, but that happiness didn&#39;t feel particularly distinct from the happiness I had felt before we were married. I think one thing that helped the change set was moving into the house where we live now. Not just facing together the trials of moving and unpacking and home improvement and pest control and settling in, but also the way that living in a different way in a different neighborhood defamiliarized and reframed our lives and our experience of the world around us. That external rearrangement, I think, goes hand and hand with change inside.</em></p>
+<p><em>I&#39;ve always felt a sense of solidity and reassurance in knowing that D loved me and that I loved her--it has comforted me and made me feel strong. Early on, I wasn&#39;t as comfortable using the word &quot;love&quot; even though it was something that I felt, because all of the language of love felt, to me, polluted by cliche. Over time, I said it more and more and felt less self-conscious about saying it; I described to her once how at a certain point, it became a biological compulsion, how I would feel these almost electric shocks of love and tenderness for her and would feel that I had to tell her how much I loved her as soon as I could, that the love needed to escape my body and travel into hers. Telling her I loved her repeatedly felt in some ways like a prayer or mantra to how much we loved each other, a way of respecting and celebrating it.</em></p>
+<p><em>I still get those electric shock feelings—what I guess I&#39;ve gained from our marriage is a deeper feeling of solidity, of the permanence of our bond. I know from the TV show Big Love that Mormons use the term &quot;sealed&quot; to describe marriage, and there&#39;s something about that term that feels appropriate to me--I feel like there&#39;s an invisible wire between us at all times and that we&#39;re tied together by it and the fact that I am connected to that line makes me feel safe and secure (&quot;sealed&quot;) no matter what else is going on in my life. It&#39;s very powerful and I&#39;m impossibly grateful for it</em>.&quot;</p>
+<p>i&#39;m thankful that i still feel impossibly grateful. i&#39;m thankful to remember the saturday a year ago when we got married. i&#39;m thankful to remember that it was a hot and humid day and that after we saved the date to meet with the officiant from the city clerk&#39;s office, the forecast had changed and it was now supposed to rain, which seemed unfair. i&#39;m thankful that we parked in the garage downtown and walked along the forest at the edge of campus under an umbrella as it sprinkled--i&#39;m thankful that even though it was sprinkling, it was still sunny out and we didn&#39;t mind.</p>
+<p>i&#39;m thankful for the little gazebo at the edge of the forest that we commandeered, which later in the day would be reserved for more formal ceremonies with folding chairs and photographers and men of the cloth, but which was all ours that early in the morning. i&#39;m thankful while we waited for the officiant, we took a lot of pictures of each other, by ourselves but mostly together. i&#39;m thankful that i never took many pictures before we got together, maybe because of an aversion to decoration or maybe because i just didn&#39;t see a point to having records like that, to prefer to hold moments in memories. i&#39;m thankful that i take more pictures now.</p>
+<p>i&#39;m thankful for the officiant, who was a lovely hilarious woman who joked and smiled and made us feel at ease. i&#39;m thankful to remember embracing d and the back of her dress being damp from dew and sweat. i&#39;m thankful that the officiant brought the stock vows that we wanted to use instead of writing our own, because we both felt uncomfortable about really saying how we felt about each other in front of anyone else (this was the reason we were getting married, so we could be together with each other, not to perform something for the sake of other people). i&#39;m thankful that  before our wedding day, when we made the decision to use the stock vows, i cynically thought, &quot;<em>oh, the stock vows will reinforce that this is just a perfunctory ritual we are performing for legal reasons and that will be appropriate to how i feel.&quot;</em> </p>
+<p>i&#39;m thankful we hadn&#39;t read the vows until the officiant gave them to us in the moment in the ceremony. i&#39;m thankful because that made them feel like a surprise, like a gift. i&#39;m thankful, as i held d&#39;s hand, for how charged and powerful the words and phrases became in the moment, how i felt compelled, even though i never ask strangers for things, to make sure that the officiant gave us a copy of them after so we could keep them forever. i&#39;m thankful for how the forest and the campus and the sky and the world around us seemed quiet as we said the words. i&#39;m thankful that i don&#39;t remember the words but i know they&#39;re still in my mind somewhere. </p>
+<p>i&#39;m thankful that after the ceremony ended, we stepped out in front of the gazebo to have the officiant take a picture of us with my phone and a family was passing on a tour of campus and paused and she said &quot;<em>these two just got married</em>&quot; and they applauded. i&#39;m thankful we smiled, slightly embarrassed but happy, and thankful we went home and opened a bottle of champagne and then went out to lunch at a nice restaurant where we will go to lunch again tomorrow.</p>
+<p>i&#39;m thankful to be married i&#39;m thankful that it feels like there&#39;s an invisible wire between us at all times and that we&#39;re tied together by it and the fact that I am connected to that line makes me feel safe and secure (&quot;sealed&quot;) no matter what else is going on in my life. it&#39;s very powerful and I&#39;m impossibly grateful for it</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/tyn-drl4.html" class="btn btn-secondary">← tyn ((Dr)L)(4)</a>
+        <a href="/letters/thank-you-notes-616.html" class="btn btn-secondary">thank you notes 6/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

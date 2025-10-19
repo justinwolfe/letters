@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (m.o.)">
+  <title>thank you notes (m.o.) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (m.o.)</h1>
+        <time datetime="2016-01-22T00:00:00Z">January 21, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>I am thankful that our son got pink eye yesterday, two days before our small, stupid wedding, that it developed at the clinic where we got x-rays and physicals and blood drawn, his eye slowly growing redder and his face looking a little different. I’m thankful because his eye, my cough, the fact that now we won’t be able to leave him with friends, because now we’re just laughing and throwing up our hands. I think this is the just right sort of gesture to marry someone, lowdown and in a state of grace. </p>
+<p>I am thankful for friends who know just the right word: fraught. I’m thankful that I can experience all of it in one or two weeks, the “should we do this,” “is it bad if we don’t do that.” </p>
+<p>Thankful for generous friends who are also parents and who offered to watch Henry as a wedding gift to us, who insisted on it, who told us we should go out alone and have a dinner, I’m thankful to know that was just what I wanted, to sit in a buoyant restaurant booth, red leather in my mind, and have someone bring us drinks. We can’t do it now because of the sick kid, and now we can’t go and can’t worry that I’ll find something in it to be disappointed with. </p>
+<p>After you accept disappointment, after you cop to it — I’m thankful for how free that feels. </p>
+<p>Disappointment is something I will do all sorts of mental gymnastics to deny, I’ll try to retell the story to myself in all sorts of ways but without resting in it and letting it wash over me. It feels so sad, to sit with it. It’s been disappointing to try to plan a wedding in a week, in a half-assed way, to know we could try more but then trying a little but not a lot feels really sad, too. I’m thankful for D saying something out loud like, I want to be nonchalant about this, so it doesn’t take away from us doing it the right way in the future.’ I feel the same way but I also know it won’t feel nonchalant when it happens, when we say the words and put a stupid keychain ring on his finger that was 25 cents. </p>
+<p>I’m thankful he understood when I told him I didn’t want to say vows he’d written in front of friends, more grateful still he read them to me in bed, and that it felt like something, even though I asked him to leave soon after so that I could cough alone in bed and binge watch Nurse Jackie. I’m thankful to have that show this week, to be consumed by it, even as I suspect I am watching it just to avoid thinking about this stupid small wedding and whether we are doing the right thing or not. </p>
+<p>I’m grateful that what is ‘fraught’ is me thinking, “Is this sort of wedding sad? In the rain in January, in a t-shirt dress, having had no chance to lose 30 or 40 or 50 pounds and no chance to look like someone I feel like deserves to get married? Sad to not have a professional photographer, to not feel perfect, to not have everything be perfect so that we can impress everyone with our impeccable but restrained taste, with our love? Is it like this because I think I don’t deserve something better?” I’m grateful to put all that aside because of necessity, or compress it into the course of a week. to be married and loved despite feeling like shit, to be loved not even unconditionally, to be loved conditionally. to still be great. to not earn it.</p>
+<p>I’m grateful to have all the excitement reserved for only getting married itself, for only having positive feelings about that. I want to be married, I’m surprised how much I want it, sad that I wouldn’t let myself feel that all this time, not since I found out I was pregnant and put this on the back burner, waiting to be the person I felt like deserved this again and now, for immigration purposes, crying and feeling low down and in a state of grace because nothing is perfect, my son has pink eye, I feel like shit, and we love each other. </p>
+<p>I’m grateful to marry him after a year of shit, to not worry about any years of shit in the future. To really know, to at least have an inkling, of what it means to weather a life. </p>
+<p>I’m grateful I’m writing this at our kitchen table surrounded by flowers from friends, that our witnesses and the friend marrying us tomorrow are emailing us right now about how they’re going to show up drunk or wing the ceremony and I know we will laugh and cry tomorrow and then we will be married. </p>
+<p>I’m grateful that it was sunny and 55 today so I could walk and buy $55 worth of ice cream from Salt and Straw in lieu of a wedding cake. I listened to Vito’s Ordination Song and cried. I’m grateful that we’re reaching the end of a rainy dark winter, that I can feel things lifting already. I’m grateful that D said he was going to look back on this January as one of the worst/hardest of our lives and I laughed through tears and nodded and agreed, and felt so relieved it wasn’t just me, that it’s hardly ever just me. </p>
+<p>I’m grateful that next week I can work again, that we are done with immigration bureaucracy now, that we spent all week on it and hated it but it was also fun, also funny, also absurd. We somehow avoided blaming each other for all the ways we fucked things up (forgot the checkbook, etc.) I’m grateful that guy taking my blood made really inappropriate jokes to me about pocketing some of it for his own use, I’m grateful for how humiliating it was when the doctor had to measure my waist and then stopped midway to get a bigger tape measure. I’m grateful that when she came back she said, “Sorry it needs to be in inches,” even though she had just said, “Oh, I need a bigger tape measure,” after she circled it around my waist and the ends didn’t touch. I was standing in a bra and jeans, the blinds were open and I was looking down at the traffic the way I do in therapy, wondering who could see me. Her lie was a kind lie, only bringing more attention to the humiliation of the situation, to her pity. That and the pink eye and we didn’t make enough money this month and I can’t stop coughing and we could have thrown such a good wedding, maybe still will, but we aren’t. We’re going to stand in my backyard studio and be really embarrassed but really thankful that so many little things went a certain way that we met each other and despite pride and fear and circumstances, are still sharing a life, and will for, I hope, a really long time. I’m thankful to know and to really feel that this is my great consolation, our state of wonder and state of grace. </p>
+<p>- m.o. (1/22/16).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-122.html" class="btn btn-secondary">← thank you notes 1/22</a>
+        <a href="/letters/thank-you-notes-121.html" class="btn btn-secondary">thank you notes 1/21 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

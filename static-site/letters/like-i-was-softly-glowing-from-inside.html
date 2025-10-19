@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="like i was softly glowing from inside">
+  <title>like i was softly glowing from inside - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>like i was softly glowing from inside</h1>
+        <time datetime="2022-09-18T00:00:00Z">September 17, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i did not have a bad DMT trip. i&#39;m thankful that a few weeks ago [redacted] procured for me <a href="https://www.vice.com/en/article/akzgbz/i-sell-dmt-vape-pens-so-people-can-break-through-at-their-own-speed">a DMT vape cartridge</a>, which came with its own battery and the instruction to click the button five times to turn it on (standard vape battery UX) and then, to measure your hit, to keep inhaling until the light on the vape started blinking and then try to hold in the vapor for ten seconds. i&#39;m thankful that they said one hit would be a &quot;heavy buzz&quot; and that with three you are like off into the stratosphere. </p>
+<p>i&#39;m thankful, as someone who has loved psychedelic experiences for my entire adulthood but finds that my daily prescribed microdose of prozac over the last 7 years tends to mute or diminish the effects, especially the visual effects, of the most common acid and mushrooms—taking them is still an experience i treasure, but i always mourn not having <em>more</em>, even though i have no interest in vacating the stability and structure that prozac has made of my brain in order to get that depth—that the prospect of DMT really appealed to me, both for the intense visual effects you get (i&#39;m thankful to remember in bloomington years ago us doing mushrooms with kj and looking out his third floor window in our apartment building and the world outside feeling flattened like ukiyo-e) and also because my other least favorite part of other psychedelics is a long uncomfortable comedown (aging body, taxed serotonin receptors) whereas DMT is very time-limited (it&#39;s supposed to kick in within 15 seconds, peak at around 10 minutes, and leave you yourself again in less than an hour).</p>
+<p>i&#39;m thankful, despite the ostensibly short effect, to have waited patiently throughout a work week (just in case) to try it the night before the labor day four day weekend. i&#39;m thankful for the first cautious hits i took, even though they weren&#39;t long or deep enough to really do anything; after each, i waited ten minutes, tried again, and deborah asked me after a while if i was feeling it and at that moment i was thinking that i really wanted to eat some chocolate chip cookies she had made, which seemed like a sign that i was not deep inside a DMT trip. i&#39;m thankful that what was most notable was the strangely sweet taste of the vapor after only ever having vaped weed. i&#39;m thankful that eventually i just started eating the aged dough chocolate chip cookies D makes, which were as always impeccable, and it&#39;s hard to be disappointed about not having a transcendent experience when you&#39;re eating cookies that are a transcendent experience.</p>
+<p>i&#39;m thankful the next day we were sitting out on our back patio and i was reading the <em>new yorker</em> on my ipad and decided like &quot;okay, i am going to fucking do this now&quot; and took a really big hit and held it deeply and at length (i&#39;m thankful that because of running, anti-anxiety slow breathing, yoga, and weed, my breath control is very good). i&#39;m thankful i kept trying, though i was never able to take a long enough hit that the battery would stop blinking (which made me think the instructions were outdated and referring to deprecated hardware). i&#39;m thankful that though maybe i felt a little something (that sense with psychedelics looming where it&#39;s like you realize if you concentrate just a little more, almost like flexing your perception, and that force of will takes you through the membrane into the trip) over the course of the day i tried taking more and more and it never really did anything (as with the chocolate chip cookies previously, the fact that i was continuing to read the <em>new yorker</em> was the dead giveaway nothing was happening on the tripping front), which made me wonder whether the pen was just a scam or whether like the other psychedelics it was being blocked by prozac, which to be fair in its steady state concentration is basically like an organ of my body now.</p>
+<p>i&#39;m thankful that i satisfied myself with having tried and not knowing the answer to that for a while because most of my friends here barely do weed and do not want to casually consume strong hallucinogens, but i&#39;m thankful that d, who generally doesn&#39;t love psychedelics because they make her nauseous, came into the living room one evening, ready to test the frontier. i&#39;m thankful that she too was tentative and not really getting anything at first but then barvely took a hit with a bit more substance and immediately i could see something shift in her eyes and she did a keanu in the matrix like &quot;whoa&quot; and &quot;okay, i think it&#39;s working&quot; and reported that she was seeing vivid patterns of shifting geometry and color on the popcorn ceiling of our living room and i sat with her as that sensation crested and faded. i&#39;m thankful to have known the truth about the drug, even though it sucked because it meant i wasn&#39;t going to get to have the experience, but i&#39;m thankful that i got to have it by proxy through her. in summation, i&#39;m thankful that i did not have a bad DMT trip, even though that was because i didn&#39;t really have a DMT trip at all.</p>
+<p>i&#39;m thankful, for a variety of reasons, that at work we have weekly videos instead of zoom all-hands meetings (i&#39;m thankful for asynchronous communication when there is no added benefit to synchronous communication) and i&#39;m thankful that i got a turn to make the video last week and decided, because i am so extra and love attention, to make/commission from my work friends daily videos instead, with monday being an interview with a coworker who had gone on vacation to british columbia, tuesday a parody song celebrating birthdays and anniversaries, wednesday a presentation from a salesperson about a new customer and me demoing the feature i&#39;ve been building, thursday ka doing a silly improv skit, and friday a video p made of her walking around her neighborhood in oslo to go with a playlist she titled &quot;a short walk on a late summer afternoon&quot; (i&#39;m thankful for the song &quot;<a href="https://www.youtube.com/watch?v=dzmI51FcIe8">co-op</a>&quot; by bess atwell, which she used to score the video and which i can&#39;t get out of my head (and don&#39;t want to)).</p>
+<p>i&#39;m thankful that i was facilitated in producing the videos by the most magical software experience i have had in a long time, which is the app <a href="https://www.descript.com/">descript</a>. you can feed it video or audio and it does AI-based transcription of it the way that <a href="http://otter.ai">otter.ai</a> (a previous most magical software experience of mine) does but the killer feature is that you can then edit the (generally very accurate text) as you would in any word processor and it instantly edits the video/audio along with you!!! it also has some really wild features i haven&#39;t even gotten into like it can create a model of the voice of a speaker in the video and then you can &quot;overdub&quot; by typing a different word and it will synthesize it, but i&#39;m thankful just generally for the ability to work with video and audio in such a fluid and effortless way (and for clever features they&#39;ve added (and gated behind their pro plan), like the ability to export a separate clip for each line break in a document for easy import elsewhere). i&#39;m thankful on a facetime with my parents to have shared the app with my dad, who is now a budtender but for years was a very talented video editor and producer and who said &quot;i think this automates what people used to pay me a lot of money to do&quot; and i&#39;m thankful that is totally fair but i&#39;m also i&#39;m thankful for this app in the same way i&#39;m thankful for javascript frameworks (or scripting languages in general) that abstract away complexity and details i don&#39;t care about to let me spend my time focusing on the thing i do care about (the object being created). </p>
+<p>i&#39;m thankful that i made the videos for work, which were an expression of care and affection for my teammates that made me and them feel good (as well as the genral satisfaction of making something and knowing that other people will experience it, as i feel writing these notes to you), although despite having gotten pretty ahead of filming segments (i&#39;m thankful that i don&#39;t really procrastinate as i did when i was younger), doing them while also keeping up with my normal work (and dealing with an increasingly frustrating relationship with a coworker i have to work closely with) meant i was really burning the candle at both ends and i was totally wiped at the end of the week. i&#39;m thankful we went to eem with k and t on friday night and that d had to do a difficult parallel park off mississippi while being watched by sidewalk diners and i made sure to kiss her before we got out of the car, which is a thing i often but don&#39;t always do when we leave the car, because i wanted her to feel confident and proud (i always want that, but sometimes you get this sense that a little more is just the thing), and then we walked a few blocks and came around the corner to see k and t leaning in to kiss each other. i&#39;m thankful that we didn&#39;t have to wait in line and even though t doesn&#39;t love cauliflower we ordered the tempura fried cauliflower drenched with chili fish sauce and sprinkled with peanuts, which is the one item that they don&#39;t put on their delivery menu because it&#39;s so ephemeral but is so fucking good and i must order it.</p>
+<p>i&#39;m thankful that yesterday d and i spent the day taking molly, a drug which i had never done and which d had done a couple of times but only when she was on lithium which seemed to block its effects (she&#39;s taking a break from it now). i&#39;m thankful that it was such a wonderful, perfect saturday experience for both of us—i&#39;m thankful, having resisted the drug i because i thought of it as this speedy rave-y dancing mass melded consciousness EDM thing, which is not the kind of vibe i really go in for, to understand how good it is (my heart never raced and i wasn&#39;t at all jittery, i just felt so generally warm and comfortable in my body, like i was softly glowing from inside), that it didn&#39;t fragment my consciousness the way psychedelics do (while still profoundly altering it), and to understand why people think of molly as a &quot;love drug&quot; because it felt like the whole day we were both just radiating so much love for each other (and/or realizing that we&#39;re always radiating so much love for each other but the distractions and annoyances of the world mean that we don&#39;t notice it the way we should), this perfect feedback loop of love. i&#39;m thankful that the chemical made it possible for us to better notice how much we love each other and that though we&#39;re on the other side of the trip we&#39;re also in some way still inside of it and i hope we always are.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/misotober.html" class="btn btn-secondary">← misotober</a>
+        <a href="/letters/godard.html" class="btn btn-secondary">godard →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

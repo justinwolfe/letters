@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/10">
+  <title>thank you notes 1/10 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/10</h1>
+        <time datetime="2016-01-10T00:00:00Z">January 9, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that when i woke up early this morning to go to the bathroom, i noticed, through the blurred scrim of my sleep eyes, that it seemed unusually bright outside. i&#39;m thankful that when i went to the window and pulled back the blinds, i saw the world was covered with snow. i&#39;m thankful that i had not been expecting snow and so this snow, the first real snow of the season, felt like even more of a gift than snow usually does. i&#39;m thankful, for the first time, to see our new neighborhood covered in snow, and to get the chance to walk around in it later today. i&#39;m thankful that the temperature is supposed to stay below freezing for a few days (i&#39;m even thankful that on tuesday the low is 1 degree, just to remember what that feels like) and so the snow won&#39;t melt immediately. i&#39;m thankful that the snow that fell was thick enough to cover the grass completely (i&#39;m thankful for the term &quot;blanket&quot; when it is used with snow, for the warm/cold conceptual dissonance of a snow &quot;blanket&quot;) and for how it lines the thin branches of the trees in our front yard. i&#39;m thankful for the way that early this morning, the snow glowed slightly orange under the streetlights. i&#39;m thankful to learn about the concept of <a href="https://en.wikipedia.org/wiki/Albedo">albedo</a>, which is the measure of the power of a surface to reflect light, and for the measurements in <a href="https://en.wikipedia.org/wiki/Albedo#Snow">this sentence</a>: &quot;<em>snow albedo is highly variable, ranging from as high as 0.9 for freshly fallen snow, to about 0.4 for melting snow, and as low as 0.2 for dirty snow</em>.&quot; </p>
+<p>i&#39;m thankful for the lush bath bomb that d gave me as a late christmas gift, which i used yesterday afternoon. i&#39;m thankful for her incredible persistence, during their annual sale the day after christmas, when she must have refreshed and refilled her cart a hundred times over the course of several hours because of server strain and items going in and out of stock and general technological fritzing. i&#39;m thankful that i thought this was unnecessarily stressful and told her that maybe it wasn&#39;t worth it, but i&#39;m thankful for her persistence and for her satisfaction in finally completing the transaction late in the day. i&#39;m thankful that even though i always offer to go in lush when we&#39;re in a mall that has one, because i know how much d likes bath and beauty products, she always demurs. i&#39;m thankful that i always thought this was for my benefit, but that when i mentioned this to her, she told me that actually it&#39;s because she finds their retail environment to be as intense and sensorily overwhelming as i do.</p>
+<p>i&#39;m thankful that yesterday afternoon, once i had filled the bathtub with hot water, i texted d to come over from the other side of the house so she could see me drop the bomb in the water. i&#39;m thankful that when i first dropped it, i was slightly underwhelmed, because i had expected an intense immediate reaction, an explosion (&quot;bomb&quot;), and instead nothing really seemed to happen. </p>
+<p>i&#39;m thankful for the way that, first, a few small chunks of the outer orange shell flaked off into the water, dissolving slowly into creamsicle foam. i&#39;m thankful, a few seconds later, for how the surface of the water around the orange ball was surrounded by a wide aura of pale apricot which was radiused all around by thin squiggly streaks of bright tangerine, looking from above like like a child&#39;s drawing of a sun. i&#39;m thankful that as soon as i had gotten used to this stage, something changed inside the bomb and it suddenly fizzed out a thick contrail of brilliant blue and red. i&#39;m thankful for the force of this emission, which pushed the bomb halfway across the tub, the streaks intermingling with the orange and cream colored foams. i&#39;m thankful that, for the next several minutes, d and i watched rapt as layer upon layer of material gave way inside the bomb and then was expelled out to hang on the water, the strong hues puddled together and then slowly melding with their surroundings. </p>
+<p>i&#39;m thankful for the way, when all the foam had dissolved, the water took on this murky, toxic waste shading that made me feel like my bathwater was a weekend song. i&#39;m thankful, as i soaked in the bath bomb fallout, to have read <em>n+1</em>&#39;s <a href="https://nplusonemag.com/online-only/online-only/year-in-review-2015/">year in review</a>, in particular the last item, which is titled &quot;hallucinogens&quot; and is by bela shayevich, who i was not familiar with and to whom <a href="http://belashayevichdotcom.blogspot.com/">this weird blog</a> might belong. i&#39;m thankful that while i shaved (i&#39;m thankful for the box of cheap razor blades that d bought me in bulk on ebay), i listened to chuck klosterman on <a href="https://soundcloud.com/the-bill-simmons-podcast/ep-46-chuck-klosterman">bill simmons&#39; podcast</a> making the argument that <em>star wars</em>, as the one thing in america that everyone seems to agree about and love, should be nationalized, the ticket prices a tax that people would be excited to pay over and over and which could contribute billions every year that could be used to solve our nation&#39;s problems. i&#39;m thankful for the fun of klosterman&#39;s argument and for the way he elaborates it (his notion of using <em>star wars</em> as a tech/art peace corps!) and also for his glib expression of disbelief that <em>star wars</em> has an ideology, which seems wrong but which had the benefit of reminding me of charlie jane anders&#39; excellent post, &quot;<a href="http://io9.gizmodo.com/how-star-wars-helped-create-president-reagan-1746708591">how <em>star wars</em> helped create president reagan</a>.&quot;</p>
+<p>i&#39;m thankful for the beautiful photograph of what i thought, on the small screen of my phone, was an incan or mayan pyramid in the <em>times</em> weekend briefing and thankful, when i clicked the link below the image to learn more, for the depth of my disappointment when instead of being taken to the place, the link target directed me to a chartbeat page. i&#39;m thankful for the quick email i sent, which took very little effort (&quot;fyi item 4 link in wknd briefing goes to a chartbeat page rather than 52 places to go. love the briefings!&quot;), and thankful that i got a nice response a few minutes later, but had already swiped through the <a href="http://www.nytimes.com/interactive/2016/01/07/travel/places-to-visit.html?action=click&contentCollection=travel&region=rank&module=package&version=highlights&contentPlacement=1&pgtype=sectionfront&_r=0">slideshow</a> in the travel section to find that the place was the <a href="http://graphics8.nytimes.com/newsgraphics/2015/11/10/places-to-go-2016/assets/images/tamilnadu-landscape-1800_x2.jpg">meenakshi amman temple</a> in tamil nadu, india. i&#39;m thankful for the beautiful photograph of the place and to imagine what it must look like in person.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-111-6951.html" class="btn btn-secondary">← thank you notes 1/11</a>
+        <a href="/letters/thank-you-notes-19.html" class="btn btn-secondary">thank you notes 1/9 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

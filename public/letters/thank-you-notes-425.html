@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/25">
+  <title>thank you notes 4/25 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/25</h1>
+        <time datetime="2016-04-25T00:00:00Z">April 24, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that after several days of responsible kale salads, i made us cheeseburgers and hash browns for dinner on saturday night. i&#39;m thankful for the pound of ground chuck which i divided into four gently pressed patties. i&#39;m thankful for the onion buns i got at the grocery store. i&#39;m thankful to have followed the <a href="http://aht.seriouseats.com/archives/2008/05/the-blumenburger-the-most-laborintensive-hamburger-in-the-world.html">harold mcgee/heston blumenthal</a> method of flipping the patties every 30 seconds to encourage even cooking inside and out. i&#39;m thankful to have cooked all four patties, even though we were using the other two the next night, as a way of saving myself the mess of cooking burgers again (i&#39;m thankful that a next day hamburger is still good). i&#39;m thankful, even though i didn&#39;t go running because i was sick, to have been extra indulgent and gotten d to fry eggs to go on top of the burgers. i&#39;m thankful for sliced cantaloupe with grapes strewn among it and a loose squeeze of lime juice over the bowl. i&#39;m thankful for the haagen dazs salted caramel and milk chocolate almond ice cream bars that were on sale at the grocery store. i&#39;m thankful that there is such a thing in the world as <a href="http://www.bkmag.com/2016/04/22/juno-has-a-brand-new-ice-cream-program-and-a-churro-bowl/">a churro bowl</a>.</p>
+<p>i&#39;m thankful that yesterday evening, i went into the kitchen to reheat and assemble the leftover burgers for dinner, happy that i didn&#39;t really have to &quot;make&quot; dinner. i&#39;m thankful that in preparation, i went in the refrigerator and got out the bowl of onions i&#39;d caramelized the previous night, the american and blue cheeses, the eggs, the butter, the ketchup and sriracha, setting them on the counter. i&#39;m thankful that as i pulled out these other ingredients, i expected to have revealed the two hamburger patties but they didn&#39;t show up. i&#39;m thankful that i remembered putting them on the bottom shelf of the refrigerator, but when i looked, they weren&#39;t there. i&#39;m thankful for my methodical tour of our refrigerator, shelf by shelf, pulling out the red net bag of oranges, the family size ketchup, the cartons of boutique milk, the skyy handle filled with a cup of ancient kombucha, a pound of unsalted butter. i&#39;m thankful that after emptying the fridge, i still couldn&#39;t find them. </p>
+<p>i&#39;m thankful that i decided that i must have thrown away the leftover hambuger patties when i was cleaning up after dinner the previous night. i&#39;m thankful that i called d in from her study so that she could check the fridge just to make sure and let me know that i wasn&#39;t crazy (i&#39;m thankful that d can often find things of mine that i can&#39;t find, especially my glasses and my phone, which are my most important objects and the ones i misplace the most). i&#39;m thankful for how i felt less crazy when she went through the refrigerator and couldn&#39;t find the patties. i&#39;m thankful that just as i was finishing saying, &quot;<em>well, i guess they&#39;ll just be egg sandwiches tonight, then</em>,&quot; she wordlessly pointed at the bowl of caramelized onions on the counter amid the other prep, the first thing i had gotten out of the fridge and i glanced at them and in an instant remembered how to &quot;save time&quot; i had put the burger patties in the same bowl as the caramelized onions before saran wrapping it. i&#39;m thankful for the miraculous discovery of the meat.</p>
+<p>i&#39;m thankful that sometimes i get lucky and these notes come together in composed, balanced dishes, images and details slipped and streaked just so across them like tweezered microgreens and colored lines from squeeze-bottle sauces, but thankful also for the days when they end up like sloppy plates of assorted leftovers, which after all are still food. i&#39;m thankful that <em>game of thrones</em> is back and that my parents&#39; hbo go password was still saved in d&#39;s old computer. i&#39;m thankful for cersei&#39;s good line about myrcella&#39;s goodness giving her some kind of hope that she might be able to be good too. i&#39;m thankful for the onion knight. i&#39;m thankful for the movie <em>the witch</em>, which we watched on saturday and which was really intense and captivating throughout but which i feel would have really benefited from the cinematic version of the fabled &quot;<em>new yorker</em> ending&quot; where you cut off the final paragraph of a short story and let the penultimate one be the end instead, which i think would have made for a much more pointed critique of puritan patriarchy. i&#39;m thankful that eventually i will gather the mana points necessary to read <a href="http://www.theguardian.com/books/2014/nov/09/paul-kingsnorth-the-wake-novel-approach-old-english"><em>the wake</em></a> and to finish <em>the witcher 3</em>.</p>
+<p>i&#39;m thankful that <a href="https://twitter.com/kill_kylee">kylee</a> shared <a href="https://broadly.vice.com/en_us/article/harry-hudson-music-profile-kylie-jenner-snapchat">this crazy profile</a> of kylie jenner&#39;s friend (and snap star) harry hudson, which is full of amazing details, incl. (emphasis mine): &quot;<em>Harry turned to his brother, Remy, for comfort. <strong>Every day after school, they made lanyards</strong> (their mom never bought a TV)</em>&quot; and &quot;<em>Harry admits that chemo works, but he believes his new positive point of view saved him. Doctors told him to eat fruit and vegetables, but he declined. &quot;I ate Taco Bell every day during chemo,&quot; Harry explains. &quot;If you spoke about food as the negative, the food would turn into a negative. It would be bad; that&#39;s the truth. <strong>I put positive energy [into Taco Bell]</strong></em>.&quot;&quot; i&#39;m thankful that the profile reminded me in some ways of leon neyfakh&#39;s book <em><a href="http://www.amazon.com/Next-Level-Friendship-Almost-Giving/dp/161219446X/ref=sr_1_1?ie=UTF8&qid=1461605764&sr=8-1&keywords=next+next+level">the next next level</a></em>, which is one of the best books i know about the problems of being an artist today.</p>
+<p>i&#39;m thankful that imma let you finish, but i do wonder why the kardashians never listen to beyoncé in their snapchats. i&#39;m thankful that i know that despite its intimacy and the feelings of connection and transference it engenders, snapchat is not reality, and that there are many other hours in the day when they could be listening to her music (i&#39;m thankful to hope that they still have things in their lives that are private and just for them), but i do find it curious that the last few days none of them appear to have been listening to <em>lemonade</em> like the rest of the world. i&#39;m thankful to assume that kanye must still think beyoncé is great, but to wonder if kim, despite her [masterful diplomacy](<a href="http://RECGRAD-L@indiana.edu">http://RECGRAD-L@indiana.edu</a>; Allsop, Jared William <a href="mailto:jallsop@indiana.edu">jallsop@indiana.edu</a>; Chang, Yun <a href="mailto:changyun@indiana.edu">changyun@indiana.edu</a>; Chen, Ya-Ling <a href="mailto:chen72@indiana.edu">chen72@indiana.edu</a>; Forist, Brian Edward <a href="mailto:bforist@indiana.edu">bforist@indiana.edu</a>; Howell, Brandon Douglas <a href="mailto:bdhowell@indiana.edu">bdhowell@indiana.edu</a>; Hu, Cheng-ming <a href="mailto:huc@indiana.edu">huc@indiana.edu</a>; Knapp, Julia S <a href="mailto:julknapp@indiana.edu">julknapp@indiana.edu</a>; Smiley, David Lane <a href="mailto:dasmiley@indiana.edu">dasmiley@indiana.edu</a>; Voight, Alison E <a href="mailto:avoight@indiana.edu">avoight@indiana.edu</a>; Chen, Joseph S. <a href="mailto:joechen@indiana.edu">joechen@indiana.edu</a>; Cole, Shu Tian <a href="mailto:colest@indiana.edu">colest@indiana.edu</a>; Ewert, Alan W <a href="mailto:aewert@indiana.edu">aewert@indiana.edu</a>; Farmer, James Robert <a href="mailto:jafarmer@indiana.edu">jafarmer@indiana.edu</a>; Jamieson, Lynn M <a href="mailto:lyjamies@indiana.edu">lyjamies@indiana.edu</a>; Knapp, Douglas H. <a href="mailto:dknapp@indiana.edu">dknapp@indiana.edu</a>; McCormick, Bryan P. <a href="mailto:bmccormi@indiana.edu">bmccormi@indiana.edu</a>; Mowatt, Rasul A <a href="mailto:ramowatt@indiana.edu">ramowatt@indiana.edu</a>; Piatt, Jennifer Ann <a href="mailto:jenpiatt@indiana.edu">jenpiatt@indiana.edu</a>; Ramos, William Dominic <a href="mailto:wramos@indiana.edu">wramos@indiana.edu</a>; Young, Sarah J <a href="mailto:sarjyoun@indiana.edu">sarjyoun@indiana.edu</a>), feels a sense of <a href="http://www.huffingtonpost.com/entry/kim-kardashian-beyonce-lemonade_us_571cf1cde4b0d912d5fef305">#girlboss rivalry with bey</a> (and/or maybe an envy of ye&#39;s respect for her artistry?) that makes her musical persona non grata in calabasas. i&#39;m thankful that this idea of playlist fealty as testament to squad solidarity, while just a theory, may be something kourtney, who seems to work out exclusively to <em>yeezus</em> and <em>pablo</em>, has bought into (i&#39;m thankful for how she regularly does insane sets of burpees to <em>pablo</em>, which is impressive considering its generally low tempos and lack of bang). i&#39;m thankful that the only female artist kylie seems to listen to is rihanna, which is on brand, as everything with kylie always is.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-426.html" class="btn btn-secondary">← thank you notes 4/26</a>
+        <a href="/letters/thank-you-notes-helene.html" class="btn btn-secondary">thank you notes (helene) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

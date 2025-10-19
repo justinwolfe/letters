@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a recap of the push notification">
+  <title>a recap of the push notification - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>a recap of the push notification</h1>
+        <time datetime="2023-10-01T16:38:46.826543Z">October 1, 2023</time>
+      </header>
+
+      <div class="letter-body">
+        <p>after a wonderful long night of sleep waking up a half hour after your usual alarm and breaking into a brief moment of &quot;ughhhh gotta get up the weekend was so short&quot; before realizing that it&#39;s only sunday and you can drift away again. </p>
+<p>also, though, the previous work week having gone really well where i got the feature i was working on done on schedule while feeling motivated but not stressed out by the deadline for its release. usually i&#39;m pushing hard until the end of the sprint on tuesday but i should (fingers and toes crossed) have a freer day tomorrow without grind. also the feature has been a first for me of not quite working in formal TDD but also relying much more on my tests than manual testing (this feature is particularly annoying to manually test) in a way that i haven&#39;t before and feel like i&#39;m going to carry with me to the next thing i work on.</p>
+<p>nice get-together at a friend&#39;s house on friday, where i saw an old work friend for the first time in years and where we ate my favorite pizza and drank hard kombucha and i had a lovely time and didn&#39;t say (or even feel the impulse to say) one single passive-aggressive thing (though in other party fouls, i talked too much as per usual (which i excuse in my mind by saying i also ask lots of questions and listen and also my talking is very entertaining but still feel i must stay vigilant of see previous discussion of &quot;the justin show&quot;) and also did probably roast the discipline of product management a little too much though i know my heart&#39;s most beloved product manager (deborah) understands)).</p>
+<p>after a long drought of &quot;no new shows&quot; (i know there are ten million great shows i haven&#39;t watched available instantly at the tap of a button but what i want are <em>my</em> shows), fall bringing new episodes of beloved television shows <em>survivor</em> (the challenge construction has reached a new level of baroque complexity and all in all i feel like the producers have just basically perfected the machine of this show), <em>the great british bakeoff</em> (grateful it <a href="https://coffeeandtv.substack.com/p/coffee-tv-the-great-british-bake">feels exactly as it ever did</a>, grateful to read that matt lucas was not off the show for any bad reasons but he just wanted to do other stuff, grateful that the contestant whose response to a cake with tahini in it not tasting right was to add more tahini which had me screaming at the screen but somehow turned out to be the right choice), and <em>the kardashians</em> (haven&#39;t watched yet but i posted the apple tv push notification to the trash tv slack channel at work and my old manager who posts detailed hate-watch recaps of the show to the channel did a recap of the push notification).</p>
+<p>a word they use on GBBO a bunch which is &quot;moreish&quot; and which i forget what it means and have to look up every season (but maybe won&#39;t if i&#39;m writing this here now, which i think adds a little more glue to the fact in my long term storage) and which d looked up again yesterday  as we were watching the show and revealed to me (again) was &quot;<em>having a very pleasant taste and making you want to eat more</em>&quot; which like makes it even more hilarious that i can&#39;t remember what the word means because it&#39;s literally all right there in the word itself!! related: today&#39;s word of the day email from WordGenius is &quot;moil&quot; (1. &quot;<em>work hard</em>&quot; 2. &quot;<em>move around in confusion or agitation</em>&quot;). USAGE: &quot;i hope you don&#39;t have to moil but if you do, i hope you can treat yourself with something moreish&quot;</p>
+<p>a nice long sunny saturday afternoon walk with deborah but without miso. remembering the early years of our relationship in bloomington where on  most saturdays we would get stoned (this was the era where one or two grav bong hits would do us for the whole day) and then walk for like an hour and a half through the sleepy neighborhoods where the professors lived clear across town to the decaying (but not dead then and still not dead) shopping mall and surrounding restaurants and eat something (by now ravenous) and then walk back home and collapse into the couch. yesterday on the way back we stopped at walgreens to pick up my prescriptions (thankful when you can roll an errand into a pleasurable jaunt) and also grabbed some snacks (including a bag of caramel apple pops, taki-branded spicy nuts, and sour gold bears)</p>
+<p><a href="https://www.youtube.com/watch?v=GJhdzMi6hOU">massaging the psoas muscle</a>. i have eternally tight hips that bring me such discomfort (i was lying on the couch yesterday evening trying to read <em>the new yorker</em> and kept getting distracted by the tightness) and foam rolling and pigeon pose and trigger points on the hips themselves with a lacrosse ball all help but are never quite enough but this psoas massage thing which i don&#39;t think i&#39;ve ever tried till yesterday feels like a game changer (though i will try to avoid getting my hopes too high since i have been burned before by believing that This One Trick will mollify the complaints of my decaying body, but at the same time i will take hope where i can get it).</p>
+<p>for two weeks in a row (after months of not doing it) i have filled my days of the week pill organizer on the sunday before the week starts and i believe in myself that i will do it again today.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/huge-amounts-of-sugar-and-fat.html" class="btn btn-secondary">← huge amounts of sugar and fat</a>
+        <a href="/letters/friend-of-the-pod.html" class="btn btn-secondary">friend of the pod →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

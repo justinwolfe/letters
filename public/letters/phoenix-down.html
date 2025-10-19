@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="phoenix down">
+  <title>phoenix down - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>phoenix down</h1>
+        <time datetime="2020-04-16T00:00:00Z">April 15, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>a bee flew in from the backyard, but i coaxed him back outside through the sliding glass door</p>
+<p>portrait of a lady on fire, holy FUCK is there a more satisfying movie, the last shot killed me and i wrote down three lines in my phone: &quot;it takes two to be funny&quot; and &quot;do all lovers feel that they&#39;re inventing something?&quot; and &quot;how do we know it&#39;s finished? at some point, we stop&quot;</p>
+<p>yesterday was my learn something day at work, which is the monthly day where i get to focus on learning something because i work at a good place and am very lucky except rather than doing what i think i&#39;m intended to do, which is to take it as a kind of restful and gentle day of comfortable study, i pinned myself to this completely self-imposed idea that i was going to end the day with a perfectly polished deliverable and if i did not do that then what was even the fucking point</p>
+<p>i&#39;m thankful for the flow state of working on a project, of the certainty and comfort in knowing that i <em>can</em> do a thing and it <em>will</em> work, it&#39;s not fear of the unknown, but of how long to get through the unknown, how many different walls i&#39;m going to have to knock down or climb over or go around to get to the eventual implementation and how long that journey will be then it is dark outside and i am coming back for more after dinner while d plays video games and i can be so bad at having a healthy relationship with it, which is something i need to be conscious of and protect myself from even though i also need to harness it</p>
+<p>the project was email headers, which we get a very dry plaintext version of and have to limn meaning from, and so i thought i&#39;d build a bookmarklet that structures and enriches that data and displays it within our app as an aide to what is often an intimidating task, and so during my last learn something day, i had written the code that extracts the big block of headers from the app (where it is nested within two levels of iframes) and parses them into data and wipes out the frame containing the headers and renders them in more readable fashion</p>
+<p>and so i had been thinking about that coming up and trying to decide what i could do to make the project more like learning and so originally i looked into experimenting with this framework svelte, but as i was reading their onboarding materials i kept thinking that the choices that were made were ugly (though i also felt that way about syntax constructs that i now love, so who knows) and thought i would just rather work in react and so then i switched to learning about our company&#39;s design system and the idea of using that in the project being the big &quot;learning&quot; component</p>
+<p>but to get to the point to where i could start to use the design system in the bookmarklet and &quot;learning,&quot; i had to work around the limitations of bookmarklets as a form, since they&#39;re limited to the amount of characters that you can put in a link and i&#39;d exceed that just adding the dependencies for the framework before getting to my code at all, and the classic way you get around this is by storing the bulk of your code somewhere else and just using the bookmarklet as a vessel to request and embed that external file full of code, no limits</p>
+<p>except the heyday of the bookmarklet was before the days of content security policies, which are special locks that on certain pages prevent you from making requests except to a whitelisted set of domains, which is a smart security policy, and you can get around it with a chrome extension, but i like the ephemerality and casualness of a bookmarklet instead of making the value claim that you should install this thing and it&#39;s going to be a platform that&#39;s iterated on</p>
+<p>so i found a workaround for the content security policy, which was to store my code in a knowledge base app we provide and because the API for that was a whitelisted domain, i could store my code bundle there, pull it in, and run it, and i did a small proof of concept for this with some hello world code (or, rather alert(&quot;hey&quot;) code) and it worked, </p>
+<p>so i then went through getting a local development setup with babel and webpack going, telling myself that i should make a copy of it to use as boilerplate for myself in the future but instead finding that i do it from scratch each time and do it a little better, and so i got all my dependencies installed for react and the design system and successfully rendered a component and built the bundle and then opened the knowledge base app, created a new knowledge base, and used the html editor button on an article to paste the 1.2mb bundle of unoptimized code i had and saved it and then i wrote the code for the bookmarklet shell to pull it in and render it in the iframe and</p>
+<p>it didn&#39;t work because the html editor translated &amp; into &amp; which fucked everything up when i tried to interpret the code in the bookmarklet and so then i first tried hand editing the machine transpiled bundle which is a ludicrous idea and so i had the idea that if i could use the API to upload a file directly to the article, it wouldn&#39;t get parsed into &amp; and so then i figured out how to write a node script to make a multipart request containing a file and that was working the way it was supposed to except not in the way the API did, so then i wondered if just using the standard JSON API would still be enough to get over the encoding issue </p>
+<p>and it was and so i found a webpack plugin that would run a node script after my code was transpiling and so then used the node script to automatically make a call to the API to update the article text with the bundled code and then i tested the bookmarklet to pull it through into the iframe and it totally worked, the component rendered, except it lost all of the styling which was the whole reason i was using the design system for some reason i still don&#39;t totally understand but think had something to do with the nested iframes and by this point it was like 1pm and i had been working since 8 and really needed to eat lunch but i didn&#39;t want to eat lunch until i &quot;got to a stopping point&quot; and</p>
+<p>so i decided that maybe i was too harsh on the chrome extension and that would be the best vessel for the idea, or at this point the only vessel, so i got my design system and react stuff into the chrome extension shell i&#39;ve been using at work and it was rendering and so then i stopped and shoved food into my mouth and read pandemic updates on the <em>new york times</em> app and then </p>
+<p>when i went back to it, i found that even with the chrome extension, which meant that the hacky shit i had done earlier in the day to get the bundle in an accessible place was totally unnecessary, the hard thing i still needed to do wasn&#39;t working right because, i was sure, of this nested iframe complexity and again, this was the core of what i had decided the day would be,</p>
+<p>so then i pivoted to just building a standalone app on a page on the knowledge base site with the design system and first i had to figure out how to reset and wipe out all of the standard stylesheets and stuff embedded in the knowledge base app and make everything disappear except my app and i got that and i started roughing out the component structure and quickly built out a form with a textarea where you could paste the block of raw header and submit it and then set up some state and effect hooks and then i added an accordion to hold different subsets of the headers and added some categorization data to the header parser so that it could be divided into the different subsets and then i started experimenting with different card components for storing each header name and value and trying to get something that looked decent and then was thinking about how i wanted to enrich the data in addition to making it more readable by adding tooltips with descriptions of what each header is and represents and also links to searches for the header names and to custom searches in our logging app</p>
+<p>and that was going really well for a while except i started to want to use an icon component for a button and it seemed like getting the icon component to render was really simple and it was rendering a chunk of something but the svg icon wasn&#39;t in it and i then tried looking in the storybook implementation examples and the readme in the repo and was trying these different provider components which seemed potentially necessary but just could not figure it out</p>
+<p>and so then i pivoted to using just emojis instead of icons, which is a UI compromise i have made before, but which looked worse in the context of these design system components that all had a kind of gestalt and i just couldn&#39;t bear the dissonance and so i tried to figure out how i could create something that looked decent without the icon</p>
+<p>and then i went on a very short run that started later than i had planned because of my absorption in the project and we had dinner and then watched a few episodes of <em>the wire</em> and then i encouraged d to play <em>final fantasy</em> so i could open my laptop in the dark and at this point my eyes were really struggling to continue to look at the computer screen and try to make things a little better and write the bookmarklet code that copies the headers and opens the site</p>
+<p>and that was my day where at the end i felt shitty and like i did not accomplish or learn anything so it&#39;s nice to write it out and feel like maybe i actually did both (and always, in the back of my mind, i&#39;m iterating and thinking of new was around the walls i hit before, even though sometimes i really wish i was better at turning it off), but i felt like shit about it, which is such a privilege, and then this morning when i still felt like shit i took a mental health day, and i&#39;m thankful that i am able to do that, even though i didn&#39;t enjoy it as much as i thought i would, but i did do a lot of cleaning which is an activity that&#39;s involving for me and that puts me in a better headspace going forward, the impact of the absence of clutter</p>
+<p>i&#39;m thankful even though last time i got my antidepressants refilled through text chat, they said that the next time i would have to get them refilled in person, i did text chat again and asked if that was still true or if things had changed and the chat person very pointedly said to me &quot;so you&#39;re saying you can&#39;t come in because of the pandemic?&quot; like wink wink, i was not saying that at all, but thank you for giving me the password you needed to hear and anyway i&#39;m thankful for continued access to my antidepressants because god knows i need them!</p>
+<p>this <a href="https://cooking.nytimes.com/recipes/1020073-banana-snacking-cake-with-salted-caramel-glaze">banana snacking cake</a> that my mom recommended and i was skeptical about because i guess banana isn&#39;t conceptually exciting to me in a dessert and also something about the use of the word &quot;snacking&quot; was a case of an adjective diminishing a poetic construction, but really this cake is INCREDIBLY GOOD cannot recommend it highly enough it&#39;s like really buttery banana bread that you then just pour some caramel into because why the fuck not.</p>
+<p>the new episodes in part 3 of <em>terrace house 2019-2020 tokyo</em>, especially, if you want to watch just one, part 3 episode 29, which includes intensely long incredible shameless jaw dropping flirting and possibly the worst stand-up comedy i have ever heard.</p>
+<p>to have learned that a phoenix down in final fantasy is called that because it&#39;s like the down of the phoenix, the feathers, whereas i had always thought the down referred to the fact that the party member you were using it on was <em>down</em></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/cherry-blossom.html" class="btn btn-secondary">← cherry blossom</a>
+        <a href="/letters/lawnmower-man.html" class="btn btn-secondary">lawnmower man →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

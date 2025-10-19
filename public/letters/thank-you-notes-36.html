@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/6">
+  <title>thank you notes 3/6 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/6</h1>
+        <time datetime="2016-03-06T00:00:00Z">March 5, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the shiny black car we saw while waiting to cross the street that had, printed across the right side of its exterior, the word &quot;shakespearience&quot; in bright yellow letters. i&#39;m thankfully that i briefly thought about whether this was some kind of weird taxi performance art thing where you listened to sonnets while being ferried across town (i&#39;m thankful to be reminded of <a href="http://www.newyorker.com/magazine/2015/11/16/opera-on-location">this NYer article</a> on the LA production of <em>hopscotch</em>, &quot;a combination of road trip, architecture tour, contemporary-music festival, and waking dream&quot;). i&#39;m thankful for my disappointment when the light changed and the car passed and i saw, by examining the additional text on the hatchback, that it was actually &quot;<a href="https://www.facebook.com/SHAKEspearience-Car-Audio-184083308295799/">_SHAKE_spearience</a>,&quot; which was just another car audio place.</p>
+<p>i&#39;m thankful for the bizarre dream i had the other night where i was living in a house with two strange sets of houseguests: 1) weirdly diminutive adolescent versions of earl sweatshirt and tyler the creator and their unruly OF posse 2) two mormon families, one being the (adorable christmas card) family of the faculty member who is mormon and who in the dream co-owned the house with me and the other being a visiting family who the faculty member and his family were trying to impress with their warmth and hospitality. i&#39;m thankful in the beginning of the dream how i was watching a movie in my bedroom with the miniature odd future, all of us stoned and sprawled out on couches around the room, the door closed and sealed to hold in the smoke, and everything seemed okay and then i started to feel this tickling on my arm and i looked back and realized that it was pubic hair and that tyler, who was on the couch behind me, was pulling warm earthy curly tufts of his pubic hair out of his sweatpants and throwing it at me. i&#39;m thankful that i yelled &quot;<em>oh my god, that&#39;s so gross, stop</em>&quot; and that, being tyler, he just grinned and doubled down, tossing what seemed to be endless handfuls of pubes my way. i&#39;m thankful that the noise of our ensuing argument about this behavior caused the faculty member who is mormon to stick his head in the door and hiss, &quot;<em>cut it out, they can hear you</em>.&quot; i&#39;m thankful that the dream continued as i stressfully tried and failed to mediate between odd future and the mormons, keeping both parties happy. i&#39;m thankful for the way that the smiles of the visiting mormons and how their tones of voice, while always polite, betrayed a deep discomfort at our behavior. i&#39;m happy for the strangest part of the dream, which was when the faculty member who is mormon invited us all to a sacred musical performance (i&#39;m thankful for how politely in real life the faculty member who is mormon invited me to visit a new temple that had been built nearby before it was sanctified last year). i&#39;m thankful for the performance, which took place in a darkened circus tent and was like a strangely erotic version of cirque du soleil. i&#39;m thankful for the central performer, a serene woman who wore black pants and a vest and had strange tentacles emanating from her head like an alien, and for the chorus of women surrounding her, who were wrapped in loosely fitting diaphanous strips of white fabric, which floated and spun through the air as they danced like the ribbons of rhythmic gymnasts and seemed to both emphasize and hide the shapes of their bodies. i&#39;m thankful for how transfixed i was by the swirling movements. i&#39;m thankful for how at one point the faculty member leaned in to me and whispered, by way of explanation, &quot;<em>they are required to be modest in the outside world, but here they are able to allow their true souls to show</em>.&quot; i&#39;m thankful after the performance i was sitting in the living room at home with tyler and earl and the mormons and i said, leaning in to the faculty member and touching his arm for emphasis, &quot;<em>that was one of the most beautiful things i&#39;ve ever seen. i&#39;ve never seen anything like that</em>,&quot; and tyler and earl nodded along silent from their too big armchairs, shaken by the gravity of the spectacle.</p>
+<p>i&#39;m thankful for the letter d got from the state department of revenue that said we owed $3000 in taxes we did not expect to owe, even though it freaked her out. i&#39;m thankful that i reassured her on friday night when we got home with our pizza that there was nothing we could do about the issue right now and that it was probably a mistake and that it would all be okay and she shouldn&#39;t freak out, and i&#39;m thankful that this worked for a little while, at least long enough for us to eat our pizza and for her to have a few glasses of wine, but that eventually she returned to the form letter, because she likes to solve problems and can&#39;t stick them in boxes and hide them in the back of her mind like i can. i&#39;m thankful for her relief and happiness when she realized that the issue was almost certainly that she hadn&#39;t sent a copy of our w2&#39;s in with the return when she filed it. i&#39;m thankful for how she excitedly spent part of her saturday afternoon drafting a response to the tax letter which was a model of clarity.</p>
+<p>i&#39;m thankful for the pizza we had for dinner friday, which was delicious and didn&#39;t fuck up my stomach too much. i&#39;m thankful that i thought of myself as &quot;showing restraint&quot; because i only ate two cookies for dessert when i was still full after eating half a pizza for dinner. i&#39;m thankful we continued to be lazy this weekend and didn&#39;t cook dinner last night and won&#39;t cook it tonight. i&#39;m thankful for blue cheese, manchego cheese, and stilton cheese with blueberries embedded inside it. i&#39;m thankful that i like having cheese and bread and etc. for dinner now even though i&#39;m not drinking red wine with it. i&#39;m thankful i cooked our supermarket take-and-bake baguette better than i usually do. i&#39;m thankful i usually cook it at too high a temperature and realize when i&#39;m cutting open the golden tube and it crumples under my knife that the center is still undercooked (i&#39;m thankful to imagine paul hollywood swallowing and sighing and shaking his head and saying &quot;ah, that&#39;s a shame&quot;), but that this time i cut the temperature by 50 degrees and cooked it longer and let it rest for a bit and got it perfect. i&#39;m thankful for frozen edamame, which i always forget about but which is perhaps the best frozen vegetable. i&#39;m thankful for the brand of oranges that were on sale, which are called &quot;<a href="https://en.wikipedia.org/wiki/Cara_cara_navel">cara cara power oranges</a>,&quot; for their perfect balance of stringent acidity and pleasing sweetness. i&#39;m thankful for seedless black grapes. i&#39;m thankful for the store brand cocoa puffs i had for breakfast this morning and for d&#39;s excitement about the store brand apple jacks she had for breakfast this morning. i&#39;m thankful for the times when you think you&#39;ve forgotten something important at the grocery store but actually you didn&#39;t.</p>
+<p>i&#39;m thankful that last night we watched <em>dazed and confused,</em> which d had never seen. i&#39;m thankful that d went along with watching it, even though i think she wanted to watch star wars more. i&#39;m thankful that i hadn&#39;t seen it for a long time and got to return to it and share it with her. i&#39;m thankful for the linklater looseness of it and for the fun of all the performances, especially parker posey&#39;s, which i had forgotten about. i&#39;m thankful for how d laughed at the appearance of ben affleck, who i had also forgotten was in it. i&#39;m thankful for when she asked me if <a href="https://www.youtube.com/watch?v=GcCNcgoyG_0">a song playing at the end</a> was by aerosmith and i said that no, it was by a different band, but then didn&#39;t say the name because i was embarrassed to say &quot;<em>foghat</em>,&quot; but then wanted to impress her with my knowledge and so added &quot;<em>it&#39;s by foghat.</em>&quot; i&#39;m thankful that she didn&#39;t understand and said &quot;<em>smog bat</em>?&quot; and i said &quot;<em>foghat, which is not really any better of a band name</em>.&quot; </p>
+<p>i&#39;m thankful for representations of the american high school experience, which when i was younger were both a blessing (because they fueled my fantasies of what life could be like and gave me material to try to understand the frightening world around me) and a curse (because i constantly felt like a loser watching fantastic experiences that i knew i would never have because i was so unhappy and and afraid and refused to let other people in). i&#39;m thankful that now, as an adult, the pain of my youth is far enough in the distance that i can enjoy these representations as a kind of false nostalgia, backfilling their glowing images over my memories of unhappiness. i&#39;m thankful how whenever anyone compliments me on wearing a collared shirt under a sweater, i think of the first time i did this, my senior year of high school, and how a, who was a cheerleader and an actress and was in my humanities class, turned to me a few minutes before the bell rang and said, appraising me, &quot;<em>justin, you look very dawson&#39;s creek today</em>.&quot; i&#39;m thankful that because i was so often bullied and teased in high school, my armor went up and i took this to be a diss, even though i loved <em>dawson&#39;s creek</em>, and so said something barbed and cutting and bitter in return. i&#39;m thankful to remember how wounded she looked as the bell rang and how much i hated myself when i realized that she&#39;d actually meant it as a compliment.</p>
+<p>i&#39;m thankful how in the dark while we watched the movie and ate cookies, d pushed something towards my mouth and i accepted it because of trust and then realized with pleasure as it melted on my tongue that it was the circle of creme from her oreo. i&#39;m thankful that earlier in the day we had talked about oreos and how she said that without the creme they would be less horrifically caloric and how i said &quot;<em>but without the creme, what would even be the point</em>,&quot; and how she said that the chocolate cookies by themselves would still be good (she is a twist and separator, whereas i am a whole dunk and soaker), an argument with which i vehemently disagreed.  i&#39;m thankful to imagine being able to go back in time to the sad high school me and tell him that at some point in his future, a beautiful woman will feed him the creme from the center of her oreo in the dark while he watches an old movie he loves and then they will go to bed together.</p>
+<p>i&#39;m thankful to have read the most recent issue of <em>new york,</em> which was excellent, in the bathtub. i&#39;m thankful for <a href="http://www.vulture.com/2016/02/kanye-in-common-with-trump-mlk.html">this essay</a> by rembert browne about kanye, donald trump, and MLK, which was excellent (i&#39;m thankful that a silver lining of the end of grantland is the amazing writing he&#39;s been doing for <em>new york</em> lately). i&#39;m thankful that <a href="http://www.curbed.com/2016/3/4/11162314/paul-klee-bauhaus-design-color-theory-notebooks">paul klee&#39;s notebooks</a> have been posted online. i&#39;m thankful to have learned the word &quot;coign&quot; (&quot;a projecting corner or angle of a wall or building&quot;) from the novel i&#39;m reading. i&#39;m thankful for the ten most recent words i&#39;ve looked up on my ereader, which are &quot;austral,&quot; &quot;gloaming,&quot; bullock,&quot; &quot;clerestory,&quot; &quot;gusset,&quot; &quot;hob,&quot; &quot;aconite,&quot; &quot;halberd,&quot; &quot;diluvial,&quot; and &quot;perepiteia.&quot; i&#39;m thankful to have struggled aloud to figure out the proper pronunciation of &quot;anemone.&quot; i&#39;m thankful that e thought d&#39;s use of &quot;<a href="https://en.wikipedia.org/wiki/Dear_husband">DH</a>&quot; in her tweet meant &quot;d_____&#39;s husband.&quot; </p>
+<p>i&#39;m thankful that it&#39;s sunny outside. i&#39;m thankful how when i saw that the rain that was forecast for early next week is not being forecast anymore, i thought, &quot;<em>oh great, the rain&#39;s been cancelled!</em>&quot; i&#39;m thankful to think of god scheduling weather on some celestial spreadsheet. i&#39;m thankful for <a href="http://www.nytimes.com/2016/03/01/science/find-an-ice-flower-before-it-melts.html?_r=0">frost flowers</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-37.html" class="btn btn-secondary">← thank you notes 3/7</a>
+        <a href="/letters/tyn-fsa3.html" class="btn btn-secondary">tyn (fsa)(3) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

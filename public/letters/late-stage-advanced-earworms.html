@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="late stage advanced earworms">
+  <title>late stage advanced earworms - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>late stage advanced earworms</h1>
+        <time datetime="2021-02-27T00:00:00Z">February 26, 2021</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i had been putting off updating carrier settings in my phone for weeks, the modal popping up and needing to be told &quot;not now&quot; several times a day every day, because i guess any time it popped up it never felt like &quot;the right time&quot; for me to restart my phone and possibly be without its distractions for a few minutes (and i would have this thought and then have the thought of how ridiculous it is and then have the thought of but it is actually how i feel and then i would tap &quot;not now&quot;) and things went that way for several weeks and then yesterday we were sitting down to dinner and i got the pop-up and there was this sense of a key unlocking, like, &quot;this is the perfect time&quot; and then i clicked the approve button and the update happened instantaneously with no disruption.</p>
+<p>having learned that it is possible to easily write multiline strings in a cell of a google sheet, which i thought somehow wasn&#39;t because the usual shortcut i use everywhere else for that is &quot;shift + enter&quot; and so was doing this laborious thing of copying the strings out to a text editor to change them and then paste them in but then i got frustrated and looked it up and apparently in google sheets it&#39;s &quot;option + enter&quot;</p>
+<p>on friday i got my local developer environment for our app set up, a process i wanted to do for a while (because it opens a path from doing the kind of kludgy hacks i do now with scripts and chrome extensions into building the actual product) had been dreading because at my last job it was such a nightmare and i had heard bad things about it here, but then it was a breeze and i didn&#39;t need anyone else&#39;s help and suddenly i had my own version of our app humming along in docker that i could do anything with. i&#39;m thankful for the engineering manager, who&#39;s also setting hers up and how we agreed to support each other through the process.</p>
+<p>the other task i did friday, which was to start building a slack-based game for our next. my favorite phase of something is always the beginning of it and the ideas seem to just be sparking through my synapses into being and as i think of how things can behave i&#39;m projecting into the future and imagining a person interacting with them and those interactions affecting how they feel and sometimes i think degree to which i can enjoy working on a project is how long i can extend that beginning feeling, the infinite possibility space that begins to solidify and cohere into a shape, or how i can make it a short beginning (cut scope) or how i can find new beginnings (iteration). i&#39;m thankful, as a storyteller, to recognize the impact of these narratives in my life.</p>
+<p>as someone who has never been good with their hands and who wasn&#39;t raised to be handy, the feeling of power and satisfaction i get from making machines out of code (or improving the machines that other people have made, or composing together chunks of machines into larger machines). i&#39;m thankful that i get so much from it, even though i have to be on guard around how locked in i can get when i am focused, which on the one hand is so satisfying and great but can also be too much of a good thing and can distract me from living a healthy and balanced life.</p>
+<p>i&#39;m thankful to know that, but i&#39;m thankful that last night after we watched a movie, i opened my computer again to add some flourishes to the slack game, which i probably shouldn&#39;t have done from a health and balance perspective, but i&#39;m so glad i did, not just because i came up with several great ideas for the game and figured out how to hook two pieces of the implementation together, but also because it somehow dislodged something in my brain and i figured out how to solve a complicated performance optimization problem that i had been letting stall out my hobby project (an erasure poetry app) which was very frustrating because i just couldn&#39;t figure out how to implement it and the solution (improving interaction smoothness by virtualizing a very large list at a higher level of tree depth than the atomic level i&#39;d originally chosen because doing it at the atomic level (the words in a paragraph, which have unpredictable widths (the width of each individual word) and because of which there can be an unpredictable number in a given row) introduced complications to the using virtualization (there seemed to be an advanced component with APIs for something like this in the most popular virtualization library, but it didn&#39;t quite fit and i felt just on the verge of being able to grasp how to make it work but could never get there and there seemed to be noone on the internet who was trying to do this exact thing (which gave me a small thrill, because that&#39;s so rare and i am a scorpio, but it also limited the resources i could draw on), whereas by moving the structure of the list one level higher (the paragraphs in a page, which can have variable heights (because of the amount of words) but all have the same width (the widith of the page) which then will enable me to use a much simpler out of the box component type from a popular virtualization library, which i am going to try this weekend.</p>
+<p>also at work on friday i got to share an acoustic cover i recorded on my lunch break earlier in the week (see again i love a short creative cycle) of &quot;julia&quot; by the beatles except rewritten to be about the head of our department, who i feel an inordinate amount of affection for and who is going on sabbatical for a month, and my coworker at my direction made a version of the <em>sgt. pepper&#39;s lonely hearts club band</em> cover but with our team&#39;s faces and our team&#39;s dogs&#39; faces collaged onto the people in the original.</p>
+<p>the billie eilish documentary on apple tv, which d has been so excitedly waiting for and we watched last night after dinner. certain parts of it where they, in the course of a few minutes, come up with the hook to a huge hit song felt kind of weirdly like reenactments (cf also taylor swift&#39;s iphone &quot;demos&quot;) and not reality, but i&#39;m thankful that the movie did make me like i better knew these people whose songs we listen to all the time and i always love to see the minutia of people&#39;s daily lives (there are also some really good live performances of songs).</p>
+<p>the other thing we&#39;ve been watching on apple tv, which is <em>servant</em>, a weird half hour psychological thriller executive produced by m. knight shyamalan (who also directed the first episode) and that tells you most of what you need to know about it, it seems extremely dumb and constantly is going places that i think don&#39;t make sense, it is all surface and no depth (the performances are great for what they are but so broad and over the top, lauren ambrose seems like her eyes are going to pop out sometimes), but somehow i am compelled at the end of every episode, even though at the end of the subsequent episode i do not learn what i wanted to learn (and yet am compelled to continue, we&#39;re currently a few episodes into the second season). so it is not good but sometimes a not good tv show that my brain can, for whatever combination of reasons, lock into is still worthwhile (i love how <a href="https://jomc.substack.com/p/trustno1?utm_campaign=post&utm_medium=email&utm_source=copy">jomc</a> writes about this kind of tv watching). the sense of narrative blue balls about the show&#39;s mysteries also does make me yearn for a <em>leftovers</em> rewatch (well, really a <em>lost</em> rewatch, but that feels like so huge of a commitment, especially since my holy grail version which is just the entire series with the flashbacks edited out, is beyond reach, whereas i think i could pitch d on watching <em>the leftovers</em>) since that show had both mystique <em>and</em> depth <em>and</em> characters i was invested in.</p>
+<p>we got donuts from [my favorite donut place](<a href="http://we">http://we</a> got donuts from my favorite donut place for the first time in a while) for the first time in a while: salted vanilla bean (fair trade, organic vanilla glaze x vanilla bean sea salt), tiramisu filled (coffee glaze x tart cream cheese filling x cocoa powder), strawberry fritter
+(fresh strawberries cut into the dough x raspberry glaze x milk chocolate drizzle), muddy buddy (chocolate cake donut x milk chocolate glaze x peanut butter drizzle x housemade muddy buddies), and my favorite this time, which was lime hibiscus salt twist (fresh lime glaze x dried hibiscus x sea salt)</p>
+<p><a href="https://www.youtube.com/watch?v=1iOejV_8pWI">this 51 minute video</a> of &quot;an entire week of vegan AVATAR themed food&quot; which we somehow watched all of (have also started rewatching <em>avatar</em> and as such entered a new stage of the pandemic where i am rewatching things i first watched also during the pandemic). the video starts with her making onion and banana juice and just goes from there. it&#39;s fascinating to me, as a person who has reached a stage and level of privilege in my life where i will not eat food that tastes actively bad to me, for how free the host seems to feel to improvise and experiment and the warm and generous attitude she has toward eating the often pretty gross sounding things she makes—couldn&#39;t be me, but i can still take something from it.</p>
+<p>this ask.metafilter thread about <a href="https://ask.metafilter.com/352559/Not-an-earworm-but-abrainworm">brainworms</a> (late stage advanced earworms), which i have experienced at various times of my life and hate very much, so it&#39;s reassuring to hear other people experience them (and i also do find that when it&#39;s quite bad it&#39;s usually &quot;a sign I haven&#39;t been listening to music enough&quot; which is something i recognize in myself often and need to more concretely try to accomplish)</p>
+<p><a href="https://www.youtube.com/watch?v=ssq6X6alZ3w">the 34+35 remix video</a>, i did not think it was possible to love this song more than i already did but the video for this remix ménage à trois is like a sweeter &quot;WAP&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/stath-lets-flats.html" class="btn btn-secondary">← stath lets flats</a>
+        <a href="/letters/everything-lana-condor-eats-in-a-day.html" class="btn btn-secondary">everything lana condor eats in a day →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

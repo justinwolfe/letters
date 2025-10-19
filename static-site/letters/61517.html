@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="6/15/17">
+  <title>6/15/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>6/15/17</h1>
+        <time datetime="2017-06-15T00:00:00Z">June 14, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i went yesterday to get the ultrasound of my heart that i&#39;m supposed to get every year but didn&#39;t get last year. i&#39;m thankful that the scan was at a clinic rather than the hospital, which is where it was last year, since that&#39;s less frightening than the hospital. i&#39;m thankful to have made nice small talk with an old lady who was waiting for her husband, who was not feeling well. i&#39;m thankful that the tech who did the ultrasound was kind and gentle, since sometimes people really press hard with the ultrasound wand and it hurts. i&#39;m thankful for when she told me that she was going to press the wand into the dip of my throat and i asked her if that was a medical term and she said, no, it was just something she says because people intuitively understand the place it describes. i&#39;m thankful that i will get my results in 5-7 business days and hopefully they will show not much change from the last time i got a scan. i&#39;m thankful to know that even if they do show a change that requires some kind of action, i have good insurance and savings and a flexible job that doesn&#39;t require physical labor and a supportive partner.</p>
+<p>i&#39;m thankful to not think about worst case scenarios anymore. i&#39;m thankful that our power went off yesterday evening, which wasn&#39;t a big deal even though it was annoying for a little while. i&#39;m thankful that though it happened as we watched the last few minutes of the finale of <em>the handmaid&#39;s tale,</em> which was frustrating, i was able to download the hulu app on my phone so we could watch the rest of the end in that way. i&#39;m thankful that the episode was great besides one (imo) very unfortunate music cue. i&#39;m thankful for the automated response line from the power company, which unlike most automated response lines actually provided all of the information i needed and did so with a minimum of button pushing required. i&#39;m thankful for how when the power&#39;s off but it doesn&#39;t feel that different because i&#39;m still looking at my phone a lot (which i do when the power is on) and then i go to do something like turn on a light and am perplexed why it&#39;s not responding. i&#39;m thankful that d and i laid on the floor of the front room, which is the one that gets the most light, talking and trying not to feel very hot in the absence of our air conditioner. i&#39;m thankful that d had a very intense meeting at work that she was anxious about but that went very well and i&#39;m thankful to have gotten to hear all about it. i&#39;m thankful that because she was lying on her back on the floor, d saw when the fan started to slowly rev up, which signaled that the power was back.</p>
+<p>i&#39;m thankful for the season 12 kardashians episode <em>controversies &amp; legacies</em>, which d and i watched on hulu and which i think is a GOAT episode. i&#39;m thankful for all the different ways the episode thinks about motherhood: kim deciding whether to try to bear a third child herself or use a surrogate and kris wanting to make a legacy video for MJ. i&#39;m thankful that the episode opens with khloe telling him that kanye has promised her one of kim and kanye&#39;s stored embryos and kim says, when she finds out how that happened, &quot;<em>you can&#39;t get an answer for that out of kanye at a party where he&#39;s been drinking, we&#39;ll need a proper sit-down for that.</em>&quot; i&#39;m thankful for the emotional and really almost kind of rude conversation kim has with a woman who had children herself and then had a surrogate. i&#39;m thankful to have learned through an offhand reference to her gummies in this episode that <a href="https://www.youtube.com/watch?v=20Lm6iH4in0">MJ is probably basically stoned</a> all the time, which explains so much about her affect and personality. </p>
+<p>i&#39;m thankful for the sequence where the legacy video is being filmed, which gets super meta because the kardashians not currently interviewing MJ are in another room watching the feed of the interview on a large television. i&#39;m thankful that kris&#39;s weird resistance throughout the episode to interviewing MJ (at one point she suggests using anderson cooper as the interviewer lol) finally comes to a head  during the interview when kris asks MJ what she&#39;s afraid of and MJ said she&#39;s not sure and turns the question around on kris and kris bursts into tears, which we learn is because kris&#39;s fear is that sometime soon MJ will die and she won&#39;t have her mother anymore. </p>
+<p>i&#39;m thankful that kris&#39;s daughters comfort her and while she recovers lighten the mood by asking MJ fun questions about her youth and her sex life and relationships. i&#39;m thankful, when asked about dating now, she says bluntly that most of the men her age are dead, to which khloe replies, &quot;<em>you don&#39;t have to date someone your age</em>&quot; and gestures toward kris (who is dating a much younger man) and everyone laughs. i&#39;m thankful for another moment like that, when kris asks about mj&#39;s first marriage and she says that she was only married for two months and then smiling, says, &quot;<em>shorter than kimmy</em>&quot; (referring to kim&#39;s marriage to chris humphries). i&#39;m thankful for their honesty with each other, which is refreshing and a good model for their viewers.</p>
+<p>i&#39;m thankful that d showed me an instagram video of jk&#39;s daughter, who is the cutest child in the universe (nori is second), sitting in the bathtub and joyfully eating sweet peppers while wearing a tiny shower cap. i&#39;m thankful that i texted jk to tell her how cute it was and i&#39;m thankful we had a nice text conversation since we haven&#39;t talked for a while and i miss her. i&#39;m thankful that her family is moving closer to us in the fall and that we&#39;ll be able to see her more often. i&#39;m thankful she and i talked about elisabeth moss, who is <a href="http://nypost.com/2017/06/14/elisabeth-moss-is-the-best-at-walking-alone/">the best at walking alone</a> (handmaid&#39;s tale spoiler in that link).</p>
+<p>i&#39;m thankful that chrissy teigen didn&#39;t know john legend had seen her butthole. i&#39;m thankful for her social media accounts, which are always very funny and very real feeling. i&#39;m thankful for the videos she posts of her relationship, which remind me of my relationship in nice ways that help me to appreciate it more (i&#39;m thankful especially for <a href="https://twitter.com/chrissyteigen/status/873378835382890497">this one</a>).</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/51617.html" class="btn btn-secondary">← 5/16/17</a>
+        <a href="/letters/anonymous-8852.html" class="btn btn-secondary">(anonymous) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

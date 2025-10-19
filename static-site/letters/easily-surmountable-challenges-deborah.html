@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="easily surmountable challenges (deborah)">
+  <title>easily surmountable challenges (deborah) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>easily surmountable challenges (deborah)</h1>
+        <time datetime="2025-09-23T21:04:25.258947Z">September 23, 2025</time>
+      </header>
+
+      <div class="letter-body">
+        <p>I’m thankful that I suggested that we skip the grocery store and spend our Sunday doing something else. I’m thankful that J suggested we take a walk somewhere, and that he let me choose the destination. I’m thankful that I was finally in the mood for a bagel, and we headed out to a bagel shop that had been on my list to try for months. I’m thankful that Miso, after years of stubbornness about walks (as a puppy, she would barely move on the sidewalk at first, as if frozen in stop-motion) and with a hands-free leash, has become (for the most part) a wonderful walking companion for us. I’m thankful that, on Sunday, after several days of napping and catching up on her sleep from being boarded, she seemed to enjoy the walk. I’m thankful that it rained that morning but stopped for the rest of the day, leaving the air humid but cool, with a refreshing breeze, that there was some sunlight but it wasn’t too potent, just a lazy fresh late summer early fall day. I’m thankful that, after a week of a crush of tourists and car-heavy streets, we could walk in the relative quiet of neighborhoods and I could do a bit of flowerspotting (anemones, cosmos, sunflowers, many others I didn’t know the names of). I’m thankful we walked past at least two free seed libraries and so many little free libraries, and that we paused at each one to glance at their contents.</p>
+<p>I’m thankful that I’m now reading the second ebook compilation of these thank you notes and that J has said he is going to work on a web ebook app that makes it easier to read these notes. I’m thankful that it’s soothing and fascinating and very inspiring to read these whenever I want to.</p>
+<p>I’m thankful that I watched <a href="https://youtu.be/Y1lfDrl_xjw">Megan Wang on her journal system and making your own notebooks</a>. I’m thankful that she started using her weekly journal for memory-keeping, but has returned to the A6 Hobonichi Techo (which is too small for me, after trying it twice; I’m an A5 girlie) instead, and now uses her weekly journal as a gratitude journal. I’m thankful that she said that she started it because she’s been struggling with her mental health after an injury and that she’s noticed that writing about something she’s grateful for every morning has cheered her up a lot. I’m thankful she said she read somewhere that it helps with resiliency. I’m thankful to think about <a href="https://bookshop.org/p/books/the-book-of-delights-essays-ross-gay/8e53b4b907601bb2?ean=9781616207922&next=t&next=t"><em>The Book of Delights</em></a> and <a href="https://bookshop.org/p/books/the-book-of-more-delights-essays-ross-gay/a753d8c969fa9054?ean=9781643756356&next=t"><em>The Book of (More) Delights</em></a> by Ross Gay, which were indeed delightful to read (I’m thankful that I’ve noticed a pattern of when I’m mentioning or praising these books to someone, I can’t help but also mention that he was one of the poetry professors who taught in my MFA program, as if this is a fun illuminating fact even though it doesn’t really mean anything to the person I’m saying it to. I’m thankful that he is, in a way, a celebrity that I am thankful to have been connected to briefly, even if I never had the joy of taking a class with him. I’m thankful that my peers, who did study and plant things in the dirt and play basketball games with him, were joined in a kind of worship of him, because he was such a kind and cool and fun person) (I’m thankful that, similarly, I never took a class at my alma mater with Mark McGurl who is famous for his literary criticism, but my friends spoke about him glowingly, that he changed their lives and inspired them to become English majors).</p>
+<p>I’m thankful that once somewhere, when I was learning to meditate, someone told me that we all know how to meditate, we just often choose to meditate on our anxieties or fears, all the worries and bad things we dread. I’m thankful for J’s <a href="https://buttondown.com/justinwolfe/archive/thank-you-notes-224/">long and detailed struggle with Panic, Anxiety, Dread, and Depression,</a> the four horsemen of the apocalypse. I’m thankful that we take turns reassuring each other, though <a href="https://www.instagram.com/p/CzVPSfeLGsc/?img_index=2">I’m often the doomsayer</a> in this relationship. I’m thankful that, in recent years, J has turned to me and said half-solemnly and half-jokingly, <em>“We’re</em> old <em>now.”</em> I’m thankful that the night before we went to a Rilo Kiley concert, I asked if he was excited about it, and he made a face and said <em>“Not really. They’re old now. It’s all downhill from here,”</em> and reminisced about the times he saw them in college, when he was young and they were young. I’m thankful that when we went to see them with our friends, they were actually really amazing, a point on which we all emphatically agreed. I’m thankful for everyone’s performances, to see our friends dance and sway. I’m thankful that we spread out our towels on the sloping dirt and grass, for metaphorical and literal hills. I’m thankful for the strangeness of “downhill” as a gloomy expression about mortality being closer to “downfall” but going “uphill” is like a Sisyphean feat of fighting gravity. I’m thankful for saving a screenshot of Lian Cho’s story where she said <code>Adam made us take a detour up a crazy climb to an observatory and I felt like I was gonna die</code> and in the selfie they took, her face is a semi-grimace with dead eyes while her husband is fully cheesing next to her and she added a screenshot of a top review:</p>
+<blockquote>
+<p>As others have said, the steps are steep and big. I liked the challenge, my wife…not so much…</p>
+</blockquote>
+<p>and as we climbed the steep incline of a street and I gasped and wheezed, I showed her story to J and we both laughed at the heteronormative plight of wives everywhere who do not enjoy the challenge of climbing hills as much as their husbands do. “You like a challenge,” I said, and J appended, “I like an <em>easily surmountable</em> challenge.” I’m thankful for easily surmountable challenges. I’m thankful for out-and-back hikes where an uphill becomes a glorious downhill. I’m thankful that thankfulness creates an antidote to the anxiety map that my mind will so skillfully traverse, that our attention is a balm to fake and toxic positivity and tarnished silver linings. I’m thankful to realize that, because I am used to tracing the constellations of my catastrophes and navigating the expressways of my anxiety, that I can also trace the map of what is tender and dear to my heart.<img src="/api/images/11" alt=""><img src="/api/images/12" alt=""></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/the-deep-work-deborah.html" class="btn btn-secondary">← the deep work (deborah)</a>
+        <a href="/letters/endless-crying-deborah.html" class="btn btn-secondary">endless crying (deborah) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="7/21">
+  <title>7/21 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>7/21</h1>
+        <time datetime="2017-07-21T00:00:00Z">July 20, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>[includes spoilers for the first two episodes of <em>the keepers</em>]</p>
+<p>i&#39;m thankful d and i watched the second episode of <em>the keepers</em> last night, even though/because it was one of the most horrifying things i&#39;ve ever seen in my life. i&#39;m thankful that we decided to keep watching after the first episode, which we almost didn&#39;t because it felt padded and repetitive and like a competent but boring attempt to cash in on the vogue for sensational true crime documentary series. i&#39;m thankful that our motivation to continue, besides inertia, was mostly because of the characters of the two older women leading this investigation, who were charming and interesting and endearing, even though neither of us could quite understand the intensity of their commitment to &quot;finding justice&quot; for the unsolved murder of a baltimore nun nearly half a century ago, which seemed to both of us like kind of a waste of time and energy.</p>
+<p>i&#39;m thankful for the second episode, which felt like stepping off the edge of a ledge and falling forever into a void. i&#39;m thankful for our absolute horror at the revelations of widespread sexual abuse that took place at an all-girls catholic high school in the sixties. i&#39;m thankful for the incredible bravery of the victims of that abuse, both to continue living their lives after what they experienced and to share in agonizing detail all the ways in which they were violated by priests entrusted with their education and care and spiritual well-being. i&#39;m thankful that in the light of this new information, that the commitment of these women at the center of the show to finding justice for a dead nun who was trying to fight back against these abuses in a world where all the cards were stacked against her felt not like a waste, as we so glibly tittered during the first episode, but like the most valiant and righteous act of devotion i can imagine. i&#39;m thankful for the show&#39;s painful demonstration of the cancerous nature of the patriarchy and thankful that i don&#39;t know anyone could watch the show and not feel that there is just something fundamentally toxic and wrong with men (all men, fuck &quot;not all men&quot;) and, moreover and especially, with men holding power and authority over women. i&#39;m thankful to feel completely disgusted by that, which is productive. i&#39;m thankful to know that there will never really be such a thing as justice for the women in this story, that there could not be such a thing as justice for the scale of the wrongs that have been committed, but i&#39;m thankful that i feel changed forever after listening to them, which though it is not justice is something that will be lodged in me forever and will i hope help me stand up and be counted when i need to stand up and be counted.</p>
+<p>i&#39;m thankful that my life, offline and on, is full of strong and powerful and vibrant women who are living their lives with radical bravery and boldness. i&#39;m thankful that there are too many of them to count but i will name a few in this paragraph because naming and noting is a show of respect. i&#39;m thankful for d, who forgives me the various ways that i am a shitty man and helps me to grow and become a better one. i&#39;m thankful for my coworkers, who push back against the sometimes overt and often implicit misogyny of the male customers they deal with every day and how they do it with humor and grace and aplomb. i&#39;m thankful for <a href="https://doublebounce.me/the/thatwetlook/site/article/5970ee3d627ef31000bd447c">the most recent issue</a> of claire&#39;s newsletter and its gifs (gifts) full of silly joy, which i scrolled through after watching <em>the keepers</em> and felt comforted by. i&#39;m thankful for sarah, who <a href="https://twitter.com/geekylonglegs/status/888132232464011264">speaks truth to power</a> in a way that can make you angry (in a good way) at the same time that you&#39;re choking on laughter. i&#39;m thankful for <a href="https://danaanm.tumblr.com/">dana</a>, whose delight at the world around her delights me. i&#39;m thankful for esmé and chloe and molly and kiri, who share happiness and sadness and delight and frustration with me basically every day. i&#39;m thankful there is a new lana del rey album out today and that i am not going to listen to it now while i go to work but instead d and i will listen to it together tomorrow on good speakers. i&#39;m thankful for rituals and i&#39;m thankful for respect.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/julie.html" class="btn btn-secondary">← (julie)</a>
+        <a href="/letters/72019.html" class="btn btn-secondary">7/20/19 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

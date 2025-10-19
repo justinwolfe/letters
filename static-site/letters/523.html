@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/23">
+  <title>5/23 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/23</h1>
+        <time datetime="2018-05-23T00:00:00Z">May 22, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that despite feeling completely awful in my mind and body for most of yesterday, some good things happened. i&#39;m thankful that rather than do yoga early in the morning i took a hot shower and shaved, since having a cleanly shaved face makes me feel more together, but that despite that, i still found time to meditate pre-work, which is always something that&#39;s good for me to do even though it didn&#39;t really feel like it helped anything. i&#39;m thankful to have been given a raise because of what my manager described as my excellent performance in a number of different realms, which made me feel good even though i spent the day trying to solve really hard problems and feeling like i was wading through quicksand, inadequate and stressed out. i&#39;m thankful to know how weird it is that getting a raise wasn&#39;t enough to make my day feel like a good day, which it feels like it should, but i&#39;m thankful to understand that there are limits to how i can direct or control my emotions. i&#39;m thankful for a metaphor i&#39;ve heard president obama use about being president, which is the idea that people thought he could steer the ship of state wherever he wants, but what he could actually do is sometimes, with great effort and care in particular circumstances, move the wheel a degree or two in one direction or the other. i&#39;m thankful to sometimes feel like that about my emotional health—like, i can do all of these things to try to influence it in a positive direction, and i should do that, must do that, to try to engineer my happiness, but it feels like the currents of the water my conscious mind is swimming in are so strong that the effect my choices and actions and rituals can have is limited. i&#39;m thankful to keep trying to steer though, since what else is there. i&#39;m thankful that one of the projects i&#39;m working on now (and one of the reasons i was given the raise) is one that is supposed to help everyone experience those quicksand days less frequently. i&#39;m thankful to know that something a coworker said in a thread with me discussing one of those hard problems, a statement that i interpreted as condescending towards and made me fume all through my lunch break (and skip my run, which i should never do because it always makes me feel better) was not actually a big deal and may not have even been him intending to be glib or mildly condescending at all but just me, because my mind was making mountain from molehill because it is unstable, unmoored completely now from the constant drip of antidepressants i&#39;ve been taking for years at this point and not sure how i should be (i&#39;m thankful that i am going to see how i feel today before calling/scheduling an emergency appointment with my psych). i&#39;m thankful i got a tool i had built a while ago that had been offline for a while back up and running. i&#39;m thankful to have had a nice video call on a technical topic with a newer member of our team and to have felt that i helped her learn some useful things. i&#39;m thankful that i did eventually eat lunch even though i pushed it back too far in the day because of the quicksand problems, which is something i should not do and have to work to be firmer with myself about, because being hangry is not a good or helpful modifier to my preexisting mental and emotional problems and if i eat on time i will remove that variable/multiplier from the general equation of my mental health. i&#39;m thankful that at the end of the day, i had time to roast more vegetables (broccoli and cauliflower today) for our dinner while i told d about how i had been feeling various flavors of bad all day. i&#39;m thankful that before dinner we tell each other about our days and how we&#39;re feeling, which is something that is positive and helpful in a number of ways. i&#39;m thankful that during dinner, we watched the most recent episode <em>the americans</em>, even though that episode was so unbelievably dark and sad it felt like getting punched in the stomach, which was really not something i needed at the end of the day. i&#39;m thankful we watched an episode of <em>terrace house</em>, which was more soothing except there was a hockey game with my favorite housemate and when her team lost i started openly weeping, which is not something i do frequently or do ever in the context of sports, but i really cared about the housemate and wanted her to win because i knew how important it was to her. i&#39;m thankful to have thought about how hard it must be if you really care about sports (in real life) and your team loses and how i wonder whether the times your team wins balance out that feeling (but i know that sometimes certain teams go through years of slumps, which is something that i have trouble imagining being able to bear, which is why it&#39;s probably good i never got into sports). i&#39;m thankful that because i felt increasingly worse throughout the evening (i&#39;m thankful to have looked at the notes app where i make the preliminary notes i use for writing these notes and to have seen that yesterday evening wrote &quot;fuckkkkkkkkkkkkkkkkkkk&quot;), i eventually got into bed very early, when the sun was still out, and put one of my emergency pills under my tongue and let it dissolve bitterly. i&#39;m thankful it dissolved and that i had an icebreaker sour mint, which combined with the bitter taste of the pill made my mouth taste like grapefruit juice. i&#39;m thankful, the pill having worked whatever magic to soothe me, to have fallen asleep at 8:30 PM and slept through the night. i&#39;m thankful to be hopeful that today will be a better day; i&#39;m thankful that even when i don&#39;t feel well, i&#39;m pretty good at having hope.___PARAGRAPH_BREAK___</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/vic2.html" class="btn btn-secondary">← Vic(2)</a>
+        <a href="/letters/522-4819.html" class="btn btn-secondary">5/22 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

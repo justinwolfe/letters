@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (fsa)">
+  <title>thank you notes (fsa) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (fsa)</h1>
+        <time datetime="2016-02-26T00:00:00Z">February 25, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the sense of smell and normality.</p>
+<p>i&#39;m thankful for the way i always linger between hating and loving the alarm clock in the morning. i&#39;m thankful for how j gets to sleep an extra hour for the past couple of months, which at first annoyed me because of his bragging, but i&#39;ve come to accept and love. i&#39;m thankful for the way he and our dog b get to stay in bed and perfume our love-nest with their smells, oozing of soft sticky-sweetness and sleepy sweat, of b&#39;s tousled hairs and licking scents, all entwined in wondrous warmth. i&#39;m thankful of the way j doesn&#39;t complain about when i open the curtain to let light in, although it clearly cuts the darkness and heat and all the i just said i loved and disturb&#39;s j&#39;s deep(ly troubled) sleep.</p>
+<p>i&#39;m thankful for the way the bagel always toasts unevenly in the morning, sometimes too dark and bitter, sometimes too soft and light, but never gets the same way using the same toaster and leaving it on for the exact same time every day. i&#39;m thankful i&#39;ve come to accept and expect the unexpected, and that it has become my routine. i&#39;m thankful of normality and how it can thrive in the chaos of the unexpected.</p>
+<p>i&#39;m thankful for how the class is being particularly dull today. i&#39;m thankful of how the trainer/teacher of the bar association is being particularly annoying, and i&#39;m thankful that in person she is not like this, but has become so because she wants to be feared and respected. i&#39;m thankful of how this is the standard of the portuguese bar professionals and even the more we get to know them the more this strikes us as normal.</p>
+<p>i&#39;m thankful for normality. i&#39;m thankful of how meaningless the talk in the bar class always seem to be, and thankful that these discussions are always not only condoned but promoted by the trainers/professors. i&#39;m thankful that at least now i know the reason why our justice system is so falsely objective and made of chit-chat, which is an expression that I am i am particularly fond of, although I am thankful for not being fond of the concept itself. </p>
+<p>i&#39;m thankful that the class is speeding by in its normal rhythmic drum drum of boredom and normality. i&#39;m thankful that albeit the subject may be less appealing, i have an exceeding ability to become interested in nearly any topic. but even more than that, i&#39;m thankful that there are things that i can enjoy without trying much - such as writing. i&#39;m thankful that i can choose to become interested and choose to enjoy things, i&#39;m thankful that i can choose not to choose things that i would have to force my enjoyment in, but simply dwell in thoughtless pleasure.</p>
+<p>i&#39;m thankful of how this physical classroom is much better than the others. thankful for the extra space, for the extra comfort, with its slightly wider desks that put my regular classroom&#39;s desks to shame with their barely-able-to-fit-my-laptop width.  i&#39;m thankful that the colleague sitting next to me smells of nothing. i&#39;m thankful of how my sinusitis has made me less aware of smells which are by nature foul and still enables me to have the pure enjoyment of delectable perfumes, industrial or natural alike. i&#39;m thankful that modern society has made it possible for people to choose to smell of nothing, even if that means we are all becoming less human and humane, little by little, one smell at the time. i&#39;m thankful j enjoys my natural smells and still not as much as i do. i&#39;m thankful that j grasps the humanity in my enjoyment.</p>
+<p>i&#39;m thankful for choice and freedom. i&#39;m thankful that the social contract is not so definitive as society the media and politicians make us feel. i&#39;m thankful we can choose to leave society and get lost like alex supetramp does in into the wild, or in a less extreme fashion like m jc j and i did in iceland the past august. i am thankful for conformity. </p>
+<p>i&#39;m thankful for the icelandic road trip. thankful for the memories, thankful for the cold, thankful for dalvik and all the beautiful landscape, thankful for the ocean, for the fishy smells of the air and sulphuric smells of the water, thankful for the icelandic people and their distant yet friendly notion of hospitality, thankful for the nothingness we can feel while standing there. i&#39;m thankful for the intense and oppressive vibe of volcanoes and thankful that they remined me of the azores, in a smaller scale and much aged version of iceland. i&#39;m thankful of the earthiness of volcanic islands and for the sour smells coming from the womb of earth and how they remind me of our own human scents. i am also thankful for wombs in general even after my iud insertion. i&#39;m even more thankful for the ability to feel pain, sheer dark twisted ripping-of-internal-organs pain, thankful for bleeding, and thankful for all of those unpleasant things that in the end mean i am alive - and what a thing this is to day. 
+I AM ALIVE.</p>
+<p>i&#39;m thankful for being thankful and having language which enables me to think of it with depth, and the ability to write which allows me to express it. i&#39;m thankful for aesthetic intention and the capacity to project beauty and perceive beauty in all activities, but mostly in writing. </p>
+<p>i am thankful for being able to choose to share this or not, and thankful for the non-consequentialism of all this gratefulness voyage i have  embraced. i&#39;m thankful for justin wolfe and all the marvellous things he has introduced me to, namely the thank you notes emails but also the writingblocks app that i am currently writing on, which allows me to write in privacy in spite of being in class.</p>
+<p>f</p>
+<p>- fsa (2/24/16). portuguese, <a href="mailto:mfmcss@gmail.com">mfmcss@gmail.com</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-l.html" class="btn btn-secondary">← thank you notes (L)</a>
+        <a href="/letters/thank-you-notes-226.html" class="btn btn-secondary">thank you notes 2/26 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

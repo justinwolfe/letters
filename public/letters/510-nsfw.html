@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/10 (nsfw)">
+  <title>5/10 (nsfw) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/10 (nsfw)</h1>
+        <time datetime="2019-06-11T00:00:00Z">June 10, 2019</time>
+      </header>
+
+      <div class="letter-body">
+        <p>tw: asparagus, pee, pornography, semen, internet forums</p>
+<p>i&#39;m thankful that at the grocery store this weekend they had these thicc asparagus on sale and i bought two bundles of them and roasted them and then last night before bed i was peeing and i smelled the asparagus pee smell of my pee, which i know i have written about before, and which i enjoy, which i know i have written about before, and then i thought of something i hadn&#39;t written about before, which is rule 34, which states that for anything you can imagine there is porn somewhere on the internet about it and i&#39;m thankful that i thought, well, we can find this out right now, we have the technology, and i&#39;m thankful to have googled &quot;<em>asparagus pee porn&quot;</em></p>
+<p>and i&#39;m thankful for the second result, a video titled &#39;048 - Furious Asparagus Pee&#39; which has been taken down, leaving only its cryptic spintax caption (with cummings-y (ee that is) coinages like &quot;whitewine&quot; and &quot;springday&quot;), which is &quot;<em>Asparagus and whitewine were the reasons that cause so much stress for my foreskin at that springday in 2012. In between it seems like the foreskin would not be able to cope with the furious pee load but at the end it did a good job. Imagine: this peeload was collected in only 27 minutes. At that evening the foreskin had not even the chance to get dry..</em>.&quot; </p>
+<p>and i&#39;m thankful for the fifth result, which is this 5 line reddit question post which reminds me that i do not remember the movie election very well</p>
+<p>and i&#39;m thankful for the seventh result, which is a chowhound post that takes a more &quot;historical&quot; and &quot;scientific&quot; perspective and which i have reproduced in its entirety below:</p>
+<p><em>This question has baffled scientists for over half a century. In 1956, British researchers divided the population into two categories: excretors (those whose urine smells after they eat asparagus) and nonexcretors (asparagus eaters who remain odor free).</em></p>
+<p><em>Since there’s no documentation of the asparagus-pee phenomenon before the 1700s, about the time farmers began using sulfur to fertilize soil, this and subsequent studies hypothesized that a particular gene allows people to process a sulfur-containing compound in asparagus (most likely asparagusic acid). The theory was that if you have that gene, your pee won’t stink. However, they were relying on the test subjects’ own reports and weren’t considering the subjects’ ability to smell.</em></p>
+<p><em>In 1980, Israeli researchers performed a similar experiment but asked the nonexcretors to smell the excretors’ urine. Shockingly, they found that everyone’s urine smells after eating asparagus; it’s just that some people can’t smell it. So they, too, divided the world into two camps: perceivers and nonperceivers.</em></p>
+<p>and i&#39;m thankful for the last result on the page (<a href="https://forum.adultdvdtalk.com/asparagus-peeyay-or-nay">https://forum.adultdvdtalk.com/asparagus-peeyay-or-nay</a>), an adultdvdtalk forum post entitled, as you cahn see, &quot;asparagus pee..yay or nay&quot; and begins with the opening statement &quot;<em>I find it&#39;s [sic] bouquet [sic] appealing and a welcome change from the mundane</em>&quot;, which yes, lilacwine, i agree, and then includes, in a series of replies to a comment indicating that asparagus makes semen taste bitter, a &quot;senior member&quot; named &quot;Cumwhipper&quot; who writes, seemingly earnestly &quot;_Perhaps off-setting the asparagus with pineapple juice would neutralize the offending seme_n?&quot;, and then, when this is ignored and other speak of their disgust at asparagus tinged semen, writes &quot;<em>So it sounds like a definite &quot;no&quot; on asparagus cum! LOL</em>&quot;, after which someone else whose name seems to be a porn name version of Jerry Falwell (&quot;Larry Farwell&quot;), not understanding what everyone is talking about, thinks they&#39;re all being weird and writes &quot;<em>what does pissing have to do with asparagus? Sure I eat asparagus, and I piss. / So YAY, I eat asparugus and I piss</em>.&quot; after which our friend Cumwhipper rolls back in to paraphrase descartes, writing: &quot;<em>I eat asparugus and I piss, therefore I am</em>&quot;</p>
+<p>and anyway i could go on but i&#39;m thankful for weird shit both in real life and on the internet and also for this tweet which just glancing at fills me with such mirth (<a href="https://mobile.twitter.com/stopitg/status/1137153715310333952">https://mobile.twitter.com/stopitg/status/1137153715310333952</a>) and call me edith wharton but i am thankful for some fucking mirth sent from my ipad</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/511.html" class="btn btn-secondary">← 5/11</a>
+        <a href="/letters/59.html" class="btn btn-secondary">5/9 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 4/12">
+  <title>thank you notes 4/12 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 4/12</h1>
+        <time datetime="2016-04-12T00:00:00Z">April 11, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that one of my favorite writers, <a href="http://twitter.com/ruthcurry">ruth curry</a>, started a tinyletter yesterday called <a href="http://tinyletter.com/coffeeandtv">coffee &amp; tv</a>. i&#39;m thankful for the first issue of the newsletter, which has profound and funny things to say about coffee (<em>&quot;Drinking it, and not enjoying it as much as I expected to, reminded me it is actually possible to change things about your life, even things (in this case, cream and two sugars) you consider fixed or intrinsic to &#39;you.&quot;</em>), tv (&quot;<em>One of the main arcs of the show is the transformation – slow, difficult, fraught with setbacks -- of their marriage from a purely business arrangement to a “real” relationship. As a viewer, you are really, really rooting  for their relationship to work out, to stay “real,” or at least I am</em>&quot;), los angeles (&quot;<em>When I described the hotel to a coworker as &#39;fancy but kind of crappy at the same time</em>,&#39; she said, &#39;<em>Sounds like LA.&#39;</em>&quot;), and more (&quot;_cropped sweatpants, oversized tank top, extremely oversized blanket/poncho/shawl garment, bright-purple-and-turquoise New Balance 501_s&quot;). i&#39;m thankful to recommend that <a href="http://tinyletter.com/coffeeandtv">you subscribe here</a>. </p>
+<p>i&#39;m thankful for <em>fear the walking dead</em>, which in its deep pocketed mediocrity has the power to make <em>the walking dead,</em> which i frequently think is pretty dumb even while still enjoying watching it, seem like a profound work of art. i&#39;m thankful, when watching badly-written TV, to play a game with D where we try to guess what cliche line the characters will say next, which definitely adds to the entertainment value. i&#39;m thankful for this pair of recent articles about new frontiers of televisual fuckery: a profile of <a href="http://www.nytimes.com/2016/04/11/business/media/on-the-job-blurring-the-private-parts-in-naked-and-afraid.html?_r=0">the staff that makes the blurs</a> on <em>naked &amp; afraid</em> and an article about &quot;<a href="http://www.vulture.com/2016/03/special-effects-c-v-r.html">how actors get plastic surgery with a mouse click</a>&quot; (&quot;<em>Ironically, digital-effects companies like Lola are now busy undoing actual plastic surgery on actors whose &#39;faces are pulled too tight,&#39; Lola’s Williams has said. &#39;They’ll come in with too much Botox. There’s no movement in their brows. There’s been a few projects where we’ve had to animate the brow to give the performance it should be giving</em>.&#39;&quot;) </p>
+<p>i&#39;m thankful for last week&#39;s <a href="http://www.ew.com/article/2016/04/07/gilmore-girls-revival-ew-cover"><em>entertainment weekly</em> spread</a> about the netflix <em>gilmore girls</em> sequels and to be reminded of david cho&#39;s <a href="http://www.theawl.com/2011/05/my-latest-obsession-why-you-should-give-gilmore-girls-another-chance"><em>gilmore girls</em> advocacy</a>. i&#39;m thankful that <a href="http://www.chicagotribune.com/entertainment/tv/ct-5-reasons-gilmore-girls-needs-melissa-mccarthy-20160411-story.html">melissa mccarthy is going to be in the <em>gilmore girls</em> sequels</a>, even though her character always felt tonally like she was in a slightly different show. i&#39;m thankful that i remembered when i once made <a href="https://songsaboutbuildingsandfood.wordpress.com/?s=where+you+lead">an organ drone cover of the <em>gilmore girls</em> theme</a> (the post also includes a bonus DVD featurette about the end of the &quot;relationship&quot; described in yesterday&#39;s notes!). i&#39;m thankful for kool a.d.&#39;s verse on &quot;<a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwih9JKklonMAhXJrYMKHRXqA0kQyCkIHjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIg9Audtm9VI&usg=AFQjCNGbQUpRgPZ_h2Ed8Xhp49l5lV-6hg&sig2=uDLetXVPKnUu103tSfNVtg&bvm=bv.119028448,d.amc">nutmeg</a>,&quot; which begins:</p>
+<p>&quot;<em>Hey yo, that’s amazing, blunt in your mouth talk</em></p>
+<p><em>Silly strutters, <a href="http://www.eonline.com/news/741009/gilmore-girls-revival-sally-struthers-is-in-plus-find-out-which-other-fan-favorite-is-also-returning">Sally Struthers, Gilmore Girls</a></em></p>
+<p><em>Smothers Brothers at The Fillmore</em></p>
+<p><em>Hand me that capo</em></p>
+<p><em>Cop all of my Snapple at Staples</em></p>
+<p><em>Four flavor kettle corn</em></p>
+<p><em>Heavy metal porno flick chicks with tattoos</em></p>
+<p><em>Rolling up spliffs with Bambus</em>&quot;</p>
+<p>i&#39;m thankful that the other morning, i was inspired, perhaps by my memory of its use on the classic <em>gilmore girls</em> episode &quot;<a href="http://gilmoregirls.wikia.com/wiki/Concert_Interruptus">concert interruptus</a>,&quot; to listen to &quot;<a href="https://www.youtube.com/watch?v=PSoOFn3wQV4">eternal flame</a>&quot; by the bangles. i&#39;m thankful, not having heard that song for a long time, for how surprised i was at the production, that i had remembered it as this intimate acoustic thing but that there are string sections and massed choirs and weird synths and a kitchen sink more of production (i&#39;m thankful that the song is still affecting despite/because of all this and thankful especially for the sweetly reassuring choral ending). i&#39;m thankful for the way susanna hoffs sings the line &quot;<em>do you feel the same,</em>&quot; which always sounds like &quot;<em>do you feel</em> a <em>same</em>?&quot; to me because of the weirdness of her enunciation or something. </p>
+<p>i&#39;m thankful that recently i had a similar issue with &quot;<a href="https://www.youtube.com/watch?v=bY4OJBGBOY4">summer sixteen</a>,&quot; where i thought that drake was saying &quot;<em>tell obama that my verses are just like the whips at the end, they bulletproof</em>,&quot; which, besides seeming factually wrong (why would they just be bulletproof at the end??), combined with his line about &quot;<em>why would I put on a vest? i expect you to aim for the head</em>&quot; to make me worry for drake&#39;s security team (i&#39;m thankful i realized that line is actually &quot;<em>the</em> <em>whips that he in</em>&quot;). i&#39;m thankful for <a href="http://www.nytimes.com/2012/07/15/magazine/lady-mondegreen-and-the-miracle-of-misheard-song-lyrics.html">mondegreens</a> and for all my starbucks lovers. i&#39;m thankful for this bit of fucked up trivia from the wiki for &quot;eternal flame&quot;: &quot;<em>In the BBC programme</em> I&#39;m In a Girl Group_, Hoffs revealed she actually sang the studio recording of the song completely naked due to the producer Davitt Sigerson pranking her by telling her Olivia Newton John had done the same thing but he later told Hoffs he had been lying the whole time._&quot; i&#39;m thankful for this anecdote from the cowriter about the origin of the song and for its conflation of elvis and jesus: </p>
+<p>&quot;<em>Susanna was talking about the Bangles having visited Graceland, and she said there was some type of shrine to Elvis that included some kind of eternal flame. As soon as those words were mentioned, I immediately thought of the synagogue in the town of Palm Springs, California where I grew up. I remember during our Sunday school class they would walk us through the sanctuary. There was one little red light and they told us it was called the eternal flame</em>.&quot;</p>
+<p>i&#39;m thankful for the long conversation i had about dreams with a staff member in another office yesterday. i&#39;m thankful she started the conversation by asking me if i ever have dreams of flying and i told her that frustratingly i don&#39;t, that instead what i have are dreams where i leap up off the ground, my body describing an arc high into the air, and then i hit the apex of the curve and begin to fall, which is briefly terrifying, but then when i hit the ground, my legs are springs that send me back up into the sky. i&#39;m thankful she told me that when she was in high school, she always had flying dreams in which she was sitting on a piece of cardboard and flying above her mother, who was trying to grab the cardboard and pull her down to the ground--i&#39;m thankful for our ironic laughter about that dream couldn&#39;t have any real meaning. i&#39;m thankful that in conversation with her, i realized that i don&#39;t ever have running dreams, even though i run every day, but that i often have driving dreams, even though i haven&#39;t driven a car since i was 15. i&#39;m thankful that i came to her desk to get a key but that she just kept talking about dreams to me for the longest instead of giving me the key, which felt like something that would happen in a dream.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-413.html" class="btn btn-secondary">← thank you notes 4/13</a>
+        <a href="/letters/thank-you-notes-julia-weston2.html" class="btn btn-secondary">thank you notes (julia weston)(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

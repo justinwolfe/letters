@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="the light that you compost">
+  <title>the light that you compost - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>the light that you compost</h1>
+        <time datetime="2022-01-04T00:00:00Z">January 3, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p><a href="https://www.youtube.com/c/franmeneses">fran</a>, whose life we have watched for years in vlogs and who we watched this year <a href="https://www.youtube.com/watch?v=zxX-P8_Uw6g">end her relationship with her long-time partner</a> and <a href="https://www.youtube.com/watch?v=UcJjG4W8hes">come out as a lesbian</a>, recently posted to her stories about how she got privacy film for the windows in her apartment. privacy film is this transparent and yet opaque plastic sheeting (a grid of tiny plastic squares, like physical pixels) that you cover your window panes with so that you can get more natural light than you&#39;d get with curtains or closed blinds  (though not as much as you&#39;d get with just the window itself, it&#39;s not magic) without having to expose the details of your private space to the outside world. </p>
+<p>i often walk around naked and really there&#39;s never a time when i&#39;m in our house that i want to make eye contact with a person outside of the house, but also d and i are like vampires for natural light (our last house had a skylight in the living room, another way of solving this problem of private sky, and it was the best) so I DMed the story to d (who sometimes walks around naked herself but moreso is concerned (reasonably) that my nakedness will be exposed to the outside) and she was also excited at the prospect, ordered a roll of the stuff, and gleefully took care of the job of implementation: measuring the parts of the windows, cutting the roll of sheeting into segments, and affixing them to the window using a spraybottle of water that causes it to bind to the pane as she carefully smooths it on like a screen protector (which, in a way, it is). </p>
+<p>we&#39;re keeping our big front windows raw dog for now, but she&#39;s put it on the side windows of the living room and one of the kitchen windows and up in the attic (where she dries her hair and we keep our musical instruments and recording equipment) and has more on order and plans for where to put it. so far it seems like great stuff, both for its intended purpose and because at night you get this colorful diffraction of the light outside across the little pixels. this joy of the change to the space is still fresh and as we walk around the house and come upon a room that is more lit than it used to be, we sing, in a silly voice, &quot;privacy film, privacy film&quot; as loving tribute to the film and the space and light that its filtering has given us.</p>
+<p>d is always singing around the house, often songs i know (the swift and rodrigo canons are well represented) but also ones i don&#39;t, and recently while walking across the house i heard her sing the phrase &quot;the light that you compost&quot; and i thought that was such a strange and beautiful line. i asked her about what song it was from and what the context was, what it meant, and she laughed and said it was from <a href="https://www.youtube.com/watch?v=GNqgPeRO-Pw">a halsey song</a> but that i had misheard it and the lyric was actually something very different: &quot;the lie that you&#39;re composed.&quot;</p>
+<p>i laughed, but as a long-time starbucks lover, i&#39;ve kept thinking about the line that i thought i heard her sing, &quot;the light that you compost.&quot; it feels like a metaphor for photography—you take light, which only exists in this particular way at this particular instant, which can&#39;t be held in your hand or captured directly and stored in its existing form, and when you click the shutter, the camera composts that light into an image, a representation that bears a trace of the conditions at the time of its capture. the concept of compost also resonates in terms of turning a kind of death (the end of a moment in time) into a kind of life (a memento mori for the lost light, a record) (when we absorb vitamin d from the sun, is that a kind of composting light that our bodies do?).</p>
+<p>edith, who writes <a href="https://drawinglinks.substack.com/">my favorite newsletter</a> (which went on a hiatus for much of the year while she was pregnant and needed some space to herself but has been back lately), recently posted <a href="https://www.instagram.com/edithzimmermans/?hl=en">a three panel comic on instagram</a>. the first panel is a drawing of herself, inside a car, taking a picture out the window with her phone held up in front of her face; the second is a (re-drawn) close-up of the same angle with the caption &quot;I keep thinking I&#39;ll be one of those people who remembers &amp; enjoys things instead of trying to take a picture&quot; and the third and final one shows a drawing of the picture she was depicting herself taking with her phone, of a rainbow against a blue sky over an empty country road and green fields. the third panel employs a formal gesture edith often uses beautifully, where she shifts from using black and white for most of a comic to the sudden revelation of color:<img src="https://buttondown-attachments.s3.us-west-2.amazonaws.com/9001bffe-6410-7357-fd55-bfa08e5ff411.jpg?AWSAccessKeyId=AKIAJEXF6S6TCOKT7N3Q&Signature=79svd1OffdtuoTbrAMhVQBwuQkc%3D&Expires=1707566868" alt="a drawing of a rainbow">feeling a constant need to try to preserve the moments of life speaks to me; i take so many pictures and screenshots and little notes every day with my phone and every year i pay a little more to google and apple to give me more space to hold their growing bulk because the alternatives (deleting things, not capturing as much) feel wrong. i&#39;ve written about them before, but i&#39;ll never get over the lines in the poem &quot;<a href="https://www.poetryfoundation.org/poems/52925/the-circus-56d231c9352d2">the circus</a>&quot; (<a href="https://soundcloud.com/songsabout/the-circus-feat-kenneth-koch">listen to my musical setting</a>) where kenneth koch writes: &quot;<em>it is beautiful at any time but the the paradox is leaving it / in order to feel it when you&#39;ve come back the sun has declined</em>.&quot; in the poem, koch is thinking retrospectively about his life and the complications of wanting to both have a full life (he has another poem, &quot;<a href="https://polyarchive.com/you-want-a-social-life-with-friends-kenneth-koch/">you want a social life, with friends</a>&quot; that is also on this topic) and to be an artist who works by himself taking the raw material of that life and making it into poetry, composting the moments in &quot;<em>this combination of experience and aloneness</em>.&quot; </p>
+<p>my favorite TV show of the last few years is <em>how to: with john wilson</em>, a show where every episode&#39;s subject is the question of how to do a particular thing (cook risotto, invest in real estate, find a parking spot) and is structured around a monologue of wilson talking about different facets of the how to and the various digressions and tangents they inspire. the central joy of the show is that alongside the quiet, calm, intentionally prosaic narration, there&#39;s a wealth of weird little clips of daily life in new york that are usually funny/interesting/beautiful to watch in their own right but, more importantly, resonate against the narration and against each other to form visual puns, sometimes moving and sometimes hilarious and often both at the same time. </p>
+<p>i loved the first season of the show deeply, but because of how hand-crafted and seemingly dependent on plumbing a long-built-up archive for its best material it seemed to be, i didn&#39;t know if we&#39;d get more any time soon or at all; i thought that it might hit the &quot;second album&quot; problem musicians face, where your first album you&#39;ve been assembling the material for for years hits and then you have a few months to make your second album with all new stuff. </p>
+<p>to my surprise, the second season of the show came blessedly quickly and is such a treasure, all the joys of the first and more. it&#39;s been interesting watching the aesthetic develop: it&#39;s in many ways of a piece and continuous with the first season, but i think maybe partially because of the need to produce more fresh material, the show has become more explicitly autobiographical and is somehow even more deeply suffused with affection and wonder and love (nathan fielder is a producer on the show and wilson&#39;s is less of a dramatic tonal shift than where <em>nathan for you</em> landed but if you&#39;ve watched &quot;finding frances&quot; as many times as i have, it&#39;s hard not to see the kinship there)(my other elevator pitch for the show is like what if <em>billy on the street</em> was <em>mr. rogers neighborhood</em>)</p>
+<p>last night, d and i watched the (hopefully season and not series) finale, &quot;how to be spontaneous&quot;, which is about how john is not spontaneous but wants to become more so and so tries, stunt journalism-style, to use the episode as a way to push himself in that direction. there&#39;s a particular section where, after relating (with synced clips) an anecdote about going upstate with his girlfriend who says he doesn&#39;t commit to anything to try to show that he can make plans and failing to get a couple&#39;s massage (he didn&#39;t think to book in advance and there were no openings), he describes (and displays) visiting the world&#39;s largest garden gnome, which was nearby, as a consolation and how his girlfriend is a good sport about it (as d has been so often for me) even though he knows she would have preferred a massage. </p>
+<p>feeling disheartened by that experience, he tries to look inside and analyze why he finds it hard to make plans and commitments and, after sharing images of his dad&#39;s tumblr documenting businesses that are unexpectedly closed when he tries to visit them, wilson says, over images of a lemon slice drifting in flood water, someone riding a unicycle against traffic, an old man wearing a space helmet, someone singing from the balcony of their apartment, a girl casually walking down the street with a live rat sitting on each shoulder: </p>
+<p>&quot;<em>almost every single thing you&#39;ve ever recorded is the direct result of randomly being in the right place at the right time, and it terrifies you to think you could have missed out on all this great stuff if you had made plans to begin with</em>.&quot;</p>
+<p>of the years that i have been writing these notes starting in 2015, 2021 was the year that i wrote the least, both in terms of total volume and in terms of the longest stretches with no writing at all. i don&#39;t have any regrets about it from the perspective of my brand or my future writing career or whatever (which was often the past reason that i would feel bad about not writing in the past, cf &quot;the circus&quot; again: &quot;<em>I was interested in my career / And still am but now it is like a town I don&#39;t want to leave / Not a tower I am climbing opposed by ferocious enemies</em>&quot;). it&#39;s also not because, not writing these notes, i&#39;m not experiencing the pleasure of making art (since for years they were the primary source of that pleasure, which, along with having a job that provided endless amounts of free time, made it so easy to keep doing it). work is hard in many ways and never going to be perfect, but generally i&#39;m really happy to have a job where i&#39;m paid a good wage to have a writing career (it&#39;s just writing code rather than prose (but spoiler alert writing code is also a form of memoir)) and also to have rediscovered the pleasure of making music in my free time.</p>
+<p>so when i think about the effect of not writing very much here this year, i don&#39;t feel sad because of that stuff, or even so much about the ways in which i know that the year would have probably been a better or happier one if i had made more of an effort to do so, because of the Scientifically Proven (and also anecdotally proven for me) therapeutic effect of writing about your life and gratitude on your mental state, though definitely that would have been a bonus (thank god, failing that, for drugs both prescribed and recreational).</p>
+<p>instead, it&#39;s because, despite the fact that i am and have always been known among friends, family, and coworkers as having an extremely good memory (and am proud of that obv re: &#39;extremely good&#39;), i know that it&#39;s not a perfect memory and that i am losing forever moments that, in previous years, i would have preserved by writing here (and that preservation used to be double strength:creating an external document of the occasion and also the way that the process of that writing solidifies the memory in the architecture of my brain). that&#39;s what i grieve when i think about not having written these notes much last year, that loss of the traces of days that make my life my life. </p>
+<p>and the thing is, i don&#39;t often reread these notes, but i like to know they&#39;re there, that i have records, an archive of my experiences outside of myself. we were flying back from vacation last week and on our second flight i was suddenly overwhelmed by discomfort on an airplane and not distracted by the books and magazines and video games i had planned for the transit, i started watching all the videos that were stored in the camera app in chronological order, all these little moments of my life that seemed worth clicking the record button for, and i found diversion and solace in that. (i&#39;m also known by my friends, family, and coworkers for being very annoying about wanting to take lots of pictures and videos of them all the time).</p>
+<p>for all of the above reasons, the most important artwork of the last year for me couldn&#39;t have been anything other than <em>get back</em>, peter jackson&#39;s 8 hour documentary of the beatles spending a month making the album that would become <em>let it be</em>. the film starts with a brief, relatively conventional montage of the band&#39;s formation and early and mid-period career. as someone who spent his youth memorizing the discography and reading countless beatle biographies, i found it pleasant but useless. that ends, though, and then there&#39;s this cutaway to an image of a calendar that ken burns zooms in on a particular day and you watch clips from that day and then it cuts away to the and you realize that the film is not going to live up in thousand foot summary mode, but instead is on the floor, an impossibly hyper-granular accounting of the band&#39;s existence for a period of time as they try to figure out how to make art.</p>
+<p>often nothing much is happening and they play the same songs over and over and over again (a coworker who also loves the beatles said that she was worried she was driving her fiancee crazy by constantly bursting into singing &quot;DON&#39;T LET ME DOWN&quot; as she walks around the house), so i can&#39;t recommend it to everyone, but i was trying to describe to a friend how meaningful it is to me and i landed on it feels like what if you were a really devout christian and someone was like &quot;<em>hey we found all these videos of jesus like chilling with the disciples, he doesn&#39;t really say much that&#39;s not in the bible already and there&#39;s a lot of dead air, but like do you have any interest in watching that?</em>&quot; the beatles have always been bigger than jesus for me and it feels like nothing less than a literal miracle that this footage was recorded and preserved and compiled and distributed and now i can watch it any time i want, can live inside of it.</p>
+<p>i don&#39;t know how much i&#39;ll write here this year, but anyway it feels nice to have done it today, so i can have another way to try to hold on to these feelings and thoughts i&#39;ve been having lately, this particular light. hoping for lots of light for you this year too.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/trampoline.html" class="btn btn-secondary">← trampoline</a>
+        <a href="/letters/im-thankful-reading-the-latest-jonathan-franzen.html" class="btn btn-secondary">i&#039;m thankful, reading the latest jonathan franzen novel, that i do not have any issues →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

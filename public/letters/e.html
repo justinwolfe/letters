@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(e)">
+  <title>(e) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(e)</h1>
+        <time datetime="2017-08-16T00:00:00Z">August 15, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the unexpected and uncharacteristically sweet text i received from t this morning while packing for the journey home from my week-long work trip. i&#39;m thankful for the timing of the message, which i received moments before my phone turned off suddenly and inexplicably. i&#39;m thankful i had a safe trip home. i&#39;m thankful for my phone company&#39;s customer support representative, who is now checking the warranty on my phone, which hasn&#39;t turned on since this morning. i&#39;m thankful mercury is currently in retrograde, which i enjoy blaming tech-related mishaps like this on.</p>
+<p>i&#39;m thankful for the many hours i&#39;ve already sank into trying to fix this problem myself today instead of doing something more reasonable like unpacking or going to bed early. i&#39;m thankful i&#39;m a person who is not only good at troubleshooting, but who enjoys the challenge of finding a solution to a problem through a long, annoyingly persistent process of experimentation. i&#39;m thankful for the strange mix of science and wizardry that troubleshooting software/hardware involves, including in this particular case everything from briefly leaving my phone in the freezer to what one blogger called _&quot;the sacred incanation [sic] of holding POWER and Volume Down at the same time, selecting Recovery Mode, then holding POWER while tapping Volume Up.&quot;_</p>
+<p>i&#39;m thankful for the apologetic tone of the customer support representative i&#39;m typing to over online chat, even if the interaction feels a bit rigid and robotic. i&#39;m thankful to not feel very hopeful about where this interaction is going but to do it anyway because i would really like a working phone again soon. i&#39;m thankful my experience doing customer support at a company that excels at it has made me a much kinder and more understanding person when i&#39;m the one needing a resolution to a frustrating problem.</p>
+<p>i&#39;m thankful during moments of sudden data loss to remember i rely on many cloud services to store my digital belongings and that the only important thing on my phone that isn&#39;t backed up elsewhere is many months of photos and videos i&#39;ve taken. i&#39;m thankful for instagram, where a small sliver of my favorite images from the last year and a half still exist.</p>
+<p>i&#39;m thankful that even though i don&#39;t have access to any of my own photos from this past week, j sent me a few earlier that made me smile. i&#39;m thankful other people at our company retreat took lots of photos. i&#39;m thankful to hope that some of the photos include me and that i like the way i look in them. i&#39;m thankful to occasionally indulge my own vanity.</p>
+<p>i&#39;m thankful for the hoarseness of my voice, which reveals how much more i talked this past week than i normally do (and how loudly i sang both in front of and with so many of my coworkers on saturday at the karaoke night i organized).</p>
+<p>i&#39;m very thankful for my work friends. i&#39;m especially grateful for my friendship with j and the many hours we spent together in person after months of communicating via lines of text. i&#39;m thankful for the somewhat rare joy of making new friends as a grown-up.</p>
+<p>i&#39;m thankful the ancient greeks developed a language that distinguishes between many more different types of love than english does. i&#39;m thankful for the greek word _philia_, which refers specifically to the feeling of love between friends. i&#39;m thankful to have felt this love and camaraderie at many points and with many people throughout the past week. i&#39;m thankful to think of love as a renewable resource and to believe i have a lot of it and a lot of different kinds of it to give.</p>
+<p>i&#39;m thankful that after several hours of troubleshooting, my phone successfully turned on long enough for me to swiftly upload my photos from the past week to a safe place. i&#39;m thankful for the very last image i took, which is a stitched together &quot;photo sphere&quot; of a handful of my beloved coworker-friends sitting at a sunny table on a patio near a large swimming pool.</p>
+<p>i&#39;m thankful that even though my phone is out of warranty, </p>
+<p>i received the following message from the support representative i&#39;ve been chatting with: _&quot;Wow! I&#39;ve checked this with my specialist and convinced him. I&#39;m happy to inform you that I&#39;ll replace the device as one time exception for you and I also help you with the free next day shipping. so that you can get the device very soon.&quot;_</p>
+<p>i&#39;m thankful they had some good news to deliver me (for their sake and mine). i&#39;m thankful that good customer service is not just about the words used, but in the actions they represent. i&#39;m thankful my new phone is scheduled to arrive tomorrow or the day after tomorrow. i&#39;m thankful to be receiving a new phone for free, since mine is in pretty bad shape from dropping it countless times without a case on it. i&#39;m thankful for fresh starts and the promise they hold, even when they feel unwanted and ill-timed. i&#39;m thankful for shiny new gadgets.</p>
+<p>i&#39;m thankful to be home after a fun but exhausting week away. i&#39;m thankful to feel unsure of how i&#39;ll wake up tomorrow morning without a working phone to set an alarm on. i&#39;m thankful i&#39;m about to go to sleep in my own bed.</p>
+<p>- e (8/14/17).</p>
+<p><a href="https://docs.google.com/forms/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/edit">what are you thankful for?</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/81717.html" class="btn btn-secondary">← 8/17/17</a>
+        <a href="/letters/81517.html" class="btn btn-secondary">8/15/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

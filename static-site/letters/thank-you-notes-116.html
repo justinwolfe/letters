@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 11/6">
+  <title>thank you notes 11/6 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 11/6</h1>
+        <time datetime="2016-11-06T00:00:00Z">November 5, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that yesterday d and i went to the state park to walk through autumn. i&#39;m thankful that the state park is known for its beauty when the leaves change and am thankful that though we know this, but usually are too lazy to make it there in the correct window, we made it there this year. i&#39;m thankful that it was a clear day and not too cold and that we layered correctly so that we could adjust as the hike went on. </p>
+<p>i&#39;m thankful for the way that fallen leaves and barer trees make the dividing line between a trail and the surrounding wilderness less visible. i&#39;m thankful, because of the narrowness of the trail in parts, that we walked single file. i&#39;m thankful, since we usually look at each other when we talk to each other, for the interesting effect that had on our conversations, especially (i guess) for me leading the way, since i could hear her voice but all i could see around me was the empty forest.</p>
+<p>i&#39;m thankful for my good sense of place memory and navigation, which meant that i could walk us along the paths we&#39;d been down years ago without having to look too often at the map (i&#39;m thankful, though, also, for the crutch (walking stick) of the map, which the nice woman at the entry station gave us). i&#39;m thankful for the lake, which was our immediate destination. i&#39;m thankful for the high berm on the northern edge of the lake, which we were approaching from, which makes it so that you can&#39;t see the lake at all until suddenly you can see all of it. i&#39;m thankful for vistas.</p>
+<p>i&#39;m thankful for an art history class i took once where we discussed the concepts of <a href="https://en.wikipedia.org/wiki/Picturesque">the picturesque</a> and <a href="http://www.tate.org.uk/art/research-publications/the-sublime">the sublime</a>. i&#39;m thankful for thomas moran&#39;s <a href="https://www.google.com/search?q=thomas+moran+watercolors&biw=1395&bih=732&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiIjaHiopTQAhXL6SYKHbvaDzE4ChD8BQgGKAE">watercolors</a> and <a href="https://www.nps.gov/yell/learn/historyculture/thomasmoransdiary.htm">pochades</a> and <a href="https://centerofthewest.org/2014/04/20/points-west-thomas-moran-yellowstone-in-art/">chromolithographs</a> of the yellowstone national park, which i once <a href="https://docs.google.com/document/d/14egLchv6LXDAXYer1vJBakcnp3e8MZpBxUZxvjdp0Mg/edit?usp=sharing">studied very closely</a>. i&#39;m thankful for the way that images of a place can carry traces of it from the past into the present, for the palimpsest that you can create in your mind. </p>
+<p>i&#39;m thankful that we didn&#39;t walk too fast and took time to look at things and breathe in the air of the morning. i&#39;m thankful for <a href="https://open.spotify.com/album/7pSmFdRXAuDF42Zy4p0Iqf">this old album</a>, which i&#39;m listening to now while writing this and which captures some of the feelings of the time, even if a million commercials have aped this style and turned it into plastic window dressing.</p>
+<p>i&#39;m thankful that the steep staircase on the trail back to the overlook where the car was parked was challenging, but not as long or difficult as i had remembered it. i&#39;m thankful that we took a break on one of the landings to catch our breath. i&#39;m thankful for our speculation about how you would even begin to make that large of a staircase in the middle of the wilderness. i&#39;m thankful that though i directed us on a wrong turn on our way out of the park, it turned out to deposit us at exactly the place we wanted to end up and so wasn&#39;t a wrong turn after all. </p>
+<p>i&#39;m thankful we stopped in the small kitschy lincoln log town at the edge of the state park to have lunch. i&#39;m thankful for the library where we parked and thankful that we went in to give the suggested donation for weekend parkers to the librarian. i&#39;m thankful that the town where we live is close enough that when it turned out that the place we were going to have lunch had an hour and a half wait, we decided to just go eat somewhere in the town where we live instead. </p>
+<p>i&#39;m thankful we stopped on the way back to the car at a shop with an intentionally misspelled name where i bought three bags of caramel corn and a cup of apple cider, which i thought was going to be hot but came out slushy, which at first felt disappointing but was ultimately refreshing. i&#39;m thankful d, who said she would just have a sip, ended up splitting it with me, which is what i wanted her to do.</p>
+<p>i&#39;m thankful that when we got back to our town, we decided to eat at the falafel place downtown. i&#39;m thankful to recognize how my hunger led me to be irritated and unkind to d, who isn&#39;t comfortable with street parking and so insisted on parking in a parking garage a number of blocks away from the restaurant, despite there being closer street parking. </p>
+<p>i&#39;m thankful that d understand that my irritation was driven by hunger and forgave me for being unkind. i&#39;m thankful that the waitress brought us grilled bread almost immediately after we sat down, which made me feel like a person again.i&#39;m thankful that we had a good lunch, which included the restaurant&#39;s signature dish of a basket of heavily seasoned french fries strewn with piles of roasted onion.</p>
+<p>i&#39;m thankful that on the walk back from the restaurant to the car, it seemed silly that i could have felt annoyed about getting to share a walk through the sunshine on a mild day with the person who i love. i&#39;m thankful for the perspective of that. i&#39;m thankful when we got to the top of the parking garage, where the car was parked, and could see the open sky above us, expanding in every direction.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-117.html" class="btn btn-secondary">← thank you notes 11/7</a>
+        <a href="/letters/thank-you-notes-11516.html" class="btn btn-secondary">thank you notes 11/5/16 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

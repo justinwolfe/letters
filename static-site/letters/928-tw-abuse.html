@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="9/28 (TW abuse)">
+  <title>9/28 (TW abuse) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>9/28 (TW abuse)</h1>
+        <time datetime="2018-09-28T00:00:00Z">September 27, 2018</time>
+      </header>
+
+      <div class="letter-body">
+        <p>&quot;<em>My mom bought me a gratitude journal recently and every night I write down a few things I’m thankful for (yes it’s corny but also kinda great). Today, I am grateful for brave and courageous women who speak their truth despite their worst fears coming to light. That is all</em>.&quot; - <a href="https://twitter.com/kennaharris/status/1045496951528206336">kenna</a></p>
+<p>&quot;<em>#5at5 things I’m #grateful for</em></p>
+<p><em>1. A woman spoke today</em> </p>
+<p><em>2. People had to listen</em></p>
+<p><em>3. Wherever you stand, her voice opened conversations between myself &amp; other women with similar experiences–there are too many.</em> </p>
+<p><em>4. But we have each other</em></p>
+<p><em>5. You are no alone to deal with it #thankful</em>&quot; - <a href="https://twitter.com/ACEDrecover/status/1045475733034995712">ACED</a></p>
+<p>&quot;<em>I am thankful that I have never had anyone call me a liar when I shared these experiences with them. But I am sick of men getting away with it.... not only have I experienced this, but many women close to me have as well...</em>&quot; - <a href="https://twitter.com/megan_jessop/status/1045439813313126400">megan jessop</a></p>
+<p>&quot;<em>I left an abusive man years go, thankful to be alive. I have survival guilt because he went on to abuse more women but I knew I wouldn’t have been believed or supported</em>.&quot; - <a href="https://twitter.com/TmcuseoCuseo/status/1045494628877627394">topcat108</a></p>
+<p>&quot;<em>I am just thankful that this is as far as my story goes and it pains me to think of women that have went through far worse. #whyididntreportit #butidid</em>&quot; - <a href="https://twitter.com/freeasajfer/status/1045416975978176512">jennifer m hiatt</a></p>
+<p>&quot;<em>Women bury this shit because it scares us and it shames us and we make excuses for it in our minds like “I’m just thankful he didn’t rape me/it wasn’t worse.” If anything in all of this awfulness triggered you to remember something shitty that happened to you, I’m so sorry</em>.&quot; - <a href="https://twitter.com/carriecourogen/status/1045425455187349509">carrie courogen</a></p>
+<p>&quot;<em>I don’t know how to talk about the vile things that happened today, and I’m proud of/thankful for the women who do and who will. I’m speechless and sick to my stomach</em>.&quot; - <a href="https://twitter.com/jillboard/status/1045447263265349633">jill gutowitz</a></p>
+<p>&quot;<em>Dr Ford is incredibly brave, and I am so  thankful for what she’s doing. I can only talk about it in vague terms to an internet void, and she’s in front of the world talking about one of the worst days of her life. Believe women</em>.&quot; - <a href="https://twitter.com/douglasfirrr/status/1045441636250124293">cali hanna</a></p>
+<p>&quot;i just want to hold Dr. Ford’s hand &amp; tell her how thankful i am for her speaking her truth &amp; for doing what i &amp; countless other women have been too scared to do. she deserves so much love &amp; strength from us i am in tears&quot; - <em><a href="https://twitter.com/caitidh/status/1045370920146153472">kaitlin kelly</a></em></p>
+<p>&quot;<em>Women shouldn’t have to get louder for the world to listen but in these times, I’m thankful for women like Christine Ford who found the bravery to do so</em>.&quot; - <a href="https://twitter.com/WatermelonWitch/status/1045463167340621829">kasey lee</a></p>
+<p>&quot;<em>Honestly thankful to be surrounded by amazing women and overall being too busy today to follow this nightmare male tears fest testimony closely. Stop crying, you shitstain. Apologize and fade away into the void where you belong. #StopKavanaugh #IStandWithChristine</em>&quot; - <a href="https://twitter.com/airhooorn/status/1045428283263918080">angelica pando</a></p>
+<p>&quot;<em>I am so thankful that woman was there for me for a minute, and I hope she felt I was there for her. These kindnesses women (and other folks so often preyed upon by men) extend to each other are labor, but I am so thankful for the moments when we can carry the load together</em>.&quot; - <a href="https://twitter.com/kathycacace/status/1045535946668740608">kathy cacace</a></p>
+<p>&quot;<em>I can barely fathom what Kavanaugh’s confirmation process is doing to us, collectively. I’m just so thankful to have women in my life to share in this grief with</em>.&quot; - <a href="https://twitter.com/miss__andry/status/1045441477558636544">feminist bright spot</a></p>
+<p>&quot;<em>Days like today are hard, but they remind me to be thankful for the powerful women I am lucky to know. Female friendship is a beautiful thing and I am grateful that I get to experience it</em>.&quot; - <a href="https://twitter.com/claire_elise_/status/1045470958473990144">claire</a></p>
+<p>&quot;<em>Radical women knocking doors last night and turning out allll the voters! Thankful for college friends turned volunteers who are out to flip the senate and #StopKavanaugh</em>&quot; - <a href="https://twitter.com/SnarrMaddy/status/1045534086599569409">maddy snarr</a></p>
+<p>&quot;<em>As a future lawyer, I&#39;m thankful he may never be able to teach again.</em> </p>
+<p><em>He already perjured himself.</em> </p>
+<p><em>He claims to believe in a fair process, but not when that process is unfair to him.</em></p>
+<p><em>He does not support or believe women.</em> </p>
+<p><em>#KavanaughConfirmationHearings</em>&quot; - <a href="https://twitter.com/JessicaKovac2/status/1045423761267331073">jessica kovac</a></p>
+<p>&quot;_1/ after everything happening today, it makes me so thankful that yesterday, when filling out my absentee ballot with my mom, she commented &quot;i always like to vote for the women on the ballo_t.&quot; - <a href="https://twitter.com/eMumfy/status/1045491256128942080">emily mumford</a></p>
+<p>&quot;<em>Working on practicing gratitude today so that I do not BURN THIS PLACE TO THE GROUND. Today, I&#39;m thankful for the grace under Congressional pressure that women like Anita Hill, @HillaryClinton, @CecileRichards, and Dr. Ford have so courageously modeled for us all</em>.&quot; - <a href="https://twitter.com/kwglenn/status/1045411490138927105">katie</a></p>
+<p>&quot;<em>I’m so thankful that my senators are STRONG women.  @SenFeinstein and @KamalaHarris are enduring actual verbal abuse from a supreme court nominee to protect us and dr Ford</em>&quot; - <a href="https://twitter.com/DashleyinCali/status/1045484699873767424">ashley s</a></p>
+<p>&quot;<em>today I am extra thankful for my women professors who are able to show empathy, strength and support for their students during difficult times</em>.&quot; - <a href="https://twitter.com/Linneaa24/status/1045511144826425345">linnea</a></p>
+<p>&quot;<em>thankful that I got to lead a liturgy I wrote on Ruth today in worship class. strong women are so necessary, today and every day, and for this I am thankful</em>.&quot; - <a href="https://twitter.com/maggieaward/status/1045420383338483717">maggie ward</a></p>
+<p>&quot;<em>So many women are having the most anxiety filled depressing day. And so much anger. Sadly I&#39;m thankful for Xanax</em>.&quot; - <a href="https://twitter.com/27leigh/status/1045488153283514368">c leigh</a></p>
+<p>&quot;<em>Today I’m thankful for Xanax, my dog, coffee, the frozen pizza my boyfriend bought me, and Dateline on my DVR. Time to watch dudes that hurt women actually face consequences for their actions</em>.&quot; - <a href="https://twitter.com/WitchyNarcolep/status/1045408201791889408">catie</a></p>
+<p>&quot;<em>I&#39;m at a coffee shop rn where a young child is waving and smiling at every single person she passes, bringing smiles to so many.</em> <em>On days like these, where we obsessively consume and analyze the pain of women I&#39;m thankful for tiny happy moments. I hope you can find one today too</em>.&quot; - <a href="https://twitter.com/CleopatraBenos/status/1045448785122525185">cleopatra benos</a></p>
+<p>&quot;<em>Today I am thankful for the bold &amp; radical &amp; loving &amp; wild community of women that I know IRL &amp; those I admire from afar. I am thankful for theory &amp; practice. I am thankful for poetry &amp; practice. I am thankful that love is a practice. I am angry &amp; thankful &amp; thankful &amp; thankful</em>.&quot; - <a href="https://twitter.com/callie_freitag/status/1045506744015699968">callie freitag</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/930.html" class="btn btn-secondary">← 9/30</a>
+        <a href="/letters/927-7745.html" class="btn btn-secondary">9/27 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

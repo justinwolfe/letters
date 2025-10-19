@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(fsa)(16)">
+  <title>(fsa)(16) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(fsa)(16)</h1>
+        <time datetime="2017-03-24T00:00:00Z">March 23, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>I’m thankful for the orange blossom tree on my neighbour’s backyard. I’m thankful that I have never seen it because it is completely shielded by my shrub fence, but became aware of it through its perfume. I’m thankful for how random oranges had been sprouting in our car park, and considering my bias to oranges you’d think I’d take it as a supernatural sign…, and yet I thought none of it for a while. No orange tree was in sight, and this happened for a few weeks on end until I started suspecting. For the last couple of days, either leaving for the gym before dawn or for work in the early hours, or getting home earlier and catching the first hours of night, I was surprised by the deep smell of jasmine and white lilac flowers and orange blossoms in the air. I’m thankful for how awestruck it left me the first time, but even more the second time – as I was exiting the car, picking up my purse and files and walking up the steep stairway into the condo, on the first few steps a gust of wind made me pause and look behind.</p>
+<p>I’m thankful to have paused and looked – at the starry sky, dormant neighbours, hasty black cats in rooftops, blue peaks of clouds in an otherwise clear night, glowing white lights in the bridge by the river and sea. At how the leaves in the shrub swayed, slowly cradled after the first waft. I’m thankful for how whole and connected it made me feel, and then it all came tumbling. Sweet and foreign like incense burning in a holy place anywhere in the globe at that exact moment and since the beginning of time, floral like the gardens of Eden, innocent like the promises made for love, strong like wood, bigger and bolder than spring. Powerful, subtle, immense (like only Nature is). I’m thankful for the absolute surprise in which it took me whole even if in a second, mimicking the duration of the draft and pausing for just a moment further, holding life suspended in the air… but the smell felt so warm against the crispness of the hour, burning slowly against the cool air, and it smelled just like happiness and being absolutely mindful and thankful for being alive</p>
+<p>I’m especially thankful for the realization that – that – must be exactly (!!) what God smells like</p>
+<p>And how seeing God must feel</p>
+<p>And how God would choose to make Himself known:</p>
+<p>A sudden murmur - the softest slithering in the shrubs, the rustling of wind through the trees, the crackling of dust and fallen leaves as they scatter through the pavement in a hurry, spiralling in a whirlwind,</p>
+<p>The faint morning light making its presence known: just a hint, just a light blue kiss behind the horizon setting the deep indigo of the morning sky ablaze with anticipation,</p>
+<p>A gentle breeze caressing your cheek… your hairs touching your ears from behind (look behind! look behind!)</p>
+<p>And then the perfume takes hold and involves you from below – sacred, smoky, oriental, so much like jasmine (and maybe a touch of spice), exotic, generous and floral, fresh and clean, like the oils of citrus fruits, and yet rich and regal, of Church rites (or something equivalent but further to the East), smelling of the promise of Heaven that is here</p>
+<p>Reminding us that God is real and is everywhere, and sometimes you just have to listen or smell it – just a murmur just a breeze, the softest of announcements whispered in secret, and this perfumed oil to seal the deed, the trees to witness, still covered and kept safe by the mantle of the starry night, night beginning to fade or just settling in</p>
+<p>Smelling of the secrets I share with Nature that always make me feel deviant and infinite…</p>
+<p>The elders at home and in books always tell stories of how when you die the last thing you smell will be of a specific perfume, which has been backed up by medicine in many studies (with some illnesses and ailments being directly linked to one particular scent): many people say they smell lemons, others buttered toast,</p>
+<p>But to me the best death will come announced softly and serene and smelling of orange blossom perfume.</p>
+<p>I’m thankful for the intimacy of smelling this tree but never actually being able to see or touch it if not through the shrub. I’m thankful that it doesn’t stop me from imagining small sacred white flowers planted proudly on top of the tree branches, looking up to my windowsill and blowing me kisses in the night while I sleep, oozing perfume, just in time for me to step out my back window in my nocturnal form to play hide and seek barefoot with fairies who live in the blossoms’ core, of us floating and glowing pale against the firmament.</p>
+<p>I’m thankful to be aware God, to feel this personally close to Nature, to be immensely grateful for happiness, for this perfume and to be able to know it and so many other wonderful things through my senses and my broken nose.</p>
+<p>(I’m always thankful for oranges in all its forms)</p>
+<p>f.</p>
+<p>- fsa (3/17/17). </p>
+<p><a href="http://tinyletter.com/thankyounotes/letters/fsa-15">previously</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/32517.html" class="btn btn-secondary">← 3/25/17</a>
+        <a href="/letters/32317.html" class="btn btn-secondary">3/23/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

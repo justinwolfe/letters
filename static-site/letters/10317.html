@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="10/3/17">
+  <title>10/3/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>10/3/17</h1>
+        <time datetime="2017-10-03T00:00:00Z">October 2, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful, at a loss for anything else, to try to describe our bedroom. i&#39;m thankful when at a loss it is sometimes best to commit to doing something small and simple and try to do that small simple thing. i&#39;m thankful that d and i are in bed, me at my laptop and her on her 3ds. i&#39;m thankful that i have a top sheet and a light green fleece blanket and she has two of her own fleece blankets, both blue, one with prints of snowflakes on it. i&#39;m thankful we discovered early on how nice it is to have separate blankets in the same bed. i&#39;m thankful that i have three pillows, each in white pillowcases, one of which is oddly shaped and which supposedly provides orthopedic support; i&#39;m thankful that d has two normal pillows, one of which is in a colorful striped pillowcase that reminds me of fruit stripe gum. i&#39;m thankful that the head of our bed is against the wall and that the foot of our bed is facing east. i&#39;m thankful for the two large windows on the wall to the south, which let in lots of light when we have the blinds open though we don&#39;t always have the blinds open because we&#39;re often not dressed and there&#39;s a giant hole in the fence in the backyard that the neighbors can see through. i&#39;m thankful for the lamp on d&#39;s side of the bed, but am thankful it&#39;s not on now, since it&#39;s early, and instead the fairy lights (i&#39;m thankful for the UK term for this, which is much better than the american term) d hung above the bed are providing soft warm light. i&#39;m thankful for the clothing racks from target opposite the foot of the bed, which store my hanging clothes and for the white bookcase d built which stores her folded clothes (her hanging clothes are in the closet). i&#39;m thankful for the little bedside table on my side of the bed, the top of which currently holds a large mason jar full of water, two empty bowls with spoons in them and crumpled napkins (from our breakfast a half an hour ago—i&#39;m thankful we always eat breakfast in bed). i&#39;m thankful for the small wooden box that contains a scented eye pillow, three chapsticks (one that tastes like peach and one &quot;medicated&quot; one that tastes like tea tree oil and which i don&#39;t use because it repulses d when she tries to kiss me, but haven&#39;t thrown away, and then another one which is out of chapstick but which i also haven&#39;t thrown away), a mostly empty container of watermelon ice breakers, a roll of 3m pore tape (for taping my mouth shut, as i think i previously discussed here, it becomes impossible to remember), a couple balled up wads of the used tape, and an iphone headphone dongle that i think still works. i&#39;m thankful on the other side of the bed is a plastic bin thing we got from target, one of those things with three clear plastic drawers in a white plastic frame. i&#39;m thankful on top of that there are my supplement organizer, my pill organizer, several loose bottles of medication (both of my antidepressants in two different strengths, a bottle of pepto bismol tablets, an empty bottle of zyrtec, a bottle of benadryl, a botttle of famotidine (imo the most effective heartburn disruptor)), a half empty pack of orbit peppermint gum, an eighth inch to quarter inch audio cable adapter, the little metal things you put on switch controllers to seal them which i never use, an iphone headphone dongle (which i think is broken but would have to test to be sure), some and some loose earbud tips. i&#39;m thankful that the top drawer is full of my underwear (i&#39;m thankful, since i did laundry a few days ago, that the top drawer is so full it can&#39;t currently be closed, the middle drawer with running shorts and various cold weather running gear (balaclavas, etc.), the bottom drawer with socks. i&#39;m thankful that on the floor near the bed there is an old issue of <em>entertainment weekly</em>, two old issues of <em>new york</em>, my kindle (in a place that is carefully chosen so i can not step on it, as i did recently), a piece of plastic wrapping, the striped boxer briefs i was wearing before bed, the charging cable for my electric razor (which i need to charge now), three t-shirts (one blue, one white, one red), two pairs of sweatpants (both dark gray), a pair of briefs i wore the other day, and some assorted loose socks. i&#39;m thankful for the bluetooth speaker on the bookcase, which is playing <em>depression cherry</em> by beach house. i&#39;m thankful that near the door of the bedroom there is a mirror wrapped in plastic wrap from our move and never unwrapped.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/10417.html" class="btn btn-secondary">← 10/4/17</a>
+        <a href="/letters/10217.html" class="btn btn-secondary">10/2/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

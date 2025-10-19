@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/28">
+  <title>thank you notes 2/28 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/28</h1>
+        <time datetime="2016-02-28T00:00:00Z">February 27, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that over the last few nights, d and i watched the three <em>star wars</em> prequels. i&#39;m thankful that despite my boyhood love of <em>star wars</em>, this marathon was not initiated by me, but by d, who has become so involved in the <em>star wars</em> universe by watching the cartoon <em>clone wars</em> while she runs on the treadmill that she felt she needed the geek context the prequels would provide. i&#39;m thankful for <em>the phantom menace</em>, even though it was really not a very good movie, with wooden montage and weak action scenes and bad special effects and a convoluted plot with too many characters (i&#39;m thankful we decided to watch the fan-made &quot;phantom edit,&quot; which is supposed to streamline and improve the movie to make it watchable, but that after the movie ended, i found myself wondering if the cuts and tweaks imposed an artificial rhythm that actually strangled more life out of it). i&#39;m thankful, more than i was for anything actually on screen in <em>the phantom menace</em> itself, for how genuinely delighted d was by the young anakin skywalker&#39;s mugging for the camera, for his grins and premature dad jokes. i&#39;m thankful for how at first i thought that what i was observing was a small humorous thing, like, &quot;wow, d really likes little boys trying to be cute for attention&quot; and how then, as she giggled again at him making a cute face to warm amidala&#39;s heart, i suddenly realized that power of this particular affection of hers is why d married me, is in fact the primary dynamic of our relationship, and thankful for d&#39;s response of &quot;<em>dying lol</em>&quot; when i floated this theory to her the next day in gchat. </p>
+<p>i&#39;m thankful to remember when i briefly logged into my long dormant facebook in the middle of the night once last year as a gift to d to show her photos of my past, which was something she had been requesting for a long time. i&#39;m thankful that one of the photos we found was one that my middle school friend c had uploaded, a low-resolution collage that i had made in some early image editing program of the school picture faces of my middle school friends and i stitched onto the bodies of our favorite <em>star wars</em> characters (i&#39;m thankful that of course i claimed han solo for myself). i&#39;m thankful to remember the only time i went on a sleepover in middle school, which was to c&#39;s family&#39;s large house in the deep woods for his birthday party. i&#39;m thankful to cringe at the memory that i was so politically unformed that when that year my fairly racially and economically diverse tidewater middle school had us seventh graders visit the polling place set up in our gym to cast fake votes in the interest of encouraging civic responsibility, i voted a straight republican ticket based on c&#39;s urging (he was very upset about the concept of a car tax, despite the fact that he wouldn&#39;t be able to drive for years), not out of any real ideological conviction on my part, but out of a childish desire &quot;to be different.&quot; i&#39;m thankful that despite all this, and despite my overwhelming boyhood love of &quot;war&quot; and guns (i&#39;m thankful that this was the peak of laser tag and that my conservative grandparents had spoiled my brother and i the previous christmas by buying us a full set of guns and chest targets), i still found c&#39;s and c&#39;s family&#39;s obsession with the &quot;rebel&quot; army in the civil war, his love of the stories of historic battles conducted by robert e. lee and stonewall jackson, and the confederate flag i&#39;m pretty sure was either in his bedroom or his &quot;fort&quot; in the woods (or both), to be, as i would have described it then, &quot;weird.&quot; </p>
+<p>i&#39;m thankful for how excited d was on friday night that i had downloaded the second prequel, <em>attack of the clones</em>, so that we could watch it when she got home from a really draining day at work. i&#39;m thankful that she didn&#39;t care that i was too lazy to make a kale salad and just wanted to shovel pasta into my tired mouth while watching a movie. i&#39;m thankful that <em>attack of the clones</em> makes clear it is a better movie than <em>the phantom menace</em> from the very start by opening with a madcap flying car chase through a neon city and how it just builds on that with better action scenes and cooler world building and more interesting characters. i&#39;m thankful for d&#39;s glee at how she got to school me on various bits of extended universe trivia that she has acquired, to give me character backgrounds and explanations of why things happened and what they meant. i&#39;m thankful on behalf of ewan mcgregor that he got to wear the jesus weave in this movie and that hayden christensen was saddled with the combination flat top/braided single forelock/tiny pony tail which must be the primary way that the jedi council ensures padawans remain celibate. i&#39;m thankful for our discussion of the kitchen sink gwen stefani orientalism of queen amidala&#39;s wardrobe in the first movie and how at least an actual indian actress played the queen in the second movie, even if she was only in like two scenes. i&#39;m thankful for our speculation about the kardashian-level numbers of clothiers that amidala must require to maintain her style.</p>
+<p>i&#39;m thankful for the further discussion we had yesterday about the strangeness of the <em>star wars</em> brand of science fiction and how different it is from the other science fiction we love. i&#39;m thankful for our discussion of the oxygen problem, how d pointed out that basically every planet in star wars apparently has a breathable atmosphere and is capable of supporting life and how i deepened this thread by pointing out that the very common dramatic trope of a damaged ship running out of oxygen or people trying to avoid suffocating in their spacesuits or being destroyed by the vacuum of space is completely absent from <em>star wars</em>, that the helmets and suits are basically always cosmetic rather than functional. i&#39;m thankful to think about how this costume detail is an echo of how the (material) richness of the galaxy really underlines the strangeness of the conflict at the center of the <em>star wars</em> is, how it&#39;s not, like in much modern sci-fi, about the fundamental &quot;real world&quot; problems of living as humans and there being a limited number of resources and those limited resources being allocated unequally and people having conflicts about how to reallocate them. i&#39;m thankful for how neutered, how abstract and aesthetic and foreign that makes the &quot;wars&quot; and the politics driving them—i&#39;m thankful to wonder if the average moisture farmer on tatooine or fashion designer on naboo really gives a shit about whether the light side or the dark side of the force is in power. i&#39;m thankful that there is this very lightly sketched backdrop of the question of whether a representative democratic republic is better than oligarchy, but that it&#39;s constantly being forgotten and george lucas seems to mostly just want to have it in the movie so that he can show us his cool vision of what the galactic senate chambers look like. i&#39;m thankful, because of the absence of any real serious political issues, to think about how the jedis are really conducting some kind of buddhist jihad on one side of the war and how on the other side, the empire is all the visual tropes of fascism but with only a child&#39;s vision of what actually makes fascism bad? i&#39;m thankful for how incoherent the ideology of the movies is, maybe because george lucas couldn&#39;t decide whether he wanted to make a movie about world war 2 or the vietnam war, which are very different wars. i&#39;m thankful for how ridiculous d and i also found another striking absence from the movies, which is the ludicrous sexlessness of the universe, at our shock at the way the first movie movie wants us to just accept and then forget that anakin&#39;s mother says he is an immaculate conception (which i feel like really has a lot of weird implications i can&#39;t even begin to unpack for all the father issues and cosmology of all the movies!!) and at the bizarrely accelerated pregnancy of amidala in the third movie, which seems to take about two weeks in total, and how this is a world with both jedi foresight and hyperspeed travel and fucking <em>holograms</em> but not sonograms (?!?!) so that the fact that amidala is pregnant with twins is a shock to everyone at the time of luke and leia&#39;s birth. i&#39;m thankful for the weird sheath over her lower half in her maternity/death (lol:() bed, which i guess you can compare to a space-age bachelor pad version of the curtain doctors use for c-sections but seems more like a way to obscure the idea that babies come from vaginas, to make child birth like a tv cooking show where the chef puts an uncooked chicken into a cold oven and one minute later pulls out a roasted one, the skin glistening and dripping clear juices.</p>
+<p>i&#39;m thankful for the two moments which stick in my mind from the sleepover at my friend c&#39;s house in middle school. i&#39;m thankful for one, which is how the morning after the sleepover, while we were waiting for our parents to come pick us up, c took us out to his &quot;fort,&quot; which was a two level enclosed wooden structure in the swampy virginia forest. i&#39;m thankful how when we got into the fort, hopped up on donuts and sugary cereal, that rather than play more fake war or maybe even shoot a real gun, which is what i assumed/hoped we would do, c opened a chest and pulled out a cache of old playboys and penthouses from the 1970s that he had inherited from his dad. i&#39;m thankful that as he distributed them, i took one like everybody else did, and thankful that i flipped through it listlessly because i didn&#39;t want to be ostracized as weird. i&#39;m thankful, though, that i felt really weird and uncomfortable, that there was something that i found deeply disturbing about sitting around and looking at pornography with other boys. i&#39;m thankful that this wasn&#39;t an aversion to pornography, since i had inherited (with tacit permission) my own cache of vintage skin mags from my dad as well as printed out reams of pages of stories from literotica and information about how to make masturbation &quot;feel real&quot; from &quot;jackin-world,&quot; but the sense that for some reason it felt really weird to be looking at pornography with a group of other boys and giggling about the length of a model&#39;s pubic hair and holding up a picture of a centerfold so the group could assess her breasts together. i&#39;m thankful that i eventually put my magazine down and left the fort and went back into the house until my parents came and picked me up. i&#39;m thankful i can&#39;t decide if my problem then was the first stirrings of a nascent feminist consciousness, that this was the wrong way to think about and talk about women, or a deeper discomfort with the homosocial nature of the moment (it felt strange to be sexual in the presence of other boys rather than in my bedroom alone) or just more garden variety introvert social exhaustion (maybe all of the above!).</p>
+<p>i&#39;m thankful for the other memory i have of the sleepover, which is a much more pleasant one. i&#39;m thankful that because this was basically my first sleepover at someone&#39;s house who was not a member of my family and because i was an anxious and neurotic child, i couldn&#39;t really sleep at all. i&#39;m thankful that when the other boys who had slept finally started to wake up in the morning and to talk quietly while the others slept, I pretended to still be asleep even though i was awake, partly because i tired from having to be around other people for so long, but also because, even as a child, i was a voyeur and interested in listening to people when they didn&#39;t know i was listening. i&#39;m thankful that when c&#39;s mom came home with donuts in a distant kitchen, the boys who were awake started talking about how to rouse the rest of us and of course settled on the classic sleepover prank of putting someone&#39;s hand in warm water to try to make them pee themselves in their sleep, a trope i was very familiar with from my adolescent pop culture consumption. i&#39;m thankful that i listened as they debated who to do it to and, of course, chose me as their victim. i&#39;m thankful that i laid in wait as one of them crept to the kitchen and filled his plastic cup in the sink and returned, at their whispered giggles and hisses as the boy approached me and set the cup on the carpet beside my sleeping bag. i&#39;m thankful to remember how excited i was when i felt the fingertips gently grasp the sides of my wrist and begin to lift it, how, as soon as they pulled me close to the cup, i quickly grabbed it, leapt up, and threw it in the face of my assassin, yelling &quot;<em>haha, i&#39;ve been awake the whole time</em>!&quot; i&#39;m thankful for how he and everybody laughed at my surprise attack. i&#39;m thankful that yoda is d&#39;s favorite <em>star wars</em> character because of the way he combines both cuteness and badass-ness.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-fsa2.html" class="btn btn-secondary">← thank you notes (fsa)(2)</a>
+        <a href="/letters/thank-you-notes-l.html" class="btn btn-secondary">thank you notes (L) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

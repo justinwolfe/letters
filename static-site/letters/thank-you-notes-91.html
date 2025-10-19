@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 9/1">
+  <title>thank you notes 9/1 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 9/1</h1>
+        <time datetime="2016-09-02T00:00:00Z">September 1, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that the other night after difficult days at work, rather than sit on the couch and watch TV or play videogames, d and i took a walk after dinner. i&#39;m thankful at dusk it wasn&#39;t too hot and thankful we stopped at the 24 hour donut shop to get donuts for dessert. i&#39;m thankful for the donut shop employee who was very clearly smoking weed in the back before we arrived. i&#39;m thankful for generous injections of jelly and thankful for maple glaze. i&#39;m thankful for small plastic bottles of milk.</p>
+<p>i&#39;m thankful that we called my parents while eating our donuts and then walking home. i&#39;m thankful that my mom was happy to tell us about how she had quit her job at the luxury hotel, where, despite being universally loved by both staff and customers, winning numerous employee awards, and making the hotel more money than anyone else in her position for several years in a row, she hadn&#39;t received even a small raise in 4 years. i&#39;m thankful that the day she turned in her letter of resignation, just before she gave her boss the letter, her boss told her that she had been the subject of discussion and praise in an upper level management meeting and had just been given <em>another</em> award. i&#39;m thankful for the glee she took in relating this story to us.</p>
+<p>i&#39;m thankful that because she is so well liked, she has friends who work at other better places who are looking out for her and want to have her work with them. i&#39;m thankful that she had d and i work on refining her resume before she starts sending it out again. i&#39;m thankful to remember how for my first job interview, at the movie theater in our town at the end of my senior year of high school, she insisted i not wear a t-shirt. i&#39;m thankful to remember how because my family was antisocial and didn&#39;t attend church and lived in florida where you can wear t-shirts all year long, i didn&#39;t really have much in the way of formal wear, so i wore my only collared shirt, which was a guayabera i had bought at a vintage store. i&#39;m thankful i got the job. i&#39;m thankful to remember after college how my mom and i took a trip to tampa so i could apply for a job teaching abroad and thankful that i got that job too.</p>
+<p>i&#39;m thankful that our neighbors had a garden party last night with our friends and family. i&#39;m thankful for their beautiful garden and for what i think are yellow poppies in bloom now. i&#39;m thankful that they seemed to be having a great time, but also weren&#39;t too loud. i&#39;m thankful that we&#39;re on good terms with them, but not close enough that we would have had to go to the garden party. i&#39;m thankful that our yard, which had gotten horribly shaggy again, was mowed the other day so that it didn&#39;t look so terrible for the garden party. i&#39;m thankful for the strong networks of spiderwebs between the mud room door and the side of the house, which aren&#39;t broken even though i open and close the door multiple times a day. i&#39;m thankful for how when the yard was mowed, fragments of grass were flung up into the web and thankful for the way their form helps delineate the form of the web.</p>
+<p>i&#39;m thankful that space x&#39;s rocket exploded (i&#39;m thankful, of course, that no one was hurt). i&#39;m thankful to last night have finished <a href="https://www.amazon.com/Last-Days-New-Paris-ebook/dp/B0180SQC32/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1472816882&sr=8-1#nav-subnav"><em>the last days of new paris</em></a> by china mieville, which is about an alternate universe nazi-occupied paris where the art of the surrealists (poems, paintings, collages) manifests itself into reality in an &quot;s-blast&quot; and in which these surrealists and their unpredictable creations do battle against the nazi&#39;s, who under mengele and a vichy priest work to summon the forces of hell. i&#39;m thankful for this description of new paris&#39;s notre dame: </p>
+<p>&quot;<em>Since the S-Blast the squat square towers to either side of its sunburst central window have been industrial silos, tall and fat, crudely hammered metal. One seeps bloody vinegar from imperfect seals: the air they enter is full of its sour stink, the ground below wet and fermented. Through the wire-strengthened windows of the other tank is a thick pale swirl. It&#39;s said that it contains sperm. Thibaut has often begged the sky to bomb it,</em>&quot;</p>
+<p>i&#39;m thankful for how good china mieville is at describing things that are difficult to describe, something i first noticed in my other favorite work of his, <em>the city and the city</em>, in which he has the impossible trouble of describing these two different cities that perfectly overlap each other but whose residents must live as if they do not see the other city and its residents. i&#39;m thankful, like that book&#39;s exploration of the failures of two state solutions, for the way the dark undercarriage of this book considers the power of the art and the role of the imagination in resisting the shroud of hegemony. i&#39;m thankful for this passage, when the main character, thibaut, is being tested by the elder surrealist resistance:</p>
+<p>&quot;&#39;<em>You want to fight, I understand,&#39; the half-shod man said, looking at him sideways. &#39;Right now, though...with all this...why like this? With the city like this, don&#39;t we have greater needs than poetry?&#39;</em></p>
+<p><em>Immediately Thibaut almost shouted a response. &#39;We refuse to flee poetry for reality,&#39; he said, &#39;But we refuse to flee reality for poetry.&#39; The men and women blinked at him. &#39;No one should say our actions are superfluous,&#39; Thibaut recited. &#39;If they do, we&#39;ll say</em> the superfluous supposes the necessary_.&#39;_</p>
+<p><em>He had recognized the question, the last test. It, and his answer, were the words of Jean-Francois Chabrun, speaking for the franc-tireurs, Surrealist irregulars left in Paris when the Nazis came. A prophecy, a promise written after one cataclysm and just before another. They had carried it over after that next, the S-Blast, and Thibaut granted it fidelity.</em></p>
+<p><em>He will never be a sharpshooter. He is an adequate hand-to-hand fighter at best. Thibaut was admitted to the Main a plume because of his way of seeing, the connections he makes, the synchronicity he notes and invokes. They taught him to conduct what they called disponsibilite, to be a receiver. To tap objective change.</em></p>
+<p><em>In rooms at the top of leaning houses, in a city become free-fire zone and hunting grounds for the impossible, Thibaut learned survival and poetry...techniques he would take with him later, when training was done, full of thanks and solidarity, to spread the resistance, to join with others, and recruit. In his company, Jacques Herold set a black chain on fire.</em></p>
+<p><em>In the post-blast miasma, all Parisians grew invisible organs that flex in the presence of the marvelous. Thibaut&#39;s are strong.</em></p>
+<p><em>The Surrealists trapped behind had known immediately what the newly appeared figures were that the explosion had brought...They were the first to recognize them, to try and develop a strategy for life and for urban war that afforded them respect. The Main a plume owed them, not obedience, but a kind of fealty: this was hardly the hoped-for insurrection, but these were Surrealist glimmers, these manifs. They were convulsively beautiful, and they arrived. The poets and artists and philosophers, resistance activists, secret scouts and troublemakers, had become, as they must, soldiers.</em></p>
+<p><em>Now, alone, Thibaut drinks to the freedom of Paris from a standpipe in a square full of bricks like failed flowers</em>.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-93.html" class="btn btn-secondary">← thank you notes 9/3</a>
+        <a href="/letters/thank-you-notes-clare.html" class="btn btn-secondary">thank you notes (clare) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

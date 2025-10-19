@@ -1,296 +1,341 @@
-# Letters - Buttondown Newsletter Sync
+# Letters - Buttondown Newsletter Sync + PWA Reader
 
-A TypeScript system for syncing newsletters from Buttondown into a version-controlled SQLite database.
+A comprehensive TypeScript system for syncing newsletters from Buttondown and deploying them as both a static website and an installable Progressive Web App (PWA).
 
-## Features
+## ✨ Features
 
-- 🔄 **Incremental Sync**: Only fetches new/modified emails after initial sync
-- 💾 **SQLite Storage**: All data stored in a single, portable database file
-- 🎯 **Type-Safe**: Full TypeScript implementation with API types
-- 📦 **Version Controlled**: Database checked into git for full history
-- 🔌 **Offline-First**: All newsletter content available locally
-- 🛡️ **Idempotent**: Safe to run multiple times
-- 🖼️ **Image Archiving**: Downloads and embeds all remote images locally
+### 🌐 Dual Deployment Architecture
 
-## Setup
+- **Static Site (MPA)**: Pre-rendered HTML pages for each newsletter - perfect for browsing, SEO, and fast loading
+- **PWA Reader**: Single-page React app with offline capabilities - installable as a native app
+- **GitHub Pages Ready**: One-command deployment with automatic builds via GitHub Actions
 
-### Prerequisites
+### 📱 Progressive Web App
 
-- Node.js 18+ (for native fetch support)
-- A Buttondown account with API access
-- Your Buttondown API key
+- **Offline Reading**: Download all newsletters and read without internet
+- **Installable**: Works like a native app on desktop and mobile
+- **Service Worker**: Intelligent caching strategies for optimal performance
+- **IndexedDB Storage**: Efficient client-side data storage
+- **Full-Text Search**: Find any newsletter quickly
+- **Swipe Navigation**: Mobile-friendly gesture controls
+
+### 🔄 Sync System
+
+- **Incremental Sync**: Only fetches new/modified content
+- **Image Archiving**: Downloads and stores images locally
+- **SQLite Storage**: All data in a single, portable database
+- **Version Controlled**: Database checked into git for full history
+- **Offline-First**: All newsletter content available locally
+
+### 🎨 Beautiful UI
+
+- **Dark Theme**: Easy on the eyes
+- **Responsive Design**: Works great on all devices
+- **Fast Loading**: Pre-rendered pages load instantly
+- **Modern UX**: Smooth transitions and interactions
+
+## 🚀 Quick Start
 
 ### Installation
 
-1. Clone the repository
-2. Install dependencies:
+```bash
+npm install
+```
 
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file with your API key:
-
-   ```bash
-   BUTTONDOWN_API_KEY=your_api_key_here
-   ```
-
-4. Run the initial sync:
-   ```bash
-   npm run sync
-   ```
-
-## Usage
-
-### Sync Commands
+### Sync Your Newsletters
 
 ```bash
-# Run incremental sync (default)
+# Set up your Buttondown API key in .env
+echo "BUTTONDOWN_API_KEY=your_key_here" > .env
+
+# Sync newsletters
 npm run sync
-
-# Force full sync (re-fetch everything)
-npm run sync -- --full
-
-# Sync emails and download embedded images
-npm run sync -- --download-images
-
-# Preview changes without writing to database
-npm run sync -- --dry-run
-
-# Verbose logging
-npm run sync -- --verbose
-
-# View sync status
-npm run sync:status
-
-# View database info
-npm run sync:info
-
-# Sync attachment metadata
-npm run sync:attachments
 ```
 
-### Image Archiving
+### Deploy to GitHub Pages
 
 ```bash
-# Download embedded images for all existing emails
-npm run images:download
+# Build both static site and PWA
+npm run build:deploy
 
-# View statistics about embedded images
-npm run images:stats
-
-# Export a single email as standalone HTML with embedded images
-npm run export:email <email-id> [output.html]
+# Push to GitHub (automatic deployment via GitHub Actions)
+git add .
+git commit -m "Deploy newsletters"
+git push origin main
 ```
 
-#### How Image Archiving Works
+That's it! Your site will be live at `https://yourusername.github.io/repository-name/`
 
-When you run image archiving:
+📖 **[Quick Start Guide](docs/QUICKSTART_DEPLOYMENT.md)** - Get up and running in 5 minutes  
+📖 **[Full Deployment Guide](docs/STATIC_PWA_DEPLOYMENT.md)** - Complete documentation
 
-1. Extracts all image URLs from email HTML (`<img>` tags and CSS backgrounds)
-2. Downloads each image from remote servers
-3. Stores images as BLOBs directly in the SQLite database
-4. Replaces remote URLs with data URIs when exporting
+## 📖 Usage
 
-This means:
+### For Readers
 
-- ✅ **Fully self-contained**: All images stored in one SQLite file
-- ✅ **No broken links**: Images preserved even if originals are removed
-- ✅ **Offline access**: View complete emails without internet
-- ✅ **Version controlled**: Image history preserved in git
+**Browse Static Pages:**
 
-### Database Operations
+1. Visit your GitHub Pages URL
+2. Browse all newsletters on the homepage
+3. Click any newsletter to read it
+4. Each page loads instantly with pre-rendered HTML
+
+**Install PWA for Offline:**
+
+1. Click "Install App" or "Open App" button
+2. Follow your browser's install prompt
+3. Open the installed app
+4. Click "Offline" → "Download All Content"
+5. Read anywhere, even without internet!
+
+### For Developers
+
+**Local Development:**
 
 ```bash
-# Reset database (destructive - for testing only)
-npm run db:reset
+# Run development environment
+npm run dev
+# Opens on http://localhost:5173 with hot reload
 ```
 
-## Project Structure
+**Sync Commands:**
+
+```bash
+npm run sync              # Incremental sync
+npm run sync -- --full    # Force full sync
+npm run sync:status       # Check sync status
+npm run images:download   # Download all images
+npm run images:stats      # Image statistics
+```
+
+**Build Commands:**
+
+```bash
+npm run build:deploy       # Build everything for deployment
+npm run build:static       # Generate static HTML pages only
+npm run reader:build       # Build PWA only
+```
+
+## 📁 Project Structure
 
 ```
 letters/
-├── lib/                    # Shared core libraries (reusable)
-│   ├── db/                 # Database layer
-│   │   ├── schema.ts       # Database initialization & schema
-│   │   └── queries.ts      # Database query methods
-│   ├── api/                # Buttondown API client
-│   │   ├── client.ts       # HTTP client with retry logic
-│   │   └── types.ts        # TypeScript types for API
-│   └── utils/              # Shared utilities
-│       ├── logger.ts       # Logging utility
-│       ├── image-processor.ts  # Image download & processing
-│       └── markdown-normalizer.ts  # HTML to Markdown conversion
-├── apps/                   # Independent applications
-│   ├── sync/               # Main newsletter sync CLI
-│   │   ├── index.ts        # CLI entry point
-│   │   └── engine.ts       # Sync orchestration logic
-│   └── _template/          # Template for new apps
-├── scripts/                # One-off utility scripts
-│   ├── export-email.ts     # Export email as standalone HTML
-│   ├── check-attachments.ts
-│   └── debug-attachments.ts
-├── data/
-│   └── newsletters.db      # SQLite database (checked into git)
-└── ARCHITECTURE.md         # Detailed architecture docs
+├── apps/
+│   ├── reader/           # PWA React app
+│   │   ├── client/       # Frontend (React + Vite)
+│   │   │   ├── src/
+│   │   │   │   ├── App.tsx              # Main React component
+│   │   │   │   └── offlineStorage.ts    # IndexedDB manager
+│   │   │   └── public/
+│   │   │       ├── manifest.json        # PWA manifest
+│   │   │       └── sw.js                # Service worker
+│   │   └── server/       # Backend API (Express)
+│   └── sync/             # Buttondown sync engine
+├── lib/
+│   ├── api/              # Buttondown API client
+│   ├── db/               # Database schema & queries
+│   └── utils/            # Utilities (logger, image processor, etc.)
+├── scripts/
+│   ├── generate-static-site.ts    # Static site generator
+│   ├── build-deploy.ts            # Deployment build script
+│   └── ...               # Other utilities
+├── docs/                 # Documentation
+│   ├── QUICKSTART_DEPLOYMENT.md       # Quick start guide
+│   ├── STATIC_PWA_DEPLOYMENT.md       # Full documentation
+│   └── ARCHITECTURE.md                # System architecture
+├── .github/workflows/
+│   └── deploy.yml        # GitHub Actions deployment workflow
+├── public/               # Deployment output (git-ignored)
+└── static-site/          # Generated static pages (git-ignored)
 ```
 
-## Database Schema
+## ⚙️ Configuration
 
-### Tables
+### Environment Variables
 
-- **emails**: Newsletter content and metadata
-- **attachments**: File attachments and their URLs
-- **email_attachments**: Links emails to their attachments
-- **embedded_images**: Downloaded images stored as BLOBs
-- **sync_metadata**: Tracks sync status and timestamps
-
-### Image Storage
-
-Images are stored as BLOBs in the `embedded_images` table with:
-
-- Original URL (for reference)
-- Binary image data (PNG, JPEG, GIF, etc.)
-- MIME type
-- File size
-- Dimensions (width/height when available)
-- Download timestamp
-
-When exporting emails, images are converted to data URIs (`data:image/...;base64,...`) for complete portability.
-
-## How It Works
-
-### Initial Sync
-
-1. Fetches all historical emails from Buttondown API
-2. Stores email content and metadata in SQLite
-3. Tracks attachment references
-4. Records sync timestamp
-
-### Incremental Sync
-
-1. Checks last sync timestamp from database
-2. Fetches only emails modified since last sync
-3. Updates existing records or inserts new ones
-4. Updates sync timestamp
-
-### API Integration
-
-- Uses Buttondown's REST API with pagination
-- Fetches emails with statuses: `sent`, `imported`, and `draft`
-  - **Important**: By default, Buttondown's API only returns `sent` emails
-  - We explicitly include `imported` (from bulk imports) and `draft` emails
-- Implements retry logic for rate limits and network errors
-- Processes emails in batches for memory efficiency
-- Respects API rate limits with delays between requests
-
-## Building New Apps
-
-The codebase is organized to make it easy to spin up new independent applications that share the core database and libraries.
-
-**Quick Start:**
-
-1. Copy the template: `cp -r apps/_template apps/my-app`
-2. Implement your logic in `apps/my-app/index.ts`
-3. Add to `package.json`: `"my-app": "tsx apps/my-app/index.ts"`
-4. Run: `npm run my-app`
-
-**See `apps/_template/README.md` for detailed instructions.**
-
-**Future App Ideas:**
-
-- 📊 Word cloud generator
-- 📚 Offline PWA reader
-- 📖 Automatic EPUB generation
-- 🖼️ Image optimizer
-- 🤖 LLM-assisted content editor
-- 💾 Backup tool
-- 🔍 Full-text search indexer
-- 📈 Analytics dashboard
-
-## Development
-
-### Build
+Create a `.env` file:
 
 ```bash
-# Type check
-npm run type-check
-
-# Build to JavaScript
-npm run build
+BUTTONDOWN_API_KEY=your_key_here
+DATABASE_PATH=./data/newsletters.db
 ```
 
-### Watch Mode
+### PWA Customization
+
+Edit `apps/reader/client/public/manifest.json` to customize:
+
+- App name and description
+- Theme colors
+- Icons
+- Display mode
+
+### Static Site Customization
+
+Edit `scripts/generate-static-site.ts` to customize:
+
+- Page templates
+- Styling and colors
+- Meta tags
+- Navigation
+
+## 🎯 Requirements
+
+- Node.js 20+
+- npm or yarn
+- Git (for deployment)
+- Buttondown API key
+
+## 🏗️ Architecture
+
+```
+                     Your GitHub Pages Site
+                              │
+              ┌───────────────┼───────────────┐
+              │                               │
+         Static Pages                     PWA App
+    (Multi-Page Application)    (Single-Page Application)
+              │                               │
+    ┌─────────┴─────────┐          ┌─────────┴─────────┐
+    │                   │          │                   │
+  Fast HTML         SEO OK      Offline            Native
+  No JS needed     Shareable    Reading         App Experience
+```
+
+Users get the best of both worlds:
+
+- **Fast, simple static pages** for casual browsing
+- **Powerful PWA** for dedicated readers who want offline access
+
+## 🎨 Features in Detail
+
+### Static Site Generator
+
+- Generates individual HTML pages for each newsletter
+- Pre-rendered for instant loading (no build step required for users)
+- SEO-friendly with proper meta tags and structured data
+- Dark theme with responsive design
+- Navigation between newsletters (prev/next)
+- PWA install prompts on each page
+
+### PWA Features
+
+- **Offline Mode**: Full app functionality without internet after initial download
+- **Install Prompt**: Browser-native installation experience
+- **Service Worker**: 3-tier caching strategy (static, data, images)
+- **IndexedDB**: Stores newsletters, images, and metadata efficiently
+- **Background Sync**: Automatic updates when back online
+- **Search**: Full-text search across all newsletter content
+- **Random**: Discover a random newsletter
+- **Sort & Filter**: Multiple sorting and filtering options
+
+### Sync Engine
+
+- Incremental syncing (only new/updated content)
+- Image downloading and local caching
+- Markdown normalization for consistent rendering
+- HTML-to-Markdown conversion
+- Attachment handling and metadata tracking
+- Robust error recovery and retry logic
+
+## 🚀 Advanced Usage
+
+### Custom Domain
 
 ```bash
-# Run with auto-reload
-npm run dev
+npm run build:deploy -- --cname=letters.yourdomain.com
 ```
 
-## Technical Details
+Then configure your DNS to point to GitHub Pages.
 
-### Why SQLite?
-
-- Single file, easy to version control
-- Fast for read-heavy workloads
-- No server required
-- Built-in full-text search (FTS5) available
-- Excellent for datasets < 1GB
-
-### Why better-sqlite3?
-
-- Synchronous API (simpler code)
-- Faster than async alternatives
-- Better TypeScript support
-- More reliable
-
-### Git Strategy
-
-The SQLite database is committed to git for:
-
-- Complete content history
-- Easy clone and use
-- Offline access
-- No separate database setup
-
-Database is marked as binary in `.gitattributes` for proper handling.
-
-## Troubleshooting
-
-### API Key Not Found
-
-```
-BUTTONDOWN_API_KEY not found in environment
-```
-
-**Solution**: Create a `.env` file with your API key:
+### Selective Build
 
 ```bash
-echo "BUTTONDOWN_API_KEY=your_key_here" > .env
+# Skip static site generation
+npm run build:deploy -- --no-static
+
+# Skip PWA build
+npm run build:deploy -- --no-pwa
+
+# Don't clean build directories first
+npm run build:deploy -- --no-clean
 ```
 
-### Rate Limiting
+### Manual Deployment
 
-If you encounter rate limits, the system will automatically retry with exponential backoff. You can also:
+```bash
+# Build locally
+npm run build:deploy
 
-- Run incremental syncs more frequently
-- Add delays between requests (edit `src/api/client.ts`)
+# Deploy with gh-pages
+npx gh-pages -d public
+```
 
-### Database Locked
+## 📊 Performance
 
-If you get a "database is locked" error:
+- **Static Pages**: ~10-50KB per page, loads in < 100ms
+- **PWA Bundle**: Code-split and optimized, lazy-loaded chunks
+- **Service Worker**: Aggressive caching, offline-first strategy
+- **IndexedDB**: Handles thousands of newsletters efficiently
+- **Images**: Lazy loaded, cached, and can be compressed
 
-- Ensure no other process is accessing the database
-- Close any SQLite browser tools
-- Try running the command again
+## 🌍 Browser Support
 
-## License
+- **Chrome/Edge**: Full support (best PWA experience)
+- **Firefox**: Full support
+- **Safari**: Full support (iOS 11.3+ for PWA features)
+- **Opera**: Full support
+
+PWA features require modern browsers with service worker support.
+
+## 🐛 Troubleshooting
+
+### Icons Not Showing
+
+- Create real PNG icons in `apps/reader/client/public/`
+- Required sizes: 72, 96, 128, 144, 152, 192, 384, 512
+- Use square images with appropriate padding
+
+### PWA Not Installing
+
+- Requires HTTPS (GitHub Pages provides this automatically)
+- Check that manifest.json is accessible
+- Look for errors in browser DevTools console
+- Try in Chrome/Edge first (best PWA support)
+
+### Content Not Updating
+
+- Clear browser cache
+- Check GitHub Actions workflow ran successfully
+- Verify build succeeded locally first
+- Check service worker update cycle
+
+### Offline Mode Not Working
+
+- Open the PWA app (not static pages)
+- Click "Offline" button in the app
+- Click "Download All Content"
+- Wait for download to complete
+- Verify IndexedDB data in DevTools
+
+See the [full documentation](docs/STATIC_PWA_DEPLOYMENT.md) for more troubleshooting tips.
+
+## 📚 Documentation
+
+- **[QUICKSTART_DEPLOYMENT.md](docs/QUICKSTART_DEPLOYMENT.md)** - Get up and running quickly
+- **[STATIC_PWA_DEPLOYMENT.md](docs/STATIC_PWA_DEPLOYMENT.md)** - Complete deployment guide
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - System design and architecture
+- **[apps/\_template/README.md](apps/_template/README.md)** - Guide to creating new apps
+
+## 🤝 Contributing
+
+[Your contributing guidelines here]
+
+## 📄 License
 
 ISC
 
-## Documentation
+## 🙏 Acknowledgments
 
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Comprehensive architecture guide for developers and AI agents
-- **[apps/\_template/README.md](./apps/_template/README.md)** - Guide to creating new apps
-- [Implementation Plan](./IMPLEMENTATION_PLAN.md) - Original technical specification
-- [Buttondown API Documentation](https://api.buttondown.email/v1/schema)
+- Built for the [Buttondown](https://buttondown.email) newsletter platform
+- Uses React, Vite, Better-SQLite3, Express, and more
+- Deploys seamlessly to GitHub Pages

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="dasein within reach">
+  <title>dasein within reach - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>dasein within reach</h1>
+        <time datetime="2021-01-01T00:00:00Z">December 31, 2020</time>
+      </header>
+
+      <div class="letter-body">
+        <p>we moved twice when i was in high school for my dad&#39;s work and after a relatively normal and happy experience at the first high school, i got to the second high school (we moved over the christmas break to suburban tennessee, which added to the desolate wasteland vibes) and i did my schoolwork well (mostly) but other than that just completely shut down and refused to open up to others in any way that would lead to me having any friends or even acquaintances (and i actively rejected other people who recognized this (or who maybe felt in similar positions themselves) and tried to be my friend out of a kindness or solidarity i could only understand as pity or their own weakness). </p>
+<p>lunch was the worst time (gym was also terrible but it went by faster); i couldn&#39;t find the courage to sit by myself in the cafeteria or on the quad and read a book, to honestly own my loneliness, and so i would instead endlessly pace the hallways pretending i was on my way to &quot;friends&quot; and, when i would sense suspicious glances assessing me, or otherwise feel self conscious about my visibility, i would go and sit in a disgusting bathroom stall for the rest of the period, watching the seconds pass until i had made it through another day. i dreamed of invisibility, of being able to be alone forever.</p>
+<p>during this time, instead of eating the brown bag lunch my mother had carefully packed for me every day, i would (after maybe salvaging a bag of chips or a candy bar to keep myself from starving) throw it in the trash outside my latin class or, because i began to be self conscious that people were noticing me do that and thinking about how weird it was, would shove the bag into my locker, the bags then accumulating over time and the apples and sandwiches inside of them rotting (what a metaphor for suppressed emotional baggage right?) until one day a vice principal called me out of class and had me open it and made me feel ashamed and clean it out (without ever asking why i might have done such a thing, or how i was doing, not that i would have probably answered those questions honestly), after which point i just threw it away every day.</p>
+<p>at my third high school, i went even further into myself and during the second half of my junior year there repeated the garbage locker ritual (though i pulled the plug on it myself rather than having that institutionally enforced). i had also picked up, for good measure, a very obsessive compulsive form of (non-denominational) &quot;prayer&quot; which involved all of these ritualized hand motions and legalistic inner litanies begging for peace which surely made me look even more like a weird outcast! once i became a senior, the primary difference from my previous high school was that at lunch students could eat off campus so i was able to walk by myself to a convenience store on routes through nearby neighborhoods i chose because they felt like the least trafficked ones, where i wouldn&#39;t be seen. i&#39;m thankful that this high school was in florida, which meant i could take these walks year round and the weather was mild and the sun was out, since i needed all of the endorphins i could get.</p>
+<p>the summer before my freshman year of college i went to an overnight prep program where you stayed in a dorm and at the start of the evening there was an initial ice breaker group session and i went into the room and tried to participate and felt so anxious and then at the first break i just walked out into the night, having no idea where i was going (and no cell phone or map), just walked through neighborhoods i would come to know intimately over the next four years (but which seemed so alien and forbidding at the time) for what felt like hours, a quite literal long dark night of the soul, and then i somehow came back and bumped into my overnight &quot;roommate&quot; and we had bad pizza together at like 1 am.</p>
+<p>when i started college, i decided i just had to be a different person, that i could not continue to live the way i had been living and i had an opportunity to change, and in college, for the most part i <em>was</em> a different person. i was shy and not particularly charming or interesting, but i was in small incubatory environments (film school, the honors dorm) that made interactions less intimidating and i made an effort, even when i felt awkward, and i made actual friends and i went to parties and caught up on all the forms of social life that i&#39;d only ever seen in teen movies and on TV. i was still a disaster of a person in many ways (even if i had come to platonic love, romantic love was still elusive) but i felt like a part of something.</p>
+<p>but a weird thing i started doing around then was when i would come home to my parents&#39; house from school for thanksgiving or easter or christmas break or whatever, my friends would continue to text and call me (i now had a cell phone) as they would when i was at school and, unlike when i was at school, i would...avoid them completely (and feel great guilt and shame about the fact that i was doing it, but also felt powerless to live otherwise). i loved my family and i was happy to be with them, but once i got home, all of my friends, who were the most important thing in the world to me when i was in the flesh with them, felt impossible to communicate with and so i just chose not to, to disappear. it felt like i had these different selves that i was and being different ones simultaneously was impossible, so i compartmentalized my life. </p>
+<p>after a while, my friends and i came to jokingly refer to these absences from communication as being &quot;in the void&quot;; i&#39;m grateful they were good natured and generous about this weird personality tic of mine, that when they were frustrated with the void, even though i felt powerless to act differently, i knew their frustration represented their affection for me and desire to stay connected with me, a possibility that years before had seemed like an impossible thing. i would spend time in some form of the void every year deep into my adulthood.</p>
+<p>(i&#39;m thankful for the best postcard i have ever received, which i got in the spring of my first year of graduate school years ago from s after not talking to her for a long time, the text of which just read &quot;checking to see if you&#39;re alive. no response means you are&quot;)</p>
+<p>i&#39;m thankful that though i have never been very good at long term or long distance friendships (if you couldn&#39;t gather that from the above!), i have gotten a little better at it over time and that generally (because of grad school and friends and my relationship with d and the responsibilities placed on me by my various jobs and writing these notes other kinds of work i&#39;ve done on myself) i feel like a more whole and self-actualized person and i have a generally good and happy life, despite myself and everything.</p>
+<p>but i have been thinking about the void a lot during this later stage of quarantine, as i have found myself, especially since winter came and we couldn&#39;t hang out with friends in our backyard anymore, increasingly less able to write emails or muster much energy for the performances of the social in the digital realm that seem to come more easily to others and that i think are important. these thank you notes are, in a way, one of those performances (though there are also other things), and that&#39;s why there haven&#39;t been many of them lately, even though i think if i wrote them more often i would be happier and feel better (and would maybe, if i&#39;m lucky, feel more natural in doing things as rote as saying &quot;happy new year&quot; in my group chat or whatever) and so here i am with you again, like so many people trying to start or restart healthier behaviors for themselves, to try to make things better.</p>
+<p>the other morning, i ran more than ten miles on the treadmill, which is something i&#39;ve never been able to do because i could never exert the force of will to make myself run in place for that long. which i guess is a reason to be thankful for the endless portland winter rain, that i was forced by it to find the energy in myself to do that. i&#39;m thankful that also the rain and my frustration with the treadmill have both helped me, out of desperation, realize it&#39;s not so bad to run in shittier conditions and also, gotten more comfortable with just taking days off from exercise in a way i hadn&#39;t before. (even if part of the magic of a habit is that doing it every day makes it easier to do it and so when you take breaks, it becomes harder to do it, but rest is also important)</p>
+<p>i&#39;m thankful for our dog miso, even though she adds so much noise and busy work to our lives (i&#39;m thankful that we have a fenced-in backyard, such that there is much less of it than there was in the past, even though it still feelsl ike A Lot), because she also adds joy and fun and warmth. i&#39;m thankful the fact that during this time of quarantine isolation, along with d, miso, and i, there are, functionally, to the NSA as they listen over Alexa, two more people in our household and in this i am referring to her impression of miso and my impression of miso, which we are both constantly deploying in conversation with one &quot;another&quot; and with miso and how when we were on vacation away from miso for a week after thanksgiving it genuinely felt weird not to have &quot;miso voice&quot; as a mode of communication</p>
+<p>i&#39;m thankful for d, who is more lovely and amazing every day. i&#39;m thankful d has been playing the video game <em>hades</em> (in which you, the son of hades, try (and, repeatedly, fail) to fight your way out of the underworld) the beginning of vacation and the other night she finally beat hades for the first time and i had planned to record her victory with my phone but then i got so involved in watching her finish him that i forgot completely. i love when d and i play the same video game, not because we necessarily play it together or talk about it a lot—most of the time engaging with the game is spent in our respective focus bubbles—but there&#39;s something about knowing that a person has lived inside the same mental/aesthetic experience, has spent hours doing the same thing that you have done, that&#39;s a meaningful collection on a subterranean nonverbal level.</p>
+<p>(memory of charming executive at previous job who entered a room where people were talking about what they&#39;re most grateful for and she said, casually but with great vigor, &quot;nicotine&quot; and me thinking, &quot;this person knows who they are and i know this person&quot;)</p>
+<p>wittgenstein, in the introduction to the <em>tractatus</em>: &quot;this book will perhaps be understood only by those who have already thought the thoughts, which are expressed in it—or similar thoughts&quot;</p>
+<p>reading about heidegger in <a href="https://www.theguardian.com/books/2020/aug/13/time-of-the-magicians-by-wolfram-eilenberger-review-philosophys-great-decade">the group biography</a> where i saw that wittgenstein quote (great engaging intellectual history so far, you learn for ex. that walter benjamin had his wife use hypnosis to convince him he had sciatica so that he would fail his medical interview and not get drafted for world war 1) and every time &quot;dasein&quot; is mentioned (which is often!) thinking about c&#39;s pun of &quot;dasein within reach,&quot; which always tickles me. </p>
+<p>seeing c and n in cambridge one night on the last trip i took before quarantine, which was one of those social encounters that an earlier version of myself would have avoided or made an excuse for or whatever but i went and it was warm and nice and delightful.</p>
+<p>after years being too afraid of its effect on my nervous system, gently experimenting with caffeine again this year, which i think has given me things that weren&#39;t there without it (one thing being maybe more energy on a long run on a treadmill).</p>
+<p>i did more psychedelics this year than any previous year, starting with n&#39;s first acid on the last day of the work trip to florida in january where i quit my old job on the first day. i remember the first time i did mushrooms in college, a time when i would drink a six pack before leaving the house to go to the first party, thinking &quot;this experience was so precious and if i could just do this once a month for the rest of my life, i would never need any other substance to regulate my mental functioning&quot; but that seeming so unattainable, and so i&#39;m thankful that in adulthood i&#39;m able to access those kind of experiences with greater regularity. i&#39;m thankful also always for weed..</p>
+<p>i&#39;m thankful that my work/life balance, which this time last year was at its nadir at my old job, is much better at my new job (even if the rosy honeymoon glow of the new job has faded over this year and revealed itself to be...yet another job at another company, with faults like all other jobs and companies! shock, i know). i&#39;m thankful that people at work like me and that i like people at work (i&#39;m thankful to have worked with a fun coworker to record a parody of a &quot;love actually&quot; scene and a cover of &quot;wonderful christmastime&quot; themed around our team, which has got me making more music lately). i&#39;m thankful to have remained safely employed throughout the pandemic and i&#39;m thankful that it seems like that will continue into the new year (and that i feel more confident in my ability to get a new job somewhere else if i need to than i had in the past). </p>
+<p>i&#39;m thankful that i discovered there&#39;s now something i had been waiting for forever which is <a href="https://www.amazon.com/LIVEBLOG-Megan-Boyle-ebook/dp/B07QKN42KZ">an ebook</a> of megan boyle&#39;s <em>liveblog</em>, which i hadn&#39;t read when i started writing these notes (my models were <em>i remember</em> by joe brainard and <em>the folded clocks</em> by heidi julavits ) but feels like the thing with the closest kinship to what this project has been or tried to be so far. i have been reading it lately in dribs and drabs when i don&#39;t have the energy to read other things. i&#39;m thankful for <em>what we do in the shadows,</em> which is silly and joyful and i wish there were more episodes of, and i&#39;m thankful to finally be watching the third season of <em>westworld</em> which is just the kind of bullshit i want from that show (i&#39;m thankful also for <em>tenet</em>, which didn&#39;t necessarily feel &quot;worth the wait&quot; but was the kind of bullshit i wanted from it too). </p>
+<p>i&#39;m thankful to have spent several hours writing and to stop, even though there is always more to say, because there are other things i want to do with my day than writing. i&#39;m thankful for that feeling you get in long-term email conversations where you&#39;re late to write a message and then over time as you continue to not have written the message and so it feels like the message needs to be bigger, contain more, say everything, even though that makes it increasingly intimidating to try to write it, and so you don&#39;t, and then the feedback loop cycles on and on. i&#39;m thankful always to have rather written something than nothing, even if the something isn&#39;t everything or doesn&#39;t feel whole or complete, so i&#39;m thankful to have written something today. i&#39;m thankful for all the inchoate possibility for doing something in the new year ahead of us, so full of days.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/treat-people-with-kindness.html" class="btn btn-secondary">← treat people with kindness</a>
+        <a href="/letters/periods-of-sunshine-in-the-winter.html" class="btn btn-secondary">periods of sunshine in the winter →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

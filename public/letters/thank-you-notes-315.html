@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/15">
+  <title>thank you notes 3/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/15</h1>
+        <time datetime="2016-03-15T00:00:00Z">March 14, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i put off taking out the trash last night because i didn&#39;t want to have to interact with our next door neighbor, who was taking advantage of it being light later by tending his backyard garden after work. i&#39;m thankful that i knew it would be perfectly fine if i interacted with him, since he is a nice and friendly and undemanding person, but thankful also that i didn&#39;t have to if i didn&#39;t feel like it and that i don&#39;t have to make myself feel bad about that preference. </p>
+<p>i&#39;m thankful for how on saturday morning when i was watching dishes, i watched through the window as he came out into the back yard to smoke a morning cigarette. i&#39;m thankful for how, while smoking his cigarette and looking out at the garden he&#39;s building, i assume imagining what he was going to do to it that day and what it might look like at the end of the day, he drank a large glass of orange juice. i&#39;m thankful something about that combination (bright acidity of orange juice vs. dull smokiness of cigarette) seemed to be intriguing/funny to me. i&#39;m thankful it reminded me of one of my best friends from college, z, who during our freshman year liked to play the rufus wainwright song &quot;<a href="https://www.youtube.com/watch?v=d5CLmflrwIA">cigarettes and chocolate milk</a>&quot; on repeat while smoking cigarettes (i&#39;m thankful to remember that benson &amp; hedges was his brand) and drinking chocolate milk. </p>
+<p>i&#39;m thankful that on saturday morning, a little while after i watched with fondness our neighbor with his cigarette and orange juice, i came back through the kitchen and looked out at the yard and saw that he had paused from laying a stone border around the dirt plot of the garden to talk happily with the weird guy who lives in the house behind my neighbor and who always walks around with a large green tropical bird on his shoulder. i&#39;m thankful how happy it made me on that saturday morning (i&#39;m thankful that saturday mornings are the happiest time of the week for me, the time that feels most filled with the possibility for joy) to see that the weird guy who always walks around with a large green tropical bird on his shoulder was standing next to a small woman who was wearing a large blue tropical bird on her shoulder. i&#39;m thankful that they were all having a nice saturday morning conversation. i&#39;m thankful to hope that everyone weird (which is everyone, in some way) can eventually find a person to be weird with them if that&#39;s what they want.</p>
+<p>i&#39;m thankful that when our neighbor went in for dinner last night, which was hours after we ate dinner (homemade burritos), i finally went to take out the trash. i&#39;m thankful that before i went out, i remembered to grab one of the yellow tax stickers to affix to the handle of the trashcan and also a bag of leftover okra which had gone soggy and rotten in the crisper and i had noticed while we were making dinner. i&#39;m thankful that we have a mud room off the kitchen where we can keep our shoes and our bikes and try to keep from tracking dirt and mud into the house, which i like to keep as clean as i can. i&#39;m thankful for the wood paneled walls of the mudroom because i think wood paneling is funny for some reason. i&#39;m thankful for the way the door to the backyard from the mudroom always sticks a little, which i sometimes find annoying and sometimes find endearing, an example of the house&#39;s personality. </p>
+<p>i&#39;m thankful that though the ground was wet and muddy from the day&#39;s rain, our yard has a stone path i could carry the trashcan along it and up the stairs to the driveway without mucking up my shoes. i&#39;m thankful that the garbage can was almost too overstuffed for the lid to fit but that i was able to mostly smush down the garbage inside to get it on there. i&#39;m thankful that, pleased with this fit, i started to pull the garbage can down our gravel drive way and one of its plastic wheels caught awkwardly somewhere and tipped over a bit, knocking off the loose lid and spilling some garbage onto the ground, including the bag of slimy okra and the wet peel of the avocado from the guacamole i&#39;d made for our burritos and the skins of some onions and paper towels soaked with all of the above and more gross garbage liquid. </p>
+<p>i&#39;m thankful that i reacted quickly and shifted my weight and caught the trashcan before it fell over completely and dumped much more trash into the gravel. i&#39;m thankful that even though it was gross, i picked up the trash that had fallen and shoved it into the bag on top, which i had not tied securely enough because i was rushing and lazy (i&#39;m thankful for a reminder of the importance of tying garbage bags securely), and tied it securely. i&#39;m thankful that because i was holding the yellow tax sticker in my right hand when i started picking up the garbage, i got it garbagey and bent but not so garbagey that it wasn&#39;t usable. i&#39;m thankful i took a breath and shoved it in my pocket and put the lid back on the garbage can and started down the driveway.</p>
+<p>i&#39;m thankful that, as i walked the trashcan down the driveway, trailing its weight behind me, i noticed the way the evening sky looked in the east. i&#39;m thankful there were a misty shelf of clouds in the distance and they were dark grey clouds but also light was diffusing through them (infusing them, it felt like) in a way that made them more of a slightly smoky red color that seemed beautiful in a gerhard richter kind of postmodern decay way, especially with them framed against the slate gray sky around them and the faint lights of downtown below. </p>
+<p>i&#39;m thankful that i paused to recognize their beauty and to recognize that i wouldn&#39;t have noticed it if i hadn&#39;t come outside to take out the garbage, which was something i didn&#39;t want to do and had put off not only because our neighbor was outside, but also because i just didn&#39;t want to do it. i&#39;m thankful that i briefly fantasized about being a painter, even though i&#39;m not good at painting, so that i could capture the tonalities and textures of the sky in its current configuration. i&#39;m thankful that sometimes i take pictures of the sky with my phone when it seems particularly beautiful, but the pictures never really capture what i&#39;m seeing or feeling, never seem close or big or rich enough, which is why i fantasize about being a painter, to be able to make pictures of skies with feelings the way that turner or monet or van gogh do.</p>
+<p>i&#39;m thankful that when i got the trashcan down to the curb, i reached in my pocket to get the yellow tax sticker to stick around the handle of the trashcan and it wasn&#39;t there anymore. i&#39;m thankful that i quickly reached into all of my pockets several times to try to find the yellow tax sticker and it wasn&#39;t there anymore. i&#39;m thankful that i figured it must have fallen out of my small pockets at some point along the driveway, so i walked back up watching the ground until i got to where i had spilled the trash. </p>
+<p>i&#39;m thankful that no matter where i looked, i could not find the yellow tax sticker, even though i was not thankful for this at the time. </p>
+<p>i&#39;m thankful that i thought about it and realized, in between a) realizing the sticker was in my hand while i was picking up the trash and that i was getting trash on it, as i described earlier, and b) finishing putting the trash back and putting the lid back on the trashcan, that i must have put the yellow tax sticker in the trash. i&#39;m thankful that i stood there at the top of the driveway looking angrily down at the gravel and pondered whether the trash sticker, which cost $2, was worth sticking my hand in the trash again to retrieve the yellow tax sticker, how i weighed the indignity of it against the fact that $2 was still money and that i had already soiled my hands with trash anyway, that they wouldn&#39;t be getting &quot;dirtier&quot; anyway. </p>
+<p>i&#39;m thankful, after pausing to consider this, for the privilege to decide that i did not want to dig through the trash for the yellow tax sticker, not because of the grossness of digging through the trash but mostly because of the prospect that maybe i had somehow lost it somewhere else and that i would go down the driveway to the curb and dig through the trash only to find that it wasn&#39;t there and i would have to go back up and into the house anyway to get another yellow tax sticker, which seemed at that moment like the worst thing that could possibly happen in the world.</p>
+<p>i&#39;m thankful when i went through the back door, i took off my shoes in the mud room so i didn&#39;t track wet dirt into the house, even though i really wanted this job to be over already and having to take off my shoes and put them back on again after getting another yellow tax sticker off the fridge made it longer. i&#39;m thankful that nike frees, which are the only shoes i wear except for formal occasions, are soft and easy to work your foot into without having to lace and unlace, which at least &quot;saved&quot; me a little time.</p>
+<p>i&#39;m thankful that as i went down the driveway again to put the yellow tax sticker on the trashcan, i looked up again at the ashy red clouds. i&#39;m thankful that near the top of the driveway, i was still annoyed enough about losing the trash sticker that they didn&#39;t impress me as much, but by the time i got down to the curb, i was happy to be there at the trash can and threading the yellow tax sticker through the handle and peeling off the little square covering the adhesive and closing the loop, thankful for the way that closing the loop gave a feeling of conclusion to the whole tiny silent ordeal i had endured. i&#39;m thankful that i looked over my shoulder from the curb at the ashy red clouds one more time, trying to capture them in my mind, then set off up the driveway</p>
+<p>i&#39;m thankful that when i looked up the over the hill of the driveway and above the trees in our backyard and the houses of our neighbors, i saw, in what looked like a ragged hole torn out of the gray paper of the clouds, a small circle-ish space of pure blue sky filled with a few fluffy white platonic ideal clouds. i&#39;m thankful that i thought of byzantine icons (because of the shape of the hole and the jewel-like nature of what it contained) and of the ceiling of the sistine chapel, the image of god living life to adam (i&#39;m thankful that even though i just looked it up and there aren&#39;t fluffy clouds and blue skies there like there are in my memory, the connection my brain made then still reflects what felt holy about the moment). i&#39;m thankful for the moment i had standing there and looking up into the blue musing on the strangeness that the sky to the west could look a certain way, but that if i turned around, the sky to the east could feel like it belonged to an entirely different world</p>
+<p>i&#39;m thankful that when i got inside and peeled off my jeans, the yellow tax sticker i thought i&#39;d lost fluttered out of my pocket onto the floor.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-julia-weston.html" class="btn btn-secondary">← thank you notes (julia weston)</a>
+        <a href="/letters/thank-you-notes-314.html" class="btn btn-secondary">thank you notes 3/14 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

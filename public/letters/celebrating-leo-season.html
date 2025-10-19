@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="celebrating leo season">
+  <title>celebrating leo season - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>celebrating leo season</h1>
+        <time datetime="2024-08-09T14:48:39.453584Z">August 9, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><a href="https://buttondown.com/dire/archive/july-2024/">beautiful new newsletter from deborah</a> celebrating leo season, her seat of power, “<em>the glorious thick of summer, when it’s so hot that the evening cool air, if you’re lucky, feels delicious,</em>” and including pictures (in light and words) of her tattoo, flowers (“<em>their tight buds give way to massive cupped petals (that&#39;s what she said) that shift from a magenta red to ombre blush pink to a yellow cream to white, until they trail petals, shed pistils</em>”), trips (camping and seattle), and food we ate (so many nectarines) as well as her favorite song off the most recent billie eilish album (for me it’s still a tie between “birds of a feather” and “l’amour de ma vie”).</p>
+<p> <img src="/api/images/188" alt="image.png"> </p>
+<p>new Things Reasonable People Love That I Hate: badminton, which i was reminded by TikTok clips from the Olympics gym class badminton was always the worst gym class sport because the shuttlecock is so small and there’s no faking it like you can with ball sports and not only are you losing for yourself you’re losing for whoever got assigned to be your partner. (could also have said “the Olympics” as a Thing I Hate but i don’t actually hate them i just don’t care at all. of the <em>mad men</em> clips and quips that live rent free in my head is the scene in the elevator where ginsberg says &quot;<em>i feel bad for you, don</em>&quot; and don says &quot;<em>i don&#39;t think of you at all</em>.&quot; whenever we toast something we also almost always do don draper saying &quot;<em>it&#39;s toasted</em>&quot; in his pitch for the lucky strike campaign)</p>
+<p> <img src="/api/images/186" alt="image.png"> </p>
+<p>on deborah&#39;s birthday weekend we went camping for the first time in our adult lives with our closest friends who go camping a lot and have always wanted us to join them and it was really nice, even if most of what was nice about it to me was hanging out with our closest friends for a multi-day chunk of quality time as much as it was the fact that we slept and ate outdoors, which i can take or leave! but also the weather was perfect and the vibes were great and after a year of not having any breakfast cereal i had some raisin bran as camp breakfast and it really hit the fucking spot. i&#39;m thankful for the catchphrase of the trip, which was &quot;my eyes&quot; (from ec managing to repeatedly keep getting smoke in her eyes from the campfire). </p>
+<p> <img src="/api/images/187" alt="image.png"> </p>
+<p>last night we were watching season 2 of <em>90 day uk</em> (max) and there is this colombian musician with a giant floppy afro named jose who is one of the most ridiculous characters in the history of the show (which if you&#39;ve ever watched this show is really saying something!!) and his catchphrase is singing &quot;i love you chicken&quot; and he has this bleating laugh that he does constantly that i was mimicking repeatedly to laughter from deborah until i did it too much and she said it was &quot;anti-hot&quot;, which is like not a &quot;safe word&quot; but the inverse like when she says it to me i know to stop because who would ever want to be not just not attractive but &quot;<em>anti</em>-hot&quot;.</p>
+<p> <img src="/api/images/189" alt="image.png"> </p>
+<p>thankful for the similar moment recently when she told me that i look uglier when i haven&#39;t shaved (or this is what i took it/embellished it as for telling but actually she said i look younger when i <em>have</em> shaved), which i receive as a gift since i always want to look as un-old/ugly as possible (as long as what i have to do to achieve that requires very little effort on my part). coworker confessed to me that she meant to DM someone “I’M SCREAMING” but accidentally sent “I’M CREAMING”. an embarrassing sex injury i thought was going to result in the most awkward doctor’s appointment of my life seems (fingers crossed) to have cleared itself up (and also now i own more supportive underwear lol). second health scare of waking up to find strange orange-red stains inside the skin of my hands turned out to be because actually i had recently started a new multivitamin that provided 432% of daily beta-carotene. i&#39;m thankful as ever for prozac, gabapentin, amitriptyline, zyrtec, and atorvastatin. i&#39;m thankful for popsicles.</p>
+<p> <img src="/api/images/190" alt="image.png">   </p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-89/">2016</a> (<em>the most popular piece of content i have ever created, curtis/live, that when i couldn&#39;t meditate, i did breathing exercises instead and they helped</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/8917/">2017</a> (<em>to have gotten to meet a bunch of people who i&#39;ve exchanged thousands of words with but whose voices i&#39;ve never heard; to have overshared as i always do in every social situation; a long talk at a warm pool with my friend e</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/89-2094/">2018</a> (<em>morning in the summer, the special quality of the air, damp and cool, and how the noises of engines feel blunted and contained, for the softness of the light, the sense of possibility</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/clean-laundry/">2022</a> (<em>d and i meditated for ten minutes this morning after breakfast, clean laundry, strawberry shortcake with whipped cream</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/good-natural-light.html" class="btn btn-secondary">← good natural light</a>
+        <a href="/letters/the-distance-from-the-sentence-to-your-eye.html" class="btn btn-secondary">the distance from the sentence to your eye →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

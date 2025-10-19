@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/6">
+  <title>thank you notes 2/6 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/6</h1>
+        <time datetime="2016-02-06T00:00:00Z">February 5, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that the all of the one hundred branded plastic cooler bags that a faculty member bought to give away to attendees at a conference give off an incredibly strong industrial solvent smell. i&#39;m thankful that when i was told about the smell by the faculty member and my coworker, i thought it couldn&#39;t be that bad, but then the faculty member unsealed one of the cardboard cartons they were packed in and gave me one of the bags and after having it under my desk for a few minutes, i started to feel slightly light headed, my sinuses swollen, my pulse in my temples. i&#39;m thankful that our discussion about the smell lead the faculty member to talk about how the smell reminded her of the phenomenon of huffing glue and led her to try out loud for several minutes to remember <a href="http://www.imdb.com/title/tt0115906/">a movie that she saw in the 90s</a> where laura dern plays a character who huffs glue (i&#39;m thankful for emily gould&#39;s concept of &quot;<a href="http://www.emilymagazine.com/?p=417">mind google</a>&quot;)(i&#39;m thankful for another recent bonding experience the faculty member and i shared talking about how a student has hair like <a href="https://www.google.com/search?q=kid+%27n+play&espv=2&biw=718&bih=828&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiQia3rr-PKAhWM8CYKHROZBkMQ_AUIBigB#tbm=isch&q=kid+%27n+play+hair">kid &#39;n play</a> and for her happiness that i got that reference, which made her feel less old). i&#39;m thankful that the faculty member kept saying the word &quot;huffer&quot; over and over again just for the joy of saying it and thankful that i remembered her once telling me with great nostalgia about how she, now a wholesome mother of two and professor of business management, was once a teenage punk with dyed hair and shredded, safety-pinned clothes and her favorite band was suicidal tendencies; i&#39;m thankful these threads of thought combined to remind me to remind her of the classic ramones song, &quot;<a href="https://www.youtube.com/watch?v=FwJnnf1Ogcw">now i wanna sniff some glue</a>.&quot; i&#39;m thankful for the roundtable discussion we had in the office of ways to get the smell out of the cooler bags (purell wipes, baking soda, dryer sheets, tea tree oil, lemon juice) and that this promises to be an ongoing project.</p>
+<p>i&#39;m thankful that i recently remembered the brief period in my childhood when i took an unsuccessful interest in building model airplanes. i&#39;m thankful that i tightened the brakes on my bike and lubed the chain, which has significantly improved my riding experience. i&#39;m thankful for the giant industrial-sized vats of machine lubricant i saw on the loading dock when i was leaving work yesterday. i&#39;m thankful for the moment last night when d was skyping with e while i sat nearby reading twitter and she asked e &quot;have you ever <em>really</em> watched <em>beauty and the beast</em>?&quot; and e paused and then said, &quot;well...i&#39;ve seen it. i don&#39;t really know what you mean&quot; and then e and i both teased her about what it meant to really watch _beauty and the beas_t with heart and soul. i&#39;m thankful for the videos that jk sent us from seoul of her beautiful daughter playing in an office chair.</p>
+<p>i&#39;m thankful for <a href="http://greatdebates69.podbean.com/e/70-if-youre-in-la-its-not-worth-eating-at-a-white-person-restaurant/">the most recent episode</a> of <a href="http://greatdebates69.podbean.com/">this podcast</a>, in which, in a debate over the worth of being a patron of &quot;white person restaurants&quot; in LA, david chang, after setting verbal fire to the idea of in-n-out, calls shrimp cocktail &quot;the pinnacle of white people food.&quot; i&#39;m thankful to have learned from heidi montag&#39;s snapchat that she is currently reading <em>sense and sensibility</em>. i&#39;m thankful for this buzzfeed list of <a href="http://www.buzzfeed.com/bimadewunmi/sign-up-and-get-your-life#.bjQRPQdm1">tinyletters you should subscribe to</a>, which includes some of my <a href="http://tinyletter.com/jeanhannah">current</a> <a href="http://tinyletter.com/cassiem">favorites</a> and some i&#39;m <a href="http://tinyletter.com/nocomplaints">excited</a> to <a href="http://tinyletter.com/femiwitch">subscribe to</a> (i&#39;m thankful for the promise of the concept of &quot;bath magic&quot;). i&#39;m thankful i learned on <a href="http://tomorrowpodcast.com/post/137598789790/after-a-great-betrayal-by-former-tomorrow-producer">this podcast</a> that katie notopoulos and other editors of buzzfeed maintain a radioactively NSFW tumblr called <a href="http://worstthingsontheinternet.tumblr.com/">worstthingsontheinternet.tumblr.com</a> (i&#39;m thankful that i cannot stress enough how not safe the blog is). i&#39;m thankful for katie notopoulos&#39;s advocacy on the issue of <a href="http://www.buzzfeed.com/katienotopoulos/kylie-jenner-needs-to-stop-snapchatting-while-driving#.ig9mqv741">kylie jenner snapchatting while driving</a>, which is a horrible thing that now i can&#39;t stop seeing when i watch her snapchats. i&#39;m thankful for this buzzfeed list of <a href="http://www.buzzfeed.com/elliewoodward/no-effort-necessary#.hbAaV8jeB">sick kourtney kardashian burns</a>. i&#39;m thankful, in particular, for items 14, 20, 26, and 34.</p>
+<p>i&#39;m thankful that, later in the day, to make conversation while he waited for the department chair to finish an appointment, a faculty member told me about how his daughter has been having stomach problems and that the doctors want to perform an endoscopy. i&#39;m thankful i confided in him about my upcoming endoscopy for similar issues. i&#39;m thankful that he, who owns a small family farm, told me that he was talking about his daughter&#39;s plight to a friend of his who is an agricultural veterinarian and that the agricultural veterinarian told him that his daughter might have a gallbladder issue and that he feeds dandelion paste to horses who have a similar issue and recommended that the daughter try drinking dandelion tea for a few days. i&#39;m thankful that, to the faculty member&#39;s incredulity that his daughter should be treated like a horse, the veterinarian shrugged and said &quot;horses and people really aren&#39;t that different.&quot; i&#39;m thankful that on my way home, i stopped at the hippie market and <a href="https://twitter.com/dire/status/695661136989925376">bought</a> a tiny glass bottle of dandelion tincture (and, for good measure, a small plastic package of dried aloe), since it is my hobby spend money on fantasies like this (i&#39;m thankful that i have come to appreciate d&#39;s love of buying new cosmetics as being a kind of parallel interest to my love of buying weird supplements and herbs). i&#39;m thankful to imagine that if i was wealthy, i would drink green juice with every meal and eat bee pollen and so many things that people made fun of in <a href="http://www.elle.com/beauty/health-fitness/a28600/amanda-chantal-bacon-moon-juice-food-diary/">this article</a> all the time. i&#39;m thankful for <a href="https://twitter.com/TaylorLorenz/status/695751985631514624">this impassioned rant</a> about judging what people eat and to imagine the desperation to feel better in the past which drove me to pace aisles at the hippie market filling a shopping basket with raw honey and organic cherry juice and licorice root.</p>
+<p>i&#39;m thankful for <em>t<a href="http://www.amazon.com/Vegetarian-Novel-Han-Kang-ebook/dp/B00X2F7NRI/ref=sr_1_1?s=books&ie=UTF8&qid=1454769060&sr=1-1&keywords=vegetarian+han+kang">he vegetarian</a></em> by han kang, which i finished reading this morning and which you should read very soon if you want to read an incredible dark and good novel about sex and art and life and the soul. i&#39;m thankful for <a href="http://www.nytimes.com/2016/02/03/books/the-vegetarian-a-surreal-south-korean-novel.html?_r=0">this profile</a> which alerted me to its existence. i&#39;m thankful that in the profile, the author describes the novel as the result of her exploration of &quot;<em>the spectrum of human behavior, from sublimity to horror</em>&quot; and how she &quot;<em>wondered, is it really possible for humans to live a perfectly innocent life in this violent world, and what would happen if someone tried to achieve that?</em>&quot; i&#39;m thankful to learn that the book was inspired by a line by a korean poet, who wrote &quot;<em>I believe that humans should be plants</em>.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-27.html" class="btn btn-secondary">← thank you notes 2/7</a>
+        <a href="/letters/thank-you-notes-25.html" class="btn btn-secondary">thank you notes 2/5 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

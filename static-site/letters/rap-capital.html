@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="rap capital">
+  <title>rap capital - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>rap capital</h1>
+        <time datetime="2022-12-04T00:00:00Z">December 3, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>if you are like me and your spotify wrapped, which on an intellectual level as a content creator and software engineer you respect as an ingenious and well-executed way of transubstantiating bulk data collected from you into a curated and highly shareable &quot;gift&quot; for you, was, on a visceral level, as it has increasingly been for the past few years, ultimately just a depressing reminder that you are a year older and more uncool (&quot;washed&quot; he says trying to de-age himself through language that&#39;s probably already washed or in the process of becoming washed) than you were the year before and the year before that and the year before that and so on and you are a person who throughout your adult life has been very invested in and proud of your own coolness and wide-ranging cosmopolitan taste and general command of the zeitgeist in all forms of art but especially in music which is the coolest art, such that for one example your initial reaction to the <em>wrapped</em> teaser modal last month reminding you that your most-listened to track the previous year was willow&#39;s &quot;<a href="https://open.spotify.com/track/6Grbm8wC1dfrUxip7x3sC7">gaslight&quot;</a>, which you listened to apparently 27 times in 2021 (when it felt to you that you listened to it many more times than that!), was, knowing intimately from years working in technical support how fuzzy SAAS math and record keeping can be, to post an instagram story with a screenshot of the gaslight modal saying there should be a german word for the delta between how much spotify says you listened to something and how much you <em>feel</em> you listened to it, to which your friend ec lovingly owned you by immediately replying to the story with 🤔 (i.e. &quot;gaslight&quot; is painfully ironically the exact word you were grasping for) and if by chance you are, like me, also a person who, in addition to listening to less music every year and when you listen to new music mostly listening to the same stuff over and over again (and often in album form which totally wrecks <a href="https://open.spotify.com/playlist/37i9dQZF1F0sijgNaJdgit?si=zIf-4sZpRtWd4FFcBXL65w&nd=1">your spotify year-end playlist</a> because instead of a varied cornucopia that you can screenshot segments of as illustrations of your multitude containment, it&#39;s just mostly waves of slices of the same 5 albums for 6 hours (still love you clairo!)) rather than seeking out new things (or when you find a stray new thing you love play it to death without digging deeper into the artist&#39;s oeuvre, whereas when you were younger find a new artist would have sent you to downloading their entire catalog off of rapidshare links on blogs and burning it to a sharpied MP3 CD, unable to imagine a future where everything is literally at your fingertips instantly wherever you are and you don&#39;t even <em>try</em> to access it), if, in addition to your musical senescence, you have also read fewer books this year than probably any other year of your adult life (other than maybe the year you lived in korea pre-kindle and had access to a very limited and horrifically paulo coelho-heavy selection of english language books) probably because your brain has been destroyed by slack and your phone and the paradox of unlimited choice, if you are like me in any of those ways or you know just want to read a good book, you should read joe coscarelli&#39;s <em><a href="https://www.simonandschuster.com/books/Rap-Capital/Joe-Coscarelli/9781982107888">rap capital</a></em>, a book which does a number of different and interesting things (a socio-historical portrait of atlanta, a fly on the wall view of contemporary songwriting and music production (there is a chapter with migos in the studio which ends with an amazing metaphorical mic drop), a close reading of touchstones of the genre (raindrop, droptop), an affecting and intimate character study of some young artists struggling to make it) while also being a total page-turner which helped you break through a slump where you hadn&#39;t read an entire new book in an embarrassing (to you, as with all of this no one else cares) amount of time and also more importantly made you feel marginally but tangibly less uncool than you did before reading it, which, in the wake of being unwrapped and embarrassed by what&#39;s inside (while also knowing that at some point you will inevitably progress in the stages of grieving your youth from bargaining and depression to acceptance, but not yet goddamnit), is a great gift that you are thankful for.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/that-she-did-not-get-hit-by-a-car.html" class="btn btn-secondary">← that she did not get hit by a car</a>
+        <a href="/letters/vacuum-cleaner-battery.html" class="btn btn-secondary">vacuum cleaner battery →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

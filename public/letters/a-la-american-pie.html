@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="à la American Pie">
+  <title>à la American Pie - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>à la American Pie</h1>
+        <time datetime="2024-02-15T16:50:35.919191Z">February 15, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/389" alt="image.png"> </p>
+<p>for valentine&#39;s day charcuterie board, deborah made focaccia for the first time (from <a href="https://www.bonappetit.com/recipe/easy-no-knead-focaccia">this recipe</a>, minus the garlic butter, which (somehow i am saying this about garlic butter) was not necessary) and it was so fucking good—thick, rich, salty, wonderful crumb. bread is never as good as the first time but i still can&#39;t wait to eat the leftovers tonight (we&#39;re gonna try reheating in the air fryer, which does such magic with pizza crust).</p>
+<p>telling deborah the story of how my mom made focaccia (different recipe) growing up and she taught me how to make it as a life skill type thing and one night when i was a teenager after my parents had gone to bed i made a ball of soft dough so that i could try to masturbate with it à la American Pie (it was not a pleasant experience and the next day my mom asked me why i had made and thrown away the dough (which i had not done a good enough job of hiding), whether something had gone wrong) and deborah telling me that i had already told her this story before (but i searched the archives and i don&#39;t think i&#39;ve told you).</p>
+<p>(also telling deborah for the nth time, after i praised the smell of the focaccia and she said something offhand about being happy to be baking this for me since she can&#39;t bake desserts for me anymore, that if she never bakes anything for me ever again in my life it would be 1000% fine and i would not love her any less but i also appreciate that she wants to find ways to manifest her love in the form of objects)</p>
+<p> <img src="/api/images/388" alt="image.png"> </p>
+<p><a href="https://www.thecut.com/article/marriage-divorce-should-i-leave-my-husband-emily-gould.html">this incredible essay by emily gould</a> about her marriage and the literature of divorce which longtime readers of this newsletter may recognize resonates deeply with a period in my marriage with deborah and by deeply i mean like eerily fucking specifically including for example when we went to couple&#39;s therapy for the first time after deborah was out of the hospital but before she had stopped (what felt very much like) hating me and the therapist was clearly trying to triage and assess us and near the end of the session commented specifically on how the fact that i looked at deborah when she spoke meant that there was still love there and our situation wasn&#39;t nearly as dire as many of his clients (which omg jfc what a low bar and also me getting this praise pissed deborah off at the time but is now something we refer back to with amusement (thankful for the power of time!!!))</p>
+<p> <img src="/api/images/390" alt="image.png"> </p>
+<p>&quot;<a href="https://blgtylr.substack.com/p/sugar-in-the-blood">sugar in the blood</a>&quot;, this newsletter by brandon taylor about his body and recent changes to it which emily once wrote an email to me that a post of mine was &quot;what blogs are for&quot; which i proudly put as a blurb in the sidebar of my wordpress.com blog and i feel like this issue of <a href="https://blgtylr.substack.com/">sweater weather</a> is what newsletters are for—it just fucking <em>goes</em> there, goes everywhere, leaves nothing on the table, and because of the intensity of the oversharing (and the absence of a need to fit it into a word count or a style guide or a fact check or just the perspective and approval of an external editor (which is not to say that these things can&#39;t be valuable in other contexts)) is able to say so much (see also: mel&#39;s recent (subscriber-only) <a href="https://melraj.substack.com/p/tiddies-schmiddies?utm_source=substack&publication_id=2056512&post_id=138376452&utm_medium=email&utm_content=share&utm_campaign=email-share&triggerShare=true&isFreemail=false&r=bgp">letter about her big tits</a>).</p>
+<p> <img src="/api/images/392" alt="image.png"> </p>
+<p>mark leidner&#39;s poem <a href="https://poetrysociety.org/poems-essays/in-their-own-words/on-having-having-a-coke-with-you-with-you">&quot;having &#39;having a coke with you&#39; with you&quot;</a>, which i read for the first time yesterday after someone posted it on instagram and he reposted it (which was rare since for whatever reason his stories are like 95% lord of the rings memes, which somehow i consistently enjoy looking at despite not really having a relationship with lord of the rings because he does pick pretty good ones!) and then in wanting to share with you i found it shared at the link above with this little essay about it by the author:</p>
+<blockquote>
+<p>I don’t often write about my so-called real life, but this story seemed to illustrate something of the power of poetry, so I think I wrote it as a tribute to poetry as much as to love. In general, I don’t think life or love or poetry is made up of singular, pivotal turning points. They are processes stretched over time and comprising feelings and decisions and materials too complex to be packaged in anecdotes. But in this case, this moment leapt out to me because it actually did happen this way; a single anecdote actually did become a kind of epic hinge in my life. When I reflect on this moment, I feel inspired by love, by its ability to inspire the good kind of risk-taking, and the happy surrender to a mind outside your own simply because you respect and admire it. To remember it to myself and be able to preserve it against the haze that all memories fade into was another objective of the writing. Finally, in the past I’d had a love–hate relationship with Frank O’Hara’s poetry. I didn’t particularly like it for a particularly stupid reason: I didn&#39;t want to like anything so many other people seemed to love. This was ordinary ego and envy joining to curb my enthusiasm for the very poet who might have had the most to teach me, in the same way many people like to hold a suspicion of things other people enjoy. So that she recited this famous poem and helped me see its complex beauty in a way that in turn helped me confront the narrowness with which I was reading its famous poet, also felt redemptive. I like the notion that poetry itself, or perhaps a kind of universal soul that poetry in all its forms represents, has a will that resists our narrow human understanding—except in fleeting moments when it reveals its patterns to challenge the pathetic barriers we (who as poets ought to be the most open to its forces) put up against it out of arrogance. Now of course when I read Frank O’Hara, I marvel at the cutting truths and exuberant wisdom and formal innovation and spiritual kinship that was always there but which I had always been shut to—until I actually listened to someone else whose voice I loved say the same words he’d been saying for all these years.</p>
+</blockquote>
+<p> <img src="/api/images/391" alt="image.png"> </p>
+<p>from my early twenties my second frank o&#39;hara musical setting, which is of <a href="https://drive.google.com/file/d/0B2VRwWG-2y5sTDhTMGhyeTVBN3c/view?usp=sharing&resourcekey=0-pDj08xmvD-FdNU4GKd9Txw">&quot;having a coke with you&quot;</a> recorded before i had ever really been in love and which i think is much less artistically successful than my <a href="https://www.instagram.com/absence.of.field/reel/C2tvkkfrOBI/">&quot;ode to joy&quot;</a> (i had this idea of merging a reading of the text of the poem in the verse with a sung chorus that somehow communicated the exuberance of the poem in a more contemporary pop-punk idiom but i don&#39;t really like it and wish i just had done the verses) but i still look back on it with some fondness as i do most of my archives.</p>
+<h2>Previously on this day</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-215/">2016</a> (<em>red lobster, babysitting, chinese nickname</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/215-6514/">2017</a> (<em>stardew valley, parable of the sower, getting better at CSS</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/talissa/">2018</a> (from <strong>talissa</strong>) (<em>bandung women&#39;s march, drag race all stars, being alive for 23 years</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/daydream-repeat.html" class="btn btn-secondary">← miso says free palestine</a>
+        <a href="/letters/haims-valentine.html" class="btn btn-secondary">haim&#039;s valentine →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

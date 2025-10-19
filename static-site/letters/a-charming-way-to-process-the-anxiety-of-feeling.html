@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a charming way to process the anxiety of feeling late">
+  <title>a charming way to process the anxiety of feeling late - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>a charming way to process the anxiety of feeling late</h1>
+        <time datetime="2024-03-05T16:17:06.073137Z">March 5, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/353" alt="image.png"> </p>
+<p>i&#39;m thankful we got an unexpected christmas package from my brother and his wife (which included among other things: an otamatone, chocolate truffles, foaming hand soap that dispenses in the shap of a flower, and a stuffed pig for miso) and by way of that to provide you with a great tactic if you&#39;re trying to send someone a holiday gift but you&#39;re really late doing so and feel awkward about it which is to buy a card for the original holiday (in this case a christmas card) and then strike through where it says &quot;have a merry christmas&quot; and write &quot;happy new year&quot; and then strike through that and write &quot;happy valentine&#39;s day&quot; and then strike through that and write &quot;happy new year&quot; and then strike through that and write &quot;lunar new year&quot; and then strike through that and write &quot;happy mardi gras&quot; and then strike through that and write &quot;happy president&#39;s day&quot; and then strike through that and write the name of the nearest holiday to when you are sending the package (in this case, leap day). imo you never have to be apologetic when sending someone a gift but i thought this was a charming way to process the anxiety of feeling late.</p>
+<p> <img src="/api/images/355" alt="image.png"> </p>
+<p>i&#39;m thankful that my brother was telling me recently that he and his wife were taking turns playing a game on their PS5 and i reminisced about how truly bad we were at taking turns when we were children. i&#39;m thankful that right now deborah and i are watching the new orleans season of <em>the real world</em> from 2000 which is probably the canonical season for me? by which i mean it was really in the sweet spot of me as a very sad isolated teenager trying to absorb what a fuller richer life could possibly be like from the endless daily marathons of MTV which were my actual life. i&#39;m thankful to remember watching Total Request Live with true devotion and as an extension of that to think about the eras of infatuation with new york over my lifetime, which i would roughly characterize as 1) childhood love of From The Mixed Up Files of Ms. Basil E Frankweiler, 2) TRL, 3) college love of auteur cinema including regrettably Woody Allen grimace emoji, 4) 2007-2008 Gawker Media and related online worlds. i&#39;m thankful to think after being sure that i would want to live in new york during all those times to know that i really don&#39;t and i&#39;m thankful that instead it&#39;s my brother who lives there and loves living there now!</p>
+<p> <img src="/api/images/356" alt="image.png"> </p>
+<p>i&#39;m thankful that my mom, who dropped out of college to give birth to and raise my brother and i and who therefore has in her second life has had a bunch of jobs for which she was underpaid and underappreciated, has a boss&#39;s boss at work who seems to really support and look out for her and that my mom just got an offer letter for a promotion at work to replace her boss (who is leaving to move out of state) that will result in her getting paid better and doing less physical labor and having (as much as anyone can, i guess) more job security. i&#39;m thankful that at the end of the day yesterday i finally merged my endless PR and that though i had a &quot;fika&quot; social meeting scheduled for today, i realized it was auto-scheduled by the work socialization app we use rather than something the other person requested and so didn&#39;t feel that bad to cancel it with a note so that i can stay heads-down on the next thing i&#39;m working on. i&#39;m thankful when i get frustrated with how things are at work to also have moments of perspective when i remember how happy i am that at the end of the day my job is (amid the other bullshit) writing code and building things.</p>
+<p> <img src="/api/images/354" alt="image.png"> </p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/tyn-fsa3/">2016</a> (from <strong>fsa</strong>) (<em>tropical rain, catholic upbringing, tuppersex</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/3517/">2017</a> (<em>horizon zero dawn, john ashbery, berger&#39;s description of light</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/3518/">2018</a> (<em>pepto bismol, the stormlight archive, &quot;king of my heart&quot;</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/34/">2019</a> (<em>getting better at playing fetch</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/a-really-good-fucking-thing-so-something/">2021</a> (<em>troye sivan, jQuery, sativa</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/the-official-embarrassment-of-being-represented.html" class="btn btn-secondary">← the official embarrassment of being represented abroad by short people</a>
+        <a href="/letters/compliment-sandwich-artist.html" class="btn btn-secondary">compliment sandwich artist →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

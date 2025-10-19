@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="(L)(8)">
+  <title>(L)(8) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>(L)(8)</h1>
+        <time datetime="2017-05-26T00:00:00Z">May 25, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>[TW: self harm, suicide] </p>
+<p>I&#39;m thankful to have reached the end of another teaching year, generally less frazzled than the same time in 2016. Maybe that means I&#39;m getting better at this job, or at least better at spinning plates. I&#39;m thankful to already have some (new) teaching lined up next year, since having a contract sorted in advance greatly enhances my chances of getting my current job back in September. </p>
+<p>I&#39;m thankful to have been accepted for two conferences this summer, one of which may as well have been made for me, since it caters to my tiny niche. I&#39;m thankful that, instead of being last in the programme as I usually am, when everyone is tired and wants to go home, I am first up at both conferences. I&#39;m thankful I&#39;m getting a lift down and back to one of them, which saves me about £400 in travel fees. I&#39;m thankful but terrified that the keynote speaker at my niche conference is the guy whose work basically inspired my whole academic career path by accident. I&#39;m thankful he’s entered into dialogue with me on twitter when I&#39;ve talked about our mutual interest, so at least I can go ‘hi I&#39;m (so and so) on twitter’ when I meet him.</p>
+<p>I&#39;m thankful G and I finally booked a holiday abroad, after 7 years. I&#39;m thankful we&#39;re going to Berlin, and not France, so I get to experience somewhere new and don&#39;t have to play tour guide. </p>
+<p>I&#39;m thankful for ‘(The thing about trauma)’ (<a href="http://brennatwohy.tumblr.com/post/156764948019/the-thing-about-trauma">http://brennatwohy.tumblr.com/post/156764948019/the-thing-about-trauma</a>) by Brenna Twohy which is a beautiful punch in the gut of realisation, the description of my life I never knew I needed:</p>
+<p><em>Trauma sends you letters,</em></p>
+<p><em>without warning,</em></p>
+<p><em>for the rest of your life,</em></p>
+<p><em>usually disguised as something else—</em></p>
+<p>[...] </p>
+<p><em>just so you remember</em></p>
+<p><em>trauma knows exactly where you live—</em></p>
+<p><em>who did you think built the house?</em></p>
+<p>I&#39;m thankful for this perfect description of why I can&#39;t listen to Telephone by Lady Gaga any more, why I can&#39;t walk down certain streets without being hit with a maelstrom of memories that I thought I was fine with but actually, my brain just hides them from me until it can&#39;t avoid them; why [various situations] make me anxiously vomit, etc. I had never thought of it this way before. </p>
+<p>I&#39;m thankful to recognise that so much of my (still incredibly privileged) life and personality has been shaped by things that happened to me when I was a child and teenager, that would barely be considered ‘trauma’ but somehow my brain clung onto them and they blossomed into something that will live in me forever, sometimes receding, sometimes taking up all of my being. I&#39;m thankful that I developed coping strategies when I was very small and that those coping strategies have mostly held and mostly worked. I&#39;m thankful to wonder what I would be like if things had been different: nicer, less prickly, less quick to assume criticism, less paranoid, less afraid of failure, etc, and how those differences would changed my life. </p>
+<p>I&#39;m thankful that I was forced to tell G (a bit) about the time my brain fell off a cliff, since he thought I spoke Russian and I had to say, well no, actually what happened is that I went to uni Russian classes for a while and basically developed a phobia of entering the university and didn&#39;t go to classes much in the second term and eventually the pressure of the idea of failing and not being allowed to go on the year abroad necessary to complete my degree because of my stupid brain led to me having a small breakdown and trying to kill myself.  So I don&#39;t speak Russian, really. I&#39;m thankful he looked a bit pained at this since I have never told anyone the story in a non-jokey way, and tend to minimise the whole sequence of events because who cares, really. I&#39;m thankful I didn&#39;t tell him the detailed version since it would require a whole lot of explaining of seemingly crazy things and the use of emotional energy that I&#39;m not sure I have. I&#39;m thankful to realise I&#39;m telling the story here in the most minimalist way I can. I&#39;m thankful that my ability with romance languages meant I passed the year well without studying for those languages. I&#39;m thankful for Dr M the Russian teacher, who listened to my anguish once I forced myself into the classroom with 6 weeks to go before the exam, tried to reassure me and ultimately passed my exam in Russian (by two marks), even though I had to give up halfway through. I&#39;m thankful to be sitting right now in the same bench I sat at once I left that exam, with a lump in my chest stopping my breath. I&#39;m thankful to be able to sit here without panicking after almost a decade. I&#39;m thankful that I still see Dr M at work sometimes, and even though she must remember that day she never mentions it and is always very kind and pleasant. I&#39;m thankful to be able to sit in her office now, and to remember the first time I did it last year when being in the room with the many icons and Russian knickknacks made my chest constrict and I had to sit on my hands to hide the shaking. </p>
+<p>I&#39;m thankful I used my obligatory year abroad to rebuild myself from the ground up in a place where I was entirely free from preconceptions, and to make myself into someone closer to the person I would ideally be. I&#39;m thankful for my flatmate in Paris, J, and how we pulled each other through. </p>
+<p>I&#39;m thankful to stroke the Jesus-fish shaped scar on my wrist which is almost faded to nothing now, except for the tiny raised white bit where I started cutting but couldn&#39;t keep the pressure even. I&#39;m thankful that scar is right below the scar on my wrist veins from an IV line inserted when I was born which looks exactly like a power button, perfectly circular with a raised lump in the middle, and has grown with me so it is always in proportion, right in the middle of my wrist.</p>
+<p>I&#39;m thankful once again for this exercise of thank you notes where I seem to tell strangers things I would never talk about in any other context and have no other space to express. I&#39;m thankful that I usually have some definitively positive thank yous so that my notes aren&#39;t crushingly depressing or overly selfish (I&#39;m sorry if they come across as depressing or selfish). </p>
+<p>I&#39;m thankful for all I&#39;ve achieved in the 9 years that have passed since my brain fell off a cliff. I&#39;m thankful I&#39;m still here. </p>
+<p>- L (5/19/17). </p>
+<p><a href="http://tinyletter.com/thankyounotes/letters/l-7">previously</a></p>
+<p><a href="https://docs.google.com/forms/d/1X6z1T5sSBXxFpfGI7gPZzQIp_qgkDCsVVCLV4yrw1a4/edit">what are you thankful for?</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/sanaa.html" class="btn btn-secondary">← (sanaa)</a>
+        <a href="/letters/52517.html" class="btn btn-secondary">5/25/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

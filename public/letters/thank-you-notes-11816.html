@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 1/18/16">
+  <title>thank you notes 1/18/16 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 1/18/16</h1>
+        <time datetime="2016-01-18T00:00:00Z">January 17, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that we finally watched the movie <em>selma</em> last night. i&#39;m thankful for the times when an &quot;important&quot; movie also turns out to be a good movie. i&#39;m thankful for david oyelowo. i&#39;m thankful that i had the opportunity to experience martin luther king jr. anew through oyelowo&#39;s performance in the movie, to get to watch small moments in addition to the big ones we all know. i&#39;m thankful to watch him struggling with an ascot in a hotel room. i&#39;m thankful to watch him in a kitchen joyfully smearing preserves on the side of his plate in preparation for a biscuit. i&#39;m thankful to watch him pause in a dark hallway as he tries to find something to say to an old man whose son had just been brutally murdered. i&#39;m thankful to watch him listening to mahalia jackson&#39;s voice singing about deliverance through the telephone.</p>
+<p>i&#39;m thankful for the experience of teaching martin luther king jr. to middle school students in south korea in the fall of 2008, as i hoped and prayed from across the world that barack obama would be elected president of my country. i&#39;m thankful for the opportunity, in preparing for my classes, to read through king&#39;s work on the level of the line for the first time and find so many things in it. i&#39;m thankful how excited that made me and thankful that i got the chance to share that excitement with my students. i&#39;m thankful for part of <a href="https://songsaboutbuildingsandfood.wordpress.com/2009/09/04/great-american-__________/">this essay</a> from a long time ago, when i tried to describe the experience:</p>
+<p><em>the other video we watched was martin luther king jr.’s “i have a dream” speech. when i first started teaching this lesson, i would always preface the viewing of the “i have a dream” speech (or occasional readings of “letter from a birmingham jail”) by saying something like “i know you’re probably tired of hearing about martin luther king, but you know what, he’s important and so we’re going to watch this video anyway.”</em> </p>
+<p><em>this was, of course, a rhetorical feint (here, take this medicine, yeah, i know it doesn’t taste good, but you need it), but it also expressed basically how i felt about martin luther king, how when i was a child in school i kind of felt like he was force-fed to me year after year and i had had too much of him and i didn’t really need anything he had to offer anymore; i felt like he was kind of used up and gone, that his aura had dissipated. i’m not saying that mlk was useless or unimportant, of course, i’m just saying that when i was growing up and learning about a very simplistic image of him that he didn’t seem to have anything to offer me, which was fine, maybe i wasn’t the person he was supposed to offer things to anyway. there is some pithy and aphoristic saying about education about how if a teacher calls something a “classic” that immediately students want nothing to do with it (i don’t know the actual saying) and this is basically how i have always felt about martin luther king, that, yes, he was important and that, no, i didn’t care.</em></p>
+<p><em>but now i was the teacher and it was my job to teach the classics and try to make them interesting and important and so i was doing it the best i could (it turned out that all the students in the country where i was teaching had had no real exposure to mlk, so they weren’t all burnt out like i was).</em> </p>
+<p><em>the way we watched the “i have a dream” speech was projected onto the whiteboard at the front of the class by an overhead projector hanging from the ceiling and connected via a wire that ran along the wall to my computer. before class, i had pre-buffered the speech on youtube and so, when i told her to, the student closest to the door would go over and turn off the light and then we would all sit there in the dark together, in the glow of the white screen, and i would press play, instantly animating the black and white image hanging above us.</em></p>
+<p><em>as the speech went on, i would occasionally pause the video and offer whatever knowledge and understanding i had to my students. “this is an extended metaphor,” i would say, freezing the big face stretched across the screen as my students underlined or highlighted the sentence in the written text they were following along with. “this is alliteration.” “this is shakespeare, this is from the bible, this is an old song.” “this is repetition, this is a poetic image.” “this is the logical appeal, this the ethical appeal, this is the emotional appeal.” “this is a shift into a new idea, this is a change in tone.” “this is beautiful.”</em>  </p>
+<p><em>i would say all these things and not just in the stark and detached way that i’m saying them to you now, i would explain them to the kids in plain and simple language they could understand, would talk about how an image made a stronger feeling than a statement, how the cadence and melody of the voice rose and fell and with their trajectory underlined words and phrases with pauses and stress, how the repetition worked like a chorus in your favorite song, how you just wanted to keep hearing the chorus over and over again, i would say all these things, i would explicate and annotate every word and phrase i could.</em>  </p>
+<p><em>i would say all these things to the kids and try to teach them what i thought i understood, try to reach them somehow, but eventually i would get to a point where i wouldn’t be saying anything at all anymore, where i would just be sitting there at my desk like all the other students at their desks, sitting there in the dark and watching and listening to something i could believe in.</em></p>
+<p>i&#39;m thankful that my country was lucky enough to have martin luther king jr. and i&#39;m thankful we now have a day to commemorate his presence and his absence. i&#39;m thankful for the &quot;i have a dream&quot; speech, which you can read <a href="http://www.americanrhetoric.com/speeches/mlkihaveadream.htm">here</a> and watch <a href="https://www.youtube.com/watch?v=H0yP4aLyq1g">here</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-119.html" class="btn btn-secondary">← thank you notes 1/19</a>
+        <a href="/letters/thank-you-notes-117-2514.html" class="btn btn-secondary">thank you notes 1/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

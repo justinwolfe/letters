@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="patrick(3)">
+  <title>patrick(3) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>patrick(3)</h1>
+        <time datetime="2016-11-19T00:00:00Z">November 18, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i’m thankful that the party we had last weekend to celebrate bonfire night and my partner’s bday passed without incident in a blur of generally pleasant comings and goings. i’m thankful that at no point did my anxiety about having 15 or so people around to our little house allow me to lose face. i’m thankful everyone seemed to have a nice time and that my partner’s parents made a lot of good-natured jokes in chinese about our new cat and how he was so big he wouldn’t be able to catch any mice. i’m thankful i haven’t had to worry much about mice lately because of louie (the cat) and how he seems to me like a little guardian of the house. i’m thankful to realise that when my partner and i talk about how louie is feeling today we are really talking about how we are feeling today (e.g. Q: how is louie feeling about the party tonight? A: well he is hiding under the bed, so.) </p>
+<p>i’m thankful that my primary responsibilities for the night itself were limited to keeping an eye on my partner’s three nephews (who are 3, 7 and 14 [?] years old). i’m thankful she had the idea of setting up the wii u in the back bedroom for them so they could have a separate adult-free space in which to play games and eat sweets and pringles. i’m thankful that they really seemed to enjoy playing mario kart 8 and super mario 3d world with me; thankful in particular that the 7 year old was totally mesmerised by it even though he found the actual driving quite hard; thankful also that the 3 year old was mostly content to drive his kart in little endless circles, and that he was also happy for me to help him drive from time to time when we needed him to hurry up and actually finish the race. i’m happy that nintendo thought to put motion controls in mario kart 8 so that one person can guide another just by (literally) holding hands. i’m thankful that nintendo are still around making games that can be appreciated by people of all ages and i hope they will be around making games like this for a long time yet. </p>
+<p>i’m thankful that as a birthday present i was able to take my partner out to the opera last night at covent garden to see the tales of hoffman by jacques offenbach. i’m thankful we both enjoyed it a great deal, even though we felt not entirely comfortable about visiting what is probably the most opulent of all london’s theatres. i’m thankful also for the film of the same opera by michael powell and emeric pressburger, which is still one of the most astonishing examples of the cinematic art i’ve ever seen, and which is what gave me the idea to see this opera performed in the first place. </p>
+<p>more specifically i’m thankful for the sequence early in the opera where hoffman is attempting to rouse his drinking buddies with a silly nonsense song about a dwarf called kleinzach, which has many jolly onomatopoeic lines about how his joints went click-clack (click-clack) and crick-crack (crick-crack); but in the middle of the song hoffman gets lost, and starts singing instead a serious and incredibly beautiful song about a woman he once loved, and about how her hair hung in dark braids around her pale neck, leaving his drinking buddies utterly confused; until at last hoffman gets back on track and sings about kleinzach again (click-clack, crick-crack, etc). i’m thankful for the way this neatly encapsulates a theme of the opera: that we cannot expect popular society to ever value heartfelt expression in the same way they value crass comedy, and that if a writer cannot produce this on demand the world will use them up and leave them with nothing. i’m thankful to reflect on how the name ‘kleinzach’ half-rhymes with ‘offenbach’, and to wonder if this composer who made his name with comic and satirical operettas might have felt an affinity with this teller of tall tales. </p>
+<p>i’m thankful i bought a new computer for the first time in just over seven years. i’m thankful i had the guts to spend a lot of money on it, probably too much money, but i’m thankful i was able to rationalise this by knowing that it was money i had earned and saved over a long period of time, and for something that would last a long period of time, even though on some level i feel like i’m still waiting for someone to tell me it was okay to spend money on something for myself like this. i’m thankful i was also able to dip into my savings to spend money on things for other people lately, like a loan to my partner so she could make a larger down payment on the fees for her postgraduate studies, even if this does mean a great deal more red ink on my budget than i would otherwise like.</p>
+<p>i’m thankful for the stanley parable, a video game from a few years ago which i played recently. i’m especially thankful for one of its many particular endings (spoilers: <a href="https://www.youtube.com/watch?v=o7K0714vgro">https://www.youtube.com/watch?v=o7K0714vgro</a>) which finds you, stanley, walking in circles around a little endless circle of small nonsensical rooms in the basement of a nondescript office building while the narrator describes something i found unnervingly familiar to an anxiety attack. i’m thankful for the image of the car parked in one of those inexplicable little rooms, a garage with no clear means of vehicular entry or exit, which is both a perfect little joke about video game map design but also a horrifying image of isolation and loneliness. i’m thankful that the game as a whole is so funny and inventive; not that it’s ‘funny ha ha’ but more like ‘yeah i get it funny’ and also ‘oh no funny’; but not that it matters when it is has some of the most memorable writing and delivery of any game i’ve ever played. </p>
+<p>i’m thankful for 3rd rock from the sun, which my partner and i just finished watching recently on netflix after having slowly worked through every single episode for about six months. i’m thankful for how it maintains a reasonably high standard of quality throughout, even if it’s unlikely to ever be listed near the top of any sensible list of all time great multi-camera sitcoms. i’m thankful for the many ways in which it made me fondly recall the worst aspects of the nineties. i’m thankful for john lithgow’s extremely pure embodiment of childlike confusion and alienation that is at times uncomfortably familiar to me. i’m thankful in particular for a throwaway line in one of the final episodes, a stupid sentimental line from sally to her hapless cop boyfriend don (aka newman from seinfeld), about how there is a kind of bravery in being scared but getting through life regardless. i’m thankful i am getting through life right now despite being extremely scared a lot of the time.</p>
+<p>i’m thankful for the strangely abrupt ending of 3rd rock in which dick and sally and tommy and harry go back to where they arrived in the very first episode and are beamed up back to their home planet and the credits roll and there’s no suggestion of anything beyond that: it all just ends. ___PARAGRAPH_BREAK___- patrick (11/8/16). previously: <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-patrick">1</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-patrick-2">2</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1120-8630.html" class="btn btn-secondary">← 11/20</a>
+        <a href="/letters/krs2.html" class="btn btn-secondary">krs(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

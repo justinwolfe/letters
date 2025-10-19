@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="oscar isaacs">
+  <title>oscar isaacs - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>oscar isaacs</h1>
+        <time datetime="2022-08-07T00:00:00Z">August 6, 2022</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the hotness game that ec started playing with her partner one day recently, where she would name two male actors and have him pick which one he thought was hotter and then that would be the new champion who would go up against another actor she picked, so on and so forth, eventually determining with him after much rigorous testing that his hottest guy, the one who hung in there round after round and could not be dethroned, was oscar isaac, which i am thankful for since it felt like a cute thing to learn about him (i also think oscar isaac is hot).</p>
+<p>i&#39;m thankful she told d about this game and d told me about it knowing i would want to try and i wanted to try so they came over and we sat in the backyard and played for what felt like hours (i was also on mushrooms a little i think) but probably wasn&#39;t and it honestly felt like some weird form of therapy almost, as a person who thinks of myself as extremely self-aware and self-conscious and like i totally understand myself at all times (i&#39;m thankful for this), i love the opportunity to learn things about myself that i don&#39;t yet know. i&#39;m thankful, for example, that i never could have predicted the staying power of ryan gosling in my own bracket, though he hung in there for quite some time, to the point where i was really worried i was going to be stuck on him even though i&#39;d never really felt moved by his hotness</p>
+<p>(eventually i landed on cillian murphy and despite challenges from many different directions he could not be dislodged, the same choice d made in an independent test of her own, which ec found incredibly funny, and i stand by thinking he is extremely hot (she couldn&#39;t see his hotness) although i will say that the test felt incomplete to me being just composed of actors and not say musicians who i think there may be hotter ones than cillian murphy to me (another impetus i think for me playing the game was d relaying me saying late sixties paul mccartney was very hot in <em>get back</em> which d found comical (we have always clashed about the kind of men we find hot, with the primary sticking point being long hair, so the fact that we both landed on cillian murphy was not preordained and in fact something of a surprise.)</p>
+<p>(i&#39;m thankful to write down now so i never forget forever how ec didn&#39;t know if his name was oscar isaac or oscar isaacs and so did the strategy of trying to cover by saying it one way sometimes and one way other times (she was saying it a lot because he hung in there for a while) and every time she said &quot;oscar isaacs&quot; it just brought me such joy but i resolved not to say anything, even though i like to tell people when i appreciate little things about them, because i didn&#39;t want her to feel self conscious and stop doing it and then someone said &quot;oscar isaac&quot; and then she started saying &quot;oscar isaac&quot; every time after it and i had to stop the test and say &quot;it makes me so happy every time you say oscar isaacs please keep saying oscar isaacs&quot; and then every time after that she or someone said &quot;oscar isaac&quot; i said &quot;isaacs&quot; and that&#39;s just his name to me now)</p>
+<p>i&#39;m thankful for an important component of the hotness game, which was ec&#39;s adumbration of the game space, for example her foundational insistence on decontextualizing these actors from their roles or their talents or things we knew about their personal lives, it had to be a purely aesthetic comparison, which we all agreed was ultimately impossible that&#39;s not how our brains work (and for ex. d and i&#39;s belief in cillian murphy&#39;s hotness was mostly based in watching him in <em>peaky blinders</em>, which ec had not watched) but at the same time something we had to commit to for the spirit of the game to be truly devoted to hotness and i&#39;m thankful that while she was the director of the experience ec was open to me pausing play and exploring further nuances of the possibility space like i broached the question of whether we are comparing still images because the way people move can be hot and that&#39;s not necessarily that distinct from other aspects of their appearance, similarly having a hot voice is something that i feel should be in play, and eventually we brokered an agreement which involved being able to see a kind of living snapshot of the hottest version of a particular person in a three dimensional space but at a distance and without interacting with them (her visual shorthand for this was watching the cycled banal animations applied to a character in a video game character creator).</p>
+<p>i&#39;m thankful even though it also disturbs me that fore every thought in my head i can immediately find a correlation in a clip from <em>the office</em> and in this case it&#39;s the episode where the office spends a day distracted by debating whether or not hilary swank is hot which included a moment for example where jim concocts a visceral sexual fantasy of hillary swank coming on to kevin in order to reveal hilary swank&#39;s hotness to him which works for a minute but then backfires as he says &quot;the question is is she hot, not would i do her; respect the game,&quot; a dynamic with implications that we needed to discuss (i love talking about hypotheticals of having sex with people) in continuing negotiation of the parameters of the experiment.</p>
+<p>i&#39;m thankful for another thing i learned about myself through this which is that there are many male actors whose name i have heard and who i have definitely seen in movies but who i would struggle to name, to delineate between say chris and liam hemsworth, and so i&#39;m thankful that it is easy to google image search an actor&#39;s name and get a sort of hotness composite from the top images there, that i could go back and forth between searches and often needed to in order to decide a particular round, and i&#39;m thankful that even if your familiarity level with them is high it&#39;s useful (i would argue necessary, since it grounds you in the concrete and the physical rather than in your nostalgia and remembered projections) and fun to look at these picture togethers (one thing you realize looking at pictures for actors for hours is how big their heads and in particular their foreheads are, like it feels like watching <em>coneheads</em> almost) and if you were playing this in a social setting i say a shared screen would be ideal though two phones will do in a pinch.</p>
+<p>i&#39;m thankful for <em>the last movie stars</em>, which we have one episode left of and has been so rich and nuanced and beautiful (and hot, omg they were both so hot, and so much weirder than i would have thought not knowing their story or their work). i&#39;m thankful that when describing the john wilson show the term of art we have to describe its primary affective tool is &quot;visual pun&quot; even though i feel like that&#39;s inadequate in describing the depth of emotional resonance that such moments of parataxis can have, putting the pun in punctum. i&#39;m thankful for the show&#39;s primary formal device which is that since paul newman and joanne woodward were in a ton of movies and the primary &quot;new&quot; material of the documentary is these audio recordings of actors reading transcripts of tapes of extended interviews with them, what the show becomes is a dialectic between these two layers, the private voice and the public image, where like for example paul newman is talking about his conflict with his difficult son and there&#39;s some movie where he had conflict with an imaginary difficult son playing and the two things reinforce each others&#39; strength and make a larger impact (and this effect is magnified when home movies and snapshots form another layer, a kind of synthesis). i&#39;m thankful for how the combinations make you think about how our memories are little movies that we watch over and over and like film have to take care to try to preserve (even as we&#39;re also always changing them).</p>
+<p>i&#39;m thankful for a particularly beautiful reading of a letter joanne sent to paul, where she expresses affection even though his alcoholism and the reasons for it cause this distance between them, and she writes a letter after reassuring him repeatedly she loves him that ends in &quot;<em>i just wish you were happy and that you could say what you feel, not just what you think. me</em>.&quot;</p>
+<p>and he responds with this almost frank o&#39;hara walk poem:</p>
+<p>&quot;<em>my love, i&#39;m on board the plain to johnstown, pennsylvania. i stopped off at the p.j. clarke&#39;s for a hamburger before embarking and i must say i was filled with nostalgia. i remember sitting on the curbside singing songs at 2:00 in the morning. the third avenue l still in operation. your apartment on 51st street and 11th street. dancing backstage at &#39;picnic&#39;. no one can deny that these moments exist in time and space and for all we know may be recorded as electric energy for eternity at 180 million miles per second. we have access to all kinds of facsimiles. tomorrow, next week, next year. when we get scratchy, get going with bad solitary dialogues, we ought to remember that we had the option to choose good solitary dialogs also. the years bear witness to that.</em>&quot;</p>
+<p>i&#39;m thankful that i recorded <a href="https://drive.google.com/file/d/1rkY-guU_nr1qeECUUigUgcsKm_fu_et4/view?usp=sharing">a clip of that</a> off the screen with my phone so i could share it with you, although the quality is marred because i am distracted by miso seeing a dog outside and trying to get her to be quiet so i can complete the recording, but still better than nothing especially if it gets you to watch the show. i&#39;m thankful that in one of the zoom interview interludes in <em>the last movie stars,</em> ethan hawke is talking (to his daughter i think) and excitedly quotes rilke, whose name he pronounces as if it rhymes with &quot;milk&quot; (or like his own name, &quot;hawke&quot;), and i&#39;m thankful for that and for oscar isaacs.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/credit-card.html" class="btn btn-secondary">← credit card</a>
+        <a href="/letters/korean-zombie-movie.html" class="btn btn-secondary">korean zombie movie →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

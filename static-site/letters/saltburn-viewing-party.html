@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="saltburn viewing party">
+  <title>saltburn viewing party - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>saltburn viewing party</h1>
+        <time datetime="2024-01-14T17:11:53.170682Z">January 14, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p><img src="/api/images/473" alt="image.png"> </p>
+<p>ec&#39;s <em>saltburn</em> viewing party friday didn&#39;t get cancelled due to inclement weather arriving more slowly than expected and we carpooled with k and t (with a pit stop to greet their dog, who will stay with us next week) and all had so much fun together watching and laughing and cringing and ec made a themed cocktail pairing which (in addition to a perfect passion fruit sour that made deborah ask why we don&#39;t make cocktails with egg whites at home more often) included milky makgeolli old fashioneds served in tiny golden bathtubs</p>
+<p><img src="/api/images/477" alt="image.png"> </p>
+<p>a thing ec kept doing during the party which is to instruct us to imagine we were experiencing aspects of the party that she&#39;d discarded for scope reasons (for example pretending we each had rocks like the ones they toss into a pond or at the intermission of the movie asking us to imagine that she was serving us another drink even though she wasn&#39;t because people would have to drive on icy roads afterward) but had thought about during the planning process and wanted to share so we could understand her whole vision (it&#39;s the thought that counts! i love process art)</p>
+<p><img src="/api/images/474" alt="image.png"> </p>
+<p><em>saltburn</em> which though i saw it in 2024 is now retroactively my favorite 2023 movie (i think 2. is <em>talk to her</em> and 3 was eras tour though i&#39;m probably forgetting something and also we signed up for an apple TV plus trial and started watching <em>killers of the flower moon</em> last night (it&#39;s good and also i&#39;m thankful we did not try to watch it all in one sitting)). having purposely not consumed a lot of information about it (other than enough to get really intrigued thinking about what the themed cocktail would be), i will not say more and spoil it for you (it&#39;s on amazon video RN) except to say i totally loved it and thought it was an incredibly fun ride start to finish (especially finish)(that&#39;s what she said)</p>
+<p><img src="/api/images/476" alt="image.png"> </p>
+<p>the song <a href="https://www.youtube.com/watch?v=hAx6mYeC6pY">&quot;murder on the dancefloor&quot;</a> by  sophie ellis-bextor which is the biggest needle drop from <em>saltburn</em> and deborah and i have been singing endlessly around the house (i&#39;m thankful to think about one possible defining characteristic of a great pop song, which is that it needs to not just have one great part you look forward to (i.e. a chorus) but two parts, which &quot;murder on the dancefloor&quot; does (the titular part and also the &quot;don&#39;t think you&#39;ll get away&quot; bridge)) (ideally of course the entire song is great parts but realistically that can be a challenge and two is enough).</p>
+<p><img src="/api/images/475" alt="image.png"> </p>
+<p>the black oversized justin bieber <em>changes</em> tour hoodie i got for (i think) $8 off a clearance rack at H&amp;M and which is my favorite thing to wear in the winter (despite the problem of it showing dog hair horribly and taking like 5 lint roller sheets to get into a remotely acceptable state) for how it envelops me with softness and warmth, armor and has a picture of him with short blonde hair that reminds me of that era of lou reed, which the algo served me a classic interview clip from the other day (can&#39;t find that one but longer version <a href="https://www.youtube.com/watch?v=IeMIWCxHgQk">here</a>)(i&#39;m thankful that slowly but surely the tiktok algorithm is learning what i want to see).</p>
+<p><img src="/api/images/482" alt="image.png"> </p>
+<p>the strange disappointment of sleeping through a night of big loud winds when it was supposed to be snowing constantly and then waking up to look out and barely seeing any snow at all, which in many ways is good because people here do not handle the snow well and it is dangerous but also a bummer because i love snow (but to be clear only as a rare cherry on top of winter, not enough to want to live somewhere cold enough for it to be more common)</p>
+<p><img src="/api/images/481" alt="image.png"> </p>
+<p>when it&#39;s been snowing for a while but the snow hasn&#39;t been sticking and you&#39;re disappointed and then something imperceptible changes and it starts to stick and transform the world, the back yard becoming a beignet (ultimately it still didn&#39;t fully cover the grass but i&#39;ll take what i can get)</p>
+<p><img src="/api/images/478" alt="image.png"> </p>
+<p>feeling closeness with my coworkers, using my relative privilege to try (in a small way) to advocate for our collective interests, appreciating greatly deborah helping me to plan the year&#39;s PTO after i joked in response her &quot;year at a glance&quot; calendar page that i never wanted to see a year at a glance, really cleaning up some old code i own more than i normally would take the time to do, and several instances of high praise for my work, especially from a senior engineer whose opinion i really respect who, in response to my updated devtool announcement post, sent to channel: </p>
+<blockquote>
+<p>:10000: [justin&#39;s tool] has been a <strong>GAME CHANGER</strong> for JS developers. Thanks to [justin&#39;s tool], we&#39;re testing, iterating, and shipping code to customers <strong>a lot</strong> faster and with much more confidence than before. Thank you so much @justin for building such an amazing tool!</p>
+</blockquote>
+<p><img src="/api/images/479" alt="image.png"> </p>
+<p>deborah thinly sliced and sauteed some fresh pineapple to add to the chicken tacos we had for dinner and it added such a nice bit of flavor (i&#39;ve really enjoyed her getting more playful in the kitchen lately)(that&#39;s what he said); putting multiple hot sauces on a taco (for me this week a base coat of el yucateco black with a top note of cholula classic); leftover chocolate chip cookies from the batch she made for the <em>saltburn</em> viewing (i have to do my 3 month bloodwork follow-up next week to see if my (relative) dessert austerity has made enough of a difference to my blood sugar or whether i will have to strip even more pleasure from my life (i&#39;m thankful at ec&#39;s, after kh remarked on her newly high cholesterol, to have described the fin de siècle state of the year of eating dessert up until my doctor&#39;s appointment, such as the (in retrospect) fateful moment when i went from dividing a standard square casserole dish into 9 pieces of cake into dividing it into 6 pieces of cake and never looked back)</p>
+<p><img src="/api/images/480" alt="image.png"></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/dexterity-rolls.html" class="btn btn-secondary">← dexterity rolls</a>
+        <a href="/letters/throwing-panties-in-the-pool-justins-version.html" class="btn btn-secondary">throwing panties in the pool (justin&#039;s version) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

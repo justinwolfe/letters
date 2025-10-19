@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/29">
+  <title>thank you notes 5/29 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/29</h1>
+        <time datetime="2016-05-29T00:00:00Z">May 28, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the experience of throwing a ball into the air and catching it. </p>
+<p>i&#39;m thankful that ever since the first forced exercise of childhood, i&#39;ve disliked games with balls because i have a lazy eye which affects my depth perception. </p>
+<p>i&#39;m thankful, in a roundabout way, that most of my memories of balls are either memories of violence or failure. i&#39;m thankful that my primary sense memories of basketballs are of taking chest-passes in the face, of feeling the rubber lines of the skin merging with mine as their force compressed my cheek or forehead or (most often, like hitting a bullseye) my nose. </p>
+<p>i&#39;m thankful for my earliest memory of having an erection, which was sitting on the sidelines in the gym at some point in elementary school watching girls play basketball. i&#39;m thankful that i had heard the term &quot;boner&quot; and thought that meant there was a bone in my penis which could break—i&#39;m thankful to remember the mixture of pleasure at the intensity of the sensation of it and fear that a stray basketball would break it.</p>
+<p>i&#39;m thankful, from the distance of time, to say that the ball game i disliked playing the most was probably baseball (with basketball a close second, since i never became competent at either dribbling or layups, and badminton third (since at least there the shame of sucking was localized to your court)). i&#39;m thankful that this is because baseball offered three really distinct ways to fail—1) striking out while at bat, which i did every time; 2) failing to catch a ball in the outfield, where i was always stationed because i was terrible; and 3) when eventually i got my hands on the ball in the outfield, being so bad at throwing that it didn&#39;t get anywhere near the target. i&#39;m thankful for the real x factor which made baseball the worst, which was that in between these three occasions, there was <em>so much time waiting,</em> during which i would panic about how one of the three things was going to happen soon enough and i would fuck it up.</p>
+<p>i&#39;m thankful for the three happy memories of sports i have from my entire life, all of which took place during the eighth grade in rural tidewater. </p>
+<p>i&#39;m thankful for the first memory, which happened during the winter when we were playing &quot;floor hockey&quot; in the gym. i&#39;m thankful that i was a terrible shot and so always played defense and thankful that somehow, a shot i was just intending to go anywhere but toward our goal slowly but surely slid across the waxed floor and into the opposing team&#39;s goal, winning the game for my team.</p>
+<p>i&#39;m thankful to remember the two asshole jocks (from the other team?) who came up to me on the bleachers afterward and pushed me and kept saying &quot;<em>die jew</em>&quot; because i had curly hair which i guess marked me as jewish, even though i&#39;m not. i&#39;m thankful this was perhaps the first time <a href="http://firmuhment.tumblr.com/post/481667552">i thought about being jewish</a>.</p>
+<p>i&#39;m thankful for the second memory, which took place when we were playing soccer on the school&#39;s outdoor field during my last period gym class when there was a bomb threat and so the whole school filed out of the building and past the field and into the metal bleachers along the field to wait for the busses to come pick us up. i&#39;m thankful the game continued and for the feeling of playing in front of the entire school, which is the closest i will ever get to knowing what it feels like to be a professional athlete.</p>
+<p>i&#39;m thankful that on the other team, there was this kid named chris who was short like me but very fast and powerful and was the kid who was &quot;good at soccer&quot; in the school. i&#39;m thankful in retrospect to empathize with him because he seemed like the kind of kid who had a dad who was doing the male equivalent of pageant mom-ing to him with soccer. </p>
+<p>i&#39;m thankful for soccer, which was the ball game i was &#39;best&quot; at, even though i wasn&#39;t actually very good at it. i&#39;m thankful that you can get away with playing soccer without any skill if you have a lot of energy to run around with, which i have always had. i&#39;m thankful that the field is so frenetic in amateur competition that usually nobody can tell how bad you are.</p>
+<p>i&#39;m thankful that of course chris was a striker and that of course i played defense, since there was no way i would ever shoot accurately enough to actually score a goal. i&#39;m thankful that near the end of the game, he came down one side of the field and that i started chasing after him and though he was fast i really wanted to catch him and so i gave it slightly more effort and then, as he drove towards the goal, leapt forward feet first and kicked the ball away from him and everyone in the school cheered. </p>
+<p>i&#39;m thankful this was almost certainly an illegal slide tackle and chris looked at our gym teacher with this outraged &quot;well that was a slide tackle RIGHT?&quot; and on the bus afterward i kept bragging about how &quot;i slide tackled chris ________&quot; but i&#39;m thankful the gym teacher didn&#39;t rule it illegal. i&#39;m thankful that the game ended soon after and my team won. </p>
+<p>i&#39;m thankful that when we were hustling back to the locker room (which i don&#39;t really understand how that was kosher w/r/t the bomb threat, in retrospect!) to change out of our b.o. ridden haynes white tees and mesh shorts, the coach stopped me and asked me if i&#39;d ever thought of playing on the school team and i said &quot;<em>no, because i&#39;m not really very coordinated and i can&#39;t dribble or shoot</em>&quot; and he said &quot;<em>we can train you to do that, but you&#39;ve got great energy and you should think about it.</em>&quot; i&#39;m thankful i didn&#39;t think of it but thankful that he asked me and that i still remember him asking me.</p>
+<p>i&#39;m thankful for the third memory, which was when we were playing flag football. i&#39;m thankful that i was on the defensive line and never did anything good except this one day when i somehow snuck through and snatched a flag off the quarterback and everybody on my team whooped and my gym teacher literally lifted me up in the air in celebration. (i&#39;m thankful in writing this it sounds like my gym teacher was like grooming me or something but thankful that he was just very nice).</p>
+<p>(i&#39;m thankful that while writing about my three happy memories of playing sports, i remembered one more, which was when we played an MFA kickball game my first year here (i&#39;m thankful that d came with me to the game because it was right after an editorial meeting we&#39;d had for the magazine&#39;s nonfiction section). i&#39;m thankful to remember how the other guy in my year of the program kicked up a pop fly and i saw it coming towards me behind the pitcher and ran forward trying to track it against the sun and sunk to my knees and caught it, striking him out.)</p>
+<p>i&#39;m thankful that i didn&#39;t play with any balls after my last required gym class for more than a decade. i&#39;m thankful that the closest i got was throwing a frisbee, which seemed more chill and in which the invisible machinations of the wind always provided an excuse for poor performance. i&#39;m thankful that i really started liking throwing a frisbee when i was living at home with my parents after coming back from korea and we would go out onto the sandbar at the beach near our house—i&#39;m thankful that because of the water, you could make these huge nfl films slow motion leaps to catch the frisbee and have your fall broken by the water.</p>
+<p>i&#39;m thankful that a year or two ago i bought a container of tennis balls for trigger point massage. i&#39;m thankful that one day on a whim i picked one up and took it with me on a long lazy walk, thankful for the fun of bouncing the ball against the sidewalk and catching it at the bottom of its arc back up in my cupped palms. i&#39;m thankful that d tolerated this, even though it made her afraid i was going to get hit by a car chasing a ball and also i probably spaced out on our conversations a bit. </p>
+<p>i&#39;m thankful that while we were on vacation in minneapolis, i suddenly got it into my head that i would like to learn to juggle. i&#39;m thankful that this was partly just because it was something that it had always seemed i would never be able to do and i like to challenge myself and thankful i thought of it also in the sense of trying to learn new things to increase brain plasticity and build neural pathways. i&#39;m thankful that in the mall of america, i bought a white net bag of three bean bag balls for juggling for $9.99. </p>
+<p>i&#39;m thankful for how much i enjoy throwing a ball up in the air and catching it. i&#39;m thankful that i&#39;m still mostly just at one ball right now and i may never get to real juggling, but i&#39;m thankful that now i think finding pleasure in something in the moment is more important than anything that might &quot;come of it&quot;. i&#39;m thankful for the bean bag balls, which are grey and black. i&#39;m thankful their weight &quot;feels right&quot; to me. </p>
+<p>i&#39;m thankful for the sensation of rolling one of the balls off my fingertips and launching it into the air, the grey and black spinning up, thankful for the moment when the ball hits its apex and for the brief moment when its direction reverses where it seems to have slowed time, thankful most of all for the times when the ball comes down into my open hand, thankful for the satisfying smack of it falling into my palm. </p>
+<p>i&#39;m thankful for the experience of throwing a ball into the air and catching it.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-531.html" class="btn btn-secondary">← thank you notes 5/31</a>
+        <a href="/letters/thank-you-notes-528.html" class="btn btn-secondary">thank you notes 5/28 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

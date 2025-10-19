@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="9/4/17">
+  <title>9/4/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>9/4/17</h1>
+        <time datetime="2017-09-04T00:00:00Z">September 3, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful, i think, that lately i am dreaming every night. i&#39;m thankful for it after a long time of not (remember whether i was) dreaming at all and not missing that, since i was sleeping soundly through the night every night, which is a rarity in my adult life. i&#39;m thankful for it even though it sometimes means that, as happened last night, i wake up in the middle of the night and can&#39;t go back to sleep. i&#39;m thankful for my dream last night, in which i was a grunt in an imaginary war and the night before, where i was at a funeral that was like an outdoor wedding, held in a neat green yard at the center of the resort, but i was stuck in my hotel room because i couldn&#39;t find appropriate clothing. </p>
+<p>i&#39;m thankful for how real dreams can feel when you are inside them (even though that&#39;s often frightening), which in a way makes sleep a kind of crazy psychedelic drug that everyone on earth has to take every night in order to stay alive (i&#39;m thankful for the irony or whatever of how when people stay awake for days without sleeping, one of the side effects is hallucinations, which seems strange since the dreams you get if you do sleep are hallucinations too). i&#39;m thankful that while i was awake last night i could hear that d was having a bad dream and gently woke her up. i&#39;m thankful that she got up and went to the bathroom and i&#39;m thankful for the sound of her peeing from down the hall, for how in the middle of the night sounds which when it is daytime pass unnoticed are present in a new way.</p>
+<p>i&#39;m thankful for john ashbery, who died yesterday. i&#39;m thankful that he was one of the first poets i read that made me feel like poetry was something i would want to read, that could be fun.  i&#39;m thankful that like o&#39;hara, his poems radiate pleasure, but whereas with o&#39;hara, pleasure is so often a subject (and so often mixed with anguish or yearning or regret), with ashbery, pleasure was form, methodology, guiding principle, raison d&#39;etre. i&#39;m thankful for his sentences, which feel like dancing on ice, i imagine a frozen lake, his skates carving grooves into the surface as he twists and turns and pirouettes and arabesques, the lines he made slowly revealing that the lake was not actually a lake at all, but a television screen playing an old technicolor movie, the warm hues glowing up out from underneath.</p>
+<p>i&#39;m thankful for how reading his work divorced from me the need to get at the &quot;meaning&quot; in the poem, this high school notion that the poem is a nut you crack open to get at the meat of theme and motif and meaning, leaving the fragmented shells of words behind, just wrapping paper. i&#39;m thankful that instead his poems showed you the beauty of wrapping paper, that each poem was an art installation that you could enter and reside in until your synapses rearranged themselves to accommodate it. or maybe also like each line of the poem could be living in a parallel dimension, like our own but different in some small but meaningful way, and that in reading the poem you were constantly slipping through one dimension to the next. i&#39;m thankful that instead of things i&#39;d read sparknotes of felt like vertov and abstract expressionism and sunday comic strips that had been exquisite corpsed together so none of the panels touched their original siblings. i&#39;m thankful for ben lerner on ashbery, a book of whose poems his character in <em>leaving the atocha station</em> carries around like a kind of devotional to dip into while stoned at the prado: </p>
+<p><em>Ashbery’s flowing sentences always felt as if they were making sense, but when you looked up from the page, it was impossible to say what sense had been made; while they used the language of logical connection—“but,” “therefore,” “so”—and the language that implied narrative development—“then,” “next,” “later”—such terms were merely propulsive; there was no actual organizing logic or progression. Reading an Ashbery sentence, an elaborate sentence stretched over many lines, one felt the arc and feel of thinking in the absence of thoughts</em>_..._<em>The best Ashbery poems, I thought, although not in these words, describe what it’s like to read an Ashbery poem; his poems refer to how their reference evanesces. And when you read about your reading in the time of your reading, mediacy is experienced immediately. It is as though the actual Ashbery poem were concealed from you, written on the other side of a mirrored surface, and you saw only the reflection of your reading. But by reflecting your reading, Ashbery’s poems allow you to attend to your attention, to experience your experience, thereby enabling a strange kind of presence. But it is a presence that keeps the virtual possibilities of poetry intact because the true poem remains beyond you, inscribed on the far side of the mirror: “You have it but you don’t have it. / You miss it, it misses you. / You miss each other.”</em></p>
+<p>i&#39;m thankful to have it, but not have it, to miss it and be missed by it; i&#39;m thankful we miss each other. i&#39;m thankful <a href="http://writing.upenn.edu/pennsound/x/Ashbery.php">the wonderful huge archive of recordings of him reading</a> that you can get at pennsound. i&#39;m thankful for <a href="https://twitter.com/mnlolle/status/904449488831602693">o&#39;hara&#39;s poem to him</a> and for &quot;<a href="https://soundcloud.com/songsabout/the-circus-feat-kenneth-koch">the circus</a>.&quot; i&#39;m thankful for a bit i read in <em>priestdaddy</em> last night, where patricia lockwood writes that &quot;<em>meaning, after all, is a kind of luck—some things just shine with it, and no one knows why.</em>&quot; i&#39;m thankful for <a href="https://twitter.com/gabriellejwhite/status/904066839923306497">these photographs of fireworks</a>.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/9517.html" class="btn btn-secondary">← 9/5/17</a>
+        <a href="/letters/allison.html" class="btn btn-secondary">(Allison) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

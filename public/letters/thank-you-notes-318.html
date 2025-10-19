@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 3/18">
+  <title>thank you notes 3/18 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 3/18</h1>
+        <time datetime="2016-03-18T00:00:00Z">March 17, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that i got to watch the first episode of the new season of my favorite tv show, <em>the americans</em>, last night. i&#39;m thankful that in between the end of last season and the beginning of this season, i realized that i was majorly behind on my tabloid intelligence briefings and had my mind blown apart when i found out that the stars of the show, keri russell and matthew rhys, are not only a couple in real life but that she is pregnant with their baby in real life!! i&#39;m thankful for the extra layer that this adds to an amazing show that is already so full of layers, with characters that are like (sorry) nested russian dolls of issues and feelings and thoughts. ___PARAGRAPH_BREAK___</p>
+<p>i&#39;m thankful that the idea that they are in love in real life and that they fell in love with each other while working on the show is so interesting, since at the center of the show are all these questions about what real love is and what shapes it can take, how their characters are in a marriage arranged by the state to support its need for espionage and are, in order to gather information and accomplish tasks, constantly leaving their marital bed in the middle of the night and getting into relationships with other people in order to gather information, yet seeming at the same time to often be using those other &quot;fake&quot; relationships to work out their issues or get &quot;real&quot; emotional things that they&#39;re not getting from their &quot;real&quot; marriage, which then often has implications that bubble up into the way that they interact with each other in that &quot;real&quot; marriage (which, again, is also &quot;fake&quot; in a way). </p>
+<p>i&#39;m thankful (no real spoilers) for a characteristic scene demonstrating this in the season premiere, when matthew rhys&#39;s character is sitting on the bed in his potemkin bachelor apartment beside his second &quot;wife&quot; m, to whom he, seeming to almost break down, tells a story from his childhood that we know from flashbacks and moments elsewhere in the episode is something that&#39;s been genuinely tormenting him lately. i&#39;m thankful that when he stops speaking, his voice trailing off, the camera cuts to a reverse shot of m  and it&#39;s immediately clear how meaningful to her the fact that he, who she is always trying and failing to get more commitment and connection from, has confided this information. </p>
+<p>i&#39;m thankful that we cut back to matthew rhys as she continues to thank him for telling her that and for how, in the way that he is looking at her, we suddenly realize that, yes, that <em>was</em> a genuine thing he was saying, that he does feel, that he is tormented by, but that at the same time, he was intentionally and consciously deploying it as a tactic to begin to manipulate her into a position where she feels connected enough to him again (after a rupture in their relationship earlier in the episode) that she will steal surveillance documents from the FBI office where she works and will not only do this for him, but will feel like it&#39;s her idea that she&#39;s doing it, that she is talking <em>him</em> into it even though he&#39;s trying to &quot;protect her&quot; and &quot;doesn&#39;t want to put her in danger.&quot; </p>
+<p>i&#39;m thankful, as the conversation continues and he guides her into this place, you see a new layer of complication in his eyes, which is this kind of meta-response about how he feels disgusted with himself for telling something real and true about his pain to manipulate and put in a danger a good person who at times he really does seem to care about and who clearly loves him in a pure and strong and uncomplicated way. </p>
+<p>i&#39;m thankful for the <em>further</em> layer of complication that the audience is privy to as the subtext of the exchange, which is that throughout the episode, the keri russell character has repeatedly noticed that something is wrong with him and asked him if he&#39;s okay and he keeps saying that he&#39;s fine, that, even though the two of them are a team waging this secret war against reagan&#39;s america and she is his OTP &quot;true love,&quot; for some reason(shame, guilt, or, my theory: because he is afraid she won&#39;t understand what&#39;s so horrible about it, because she is a more brutal and ideologically motivated person than him, which is something that scares him about her and his love for her), he cannot make himself confess to her this story of a brutal fight that he got into when he was a boy and he beat to death a bully who tried to steal the milk he was taking home to his family. </p>
+<p>i&#39;m thankful for the skill of actors on the show, who can communicate all of this information to you with gestures and movement and changes in inflection, with their eyes and with small movements of the muscles of their faces. i&#39;m thankful for a shot in that same scene where m is looking away from the matthew rhys character and we watch for a silent moment as her pupils toggle around a darkened corner of the room, as she tries and fails to get her bearings.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-fsa5.html" class="btn btn-secondary">← thank you notes (fsa)(5)</a>
+        <a href="/letters/thank-you-notes-kflo.html" class="btn btn-secondary">thank you notes (kflo) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

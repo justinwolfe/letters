@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="9/24/17">
+  <title>9/24/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>9/24/17</h1>
+        <time datetime="2017-09-24T00:00:00Z">September 23, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the game <em>everything</em>, which we played yesterday and which if you think you might play (it&#39;s available on ps4, windows, mac, and linux), you should stop reading right now so that you can play it first without having my words hanging over it like a veil. i&#39;m thankful that the game is probably the most beautiful artistic and intellectual experience i&#39;ve had with a piece of software and that impels me to write about it to you, even though writing about it with just words on a flat page feels like trying to draw a landscape with a stick in loose dirt, just lines circumscribing something infinitely more complex. </p>
+<p>[<em>i&#39;m thankful, though, that there is a beauty in trying (and always failing, yet succeeding in failure) to represent the complexity of complicated things using systems of simple signs. i&#39;m thankful that earlier in the day yesterday, we were walking in the late summer heat under the canopy of the run/bike trail in the woods near our house, which we mostly use for utilitarian purposes, to get here, to go there, to move faster, to exercise, but we had no goal for our walk, the privilege of a lazy saturday afternoon, and so kept stopping to notice things</em>]</p>
+<p>i&#39;m thankful that in <em>everything</em>, you start the game as an arctic wolf in a frozen landscape. i&#39;m thankful that the only introduction is a text prompt that says &quot;<em>you are a wolf</em>.&quot; i&#39;m thankful that the camera is behind you as the wolf, the standard third person perspective familiar from many other games, but unlike in those games, when you push the joystick to move the wolf forward, there&#39;s no realistic animation of the wolf&#39;s limbs; instead, the wolf, static like a figurine held by a wobbly but determined child, moves across the snowscape by rolling forward in a choppy, four frame cycle, its whole body turning 90 degrees each time, rolling it across the landscape.</p>
+<p>[<em>i&#39;m thankful for one of the first things we stopped to notice, or rather, that d stopped to notice, which was a leaf hanging from a single strand of spiderweb probably a yard long. i&#39;m thankful that she noticed it and then in passing i noticed it, stopped, then went back to look at it. i&#39;m thankful to know that we always have the power to stop and go back and look at things, that we make choices (and choices are made for us by the larger structures of society) that make it seem as though this is not our power, but i&#39;m thankful that it is always there underneath the programming, an easter egg in the game of consciousness</em>]</p>
+<p>i&#39;m thankful that in <em>everything</em>, you roll around for a while as this wolf and as you do, you notice that all around you in the snowscape, other animals are moving the same way too: polar bears, wooly mammoths, moose and deer, all clumsily rolling in herds across the world. i&#39;m thankful that one of the first things you learn to do is &quot;sing&quot;—you press a button on the controller and your wolf barks or howls or yelps. i&#39;m thankful that when you do this near other animals, they sing back at you in their own voices.</p>
+<p>[<em>i&#39;m thankful that the trail on both sides is bordered by copses of trees, which hang over the tree in the center and when it is not winter provide shade and shelter. i&#39;m thankful that past the copse on the east side, you can see, in bits and pieces between branches and leaves, another trail parallel to the one you are running on, which i think was a maintenance trail that was cleared when they were building this trail, or to give access to buried utilities, or in advance of future development and construction, or i don&#39;t know. i&#39;m thankful to realize how odd it is to not know the reason or meaning for the trail, even though i run by this trail several days a week and have done so for months now (and had done so less often for years before)</em>]</p>
+<p>i&#39;m thankful that the game proceeds like this for a while, you rolling and singing, other animals singing back. i&#39;m thankful for the way that in this strange dreamlike atmosphere you roll around this world seeming as though you are traveling great distances at great speed (the frames of the rolling animation blurring together as you move, the motion seeming to grow smoother with speed), but you keep winding up at the same places, the landmark where you started at reappearing.</p>
+<p>[<em>i&#39;m thankful to be embarrassed about my lack of vocabulary for the natural world, that i don&#39;t actually know that what the trees by the trail are is a &quot;copse.&quot; i&#39;m thankful to have read that word in many books and when i read it my head fills in something like what i see on the sides of the trail, though i have never to have heard a person say it aloud in real life in a place where i am, where i can turn to see what they&#39;re describing and say &quot;ah, yes, a copse.&quot; i&#39;m thankful to know, though, that &quot;copse&quot; is just a label that people apply to a group of trees and that what one person might call a &quot;copse&quot; is not the same as what another person might call a &quot;copse&quot;, though those things might be similar enough that one could draw a connection between them</em>]</p>
+<p>i&#39;m thankful that as you roll around the world, you sometimes come to rocks or trees or animals who have clouds above their heads and if you go up to them and press a button, a text box appears above them and they tell you something. i&#39;m thankful that in the game, everything has consciousness, so these rocks and trees and animals have thoughts, that a pine tree will tell you about what it feels like to, say, be a pine tree on a snowy day in the winter. i&#39;m thankful that these statements sometimes feel like tweets and sometimes like koans and sometimes like cries for help, that there is a great range of feeling and tone and texture in the messages.</p>
+<p>[<em>i&#39;m thankful that at certain places in the copse on the east side of the trail, the cover of trees and brush and spiderwebs thin enough that it seems as though you might be able to get through to the hidden trail on the other side. i&#39;m thankful, on my runs between places over the weeks and months and years, to have occasionally thought about going through one of these gaps to the other side, even though a split second later i would dismiss the thought, eager to keep going to the place i had set as my goal</em>.]</p>
+<p>i&#39;m thankful that after you listen to a few of these messages, the game unlocks the next mechanic, which is joining a pack. i&#39;m thankful that when you get close to other arctic wolves, you press another button and those wolves join you, such that you are not controlling the one wolf from the start of the game, but two, and then five, and then fifteen. i&#39;m thankful that when you do this, the camera pulls back and you&#39;re no longer able to tell which wolf you &quot;are&quot; (or &quot;were&quot;), that what you &quot;are&quot; is a pack of wolves.</p>
+<p>[<em>i&#39;m thankful that yesterday on our walk, d and i, paying attention to the trees on either side more than usual, noticed a place where there was much less coverage in the copse and a path in the dirt had been made, either intentionally and manually or by desire lines over time. i&#39;m thankful that we paused, considering it, and then stepped down from the trail, across the path, and up into the other trail]</em></p>
+<p>i&#39;m thankful that this is where the game introduces the thing that takes it to the next level, which is that you have the ability to become other things that are around the same size or smaller than you. i&#39;m thankful that this ability is introduced by a rock or a mound of snow, i can&#39;t remember which but i think a rock (rocks are very important in this game, in a way, and yet also not in a way, since everything is as important as everything else), and you press the button and the screen glows and you are no longer a pack of wolves but are this rock. i&#39;m thankful that at the bottom of the screen, a text prompt reads &quot;<em>you are a rock.</em>&quot; </p>
+<p>[<em>i&#39;m thankful for the first thing i was struck by when we stepped up onto the second trail, which was that the light was different—unlike the first trail, there was no canopy above us and so the sun and sky came in fully and the brightness was rhymed by the white gravel underfoot, probably bleached by that same sun and its constant presence]</em></p>
+<p>i&#39;m thankful that in the game you are a rock and there is a novelty in this, to be a rock after being in a wolf, and you roll around the snowy landscape and join with other rocks and find the entities that have clouds above their heads and read their messages about what it feels like to be a rock or a tree or a bush. i&#39;m thankful that at some time around this point, when you try to hit the button to turn the cloud into a message you can read, you start instead hearing short lectures from the voice of an old man with an english accent. </p>
+<p>(&quot;<em>And so what I would call a basic problem we&#39;ve got to go through first, is to understand that there are no such things as things. That is to say separate things, or separate events...A noun isn&#39;t a part of nature, it&#39;s a part of speech. There are no nouns in the physical world. There are no separate things in the physical world, either. The physical world is wiggly. Clouds, mountains, trees, people, are all wiggly. And only when human beings get to working on things--they build buildings in straight lines, and try to make out that the world isn&#39;t really wiggly. But here we are, sitting in this room all built out of straight lines, but each one of us is as wiggly as all get-out</em>.&quot;)</p>
+<p>i&#39;m thankful to have been rolling around as a rock for a while, then a moose, then a wooly mammoth, then a polar bear, and to have honestly gotten a bit bored with the game and wondered if this was all there was. i&#39;m thankful that i did not stop playing the game, which i thought about momentarily and then decided to keep going. i&#39;m thankful that as a polar bear, i rolled down off a snowbank into a frozen lake. i&#39;m thankful for the sound the bear made as it rolled across the lake, the crunching of mass against the ice.</p>
+<p>[<em>i&#39;m thankful that though the hidden trail was just a few yards away from the first trail, over which people occasionally passed, running or biking in one direction or the other, and though both trails were not that far from roads and cars and people and houses, there was a sense of peace there, that we were somewhere else. i&#39;m thankful that though we could hear all of those other things from a distance, there was a sense of cushioning, of softeness, that it still felt like another place</em>]</p>
+<p>i&#39;m thankful to have hit the button to change into another thing trying and to have changed into an ice crystal on the surface of the lake. i&#39;m thankful that i hit it again, trying to switch to a nearby otter, and suddenly i was under the ice and i was a tiny splinter of wood, floating in the freezing water. i&#39;m thankful that the text prompt read &quot;<em>you are a splinter</em>&quot;</p>
+<p>[<em>i&#39;m thankful for one of the other things we noticed immediately about the trail, which is that how from the other trail, it had seemed relatively flat and orderly, something that a truck could easily drive over or a person could stroll along, it was actually composed of an unpredictable and irregular topography of rocks and mulch and leaves and plants. i&#39;m thankful that we decided to carefully pick our way along the path, seeing what we could see there</em>]</p>
+<p>i&#39;m thankful that you are a splinter, and then you press a button and you are a single celled organism and the splinter you just were, which seemed tiny, is now this massive thing the size of a jumbo jet in the distance. i&#39;m thankful that you press another button and you are a single atom, hydrogen or oxygen, and the single celled organism is the loch ness monster.</p>
+<p>[<em>i&#39;m thankful for our noticing of the mulch especially, for the strangeness of these chips of wood, all different sizes and shapes and gradations of color, for how their texture could only arise from the interaction of a machine with an organic thing. i&#39;m thankful for the rocks around the mulch, and the pebbles, and the stones (i&#39;m thankful that even for someone who doesn&#39;t know nature, these words conjure different images that help me remember what it was like and transmit that to you, a higher resolution)</em>]</p>
+<p>i&#39;m thankful that at first this is frightening, because once you are that small, you can&#39;t become any smaller. i&#39;m thankful that distances which just moments ago could be surpassed in seconds now seem impossible. i&#39;m thankful to have started moving towards the surface of the water, even though i knew it would take me a long time to reach it and i didn&#39;t want to wait a long time. </p>
+<p>[<em>i&#39;m thankful that we stayed for what felt like a long time on the trail, squatting on the ground and looking at all the different kind of plants. i&#39;m thankful for the leaves that were very fuzzy and the leaves that were less fuzzy and the leaves that were smooth and reflective. i&#39;m thankful for the traceries of veins in the leaves. i&#39;m thankful to have pondered whether i was seeing many different varieties of plants or whether i was seeing many of the same plants in different stages of their lifecycle. i&#39;m thankful that i don&#39;t know the answer but that knowing the answer didn&#39;t really matter to me</em>]</p>
+<p>i&#39;m thankful that the game then gave me a new button, which i could press to go the opposite direction, to move up into larger things.</p>
+<p>(&quot;<em>Then you find out in making this description you cannot confine yourself to what happens inside the skin. In other words you can’t talk about a person walking, unless you start describing the floor. Because when I walk i don’t just dangle my legs in empty space. I move in relationship to a room. So In order to describe what I’m doing when I’m walking I have to describe the room, I have to describe the territory</em>.&quot;)</p>
+<p>i&#39;m thankful that i became the splinter again, and then a snowflake, and then a seal on the surface of the lake, and then a tree at the edge of it. i&#39;m thankful that i pressed the button to sing to other trees and join them and soon i was a copse of trees, moving across the landscape. i&#39;m thankful i hit the button again and the screen flashed and suddenly i was the continent that held the snowscape, floating in an endless, massive primordial ocean.</p>
+<p>[<em>i&#39;m thankful that a breeze blew through the trees and we looked up and saw leaves that had turned early starting to fall. i&#39;m thankful to have watched them and how differently they fell based on their shapes, whether they pinwheeled quickly over and over or caught like sails and hung in the air or fell like crumpled pieces of paper. i&#39;m thankful to have wondered about whether this was how we learned what we understand as the principles of aerodynamics. i&#39;m thankful for one leaf which fell very slowly and that i saw it in the moment and caught it in my hand. i&#39;m thankful that it was so light i couldn&#39;t grasp it and it slipped out and floated again and i caught it again and it slipped out again and floated away. i&#39;m thankful that for a moment, that leaf felt so specific to me, so individual, even though if i were to return to the path now i could never find it amid the thousands of others</em>]</p>
+<p>i&#39;m thankful that i was the continent and then i hit another button and the screen flashed and i was the planet, in a galaxy full of other planets and stars, around a glowing sun, and then i hit another button and the screen flashed and i was the sun and then i hit another button and the screen flashed and i was the spiral galaxy that contained the sun.</p>
+<p>[<em>i&#39;m thankful that d and i, starting back home, paused in the path between the hidden trail and the normal trail. i&#39;m thankful to have given her my phone so she could take pictures of the plants in that space, because it felt important to capture them. i&#39;m thankful to remember earlier in our walk trying to describe the quality of the light on the trail on friday night when i was biking to band practice at sunset, shards of it cutting through the copse of trees to the west. i&#39;m thankful to have taken a picture of it and showed her the picture but said that it didn&#39;t capture the light, though she said it was still a beautiful picture. i&#39;m thankful that she is a better photographer than me and in the path between the two trails, she took pictures we can use to remember the moment, even if those pictures only capture a glimmer of what the moment was. i&#39;m thankful that thought it often does, technology doesn&#39;t have to estrange us from that which is not technology, that at its best it can provide ways of experiencing the world that we might not otherwise be able to access</em>]</p>
+<p>i&#39;m thankful that there the mechanics of the game changed and i was made able not only to sing and join with things that were exactly the same as me, as when i was a wolf and had joined other wolves, but also things that were similar. i&#39;m thankful that as a spiral galaxy, i flew through the air, singing and joining with nebulas, star systems, other heavenly bodies whose names i don&#39;t know. i&#39;m thankful for this change between same and similar, for the fact that as i joined with other things that were similar, the amount of other things i was similar to grew as well, this exponential effect, until i was this cluster of glowing light and dust and stars and planets, a new universe dancing through the universe that contained it.</p>
+<p><em>(&quot;So in describing my talking at the moment I can’t describe this just as a thing in itself because I’m talking to you. So what I’m doing at the moment is not completely described unless your being here is described also.</em> <em>So if that is necessary if in other words in order to describe my behavior I have to describe your behavior and the behavior of the environment; it means that we really got one system of behavior. That what I am involves what you are. I don’t know who I am unless I know who you are and you don’t know who you are unless you know who I am.</em> <em>We define each other, we’re all backs and fronts to each other. We and our environment, and all of us and each other are interdependent systems. We know who we are in terms of other people.</em>&quot;)</p>
+<p>i&#39;m thankful that i hit another button and the screen flattened and filled with wireframes and glowing orbs and i was in some post-dimensional space, where there was no sense of depth and yet the same endlessness i&#39;d felt elsewhere, and still things that were similar that i could join with. i&#39;m thankful that i hit the button again and shrank back down to a universe, then to a galaxy, then chose another planet, then down to the planet, then down to a continent, then down to an animal on the surface. i&#39;m thankful that this planet, unlike the one where i started the game, was green and lush and there were other animals there. i&#39;m thankful to have used my new power to join things such that all the animals in the world (it felt like) were dancing across the landscape together. i&#39;m thankful that in a sense i was controlling this, but in a sense i wasn&#39;t, and if i stopped hitting buttons and pressing the joystick, the animals kept dancing on their own.</p>
+<p>(&quot;<em>But we have been brought up by reason of our two great myths not to feel that we belong in the world. The average person has the sensation that he is a somewhat that exists inside a bag of skin. The center of consciousness which looks out at this thing, and what the hell&#39;s it going to do to me? You see? &#39;I recognize you, you kind of look like me, and I&#39;ve seen myself in a mirror, and you look like you might be people.&#39; So maybe you&#39;re intelligent and maybe you can love, too. Perhaps you&#39;re all right, some of you are, anyway. You&#39;ve got the right color of skin, or you have the right religion, or whatever it is, you&#39;re OK. But there are all those people over in Asia, and Africa, and they may not really be people. When you want to destroy someone, you always define them as &#39;unpeople.&#39; Not really human. Monkeys, maybe. Idiots, maybe. Machines, maybe, but not people. But we have this hostility to the external world because of the superstition, the myth, the absolutely unfounded theory that you, yourself, exist only inside your skin</em>&quot;)</p>
+<p>i&#39;m thankful that i kept playing the game, finding new worlds (i&#39;m thankful to have found a city continent, covered with hard angles and lines, which initially felt too alien, but i&#39;m thankful that i then became a lamppost and joined with other lampposts, all of us blinking our lights on and off and on and off for no reason other than because it was possible) and becoming new things (i&#39;m thankful to have become a bird and soared through the sky over the land, joining with other birds and flying together in a loose formation). i&#39;m thankful that eventually some text popped up and the game gently prompted me to say that i&#39;d seen a lot of everything and that if i was ready, there was a gate i could go back through to reach the end of everything.</p>
+<p>[<em>i&#39;m thankful that on our way back down the normal trail home, we stopped and sat on one of the benches at the side of the trail, which we had never done before. i&#39;m thankful to have described to d how when i was running or riding my bike sometimes i would see people sitting on these benches not doing anything, not looking at their phones or listening to music or a podcast</em>, <em>and i would never imagine that i would be a person who could do that, i am so always thinking about tasks and goals and things that must be done. i&#39;m thankful that we sat on the bench for quite some time, looking off into the west at the sun through the copse of trees</em>.]</p>
+<p>i&#39;m thankful to know that i will go through the gate sometime, but i&#39;m thankful that i haven&#39;t gone through it yet. i&#39;m thankful that there is still more to do, more to see, more connections to find. i&#39;m thankful that though i don&#39;t know if you had or would have had or will have the same experience i had yesterday, either out in the world or in <em>everything</em>, and though i don&#39;t even know if i will be able to have it again, if the experience i had yesterday in the world and the way my mind reacted to it is something that i&#39;ll be able to attain again, but i&#39;m thankful to have had it even if i can never have it again, since i feel different for having done so (and i&#39;m thankful that gives me hope i can have it again, in some form or another). i&#39;m thankful for <em>everything</em> and i&#39;m thankful for everything.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/92517.html" class="btn btn-secondary">← 9/25/17</a>
+        <a href="/letters/ac2.html" class="btn btn-secondary">(ac)(2) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

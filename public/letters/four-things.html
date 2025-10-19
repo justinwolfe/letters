@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="four things">
+  <title>four things - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>four things</h1>
+        <time datetime="2021-04-23T00:00:00Z">April 22, 2021</time>
+      </header>
+
+      <div class="letter-body">
+        <p>at the end of a long day after i had put my computer to sleep so i wouldn&#39;t open it again, thought of a new variation on the slack game i built earlier in the year and opened it again and sent a DM to the two beloved coworkers who built it with me and though it was after work one of them immediately responded from slack on her phone (I don&#39;t have slack on my phone) &quot;I love this&quot;</p>
+<p>having ideas. what i like about writing is recording and expressing the feeling of having ideas, which is my favorite feeling.</p>
+<p>i think in some core way happiness for me is four things:</p>
+<ol>
+<li><p>when by the grace the frequency gets high and the fallow troughs between ideas shorten</p>
+</li>
+<li><p>when i can grasp onto an idea quickly after having it and execute it in some way that creates a closure without delay (waiting as a kind of death)</p>
+</li>
+<li><p>those ideas and their expression as objects affect others positively (the idea as generator, as bond)</p>
+</li>
+<li><p>balancing my addiction to the energy of the idea cycle with the ability to turn myself off for self-preservation</p>
+</li>
+</ol>
+<p><a href="https://drawinglinks.substack.com/p/lint-rolling">the most recent issue of edith zimmerman&#39;s <em>thread</em></a> is a new favorite of her oeuvre and i mentioned its beauty to kh, who i found out also reads it recently, and she was happy because she had missed it and also found it moving. i have also really been enjoying brandon taylor&#39;s <a href="https://blgtylr.substack.com/">sweater weather</a>, starting with <a href="https://blgtylr.substack.com/p/that-carver-boy-be-spitting">this one about raymond carver</a>. over the long weekend, i also treated myself while laying in a lounge chair to <a href="https://www.amazon.com/dp/B081M5G9KD/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1"><em>dirt</em></a>, which is in that microgenre of &quot;wealthy <em>new yorker</em> writer lives in european city for a few years and writes gently trillin situation comedies about it&quot; but fuck it i&#39;m not proud and sometimes i want to eat the foie gras of that.</p>
+<p>when we were at the grocery store, i saw this employee wheeling around one of those big carts filled with brown paper bags being filled for pickup, which seems like a hard job but also one i might find enjoyable in its own way, but she seemed very tired when i saw her as our paths crossed through the aisles and then on the penultimate row, i saw she and a guy facing each other and she and he pulled their masks down and she stood up on her toes to kiss him and i found it very beautiful</p>
+<p>the particular inertia of grocery carts, their motion across the soft asphalt of a parking lot or the hard shiny floors inside, the thing you see both children and adults doing of pushing off and riding the cart, this banal utilitarian conveyance turned into a small release. the feeling, after unpacking your cart and have wheeled it back to the cart return</p>
+<p>i recorded <a href="https://soundcloud.com/songsabout/a-new-lifejim-james-cover">a cover of &quot;a new life&quot; by jim james</a>, which if it&#39;s about romantic love is kind of a washed schmaltzy wedding song sort of thing (if a pretty one) but in this version i am singing in platonic love, love as a celebration of a possible future</p>
+<p>it&#39;s going to get colder and rain but it was warm and sunny for more than a week. one day d charged her many crystals by putting them on a dinner plate in the yard and i decided, even though i don&#39;t believe in crystals and only have them because she gave them to me and i feel a mild to moderate level of superstition in all things, to charge two of mine too and then when she brought them inside (exactly the same, but charged), she wasn&#39;t sure exactly which crystals were mine but i knew.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/a-little-something.html" class="btn btn-secondary">← a little something</a>
+        <a href="/letters/a-perfect-spring-pop-song.html" class="btn btn-secondary">a perfect spring pop song →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

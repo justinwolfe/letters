@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="out of memory">
+  <title>out of memory - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>out of memory</h1>
+        <time datetime="2024-03-29T15:32:11.649637Z">March 29, 2024</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i had a pretty good day on wednesday and because i want to record it as a kind of talisman to grasp on bad days and also i think it&#39;s interesting to read about the detailed minutia of other people&#39;s lives (like duh what newsletter do you think you are reading here) here is the play-by-play:</p>
+<p> <img src="/api/images/290" alt="image.png"> </p>
+<p>i woke up around 7 (or maybe earlier, because maybe deborah woke up before the alarm, but 7 is the alarm and all time before that doesn&#39;t exist). deborah and i had had a bad fight on monday afternoon and had not really talked monday evening or all day tuesday (which is a really long time for us to go without talking during a fight), but had a bit of a rapprochement tuesday night right before bed and after sleeping on it started to actually genuinely reconnect wednesday morning, which was healing. i ate oatmeal with cherry jam for breakfast (which is what i always eat for breakfast since i stopped eating cereal, which i miss deeply while also finding the oatmeal satisfying) in bed and after catching up on my phone and giving my stomach a few minutes to settle i ran 6 miles on the treadmill while playing balatro (lost runs despite a promising one where i converted my entire deck into face cards but then the final blind involved all face cards being drawn face down) while listening to the <a href="https://www.newyorker.com/podcast/critics-at-large/is-science-fiction-the-new-realism">new yorker critics at large podcast about science fiction</a> and then some music to fill out the rest of the run after that podcast ended.</p>
+<p> <img src="/api/images/289" alt="image.png"> </p>
+<p>my first meeting was at 9am, a long-standing weekly pairing call with two senior engineers which is always kind of the pivot point of my week. they started this call with me before i was officially an engineer just someone trying to be one which was a very nice gesture and we&#39;ve kept it since i transitioned and am their peer and it&#39;s something i&#39;m really grateful for because i punch above my weight as an engineer so i&#39;m always to some degree of stuck on one thing or another and one or both of them are almost always able to help me get unstuck, but it&#39;s also kind of stressful sometimes, even though they&#39;re infinitely nice and supportive, partly because its humbling to admit my lacks and ask for help but more practically because i feel like i need to take the time to prepare whatever problem(s) i want to talk about to be able to efficiently get their help and show respect for their time, which means i need to on some level understand why i&#39;m stuck and be able to clearly articulate that stuckness with supporting examples and a prepared local environment to try out the changes they suggest live on the call, prep which usually i try to do the day before but i had run out of time (because of trying to get out of being stuck on my own) so i started working on that at like 8:45 as the workout sweat dried on my body. the call was, as always, helpful: they once again got me unstuck (providing the holy trinity of understanding of the actual underlying problem, a temporary workaround, and a plan for a future systemic change that would negate the need for the workaround) and we also had some nice conversation about what they were currently working on and stuck on themselves (also when i bring them a problem that i&#39;ve gotten stuck on and they temporarily get stuck on it too which is like sooooo validating since they&#39;re both much better engineers than me)(i&#39;m also thankful as a narcissist that it doesn&#39;t hurt me at all to say they&#39;re both better engineers than me, which is not something i would have said about for example other writers in the past when i thought of myself as primarily a writer).</p>
+<p> <img src="/api/images/293" alt="image.png"> </p>
+<p>my next meeting was my last 1:1 with my current manager, who with a recent reorg of the previous recent reorg will now no longer be my manager, which is a bummer because i really like her but thankfully also my new manager is the manager i had before the current manager was my manager and i also really like her (i&#39;m deeply thankful that in my career i have only really ever had two bad managers! one of whom (my first job in tech) was deeply actively toxic and the other of whom was a nice older man who meant well but was not well suited to the job). we talked about my growth plan that i need to fill out in order to satisfy HR&#39;s requirements and she helped me think through what to focus on and how to get the boxes checked, then i offered to help her with something (managers always tell me that a meeting is &quot;my time&quot; which i think is imprinted in their brains in manager training but what i generally enjoy most about 1:1s is giving them space to talk about the problems <em>they</em> are facing, as a way of knowing them and the company better), and we closed the meeting with the thought that we&#39;d schedule another unofficial meeting soon, which we probably won&#39;t because we&#39;re both busy enough with required meetings and adding more meetings on top is not something either of us is wont to do see next paragraph, a fact which i think we both realized in the moment, but also sometimes it&#39;s about the sentiment and i&#39;m thankful we both have lots of sentiment for each other.</p>
+<p> <img src="/api/images/291" alt="image.png"> </p>
+<p>after that, i was supposed to have another meeting, a bimonthly sync with the person who replaced me in my previous role, a meeting that i started in order to aid the transition from me doing the job to him doing the job but have kept because i genuinely just really like him and like hanging out with him, which is extremely rare for me for a variety of reasons (see previous paragraph about me not seeking out meetings and also he is a man) but also he is a scorpio born the day before me and we share a deep spiritual kinship and shared space of reference and thought and vibes, a good place. however, while i had been in my first meeting, he had cancelled our meeting and sent me a DM that he was cancelling because he had a lot to do that day but also said he was excited that it&#39;s basically a month till we&#39;ll get to hang out in person and despite the fact that i really like him and enjoy our meetings, i am literally 1000% never ever not happy for a meeting to be cancelled, either in advance or at the last minute (which i know the latter sometimes annoys other people), and because i personally will rarely be the one to cancel a meeting that someone else scheduled even if i really feel like i need to cancel it (which is a deficiency of mine but i live with it it doesn&#39;t define me) i am extra grateful when the other person cancels the meeting (which i know not everyone feels this way so your mileage may vary, but this is just to say if you are personally sweating cancelling/postponing a meeting with someone, even a person you like, just know that maybe instead of disappointing or annoying them you just kind of made their day!)</p>
+<p> <img src="/api/images/292" alt="image.png"> </p>
+<p>i dug back into my code and cleaned up the changes that i&#39;d made during pairing and committed them, setting a checkpoint where i knew everything was okay (i think about code commits like quicksaves in baldur&#39;s gate which is to say i do them probably too frequently and with a kind of religious fervor because of those times where i have unthinkingly gone a long time without a commit and then have the dawning realization that i need to go back in time but instead of being able to teleport back now there is no place to teleport to and i have to hike through bramble in the dark. i&#39;m thankful it doesn&#39;t happen too often and i&#39;m thankful for the weird creative destruction of writing code where sometimes you really do just realize the path you&#39;ve been going down is the wrong path and you have to instead double back and go a different way and the earlier you can realize this the better but sometimes you have to go the wrong way to get to the right way, which i know is something people say about writing prose too cf shitty first drafts but that was never my experience of writing it. writing fiction was so much about some ineffable thing inside that i was channeling and &quot;the work&quot; was that i would sit in the library for hours in a hard chair at a hard desk either trying so hard to open the channel or trying to hold it open and riding the flow when it finally did until it gave out again whereas writing software, though you can have wonderful flow moments with it too and also of course deeply difficult ones, idk i&#39;m never like &quot;waiting for inspiration&quot; to write code the way i was with writing fiction, you just pick a problem from the list of problems and start solving it and i fu cking love solving problems (as long as they don&#39;t require me to actually do math i still hate math so much).</p>
+<p> <img src="/api/images/297" alt="image.png"> </p>
+<p>after a while deborah came in to tell me about what was going on with her dramatic workday and i was so happy we were not in a fight anymore and could have a normal converstaion. she started making her lunch and i went downstairs and successfully unclogged the toilet that had been clogged the previous day, then took a shower. once i was out of the shower and dressed i microwaved the last portion of the lunch of chickpea pasta and kale that i had made three portions of on monday while reading through various newsletters on my phone and for dessert split a sumo mandarin (probably from the last crop of the year, which is sad but it also means that summer fruit is coming soon so silver linings). before going back to my desk i did a minute plank and some stretching which i&#39;m trying to make more of an effort to do during the day to keep my body from tightening and hardening as i hyper-focus on the cryptic incantations in my text editor. </p>
+<p> <img src="/api/images/294" alt="image.png"> </p>
+<p>when i reopened slack, i saw another engineer posted a video to our guild channel about how with some architectural changes to our frontend codebase he&#39;d recently led the implementation of a tool i built that people use for rapidly QAing which previously only worked for like 40% of our code (which was still valuable, because this was the newest and busiest code that we most actively needed to QA), now, because of these changes,  works for 85% of the code (with 95% in sight as the next very acheivable milestone) and people excitedly reacted about the impact of that on their workload which was gratifying. it was also gratifying because i had previously tried to increase the percentage of our code the tool could use myself but because i was trying to solve it on my own externally with paper and duct tape without making major underlying structural changes was very difficult and i didn&#39;t come to a satisfying solution for and basically gave up. earlier in the year, i made some other UX improvements to the tool, though, and during the period where i was doing those when i learned that there was this big architectural change coming i also took an afternoon and made a long document for this engineer describing the internals of how the tool works and how i had tried to make it work for more apps but had failed for these particular reasons to give him context as he worked on the architecture changes and i think partially because he had that detailed context he made it so that with his changes it all just suddenly worked without even minor changes to the tool required from me. a coworker threaded a response to the video saying that he was so excited that he was saying non-work-appropriate expletives.</p>
+<p> <img src="/api/images/296" alt="image.png"> </p>
+<p>at two o&#39;clock i had my monthly whole company support shift, which as a former support team member i feel very strongly about the importance of for a variety of reasons and always try to do my best. i&#39;m thankful that while answering a french customer&#39;s question (in English) i bantered with chat GPT over the right thing to say in French as a parenthetical joke, a cherry on top of my reply. an old friend on the support team asked me to look at a question she had about the public API and i fucking love answering questions about the API because if you understand it (and as someone who has worked with it a lot and works with similar APIs every day, i do) it&#39;s also deeply predictable and mechanical and there are clear and objective right answers which is not the case for lots of other support questions that i find much harder (but that don&#39;t require the technical knowledge of working with APIs). i&#39;m thankful i could tell my coworker, who i knew from previous conversations on this topic feels insecure about her understanding of the API, that her assessment of the person&#39;s question was right and all I had done was &quot;gussy it up&quot; and also, as a gift to her that was also a gift to me (and to the customer, but despite the like evangelical veneration in tech companies of the customer, i do care about my teammates more than the customer sorry!!), to have written a very good explanation using analogies about the difference between the redirect authorization flow and the client credentials flow to help the customer understand that the hard thing he was trying to do was not actually what he needed to do and there was an easier thing that would give him what we wanted. i also answered a third question i don&#39;t remember now and then the hour was up and i thought back to at a previous support job where the expectation was to send 8.5 replies an hour.</p>
+<p> <img src="/api/images/295" alt="image.png"> </p>
+<p>after that, i went back into the project i was working on earlier, where while verifying the current behavior in production, i learned that in the screen i was working on what i had assumed would just be a simple confirmation modal was actually more complex and detailed and input and validation and an API call and so i had to test it out on my sandbox account and briefly read up on how it was implemented in the older version of the code before starting to build out the new version. i&#39;m thankful that i made decent progress but stopped myself (i remember reading that hemingway or updike i don&#39;t know some writer i don&#39;t care about always stopped writing for the day in the middle of a sentence so they&#39;d be off to a running start the next time which to me it seems so crazy to think you could turn it off in that way or would want to i&#39;m constantly catching my mind drift back to something about work or my creative work or this diary and realizing i need to make a note in my phone to try to fix it in my memory, that&#39;s the way that i&#39;ve been able to reconstitute the details of my day for you now days later), stopping not because i wanted to but because i needed to write up the description of my problem from pairing at the beginning of the day and the assessment we had come to about a potential systemic improvement to send to the engineer who owns the design system to see what he thought or if we were missing something and we didn&#39;t actually need that change and just needed to use the thing that was already built in a different way (edit since i am finishing these later: it was the latter, we just didn&#39;t understand the right way to use it, which was partly on us and partly a failure of documentation and interface design and he was as always incredibly kind and generous) and so for him i wrote up a playful and informative doc that because it was about an accordion component and he likes good music started with a youtube video of <a href="https://www.youtube.com/watch?v=rpaonSDPw7Y">&quot;accordion&quot;</a> by madvillain, attached it to a Jira card, and assigned it to him.</p>
+<p><img src="/api/images/298" alt="image.png"> </p>
+<p>it was almost the end of the day and i spent the last few minutes reading a thread from the DevOps team about a status event we were having and adding supportive reacjis to the gallows humor jokes they would occasionally make as they tried to figure out and solve a problem that was totally incomprehensible to as an engineer in another discipline (i&#39;m thankful for the weird vocabulary that you learn in these kind of devops threads, like today &quot;oom&quot; as a verb which means &quot;out of memory&quot; which like relatable that&#39;s why i write backups in my notes app for when my body&#39;s brain suffers data loss or needs to be reset) and then DMing with another friend from the support team the jokes we wanted to make in the status event thread but would not make there because (unlike our supportive reacjis) they would be a distraction from the thread and we didn&#39;t want to make things any more difficult (she made a joke about how we deserved a medal for our restraint in this respect). then i closed my computer and left my office.</p>
+<p> <img src="/api/images/299" alt="image.png"> </p>
+<p>on monday during the first peak of our fight we had gotten a large box of popeyes chicken to use as the protein for dinners and this wendesday were having the last of that with great drop biscuits deborah had made, some homemade pickles she also made, cherry tomatoes (that weren&#39;t very good because of the season) and air-fried asparagus and a nice little margarita that deborah made me. i did several bong hits and ate too much chicken and biscuits and was happy to have done so. during and after we watched several episodes of the season of <em>the real world</em> we&#39;re watching now, which is the vegas season with trishelle and which is such wild and disturbing television, like there&#39;s an entire early episode about how their boss at the nightclub where they work is sexually harassing women on the team to a degree (his name is mark and they nickname him &quot;mark the molester&quot;) that is so normalized that he&#39;s doing it on the TV show without any self-consciousness and you keep being like &quot;okay here is where they fire him right? here is where the producers step in and say this is unethical?&quot; and then...nothing happens and the season continues with him in this position of power (the state of #metoo in 2001). now that deborah and i were talking again we talked about how crazy the show was and it was nice to feel that i could just naturally react to things with her instead of feeling like the emotional equivalent of wearing too-tight shoes.</p>
+<p> <img src="/api/images/301" alt="image.png"> </p>
+<p>after that, i saw this article about an &quot;MFA fatigue&quot; security vulnerability exploit on iPhones and found the phrase so enticing (it referring to multi-factor authentication but of course me thinking of master in fine arts) so i started working on an erasure of it which i got a few pages into and was pretty happy with but didn&#39;t have the energy to commit to finishing it (or rather did have the energy but consciously stopped myself from going too deep into the work in a way that will deplete me) and still haven&#39;t finished it </p>
+<p> <img src="/api/images/300" alt="image.png"> </p>
+<p> <img src="/api/images/302" alt="image.png"> </p>
+<p> <img src="/api/images/303" alt="image.png"> </p>
+<p> <img src="/api/images/305" alt="image.png"> </p>
+<p>and i am so tired of typing this long-ass email and have been for like the past hour (ed: it was thursday night and now it&#39;s the next morning, friday nothing) but i&#39;ve committed to the project of this email and will finish it, i am good at committing and reaching milestones if nothing else, anyway, memory is getting hazier but iirc i then smoked some more hash and fucked around on my phone longer than i intended (it&#39;s always longer than i intended) and then before bed did some cleaning and organizing in the attic while half-watching <a href="https://www.youtube.com/watch?v=fbQcqJh52U8&t=1822s&pp=ygULYWRhbSBjdXJ0aXM%3D">an adam curtis documentary</a> on youtube and then it was time to get in bed and lie on my spike mat for half an hour while reading <a href="https://wwnorton.com/books/9780393240252">a book about &quot;the wasteland&quot;</a> before falling asleep.</p>
+<p> <img src="/api/images/304" alt="image.png"> </p>
+<h2>Previously on this day:</h2>
+<ul>
+<li><a href="https://buttondown.email/justinwolfe/archive/thank-you-notes-329/">2016</a> (<em>spilled protein shake, dogwood in neighbor&#39;s back yard, successful interactions with multiple people on twitter</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/32917/">2017</a> (<em>good vision insurance, katie notopoulos&#39;s investigative report on rinsing lemons, we are all butt dust</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/329-3701/">2018</a> (<em>[tw: suicide, death, drowning]</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/328/">2019</a> (<em>the best korean restaurant in town, that feeling of progress for a couple of days, a good run on a country road in the sun</em>)</li>
+<li><a href="https://buttondown.email/justinwolfe/archive/32920/">2020</a> (<em>great live recordings, when something shifts inside of me and i get the opportunity to love something, forecasts can always change</em>)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/deborahs-march-vlog-a-highlight-of-my-life.html" class="btn btn-secondary">← deborah&#039;s march vlog, a highlight of my life</a>
+        <a href="/letters/frank-oharas-walk-poems.html" class="btn btn-secondary">frank o&#039;hara&#039;s walk poems →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

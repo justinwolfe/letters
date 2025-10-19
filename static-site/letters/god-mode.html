@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="god mode">
+  <title>god mode - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>god mode</h1>
+        <time datetime="2021-01-04T00:00:00Z">January 3, 2021</time>
+      </header>
+
+      <div class="letter-body">
+        <p>last night, to try to fend off the post-vacation sunday scaries and give me a &quot;quick win&quot; that would calm my mind, i finally turned on god mode for <em>hades</em>. </p>
+<p>hades is a run-based game; each time you play, you&#39;re starting over again from the beginning of the game (though some attributes and items you&#39;ve unlocked remain associated with you) and each &quot;run&quot; takes, in my experience, about an hour to get from beginning to end (unless you die sooner, which you often do, in which case it takes less). </p>
+<p>i&#39;ve been playing the game for a month or so and (because the game, like most modern games, keep track of your metrics), i know that i&#39;ve had 67 runs, with 3 of those being successful. it&#39;s a credit to the game that they make repeatedly failing to beat it a feature not a bug; dying is the way to continue to advance the story and unlock facets of the game, so even when you lose, you&#39;ve still done <em>something</em>; it&#39;s not all for naught.</p>
+<p>yesterday, i played another <em>hades</em> run on the treadmill (where i do most of my gaming) and got to the very very end (i had gone six and a half miles in the real world) but then died maybe thirty seconds before i would have won. this was very frustrating and as my work anxiety had been building over the course of the previous few days despite various attempts to shove it back further in the refrigerator of my mind (&quot;it&#39;s thursday, you&#39;ve still got a whole long weekend ahead of you; it&#39;s friday, you&#39;ve still got a whole weekend ahead of you; it&#39;s saturday, you don&#39;t need to worry about work until sunday; it&#39;s sunday morning, you don&#39;t need to worry about work until sunday evening&quot; and so on).</p>
+<p>i had avoided using god mode in hades, even though everyone i knew beside d who played the game had switched that setting on at one point or another, because though the game was hard and repeatedly dying was frustrating and i wanted to be making more progress than i had been, i thought that if i turned on god mode and the game was suddenly a breeze to get through, the fun and satisfaction of doing well would fall away with the challenge.</p>
+<p>when i came up from the basement where our treadmill is, d was watching a speed run of the game (<a href="https://youtu.be/VKepf4jyn4o">https://youtu.be/VKepf4jyn4o</a>) with commentary by some of the game&#39;s developers (who we were familiar with as people because of this interesting documentary series about the production of the game (</p>
+<p><a href="https://youtube.com/playlist?list=PL-THgg8QnvU4JEVov1tMlFThNYS92F8uC">https://youtube.com/playlist?list=PL-THgg8QnvU4JEVov1tMlFThNYS92F8uC</a></p>
+<p>)). in the run, a person with a &quot;fresh file&quot; (i.e. starting a brand new game, without any of the aforementioned accumulated attributes and items that make later game runs easier) beat hades in twenty five minutes.</p>
+<p>i always have this weird feeling watching speed runs of games where i know that on one level, what this person is doing is something i could (to a degree) be doing—they have two hands like me and they&#39;re using the same controller and the same game. in fact, this particular run had a 3d model of the xbox controller in the corner of the screen and the sticks and buttons would move and light up in sync with the player. </p>
+<p>because of this transparency and visibility, watching these videos can sometimes be an interesting learning experience; d and i picked up, for example, how much more deflecting of enemy projectiles we could be doing and that a devastating late game attack where hades shoots an array of energy beams out from his body to all directions on the map, you can, rather than the standard strategy of running away and hiding behind a column, avoid damage and keep hurting him by &quot;hugging your dad&quot; (staying close to hades in the space where the beams are originating).</p>
+<p>but while i can learn from it, watching the speed runners is mostly humbling: it&#39;s one of those things where, like, i can play guitar pretty okay, but i&#39;m never going to be eddie van halen; not because it&#39;s impossible for me to learn two handed tapping and to get my finger speed and strength up so i can hammer on and pull off with rapidity and grace (all that needs are hands and time, just like the video game), but because that just requires an amount of labor and mental energy that i will never care to invest. </p>
+<p>when evening set in yesterday and television was not providing enough distraction from my mind gnawing at itself, i decided i would play <em>hades</em> and finally switch on god mode so i could easily win and make myself feel better. historically, god modes in video games make you completely invulnerable; nothing can hurt you (like a god). </p>
+<p>in hades (a game starring various pantheons of gods and demi-gods who support you with their powers and who you do battle with), god mode is different: what it means is that for your next run, you&#39;ll be able to take 20% more damage without dying. each time you die after that, it increases by 2%, such that the next run you can take 22% more damage, and so and so forth.</p>
+<p>this is a really clever design choice; god mode becomes not something that makes you unbeatable, but instead gives you a bit more breathing room (and then, if you need it, more, and more). it&#39;s not about &quot;breaking&quot; the game; it&#39;s about making the game come to where you are and be more accessible for you</p>
+<p>or i guess that&#39;s the idea, lol: i plugged my switch into the TV, settled into my first run, played poorly, and died in the third boss fight. in that run, i had been using a tricky short range weapon that the speed runner had used and i had also been trying to mimic some of the flashy shit i&#39;d seen them do. so, while this wasn&#39;t what i wanted to happen, i rationalized it that way and started a new run with a more familiar weapon, taking more care. also died, earlier in the late game than that morning. d sat with me the whole time, cheering me on as i have cheered her on in her own games.</p>
+<p>i would have rather have ended the weekend with the feelings of winning (and hope to win more starting soon), but i&#39;m thankful that last night dying was still something of a distraction and that after work, which will be fine, i have the opportunity to die again (or maybe not)</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/that-expression-about-a-broken-clock-being-right.html" class="btn btn-secondary">← that expression about a broken clock being right twice a day</a>
+        <a href="/letters/something-i-have-repeatedly-learned-then.html" class="btn btn-secondary">something i have repeatedly learned then unlearned then relearned and have relearned again →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

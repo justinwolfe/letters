@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/24/15">
+  <title>12/24/15 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/24/15</h1>
+        <time datetime="2015-12-24T21:19:25Z">December 24, 2015</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for <a href="http://store.steampowered.com/app/303210/"><em>the beginner&#39;s guide</em></a>, a video game i played yesterday afternoon which was one of the most moving artistic experiences i&#39;ve had in a long time. i&#39;m thankful for the singularity and power of its architecture, both conceptually (the ideas, the sentences, the narrative) and physically (the ominous towers, the deconstructed prisons, the winding paths). i&#39;m thankful for the echoes the game sounded of alan resnais and de chirico and jenny holzer and john baldessari and carl andre and james turrell. i&#39;m thankful for the creator&#39;s voice-over narration, for his exploration of what it is to create things and why people create them and what the things can mean or say about their creators. i&#39;m thankful, as i consider what it feels like to have people read my daily thoughts, for the questions he asks about audiences and motivation and interpretation. i&#39;m thankful for the darkness of the game, for its avoidance of easy answers to any of these questions, for the way that the two kinds of architecture i described before (and the two kinds of darkness shrouding that architecture) are united in service of movement and meditation. i&#39;m thankful for the way that the stark minimalism of the design shows how simple interactions (a switch that opens a door) and symbols (a lamppost, a set of dots on a wall, a maze) can be made powerful through iteration and repetition, through small but significant variations. i&#39;m thankful that humans evolved to recognize patterns and ascribe meaning to them, even if this blessing is also, as the game shows, a curse.</p>
+<p>i&#39;m thankful for how hard it rained yesterday, for the fury of the thunder and lightning as it struck all around the house. i&#39;m thankful that though there was a tornado warning, there weren&#39;t any tornados. i&#39;m thankful that though d&#39;s umbrella broke yesterday morning, it broke at the very end of our errands, between the car and the back door, so she didn&#39;t get soaked. i&#39;m thankful to get to be inside a warm house all day while it rains hard and dark outside, which always reminds me of happy times when i was a child.</p>
+<p>i&#39;m thankful for the bittersweetness of the modern tension that i&#39;m often struck by after being deeply moved by an artistic experience, which is an inability to decide whether it&#39;s more satisfying to try to keep the experience of the thing resonating quietly inside of me by being still and leaving it alone and not complicating it with further thought or, on the other hand, whether to unlock my device and go off in search of more (images, interviews, descriptions, depictions, digressions, anything) that i can pull in out of the web to expand the experience and make it continue in that way, paths branching off into an endless horizon of results. i&#39;m thankful to think of how, when struck by this feeling when i was a young child, i had no device for unlocking experiences in this way (save for some small objects made out of plastic and the occasional paperback movie novelization) and so was forced to use my imagination to sustain the tidal feelings of art washing over the inside of my body (i&#39;m thankful, though, not to let nostalgia color this too warmly, and to remember the times when i felt a deep lack of more). i&#39;m thankful to remember when i was in college and went to the movies on campus a lot with my friends and how, after a good movie, i would feel unable to talk about it, would just walk home a few steps behind the others in the peace of darkness until i felt that i had digested the experience (like you would digest a meal) and was ready to come back to the world. i&#39;m thankful that, though my inclination these days, like a lot of people, is usually to unlock and search and stream about the thing that moved me, that sometimes that impulse, contrary to what cultural critics crow about in op-eds, is rewarding and sometimes even magical, can unlock new rooms which i can enter and consider the thing from different perspectives, can reactivate the magic of the thing by way of interfaces that were hidden from me as i experienced it the first time. i&#39;m thankful, even, for the times that this impulse to connect the dots backfires on me, as it often does, because, for example, i read a commentary that seems to misunderstand what the thing meant to me, or to critique exactly what it was that i found moving, or to pervert something my subconscious found beautiful by using words to make that beauty too explicit to me (the colors that were pure in shadow becoming garish in the light), that those experiences of diminishment are powerful and valid, too, and maybe even sometimes necessary (though i&#39;m also thankful that the next time i experience a moving thing, i sometimes faintly remember a bad experience like this and use it as an omen to stay away from searching). i&#39;m thankful, again, for the singing bowl that d gave me for christmas, which seems like a useful tangible metaphor for trying to sustain a powerful inner feeling.</p>
+<p>i&#39;m thankful that the company i freelanced for a month or so ago asked me yesterday whether i&#39;d like to write another post for them. i&#39;m thankful, even though my first inclination was to say no (is always to say no) and even though i had been fantasizing since thanksgiving of letting my vacation be a place where work doesn&#39;t exist, i said yes, that i would send over some pitches soon. i&#39;m thankful to build out my resume with experiences which will hopefully make me more employable in the future. i&#39;m thankful that after dinner last night, i got out my computer and started thinking in an email draft and i&#39;m thankful that an hour later, i had three pitches that i was happy with and i clicked send. i&#39;m thankful that it didn&#39;t feel that hard (i&#39;m thankful to knock on wood after writing that) and i&#39;m thankful that maybe writing these notes is helping and will help me write other things. i&#39;m thankful that over night (because he lives in thailand), the editor accepted one of my pitches and i&#39;m thankful that i feel like the post will be both fun to write and useful for people to read.</p>
+<p>i&#39;m thankful for the phone game <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwij172ixfTJAhVENSYKHe1CAhIQFggcMAA&url=http%3A%2F%2Fwww.ridiculousfishing.com%2F&usg=AFQjCNFY4c65amZFnHVkDF75ztp9usvHbw&sig2=a3rGjo9T-wuzm3xi7fEykQ&bvm=bv.110151844,d.eWE"><em>ridiculous fishing</em></a>, which is not profound like <em>the beginner&#39;s guide</em> but which is, in terms of <a href="http://www.actionbutton.net/?p=2982">core loops</a>, profoundly satisfying (i&#39;m thankful for the linked essay, from one of my favorite internet writers, which is an example of a result that can expand your experience of a thing). i&#39;m thankful i downloaded it on a whim yesterday evening after dinner, while d navigated a zelda dungeon in the living room. i&#39;m thankful that though i intended to only check it out for a few minutes before doing some yoga, i ended up playing for almost an hour. i&#39;m thankful for the fun mechanics, for the excellent use of the accelerometer, for the gleeful chiptune sonatas. i&#39;m thankful that eventually i was able to pull myself away and do a set of sun salutations.</p>
+<p>i&#39;m thankful that it&#39;s not going to rain today and that we&#39;re going to go on a long walk across town. i&#39;m thankful that we haven&#39;t decided what to make for dinner tonight. i&#39;m thankful that tomorrow is christmas.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/122515.html" class="btn btn-secondary">← 12/25/15</a>
+        <a href="/letters/122315.html" class="btn btn-secondary">12/23/15 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

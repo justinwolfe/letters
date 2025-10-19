@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/31/17">
+  <title>5/31/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/31/17</h1>
+        <time datetime="2017-05-31T00:00:00Z">May 30, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to be writing this from my own bed. i&#39;m thankful that yesterday was our last day of dog sitting. i&#39;m thankful that though the dog jerked at his leash in the street and pulled me knee first into the asphalt, i just scraped my knee up rather than a more serious injury. i&#39;m thankful that i was very angry at the dog at first, even though i could have avoided this situation if i had not been wearing flip flops and also it&#39;s not the dog&#39;s fault that he is a puppy and is curious. i&#39;m thankful for the way that over time in my experience the felt intensity of negative feelings can fade, which can make memories overall more positive—i&#39;m thankful to hope that in the future i remember the times when petting the dog, how happy he was to have his rib cage stroked, how he stretched out in ecstasy. i&#39;m thankful, that said, that we don&#39;t have a dog and that i don&#39;t have to take care of this dog anymore. i&#39;m thankful to be back in our house where we have all of our stuff and we know how to find it when we need it.</p>
+<p>i&#39;m thankful for when you have the first few days of a week off of work, such that when you return to work, the week is already almost half over. i&#39;m thankful that though it is always hard to go back to work after not working, i&#39;m generally very happy with my job and the people i work with, which makes it less hard than it might otherwise be. i&#39;m thankful to temper my apprehension and not put too much pressure on myself onmy first day back. i&#39;m thankful to know that the thing to do is just focus on one problem at a time, find a way to either solve that problem or ask questions of the person raising it to move closer to solving it, then move on to the next one. i&#39;m thankful that though that&#39;s easier said than done it still can be done and that i know i can find ways to do it. </p>
+<p>i&#39;m thankful to have worked a bit during the last two days of my long weekend on a work project and i&#39;m thankful to be really happy with the progress i made. i&#39;m thankful for the moment when you figure out how to do something or (even better) how to do something you were doing in a sloppy and inefficient way in a more elegant way, which can provide such a burst of satisfaction. i&#39;m thankful for &quot;<a href="http://www.digital-web.com/articles/scope_in_javascript/">this</a>,&quot; which was so shrouded in mystery for me when i first started writing code but which now feels like a skeleton key i am always using to unlock larger and more complex doors to get closer to a treasure of my own making.</p>
+<p>i&#39;m thankful that in a TV lull, we have been catching up on <em>keeping up with the kardashians</em> (i&#39;m thankful that all the seasons are on hulu plus, which we got for handmaid&#39;s tale, since <em>KUWTK</em> is less available via torrent than other shows). i&#39;m thankful i had told myself for a while that i was tired of how long <em>KUWTK</em> episodes are and that&#39;s why i didn&#39;t want to watch, because of the size of a chunk of the evening they can consume, but i&#39;m thankful that hulu holds our place, which makes stopping in the middle of one more doable. </p>
+<p>i&#39;m thankful for something i think i&#39;ve mentioned before but that keeps striking me after returning to them, which is how the kardashians talk about menstruating and their bodies and sex, that they lovingly call each other swear words and just generally feel so free to express whatever they&#39;re thinking without worrying about it, which is refreshing. i&#39;m thankful that almost all the kardashians/jenners are or have been in long term relationships with black people and i&#39;m thankful that in the portrayals of these relationships in the show you can see that they love them as individuals but that they also, i think, love them for their blackness (without, for the most part, this edging into fetishization), that to them blackness is beautiful. i&#39;m thankful that these relationships, imperfect though they are (and as all human relationships are), are modeled on a popular television show. i&#39;m thankful that the most recent episode we watched covered the &quot;famous&quot; video premiere. i&#39;m thankful to have watched kanye and kim standing side by side in the back of the darkened theater watching the video together, sharing the moment. i&#39;m thankful for the focused attention and excitement in her eyes as she watched the video unspool. i&#39;m thankful to have gotten to share the moment.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/6117.html" class="btn btn-secondary">← 6/1/17</a>
+        <a href="/letters/53017.html" class="btn btn-secondary">5/30/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

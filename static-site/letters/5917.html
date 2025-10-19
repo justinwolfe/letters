@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5/9/17">
+  <title>5/9/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>5/9/17</h1>
+        <time datetime="2017-05-09T00:00:00Z">May 8, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that last night after dinner i was facetiming with my parents and telling them about my strategy to buy lesser desserts in the hope that i would not binge on them but how this strategy was complicated by the fact that even lesser desserts (like the nilla wafers i bought this week) are pretty good and i will still eat a lot of them, more than i want to. i&#39;m thankful, elsewhere on the call, to have complained about the unsweetened banana chips i bought at the health food store and how they taste like nothing and are much worse than sweetened banana chips and i regret buying them. i&#39;m thankful that d had some of the chips and thought they weren&#39;t that bad but then researched it and found out that unsweetened banana chips aren&#39;t that healthy because they are deep fried. </p>
+<p>i&#39;m thankful for the epiphany that d had about me on the call because of these food anecdotes (as well as her long history of knowing me), which is how weird it is that i constantly make these choices for mediocre treats, which to me represent some kind of necessary self denial and diet austerity, but which are...still relatively sugary and processed snacks that aren&#39;t really that much more healthy than the snacks i would actually want to eat, so why wouldn&#39;t i just get the snacks i actually want to eat instead (or, alternately, eat actual undried fruit or some other kind of actual non-dessert food). i&#39;m thankful that she realized this thing about me and expressed it, which made me think about how though i&#39;m consciously opposed to the ideology of austerity, this little idea of noble self-denial and deprivation is buried deep inside me like a parasite and informs my decisions and behavior all the time.</p>
+<p>i&#39;m thankful that also yesterday our new showerhead arrived. i&#39;m thankful that we bought the new showerhead because the old showerhead is one of those ones on a tube that can be detached for handheld use but the thing used to attach it to the wall broke and then the other third party suction cup thing we used to stick it to the wall also stopped working recently. i&#39;m thankful that though we were trying to hold out until we moved i could not stand the annoyance of it anymore. i&#39;m thankful we got the &quot;low price, big performance&quot; option from <a href="http://thesweethome.com/reviews/the-best-shower-head/">the sweethome</a> since the other option was way more than we wanted to pay for a showerhead. </p>
+<p>i&#39;m thankful that last night after dinner d wanted to put up the new showerhead but i was tired and not in the mood and said we could do it another day (even though our purchase of the shower head was driven by an explosion of my frustration of it on saturday when i was showering and how when we ordered it the thought of having to wait a whole two days to be able to install it seemed endless and interminable). i&#39;m thankful that d knows me and knew that my &quot;another day&quot; could be literally weeks in the future and so said she would handle it herself. i&#39;m thankful we have a wrench now because of some other failed DIY in the past and so it seemed as though she had everything she needed.</p>
+<p>i&#39;m thankful to have laid on the bed lazily playing <em>zelda</em> and listened to her straining to unscrew the shower head in the bathroom. i&#39;m thankful that eventually i got up and went into the bathroom and took off my socks and got in the shower and tried loosening the existing showerhead myself with no success. i&#39;m thankful that i tried adding a cloth inside the wrench to help it grip better but got nowhere with that. i&#39;m thankful, while d was taking a turn, to have appreciated how since she is short to try to loosen the shower head she had to stand on her tiptoes, which is very tiring.</p>
+<p>i&#39;m thankful, while d was taking a turn, to have googled &quot;<em>how to loosen showerhead</em>&quot; on my phone and to have found a strategy involving wrapping the showerhead in a plastic bag and filling the bag with white vinegar as a way to break up mineral deposits holding the showerhead in place, a strategy i deemed way too fiddly and too much work and didn&#39;t think was worth mentioning to d. i&#39;m thankful to have tried more loosening of the showerhead and eventually to have reached my frustration threshold again and told her that she could continue if she wanted but i believed we should just leave the existing showerhead up and wait for another say and left.</p>
+<p>i&#39;m thankful that d is determined and will keep working at a problem after i would have given up (which, to me, is an emotional self-defense mechanism). i&#39;m thankful that she managed to get the outer part of the shower head (connecting the house and the head to the housing attached to the pipe) but couldn&#39;t get the inner housing. i&#39;m thankful i went back to <em>zelda</em> in the other room and let her do it. i&#39;m thankful that the wrenching noises stopped for a bit and i thought that she might have given up too. i&#39;m thankful for how much i laughed when she yelled &quot;<em>hey</em>&quot; from the other room to get my attention and then asked &quot;<em>...do we have any white vinegar</em>?&quot;</p>
+<p>i&#39;m thankful to have laughed and told her that we didn&#39;t and that i had been too lazy to even consider that strategy and that we had apple cider vinegar if she wanted to try with that. i&#39;m thankful she assented and so i brought her the bottle as she gathered the plastic bag and some hair ties to hold it onto the housing of the shower head. i&#39;m thankful to have returned to the bedroom and took off my clothes and got in bed and listened to some music and played <em>zelda</em> but then to have had my curiosity piqued by the sounds coming from the bathroom and had to go check on d.</p>
+<p>i&#39;m thankful, when i stepped into the doorway of the bathroom, to have seen d standing in the shower in just a pair of panties (so she didn&#39;t get vinegar on her clothes) standing on her tip toes with her body fully stretched, her outstretched hands holding a plastic bag of apple cider vinegar around the shower head housing above her head and struggling to find a way to hold it in place and also apply the hair tie necessary to hold it in place without her present. </p>
+<p>i&#39;m thankful this image made me laugh very hard and that i then laughed harder (and she did too) as the plastic bag shifted and apple cider vinegar leaked out onto her face and body. i&#39;m thankful that she said, crying with laughter/from the vinegar in her face, &quot;<em>i think i&#39;ve pickled my mouth.</em>&quot; i&#39;m thankful that she was admirably still holding the bag in place and i saw a roll of nearby packing tape and suggested using that and i&#39;m thankful she asked for duct tape instead. i&#39;m thankful to have gone to the kitchen and gotten duct tape and scissors and come back.</p>
+<p>i&#39;m thankful that i wasn&#39;t wearing any pants and didn&#39;t have a surface to rest the tape on so stuck the roll between my legs and pulled out a strip of tape and then snipped it at the base with the scissors, which in this position was dangerously close to my penis, which made us both laugh again. i&#39;m thankful that with enough pieces of tape she was able to get the bag held securely in place. i&#39;m thankful to have taken the tape and scissors back and am thankful, a few minutes later, for the sheepish but resigned tone of her voice, calling out to me in the bedroom, when she said &quot;<em>can you please make me paper towel shoes</em>?&quot;</p>
+<p>i&#39;m thankful to have made a lot of bad cobbling jokes and to have brought her paper towels to pad across the bathroom floor on and clean her feet with. i&#39;m thankful that once she was done, she asked me if i thought all of this would work to loosen the showerhead and i told her i had no idea. i&#39;m thankful to have commended her on accomplishing the task anyway. i&#39;m thankful to have said something about how &quot;we&quot; would have to remove the bag in order to shower the next morning and i&#39;m thankful she said she would do it, even though i was implicitly offering to do it. </p>
+<p>i&#39;m thankful that when i went to brush my teeth and pee later in the evening, the bathroom smelled very strongly of apple cider vinegar. i&#39;m thankful that i told d this and told her that i didn&#39;t mind because i liked the smell and i&#39;m thankful she admitted that it was &quot;<em>pleasant in a way</em>&quot; but she didn&#39;t like it because &quot;<em>it just smells like my mistakes</em>.&quot; i&#39;m thankful for the way that sometimes mistakes can make us happy.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/51017.html" class="btn btn-secondary">← 5/10/17</a>
+        <a href="/letters/5817.html" class="btn btn-secondary">5/8/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

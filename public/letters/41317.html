@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="4/13/17">
+  <title>4/13/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>4/13/17</h1>
+        <time datetime="2017-04-13T00:00:00Z">April 12, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful to have had my first bad day at my new job. i&#39;m thankful, even though it sucked, that i had it, since having bad days at a job is inevitable, even if the job is great and you like it (which it is and i do), and i think maybe it&#39;s good to go ahead and get the first one out of the way. i&#39;m thankful to be kind of impressed at how long i&#39;ve worked here without having a bad day yet, which is nice. i&#39;m thankful to recognize how i had built this mental perception over the past few weeks that tuesday was usually my toughest day of the week for some reason (though none have been tough enough that i would call them &quot;bad&quot;) and that then this week, tuesday went just as swimmingly as monday did and i was happily surprised by that and i had the naive thought that maybe i had crossed some line in my training and competence and every day is going to be a good day now. i&#39;m thankful to have then the day after, yesterday, had a whopper of a bad day.</p>
+<p>i&#39;m thankful to drill down into my bad day, like a dentist into a cavity, and to recognize that my &quot;bad day&quot; was mostly a result of a prolonged shitty conversation with an angry customer. i&#39;m thankful to remind myself that if i work in customer-facing positions, there are going to be shitty conversations with angry customers, it is a fact of life, and it&#39;s not productive to take that personally or dwell on it. i&#39;m thankful to know that just because i didn&#39;t perfectly help this customer (who wasn&#39;t helping me to help him) doesn&#39;t mean i&#39;m incompetent or bad at my job. i&#39;m thankful to know that there were other people i spoke to on the same day who were very happy with the interactions we had and who felt that i helped them. i&#39;m thankful that though it sucked that my first interaction with the head of my department was him telling me in front of everyone else about things i had done wrong, i had a better interaction with him later and i don&#39;t think he thinks that i&#39;m bad at my job.</p>
+<p>i&#39;m thankful that though i feel some dread about knowing that i&#39;m probably going to have to start my day today still interacting with him, to hope that i can better resist it making my day feel bad. i&#39;m thankful to force my brain to push back from that bad interaction coloring my whole day, which is what happened to me in the moment yesterday. i&#39;m thankful to know that when one bad thing makes us feel bad, we can get ourselves into a place of lowered tolerance where other things make us feel bad that wouldn&#39;t normally. i&#39;m thankful to think of a character in a video game who gets hit with some kind of poison debuff that makes the character temporarily extra-sensitive to attacks the character can usually bear. </p>
+<p>i&#39;m thankful to recognize, even though it&#39;s kind of embarrassing, that in the midst of my bad day yesterday, besides feeling stupid and incompetent because of my interaction with the customer, i felt a lot of jealousy of a coworker who started the same time as me a few months ago. i&#39;m thankful that i looked at the coworkers&#39; interactions in our slack channel with our other coworkers and felt like &quot;why can&#39;t i do that, why can&#39;t i be That Guy&quot; and felt jealous of how happy he is being social and actively chatting with others and how much other people seem to like and respect him and his technical knowledge and expertise. i&#39;m thankful to know that i&#39;m not like him, though, and that&#39;s okay, and i was chosen for this job because of who i am and what i can do, and i&#39;m doing a good job. i&#39;m thankful to know that he is a lovely person  who i like and respect too and that i&#39;m sure he has his own insecurities and his own days where he feels inadequate, since that is everyone sometimes. i&#39;m thankful to try to focus on myself and how i can be happy and feel like i&#39;m doing a good job by myself rather than comparing myself to other people.</p>
+<p>i&#39;m thankful for &quot;be yourself&quot; by frank ocean, for the pretty perpetual motion machine of electric piano loops under and am thankful for the way it segues into the warm organ and sunset joy of &quot;solo,&quot; a transition which i found comforting when was in a super moody emotional hangover yesterday evening. i&#39;m thankful that before dinner, d and i talked about our bad days at work. i&#39;m thankful that sometimes we do this so long that despite both of us being hungry our food grows cold, untouched, and by the time we both feel a little better from talking to the other person and we&#39;re actually ready to eat we have to microwave it. i&#39;m thankful after dinner, we watched the most recent episode of <em>girls</em> (which i felt wasn&#39;t as good as some of the others and yet which had some absolutely incredible moments that moved me) and for this bizarre video about <a href="https://www.youtube.com/watch?v=XvT9F9z83J4">dangerous water slides</a>. i&#39;m thankful that after that i turned on our PS4 and went to play <em>horizon zero dawn.</em></p>
+<p>i&#39;m thankful that though i had given up on the game because i got stuck and couldn&#39;t kill this one giant robot dinosaur, despite trying over and over many times over a number of hours and sessions, i really needed a victory last night and so turned the difficulty down to easy. i&#39;m thankful that even with the difficulty on easy and with me laying out a crazy array of electric tripwires and mines, it was still very challenging to kill him and i almost died from a swipe of his giant metal tail, but i did eventually do it and his body fell and sent tremors through the ground when it landed. i&#39;m thankful for the weird extended cutscene that followed, which felt like a low-rent machinima game of thrones ending scene, where i fled down a river on a raft with a boy king i was saving from evil courtiers. i&#39;m thankful that d saw this article when the game came out where the head writer talked about how hundreds of hours were spent on the story, which he seemed to view as a big thing, and i&#39;m thankful that the game does have a pretty good story for a game and i have enjoyed it but that whenever a character says something stupid or obvious and i am playing with d in the room, i say &quot;<em>hundreds of hours</em>&quot; and shake my head.</p>
+<p>i&#39;m thankful that after that i spent too long working on a project that i probably shouldn&#39;t have been working on after a long day, but i&#39;m thankful i finally got to the solution i&#39;d been trying to get to all day, which was a nice thing to happen at the end of a hard day. i&#39;m thankful at the beginning of the day, as i was just beginning the conversation that would make it a &quot;bad day&quot;, a writer whose work i love and respect very much said something nice about me that made me feel good. i&#39;m thankful for <a href="http://tinyletter.com/undone/letters/un-did-4-12-17">esmé&#39;s most recent tinyletter</a> linking to one of those old la blogoteque videos, which reminded me of <a href="https://www.youtube.com/watch?v=h2pB0NAu9eM">two</a> <a href="https://www.youtube.com/watch?v=oiBxN6k3gyo">others</a> that i really loved when i was in college, which briefly, in their grainy 240pness, took me back to that time. i&#39;m thankful for this passage from <em>swing time</em>, in which the narrator describes singing at a piano bar after a very bad day at work:</p>
+<p>&quot;_His elegant fingers were to the keyboard, and I was singing the opening bars, the famous preamble, in which only the dead stay home, while people like Mama, oh, they&#39;re different, they won&#39;t just sit and take it, they&#39;ve got the dreams and the guts, they won&#39;t stay and rot, they&#39;ll always fight to get up—and out!</p>
+<p>I rested a hand on the piano, turned in toward it, closed my eyes, and I can remember thinking I was starting small, at least, that&#39;s what I consciously intended to do—to start small and keep it small—singing under the notes so as not to be noticed, or not noticed too much, out of the old shyness. But also out of deference to Aimee, who was not a natural singer, even if this fact was unspeakable between us. Who was in fact no more a natural singer than the bachelorettes sitting in front of me sucking down mai tais on their bar stools. But I was a natural, wasn&#39;t I? Surely I was, despite everything? And now I found I couldn&#39;t stay small, my eyes stayed closed but my voice lifted, and kept lifting, I got louder and louder, I did not feel I had control of it, exactly, it was something I&#39;d released that now rose up and away and escaped my reach. My hands were in the air, I was stamping my heels into the floor. I felt I had everyone in the room.._.&quot;</p>
+<p>i&#39;m thankful for nice moments on bad days. i&#39;m thankful that before bed, d was unlocking her phone so we could watch our nightly snapchats and she had her shirt off and i was playing with her nipple and i wondered whether it would be possible for my iphone fingerprint sensor to remember a nipple. i&#39;m thankful that it felt rude to enlist d&#39;s nipple for this experiment, so i did it with my own, sitting up and pressing the phone into my chest multiple times as an image of a fingerprint on the screen colored itself in. i&#39;m thankful to have tried multiple times but i&#39;m thankful that of course, since a nipple isn&#39;t a fingerprint, the phone eventually threw an error and failed to learn my nipple. i&#39;m thankful for that failure, which made me happy, and i&#39;m thankful to look forward to another day in which i will inevitably fail more times, hopefully happily.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/41417.html" class="btn btn-secondary">← 4/14/17</a>
+        <a href="/letters/41217.html" class="btn btn-secondary">4/12/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

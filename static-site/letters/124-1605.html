@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1/24">
+  <title>1/24 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>1/24</h1>
+        <time datetime="2017-01-24T00:00:00Z">January 23, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for celebrity big brother UK, which we watched most of the first episode of the most recent season of last night. i&#39;m thankful for the show, which is like a weird blend of professional wrestling (entrance music and strutting along catwalks, crowds that cheer faces and boo heels) and children&#39;s television (big brother as an actual character who speaks to the host and guests, the host sitting in a set made of cardboard cartoons). i&#39;m thankful for the hilarious earnestness of the facts read aloud by a bombastic announcer about the guests as they mug for the crowd and the cameras, including &quot;<em>he once had dinner with the thai royal family</em>&quot; and &quot;<em>she runs...five MILES per day. her biggest fear is drowning. her idol is oprah winfrey</em>.&quot; </p>
+<p>i&#39;m thankful for that woman, who in her introductory video package says &quot;<em>the thing i&#39;m most famous for is getting in a fight with whitney houston 2 days before she died...it&#39;s unfortunate.</em>&quot; i&#39;m thankful for the old man who seems like an alan partridge parody of an old man DJ who and about whom the announcer booms &quot;<em>his biggest fear is to get to 60 and have never lived&quot;</em> and for the other old man, an actor who was in <em>braveheart</em> who says that in the house what he&#39;ll most miss is listening to eminem - &quot;<em>the early stuff</em>.&quot; i&#39;m thankful for the shamelessness of ray j, who in his introductory package addresses the audience and asks if we&#39;re still jerking off to his sex tape with kim k.</p>
+<p>i&#39;m thankful for fried chicken, drop biscuits, green beans, and blackberries, which is what we had for dinner the past few nights. i&#39;m thankful for <a href="http://www.seriouseats.com/recipes/2007/11/cooks-illustrated-best-drop-biscuits-recipe.html">the biscuits</a>, which i made a batch of on saturday so as not to have to disturb d but which were hampered by my perennial tendency to overmix, which led them to turn out squat and dense and which i left in the oven a few minutes too long. i&#39;m thankful for the fresh batch d made on sunday afternoon, which are perfectly golden and crispy on the outside but airy and soft inside. i&#39;m thankful my crappy biscuits were still good with honey drizzled over them. i&#39;m thankful for craisins, which i am not embarrassed to love. i&#39;m thankful for the heavily processed feel of the snack-sized packs of spicy garlic peas that i bought discount from the asian market.</p>
+<p>i&#39;m thankful that despite beginning with a &quot;chapo trop house&quot; pun (i&#39;m thankful to love groan-y puns), <a href="https://www.nytimes.com/2017/01/20/arts/music/popcast-barack-obama-musical-legacy.html">this <em>times</em> popcast</a> about the musical legacy of president obama and his family was wonderful. i&#39;m thankful for the joyful critical camaraderie of jon caramanica, joe coscarelli, and wesley morris and for the interesting points they make about the importance and power of president obama&#39;s relationship with music and pop culture. i&#39;m thankful for when wesley morris sings. i&#39;m thankful for the valerie jarrett story joe coscarelli shares, which is that apparently on the plane to south carolina after the shooting, president obama is sitting with michelle and valerie and says he&#39;s considering singing &quot;amazing grace.&quot; i&#39;m thankful that apparently valerie jarrett said &quot;<em>hmm</em>&quot; and michelle, blunter, said &quot;<em>why on earth would you do that</em>?&quot; i&#39;m thankful that he did it anyway and i&#39;m thankful that it was beautiful. i&#39;m thankful to have been reminded of <a href="https://www.youtube.com/watch?v=HGrq1SzkHs0">the obamas dancing in front of the country as beyoncé sang &quot;at last,&quot;</a> which is a moment we will always have and be able to look back on when we need to. i&#39;m thankful to have just watched it and to feel better than i did before i watched it.</p>
+<p>i&#39;m thankful for <a href="https://twitter.com/thatmoyin/status/823662826879381507">joy as resistance</a>. i&#39;m thankful for <a href="https://en.wikiquote.org/wiki/Emma_Goldman">emma goldman</a>, who wrote in 1931: &quot;_At the dances I was one of the most untiring and gayest. One evening a cousin of Sasha, a young boy, took me aside. With a grave face, as if he were about to announce the death of a dear comrade, he whispered to me that it did not behoove an agitator to dance. Certainly not with such reckless abandon, anyway. It was undignified for one who was on the way to become a force in the anarchist movement. My frivolity would only hurt the Cause.</p>
+<p>_</p>
+<p><em>I grew furious at the impudent interference of the boy. I told him to mind his own business. I was tired of having the Cause constantly thrown into my face. I did not believe that a Cause which stood for a beautiful ideal, for anarchism, for release and freedom from convention and prejudice, should demand the denial of life and joy. I insisted that our Cause could not expect me to become a nun and that the movement would not be turned into a cloister. If it meant that, I did not want it. &quot;I want freedom, the right to self-expression, everybody&#39;s right to beautiful, radiant things.&quot; Anarchism meant that to me, and I would live it in spite of the whole world — prisons, persecution, everything. Yes, even in spite of the condemnation of my own closest comrades I would live my beautiful idea</em>.&quot;
+ 
+i&#39;m thankful for <a href="https://www.youtube.com/watch?v=u1MKUJN7vUk">band of outsiders</a>. i&#39;m thankful for <a href="https://twitter.com/MatthewACherry/status/823602964845600768">marshawn lynch</a>. i&#39;m thankful for <a href="http://kotaku.com/popular-fallout-4-radio-mod-runs-because-of-invisible-c-1791536075">this fallout 4 mod, which uses invisible cats as conduits for radio signals</a>. i&#39;m thankful for <a href="https://twitter.com/jjvincent/status/823852110131433472">this video</a> of a stream of water deformed and reformed by a strobe and a speaker. i&#39;m thankful for <a href="https://www.youtube.com/results?search_query=corgi+sled">videos of corgis sledding</a>. i&#39;m thankful for <a href="https://twitter.com/RapDirect/status/823695216058109952">migos</a>. i&#39;m thankful that &quot;<a href="https://twitter.com/JonnyRighteous/status/822533338900611072">there&#39;s a Japanese gameshow</a> where they change something in a room with chocolate and the contestants have to try and find it.&quot;</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/tyn-125.html" class="btn btn-secondary">← tyn 1/25</a>
+        <a href="/letters/123-1871.html" class="btn btn-secondary">1/23 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

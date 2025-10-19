@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 5/22">
+  <title>thank you notes 5/22 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 5/22</h1>
+        <time datetime="2016-05-22T00:00:00Z">May 21, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that d&#39;s conference offered breakfast in one of the hotel ballrooms on thursday and friday before the talks and panels started. i&#39;m thankful that on thursday morning, i put on some clothes and walked d down from our room to the ballroom in the hope of helping her feel less nervous about the events of the day. i&#39;m thankful that upstairs, i lounged around in bed for a bit, playing with my phone and reading garbage. i&#39;m thankful that each day we were in minneapolis it got warmer, so that when i left the hotel for my appointment in the sensory deprivation tank, i was wearing a pair of running shorts and the t-shirt i had worn on the plane and this was very comfortable in the sun. </p>
+<p>i&#39;m thankful that on the way to my appointment, i stopped at the donut place where i had eaten four delicious donuts the previous day. i&#39;m thankful that before d left, i had told her that i was going to learn my lesson of the previous day and only have one donut, but i&#39;m thankful that when i got to the donut shop and looked into the display case and saw that there were all new flavors that hadn&#39;t been there the day before, my resolve melted away like icing under a hot faucet. i&#39;m thankful for the two donuts i got, a knockoff cronut and a &quot;strawberry milkshake&quot; donut, filled with flavored pastry cream and sprinkled with tiny pink cubes of sugar.</p>
+<p>i&#39;m thankful that i decided to try to take the skyway to the light rail station. i&#39;m thankful that though i generally have a good sense of direction (i&#39;m thankful to have inherited this from my mother, who was always reverently (okay sometimes mock-reverently) referred to as &quot;the navigator&quot; during the car trips of my childhood, either by nature or nurture), i got turned around and when i descended to street level, i realized that i had passed the  light rail station and that i didn&#39;t know where i was. i&#39;m thankful that for some reason, the google and apple maps weren&#39;t triangulating right and i spent a moment of panic about being lost and being late for my appointment but that i then pulled things together using cross streets to navigate back to the station, which was only a couple of blocks away. i&#39;m thankful that while catching my breath on the platform, i realized i had forgotten to take my prozac, which i usually take in the morning, before i left the hotel room. i&#39;m thankful that of SSRIs, prozac has one of the longest half-lifes (half-lives?), so i reassured myself that it probably shouldn&#39;t matter or make a difference if i didn&#39;t take it until the evening when i got back to the hotel room, even though it struck a note of foreboding inside my mind that would hang there for the rest of the day.</p>
+<p>i&#39;m thankful that on the train ride out of the city, i listened to <em>solo piano ii</em> by chilly gonzales--i&#39;m thankful for the song &quot;<a href="https://www.youtube.com/watch?v=jOdY09hSiWM">kenaston</a>,&quot; a lovely little chimey twinkling spring thing, which i listened to on repeat for a while. i&#39;m thankful to have looked out at the world around the train getting sparser and sparser, the parking lots and fields of grass longer and longer (i&#39;m thankful for michel gondry&#39;s video for &quot;<a href="https://www.youtube.com/watch?v=0S43IwBF0uM">star guitar</a>&quot;). i&#39;m thankful to have gotten off the train at the right stop and thankful that, once i figured out how to get off the platform (which was more confusing than you might assume), i found myself on a quiet suburban street lined with leafy trees. i&#39;m thankful that i knew that i had plenty of time to get to the wellness center, so i took my time and tried to savor my surroundings, which were such a contrast to the noise of the metro area. i&#39;m thankful that i turned where the maps app told me to turn and a few minutes later was at the meditation center, which shared a building with a doggy daycare, down from a floor store with windows filled with a mosaic of tile samples.</p>
+<p>i&#39;m thankful for the nice staff of the wellness center. i&#39;m thankful to have waited in their tiny waiting room and to have examined the various essential oils, pain balms, and trigger point tools that they had available. i&#39;m thankful, on the paperwork, for the little drawing of a person you use to indicate problem areas. i&#39;m thankful that while i waited, i went to use their bathroom. i&#39;m thankful, while i washed my hands to have noticed that on the left side of the sink there were several tall stacks of folded white washcloths while on the right side there was a pile of cheap brown paper towels. i&#39;m thankful that i was briefly faced with a dilemma about which to use and chose the paper towel, which seemed less impactful, even though in retrospect they probably do a lot of laundry there and one washcloth probably wouldn&#39;t make a difference and might even help complete a load.</p>
+<p>i&#39;m thankful for the owner of the wellness center, who was a nice solidly built man. i&#39;m thankful that when a staff member asked him about an advance booking for another client, he excitedly said &quot;we&#39;ve got it on the calendar&quot; and they exchanged a high five. i&#39;m thankful that after that, he led me down a set of narrow carpeted stairs to the second waiting room, which was much more spa-like (dimmed lights, soft furniture, a diffuser bubbling away), and then into a bathroom. i&#39;m thankful he went over the preparatory washing rituals that were necessary, reminded me that bathing suits were not allowed in the float tank, and gave me a pair of wax earplugs (i&#39;m thankful that he said &quot;plugs or not is your choice--i personally float without plugs, but some people like them&quot;). i&#39;m thankful he then walked me into an adjoining room which was filled with a thing that looked from the side we were facing like a chest freezer that you would see outside of a gas station except with the door opaque rather than clear. </p>
+<p>i&#39;m thankful that he lifted the door open, revealing the inside of the tank, which was lit by a small blue light. i&#39;m thankful he told me that i would crawl into the tank, then turn over and lie on my back, bracing my arms against the side of the tank for a moment to a position, and then let go. i&#39;m thankful he described how because of the neutral buoyancy created by the epsom salts in the tub, i would float. i&#39;m thankful that he showed me the button embedded into the side of the tank that i could use to turn off the light if i wanted when i got settled. i&#39;m thankful that he suggested i try different postures early in my session to find one that was comfortable (i&#39;m thankful he demonstrated his favorite, which was kind of like cactus pose, and which he said is good for loosening shoulder tension). </p>
+<p>i&#39;m thankful that he told me to have a good time and then closed the door behind him. i&#39;m thankful that i put in my earplugs (i&#39;m thankful that he told me to put them in before showering because they would seal better). i&#39;m thankful for the shower, which had good water pressure and heat, and thankful for the little tray on the top of the toilet where i left my glasses and my wedding ring. i&#39;m thankful for the laminated guides to the hygiene procedures posted on the wall by the shower. i&#39;m thankful for the unscented body wash and shampoo, even though there was something slightly unnerving about unscented body wash and shampoo.</p>
+<p>i&#39;m thankful that after i dried off from my shower, i went into the other room and opened the door to the float tank. i&#39;m thankful to have crawled into the darkness on my knees, then turned around and closed the door behind me. i&#39;m thankful that i laid down on my back, bracing my arms against the walls, and that when i let go, i was just floating without any effort, supported by the water. i&#39;m thankful for how much more dramatic this was than the shift in buoyancy between the water in a swimming pool and the water in an ocean. i&#39;m thankful that once i got settled, i pressed the fleshy button embedded in the side of the tank and turned off the light. </p>
+<p>i&#39;m thankful that it was the darkest dark i&#39;d ever experienced. i&#39;m thankful for the strangeness of being able to open and close my eyes and not be able to tell a difference, to hold my hand in front of my face and not see its silhouette. i&#39;m thankful for how cool it was to turn my head and look around with my eyes open and not see anything. i&#39;m thankful that combined with the sensation of effortlessly floating sometimes made me feel like i was floating in space. i&#39;m thankful that occasionally that illusion would be broken when my toes or fingertips would run into the walls of the tank, but thankful for the fun of trying to stabilize myself to feel the gentleness of my drift. </p>
+<p>i&#39;m thankful that even though the air in the tank was heavy and stale and even though i was congested because of lying on my back, which meant that i couldn&#39;t get into a good sequence of meditation breathing, i could still breathe, even if it was shallow breath through my mouth (i&#39;m always thankful to be able to breathe). i&#39;m thankful that though it wasn&#39;t the intense meditative experience i had expected it to be (i&#39;m thankful to acknowledge that expectations of the real world that are based on what i saw in a simpsons episode are not really fair expectations), it was still very relaxing and pleasurable. i&#39;m thankful that a few times i imagined and then &quot;saw&quot; a starfield on the ceiling of the tank. i&#39;m thankful for the way that the surface of the water adjusted to my body temperature, which enhanced the feeling of floating, but also thankful that i could reach down under the surface when i wanted and feel the coolness of the depths (i&#39;m thankful for this gradient in the ocean, especially in miami in the summer, when the surface is like bathwater and the cool layer at your feet is such sweet relief).</p>
+<p>i&#39;m thankful that ninety minutes passed very quickly and then soft music played in the tank to alert me that my session was over. i&#39;m thankful that as directed, i opened the door to the tank, startled by the sudden light, and scraped the excess salts off my body. i&#39;m thankful for the shower afterward, which was very refreshing. i&#39;m thankful that after paying and saying goodbye to the owner, i stepped out into the day again. i&#39;m thankful that i felt loose and relaxed and tried to feel very open, to float on the wave of radiance through the day. i&#39;m thankful that on the leafy street to the station, i listened to some songs and thankful to recognize that it probably wasn&#39;t necessary or good for my chill to think about what songs i wanted to tweet to celebrate my experience. i&#39;m thankful to recognize that using social media is not a way to perpetuate a state of inner peace, but also thankful not to beat myself up too much about it, just to note it so i remember it in the future. i&#39;m thankful that my phone made it possible for me to check in with d via text--i&#39;m thankful, for all the problems of the culture our devices create, to be able to connect with people who are important to me when i need or want to.</p>
+<p>i&#39;m thankful that the station where i got off for the deprivation tank is connected to a large and beautiful park with a waterfall that d and i read in a googled listicle is one of the major twin cities attractions. i&#39;m thankful that i told myself that i should see this waterfall as part of my slow meditative day. i&#39;m thankful that the route to the waterfall was clearly marked and i&#39;m thankful that i saw more and more people enjoying the nice day as i walked down the stone steps to its mouth. i&#39;m thankful that when i got the base of the stairs and walked through crowds of families taking pictures and lounging and picnicking to the little footbridge overlooking the mouth and looked up, i was underwhelmed by the waterfall, which seemed very small. </p>
+<p>i&#39;m thankful to recognize that feeling bad about being underwhelmed by the small waterfall, as i did in the moment, looking up into the sun and listening to &quot;since i left you,&quot; is not a particularly helpful or productive emotion. i&#39;m thankful that i didn&#39;t force myself to stay at the mouth of the waterfall in the hope that waiting further would allow its immanence to sink in. i&#39;m thankful that i wondered about the worth of the sensory deprivation session, if my chill vibes could be so quickly destroyed by the way that i reacted to the size of a waterfall. i&#39;m thankful to have thought about forgetting to take my prozac and wondered whether if i had taken it i would appreciate the waterfall instead of being disappointed by it.</p>
+<p>i&#39;m thankful to have gotten increasingly hungry on the train back toward the city, since i had been overeating so much, eating when i wasn&#39;t even really hungry, that to be hungry felt good, even if that&#39;s kind of a disgusting thing to admit. i&#39;m thankful that i had my heart set on a fancy freshly pressed juice, which i wouldn&#39;t buy in my normal life because of the expense but which i could justify because i was on vacation. i&#39;m thankful that there were no juice bars near the campus, which i found surprising, and thankful that i finally found a jamba juice after a confused search through multiple levels of the student union of the university of minnesota, even though when i got there it was of course closed. i&#39;m thankful for the convenience store, where i bought an odwalla juice that was green even though it didn&#39;t have any vegetables in it, just fruit and sugar. </p>
+<p>i&#39;m thankful that despite that, drinking it and eating a granola bar while sitting on a stone bench on the quad made me feel slightly more human, even though as i sat there my eyes started to itch and nose started to run from allergens. i&#39;m thankful to think of how that morning and the night before i had fantasized about lazily whiling away my free afternoon on the quad reading a book or writing in my notebook or just being generally blissed out on the sun-dappled grass and to have had the experience of feeling the disjunction between that and how i actually felt in the moment itself, which was slightly anxious and highly allergic and ready to go home. i&#39;m thankful that like with the waterfall earlier, this felt like a failure to me at the time, that i was not doing a good enough job of meeting the day on its own terms, that i wasn&#39;t a strong enough person, even though now it&#39;s just kind of funny and a reminder to sometimes just accept my feelings rather than always fighting them and making myself feel bad about them.</p>
+<p>i&#39;m thankful to have taken the train the rest of the way downtown and walked to the hotel room and gone up to the eleventh floor in the elevator and to have used d&#39;s computer to write some notes, which helped me feel more pulled together. i&#39;m thankful that i have been shedding subscribers this week, but thankful to feel strongly that the work i am doing is good even if some people don&#39;t want it or don&#39;t want so much of it (i&#39;m thankful to understand these feelings, and to have felt them about other peoples&#39; work, and so not hold it against them). i&#39;m thankful that finishing an edition of my notes made me feel good and thankful that i showered to wash off the pollen and dried grass (i&#39;m thankful our hotel shower also had good high pressure hot water). i&#39;m thankful that soon after i finished up and after i had done a little yoga, d got back to the room, finished with the first day of the conference. i&#39;m thankful that i had expected her to be exhausted, but that, while tired, she also felt energized and excited to be in the same place as so many people who do the same kind of work she does. i&#39;m thankful her happy excited descriptions of the talks she heard helped me feel more happy and excited. i&#39;m thankful that i went down the hallway to the ice machine to get ice for her cocktail and my mocktail and the ice machine didn&#39;t do anything when i hit the button. i&#39;m thankful that i heard sounds coming from inside it, which i assumed were the sounds of it making more ice, but that despite hearing the sounds, no more ice would come out. </p>
+<p>i&#39;m thankful that while standing there frustrated, i suddenly had the obvious realization that there was an ice machine on each floor and i could just go to the floor below to get ice there. i&#39;m thankful for the surprisingly (given the relatively nice hotel) unfinished stairwell, which nevertheless provided a path between floors and to a working ice machine. i&#39;m thankful for the small water glasses in the hotel room, which are so much smaller than any glass i would ever buy but are interesting to drink out of for that reason. i&#39;m thankful that we got dressed to go to dinner (i&#39;m thankful that i wore my black coney island baby t-shirt, which is my favorite t-shirt) and thankful that the restaurant was a short walk from the hotel along a beautiful greenway during magic hour. i&#39;m thankful that the restaurant still had a two top available and we didn&#39;t have to wait to sit down and thankful that the available table was a corner booth (i&#39;m thankful always to not have people behind me, which i find stressful). i&#39;m thankful that d found a cocktail that sounded good to her and that, in the spirit of vacation and trying to correct whatever neurochemical imbalance had surely made this day i had fantasized about so subpar so far, i ordered a beer, a low ABV mango kolsch.</p>
+<p>i&#39;m thankful to remember how one christmas a couple years after we started dating, when we were still broke graduate students but were on vacation in new york, d surprised me with a reservation for lunch at le bernardin. i&#39;m thankful we were staying in this weird motel at the very hasidic border between williamsburg and bed stuy that d had gotten a good rate for on one of those online booking sites. i&#39;m thankful that i was excited by the gift when she told me about it, but when the morning came, i suddenly felt worried that our clothes were too shabby and that we would be judged. i&#39;m thankful, in retrospect, at how ridiculous my imagination was about this, that the way i mentally handle these things is different now. i&#39;m thankful to remember frantically pacing up and down flushing ave. that morning waiting for stores to open so that i could buy a lint brush, which i thought might make my black jacket seem less trash. i&#39;m thankful that i eventually settled on a roll of packing tape, which helped some. </p>
+<p>i&#39;m thankful that right before we left the hotel room, after taking nice pictures with each other in the mirror, the conversation somehow (i forget how) got to d&#39;s glittery gold handbag, which was from forever 21, and how in my fear of us being judged, i said something inconsiderate about its worth and how it would reflect on us and questioned whether she should bring it at all. i&#39;m thankful that she rightly responded with anger to this and that as we bustled to the train in our uncomfortable dress shoes (hers much more uncomfortable than mine), things were not good between us, because of my stupid status anxiety. i&#39;m thankful that the train was running less that day for some reason and so we were almost late and had to hustle to get to the restaurant on time. i&#39;m thankful that we did get there on time and that the first thing the coat check girl said to d was, &quot;<em>wow, i love your bag</em>!&quot; (i&#39;m thankful for d&#39;s delight in this, but that she doesn&#39;t lord things like this over me as much as i sometimes lord them over her). i&#39;m thankful for the food, which i couldn&#39;t describe specifically but was the best food i had ever had in my life, how afterwards i felt high and drunk and euphoric even though we&#39;d just had water, because wine was too expensive. i&#39;m thankful for d&#39;s example of how incredible (but also kind of intense) the service was, of how she spilled a little water or some crumbs or something and the waiter put a napkin over it to cover it, so it would not have to soil our or anyone else&#39;s experience.</p>
+<p>i&#39;m thankful that the restaurant we ate at on thursday night was not the best food i have ever had in my life, but was very tasty, and thankful that i felt much more relaxed than i had that day at le bernardin and that d and i had very nice happy conversations. i&#39;m thankful for the restaurant&#39;s take on oysters rockefeller, even though i would always prefer raw oysters, and thankful to have tried headcheese for the first time, and for the intensity of the liver terrine, and for the little caramelized skillet cornbread with sorghum butter. i&#39;m thankful to know that the reason places like this make their menus so intensely savory is to get you to order more drinks, but thankful to pose that i would have a much better experience with like some fruit or something to balance out the massive amounts of sodium i took in. i&#39;m thankful that the beer, which was the first drink i&#39;d had in probably 3 or 4 months, was perfectly tasty, but i&#39;m thankful that it wasn&#39;t the amazing thing i&#39;d built it up to be in my head through this dry period. i&#39;m thankful that i ordered it just for that reason, to have given myself a taste of something that i thought i was missing and realized that i wasn&#39;t really missing it at all.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-523.html" class="btn btn-secondary">← thank you notes 5/23</a>
+        <a href="/letters/thank-you-notes-kflo4.html" class="btn btn-secondary">thank you notes (kflo)(4) →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes 2/24">
+  <title>thank you notes 2/24 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes 2/24</h1>
+        <time datetime="2016-02-24T00:00:00Z">February 23, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the anonymous person who sent me this note through my google form last night:</p>
+<p>&quot;<em>this isn&#39;t a thank you note (soz) but i&#39;ve been reading yours for a while and like them and feel like i can infer from what you send us that your mental health at one point was naht so good. my mental health and other things are currently naht so good. i guess i&#39;m wondering if everything will be okay one day???? i feel desperate and sad a lot, like i&#39;m going to burst into tears or scream at any given moment. it&#39;s dumb and i&#39;m so tired of it. i&#39;m turning 25 and it&#39;s been like this for way too long. i know you can&#39;t answer those q&#39;s because no one can but idk. a part of me feels that maybe this is what being an adult is meant to be like and perhaps i&#39;m just getting a first taste of it which may be why when you&#39;re a kid so many adults seem kind of boring because they&#39;re worn down with feeling This Way all the time. but another part of me hopes that there&#39;s a way to not feel like this and i need to keep working on that even though it&#39;s hard because i&#39;m so used to feeling unhappy and old habits etc. etc. it&#39;s just exhausting tbh and causes me to whine like this (lol).</em></p>
+<p><em>i keep a gratitude journal so it was nice to know that other people keep them too. but yours is more comprehensive and way better written</em>.&quot;</p>
+<p>i&#39;m thankful for the difference between telling and showing, which i preached about and was preached at about for my three years of graduate study in creative writing and which is not always valid or useful as a pedagogical or aesthetic law but which i do think has some merit nonetheless. i&#39;m thankful that i can <em>tell</em> the anonymous person that everything will be okay one day, but that often when people told me that everything would be okay one day when i felt really bad, it didn&#39;t offer me that much comfort (even though it <em>will</em> be okay one day, and probably a day sometime sooner than the person can conceive of right now). </p>
+<p>i&#39;m thankful, instead of telling, that what i want to do is show the person some evidence of other people who felt similar ways about their own lives and how their lives (or the way they understood or inhabited their lives) changed and everything was okay for them eventually (and sometimes even better than okay). i&#39;m thankful for works of art that have helped me by letting me feel a little bit of what other people of felt and to know what happened to them. i&#39;m thankful to recommend that the anonymous person and everyone immediately read ruth curry&#39;s blog post &quot;<a href="http://ruthcurry.tumblr.com/post/131247128258/so-sad-today">so sad today</a>,&quot; which, among other amazing things, gets at the reason we feel like we have to wrap our admissions of our horrible feelings in jokes. i&#39;m thankful, also, to recommend the graphic novel <em><a href="http://www.amazon.com/Marbles-Depression-Michelangelo-Graphic-Memoir/dp/1592407323/ref=sr_1_1?ie=UTF8&qid=1456325557&sr=8-1&keywords=marbles+ellen+forney">marbles</a></em> by ellen forney, which, among other amazing things, helped me learn to work to have more sympathy for a person in my life who is manic (because sympathy for depressive people comes easier to me, i guess).</p>
+<p>i&#39;m thankful, though, if the anonymous person want a less mediated (though also less beautiful and coherent) record of the experience of feeling bad and then feeling better than those two things, to use old email diaries that i sent to myself show the person (and you) how my feelings and my experiences changed (and recurred and stayed the same and shifted and cycled) over the past few years, how everything eventually became pretty okay and i got to this part of my life where i am the person who is not in a perfect happy place and may never be but is feeling mostly very good and is sending you these emails about how thankful i am for my life and everything in the world.</p>
+<p>---</p>
+<p><strong>2013</strong></p>
+<p>[Ed -- <em>this first entry was from a much earlier period where i was trying to use a random word every day to inspire me to write--it is different than the other letters, but i feel like it echoes against the other ones in an interesting way so I wanted to include it]</em></p>
+<p><strong>3/25/13</strong></p>
+<p>&quot;Sympathiser is a word that&#39;s been completely stripped of its denotative meaning by the drill-bit repetition of its connotative meaning.  We only think of the word &quot;sympathiser&quot; as a kind of suffix attachment to &quot;fascist&quot; or &quot;terrorist&quot; or &quot;Communist.&quot;  This is a perversion of language on several levels.  What could a term like &quot;communist sympathizer&quot; even mean -- why not just say Communist instead?  I guess that was part of of thf the way to widen the McCarthy net -- if you could, through the force of language, make card-carrying Reds the same as people who believed that, say, universal suffrage regardless of race or a belief that worker&#39;s rights should be protected from abuses, well, suddenly your net could cover the country in its expanse, the rough cord scraping the faces of those unfairly snared in it.</p>
+<p>But then it&#39;s also a perversion because of the way that it demeans the concept of sympathy.  Sympathy, in general, is considered today to be a lesser feeling than its sister empathy.  This is because sympathy seems to imply a distance between the sympathetic subject and object which empathy does not.  Half a century ago, as a war was fought with threats and accusations, with poses and bluster, sympathy was a valuable tool because intimacy was not the dominant force of culture the way that it is today.  The distances between people and households, unmediated by constant instant digital mediation, were real, palpable -- in such a world, sympathy was meaningful because of the way that it bridged distance without pretending that it didn&#39;t exist.</p>
+<p>This pretending that distance doesn&#39;t exist is the problem I have in which the notion of sympathy (feeling for) is replaced by empathy (feeling as).  This sounds like a conservative argument, but I don&#39;t think it is -- I&#39;m not in favor of time travel as problem solving (there are too many paradoxes).  I think to truly try to feel empathy for another is one of the noblest endeavors anyone can take on.  But I think that&#39;s because, for most people, to truly get even some small sense of what it&#39;s really like to be another person is incredibly difficult and that most people who attempt empathy fail at it (and can fail in ways that cause fresh pain, compounding fractures for both subject and object).</p>
+<p>We should all be trying to bridge distances, but we should also remember that when we think we&#39;re being empathetic, we&#39;re often just being solipsistic.  Trying to find experiences in our own life that connect us to the experiences of others can lead to false equivalencies or the realization that other people&#39;s lives are very different than our own and that burrowing deeper and deeper into our respective shells to find some essential human bond may not be the best way to deal with grief.  It may be better, at times, to simply sympathize, not as a way to avoid understanding but as a way to acknowledge difference while respecting our need to, in some way, commiserate, console, connect.&quot;</p>
+<p><strong>2014</strong></p>
+<p>_[_Ed -- <em>note that i wrote a lot of these entries in <a href="http://projects.metafilter.com/4159/Writers-Blocks">a web app</a> that i built so that i could extract writing from my brain without having to look at it, which explains the many typos. i have tweaked formatting and redacted some names and other details to protect other people&#39;s privacy, but have otherwise made no changes</em>]</p>
+<p><strong>2/26/14</strong></p>
+<p>&quot;if i  have the time, i can at least do this. i feel better today, even if that arm thing is really annoying.  mentally more clear, less foggy.  this si the longest i&#39;ve gone without substances since my breakdown last year and even then i bet i was still back on them sooner.  the marathon man in me wants to keep going longer, but i think i&#39;ll probably reconvert on friday.  i would like a full day of not feeling panic - this is the closest i&#39;ve gotten though, and i think i&#39;m finally learning to shut down my stupid panic thoughts in the moment.  i do a good job at my job and that&#39;s important to me, but also my job shouldn&#39;t raise my blood pressure - this is not working on a crash cart in the ER, this is updating a website nobody is ever going to look at and sending emails about issues that concern vanishingly small numbers of people.  i like the praise - i liked today when [redacted] was pleased with me going above and beyond the call, but that&#39;s the thing - i do a good job, and there&#39;s no need to add osbessive worrying to it.  just like there&#39;s no need to add obsessive worryin about my health to the equation when in reality i take care of myself very well and and there is nothing wrong with me and i lost my place just looking at an email but the point is what makes me feel bad is the worry and so if i just shut that down - perhaps through tactics like assessing it like this, that will be better.  today was the best day so far of the new job and [redacted] is coming back tomorrow but i shouldn&quot;t let that change anything - he thinks i do a good job (because i do a good job!) and nobody is as concerned with me as i think they are - i mean, honestly, people didn&#39;t kotice when i got a very extreme haircut.  i can take solace in the fact that very little of what i does matter and there is no way i would ever be incompetent enough for anyone to actually get mad at me and even if the world warps in some crazy portal to a place that&#39;s possible, well, that was [redacted] full stop, and she not only had the job once but was then REHIRED! so honestly, death to my anxiety (about death and about work).  what i really need is a new hobby and i don&#39;t know what.  this project with d is good, but until i have some assets from her, it&#39;s not like i can do all that much towards it, especially at work.  i also think it might be good to take up drawing again, but again, that&#39;s not something i feel comfortable doing at work.  i do raelly need to stop reading crappy internet so much, especaily of the referesh refresh refresh variety - once is enough!  on the table for more learning - python, PHP, and mysql are all viable (especially the latter two), but i really need a project to be into them.  i could do the circus, but the thing is that seems very technically simple - it&#39;s just generating the content is a lot of work (still, maybe that&#39;s best anyway).  i do think more that i might like to write a genre novel - maybe i should read save the cat or whatever, story, see it as research and then write by formula.  it might not be the worst thing to do. or i could go back to writing poems, but it does kind of disturb me how not very good at them i was, even when i was convincing myself in the moment that i was good. at least my reading is going pretty well - i like that i&#39;m finding it possible to read this first person mira grant novel, evven if it&#39;s not the dark third person epic i might have chosen.  still better to bre reading something.  i guess i could also sequester somehow and use work for readin. maybe i shouold also start doing indefinitions or some sort of diary in this again. that has been good at times in the past and it might be good again.  i can&#39;t stop feeling that everything is prosaic, but maybe i can just use it as an opportunity to enjoy the prosaic and to look at these pretty ascii patterns (which remind me of the maze game in that book i read most of before getting bored).</p>
+<p>lol, ghd cdvinigion i juxg xzs vof ghix ix &#39;hzlv-xgznczfc&#39;, which probably doesn&#39;t mean what i think it means but it will fit well.  i had a bagel with lox and cream cheese and capers and onion for lunch with a cookie and a vending machine bag of whtie cheddar popcorn (that wasn&#39;t really stale but was lacking in the wonderful MSG cheese dust that i love so dearly.  i could eat this lunch forever. [redacted] has already probably got sweet potatoes in the oven, which we will have with fish and brussel sprout and apple slaw.  i might play more the last of us and we have an episode of new girl to watch.  i should go running, but it&#39;s too cold and i won&#39;t.  maybe tomorrow i will finally get a gym pass.  wow this is way worse when i can see what i&#39;m writing. the end for today thank you:)&quot;</p>
+<p><strong>4/9/14</strong></p>
+<p>&quot;once again i get too tense. why can&#39;t i control this? i feel like maybe it&#39;s an imbalance, but i don&#39;t know.  i don&#39;t want to go to a doctor because i don&#39;t want to go on an anti-depressant, but i also don&#39;t like feeling like this.  i was able to pull back from feeling bad pretty quickly today, but i still feel the effects of it in my body and that isn&#39;t good - i don&#39;t need those effects.  stress doesn&#39;t make me any better at my job.  stressing about the things that i stressed about today didn&#39;t help me do my work any better and, once again, i did a great job that everybody was happy with.  i hope that if i keep writing this down that it will actually be internalized in my brain and then my brain will stop losing control and pulling my body into these kinds of states, because then the feedback loop starts and it takes so much time to climb out of it.  i feel like i had a nice respite for a month or so and now i am doing stress again and i don&#39;t know why.  again, part of me thinks the imbalance thing, but part of me feels like no, it can&#39;t be, i&#39;m getting everything i need.  maybe i should go to that thing with the free blood tets but then i will stress about that too.</p>
+<p>let&#39;s focus on positive things.  ooh, what if i could animate this stuff to pulse, the css color, you know.  that would be kind of cool and soothing, maybe, or maybe just be annoying.    anyway, focusing on the positive, i&#39;m making a new recipe tonight - ground pork and bok choy with rice noodles and black vinegar.  all of these things sound delicious to me.  the nyt article-let described it as a deconstructed dumpling and i love the idea of a dumpling bowl.  i do slightly worry that it will underwhelm in terms of flavor, but i guess that&#39;s what sriracha, which we have gotten so addicted to is for.  anyway, it&#39;s always great to add a new recipe to the repertoire as we did this week with the brussels sprout tacos and so if this gets added too, that&#39;ll be a really great thing.</p>
+<p>d described feeling really antsy today too.  i wonder what&#39;s up with us.  [redacted] - could we be withdrawing from the oxytocin?  i would think the benefits would carry over throughout the day.  i&#39;ve been sleeping much better since i added the valerian to my diet in the evenings.  maybe i need to chill out on the ginger, though.  worth a try.  and or, add some valerian in the morning.  either one could possibly make a good difference.</p>
+<p>i can have control over this mentally, though.  i just need to work on stopping myself and stop being so overhwlemed with the need to fully and immediately please someone.</p>
+<p>i can do that.  i really enjoyed reading all yesterday evening - it was so pleasing to soak up the dyer and not feel like i needed to do anything else.  i was really into the book.  maybe tonight we&#39;ll have.</p>
+<p>note to self - i have changed when i took my magnesium this week and maybe that&#39;s made a difference. i should go back to having it in the morning i think.</p>
+<p>just got another email that was something i stressed about and had no reason to. i should keep a tally sheet or something.  is this why peolpe get stupid tatoos, so that they can remember things.  i guess i could try the rubber band around the wrist hing.</p>
+<p>fremd means strange, foreign, alien, or outlandish.  cool.&quot;</p>
+<p><strong>5/7/14</strong></p>
+<p>&quot;Not been as good at keeping this lately because I&#39;ve been feeling better.  Just found out D has been doing diary comics and was inspired by me saying her doodles were interesting, so maybe I can be inspired by her doing that to at least do this.  Also had the thought that I might like to try drawing again (lol, I sound like L, flaky like pastry); I still have the image of that image of Phillip Seymour Hoffman in my head, which I think means it was a good one.  Maybe I can do the crayon thing again - there&#39;s no need to believe you&#39;re good with crayon, because of the limitations of the media.  </p>
+<p>Have felt much better lately both mentally and physically, except for this stupid achilles tendon thing.  The swimming seems like way better exercise than running, but I enjoyed the running when I did it on the weekend.  The first day was okay, so maybe I just need at least one rest day in between running days.  The next two weeks, the stupid pool is going to be closed, so I&#39;m trying to really rest it up now and then maybe I can go a couple of evenings a week (Tuesday and Thursday?) and one weekend day (maybe D will come with me).  Despite my general sense of well being, swelling upper body, and voracious appetite, I wasn&#39;t sleeping well at all, I think because of my inner ear thing, but I seem to have stopped that with Advil and Benadryl (going to the store to get more today) before bed - my last two sleeps have been superb, I just wake up so happy and excited.</p>
+<p>Since the semester ended, work has been very quiet.  C emailed me on Monday about copyediting the proofs of her book, which I think will be fun and will hopefully give me a little mad money to pad my bank account with.  I&#39;ve been reading a lot during the day, some books but mostly crap on the Internet, which I have to cut back on.  Today, I&#39;ll have minutes to write, which I don&#39;t normally like but maybe that&#39;ll be all right.  I finished The Adjacent by Christopher Priest last night - it didn&#39;t end as strong as it started, but it was still a pretty good read.  Today, I&#39;ve got two New Yorkers, the Lydia Davis, and all of those sci-fi novels I downloaded.  I tried to read the Jameson chapter of Utopia or Bust yesterday, the chapter that I thought would be the easiest for me to read, but it wasn&#39;t, really.</p>
+<p>I found out this week that I get two fifteen minute breaks every day, which is nice and which I didn&#39;t know that I got that.  I&#39;m about to have to go to a meeting and I&#39;ll take a break after that, and then soon enough it will be time to swim.  Yesterday, I was lazy and just stayed in the warmth of the dive pool and I might do the same thing again today.:)&quot;</p>
+<p><strong>5/9/14</strong></p>
+<p>&quot;been a while since i did this, but i (for once, finally) have a decent amount of time to kill at work and i also slept really terribly last night, through a combination of sadness that D is not here and I think eating food that&#39;s bad for me.  I&#39;ve been waiting to eat the foods that I wanted to eat while D was gone (Thai Beef salad, nachos) and I had them both yesterday and then had a terrible stomach ache/heartburn all night and couldn&#39;t sleep and it was pretty terrible.  On the plus side I felt much better after breakfast this morning and got my own lane in the pool for all of my swim at lunch.  Also, I have no more bullshit work to do! And nobody is in the office anymore so I don&#39;t have to look busy.</p>
+<p>If I continue not having bullshit work to do, I will have to come to some sort of hobby to pass the time.  Maybe go back to learning Ruby and maybe working on that Semi-automatic writing app.  That could be good and I can adapt some of the stuff I used before but in a much easier to design package.  Not having to deal with dragging and dropping and shit will be way better.</p>
+<p>Finished reading Knausgaard Book 3.  It was great, if much darker than it initailly seemed like it would be.  It&#39;s amazing how it casts light over book 1 and 2 and makes me want to read both of them again, which is crazy considering how long they are but I htink I probably will do it eventually.  Now I have to find a new book to read - the history of the Russian Revolution I got is interesting, but it&#39;s formatted weirdly and that makes me not want to read it as much, which is stupid but that&#39;s how it goes.</p>
+<p>Have to interact with K tonight which is fine and less stressful/annoying.  Also going to smoke which I think will make me feel better (my belly is still roiling pretty terribly - could I have forgotten to take my probiotic last night?  I don&#39;t think I did, but if that wasn&#39;t what did it, I don&#39;t know what - I guess maybe an excess of acidity from the beef salad) and the salsa from the nachos.  I don&#39;t know.  Something relatively bland for tonight - Pasta and sprouts is probably best even if it&#39;ll take a little longer.  Maybe I can go down and preheat the oven, but then if I get stuck at K&#39;s I don&#39;t want to do that.</p>
+<p>I really have no artistic skill as a writer anymore.  It&#39;s kind of a shame, but I am getting better at a guitar player.  I really enjoyed playing slide yesterday even if I wasn&#39;t very good at it.  I think near the end I was starting to get somewhere.  Don&#39;t know what I&#39;ll watch now: Inside Llewen Davis was good, but not great. Deadwood was also good but not great (but maybe there&#39;s more promise there and D&#39;s probably never going to want to watch it.  Smoking also does open up more possibilities for what I would like, so there&#39;s that, I guess.</p>
+<p>Wow I am really not a writer anymore.  It feels sad that I don&#39;t have the skill, but was having the skatisfaction of the skill worth how unhappy it made me?  I kind of don&#39;t think so, but I guess I don&#39;t know&quot;</p>
+<p><strong>7/30/14</strong></p>
+<p>&quot;had been sleeping quite well for a while but terrible sleep again.  yesterday, i read an ask metafilter that was about a dog&#39;s anal glands not expressing (great verb) themselves naturally when the dog pooped and so having to be expressed manually by the owner so that the dog didn&#39;t drag her ass across the carpet to relieve the pressure (i remembered when ginger was briefly afflicted thus when we were trying to sell our house in neptune beach, which was the worst time for her anal glads to be expressing themselves unnaturally).</p>
+<p>maybe i have to really keep up this diary as a way of expressing the anal glands of my brain.  then maybe the pressure won&#39;t bubble up (like a DOM event) into my nervous system so that when i wake up in the middle of the night to pee, my brain wakes up too and then i can&#39;t go back to sleep.  i kept getting into shallow dreams and then being wave-crashed out of them, my nerves tingling.  i know that if i don&#39;t stay aware of this it can bubble up into panic and anxiety and so i need to not let it do that.  the fact that i am aware of the possibility this early this time will hopefully be helpful, which is why making the effort to keep a daily diary is important (and totally doable given my work right now).</p>
+<p>last night we had hot dogs, macaroni and cheese (spongebob flavor, which i was heartened to remember jen liked best too), and brussels sprout salad.  it was so great on monday that i was really looking forward to it, but then when the time came, the flavors were flat and dull (especially, weirdly, the mac and cheese), which sucked.  i played some music which was fun, but i got dehydrated as i always do when i do that (i guess part of it is just drinking too much before) and had a slight hangover of that after. </p>
+<p>yesterday, though, i had a great swim.  i feel like my technique and my stamina have both really developed and even though i didn&#39;t do much intense swimming in miami, i feel like all that ambient treading water helped develop my muscles more.  it was also so gorgeous on my walk home yesterday that i extended it and went to the park, listening to music the whole time.  i have been infatuated lately by a rediscovery of &quot;love in this club&quot; by usher.  the bridge and chorus are both just so beautiful, there&#39;s some sweetened quality to that vocal that i can&#39;t resist (especially juxtaposed against the stutter synth) and even the young jeezy verse is great (again, the play of textures, the grit and grain of his voice against the futuristic smoothness of the music)</p>
+<p>today, i am excited because there&#39;s a bunch of new podcasts i get to catch up on while doing my data entry (which i am making definite progress on).  these things make me happy - even the low rumbling of the construction equipment on the roof, like thunder on the skin of the building, is kind of pleasant (none of the disruptive cracks, just the clouds of bass wobble).  the people i work with are nice and work will be quiet for a while, i think, which is also nice.  things are nice, stop being anxious, the justin wolfe story.&quot;</p>
+<p><strong>8/27/14</strong></p>
+<p>&quot;skipped diary yesterday because of eye exam.  felt heat-strokey and bad after run - too hot/humid.  went to eye exam, which was three hours long.  felt like boot camp for my eyes.  felt a lot of social anxiety plus anxiety about having my blood pressure taken (could feel my heart start to race and et cetera).  was dehydrated and unhappy throughout long process.  my intern j was nice if a little awkward and dorky - the doctor was nice if a little bit intense and perform-y (i will not misuse performative - dramatic would actually be kind of the right word).  i came home and ate dinner and felt better, though i felt anxiety after dinner.  slept well (finally took another benadryl, well worth it), but woke up feeling super anxious all morning. d just txted me that she&#39;s sleepy - how i aspire to be a sleepy person.  am pretty convinced that magnesium deficiency is what has ramped up the anxiety - taking some this morning defnitely helped for a while and i will probably take some more before bed, along with another benadryl (must protect sleep).  had a great swim at lunch - felt very relaxed and like i was swimming with good form and not wasting as much energy as i normally do.  work is okay.  i feel anxious about not going to the cookout tomorrow, but i also don&#39;t want to go to the cookout tomorrow and don&#39;t want to have to ask d to go (even though she technically owes me for going to her work thing).  anyway, i will get through it and then not have to worry about it.</p>
+<p>with the anxiety i&#39;m feeling now, it&#39;s good to remember how anxious i felt around this time last year - d had to take me to urgent care for the second time (THE SECOND TIME) on labor day because i was so sure i was near death.  guess what, that was a year ago, with lots of happy time and only one real flareup of my anxiety (when i wasn&#39;t exercising in the winter) since then.  i am not going to be the freakout monster this vacation.  i am going to do better.  and i will do that by chilling out, ngaf, taking my supplements and benadryls (and my emergency xanax if i really need it) and getting through it.  i have accomplished one thing by getting my eye exam and i will do, soon, my dental cleaning and doctors appointment (including echo cardiogram) - those will help me with the fear and i can make those calls now - i am a receptionist and i am calm.  only one more day of work and then a three day weekend with debbie.  that makse me very happy and i will enjoy it this year rather than spending it on unnecessary suffering.  i need to feel good so we can be happy together.  i&#39;m sorry i missed writing in this diary.  it is helpful to record these feelings and to go through the meditative act of writing.  i will keep doing it, even when i don&#39;t want to.</p>
+<p>going to make more cabbage soup when i get home.  it&#39;s so good, as is everything else.  read bryan lee o&#39;malley&#39;s seconds the other night and am in the middle of lena finkle&#39;s magic box - both are great and highly recommended.&quot;</p>
+<p><strong>9/11/14</strong></p>
+<p>&quot;what a whirlwind week.  started taking zantac last thursday, felt much better this weekend, felt totally better this week, so much better that i could notice a recurrence of my sleep electric shock thing that i looked up on wikipedia and is not actually a harmful thing.  on tuesday night, to try to ameliorate that, i used some afrin, which then totally wired it up and made it so i couldn&#39;t sleep well.  last night, it was intense tightness in my esophagus maybe cause by too much talking on the phone to my mom/k plus the stress of being tired plus i don&#39;t even know (edited to add: oh yeah, plus [redacted], which totally dried me out.  but it lead to another mostly sleepless night - i seem to get my first four hour or so block of sleep, but then after that it&#39;s very shallow at best, which is frustrating.  must try again to relax today - my whole life is trying (and failing) to relax, it seems.  maybe writing in this diary is a good first step.  it always seems to help some at least.  last night, hearing about how much k has improved on his ritalin made me consider again whether i should go on an antidepressant.  i felt great all summer and for a decent amount of the spring, but it has been really hard the past month or so.  i will give it a little longer and hopefully things will clear up, but at a certain point is an option i&#39;m going to have to try.  i&#39;m mostly only afraid of it for the sexual side effects, because sex is so important to my relationship, and i worry that d won&#39;t like me as much if our relationship is temporarily less sexual (or i worry that if it&#39;s temporarily less sexual, that&#39;s a gateway to it being permanently less sexual, which neither of us wants).  we had great sex last night after dinner (did it interfere with my digestion?! i don&#39;t know!).  i&#39;ve also had really amazing workouts this weekend week - on sunday, a much faster 10 mile pace (which felt basically effortless), on tuesday, excellent swimming speed and stamina, and yesterday, a lot of power for my run despite intense humidity.  do feel like my esophagus is relaxing some now (warm water) which is good, even if i wish it would happen faster.  really don&#39;t feel like dinner with k and jl tonight, but i will tough it out for the sake of our friendship (also, it won&#39;t last too long - we will probably be home eightish or eight thirty and can watch great british bakeoff or read or whatever.  maybe i will get home fast enough to throw the sheets in the wash and get them dried before we have to leave, though no, that&#39;s actually probably pushing it, but maybe i can wash them and then dry them when we get home.  8:30 - 9:30 wouldn&#39;t be that bad.</p>
+<p>(for future reference - i was taking maalox last week after the crashing end of the omeprazole the week before - i&#39;ve been taking 150mg zantac 2x daily since last friday (i think? because i think on thursday on my lunch break i would&#39;ve gotten the one pill from the hotel - i can figure this out if necessary by pill counting)</p>
+<p>still in love with cryptonomicon - it&#39;s just such a good book.  such an embarassment of riches in terms of what to read next, too, but it&#39;s hard to imagine i will enjoy anything (even the david mitchell book - and still need to dl the emily st. john mandel book) as much as i enjoy this one.  i am hopefully getting the last of the music equipment (at least for a decent while) tomorrow in the form of a battery, a mini-usb hub and a wireless mouse - with this, i can segregate the laptop under the table or over in the old entertainment center, which will definitely help with the noise (and also probably with distractions.  maybe i can even put it in one of the old boxes.  i don&#39;t know.  but i feel positive about this, even if in a dark moment last night i had the thought that once the cicadas and air conditioner noise are gone, there will be the new noise of the heaters (which can&#39;t be lo-rolled off).  but whatever!  these things are still improvements and the battery is crucial for not having to deal with endlessly unplugging and replugging the laptop in order to play guitar parts.</p>
+<p>i feel more relaxed.  i found myself thinking in the middle of the night how frustrating it is that body processes aren&#39;t as instant and automatic as computer decisions.  sometimes it takes so long to feel better.  but i am feeling better.&quot;</p>
+<p><strong>11/31/14</strong></p>
+<p>&quot;I should start keeping a diary again.  It&#39;s been a while since I&#39;ve done it and it always seems to make me feel happier and calmer when I&#39;m doing it, so here we go.</p>
+<p>But now that I&#39;ve started, I&#39;m stuck with the usual problem, which is that I don&#39;t really like what I&#39;m writing.  Must derail the meta train - it will flip off the bridge into the hills of the concrete, the crumpled metal casing slowly sliding to a stop in an image.</p>
+<p>Well, that worked for a second.  One of the reasons that I want to write is that it used to be when I wasn&#39;t busy at work, I either enjoyed wasting my time or I was working productively on projects or I was so anxious and stressed out that the absence of feeling that way was enough to make me feel a version of content.  Then, this summer, work got busy and that busyness mostly continued into the fall, up until now, when things have slowed down again and I am left with time, but I don&#39;t really have a project that I&#39;m working on.</p>
+<p>So, I applied for a new job.  I had planned to stay at this job until next summer, when we&#39;re planning to move to a distant city that we haven&#39;t put a pin in yet, but somewhere else.  It seemed safe to stay in this position and like it wouldn&#39;t be bad for my resume to have a job for a year on there.  But then a job opened up at d&#39;s company, an entry-level Customer Support position, and I decided I would apply for it. I&#39;ve wanted to work there since she started, since it seems like such a great place, but it always seemed like the company was too small and I was discouraged by possible awkwardness.  But the possibility of working there seems to now outweigh that for me, especially since I am feeling somewhat less content in this job (even though there&#39;s nothing wrong, per se, with this job, and in fact the other day I finally managed to get through a faculty meeting without being a freaked out mess - this is possible).  So they&#39;ve accepted my application and hopefully they&#39;ll schedule an interview soon (lol, crazy to imagine that sentence coming out of my mouth (or typing hand mouth word interface thing).</p>
+<p>There has been a lot of art about this but it does suck for the body to age.  I just think of it now in terms of food - how much I try to calibrate my diet towards feeling good versus toward my desires.  I feel like when I lived in Korea, I basically ate ramen everyday, and sushi, and grocery store kimbap, and the occasional fruit but very few vegetables (besides panchan or the occasional kimchi jigae) and yet, I mostly felt healthy and I rarely thought about the health of my body - it was not an interesting topic or something worthy of discussion or extended thought (unless it was vain thought looking at myself in the mirror after a long run through the neighborhood).  Now I am constantly micromanaging my feelings about my body and constantly trying new things - supplements, different vegetables and et cetera - with the hope that they will make my body feel better.  In some ways this is good - eating kale often, while such a cliche, is good for us and it&#39;s also tasty!  Before D and I started dating, I had such a limited repertoire of dishes and they involved very few vegetables (with, I guess, the primary mainstay being roasted root vegetables, which I don&#39;t even eat as much anymore because of gas (or, I guess, just because it&#39;s been summer and fall and not winter).  Now I eat many vegetables.  I don&#39;t know where this is going, I haven&#39;t written for a while.</p>
+<p>Maybe I&#39;m comparing the present and past because D and I have been vegging out by watching Gilmore Girls lately.  It has been so lovely to be able to do that with her.  Last night we watched three episodes.  I sometimes have the thought that this is bad because it&#39;s not doing anything productive and blah blah blah, but it is doing something productive because we&#39;re sharing time together and it&#39;s also me revisiting this connection with this thing I was intensely connected with in the past and exploring how I react differently to it now.</p>
+<p>I really liked rediscovering the song &quot;Watching the Wheels&quot; by John Lennon recently.  I feel like I wouldn&#39;t admit that publicly because it&#39;s not really cool or interesting to like John Lennon, but that song expresses exactly how I feel (or, in weaker moments, how I am trying to feel) about life right now.  Like &quot;The Circus&quot; by Kenneth Koch, which it is kind of related to, I feel like it&#39;s also interesting in that it is a rejection of art in favor of appreciating life which is itself a beautiful and powerful piece of art.  It negates and resonates at the same time.  I love things that do this trick.</p>
+<p>Tonight, we&#39;re having a Fuschia Dunlop celery and ground pork with chili bean paste over mixed grains.  Mixed grains are another thing that I rejected in the past as gross, when D introduced them to me, and then in a moment of desperation over my health I tried them in the hopes that they would salve my fears, and then in the process of that I actually discovered I liked them and now I am lookingn forward to eating them.  I had another progression with celery, which has always been a bland nothing vegetable that either makes me think of childhood (ants on a long, which I never liked that much since I didn&#39;t really like peanut butter very much as a kid) or of hot wings (in which celery is not being appreciated for how it tastes, but appreciated in the way that you appreciate an air conditioner).  But this recipe which everyone says will make you rethink celery really does, even if it mostly makes celery palatble by cooking it in ground pork fat with garlic and ginger and then slathering a ton (I put way more than the recipe calls for) of delicious chili bean paste over top of it.  It will be delicious on the mixed grains and then we have pumpkin pie for desert.</p>
+<p>My mom told me recently that she told my dad about me finding that keeping a journal when I am stressed or anxious helps me, by giving me a sort of historical perspective for times when I felt bad, a way to know that they are finite and that you do come out the other side, that that did not actually get him to keep a journal, but was still comforting in its own way, was still helpful.  Writing in this is still helpful, a fact which I forgot as I have forgotten it before and will probably forget again (unless I just continuously write in this journal, which I probably won&#39;t).  At least I can write again tomorrow, and I will, and I am glad for that possibility.&quot;</p>
+<p><strong>[Undated email draft from later in 2014]</strong></p>
+<p>&quot;a diary i have felt crappy today and for the last few days after a weekish of feeling really much better than i had been feeling for a while.  it must have something to do with the medication i switched to, the more intense active ingredient, since even tuesday i was feeling great (and had such a great swim, though exercise is not necessarily an indicator since i also had a great swim today).  i must reinstate this diary project, even though writing feels to me right now like a not particularly fun thing, since i need to stop feeling poorly and this must be one way to it or to actions that will engender it and it has worked in the past.</p>
+<p>PROMISE TO SELF: if i do not feel MUCH better (or really, even if i do) - i will make a doctor&#39;s appointment on monday.  I WILL DO THIS, I WILL NOT PUT IT OFF, THIS WILL NOT BE PUT OFF ANYMORE.  i am scared about this, about my blood pressure and heart and stomach and dying, but putting it off has not ended up making me feel any less scared, it&#39;s just made me feel scared for longer and it&#39;s not worth it, not feeling like this.  IT WILL BE FINE and i will get the appointments i need to both feel better and be less scared.  it will be like all of those things I put off where it ends up being, after I finally do it, like, &quot;oh, why was I so afraid of that!&quot;</p>
+<p>Part of me is being like &quot;you fucking wuss if you realize this why not just go ahead and make the appointment now&quot; but it&#39;s okay for me to acknowledge to myself that just making this committment (a real commitment, not like my million bullshit &quot;i will go to the doctor&#39;s&quot; for d) is meaningful and anyway waiting till monday morning won&#39;t make any tangible difference in my appointment time given that it&#39;s 4:00 on a friday.</p>
+<p>Just writing this I am already feeling better.  I feel bad that I have not finished writing a response to jk, but she will forgive me and I&#39;m sure we will have a lovely time with her tomorrow, as we did last time.  It will be interesting to see jy grown up (a bit) and I am looking forward to eating some delicious take out food (we have not had much lately and those burgers at the bakehouse with k and jl were terrible).  visiting j was another one of those things that I felt stressed out about for absolutely no reason last time.  </p>
+<p>i feel bad now - my body just feels like it&#39;s in this state of stress all the time since i started taking this medicine again, even though taking some magnesium and some benadryl seems to have muted it.  and it is important to note that i have felt like this before and then doctors have told me i was fine and then i have felt great again and i need to learn to chill, but it is also true that my body when it is like this makes it very hard to chill and that is why I am going to go to the doctor, to get the help i need for my body not to do this to me anymore.</p>
+<p>Some things I have really enjoyed lately: my new subscription to the new yorker, those delicious chocolate truffles d got (omg i looked them up so expensive</p>
+<p>okay&quot;</p>
+<p><strong>2015</strong></p>
+<p><strong>2/19/15</strong></p>
+<p>&quot;first day of fluoxetine.  yesterday i just felt so bad, the intensity of it radiating through every cell of my body, the badness from my nerves generating acid that eroded all of the progress my stomach lining had made recently, and i couldn&#39;t feel this bad anymore and i remembered that this was an option and i figured that i have been in the same bad pattern, of good weeks and bad weeks, for way too long and it&#39;s time to try another door.  </p>
+<p>so i took the pill this morning and i&#39;ve felt so much better today. strange, but better.  the last time i tried this was a year and a half ago, the day after the really bad panic attack that had d taking me to urgent care for the second time in two days.  i think i just took it once (or maybe twice), on a day that i mostly remember spending in a kind of detached peace in bryan park on a sunny day, where i read the entirety of &#39;high windows&#39; by phillip larkin.  i also remember d and i trying to have sex, because i felt better and because i wanted to show her how much i appreciated her and loved her, and i couldn&#39;t feel my penis.  that was enough to stop me from taking it and to tell my doctor that i felt like i was handling things with meditation and exercise and good sleep hygiene.  and the fear of that absence of feeling is the primary thing that&#39;s kept me from considering this in the past and instead indulging in a panoply of expensive and i think mostly useless over the counter herbal whatevers. </p>
+<p>i hope the numbness goes away but, as i said, i can&#39;t keep going forward on the path i was on.  it would destroy me much sooner than would be natural otherwise.  (that sounds so melodramatic, but it is true).  so let&#39;s try this!  i feel like i started feeling something after a few hours - i had to make a catering order for the retreat tomorrow, which stressed me out but the stress felt like the volume was turned down just a few db and then faded much faster than it normally would.  then i guess the next thing i noticed was a sense of strangeness as i gchatted with d.  my thoughts felt much more clearly segmented/fragmented than the long rambly chains i normally employ.  i also felt a certain self-consciousness that made me think of tao lin - a dissociation or a sense of strangeness at trying to use words to express myself.  i inadvertently was rude to d but she forgave me, so that was all okay and as we talked more i felt more articulate and normal.  on my lunch walk, i talked to my parents and i think felt and came across as normal, though i was maybe slightly less engaged than i normally would have been.</p>
+<p>then this afternoon, it&#39;s been perhaps more muted but again, i just generally feel a lot lighter, like my nervous system&#39;s tuning strings have been loosened.  it is great.  i also seem to be able to let things go faster and to not obsessively check over emails (which lead to me making a typo, but i didn&#39;t really care! that&#39;s great!!! i used to feel so destroyed by a typo, even when the person i was writing to could barely communicate with me).  maybe a slight tension in my temples and occasional shakiness, but not really any other negative side effect feelings.  i will check in again tomorrow but i feel much better than yesterday and that is a cause for celebration.&quot;</p>
+<p><strong>2/26/15</strong></p>
+<p>&quot;one week of prozac and, yes, things just continue to get better! *knocks on wood.  i was more productive at work yesterday afternoon, finishing the minutes that I had been putting off for weeks (and which really weren&#39;t that bad - through creative page layout and margin tweaks, i was able to hold to my goal of keeping all minutes under two pages) and sketching out a basic idea for how i need to update my scheduling app so that i don&#39;t have to update it with a text editor and ftp anymore.  i&#39;m still not sure exactly how it will work, but it will be much more efficient and i don&#39;t think it&#39;ll be that hard. </p>
+<p>once home, caramelized onions and watched a brief video of the prozac diary with bernard sumner from new order talking about its effect on his lyric writing, which is normally torture for him.  then i talked to my mom on the phone for a while and heard about john beech&#39;s crazy sister, their continued semi-woe about their broken tv, and making spaghetti sauce but also drinking the wine you buy for it.  then d got home, slightly hangry, and after a bit of furious finishing, we had delicious hotdogs and sweet potato fries and tahini salad while watching the final parks and rec and the mindy project.  i feel like i was silently judg-y about the amount that she was [redacted], which is not helpful.  i guess i was still feeling a bit of the distance/irritability of the previous night, but i think i was able to control it and shut it down faster last night.    </p>
+<p>i played music some more last night.  it went really well!  i was actually grabbing at phrases of lyrics that sounded good and writing them down. i feel like i have immediate access to such a wider range of the words i know than i have in the past, which was a major source of frustration for me, and i feel like my brain was combining them in pleasingly euphonious and interestingly disjunctive ways.  this has not happened in so long!  i am incredibly grateful  working over and over on something felt fun and great rather than frustrating and self-hating.  i feel like the idea i was working on was ultimately kind of a dud, maybe, but it felt much more fun working on it.  i also am really coming to appreciate having the physical volume and pan knobs - it feels so much nicer to be able to do that and adjust them by sound rather than looking at visual db indicators.&quot;</p>
+<p><strong>2/27/15</strong></p>
+<p>&quot;things continue to be great.  yesterday in the pool, i felt like superman, like i was swimming on a level that i hadn&#39;t been able to before without even any real effort.  it was like the water could sense my comparative ease, the lack of rigidity in my body, and parted more easily to let me through.  i would get through a set of laps and whereas in the past i would have treaded water in the deep end, panting and gasping, yesterday i was barely winded.  i got tired as things went on but i felt like a different person doing a different activity, like i was finally really swimming.  my breath control, too, was excellent - i was doing dribbly breaths properly and not driving air violently through my sinuses.  so wonderful.  both before and after, as i walked through the building, i had to keep myself from beaming. the joy felt like it was bursting out of me.  walking back, i saw a young guy pretending to be an airplane, descending down a ramp to the basketball court, and i thought - i understand.</p>
+<p>i mean, he was probably high, and in a sense, i guess i am too, though i don&#39;t feel high, just good.  i was thinking yesterday about that, about the distinction between happiness and feeling good.  happiness feels to me like a product of will and conception of the self and situation - even in a lot of my dark times over the past year, i have felt happy.  but &quot;good&quot; feels like a product of the body, of chemicals and their effects on my cortex, something i can&#39;t control, and i have rarely felt &quot;good&quot; and usually only briefly, under the influence of sex or exercise or booze or drugs, and even then, it was fleeting and often tinged with a backsplash of badness.  </p>
+<p>so i feel good now, all the time.  it&#39;s great.  on the note of the guy being high, k came over last night, and i thought briefly at the outset that i wasn&#39;t going to be able to be as interested in talking to him when not stoned (both d and he were getting loaded on vodka and fruit juice).  i felt distant and kind of bored.  but i think mostly that was just because he opened the conversation with two overlong rambles about deep space nine and scandal, two shows that i have no intention of watching (though deep space nine was kind of enticing)(but no).  but once the conversation opened up some i felt much more engaged and normal, even if it did go on a little long and i felt exhausted afterward (but that&#39;s always the case).  still stomach acid issues in the night.  i might need to reschedule my bloodwork since not being able to eat in the middle of the night might be a problem for me, but i don&#39;t know - i will check and see and maybe reschedule my appointment tomorrow.</p>
+<p>i had an anxiety dream about emily gould and event planning which i think was inspired by having to make two calls about field trip planning today and feeling slightly anxious about them.  i will do them soon, though, and i don&#39;t think it will be that bad.  feels much more doable than it would have in the past.  and then later today, after some copyediting of a faculty paper, i&#39;m hoping to do some more work on my scheduler app, which i made solid progress on yesterday afternoon (breaking the cycle!) and then the weekend!  we had planned to go see jupiter ascending tomorrow but now that&#39;s not playing so maybe we&#39;ll order little caesars tonight instead.&quot;</p>
+<p><strong>3/4/15</strong></p>
+<p>&quot;so tired.  the lack of sleep has really caught up with me.  after my anxiety on monday, i experienced it yesterday as an almost peaceful thing, but now i am just tired.  slept very little last night, despite setting out the foam mattress pad on top of my wedge pillow to try to encourage more comfortable, well-positioned sleep.  instead, i was still awake but slightly more comfortably.  night seemed to last forever.  less pleasure from reading than usual.  still the reflux, despite nexium.  energy to write longer sentences not in my body.  d seemed to have anxiety issues this morning, fixating on an HSA check and her foot pain and then freaking out while in an awkward parking situation.  i understand, though,and hope it was just a momentary blip.  really do think that the cranberry juice lowered the concentration in my bloodstream and fucked things up.  just got shit from the accountant for buying water with my own money rather than the credit card.  whatever, who cares.  i am so tired. i am so tired. i am so tired.  we watched better call saul last night, which was good, and i did some nice music playing while waiting for d to get home.  i love having the acoustic guitar and my new mixing setup - the track and knob labels have really hedlped that be faster and more intuitive.  so fun.  </p>
+<p>food helps me feel briefly more energized but mostly am tired.  considering asking for the afternoon off, but idk if i want to.  the end&quot;</p>
+<p><strong>3/10/15</strong></p>
+<p>&quot;another great day.  felt yesterday quite enthused and energized, like the prozac was fully kicking in again.  got things done at work with a lot of sidetracking (writing a metafilter comment about the tournament of books, geeking out about the new macbook with d, downloading ebooks that then i was too tired to read) but generally good energy.  very nice run at lunchtime and good convos with j.  generally feel very positive.  </p>
+<p>messed up the rice for dinner again - i guess maybe i&#39;m overcooking it?  it was super gluey, but luckily that style worked well with the sichuan chili bean paste celery and pork.  still, annoying.  i feel still not sure that i understand the pressure cooker - i&#39;m not getting the thin, slow stream of steam that&#39;s recommended by the manual and i don&#39;t know how to fix that.  the regulator is clear, the seal is good.  maybe i&#39;m just overcooking it - that&#39;s the only reason i can figure, but it&#39;s not like dry overcooked, it&#39;s gluey.  i don&#39;t know.</p>
+<p>killing a lot of time on the internet this morning (a long gap between starting the previous paragraph and finishing it).  oh well!  last night we watched walking dead, girls, and togetherness, all of which were great (togetherness finale montage with james blake was excellent).  afterward, d was doing some computing and i went into the bedroom and played acoustic guitar through a blown out amp sound, eventually recording a quick song with dumb extemporaneous lyrics.  lots of fun, good to finish something.  afterwards, we read in bed for a bit - i finished the portishead book and then tried to start a novel (the buried life by carrie patel) but was too sleepy and passed out instead.</p>
+<p>slept okay - woke in the middle of the night and tried fennel seeds for my reflux, which was strong but perhaps not as strong as it had been.  oh, still did famotidine before bed - maybe that&#39;s sabotaging things, not letting the nexium fully do its work?  i don&#39;t know.  anyway, fennel was okay, but i woke up too much, read a lot of internet, tried jerking off to fall back to sleep, but was not successful - up for several hours.  should use books, not the internet on my phone - much better chance of getting back to sleep.  was tired this morning and am still a little bit but feel generally okay - will just have to more aggressively attempt to get sleep tonight.  but, still, moving forward, onward, upward!&quot;</p>
+<p><strong>3/11/15</strong></p>
+<p>&quot;good swim yesterday but then weird anxiety yesterday afternoon.  realized too late that i didn&#39;t eat at a snack at my normal time - that could&#39;ve triggered it or i guess it could&#39;ve been eating too many cranberries from my trail mix?  i will eat around them now and only have the nuts just to be safe.  went home and made delicious double batch of penne ala vodka (all that you have to double is the pasta and then i also don&#39;t drain the tomatos and add more onion) which will feed us for the rest of the week hopefully.  started feeling better around dinner time and was fine after dinner - just a small blip but not enjoyable one bit.  watched a new episode of the jinx (so dramatic) and the new better call saul (as d said, maybe overlong and didn&#39;t need a whole episode dedicated to mike, but still pretty damn good), played a little guitar, and then read some of the valeria luiselli face in the crowd book.  really good - i can see the comparison to bolano, but the fragments are much smaller and its more, i don&#39;t know, personable. because of the focus on motherhood, makes me think as much of jenny offil as it does bolano (also because it takes place in new york rather than in mexico).  anyway, enjoyable read, think i&#39;ll keep up with it.  </p>
+<p>fell asleep ten-ish (good that i&#39;m moving my bedtime back a little, though it&#39;s hard!).  didn&#39;t take famotidine before bed.  woke up as usu around 1:30 and then dozed back till 3:30.  not drinking water seemed to mute acid problems but then i just got so thirsty! so thirsty that that seemed worse than acid problems, so i drank water, which then my stomach started to burble.  had a famotidine, read a little more (only a book, no internet) and fell asleep pretty well until it was time to wake up - feel rested and good today.  will probably try this setup tomorrow, when i&#39;m having my bloodwork done.  a little stressed about that but not too much and who knows, maybe i will learn something useful!  i wonder about my b12 levels, for instance.  we&#39;ll see.  anyway, not too worried.</p>
+<p>d and i also decided to try to do the song/comic challenge, which we had thought of in the past but then got sidetracked by the YA novel idea, which was maybe slightly too ambitious and this is a better way to ease into productivity.  anyway, the theme this week is plants - i keep thinking of the stevie wonder title &quot;the secret life of plants&quot; but obvi that won&#39;t do.  i&#39;ll think of something - probably lyrics inspired by the music.</p>
+<p>think a lot abt whether i want to buy one of the new macbook pros.  going to hold off at least until next week so i can consider it, but it might be the right computer for me.  glad i didn&#39;t jump the gun on the new macbook, which doesn&#39;t seem right.</p>
+<p>doing well!  feeling positive! things are good.  it&#39;s going to be 65 degrees today:)&quot;</p>
+<p><strong>3/13/15</strong></p>
+<p>&quot;feeling good, feeling great.  today was the first day in a while where out of a sense of complacency i thought i might not write in here.  i&#39;ve felt zero anxiety or stress all day and have been super calm.  part of that is the laid-backness of today, with all the students and most of the faculty gone, but part of it is just me feeling chill.  that&#39;s awesome!  yesterday afternoon was fine if a bit long and d and i had a nice evening.  the americans just gets better and better and we watched a pretty good ep of survivor too.  also, we had strawberry shortcake, which, even though d added a little too much vanilla extract to the whipped cream, was delicious.</p>
+<p>afterward, i played guitar for a while, trying to do the plant song, but didn&#39;t really get anywhere.  oh well.  i did think of a workflow thing, which is keeping three virtual tracks open for my first audio track in beatmaker, which will make punch ins and mixing different sections much easier.  i also showed myself that i&#39;ve gotten much better at playing guitar to a metronome.  after that, talked and snuggled with d for a bit and then started the erik larson book thunderstruck, which is good but i was sleepy.  slept pretty well - woke up and took medicine and then immediately fell asleep again, though i did wake up with some acid around 5:30ish - not too bad, but a bit disappointing after the improvement the last two nights.  still, sleeping/feeling much better!</p>
+<p>work today has been chill - i&#39;ve accomplished some things and also done some nice relaxing slacking/reading.  also had a nice swim at lunch and was complimented in the locker room by a guy who has seen me running and said that i should do races because he thinks i would be very competitive.  very nice/flattering - said something about me blazing past him on the track.</p>
+<p>excited for the weekend.  we&#39;re going to watch top 5 and eat the last of the penne vodka tonight (plus strawberry shortcake).  tomorrow, they&#39;re showing the apartment, but it&#39;ll be warm and we can walk to the mall (d wants to smell the new line of candles and bath and bodyworks).  maybe make something fun for dinner (or maybe just charcuterie again - it&#39;s so easy and good) and maybe kimchi jigae next week.  a long warm run in the sun on sunday - can&#39;t wait.  and then a nice quiet productive week next week.&quot;</p>
+<p><strong>10/7/15</strong></p>
+<p>&quot;i have felt cruddy today. why? could be because my stomach hurt more than it has in a while last night and that was unpleasant. could be continued job angst, which i really don&#39;t want to let get to me - once again, feeling marginalized and unspecial and having to deal with shit i don&#39;t want to deal with. these are the conditions of labor, though. and a lot of it is stories i am telling myself in my mind. also, i didn&#39;t get my endorphin running buzz today, which sucked and didn&#39;t help, especially because i was in a meeting that was relatively long and unpleasant.</p>
+<p>just writing i am already feeling better and that is nice. i should do this every day but i don&#39;t make the time. i&#39;m also entertaining the idea that the caffeine from the kombucha is a problem, but then i was having kombucha a lot lately during times that i was feeling great and was feeling like this before i was having it, so i don&#39;t know that i think that&#39;s it. my next batch will be half green tea to see if that helps to cut caffeine content and or to get some l-theanine going on.</p>
+<p>interested if the ibuprofen will help my stomach. maybe, yes, i don&#39;t know.</p>
+<p>time for gratitude list:</p>
+<p>bike riding - even though i messed up and got stuck in a left turn lane when i wanted to go straight, i liked having a different route without so many monster hills today - i think i&#39;ll try it on my way home too.</p>
+<p>the fog - today was the foggiest day of the year so far. i love the mystery of fog - like snow, it defamiliarizes the landscape. </p>
+<p>the snack packs from d&#39;s free graze box - one was sriracha crunch, which was surprisingly spicy and included savory corn pops. the other was deconstructed carrot cake - i don&#39;t know what was in it, tbh, as i just kind of poured it into my sadness hole, but the ingredients really did come together to create a delightful carrot cake sensation.</p>
+<p>reading that zappos article in the new republic while eating breakfast and then d reading it because i recommended it</p>
+<p>being able to clear the paper jam in the copier for bill</p>
+<p>talking to b - he&#39;s such a nice person and i&#39;m glad that i get to interact with him a lot:)</p>
+<p>realizing that i was right and that the faculty member was wrong and (very politely) rubbing his face in it by forwarding him an email he wrote several months ago - this is petty, but nice</p>
+<p>listening to harris wittels on you made it weird - it&#39;s very sad that he died but i am grateful for how much joy he has brought to my life. listening to him talking about future tripping made me think about it and helped me to kind of get out of my own head earlier.</p>
+<p>nice weather - it is kind of annoying that it&#39;s warm again but on the other hand i should enjoy it while it lasts, even as i look forward to more cold and the effect of that on my sleep.</p>
+<p>stereolab - good listen to an early stereolab track this morning perked me up</p>
+<p>my standing desk - i like being able to stand as much as i want. it really helps in terms of feeling active and happy&quot;</p>
+<p>---</p>
+<p>i&#39;m thankful that about a month after i wrote that last message, i started this project of writing my thank you notes. i&#39;m thankful to know that i am just one person and that what worked for me may not work for the anonymous person, or for you, or for anybody else, but i hope at least this serves as an example of how things can really change when they feel like they never will and that they can be okay and you don&#39;t have to feel like this forever, you don&#39;t have to and you won&#39;t. i&#39;m thankful to have had a chance this morning to share that with the anonymous person and with you.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-225.html" class="btn btn-secondary">← thank you notes 2/25</a>
+        <a href="/letters/thank-you-notes-223.html" class="btn btn-secondary">thank you notes 2/23 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

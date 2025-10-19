@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="7/3/17">
+  <title>7/3/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>7/3/17</h1>
+        <time datetime="2017-07-03T00:00:00Z">July 2, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful for the opportunity to revisit the fragmentary notes i kept in my phone over the past week as a way of processing my experiences and adding them to my textual scrapbook.</p>
+<p>i&#39;m thankful that on our first flight to california, the turbulence was pretty bad. i&#39;m thankful to have tried to comfort d, who is frightened by that in a way that i&#39;m not. i&#39;m thankful that by coincidence the edible i had eaten was kicking in and i mostly just listened to music (<a href="https://open.spotify.com/album/1iQNqvcWTFwfUYnsGgMYBw">foxygen</a>, who i had never really appreciated but listening to it at that moment reminded me pleasantly of the almost plane crash in <em>almost famous</em>) and enjoyed the ride. i&#39;m thankful that at one point, i imagined the plane as an extension of my body, that its shaking was my shaking. </p>
+<p>i&#39;m thankful for how when we landed we talked about how the reason i&#39;m not afraid on planes is that i don&#39;t have any control over whether the plane will crash or not, there&#39;s nothing i can do, it will either happen or not happen and i find that freeing and not scary. i&#39;m thankful to wish that i could transpose this philosophy onto the other areas of my life and maybe will try harder to do so.</p>
+<p>i&#39;m thankful in general for all the ways that airports and airplanes remind me of death. i&#39;m thankful, even though our state security apparatus is racist and wasteful and stupid, for the way in the security line we take off our shoes and belts and have to remove all our possessions in order to pass through the border into the afterlife of the terminal. i&#39;m thankful for the way that moving sidewalks carry us away like mechanical charons.</p>
+<p>i&#39;m thankful for the intimacy forced on you by air travel, even though that&#39;s often unpleasant. i&#39;m thankful that i had brought a peppermint essential oil inhaler, because on our second flight, a man was eating a sandwich that smelled horribly of garlic and onions. i&#39;m thankful that d and i passed the inhaler back and forth, like stranded divers sharing a single tank of oxygen, until he finished eating and the smell passed. i&#39;m thankful that while i was repulsed by the smell i found out when we landed that d was undecided about whether she hated it or loved it.</p>
+<p>i&#39;m thankful for the really tall thin palm trees in california, which look like stretched taffy. i&#39;m thankful, while stuck in traffic, as we almost always were, to have thought about how the freedom in grand theft auto V to cut around in traffic and jump barricades and drive up hills must feel particularly freeing for angelenos, where even a journey of a few miles can require getting on a jammed freeway and sitting still. i&#39;m thankful to have learned about the partial legality of motorcycles weaving through the gaps in stopped/slow traffic, which was a fascinating thing to see.</p>
+<p>i&#39;m thankful for redondo beach, which was very beautiful to the south, with a hill covered with houses like a mini-me capri, and which was very ugly to the north, like a miniaturized myrtle beach. i&#39;m thankful there for a woman i saw who seemed to be carefully framing a shot of a &quot;do not enter&quot; sign but who i realized when i got closer was shooting past the sign to the ocean. i&#39;m thankful for d&#39;s sister e, who, to d&#39;s mom&#39;s desire for us to go to another pier, said &quot;every pier is the same&quot; which is a pretty true statement.</p>
+<p>i&#39;m thankful for california girls, which i think really do exist as a specific archetype in the real world and are different than the girls in other places, though maybe that&#39;s just fetishization. i&#39;m thankful for how effortlessly tough and cool they seem—i&#39;m thankful when we were in redondo beach to have seen two girls in sunglasses, sports bras, and jean shorts longboarding down a hill lazily, one of them eating a lollipop. i&#39;m thankful for e&#39;s glitter pink iphone case, which you could shake to make it shimmer.</p>
+<p>i&#39;m thankful that when we went down to the water, d&#39;s mom and i put our feet in and were surprised by how cold it was. i&#39;m thankful for her laughter and mine when she got splashed by an unexpectedly large wave. i&#39;m thankful for the smell of the ocean, which i hadn&#39;t smelled in a long time and the feel of the air there and which is wonderful.</p>
+<p>i&#39;m thankful for the hotel restaurant where we ate lunch. i&#39;m thankful that d got a lobster roll, which e said is a dish that she expects to be better and always disappoints her, and e got fish and chips, which d said is a dish that she expects to be better and always disappoints her. i&#39;m thankful that d said &quot;<em>i just wanted to taste lobster</em>.&quot; </p>
+<p>i&#39;m thankful that d compared the heat in her family&#39;s garage to hell to her dad, who is a pastor, and i&#39;m thankful he laughed. i&#39;m thankful for the great dad joke he told when we were talking about al pastor tacos and he said &quot;so tacos...of me?&quot; i&#39;m thankful for his intricate ad-blocker strategy for watching streams of korean shows.</p>
+<p>i&#39;m thankful for d&#39;s mom&#39;s compliment that my eyes look like i had double eyelid cosmetic surgery. i&#39;m thankful that after we had amazing seolleongtang at a restaurant in LA, d complained about feeling stuffed and her mom said that it was because rice makes you fat and she ate her rice and that&#39;s why her mom and I didn&#39;t eat our rice, which while shitty and body-shamey in the way that her mom can often be, was also interesting because her mom and I don&#39;t have that close of a connection in many ways, so i&#39;m thankful for her noticing a point at which we overlapped, even if it was kind of a mean one. </p>
+<p>i&#39;m thankful we went to the san diego zoo, even though i didn&#39;t really want to go and don&#39;t care about animals. i&#39;m thankful it was a good family activity. i&#39;m thankful for the comedy of the shuttle tour, because we kept coming upon habitats and the animals were gone or missing or hiding and this was true for probably a good 75% of the tour, which made me imagine a tour that was just the descriptions of what the animals would look like without any animals, which honestly would have been about as good imo. </p>
+<p>i&#39;m thankful that one of the gimmick exhibits at the zoo was a dog and a cheetah that were raised together to be &quot;best friends&quot;. i&#39;m thankful that apparently the dog helps the cheetah who is high strung to relax and play—i&#39;m thankful d and i agreed that i would be the dog and she would be the cheetah in our relationship. i&#39;m thankful that in response to d&#39;s mom&#39;s comment about why the giraffes didn&#39;t have more food to eat in their habitat, e said bluntly &quot;<em>they don&#39;t want fat giraffes</em>.&quot; i&#39;m thankful for the skyway tram we took across the grounds of the zoo, which was my favorite part of the trip because it was almost a ride and did not involve having to squint at animals and pretend i found them interesting.</p>
+<p>i&#39;m thankful for d and her dad playing &quot;heart and soul&quot; and &quot;chopsticks&quot; together on the family&#39;s piano. i&#39;m thankful that though the piano was a bit out of tune, that gave it character. i&#39;m thankful that one evening while d&#39;s mom made dinner, i played some improvisations and her mom was complimentary. i&#39;m thankful that at church on sunday, i could hear her mom&#39;s voice cut through the congregation, with great pitch and strong vibrato. i&#39;m thankful it was interesting hearing her sing the hymns, which were all in english, since that&#39;s the most sustained english i&#39;ve heard her speak/sing. i&#39;m thankful to have through d praised her voice and for her anecdote about how she&#39;s been a better singer since once she was at a church conference and was touched by god and the musical notes in the hymnal started moving before her eyes.</p>
+<p>i&#39;m thankful that though at one point i wrote the note &quot;thankful don&#39;t like mother in law,&quot; i know that&#39;s not the case and i was just, in that moment, frustrated and exhausted by the stringency of her itineraries (which i know she was being stringent about on our behalf, even though she couldn&#39;t understand that wasn&#39;t what we wanted). i&#39;m thankful that i know she loves d and e and i, even if sometimes the ways she acts make it seem as though she doesn&#39;t. i&#39;m thankful that we were sitting at a paris baguette as d and her mom ate macarons and d put down a half eaten one and i told d&#39;s dad about how when we have a box of chocolates, if she finds she doesn&#39;t like one after her first bite, she will put it back in the box, and i&#39;m thankful for his laugh of recognition before he said &quot;<em>well she gets that from her mother</em>.&quot; i&#39;m thankful for an anecdote d told me about when her family went to vegas and her mom did one penny slot, didn&#39;t get anything from it, and said that it was a total waste and refused to do any more. i&#39;m thankful for how much she loves her dogs, even if they&#39;re not very friendly.</p>
+<p>i&#39;m thankful for lake arrowhead, which our boat tour revealed is a gross symbol of capitalism but did offer a nice respite from the heat. i&#39;m thankful i had the occasion on our trip up to stand at a mountain overlook and look out and over farther into the distance than i normally get a chance to, which was nice. i&#39;m thankful for the interesting landscape of california, which is large tracts of flatness interspersed with mountains, which is different than the general hilliness but mostly peaklessness here. i&#39;m thankful that while the constant driving was hard for d and i (who don&#39;t have commutes and mostly get around by walking and biking), there were some nice aspects of that travel. i&#39;m thankful that d and e and i gave each other tons of internet quizzes on our phones, which i highly recommend as a time-passing activity for car trips. i&#39;m thankful that e always convinces me to give an artist i hadn&#39;t appreciated more of a chance—i&#39;m thankful that last trip it was selena gomez and that this trip it was, to my surprise, calvin harris.</p>
+<p>i&#39;m thankful that d always brings a small plastic container of q tips with her on vacation, such that when i really needed a q tip i got one. i&#39;m thankful that d and e and i ate delicious tacos and then saw <em>wonder woman</em> at the mall. i&#39;m thankful it was really enjoyable and that gal gadot was great. i&#39;m thankful that night, we watched <em>okja</em> with d&#39;s dad, who likes to get the chance to watch korean movies with us. i&#39;m thankful, as someone who doesn&#39;t really care for movies where animals are primary characters, to have really enjoyed okja and thought that its critique of capitalism was more interesting/relevant than <em>snowpiercer</em>&#39;s. i&#39;m thankful that watching the movie gave me the occasion to text my dear friend jk, who i hadn&#39;t spoken to in a while, and i&#39;m thankful that we caught up a bit and she gave me her bong joon ho recs, which are _memories of murde_r and <em>mother</em>.</p>
+<p>i&#39;m thankful that i ate lots of delicious food on the trip and that my favorite treats were bingsu with frozen milk instead of water (which adds an amazing richness without the heaviness of ice cream) and nitroglycerine ice cream (which is so cold you almost chew it, which is a very interesting sensation for ice cream). i&#39;m thankful that i learned to tolerate red bean paste, even though i don&#39;t prefer it. i&#39;m thankful for d&#39;s mom&#39;s excellent cooking, even though i still struggle sometimes with the full savory korean breakfast (i&#39;m thankful to be back to my raisin bran now). i&#39;m thankful for the best korean barbecue i&#39;ve ever had in my life.</p>
+<p>i&#39;m thankful that though our trip home yesterday was long (and harder because of the hours lost to the time change), i was still happy because we were going home. i&#39;m thankful that over vacation i reread <em>the dark forest</em> (pure pleasure) and also read <em>blitzed,</em> which was equal parts fascinating and horrifying. i&#39;m thankful that on my last flight i listened to the new jay-z album, which is so wonderful as everyone has been saying. i&#39;m thankful that on the drive home, d and i sang along to <em>melodrama</em> as we blazed through the night. i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/3fttRKnPFJ3WPz4pPfqezP">get down</a>&quot; by curren$y which i think is a perfect summer song. i&#39;m thankful for the chorus about being alive but not being aware.</p>
+<p>i&#39;m thankful to know that there are a lot of moments that i didn&#39;t capture here, but i&#39;m thankful to have put down something. i&#39;m thankful to hope that i won&#39;t lose the memories i didn&#39;t write here, but i&#39;m thankful to know that it&#39;s okay if i do, because i&#39;m always making new memories, every moment of every day. i&#39;m thankful to close my computer and unpack my baggage.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/7317-9374.html" class="btn btn-secondary">← 7/3/17</a>
+        <a href="/letters/7217.html" class="btn btn-secondary">7/2/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

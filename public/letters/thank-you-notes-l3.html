@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="thank you notes (L)(3)">
+  <title>thank you notes (L)(3) - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>thank you notes (L)(3)</h1>
+        <time datetime="2016-04-27T00:00:00Z">April 26, 2016</time>
+      </header>
+
+      <div class="letter-body">
+        <p>I’m thankful for S &amp; J, who consistently surprise me with their material kindnesses and friendship, particularly since on a basic level they are ‘a guy I met through a podcast fandom community’ and ‘the boyfriend of that guy I met through a podcast fandom community, years after the relevant podcast ended’ and I am just a girl who used to live in their neighbourhood. I’m thankful for their enthusiasm and heart emojis and capital-lettered exclamations of joy every time I tell them I’m coming to their city for a trip, even if sometimes we are all working so we don’t get to see each other anyway. I’m thankful for their love for each other, which is so expressive in myriad small ways which could be cheesy but somehow isn’t, because you know they really, really mean it. I’m thankful that J introduced me to the concept of Chemex coffee, so that every time I go to the hipster café near work to drink some, I think of J and, by extension, S.</p>
+<p>I’m thankful for my academic pal gang, who are so kind to me even though we are scattered throughout the world (I’m thankful for Twitter &amp; Slack), and although we maybe meet in various configurations once a year. I’m thankful for opportunities they give me, for the support we can give each other, the way we are each trying to be the changes we want to see in the world, the way we can lift each other up and keep each other going because sometimes, this stuff is just hard and it would be much harder on my own. I’m thankful that they all persist in including me even though I often feel like the impostor in the group. I’m thankful for the small and not so small gestures that show they include me in their gang, even if I worry I’m not good enough to be there.</p>
+<p>I’m thankful for C and how we are so alike in some ways and so different in others and how this makes us such a good team (even though we would never admit it to each other because that would be weird and emotional and we don’t do emotional). I’m glad I can tell her to get the fuck on with scary things and she can tell me to get the fuck on with scary things and generally, we do.</p>
+<p>I’m thankful for Work From Home by Fifth Harmony, because I heard it today and I thought ‘hey, this band is like the new Destiny’s Child’ and once I had conceded that they were in fact not that good I put Destiny’s Child on instead and remembered how good DC actually were. I’m thankful to remember how mundanely obvious songs like Independent Women and Survivor seemed when I was 14 --like, duh, surely being a *powerful woman* was easy and would definitely get easier- and to realise how wrong I was and how important empowering narratives are in popular culture, particularly by women. I’m thankful for how Independent Women doesn’t qualify its message but is plain and strong: ‘Depend on no one else to give you want you want’.  I’m thankful that today, the shoe on my feet, I bought it; the clothes I’m wearing, I bought it; (I depend on me).</p>
+<p>I’m trying to be thankful for my anxiety which seems an odd thing to say. I’m thankful that one of my coping strategies is basically saying ‘just do the fucking thing’ internally because I know that the process of build up to anxious situations is worse for me than the thing itself and once I get there I will be ok at least for a few hours and then it’s ok to go home/ stop. I’m thankful that being an adult gives me the freedom to choose whether to avoid triggers or confront them and to accept that I’m not just making this shit up. I’m thankful that avoiding a stupid minor thing which is a major trigger for me - because of childhood conditioning mainly but also other things outside my control- has worked pretty well for a few years. I’m thankful I felt secure enough to try doing the stupid minor thing again today for the first time since 2010ish. I’m not really thankful that it didn’t go well, to be honest. I was 75% expecting to emerge victorious, one more thing conquered, but perhaps predictably it didn’t work out and I ended up feeling exactly like I always did in this situation, mainly really disappointed in myself and all my life choices up to this point. I’m thankful that Adult Me can move on more easily and not think about stuff for days on end. I’m thankful that our office was empty on a Saturday afternoon so I could cry into my lunch in peace.</p>
+<p>I’m thankful that in the last couple of years I have become much more kind to myself, trying to accept the things I cannot change and to work against those things I can try to change (basically: fight the patriarchy, and the diet industry is a lie) I’m thankful to have had space to think through my anxiety and work out that I have always been anxious (my first clear memory is feeling anxious in exactly the same way I did today. This should probably have been a clue); to work out *why* I am anxious- I didn’t have a particularly traumatic childhood or anything but conditioning is a weird thing- to solidify some coping mechanisms and to accept that I will probably always have anxiety and that is ok. It’s not a moral failing. </p>
+<p>I’m thankful that my anxiety doesn’t affect my day-to-day life in a massive way and I’m thankful that no one really knows about it but me. It’s a lonely road but I’m getting there.</p>
+<p>I’m thankful for this exercise of thank you notes since it forces me to reframe experiences as positive even if they seemed very un-positive at the time. I’m thankful to have this framing device even if I don’t actually write the majority of them down. It reminded me of <a href="http://nymag.com/thecut/2016/04/ask-polly-why-should-i-keep-going.html">a recent agony column</a> I saw online, not in the context of suicide or breakup or lack of structure but this part:</p>
+<p>“<em>As long as you imagine that the outside world will one day deliver to you the external rewards you need to feel happy, you will always perceive your survival as exhausting and perceive your life as a long slog to nowhere. Instead, you have to savor the tiny struggles of the day: The cold glass of water after a long run. The hot bath after hours of digging through the dirt. The satisfaction of writing a good sentence, a good paragraph. You MUST feel these things, because these aren&#39;t small rewards on the path to some big reward; these tiny things are everything. Savoring these things requires tuning in to your feelings, and it requires loving yourself instead of shoving your nose into your own question marks hour after hour, day after day</em>.”</p>
+<p>Because it’s true. It works on good days- ‘I’m having a great day and wow look at the colour of the sky/that cute dog/ my sandwich has extra gherkins in it, score!’ and bad- ‘I’m failing at everything and I suck but at least I saw a nice flowerbed today/ it stopped raining/ I ate some really nice cheese’. Tiny victories mount up, not into one big reward, but a carpet of small things, like a ballpool, that supports me when it’s hard to keep on going. </p>
+<p>I’m thankful for the Bill Clinton/Bob Dole episode of The Simpsons, where Alien Bill Clinton declares:</p>
+<p>We must move forward, not backwards</p>
+<p>Upward, not forward</p>
+<p>And always twirling</p>
+<p>Twirling</p>
+<p>Twirling towards freedom</p>
+<p>That’s as good a description for life as any. Twirling towards freedom.</p>
+<p>- L (4/24/16)</p>
+<p>previously: <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-l-1">1</a>, <a href="http://tinyletter.com/thankyounotes/letters/thank-you-notes-l-2">2</a></p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/thank-you-notes-428.html" class="btn btn-secondary">← thank you notes 4/28</a>
+        <a href="/letters/thank-you-notes-427.html" class="btn btn-secondary">thank you notes 4/27 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="12/12/17">
+  <title>12/12/17 - Thank You Notes</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <style>
+    :root {
+      --primary-bg: #1a1a1a;
+      --secondary-bg: #2d2d2d;
+      --text-color: #e0e0e0;
+      --text-muted: #b0b0b0;
+      --accent: #61dafb;
+      --border: #404040;
+      --hover-bg: #3d3d3d;
+      --max-width: 800px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pwa-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pwa-banner-text h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .pwa-banner-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hover-bg);
+    }
+
+    .letter-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .letter-card {
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .letter-card:hover {
+      background: var(--hover-bg);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .letter-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .letter-card p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-card time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .letter-content {
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .letter-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .letter-header h1 {
+      color: var(--text-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .letter-header time {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .letter-body h1,
+    .letter-body h2,
+    .letter-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .letter-body a:hover {
+      text-decoration: underline;
+    }
+
+    .letter-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .letter-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .letter-body pre {
+      background: var(--primary-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .letter-body code {
+      background: var(--primary-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .letter-body pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .letter-content {
+        padding: 1rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+
+      .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="pwa-banner" style="display: none;">
+      <div class="pwa-banner-text">
+        <h3>📱 Read Offline</h3>
+        <p>Install the app to read all letters offline</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+
+    <article class="letter-content">
+      <header class="letter-header">
+        <h1>12/12/17</h1>
+        <time datetime="2017-12-12T00:00:00Z">December 11, 2017</time>
+      </header>
+
+      <div class="letter-body">
+        <p>i&#39;m thankful that yesterday at work, i hit the milestone of having sent 10,000 replies to customers since starting my job at the end of february. i&#39;m thankful to have had a nice moment of that on a day where the customers i was talking to were (more so than usual) frequently unhappy and unreasonable and rude and didn&#39;t listen to me and on which in one particular case, i had to ask a customer twice to please be respectful in his communication with me. i&#39;m thankful, oddly, when customers use profanity in situations like this, which is a clear line that&#39;s been crossed, whereas it&#39;s sometimes harder to know when to draw that line when they don&#39;t swear but use CONSTANT CAPS TO DESCRIBE WHAT AN IDIOT YOU ARE HOW COULD YOU NOT UNDERSTAND THIS and ask questions WITH LOTS OF QUESTION MARKS??????? and accuse you of wasting your time even though this is the third email in a row from them where they are complaining about the problem at hand rather than giving you the information you need to help them as you have politely asked for the last three emails.</p>
+<p>i&#39;m thankful that i type these notes in my work computer because it&#39;s nicer than my personal computer and i&#39;m used to the travel of the keys on it and usually before opening my email account where i compose these notes, i take a look at our support software, which i really shouldn&#39;t but self control is hard, to see how many people are waiting for a reply for me since i left the previous day and whether any of them are very angry and how many customers are in the overall queue who might be simmering into anger and it&#39;s like i&#39;m holding my breath while i wait for the page to load and see what the result is, like last night i couldn&#39;t stop thinking about the customer i had to ask twice to be respectful, his anger was lodged in me and when i opened the support software i was like &quot;please no response from him&quot; and there wasn&#39;t and i exhaled but i know that he will probably come back later and i have to try harder to not make that ruin my day the way that it did yesterday.</p>
+<p>i&#39;m thankful, since i work in a customer facing role, to work at a company where when a customer is rude, i know i can at least ask something like that without worrying too much that i will get in trouble, which i know isn&#39;t true in lots of places where the customer is always and forever right. i&#39;m thankful to know that though me asking doesn&#39;t necessarily mean it will happen (thus me asking a second time for the customer to be respectful) but i&#39;m thankful at least to have that as an option in my toolkit and that i know the management of my team and company believe that there is a base level of how i should be treated by the people who i am to serve and they don&#39;t expect me to just bear the worst treatment all the time.</p>
+<p>i&#39;m thankful for the hard thing of working in online technical support, which is that it not only involves challenging problem solving that is mentally taxing (since the same could be said of being a developer or a designer or an accountant or anything), but in which the ability for you to do that work is not just dependent on your technical acumen or institutional knowledge or problem solving skill or ability to work with your team, but is, before even getting there, dependent on an internet stranger writing into a comment box providing you with all the information you need to describe the problem accurately so that you can begin to understand it and figure out how to help them resolve it, which, if you have ever interacted with internet strangers, you might have noticed is something that they are not often very good at. </p>
+<p>i&#39;m thankful to compare this to a developer charged with working to find and fix a bug but instead of a full repo of the entire codebase in github all they can see is like a youtube video of a scrap of some shaky handheld footage of a problem that might be relevant to the bug but also might not and then a bunch of youtube comments where people are either writing in with random irrelevant information or complaining, in which which you either have to try, in the absence of what you need, to make assumptions about the problem that may be incorrect and risk wasting time/derailing the conversation or ask more questions about the issue so as to better understand and efficiently respond but risk the customer getting angry because they feel that the questions you are asking to get them to describe the problem are irrelevant to the problem which to them is clear and obvious and needs to be solved right now. </p>
+<p>i&#39;m thankful to get to put down how hard it is that even when i have gotten this information and identified the problem and figured out how to solve it, rather than doing what a developer can do when they notice a bug, which is fix it and save the changes in the local copy of the file and create a pull request for the fix and have it reviewed by a knowledgeable peer for any errors and deploy the changes, what i have to do is find a way describe to the person in simple language how to do the fix themselves, with screenshots and gifs and videos for good measure, and send that to them, only to have them not understand or not follow the instructions i have carefully laid out (or, the worst, understand them but just refuse to do them because they feel this kind of work is beneath them or something they ), which then starts a chain of replies in which we try to muddle through together to get them to the thing they actually want.</p>
+<p>i&#39;m thankful that given all this it feels like a miracle that any problems ever get solved at all, much less that i have sent customers 10,000 replies since starting this job ten months ago, so i am grateful for that. i&#39;m thankful to say all this to remind you if you&#39;re talking to a person doing the kind of work that i do and get frustrated with them (as i think most of us have at some point or another) to remember that they are a person and your actions transfer to them and affect them; your anger, your anxiety, your fear, your annoyance, your insecurity, your entitlement.</p>
+<p>i&#39;m thankful for the silver lining of that, though which is that kindness and gratitude and joy and the other good things also come through the window. i&#39;m thankful that many customers (most customers) are pleasant and some are truly wonderful and i&#39;m thankful when i get the privilege of having an interaction with someone that&#39;s nicer or faster or more helpful than they might have expected and they are happily surprised and because of this we have shared a moment together that made both of our days better than they would have been otherwise. i&#39;m thankful even for customers whose problems are so complex that we send 30 or 40 replies back and forth but who throughout that are patient and understanding and receptive—i&#39;m thankful for the way that this base level of emotional labor on their part helps me to better devote mental resources to getting them what they want, that it motivates me to do better than i already was doing. i&#39;m thankful for customers who understand how hard it can be to help them and who appreciate that some human on the other side of the screen is there trying their best.</p>
+<p>---</p>
+<p>i&#39;m thankful that we went to dinner with some of d&#39;s coworkers last night downtown and though the food wasn&#39;t amazing, we had some nice conversations and afterward walked to the local chocolate shop with them so they could buy a gift for the husband&#39;s mother and i&#39;m thankful that though i wasn&#39;t envisioning buying anything, the shop had ice cream and i had the sudden realization &quot;wait, this is not just a chore, i can have ice cream!&quot; and so d and i both got ice cream in waffle cones (mudslide for her, coffee for me) and sat there in the shop at a high table eating them in our heavy down coats. i&#39;m thankful for dessert.</p>
+
+      </div>
+    </article>
+
+    <nav class="navigation">
+      <a href="/" class="btn btn-secondary">home</a>
+      <div class="nav-links">
+        <a href="/letters/1213-4805.html" class="btn btn-secondary">← 12/13</a>
+        <a href="/letters/121117.html" class="btn btn-secondary">12/11/17 →</a>
+      </div>
+    </nav>
+  
+  </div>
+
+  <script>
+    // PWA installation prompt
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    });
+
+    async function installPWA() {
+      if (!deferredPrompt) {
+        // If not installable, redirect to PWA
+        window.location.href = '/app/';
+        return;
+      }
+
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      
+      deferredPrompt = null;
+      const banner = document.querySelector('.pwa-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openPWA() {
+      window.location.href = '/app/';
+    }
+  </script>
+</body>
+</html>
