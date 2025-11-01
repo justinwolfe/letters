@@ -155,7 +155,7 @@ async function generateBaseTemplate(
 
       // Extract the letter slug from current URL if on a letter page
       const path = window.location.pathname;
-      const match = path.match(/\/letters\/([^/]+)\.html$/);
+      const match = path.match(/\\/letters\\/([^/]+)\\.html$/);
 
       if (match) {
         const slug = match[1];
@@ -177,7 +177,7 @@ async function generateBaseTemplate(
       if ((preferPWA || hasPWAPreference) && !isStandalone) {
         // Redirect to PWA with letter context
         const path = window.location.pathname;
-        const match = path.match(/\/letters\/([^/]+)\.html$/);
+        const match = path.match(/\\/letters\\/([^/]+)\\.html$/);
 
         if (match) {
           const slug = match[1];
