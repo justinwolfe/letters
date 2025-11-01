@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,20 @@ body {
         <p>i&#39;m thankful that n helped d learn more about a new job at her company that d is excited to apply to (i&#39;m thankful to have heard her mechanical keyboard clacking away last night as she worked on a draft of a cover letter) and also suggested, kind and generous as she always is, that i apply for a job there too. i&#39;m thankful, despite the problems i sometimes have, to think i want to stay at the place where i am now. i&#39;m thankful that last week was my one year anniversary here and i was buried in an avalanche of kind words and well wishes, as well as a notification that i&#39;d reached the milestone of having sent 12,000 replies to our customers (1000 a month). i&#39;m thankful that on friday afternoon there was a gif dance party at work, a slack thread where we all listened to the same song and posted gifs of ourselves dancing together, so that, with a little imagination, it was like we were dancing together. i&#39;m thankful that though at previous jobs i likely wouldn&#39;t have posted anything and would have pretended it didn&#39;t exist, embarrassed, i instead recorded and posted a gif of me dancing, sloppily green-screened by photobooth against stock footage of a rollercoaster and everyone loved it. i&#39;m thankful for something strange here, which is that this is the first job i&#39;ve had where it feels like there is a possible future for me, room to grow from the place i am now and into another place, which is sometimes hard and makes me break my rules about work/life balance (since it makes it harder to leave work at work, when you know that work you do &quot;outside work&quot; might help you become the thing you want to be, and you&#39;re also tempted to do it because that work is actually something that excites you, a fun process of discovery) but also empowering and good. i&#39;m thankful that my manager is excited about the work i&#39;m doing now and on friday described a slack bot i&#39;d built that asks a user to press a button and then updates the message to replace the button with the user&#39;s name &quot;badass.&quot; i&#39;m thankful that a day doesn&#39;t go by where i don&#39;t laugh out loud multiple times at things my coworkers have said or memed or gif-ed or reacji-ed. i&#39;m thankful that sometimes i want to talk to my coworkers when i&#39;m not at work, which is not something i could say about jobs i&#39;ve had in the past. i&#39;m thankful that all of the above doesn&#39;t always make it easy to start the day, since my job is a hard job and all of the above doesn&#39;t necessarily make it less hard, at the base level, but i&#39;m thankful that every day after i finish these notes i do it anyway, i send this message and close this tab and then open another tab and start sending messages there. i&#39;m thankful to send messages.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=career-development" class="tag-badge">#career development</a>
+        <a href="/letters/?tag=employee-engagement" class="tag-badge">#employee engagement</a>
+        <a href="/letters/?tag=job-satisfaction" class="tag-badge">#job satisfaction</a>
+        <a href="/letters/?tag=personal-growth" class="tag-badge">#personal growth</a>
+        <a href="/letters/?tag=team-collaboration" class="tag-badge">#team collaboration</a>
+        <a href="/letters/?tag=work-culture" class="tag-badge">#work culture</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +956,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1005,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

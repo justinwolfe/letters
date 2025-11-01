@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,20 @@ body {
         <p>i&#39;m thankful that today i&#39;ve been writing these notes for six months. i&#39;m thankful for the things that i&#39;ve learned about myself and other people and art and the world while writing them. i&#39;m thankful for the friendships it&#39;s made it possible to renew and for the new ones that it&#39;s given me. i&#39;m thankful for the beautiful writing that people have sent me to share with you. i&#39;m thankful to have this detailed record of my life and the lives of others to look back on in the future. i&#39;m thankful for my experience the ways in which writing and reading can change my experience of time. i&#39;m thankful for how good it feels to me when it feels like i&#39;ve captured something from the world well in words. i&#39;m thankful that sometimes these notes are easier to write and sometimes they&#39;re harder to write and sometimes i think they&#39;re good and sometimes i think they&#39;re not as good but that i&#39;m always thankful that i wrote them no matter what. i&#39;m thankful that it&#39;s not so much about a product, though. i&#39;m thankful for my undergrad professor who once said in an interview that he &quot;<em>hated writing, but loved having written</em>.&quot; i&#39;m thankful that i understand that feeling and i used to know it very well myself, but thankful also to recognize that it&#39;s really hard in this precarious atomized culture-world to assume that your product will make any significant kind of mark or get &quot;exposure&quot; or make a career or &quot;brand&quot; for me, much less make me any money. i&#39;m thankful for that reason to believe that the most important thing is not whatever product comes out of the assembly line of my mind at the end and what people think of it (even though i can&#39;t stop caring about those things entirely, and sometimes feel that i care about them too much), but is whether the feeling of the process of making the work makes my life better, because if it doesn&#39;t, then it&#39;s not worth it. i&#39;m thankful for the comforts of ritual and routine. i&#39;m thankful to remember what these notes have given me when sometimes when i get discouraged about whether devoting time every day to these notes, which are so ephemeral, is a problem and i should be devoting more time to writing or learning or applying for jobs or other projects that might have some possibility of helping me to attain more material security one day. i&#39;m thankful to feel that tension, because i think it&#39;s important to ask questions of yourself about what you value and what you want from the world, but i&#39;m also thankful for the centering feeling that writing these notes gives me and to recognize the value of that to my health and life. i&#39;m thankful that the &quot;limitations&quot; of this form prevents me from thinking too much about &quot;quality&quot; or getting too mired in self-criticism. i&#39;m thankful that there are always typos and errors in these and i&#39;m learning not to care, because the important thing is just to put the paint on the canvas. i&#39;m thankful for the way that writing as much as i do basically every day has made writing feel easier in some ways. i&#39;m thankful that today i&#39;ve been writing these notes for six months and <a href="https://www.youtube.com/watch?v=aO1hfQvVJmg">i&#39;m thankful to you for reading them</a>.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=creative-expression" class="tag-badge">#creative expression</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=personal-growth" class="tag-badge">#personal growth</a>
+        <a href="/letters/?tag=rituals-and-routines" class="tag-badge">#rituals and routines</a>
+        <a href="/letters/?tag=self-reflection" class="tag-badge">#self-reflection</a>
+        <a href="/letters/?tag=writing-process" class="tag-badge">#writing process</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +956,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1005,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

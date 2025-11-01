@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,22 @@ body {
         <p>summer fridays started at work and will go through august. the five-day &quot;weekend&quot;: eating late tapas by the river in perfect weather for t&#39;s birthday. hanging a curtain from the roof over our patio to give us privacy from our next door neighbors now that the tree that was there has been cut down. reading on the back porch (<a href="https://www.goodreads.com/en/book/show/61714633">the new david grann book</a>, perfect summer read, and arbitrary rereads of <a href="https://www.amazon.com/HHhH-Novel-Laurent-Binet-ebook/dp/B0071VUNEE/ref=sr_1_1?crid=3V25SZNH0N0EA&keywords=hhhh+book&qid=1688568777&s=books&sprefix=hhhh+book%2Cstripbooks%2C155&sr=1-1">hhhh</a> (always great) and <a href="https://www.goodreads.com/book/show/447.Moon_Palace">moon palace</a> (meh not his best work but still kept my attention)). dipping into a big bag of psychedelic mushrooms provided by [redacted] and having no bad trips. i&#39;ve kept our grass in the backyard mostly alive through diligent sprinkling. having friends over to our backyard for the first time this summer (remembering how important the backyard was during the COVID summers). t bringing over her griddle and making us smash burgers with american cheese on hawaiian buns, with a variety of good chips, cherries, watermelon, deborah&#39;s strawberry mango and greek yogurt blackberry popsicles, chocolate chip toffee cookies. the coldness of a can of seltzer from a cooler filled with half-melted ice and cold water. we&#39;re finally done watching <em>90 day fiance</em> and have so far avoided the siren song of the spinoffs (but i miss it, even while not missing the amount of time it took up in a day). in seconds, miso ate a ribeye steak off deborah&#39;s plate when we briefly stepped away from the table and honestly fair play to her nice carpe diem attitude miso. riding bikes since deborah took my bike to the shop and got it fixed (which i had put off for so longer because i didn&#39;t want to deal with it) and i ordered a better bike pump and we toured the neighborhood several times and went to lunch down southeast. nature&#39;s air conditioning riding a bike in the breeze (also actual air conditioning in our house). in the fire temple in zelda i unlocked 4 of the 5 locks without looking at a walkthrough and then looked so as not to waste my time searching through the flames and realized that the fifth one was where i was already headed right before i looked at the walkthrough. that after unlocking the gate, i beat the boss on my first try. <a href="https://buttondown.email/dire/archive/crimson-and-clover-over-and-over/">new letter from deborah</a> that says many of the same things i&#39;ve said here because we lived and loved so much of it together (what i am ultimately most thankful for).</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=backyard-gatherings" class="tag-badge">#backyard gatherings</a>
+        <a href="/letters/?tag=biking" class="tag-badge">#biking</a>
+        <a href="/letters/?tag=friendship" class="tag-badge">#friendship</a>
+        <a href="/letters/?tag=outdoor-dining" class="tag-badge">#outdoor dining</a>
+        <a href="/letters/?tag=reading-recommendations" class="tag-badge">#reading recommendations</a>
+        <a href="/letters/?tag=self-care" class="tag-badge">#self-care</a>
+        <a href="/letters/?tag=summer-activities" class="tag-badge">#summer activities</a>
+        <a href="/letters/?tag=video-games" class="tag-badge">#video games</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +958,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1007,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

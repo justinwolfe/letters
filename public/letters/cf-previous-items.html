@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -819,6 +896,22 @@ body {
 <p>3. i&#39;m thankful that though i could not force myself to get out of bed and go running first thing this morning, which i know would make me happy and feel good (i skipped my run yesterday to grind on work) that&#39;s okay and i can do it later. i&#39;m thankful that though the wrong sound card was inadvertantly selected and so the hours of recordings i made of us jamming on molly turned out to be completely and permanently silent (save for a moment at the very end of the tape where i played <a href="https://www.youtube.com/watch?v=xHzEk78RxXE">a karaoke version</a> of &quot;<a href="https://www.youtube.com/watch?v=qbAab1hTxN4">don&#39;t get me wrong</a>&quot; by the pretenders on youtube for us to sing along to and since that was on the right sound card it recorded that but not us singing along to it, just the backing track), the temperature was cool enough yesterday evening that we could jam again in the attic and actually capture that. the dating show <em>swiping america</em> on max, which is what we&#39;ve been watching during dinner. the premise of the show is that four new yorkers who are having trouble finding partners go to different cities around the US and do app dating and i wasn&#39;t into it at first (too polished and slick, not nearly enough drama) we continued watching it off inertia and i&#39;m kind of back in (even though it&#39;s still not very dramatic, i feel a certain amount of connection to the characters, who seem smarter and more decent than the usual dating show contestants). i made <a href="https://cooking.nytimes.com/recipes/1020279-tomato-poached-fish-with-chile-oil-and-herbs?ds_c=71700000052595478&gclid=CjwKCAjw-7OlBhB8EiwAnoOEk0U7vD5FKKXvssKJl7gbPz_mVAaO2YQR_M0NYNoh239kspC1VJ_hQhoCC9gQAvD_BwE&gclsrc=aw.ds">tomato poached fish</a> for dinner the last two nights, which every time i make it always makes me thankful for chloe whose stanning for the recipe got me to make it (and alison roman who wrote it in the first place). i think i&#39;ve nailed down my variation, which is that the base grain is air fried supermarket gnocchi (coat with oil, do ~20 minutes at 400, tossing occasionally) and i don&#39;t do the thing of cooking the shallots and garlic in the oil and then removing them and adding them back after, i just cook them with a bit less oil and then add the tomatoes right on top with a lid ready to block initial oil/liquid splatters (and then garnish at the end with pre-fried shallots from h-mart) and also i think if you have them cherry tomatoes (halved) cook faster and have a slightly nicer texture than whole tomatoes (though i used whole tomatoes last night and it was also great). the base recipe is for four but i usually do two separate batches on two nights, halving the fish and reducing the amount of water but leaving the other proportions basically the same (though maybe it keeps great and i&#39;m just making more work for myself, cf previous items above and forever)</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=capitalism" class="tag-badge">#capitalism</a>
+        <a href="/letters/?tag=cooking" class="tag-badge">#cooking</a>
+        <a href="/letters/?tag=creativity" class="tag-badge">#creativity</a>
+        <a href="/letters/?tag=dating-culture" class="tag-badge">#dating culture</a>
+        <a href="/letters/?tag=friendship" class="tag-badge">#friendship</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=personal-development" class="tag-badge">#personal development</a>
+        <a href="/letters/?tag=work-life-balance" class="tag-badge">#work-life balance</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -867,11 +960,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -880,10 +1009,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -827,6 +904,22 @@ body {
 <p>i&#39;m thankful when i realize that i&#39;ve spent money on things that i don&#39;t really want or need, thankful to have those hangover kind of moments where it&#39;s like &quot;<em>why did i spend $30 on this? i did not need to do that</em>.&quot; i&#39;m thankful, though, sometimes to be thankful that i spent money, that i traded the security it represents for pleasure. i&#39;m thankful for the first watermelon of the summer, which i cut into cubes to go with our burritos last night. i&#39;m thankful that at the supermarket yesterday, where i knew we had to buy plastic wrap, and where i always buy the cheap store brand plastic wrap even though then when i get it home i find it shitty and difficult to use, i let myself buy the more expensive press and seal wrap, which is much easier. i&#39;m thankful that today in the vitamin aisle before i accidentally bought the male enhancement supplement, i recognized the song &quot;<a href="https://www.youtube.com/watch?v=tMG6W-kPk6g">drop</a>&quot; by hope sandoval was playing over the PA, its lush reverb echoing through the store. i&#39;m thankful to remember buying the album that song is on from the record store in the same plaza as the movie theater that was my first job with one of my first paychecks. i&#39;m thankful that my teenage record buying decisions up until that point were, because i never had much money, always based on scrupulous reading of reviews and criticism and pop history, but thankful that because i for the first time had enough money, disposable income, i took a chance on this album by this artist i knew nothing about because it seemed interesting. i&#39;m thankful i took a chance on <a href="https://www.youtube.com/watch?v=BBKrFsdMDUc">the album</a>, which is one of my favorite of all time.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=childhood-memories" class="tag-badge">#childhood memories</a>
+        <a href="/letters/?tag=cultural-perceptions" class="tag-badge">#cultural perceptions</a>
+        <a href="/letters/?tag=financial-anxiety" class="tag-badge">#financial anxiety</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=personal-growth" class="tag-badge">#personal growth</a>
+        <a href="/letters/?tag=responsibility" class="tag-badge">#responsibility</a>
+        <a href="/letters/?tag=social-dynamics" class="tag-badge">#social dynamics</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -875,11 +968,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -888,10 +1017,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

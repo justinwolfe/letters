@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,20 @@ body {
         <p>i’m thankful that this afternoon i was waiting on a coworker to join my video call and staring blankly at the dark mode text editor where earlier in the morning i had written stream of consciousness reassurances to myself when i felt overwhelmed and like nothing i was doing was going right and there was so much of it, just endless struggle, and anyway, i was sitting there for a bit and my coworker hadn&#39;t joined yet and he had said he would just be two seconds before i started the call and at that point my eyes, which had glazed over into stress trance, not really looking at anything, and i saw that i had two slack notifications and that they were from him, that a few minutes prior he had written &quot;can you hear me&quot; and then, a beat later, &quot;lol,&quot; as i sat there, completely unaware that he was on the call, muttering ruminations about it all being too much to myself and picking at my face and lips, and that was so embarrassing but he laughed and restarted his computer, because he kindly assumed the problem was with him, at which point i realized it was because i needed to unpair my bluetooth headphones, i flipped the switch and he came back and i could hear his voice, and he laughed, and i laughed, and in a weird way it actually made me feel better, to be embarrassed in front of a friend who i knew didn&#39;t care and who i feel safe with, and when i apologized that he had to restart his computer, he said that it never hurts to restart, and then after the laughter we had a nice meeting where we talked about something simple we could do that might help our coworkers to meet a difficult goal and we said to each other what we say to each other every time we have a meeting which is basically that meetings often suck but we always feel energized and good after meeting with each other and so i guess in summary sometimes i&#39;m thankful for meetings.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=meeting-culture" class="tag-badge">#meeting culture</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=stress-management" class="tag-badge">#stress management</a>
+        <a href="/letters/?tag=team-collaboration" class="tag-badge">#team collaboration</a>
+        <a href="/letters/?tag=video-conferencing" class="tag-badge">#video conferencing</a>
+        <a href="/letters/?tag=workplace-communication" class="tag-badge">#workplace communication</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +956,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1005,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

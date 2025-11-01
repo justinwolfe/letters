@@ -150,11 +150,47 @@ async function generateBaseTemplate(
     }
 
     function openPWA() {
-      window.location.href = '${BASE_PATH}/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(/\/letters\/([^/]+)\.html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '${BASE_PATH}/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '${BASE_PATH}/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(/\/letters\/([^/]+)\.html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '${BASE_PATH}/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '${BASE_PATH}/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -163,10 +199,10 @@ async function generateBaseTemplate(
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');
@@ -263,7 +299,8 @@ async function generateLetterPage(
   email: Email,
   prevEmail: Email | null,
   nextEmail: Email | null,
-  imageExtMap: Map<number, string>
+  imageExtMap: Map<number, string>,
+  queries: DatabaseQueries
 ): Promise<string> {
   let markdown = email.normalized_markdown || email.body;
 
@@ -297,6 +334,17 @@ async function generateLetterPage(
       )} →</a>`
     : '';
 
+  // Get tags for this email
+  const tags = queries.tags.getEmailTags(email.id);
+  const tagsHtml = tags.length > 0 ? `
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        ${tags.map(tag => `<a href="${BASE_PATH}/?tag=${encodeURIComponent(tag.normalized_name)}" class="tag-badge">#${escapeHtml(tag.name)}</a>`).join('\n        ')}
+      </div>
+    </footer>
+  ` : '';
+
   const content = `
     <div class="pwa-banner" style="display: none;">
       <div class="pwa-banner-text">
@@ -319,6 +367,8 @@ async function generateLetterPage(
       <div class="letter-body">
         ${html}
       </div>
+
+      ${tagsHtml}
     </article>
 
     <nav class="navigation">
@@ -449,6 +499,9 @@ async function exportEmailsAsJSON(
       }
     );
 
+    // Get tags for this email
+    const tags = queries.tags.getEmailTags(email.id);
+
     fullEmails.push({
       id: email.id,
       subject: email.subject,
@@ -458,6 +511,11 @@ async function exportEmailsAsJSON(
       description: email.description,
       slug: email.slug,
       secondary_id: email.secondary_id,
+      tags: tags.map((t) => ({
+        id: t.id,
+        name: t.name,
+        normalized_name: t.normalized_name,
+      })),
     });
   }
 
@@ -531,7 +589,8 @@ async function main() {
       email,
       prevEmail,
       nextEmail,
-      imageExtMap
+      imageExtMap,
+      queries
     );
 
     await writeFile(join(LETTERS_DIR, `${slug}.html`), letterHtml);

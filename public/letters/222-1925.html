@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,21 @@ body {
         <p>i&#39;m thankful my first full day of work went well. i&#39;m thankful that my trainers/leads are thoughtful and understanding and caring and funny. i&#39;m thankful for specific/empathetic feedback. i&#39;m thankful that though i messed up the gender pronouns for one of my trainers, they were very nice about it and i&#39;m thankful to commit to doing better going forward. i&#39;m thankful for the falafel bowl i had for lunch and the pizza i had for dinner. i&#39;m thankful that after dinner, we played board games, which i knew was something that we might do and which i had been dreading a bit because i&#39;ve never really played the hard strategic board games that lots of people like and i didn&#39;t think i would be good at them. i&#39;m thankful for the game we played, code names, which was less math and tactics and complex rule sets and more about word trees and associations and conceptual patterns. i&#39;m thankful that in the tie breaker game between my team and another, i used the clue &quot;breakfast 4&quot; to get my team to choose the words &quot;jam,&quot; &quot;maple,&quot; &quot;mouth,&quot; and &quot;table,&quot; which set us up well and i&#39;m thankful we closed it out with &quot;stick 2&quot; which represented &quot;staff&quot; and &quot;cricket.&quot; i&#39;m thankful for another video game we played where you drew pictures and made slogans and combined them semi-randomly into t-shirt ideas. i&#39;m thankful that when i felt tired late in the evening, i felt comfortable saying so and that i was going to bed and i&#39;m thankful they were fine with that. i&#39;m thankful that this morning i got to facetime with d before my run; i&#39;m thankful to have gotten to see her face and hear her voice and catch up on her life. i&#39;m thankful to have worked out some nervous energy on a long run; i&#39;m thankful that it was a bit cold at first, but got warmer/sunnier as the run went on. i&#39;m thankful to have had a few moments to write this note to you. i&#39;m thankful to be hopeful that today will go as well as yesterday did.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=board-games" class="tag-badge">#board games</a>
+        <a href="/letters/?tag=empathy" class="tag-badge">#empathy</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=personal-growth" class="tag-badge">#personal growth</a>
+        <a href="/letters/?tag=social-interaction" class="tag-badge">#social interaction</a>
+        <a href="/letters/?tag=team-dynamics" class="tag-badge">#team dynamics</a>
+        <a href="/letters/?tag=work-experience" class="tag-badge">#work experience</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +957,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1006,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

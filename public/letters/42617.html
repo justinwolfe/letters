@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -820,6 +897,22 @@ body {
 <p>i&#39;m thankful to get to watch the first episode of <em>the handmaid&#39;s tale</em> tonight. i&#39;m thankful for the most recent episode of <em>terrace house: aloha state</em>, which had several incredibly affecting scenes of modern love and hate including one where two characters eat cold curry from the same plate and watch <em>one piece</em> without the sound on, which felt true to the kind of experiences of love i&#39;ve had in my life. i&#39;m thankful to have finished <em>roadside picnic</em>, which was aight but kind of underwhelming in comparison to <em>stalker.</em> i&#39;m thankful to have started <a href="https://www.amazon.com/Killers-Flower-Moon-Osage-Murders-ebook/dp/B01CWZFBZ4/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=">the new david grann book</a>, which has already hooked me, and to recommend <a href="https://www.amazon.com/David-Grann/e/B001YDEZJO/ref=sr_ntt_srch_lnk_1?qid=1493207988&sr=8-1">the old david grann books</a>, both of which are amazing reads. i&#39;m thankful that i had a slightly trying day at work but i&#39;m thankful that it wasn&#39;t too bad (and i&#39;m thankful to have heard from d about a change in my old job that made me ever more grateful than usual that i don&#39;t work there anymore). i&#39;m thankful it&#39;s wednesday.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=advertising" class="tag-badge">#advertising</a>
+        <a href="/letters/?tag=literature" class="tag-badge">#literature</a>
+        <a href="/letters/?tag=modern-relationships" class="tag-badge">#modern relationships</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=pop-culture" class="tag-badge">#pop culture</a>
+        <a href="/letters/?tag=social-media" class="tag-badge">#social media</a>
+        <a href="/letters/?tag=streaming-music" class="tag-badge">#streaming music</a>
+        <a href="/letters/?tag=thankfulness" class="tag-badge">#thankfulness</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -868,11 +961,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -881,10 +1010,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

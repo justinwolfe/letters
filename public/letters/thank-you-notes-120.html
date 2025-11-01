@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -839,6 +916,22 @@ body {
 <p>i&#39;m thankful for the gchat message i sent to d this morning as i perused her valentine&#39;s day wishlist, which was &quot;<em>do u want the taller or shorter wine glasses from west elm</em>?&quot; and then, a second later, &quot;(<em>bougie sentences i am embarrassed to write, a collection by justin wolfe</em>).&quot; i&#39;m thankful that even though i&#39;m embarrassed to shop from this store, i will probably buy the wine glasses anyway, because they will make d happy. i&#39;m thankful for our ongoing game in which we follow gchat non-sequiturs with &quot;the justin wolfe story&quot; or &quot;poems by d_____ ______.&quot; i&#39;m thankful that early in our relationship, d kept a file of these in a shared google doc and i&#39;m thankful to share some of them right now with you: &quot;<em>i can do it however i want: the justin wolfe story</em>,&quot; &quot;<em>something is wrong with your dictionary</em>_: the justin wolfe stor_y,&quot; &quot;<em>eating a banana, dreaming of tacos: the justin wolfe story</em>,&quot; &quot;<em>i don&#39;t have feelings, i have emotional thoughts: the justin wolfe story</em>.&quot;</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=biking-in-snow" class="tag-badge">#biking in snow</a>
+        <a href="/letters/?tag=childhood-memories" class="tag-badge">#childhood memories</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=neighborhood-interactions" class="tag-badge">#neighborhood interactions</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=poetry-appreciation" class="tag-badge">#poetry appreciation</a>
+        <a href="/letters/?tag=shoveling-snow" class="tag-badge">#shoveling snow</a>
+        <a href="/letters/?tag=winter-activities" class="tag-badge">#winter activities</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -887,11 +980,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -900,10 +1029,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

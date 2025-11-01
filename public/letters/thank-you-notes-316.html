@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -823,6 +900,21 @@ body {
 <p>i&#39;m thankful that she told me that story because the previous night, after dinner, i had been playing <em>metal gear solid v</em> and had been involved in a difficult battle with a sniper who, every time i shot her, would evaporate into smoke and then reappear somewhere else on the map and i had similarly kept dying over and over, getting more and more frustrated (even though i respected the game design and appreciated the unique challenge). i&#39;m thankful that in the midst of my many deaths, d asked if it was time yet to have dessert (i&#39;m thankful that d made strawberry shortcake, which is so good, for us to eat this week) and i said, in a distracted and self-serious tone, &quot;<em>sure, we can have it later, i have to beat this first.</em>&quot; i&#39;m thankful that d was understanding of this, but thankful that after a few more deaths and seemingly no closer to beating my adversary, i put down the controller and said &quot;<em>fuck it, i need a break</em>&quot; and went to warm the shortcakes and add the strawberries and the strawberry syrup and cover them with whipped cream. i&#39;m thankful to have eaten them, because they were so good. i&#39;m thankful that after i finished my shortcake, i picked up the controller again and beat the sniper not long afterward. i&#39;m thankful that yesterday after my coworker told me her story, i told her mine, which was basically the same story. i&#39;m thankful to try to add links to the chain.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=communication-styles" class="tag-badge">#communication styles</a>
+        <a href="/letters/?tag=cultural-sensitivity" class="tag-badge">#cultural sensitivity</a>
+        <a href="/letters/?tag=emotional-intelligence" class="tag-badge">#emotional intelligence</a>
+        <a href="/letters/?tag=food-preferences" class="tag-badge">#food preferences</a>
+        <a href="/letters/?tag=personal-growth" class="tag-badge">#personal growth</a>
+        <a href="/letters/?tag=video-games" class="tag-badge">#video games</a>
+        <a href="/letters/?tag=workplace-relationships" class="tag-badge">#workplace relationships</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -871,11 +963,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -884,10 +1012,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

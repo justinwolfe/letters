@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -820,6 +897,22 @@ body {
 <p>i&#39;m thankful for <a href="https://twitter.com/swerlspice/status/832713300404211713">this video</a>, which is a moving triumph of the human spirit. i&#39;m thankful for <a href="https://twitter.com/EmilyGould/status/832644545338810368">unorthodox ice cream</a> and <a href="https://twitter.com/katierosepipkin/status/832807329535897600">logos that are puzzles</a>. i&#39;m thankful for <a href="https://twitter.com/loyalwinces/status/832105326669348864">this parody</a>, which is pretty accurate to my experience of reading slush for an american literary magazine. i&#39;m thankful for gordon ramsay&#39;s <a href="https://twitter.com/GordonRamsay/status/832670970275979266">twitter reviews of people&#39;s food pictures</a>, which has really yielded a lot of joy for me. i&#39;m thankful for <a href="https://twitter.com/piercegleeson/status/832623578273099776">natural glitches</a> and for <a href="https://twitter.com/alicebolin/status/832656851149975552">pretentious pronunciation</a>. i&#39;m thankful <a href="https://twitter.com/KathleenMRooney/status/832780088294793217">to try</a>, even when it&#39;s hard. i&#39;m thankful for how sunny and warm it was yesterday.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=band-practice" class="tag-badge">#band practice</a>
+        <a href="/letters/?tag=creative-writing" class="tag-badge">#creative writing</a>
+        <a href="/letters/?tag=improvisation" class="tag-badge">#improvisation</a>
+        <a href="/letters/?tag=music-appreciation" class="tag-badge">#music appreciation</a>
+        <a href="/letters/?tag=new-job-onboarding" class="tag-badge">#new job onboarding</a>
+        <a href="/letters/?tag=personal-reflections" class="tag-badge">#personal reflections</a>
+        <a href="/letters/?tag=relationships" class="tag-badge">#relationships</a>
+        <a href="/letters/?tag=thankfulness" class="tag-badge">#thankfulness</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -868,11 +961,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -881,10 +1010,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

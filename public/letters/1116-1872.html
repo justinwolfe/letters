@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -821,6 +898,22 @@ body {
 <p>i&#39;m thankful that i don&#39;t really believe in new year&#39;s resolutions. i&#39;m thankful to be able to think about how i feel and what i want on a more granular level. i&#39;m thankful to think about the future, but in the context of the present, of the daily. i&#39;m thankful to look back on this year and the things that were good about it, though. i&#39;m thankful that i got married to d, which is the best thing that has ever happened to me. i&#39;m thankful that i finally worked hard with a doctor to get my mental and physical health in better working order and thankful that i&#39;m ending the year in so much better a place than i began it. i&#39;m thankful i&#39;m working on finding a new job, even if i&#39;m not really sure what i want that job to be, and freelancing to build out my resume. i&#39;m thankful for our trips to san francisco, san diego, and LA, and how they made us better appreciate the small town in indiana where we live. i&#39;m thankful to think how happy we are here, at least for now, given that neither of us was excited (understatement) to move to the midwest from the coasts. i&#39;m thankful we did move here, since otherwise we would have never met. i&#39;m thankful for what yoga and meditation have given to me this year. i&#39;m thankful for all the great art and books and movies and music i&#39;ve experienced this year. i&#39;m thankful that i started writing these thank you notes. i&#39;m thankful i&#39;m going to stop writing this one now so that i can get in front of a webcam and bow to d&#39;s family to ring in the new year.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=cooking-experiences" class="tag-badge">#cooking experiences</a>
+        <a href="/letters/?tag=family-relationships" class="tag-badge">#family relationships</a>
+        <a href="/letters/?tag=graphic-novels" class="tag-badge">#graphic novels</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=new-years-traditions" class="tag-badge">#new year&#039;s traditions</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=travel-memories" class="tag-badge">#travel memories</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -869,11 +962,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -882,10 +1011,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

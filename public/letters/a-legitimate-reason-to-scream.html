@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,21 @@ body {
         <p>saturday i was in a subpar mood because i couldn&#39;t do real exercise or smoke/vape weed because of the need to protect the blood clot in my mouth from suction and then when i tried opening the windows to let in some air, thinking about later at least going for a walk or sitting out on the patio and feeling the breeze, deborah asked that they stay closed because the AQI was at moderate because of the fires and i was like &quot;whatever moderate is fine&quot; but closed the windows and then sulked about it and after lunch she suggested we go for a bike ride, clearly as a gesture to me thinking she was being unreasonable about the air quality and wanting me to be in a better mood, and i said something catty about that rather than being fully appreciative but then we went on a bike ride anyway which aside from one brief moment where she got attacked by some kind of bug as we crossed an intersection was very nice even though it was hot outside and made me feel better except as we got to the tail end of the bike ride my tongue was dry furry and coated with i assume ash particulate which was not pleasant and after we pulled into the garage i had to admit actually it was kind of gross and she was right (i do think one of my more virtuous traits (which deborah doesn&#39;t generally recognize as such for reasons that are both fair and unfair) is freely and quickly admitting when i believe i am or have done wrong). we went inside and i put some of the last of the ice from the freezer into a rocks glass and poured in coconut water and was standing there taking the first refreshing sip of this beverage when in the next room deborah started screaming bloody murder like to a degere i have almost never heard her scream before and i have heard her scream a lot and was bending over at the waist grabbing and scrabbling at her chest and i was so terrified and so i&#39;m trying to ask what&#39;s wrong and figure out how to react and she&#39;s screaming without recognizable verbal content just kind of sublime horror but also at the same time as she&#39;s doing this and crying and i can&#39;t think of any better phrase to describe what it physically looks like she was doing than &quot;rending her garments&quot; she also made eye contact with me and screamed &quot;SORRY!!!&quot; and i&#39;m like &quot;what it&#39;s okay that doesn&#39;t make sense that doesn&#39;t help me help you&quot; but it also did make me feel slightly less afraid that she was about to die because why would she be screaming &quot;SORRY!!!&quot; like you would prioritize other things than screaming &quot;SORRY!!!&quot; and at that point she fully pulled her peloton sports bra down off her boobs and revealed there was <a href="http://%5C" title="which deborah doesn&#39;t recognize as such generally for reasons both fair and unfair\">a long beetle nestled in the cleavage</a> between them and it had been there since it had gotten trapped as she leaned forward on her bike and we crossed that intersection and it had been there for probably ten minutes at that point and as soon as i registered all this and i reached in and quickly swooped it out of the shelf and onto the floor where i killed it and we both recovered and i finally understood she had been saying &quot;SORRY!!!&quot; as a kind of self-conscious metacommentary on her often overreacting to banal events by gasping and screaming as though something very serious has happened when usually i think there hasn&#39;t been as previously discussed and i told her how i had appreciated that she had found the presence of mind to have said (well screamed) that and also that for the record i understood screaming loudly at finding a bug inside her sports bra and that was a legitimate reason to scream.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=air-quality" class="tag-badge">#air quality</a>
+        <a href="/letters/?tag=communication" class="tag-badge">#communication</a>
+        <a href="/letters/?tag=emotional-response" class="tag-badge">#emotional response</a>
+        <a href="/letters/?tag=exercise" class="tag-badge">#exercise</a>
+        <a href="/letters/?tag=insect-encounter" class="tag-badge">#insect encounter</a>
+        <a href="/letters/?tag=personal-experience" class="tag-badge">#personal experience</a>
+        <a href="/letters/?tag=relationship-dynamics" class="tag-badge">#relationship dynamics</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +957,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1006,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

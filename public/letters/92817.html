@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,20 @@ body {
         <p>i&#39;m thankful for <a href="https://www.youtube.com/watch?v=Jc2x5aHCs6g">this performance video of haim</a>, which is mesmerizing and made me love them and the songs they perform in it in a new way. i&#39;m thankful for their facial expressions as they sing and play. i&#39;m thankful for their virgin suicides cool girl dancing in the video for &quot;<a href="https://www.youtube.com/watch?v=yPQfcG-eimk">want you back</a>.&quot; i&#39;m thankful for <a href="https://open.spotify.com/user/grimes_spotify/playlist/0LxLPc6gR5yQ2gOX12ADmS">this playlist of music grimes likes right now</a>, which if you like grimes you will probably like. i&#39;m thankful for <a href="https://twitter.com/usinjuries">this twitter account</a> that logs american injuries; i&#39;m thankful for <a href="https://twitter.com/fakeirl/status/913226188457463808">human drama</a> and i&#39;m thankful to have seen <a href="https://twitter.com/fakeirl/status/913222961422852096">multiple</a> <a href="https://twitter.com/fakeirl/status/913223475086667777">examples</a> of people punching refrigerators, which seem like really dumb things to punch. i&#39;m thankful that <a href="http://nymag.com/selectall/2017/09/this-is-my-body-no-6-pack-meme-explained.html?utm_campaign=select-all&utm_source=tw&utm_medium=s1">we can collectively mock people</a> who are annoying. i&#39;m thankful for <a href="https://twitter.com/topshelftyson/status/900186821631651840">this joke</a> and <a href="https://twitter.com/ilovewonpil/status/912768576137830400">this one</a> and <a href="https://twitter.com/geekylonglegs/status/913219717132881920">this one</a> and <a href="https://twitter.com/DrYobbo/status/913245379067383808">this one</a>. i&#39;m thankful for <a href="https://www.youtube.com/watch?v=bJbXsnFKGaU">this insane nathan fielder story</a>. i&#39;m thankful for <a href="http://poeticcomputation.info/contents/">this guide to poetic computing</a>, which looks interesting. i&#39;m thankful that i don&#39;t have to work today or tomorrow. i&#39;m thankful that there are some personal projects i want to do things for, but i&#39;m thankful also to let myself actually rest and consume and recharge. i&#39;m thankful to agree that <a href="https://twitter.com/danaanmm/status/912770165015707651">doing things is overrated</a>. i&#39;m thankful for <a href="https://twitter.com/GrrlGhost/status/913043072103174144">this video of an afghan hound in a swimming pool</a>.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=humor" class="tag-badge">#humor</a>
+        <a href="/letters/?tag=music-appreciation" class="tag-badge">#music appreciation</a>
+        <a href="/letters/?tag=personal-projects" class="tag-badge">#personal projects</a>
+        <a href="/letters/?tag=self-care" class="tag-badge">#self-care</a>
+        <a href="/letters/?tag=social-media-culture" class="tag-badge">#social media culture</a>
+        <a href="/letters/?tag=video-content" class="tag-badge">#video content</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +956,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1005,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

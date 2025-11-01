@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -825,6 +902,22 @@ body {
 <p>i&#39;m thankful that d had the same days off that i did, which means we got to spend that time together. i&#39;m thankful always when that happens and i am reminded that she is the person i most like spending time with in the world and that&#39;s why i&#39;m thankful we&#39;re married. i&#39;m thankful that for thanksgiving we had mcdonalds by accident, and then the next day had our best session of local korean barbecue on purpose and i think locked in our perfect order, like the one we have with the pizza place where we occasional think of trying something else, feeling like we should branch out, but then it&#39;s like, &quot;<em>no, i know that these particular things will be reliably excellent and i am valuing that by choosing them again and again.</em>&quot; i&#39;m thankful that i did some CBT freewriting earlier about my main worries (i did like seven worksheets lol) about going back to work this week and that made me feel kind of better, even if it hasn&#39;t completely banished the sunday scaries. i&#39;m thankful to do my best to reforge pathways in my brain that force me into bad loops. i&#39;m thankful for my antidepressants. i&#39;m thankful i have meditated most of the days i was on vacation, if not all days, and i&#39;m thankful for the ways in which i broke my regular routines (about exercise, eating, and other forms) and revelled in how arbitrary and constructed they are and how that means i can try to find ways to change them that will make me happier (though i&#39;m thankful to temper that with a thought i had when i was walking miso yesterday in the unexpected 55 segree sunset, which is that it&#39;s a lot easier to feel mindful when the weather is nice outside). i&#39;m thankful that though it is raining outside, there is pie in the refrigerator and ice cream in the freezer. i&#39;m thankful that even though there&#39;s more to write about (i&#39;m thankful that there are so many things i am thankful for, even when i feel worried or unhappy), this feels like a good place to stop for today (and also i have 4% battery and miso ate this computer&#39;s battery charger). i&#39;m thankful to have the rest of the evening to not do work in.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=cooking" class="tag-badge">#cooking</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=pet-ownership" class="tag-badge">#pet ownership</a>
+        <a href="/letters/?tag=podcasts" class="tag-badge">#podcasts</a>
+        <a href="/letters/?tag=reading" class="tag-badge">#reading</a>
+        <a href="/letters/?tag=self-care" class="tag-badge">#self-care</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -873,11 +966,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -886,10 +1015,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

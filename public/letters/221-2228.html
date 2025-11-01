@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -818,6 +895,22 @@ body {
 <p>i&#39;m thankful for this metaphor about how you &quot;<a href="https://twitter.com/harmonicait/status/966125477684420608">listen to a song for comfort till it wears out, like a sweater</a>&quot;, which also made me think about the second part of that, which is when you throw it in the back of your closet and some day in the future, a new winter, find it again and remember the days when it gave you warmth. i&#39;m thankful for <a href="http://www.vinylmeplease.com/magazine/beach-house-liner-notes/">this piece</a> on my favorite record by my favorite band. i&#39;m thankful for <a href="https://open.spotify.com/album/5DxBL1DdvhtGYmZOaF21Ov?si=eqV4FETgSte3Hi7JMWrxOg">this album</a> of oscar peterson with strings by nelson riddle, where the strings are what i imagine that the clouds in heaven might be, the piano doing a gentle parkour across their sky. i&#39;m thankful for <a href="https://twitter.com/Heyy_Carrie_Ann/status/966132359153246210">this definition of love</a>. i&#39;m thankful for shion and tsubasa&#39;s slow giddy romance on <em>terrace house</em>, which fills my heart with warmth. i&#39;m thankful for <a href="https://twitter.com/leighalexander/status/966275377516765184">IRL clipping errors</a> and <a href="https://twitter.com/jiatolentino/status/966051700950872068">failed panoramas</a>. i&#39;m thankful for <a href="https://twitter.com/tambourine/status/966094626997272576">podcasts</a> (i&#39;m thankful on a long walk over vacation to have listened to all of <em><a href="https://itunes.apple.com/us/podcast/slow-burn-a-podcast-about-watergate/id1315040130?mt=2">slow burn</a></em> and yesterday while unpacking and cleaning and doing laundry to have listened to the first two episodes of <em><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?mt=2&id=1171160683">making obama</a>,</em> both of which are fantastic). i&#39;m thankful that i have not yet received my <a href="https://twitter.com/aubreybell/status/966069765671346176">lifetime achievement award</a>.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=music-appreciation" class="tag-badge">#music appreciation</a>
+        <a href="/letters/?tag=nostalgia" class="tag-badge">#nostalgia</a>
+        <a href="/letters/?tag=podcasts" class="tag-badge">#podcasts</a>
+        <a href="/letters/?tag=pop-culture" class="tag-badge">#pop culture</a>
+        <a href="/letters/?tag=romantic-relationships" class="tag-badge">#romantic relationships</a>
+        <a href="/letters/?tag=television-shows" class="tag-badge">#television shows</a>
+        <a href="/letters/?tag=the-magicians" class="tag-badge">#the magicians</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -866,11 +959,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -879,10 +1008,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

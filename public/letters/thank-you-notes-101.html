@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,21 @@ body {
         <p>i&#39;m thankful to be writing these notes from the gate of our flight to atlanta, where we&#39;ll get on a flight to fort lauderdale and will then get picked up my parents for the drive to miami beach. i&#39;m thankful that my mom&#39;s job interview in sarasota yesterday went well, so it may be the last time i ever make this particular trip.i&#39;m thankful for free airport wifi, especially like this one that just works instantly without some annoying ad-filled check in thing. i&#39;m thankful that i like airports, even though i know a lot of people hate them. i&#39;m thankful to have a longish layover in atlanta, since i would rather have a longish layover than have to panic and rush. i&#39;m thankful that because our first flight is full, they took volunteers to gate check roller bags and i&#39;m thankful to have gate checked ours, because that means that i get to avoid schlepping it onto the plane and around during our layover (i&#39;m thankful to have considered paying in advance to check it, but then being cheap, and still getting to check it anyway). i&#39;m thankful to feel that&#39;s worth having to wait a few minutes longer after our flight. i&#39;m thankful for the dance of the motorized baggage carousel. i&#39;m thankful that d and i were able to pack all our stuff in our backpacks and one roller bag, because we only have one carry-on-sized roller bag and the other carry-on-sized bag we have doesn&#39;t have wheels and is a pain in the ass (and arms) to carry around. i&#39;m thankful on long layovers to and take long walks around the terminals—i&#39;m thankful to stroll through enormous indoor spaces and to imagine that if malls exist in some form when i&#39;m old i will be one of those old people waiting to walk through them in the morning. i&#39;m thankful that though i live far away from my parents, i don&#39;t have to take a very long car trip to get to them, which i know would mean that i visited them even less than i do. i&#39;m thankful for <em><a href="https://en.wikipedia.org/wiki/Ambient_1:_Music_for_Airports">music for airports</a></em>. i&#39;m thankful for the feeling of taking off into the air, which is still magical to me. i&#39;m thankful for the methodically polite cadence of loudspeaker announcements from flight attendants. i&#39;m thankful that they are about to call for us to get on the plane and go somewhere else.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=air-travel" class="tag-badge">#air travel</a>
+        <a href="/letters/?tag=airport-amenities" class="tag-badge">#airport amenities</a>
+        <a href="/letters/?tag=family-visits" class="tag-badge">#family visits</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=layover-tips" class="tag-badge">#layover tips</a>
+        <a href="/letters/?tag=packing-strategies" class="tag-badge">#packing strategies</a>
+        <a href="/letters/?tag=travel-experience" class="tag-badge">#travel experience</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +957,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1006,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

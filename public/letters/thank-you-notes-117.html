@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -821,6 +898,21 @@ body {
 <p>i&#39;m thankful for the video of the hillary canvasser doing <a href="https://twitter.com/porn_horse/status/794741653970059264">a kickflip in heels</a>. i&#39;m thankful for two young women i ran into while on my run yesterday in hillary stickers working to get out the vote. i&#39;m thankful for <a href="http://www.nytimes.com/2016/11/06/us/politics/latina-hotel-workers-harness-force-of-labor-and-of-politics-in-las-vegas.html">this article</a> about a badass latina hotel worker. i&#39;m thankful for <a href="http://www.nytimes.com/2016/11/06/arts/music/beyonce-political-hillary-clinton-dixie-chicks.html?smprod=nytcore-iphone&smid=nytcore-iphone-share">wesley morris</a>. i&#39;m thankful for this review of <em><a href="http://hyperallergic.com/317018/trying-famous-photographers-recipes-from-avedons-pot-roast-to-adamss-eggs/?redirect_log_mongo_id=5820776ac46c690009000246&redirect_mongo_id=581ca44398e0530009000436&sb_referer_host=t.co&utm_campaign=Trackable+Links&utm_medium=Web&utm_source=Springbot">the photographer&#39;s cookbook</a></em>, which includes recipes like &quot;<em>a formalist stew</em>&quot; which &quot;<em>has 185 ingredients and takes 31 days to prepare.</em>&quot; i&#39;m thankful for <a href="https://twitter.com/chelseagsummers/status/795288970578055172">the description of a woman,</a> on her thirtieth birthday, walking barefoot through six white layer cakes lined up on a plastic tarp.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=literature" class="tag-badge">#literature</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=political-activism" class="tag-badge">#political activism</a>
+        <a href="/letters/?tag=pop-culture" class="tag-badge">#pop culture</a>
+        <a href="/letters/?tag=reading" class="tag-badge">#reading</a>
+        <a href="/letters/?tag=self-care" class="tag-badge">#self-care</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -869,11 +961,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -882,10 +1010,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

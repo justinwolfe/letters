@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -824,6 +901,21 @@ body {
 <p>i think after the end of senior year but before i moved out of the house i had a crush on this really beautiful girl whose last name was pai and who once whispered in my ear, after professing an interest in me in front of other people at the end of a party we had seen each other at, &quot;i want to make you dinner&quot; which was the hottest thing any girl had ever said to me in my life but the problem was we were only really tertiary friends and so i didn&#39;t see her a lot and my out-of-control unmedicated anxiety (except with enough alcohol and weed to go out, but even then i never really thought i became a different person when i got drunk (which i kind of wanted sometimes, to actually lose my inhibitions), just a dumber happier (eventually sicker) one) meant that actually independently acting on this and trying to go out on a date with with her was simply impossible so instead story of my life i recorded this blues rock song called &quot;<a href="https://pub-babdc08637d84ffa81d04485ce567fe0.r2.dev/pie.mp3">pie</a>&quot; and posted it on my facebook wall, which was where i had shared some of the previous songs and where i thought she might hear it and wonder if it was about her since we were (digitally) friends and that afternoon after it had been up for a few hours i got a call from a number with an area code of her home town, a fairly specific place that i had never gotten a call from before, and it was like the moment where the thing you&#39;re fantasizing will happen but sure is never going to actually happen is like actually happening except once again at this time i had no courage or game or anything and just let the call hang and didn&#39;t pick up sorry for the buzzkill not gonna james frey this who knows it might have just been a telemarketer! but even though that was a total loss and though the lyrics are dumb, i do still kind of like this song—there&#39;s something organic about the interplay between the piano and the acoustic guitar and the drums, the wordless vocal coda. at 21 i was such a romantic and so ready to love and be in love (and also have sex) but also incapable of making it happen, not a whole person, a scared kind of shell. i sometimes think about what it would be like to be that age now and have all of these ways all the time to broadcast my inner self out into the world and find connection through mediation that weren&#39;t there then: the grass is always greener tho, this be the verse. it&#39;s nice to listen to this recording and know that with time i&#39;d have the thing i dreamed of (true love).</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=double-entendre" class="tag-badge">#double entendre</a>
+        <a href="/letters/?tag=emotional-expression" class="tag-badge">#emotional expression</a>
+        <a href="/letters/?tag=food-metaphors" class="tag-badge">#food metaphors</a>
+        <a href="/letters/?tag=music-composition" class="tag-badge">#music composition</a>
+        <a href="/letters/?tag=personal-storytelling" class="tag-badge">#personal storytelling</a>
+        <a href="/letters/?tag=recording-process" class="tag-badge">#recording process</a>
+        <a href="/letters/?tag=youthful-romance" class="tag-badge">#youthful romance</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -872,11 +964,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -885,10 +1013,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

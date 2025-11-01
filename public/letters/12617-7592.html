@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,20 @@ body {
         <p>i&#39;m thankful to be writing this on my phone in my bed the night before you read it because i have a dentist appointment in the morning before work. i&#39;m thankful that i&#39;ve felt the same low level dread that i feel about any appointment, but i&#39;m thankful that i don&#39;t have to feel it because my dentist&#39;s office is great, as i have talked about before here. i&#39;m thankful to know that i really need to make more medical appointments (to get my eyes checked because i&#39;m getting headaches at the end of the workday and my glasses are scratched, to have the ultrasound of my heart i&#39;m supposed to get every year, to get a regular physical) and to hope that going to the dentist appointment and writing about it here will get me moving in that direction, which is something that sometimes works for me. i&#39;m thankful to have decent medical (if not dental) insurance and i&#39;m thankful to have the resources to be able to afford to keep myself healthy and get the medical attention i need when i need it and to live a relatively healthy life. i&#39;m thankful to remember when i cracked a tooth in grad school eating a kettle chip and was afraid to go to the dentist because i googled and saw the work could be very expensive l and tried to eat around and live with the cracked tooth for quite some time before realizing that even if it was expensive, it was not good to keep living with a cracked tooth which was never going to get better on its own, only worse (i&#39;m thankful that it only needed a filling and wasn&#39;t that expensive). i&#39;m thankful for <a href="https://indianareview.org/2012/09/nonfiction-submission-guidelines/">this piece of writing,</a> which reminds me of that stressful period. i&#39;m thankful to remember periods when my dad was between jobs when we were without coverage briefly and how that scared me. i&#39;m thankful to remember bringing my insurance card with me to intramural games in college because i was afraid i would need it if i got hurt and they wouldn&#39;t treat me or would give me a huge bill that my debit card with my financial aid wouldn&#39;t cover, which a friend from a wealthier family noticed and made fun of, i think because he thought i had brought the card because i thought it would get me priority treatment at a good hospital. i&#39;m thankful that to think of that period, when i kept my insurance card in a ziploc in my gym shorts, or to think of the period where i had the cracked tooth and didn&#39;t want to go to the dentist. i&#39;m thankful for how to think of living in those periods as stressful in retrospect is funny, since i also feel like i&#39;m living in a stressful period now, a very stressful one, and am now while writing this sentence you are reading kind of wondering if there was ever a period in my life that i <em>didn&#39;t</em> think was a stressful period, either at the time or in retrospect or both. i&#39;m thankful to sometimes fantasize about having gone on antidepressants much earlier in life, but i&#39;m thankful for the life i&#39;ve had so far and the life that i have now and am thankful that even if there are lots of stressful periods, i have many happy memories, too, woven through their holes like gold thread. i&#39;m thankful, if i have to accept that every period of my life is going to be something i could consider a stressful period, that there will be nothing but chapter after chapter of stressful periods to come, that i still choose that life rather than the alternative. i&#39;m thankful to hope that i have many more stressful periods left to live through, and that you do too.___PARAGRAPH_BREAK___</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=healthcare" class="tag-badge">#healthcare</a>
+        <a href="/letters/?tag=insurance-experiences" class="tag-badge">#insurance experiences</a>
+        <a href="/letters/?tag=medical-appointments" class="tag-badge">#medical appointments</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=stress-management" class="tag-badge">#stress management</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +956,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1005,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

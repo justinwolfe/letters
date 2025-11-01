@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -824,6 +901,22 @@ body {
 <p>i&#39;m thankful that while we each played simple numbing calming video games on our respective sides of the bed, i played <a href="https://www.earwolf.com/show/u-talkin-u2-to-me/">ru talking rem re: me</a>, which is my favorite silly podcast, and d laughed along even though it is not her favorite podcast, and they played a clip of &quot;everybody hurts&quot; for some bit or another, and i was reminded of how in college one of my roomates z did this thing where if i felt bad and closed myself up in my room and didn&#39;t hang out with him or anyone else, which i did often enough that my friend group had a nickname for it (&quot;the void&quot;) and which in retrospect seems like a clear sign of depression but then i thought at the time that that was a thing that happened to other people and not me, which is that he would play the song &quot;<a href="https://www.earwolf.com/show/u-talkin-u2-to-me/">everybody hurts</a>&quot; very very loud on the stereo in our living room on loop until i came out to play mario kart or go to qdoba or whatever else college activity we had planned. i&#39;m thankful that though i found that extremely fucking obnoxious at the time and hated him for it and still do not think it is, like, a good mental health treatment modality, that use of that song is so big and silly and obvious that thinking about it right now is kind of making me smile, which i am grateful for, and reminding me that the way i feel now is a way i have felt many times before, to some degree or another, and that it will pass. i&#39;m thankful for the reassurance of that, and of the song, that everybody hurts sometimes and i am not alone.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=anxiety" class="tag-badge">#anxiety</a>
+        <a href="/letters/?tag=emotional-resilience" class="tag-badge">#emotional resilience</a>
+        <a href="/letters/?tag=medication-management" class="tag-badge">#medication management</a>
+        <a href="/letters/?tag=mental-health" class="tag-badge">#mental health</a>
+        <a href="/letters/?tag=mindfulness" class="tag-badge">#mindfulness</a>
+        <a href="/letters/?tag=self-care" class="tag-badge">#self-care</a>
+        <a href="/letters/?tag=self-talk" class="tag-badge">#self-talk</a>
+        <a href="/letters/?tag=workplace-support" class="tag-badge">#workplace support</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -872,11 +965,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -885,10 +1014,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,21 @@ body {
         <p>i&#39;m thankful that last night we went to see haim in concert, which was the first time i&#39;ve been to a concert in probably more than a decade (an anniversary gift from d). i&#39;m thankful to date myself by thinking of the concerts i can remember from college off the top of my head, most of which i saw <a href="https://www.fsunews.com/story/entertainment/2016/05/05/oral-history-club-downunder-fsu/83974534/">for free on campus</a>, which were: pernice brothers, arab strap, death cab, the zombies (sad reunion tour, remember getting a call from my parents that my childhood dog had died outside my dorm afterward), the walkmen (multiple times, my idols), mates of state, the french kicks, stars, broken social scene, rilo kiley, of montreal, dinosaur jr., and i think the last one i went to was battles, on a really hot night in the spring of my senior year of college, the end of an era, as a person who didn&#39;t like dancing but was just like compelled by the physical force of the music to move and i remember being so so hot and sweaty and came back to my roommates playing beer pong in our back yard as a cool breeze came in. i&#39;m thankful that for the haim concert we parked at k and t&#39;s place and took the train down to the arena; i&#39;m thankful for the stretch of track going downhill along the river with the bridges towering above. i&#39;m thankful that though i can&#39;t drink as much as i did when i was younger, i (for various reasons) don&#39;t feel like i need to drink as much as when i was younger (and also i can afford even exorbitantly priced drinks in an arena). i&#39;m thankful that the show was smaller than i thought but also thankful that it wasn&#39;t so small that we couldn&#39;t sit in our seats. i&#39;m thankful for a thing i have learned about myself and edibles, which is that there&#39;s not a total limit i can take without getting sick (45mg) but that i just need to limit it to about 20mg at a go and then redose over a more extended period of time. i&#39;m thankful for the opener sasami ashworth, who was such a force of intensity and whose band was so heavy and hard, especially a drummer who did just some really insane fast double bass pedal work. i&#39;m thankful that haim were extremely good, though they didn&#39;t play &quot;little of your love&quot; and i wish danielle would just always play guitar even though she&#39;s a very good drummer because the songs benefit more from her tone and intensity on electric. i&#39;m thankful for the amazing solo cadenza by their saxophone player. i&#39;m thankful that though i think i am a generally person who prefers a recorded artifact consumed in private, a document, i got something from the mass volume and intensity of the show that was different than what i get at home on my headphones and i&#39;m thankful that d (the world&#39;s best gift giver) thought of it and was my date.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=haim" class="tag-badge">#Haim</a>
+        <a href="/letters/?tag=concert-experience" class="tag-badge">#concert experience</a>
+        <a href="/letters/?tag=live-music" class="tag-badge">#live music</a>
+        <a href="/letters/?tag=music-nostalgia" class="tag-badge">#music nostalgia</a>
+        <a href="/letters/?tag=opener-band" class="tag-badge">#opener band</a>
+        <a href="/letters/?tag=performance-review" class="tag-badge">#performance review</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +957,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1006,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

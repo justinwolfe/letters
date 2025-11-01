@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -820,6 +897,22 @@ body {
 <p>i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/06u5LrUpbosQlQ1QJFhPpG">drew barrymore</a>&quot; by SZA (and really for her whole album, which is great). i&#39;m thankful for <a href="https://open.spotify.com/track/0jcPJaUwwhwY1uRNOb7HDX">this song</a>, which is a lovely meditative underwater journey of a thing, which i recommend playing on repeat for a while. i&#39;m thankful, though i don&#39;t normally like this kind of thing, for <a href="http://pitchfork.com/news/watch-paramore-cover-drakes-passionfruit/?mbid=homepage-more-latest-and-video">paramore covering &quot;passionfruit,</a>&quot; since i am in love with paramore now. i&#39;m thankful for <a href="https://twitter.com/BehindScenesPic/status/877243303124750336">this picture of will smith and marilyn manson</a>. i&#39;m thankful for <a href="https://twitter.com/nwalks/status/812162271220731904">this joyful music video</a>. i&#39;m thankful to have learned what espadrilles are. i&#39;m thankful for <a href="https://twitter.com/miragonz/status/877438301505900544">mira&#39;s curated scottish tweets</a>. i&#39;m thankful for the sad weird randomness of <a href="https://en.m.wikipedia.org/wiki/Frankie_Muniz">frankie muniz&#39;s wikipedia page</a>. i&#39;m thankful that we started watching the third season of <em>transparent</em> (i&#39;m thankful for kathryn hahn &lt;3), which is good and moving in an interesting direction vis a vis intersectionality even if it&#39;s also more (mostly intentionally, painfully) cringey, and i&#39;m thankful for the surprise appearance of nathan fielder playing a young a&amp;r guy. i&#39;m thankful that no show makes me laugh harder than his and that i hope it will be back soon. i&#39;m thankful that if i feel sad or stressed out i can watch <a href="https://www.youtube.com/watch?v=Oi-3eRMpOC4">his videos</a> and laugh.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=intersectionality" class="tag-badge">#intersectionality</a>
+        <a href="/letters/?tag=javascript" class="tag-badge">#javascript</a>
+        <a href="/letters/?tag=misogyny" class="tag-badge">#misogyny</a>
+        <a href="/letters/?tag=music-appreciation" class="tag-badge">#music appreciation</a>
+        <a href="/letters/?tag=networking" class="tag-badge">#networking</a>
+        <a href="/letters/?tag=personal-growth" class="tag-badge">#personal growth</a>
+        <a href="/letters/?tag=television-analysis" class="tag-badge">#television analysis</a>
+        <a href="/letters/?tag=work-life-balance" class="tag-badge">#work-life balance</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -868,11 +961,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -881,10 +1010,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

@@ -80,14 +80,33 @@ function App() {
     };
     const handleOffline = () => setIsOnline(false);
 
+    // Handle browser back/forward buttons
+    const handlePopState = (event: PopStateEvent) => {
+      const params = new URLSearchParams(window.location.search);
+      const letterSlug = params.get('letter');
+
+      if (letterSlug && allEmails.length > 0) {
+        // Navigate to the letter from URL
+        const email = allEmails.find(e => e.slug === letterSlug || e.id === letterSlug);
+        if (email) {
+          fetchEmail(email.id);
+        }
+      } else {
+        // No letter parameter, go back to list view
+        goBack();
+      }
+    };
+
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
+    window.addEventListener('popstate', handlePopState);
 
     return () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('popstate', handlePopState);
     };
-  }, []);
+  }, [allEmails]);
 
   // Fetch all emails on mount
   useEffect(() => {
@@ -102,6 +121,37 @@ function App() {
       navigateToEmail(lastViewedId);
     }
   }, [loading, hasLoadedLastViewed]);
+
+  // Handle ?letter=slug URL parameter for direct navigation from static pages
+  useEffect(() => {
+    if (loading || allEmails.length === 0) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const letterSlug = params.get('letter');
+
+    if (letterSlug) {
+      // Find email by slug
+      const email = allEmails.find(e => {
+        // Try exact slug match first
+        if (e.slug === letterSlug) return true;
+        // Try matching the generated slug format
+        const generatedSlug = e.slug || e.id;
+        return generatedSlug === letterSlug;
+      });
+
+      if (email) {
+        // Mark PWA as preferred since user came from static page with intent
+        localStorage.setItem('pwa-preferred', 'true');
+
+        // Navigate to the email and clear the URL parameter
+        navigateToEmail(email.id);
+
+        // Clean up URL without reloading
+        const cleanUrl = window.location.pathname;
+        window.history.replaceState({}, '', cleanUrl);
+      }
+    }
+  }, [loading, allEmails]);
 
   // Sort and filter emails whenever search query, sort option, or allEmails change
   useEffect(() => {
@@ -298,6 +348,15 @@ function App() {
   const navigateToEmail = (id: string) => {
     fetchEmail(id);
     window.scrollTo(0, 0);
+
+    // Update URL to reflect current letter for shareability
+    // Find the email to get its slug
+    const email = allEmails.find(e => e.id === id);
+    if (email) {
+      const slug = email.slug || id;
+      const newUrl = `${window.location.pathname}?letter=${encodeURIComponent(slug)}`;
+      window.history.pushState({ letterId: id }, '', newUrl);
+    }
   };
 
   const goBack = () => {
@@ -305,6 +364,10 @@ function App() {
     setCurrentEmail(null);
     setNavigation(null);
     setCurrentTag(null);
+
+    // Clean up URL when returning to list
+    const cleanUrl = window.location.pathname;
+    window.history.pushState({}, '', cleanUrl);
   };
 
   const navigateToTag = async (tagName: string) => {
@@ -427,6 +490,39 @@ function App() {
       alert('Offline data cleared successfully');
     } catch (err) {
       setError('Failed to clear offline data');
+    }
+  };
+
+  const shareCurrentLetter = async () => {
+    if (!currentEmail) return;
+
+    const slug = currentEmail.slug || currentEmail.id;
+    // Generate static HTML URL with ?pwa=1 for best experience
+    const staticUrl = `${window.location.origin}/letters/letters/${slug}.html?pwa=1`;
+
+    // Use Web Share API if available
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: currentEmail.subject,
+          text: currentEmail.description || currentEmail.subject,
+          url: staticUrl,
+        });
+      } catch (err) {
+        // User cancelled or share failed
+        if (err instanceof Error && err.name !== 'AbortError') {
+          console.error('Share failed:', err);
+        }
+      }
+    } else {
+      // Fallback: Copy to clipboard
+      try {
+        await navigator.clipboard.writeText(staticUrl);
+        alert('Link copied to clipboard!');
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        alert(`Copy this link: ${staticUrl}`);
+      }
     }
   };
 
@@ -671,9 +767,19 @@ function App() {
             <article className="email-content">
               <header className="email-header">
                 <h1>{currentEmail.subject}</h1>
-                <time className="email-date">
-                  {formatDate(currentEmail.publish_date)}
-                </time>
+                <div className="email-header-meta">
+                  <time className="email-date">
+                    {formatDate(currentEmail.publish_date)}
+                  </time>
+                  <button
+                    onClick={shareCurrentLetter}
+                    className="btn-share"
+                    title="Share this letter"
+                    aria-label="Share this letter"
+                  >
+                    ↗ Share
+                  </button>
+                </div>
               </header>
 
               <div className="email-body">

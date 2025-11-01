@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,20 @@ body {
         <p>i&#39;m thankful that though i felt bummed out yesterday because some bugs that i thought shouldn&#39;t be bugs anymore arose during a test session for my work project, the whole reason we&#39;re having people do this testing now is to surface bugs so they can be fixed before our whole team uses this tool and so even if i wish there weren&#39;t any bugs, bugs happen and it&#39;s a totally normal and good thing for them to be appearing now and i shouldn&#39;t let their appearance make me feel bummed out or that i&#39;ve failed. i&#39;m thankful for the tester who experienced the bugs, who is one of my best friends at work and who was characteristically thoughtful and understanding and kind and game to try things out. i&#39;m thankful that she jumped on a screen share with me so i could observe one bug live and am thankful that at the beginning of the call, her microphone on her headphones wasn&#39;t working, so she could hear me but i couldn&#39;t hear her, and we had a fun moment where i was narrating her movements and making silly jokes while she found her headphone cable. i&#39;m thankful that before we got off the call, even though going on the screenshare with me had made her late for a meeting, she lifted her computer up and pulled it around so i could see her adorable slumbering corgi under the table where she was sitting. i&#39;m thankful that in our team meeting video call later in the day, the manager of my work project, who did not know i was bummed out, i don&#39;t think, but who is also a kind and thoughtful person, renamed my account from &quot;justin wolfe&quot; to &quot;justin doge&quot;, which made me and several other people laugh. i&#39;m thankful that i have just two more days of work before we go to chicago to get our dog(e) on friday. i&#39;m thankful to have mowed the lawn yesterday evening so that it will be ready. i&#39;m thankful to have been pleasantly surprised to find that our next door neighbor had mowed our part of the section of yard between our two houses, as i normally do for his part when i mow. i&#39;m thankful for small kindnesses.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=bug-testing" class="tag-badge">#bug testing</a>
+        <a href="/letters/?tag=kindness-in-the-workplace" class="tag-badge">#kindness in the workplace</a>
+        <a href="/letters/?tag=project-management" class="tag-badge">#project management</a>
+        <a href="/letters/?tag=remote-work" class="tag-badge">#remote work</a>
+        <a href="/letters/?tag=team-collaboration" class="tag-badge">#team collaboration</a>
+        <a href="/letters/?tag=workplace-gratitude" class="tag-badge">#workplace gratitude</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +956,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1005,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

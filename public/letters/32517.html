@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -817,6 +894,22 @@ body {
         <p>i&#39;m thankful that it&#39;s already above 60 degrees outside and it&#39;s only 9am. i&#39;m thankful that this morning when i woke up, birds were chirping outside our window (which is a nice harbinger of spring, even though it&#39;s also kind of annoying). i&#39;m thankful that the AHCA didn&#39;t get a vote and thankful for every time paul ryan fails. i&#39;m thankful for <em>exit west</em>, which is quite good so far. i&#39;m thankful that i had the flexibility to start work early yesterday so i could leave early for early band practice. i&#39;m thankful that at that point it was 70 degrees and i biked over in a t-shirt. i&#39;m thankful we had early band practice because our drummer has a weight lifting competition today. i&#39;m thankful for what a badass she is and i&#39;m thankful for the fun duet jam she and i had together while everybody else was setting up their gear. i&#39;m thankful that the keyboardist&#39;s dog was much more chill than she usually is and i&#39;m thankful she likes to have her dog bed in the middle of the room where we practice, so in a sense it&#39;s like we&#39;re all playing for her. i&#39;m thankful that i thought i would get tired of playing the same songs over and over again, but that it feels like yoga practice—it&#39;s about the experience and about finding a center in a moment. i&#39;m thankful that we were all a little raggedy after not playing together for two weeks but i&#39;m thankful that was okay. i&#39;m thankful for the many times when we collapsed with laughter at something silly that happened. i&#39;m thankful that those moments are as important to me as the moments when we lock in and hit our stride. i&#39;m thankful for <a href="https://twitter.com/ClickHole/status/845455271111655424">armpits that look like faces</a> and <a href="https://twitter.com/ononoimoutonoko/status/845077260289769472">oranges that look like penises</a>. i&#39;m thankful while d was facetiming with her friend to have half-watched <em>compete to eat</em>, a really bizarre canadian reality cooking show on netflix which feels deeply yet unintentionally lynch-ian. i&#39;m thankful for these bloopers from <em>the americans</em>. i&#39;m thankful for the <a href="https://open.spotify.com/track/41eiwHEX8iegmqmS2cf7oX">new kendrick</a> and i&#39;m thankful for &quot;<a href="https://open.spotify.com/track/6Nle9hKrkL1wQpwNfEkxjh">chanel,</a>&quot; which is still perfect and just gets more perfect. i&#39;m thankful to look forward to a lazy saturday and to hope that you have a good day today.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=kendrick-lamar" class="tag-badge">#Kendrick Lamar</a>
+        <a href="/letters/?tag=band-culture" class="tag-badge">#band culture</a>
+        <a href="/letters/?tag=cooking-competition" class="tag-badge">#cooking competition</a>
+        <a href="/letters/?tag=gratitude" class="tag-badge">#gratitude</a>
+        <a href="/letters/?tag=music-practice" class="tag-badge">#music practice</a>
+        <a href="/letters/?tag=personal-reflection" class="tag-badge">#personal reflection</a>
+        <a href="/letters/?tag=spring" class="tag-badge">#spring</a>
+        <a href="/letters/?tag=television-shows" class="tag-badge">#television shows</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -865,11 +958,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -878,10 +1007,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');

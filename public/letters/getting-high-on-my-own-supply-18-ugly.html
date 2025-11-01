@@ -513,6 +513,83 @@ body {
   margin: 2rem 0;
 }
 
+/* Email Tags */
+.email-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.tags-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-badge {
+  background: #e7f3ff;
+  color: #0366d6;
+  border: 1px solid #c8e1ff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag-badge:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-1px);
+}
+
+.tag-badge:active {
+  transform: translateY(0);
+}
+
+.tag-title {
+  font-size: 1.75rem;
+  color: #0366d6;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.1s;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.back-link:active {
+  transform: translateX(0);
+}
+
 /* PWA Banner */
 .pwa-banner {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -838,6 +915,22 @@ body {
 <p>my comment in response, after some basking in the glow of the fact that a real celebrity read my blog, was &quot;<em>i will also try to work on my shallowness, though i can’t make any promises</em>.&quot; i continued to be pretty shallow (i was 22), but i do think the dramatic way i&#39;ve misremembered it all these years shows the impact it had on my self conception. before the end of this episode, as a chaser and maybe a sign that people can grow, i wanted to flash forward and pair this song with one i recorded a couple of years later called &quot;<a href="https://www.justinwolfe.me/getting-high/18/mannequin.mp3">mannequin</a>&quot;. it takes on very similar themes (another magical realist story about the interrelation of love and commerce, this time about a man who has been magically turned into a mannequin and falls in love with a fashion model at the atelier but is unable to tell her because he&#39;s a mannequin and so is singing a song in his head to her). unlike &quot;<a href="https://www.justinwolfe.me/getting-high/18/all%20the%20ugly%20people%20in%20the%20world%20should%20be%20shot.mp3">all the ugly people in the world should be shot</a>&quot;, which just makes me cringe to listen to and which i debated rereleasing/writing about at all, this one i still feel warmly about. it&#39;s not like it&#39;s pete seeger or anything (it&#39;s a song about falling in love with a fashion model) but i feel like it&#39;s better in every way because of the change of the focus: instead of exploring these issues by talking about buying women, it puts the spotlight on me as a man someone whose ability to express love is constrained by the self and by society (i also like a lot of the internal rhymes, especially the old new borrowed blue run at the end). i will continue trying to work on my shallowness (a lifelong project), though i can&#39;t make any promises.</p>
 
       </div>
+
+      
+    <footer class="email-tags">
+      <div class="tags-label">Tags:</div>
+      <div class="tags-list">
+        <a href="/letters/?tag=beauty-standards" class="tag-badge">#beauty standards</a>
+        <a href="/letters/?tag=lyric-interpretation" class="tag-badge">#lyric interpretation</a>
+        <a href="/letters/?tag=magical-realism" class="tag-badge">#magical realism</a>
+        <a href="/letters/?tag=music-analysis" class="tag-badge">#music analysis</a>
+        <a href="/letters/?tag=satire" class="tag-badge">#satire</a>
+        <a href="/letters/?tag=self-perception" class="tag-badge">#self-perception</a>
+        <a href="/letters/?tag=shallow-culture" class="tag-badge">#shallow culture</a>
+        <a href="/letters/?tag=social-commentary" class="tag-badge">#social commentary</a>
+      </div>
+    </footer>
+  
     </article>
 
     <nav class="navigation">
@@ -886,11 +979,47 @@ body {
     }
 
     function openPWA() {
-      window.location.href = '/letters/app/';
+      // Mark PWA preference and redirect
+      localStorage.setItem('pwa-preferred', 'true');
+
+      // Extract the letter slug from current URL if on a letter page
+      const path = window.location.pathname;
+      const match = path.match(//letters/([^/]+).html$/);
+
+      if (match) {
+        const slug = match[1];
+        window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+      } else {
+        window.location.href = '/letters/app/';
+      }
     }
 
+    // PWA Auto-redirect: Check if user prefers PWA or has ?pwa=1 parameter
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const preferPWA = params.get('pwa') === '1';
+      const hasPWAPreference = localStorage.getItem('pwa-preferred') === 'true';
+
+      // Don't redirect if already in standalone mode (PWA is installed and running)
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+      if ((preferPWA || hasPWAPreference) && !isStandalone) {
+        // Redirect to PWA with letter context
+        const path = window.location.pathname;
+        const match = path.match(//letters/([^/]+).html$/);
+
+        if (match) {
+          const slug = match[1];
+          window.location.href = '/letters/app/?letter=' + encodeURIComponent(slug);
+        } else {
+          window.location.href = '/letters/app/';
+        }
+        return; // Stop further execution
+      }
+    })();
+
     // Progressive Enhancement: Check if user has PWA installed
-    // If they do, redirect them to the app version for a richer experience
+    // If they do, show banner suggesting to use the app
     if (window.matchMedia('(display-mode: standalone)').matches) {
       // User is in standalone mode (PWA is installed and running)
       // Keep them on static page - they're already in PWA mode
@@ -899,10 +1028,10 @@ body {
       // Check if user has previously used the PWA (has cached data)
       if ('caches' in window) {
         caches.keys().then(cacheNames => {
-          const hasPWACache = cacheNames.some(name => 
+          const hasPWACache = cacheNames.some(name =>
             name.includes('static-') || name.includes('data-')
           );
-          
+
           // Only show PWA banner if they have cached content
           if (hasPWACache) {
             const banner = document.querySelector('.pwa-banner');
