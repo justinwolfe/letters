@@ -7,7 +7,6 @@
 
 import { initializeDatabase } from '../lib/db/schema.js';
 import { DatabaseQueries } from '../lib/db/queries/index.js';
-import { OpenAIClient } from '../lib/api/openai-client.js';
 import { logger } from '../lib/utils/logger.js';
 import { execSync } from 'child_process';
 
