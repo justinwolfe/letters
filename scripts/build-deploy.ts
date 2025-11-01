@@ -53,6 +53,24 @@ async function clean() {
 }
 
 /**
+ * Localize remote images to local database
+ */
+async function localizeImages() {
+  logger.info('Localizing remote images...');
+
+  try {
+    execSync('npm run images:localize', {
+      cwd: ROOT_DIR,
+      stdio: 'inherit',
+    });
+    logger.success('Images localized');
+  } catch (error) {
+    logger.error('Failed to localize images:', error);
+    throw error;
+  }
+}
+
+/**
  * Generate static HTML pages
  */
 async function generateStaticSite() {
@@ -259,6 +277,9 @@ Examples:
     if (options.cleanFirst) {
       await clean();
     }
+
+    // Localize images (ensure all remote images are saved locally)
+    await localizeImages();
 
     // Create placeholder icons if they don't exist
     await createPlaceholderIcons();

@@ -98,8 +98,7 @@ async function generateBaseTemplate(
   <meta name="description" content="${escapeHtml(description)}">
   <title>${escapeHtml(title)}</title>
   <link rel="manifest" href="${BASE_PATH}/manifest.json">
-  <meta name="theme-color" content="#007bff">
-  <link rel="apple-touch-icon" href="${BASE_PATH}/icon-192.png">
+  <meta name="theme-color" content="#1a1a1a">
   <style>
     ${sharedStyles}
     
