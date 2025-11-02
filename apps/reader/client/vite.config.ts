@@ -4,11 +4,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
   root: '.',
-  base: mode === 'production' ? '/letters/app/' : '/',
+  base: mode === 'production' ? '/app/' : '/',
   define: {
-    // Set API base for GitHub Pages static JSON in production, empty for local dev
+    // Set API base for Cloudflare Pages static JSON in production, empty for local dev
     'import.meta.env.VITE_API_BASE': JSON.stringify(
-      mode === 'production' ? '/letters' : ''
+      mode === 'production' ? '' : ''
     ),
   },
   build: {

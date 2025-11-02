@@ -214,18 +214,49 @@ async function combineForDeployment(cname?: string) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=/letters/" />
+  <meta http-equiv="refresh" content="0; url=/" />
   <title>Redirecting...</title>
 </head>
 <body>
   <script>
-    window.location.href = '/letters/';
+    window.location.href = '/';
   </script>
 </body>
 </html>`;
 
   await writeFile(join(PUBLIC_DIR, '404.html'), notFoundHtml);
   logger.debug('Created 404.html');
+
+  // Create _headers file for Cloudflare Pages
+  const headersContent = `# Cache static assets
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/app/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Service Worker - must be able to check for updates
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Manifest
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+# API data - cache but allow updates
+/api/*
+  Cache-Control: public, max-age=3600
+
+# HTML pages - short cache with revalidation
+/letters/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/
+  Cache-Control: public, max-age=3600, must-revalidate
+`;
+
+  await writeFile(join(PUBLIC_DIR, '_headers'), headersContent);
+  logger.debug('Created _headers file for Cloudflare Pages');
 
   logger.success(`Deployment package ready in ${PUBLIC_DIR}`);
 }

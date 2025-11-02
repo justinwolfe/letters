@@ -10,7 +10,7 @@ A comprehensive TypeScript system for syncing newsletters from Buttondown and de
 - **PWA Enhancement**: Installable React app provides rich features when desired - works as native app
 - **Progressive Enhancement**: Static pages work for everyone; PWA enhances for those who want more
 - **Single Service Worker**: Handles both static pages and PWA with intelligent caching
-- **GitHub Pages Ready**: One-command deployment with automatic builds via GitHub Actions
+- **Cloudflare Pages**: One-command deployment with automatic builds and global CDN
 
 ### 📱 Progressive Web App Experience
 
@@ -54,21 +54,22 @@ echo "BUTTONDOWN_API_KEY=your_key_here" > .env
 npm run sync
 ```
 
-### Deploy to GitHub Pages
+### Deploy to Cloudflare Pages
 
 ```bash
-# Build both static site and PWA
+# Build both static site and PWA (test locally)
 npm run build:deploy
 
-# Push to GitHub (automatic deployment via GitHub Actions)
+# Push to GitHub (automatic deployment via Cloudflare Pages)
 git add .
 git commit -m "Deploy newsletters"
 git push origin main
 ```
 
-That's it! Your site will be live at `https://yourusername.github.io/repository-name/`
+That's it! After initial Cloudflare setup, your site will auto-deploy at `https://your-project.pages.dev`
 
-📖 **[Quick Start Guide](docs/QUICKSTART_DEPLOYMENT.md)** - Get up and running in 5 minutes  
+📖 **[Cloudflare Pages Setup](docs/CLOUDFLARE_PAGES_SETUP.md)** - Complete migration and deployment guide
+📖 **[Quick Start Guide](docs/QUICKSTART_DEPLOYMENT.md)** - Get up and running in 5 minutes
 📖 **[Full Deployment Guide](docs/STATIC_PWA_DEPLOYMENT.md)** - Complete documentation
 
 ## 📖 Usage
@@ -77,7 +78,7 @@ That's it! Your site will be live at `https://yourusername.github.io/repository-
 
 **Browse Static Pages:**
 
-1. Visit your GitHub Pages URL
+1. Visit your Cloudflare Pages URL
 2. Browse all newsletters on the homepage
 3. Click any newsletter to read it
 4. Each page loads instantly with pre-rendered HTML
@@ -142,13 +143,14 @@ letters/
 │   ├── build-deploy.ts            # Deployment build script
 │   └── ...               # Other utilities
 ├── docs/                 # Documentation
+│   ├── CLOUDFLARE_PAGES_SETUP.md      # Cloudflare deployment guide
 │   ├── QUICKSTART_DEPLOYMENT.md       # Quick start guide
 │   ├── STATIC_PWA_DEPLOYMENT.md       # Full documentation
 │   └── ARCHITECTURE.md                # System architecture
-├── .github/workflows/
-│   └── deploy.yml        # GitHub Actions deployment workflow
-├── public/               # Deployment output (git-ignored)
-└── static-site/          # Generated static pages (git-ignored)
+├── wrangler.toml         # Cloudflare Pages configuration
+├── public/               # Deployment output (built on Cloudflare)
+└── data/
+    └── newsletters.db    # SQLite database (Git LFS)
 ```
 
 ## ⚙️ Configuration
@@ -190,7 +192,7 @@ Edit `scripts/generate-static-site.ts` to customize:
 ## 🏗️ Architecture
 
 ```
-                     Your GitHub Pages Site
+                     Your Cloudflare Pages Site
                               │
               ┌───────────────┼───────────────┐
               │                               │
@@ -243,11 +245,7 @@ Users get the best of both worlds:
 
 ### Custom Domain
 
-```bash
-npm run build:deploy -- --cname=letters.yourdomain.com
-```
-
-Then configure your DNS to point to GitHub Pages.
+Configure your custom domain in the Cloudflare Pages dashboard. See the [Cloudflare Pages Setup guide](docs/CLOUDFLARE_PAGES_SETUP.md#custom-domain-setup-optional) for details.
 
 ### Selective Build
 
@@ -264,12 +262,14 @@ npm run build:deploy -- --no-clean
 
 ### Manual Deployment
 
+Cloudflare Pages automatically deploys when you push to your main branch. To test locally:
+
 ```bash
 # Build locally
 npm run build:deploy
 
-# Deploy with gh-pages
-npx gh-pages -d public
+# Verify the public/ directory contains all files
+ls -la public/
 ```
 
 ## 📊 Performance
@@ -299,7 +299,7 @@ PWA features require modern browsers with service worker support.
 
 ### PWA Not Installing
 
-- Requires HTTPS (GitHub Pages provides this automatically)
+- Requires HTTPS (Cloudflare Pages provides this automatically)
 - Check that manifest.json is accessible
 - Look for errors in browser DevTools console
 - Try in Chrome/Edge first (best PWA support)
@@ -307,7 +307,7 @@ PWA features require modern browsers with service worker support.
 ### Content Not Updating
 
 - Clear browser cache
-- Check GitHub Actions workflow ran successfully
+- Check Cloudflare Pages deployment succeeded
 - Verify build succeeded locally first
 - Check service worker update cycle
 
@@ -323,6 +323,7 @@ See the [full documentation](docs/STATIC_PWA_DEPLOYMENT.md) for more troubleshoo
 
 ## 📚 Documentation
 
+- **[CLOUDFLARE_PAGES_SETUP.md](docs/CLOUDFLARE_PAGES_SETUP.md)** - Cloudflare Pages deployment guide
 - **[QUICKSTART_DEPLOYMENT.md](docs/QUICKSTART_DEPLOYMENT.md)** - Get up and running quickly
 - **[STATIC_PWA_DEPLOYMENT.md](docs/STATIC_PWA_DEPLOYMENT.md)** - Complete deployment guide
 - **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - System design and architecture
@@ -340,4 +341,4 @@ ISC
 
 - Built for the [Buttondown](https://buttondown.email) newsletter platform
 - Uses React, Vite, Better-SQLite3, Express, and more
-- Deploys seamlessly to GitHub Pages
+- Deploys seamlessly to Cloudflare Pages

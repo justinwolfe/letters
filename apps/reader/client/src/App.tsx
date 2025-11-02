@@ -31,7 +31,7 @@ type SortOption = 'date-desc' | 'date-asc' | 'subject-asc' | 'subject-desc';
 type ViewMode = 'list' | 'reader' | 'tag';
 
 const API_BASE = import.meta.env.VITE_API_BASE || '';
-const IS_STATIC_MODE = API_BASE.startsWith('/letters');
+const IS_STATIC_MODE = API_BASE === '' || API_BASE.startsWith('/');
 
 function App() {
   // Check for saved letter before initial render to avoid flash
@@ -498,7 +498,7 @@ function App() {
 
     const slug = currentEmail.slug || currentEmail.id;
     // Generate static HTML URL with ?pwa=1 for best experience
-    const staticUrl = `${window.location.origin}/letters/letters/${slug}.html?pwa=1`;
+    const staticUrl = `${window.location.origin}/letters/${slug}.html?pwa=1`;
 
     // Use Web Share API if available
     if (navigator.share) {

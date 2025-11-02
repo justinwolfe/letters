@@ -24,7 +24,7 @@ const LETTERS_DIR = join(STATIC_SITE_DIR, 'letters');
 const IMAGES_DIR = join(STATIC_SITE_DIR, 'images');
 const API_DIR = join(STATIC_SITE_DIR, 'api');
 const SHARED_STYLES_PATH = join(__dirname, '../lib/utils/shared-styles.css');
-const BASE_PATH = '/letters'; // GitHub Pages base path
+const BASE_PATH = ''; // Root path for Cloudflare Pages
 
 // Cache for shared styles
 let sharedStylesCache: string | null = null;
