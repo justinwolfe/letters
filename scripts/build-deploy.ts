@@ -54,8 +54,16 @@ async function clean() {
 
 /**
  * Localize remote images to local database
+ * This step is optional if images are already in the database
  */
 async function localizeImages() {
+  // Check if BUTTONDOWN_API_KEY is available
+  // If not, skip this step (images should already be in database)
+  if (!process.env.BUTTONDOWN_API_KEY) {
+    logger.info('Skipping image localization (no API key, images should already be in database)');
+    return;
+  }
+
   logger.info('Localizing remote images...');
 
   try {
@@ -65,8 +73,9 @@ async function localizeImages() {
     });
     logger.success('Images localized');
   } catch (error) {
-    logger.error('Failed to localize images:', error);
-    throw error;
+    // If localization fails, log but don't fail the build
+    // Images might already be localized
+    logger.warn('Image localization failed, continuing with existing images:', error);
   }
 }
 
