@@ -275,12 +275,10 @@ class OfflineStorage {
   ): Promise<void> {
     try {
       // Detect API base
-      const apiBase = (import.meta.env.VITE_API_BASE || '').startsWith(
-        '/letters'
-      )
-        ? '/letters'
-        : '';
-      const isStatic = apiBase === '/letters';
+      // In production (Cloudflare Pages), VITE_API_BASE is '' and we use static JSON files
+      // In development, VITE_API_BASE is also '' but we use the dev server
+      const apiBase = import.meta.env.VITE_API_BASE || '';
+      const isStatic = apiBase === '' || apiBase.startsWith('/');
 
       // Get last sync metadata to determine if we need a full sync or incremental
       const lastSyncTime = await this.getMetadata('lastSync');
